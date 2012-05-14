@@ -22,12 +22,16 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -734,6 +738,48 @@ implements QueryBuilder
 
 
 
+    protected static class OvalEnumerationListHandler
+    extends Handler
+    {
+
+        private final Class<? extends OvalEnumeration>  _type;
+
+
+        public OvalEnumerationListHandler(
+                        final Class<? extends OvalEnumeration> type
+                        )
+        {
+            _type = type;
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (_isEmpty( value )) {
+                return;
+            }
+
+            if (_isList( value )) {
+                String[]  value_elem = _asList( value );
+                List<OvalEnumeration>  list = new ArrayList<OvalEnumeration>();
+                for (String  v : value_elem) {
+                    list.add( OvalEnumerationHelper.fromValue( _type, v ) );
+                }
+                query.filter( field + " in", list );
+            } else {
+                query.filter( field, OvalEnumerationHelper.fromValue( _type, value ) );
+            }
+        }
+    }
+    //OvalEnumerationList
+
+
+
     protected static class DatetimeHandler
     extends Handler
     {
@@ -1046,25 +1092,6 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  class_handler = new Handler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value
-                                )
-                {
-                    if (_isEmpty( value )) {
-                        return;
-                    }
-
-                    ClassEnumeration  clazz = ClassEnumeration.fromValue( value );
-                    query.filter( field, clazz );
-                }
-            };
-
-
             Handler  family_handler = new FilterHandler()
             {
                 @Override
@@ -1090,7 +1117,7 @@ implements QueryBuilder
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
             //definition
-            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
+            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    new OvalEnumerationListHandler( ClassEnumeration.class ) );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
