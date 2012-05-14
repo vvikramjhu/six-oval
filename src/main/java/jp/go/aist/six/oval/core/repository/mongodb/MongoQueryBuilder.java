@@ -483,7 +483,6 @@ implements QueryBuilder
             }
 
             String[]  value_elements = _asList( value );
-//            String[]  value_elements = value.split( LIST_DELIMITER );
             if (value_elements.length > 1) {
                 query.filter( field + " in", value_elements );
             } else {
@@ -583,12 +582,11 @@ implements QueryBuilder
             Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
             if (_isList( field )) {
                 // e.g. title,comment = ".*buffer overflow.*"
-                String[]  fs = _asList( field );
-//                String[]  fs = field.split( "," );
-                int  size = fs.length;
-                Criteria[]  criteria = new Criteria[size];
-                for (int  i = 0; i < size; i++) {
-                    criteria[i] = query.criteria( fs[i] ).equal( pattern );
+                String[]  field_elem = _asList( field );
+                int  num_field_elem = field_elem.length;
+                Criteria[]  criteria = new Criteria[num_field_elem];
+                for (int  i = 0; i < num_field_elem; i++) {
+                    criteria[i] = query.criteria( field_elem[i] ).equal( pattern );
                 }
                 query.or( criteria );
             } else {
@@ -624,14 +622,9 @@ implements QueryBuilder
             }
 
             String[] field_elem = _asList( field );
-//            String[] field_elem = (field.contains( LIST_DELIMITER ) ? field.split( LIST_DELIMITER )
-//                            : (new String[] { field }));
             int  num_field_elem = field_elem.length;
 
-            // prepare patterns
             String[] value_elem = _asList( value );
-//            String[] value_elem = (value.contains( LIST_DELIMITER ) ? value.split( LIST_DELIMITER )
-//                            : (new String[] { value }));
             int  num_value_elem = value_elem.length;
             Pattern[]  pattern = new Pattern[num_value_elem];
             for (int  j = 0; j < num_value_elem; j++) {
@@ -677,7 +670,7 @@ implements QueryBuilder
             }
         }
     }
-    // SearchTermHandler
+    // SearchTerm
 
 
 
@@ -941,19 +934,6 @@ implements QueryBuilder
                         Component  component = Component.fromValue( value );
                         query.filter( field, component );
                     }
-//backup
-//                    if (value.contains( LIST_DELIMITER )) {
-//                        String[]  value_elem = value.split( LIST_DELIMITER );
-//                        int  size = value_elem.length;
-//                        Component[]  component_list = new Component[size];
-//                        for (int  i = 0; i < size; i++) {
-//                            component_list[i] = Component.fromValue( value_elem[i] );
-//                        }
-//                        query.filter( field + " in", component_list );
-//                    } else {
-//                        Component  component = Component.fromValue( value );
-//                        query.filter( field, component );
-//                    }
                 }
             };
 
@@ -993,9 +973,7 @@ implements QueryBuilder
 
             //definitions element
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
-//            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
-//            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   component_handler );
