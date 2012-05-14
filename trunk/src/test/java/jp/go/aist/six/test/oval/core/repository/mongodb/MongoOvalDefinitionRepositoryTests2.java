@@ -174,7 +174,8 @@ extends OvalCoreTestBase
         DefinitionsElementQueryParams  params52 = new DefinitionsElementQueryParams();
         params52.setType( DefinitionsElement.Type.TEST.value() );
         params52.setOrder( "id" );
-        params52.setComponent( Component.FILE.value() + "," + Component.FAMILY.value() );
+        params52.setComponent( new Component[] { Component.FILE, Component.FAMILY } );
+//        params52.setComponent( Component.FILE.value() + "," + Component.FAMILY.value() );
 
         // component (3) --- family
         DefinitionsElementQueryParams  params53 = new DefinitionsElementQueryParams();
@@ -348,6 +349,10 @@ extends OvalCoreTestBase
         DefinitionQueryParams  params14 = new DefinitionQueryParams();
         params14.setId( "oval:org.mitre.oval.test:def:1000" );
 
+        // element: id
+        DefinitionQueryParams  params15 = new DefinitionQueryParams();
+        params15.setId( "oval:org.mitre.oval.test:def:4*,oval:org.mitre.oval.test:def:5*" );
+
         // definition: definitionClass
         DefinitionQueryParams  params21 = new DefinitionQueryParams();
         params21.setDefinitionClass( "compliance" );
@@ -381,48 +386,48 @@ extends OvalCoreTestBase
         params28.setCve( "CVE-2011-*,CVE-2010-0176" );
 
         return new Object[][] {
-                        {
-                            "1",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params1
-                        }
-                        ,
-                        {
-                            "2",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params2
-                        }
-                        ,
-                        {
-                            "3",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params3
-                        }
-                        ,
-                        {
-                            "4",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params4
-                        }
-                        ,
-                        {
-                            "5",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params5
-                        }
-                        ,
-                        {
-                            "11",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params11
-                        }
-                        ,
+//                        {
+//                            "1",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params1
+//                        }
+//                        ,
+//                        {
+//                            "2",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params2
+//                        }
+//                        ,
+//                        {
+//                            "3",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params3
+//                        }
+//                        ,
+//                        {
+//                            "4",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params4
+//                        }
+//                        ,
+//                        {
+//                            "5",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params5
+//                        }
+//                        ,
+//                        {
+//                            "11",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params11
+//                        }
+//                        ,
                         {
                             "12",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
@@ -445,60 +450,67 @@ extends OvalCoreTestBase
                         }
                         ,
                         {
-                            "21",
+                            "15",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             DefinitionsElement.Type.DEFINITION,
-                            params21
+                            params15
                         }
-                        ,
-                        {
-                            "22",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params22
-                        }
-                        ,
-                        {
-                            "23",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params23
-                        }
-                        ,
-                        {
-                            "24",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params24
-                        }
-                        ,
-                        {
-                            "25",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params25
-                        }
-                        ,
-                        {
-                            "26",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params26
-                        }
-                        ,
-                        {
-                            "27",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params27
-                        }
-                        ,
-                        {
-                            "28",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params28
-                        }
+//                        ,
+//                        {
+//                            "21",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params21
+//                        }
+//                        ,
+//                        {
+//                            "22",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params22
+//                        }
+//                        ,
+//                        {
+//                            "23",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params23
+//                        }
+//                        ,
+//                        {
+//                            "24",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params24
+//                        }
+//                        ,
+//                        {
+//                            "25",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params25
+//                        }
+//                        ,
+//                        {
+//                            "26",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params26
+//                        }
+//                        ,
+//                        {
+//                            "27",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params27
+//                        }
+//                        ,
+//                        {
+//                            "28",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params28
+//                        }
         };
     }
 

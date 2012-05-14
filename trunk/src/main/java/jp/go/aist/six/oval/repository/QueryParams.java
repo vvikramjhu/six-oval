@@ -38,6 +38,9 @@ public class QueryParams
     implements Cloneable, Serializable
 {
 
+    public static final String  LIST_DELIMITER = ",";
+
+
     private final Map<String, String>  _params = new HashMap<String, String>();
 
 
