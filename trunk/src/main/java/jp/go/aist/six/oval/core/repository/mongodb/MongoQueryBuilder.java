@@ -712,31 +712,19 @@ implements QueryBuilder
 
             String[]  value_elem = _asList( value );
             int  num_value_elem = value_elem.length;
-            boolean  wild_card_contained = value.contains( WILD_CARD );
 
-            if (wild_card_contained) {
+            if (_isPattern( value )) {
                 if (num_value_elem > 1) {
                     // f=x*,y
                     // f=x*,y,z*
                     Criteria[]  criteria = new Criteria[num_value_elem];
                     for (int  i = 0; i < num_value_elem; i++) {
-                        Object  normalized_value = null;
-                        if (value_elem[i].contains( WILD_CARD )) {
-                            // x*
-                            String  pattern_value = value_elem[i].replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
-                            normalized_value = Pattern.compile( pattern_value, Pattern.CASE_INSENSITIVE );
-                        } else {
-                            // y
-                            normalized_value = value_elem[i];
-                        }
-                        criteria[i] = query.criteria( field ).equal( normalized_value );
+                        criteria[i] = query.criteria( field ).equal( _asMatchingObject( value_elem[i] ) );
                     }
                     query.or( criteria );
                 } else {
                     // f=x*
-                    String  pattern_value = value.replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
-                    Pattern  pattern = Pattern.compile( pattern_value, Pattern.CASE_INSENSITIVE );
-                    query.filter( field, pattern );
+                    query.filter( field, _asMatchingObject( value ) );
                 }
             } else {
                 if (num_value_elem > 1) {
