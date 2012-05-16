@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
@@ -249,8 +251,20 @@ public class MongoOvalDatastore
        if (params == null) {
            count = dao.count();
        } else {
+           //NOTE: count() query ignores the "count" parameter.
+           QueryParams  adjusted_params = params;
+           if (params.containsKey( CommonQueryParams.Key.COUNT )) {
+               try {
+                   adjusted_params = QueryParams.class.cast( params.clone() );
+               } catch (CloneNotSupportedException ex) {
+                   throw new OvalRepositoryException( ex );
+               }
+
+               adjusted_params.remove( CommonQueryParams.Key.COUNT );
+           }
+
            Query<T>  query = dao.createQuery();
-           QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
+           QueryBuilder  builder = MongoQueryBuilder.createInstance( type, adjusted_params );
            query = builder.build( query );
            _LOG_.debug( "query=" + query );
            count = dao.count( query );

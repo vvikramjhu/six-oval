@@ -80,7 +80,7 @@
     <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="MODEL.oval.def.definition"/>
+                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
             </run>
         </groups>
         <!--

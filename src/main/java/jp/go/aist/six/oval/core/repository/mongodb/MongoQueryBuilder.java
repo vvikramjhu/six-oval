@@ -603,13 +603,76 @@ implements QueryBuilder
 
 
 
-    protected static class SearchTermHandler
+    //TODO:
+    // A value-list can be represented as ".*X|Y|Z.*" in regex.
+    // Now, we use OR of regex patterns, i.e. ".*X.* OR .*Y.* OR .*Z.*".
+    protected static class SearchTermsHandler
     extends Handler
     {
-        public static final SearchTermHandler  INSTANCE = new SearchTermHandler();
+        public static final SearchTermsHandler  INSTANCE = new SearchTermsHandler();
 
 
-        public SearchTermHandler()
+        public SearchTermsHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (_isEmpty( value )) {
+                return;
+            }
+
+            String[] field_elem = _asList( field );
+            int  num_field_elem = field_elem.length;
+
+            String[] value_elem = _asList( value );
+            int  num_value_elem = value_elem.length;
+
+            Pattern  pattern = null;
+            if (num_value_elem > 1) {
+                //...=v1,v2,...
+                StringBuilder  s = new StringBuilder();
+                for (int  j = 0; j < num_value_elem; j++) {
+                    if (s.length() > 0) {
+                        s.append( "|" );
+                    }
+                    s.append( value_elem[j] );
+                }
+                pattern = Pattern.compile( ".*" + s.toString() + ".*", Pattern.CASE_INSENSITIVE );
+            } else {
+                //...=v1
+                pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
+            }
+
+
+            if (num_field_elem > 1) {
+                //f1,f2,...=...
+                Criteria[]  criteria = new Criteria[num_field_elem];
+                for (int  i = 0; i < num_field_elem; i++) {
+                    criteria[i] = query.criteria( field_elem[i] ).equal( pattern );
+                }
+                query.or( criteria );
+
+            } else {
+                //f1=...
+                query.criteria( field ).equal( pattern );
+            }
+        }
+    }
+    // SearchTerm
+    protected static class SearchTermHandler2
+    extends Handler
+    {
+        public static final SearchTermHandler2  INSTANCE = new SearchTermHandler2();
+
+
+        public SearchTermHandler2()
         {
         }
 
@@ -642,8 +705,8 @@ implements QueryBuilder
                     int  num_criteria = num_field_elem * num_value_elem;
                     Criteria[]  criteria = new Criteria[num_criteria];
                     for (int  i = 0; i < num_field_elem; i++) {
-                        for (int  j = 0; j < num_field_elem; j++) {
-                            int  index = i * j + j;
+                        for (int  j = 0; j < num_value_elem; j++) {
+                            int  index = i * num_value_elem + j;
                             criteria[index] = query.criteria( field_elem[i] ).equal( pattern[j] );
                         }
                     }
@@ -674,7 +737,6 @@ implements QueryBuilder
             }
         }
     }
-    // SearchTerm
 
 
 
@@ -934,15 +996,13 @@ implements QueryBuilder
 
             //NOTE:
             // DefinitionsElementQueryParams.Key.TYPE param is handled by the MongoOvalDefinitionRepository.
-
             mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   "_oval_component" );
-
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      "_oval_generator.schema_version" );
 
-            //common params
+            //common
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "comment" );
 
             return mapping;
@@ -955,74 +1015,15 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  component_handler = new Handler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value
-                                )
-                {
-                    if (_isEmpty( value )) {
-                        return;
-                    }
-
-                    if (_isList( value )) {
-                        String[]  value_elem = _asList( value );
-                        int  size = value_elem.length;
-                        Component[]  component_list = new Component[size];
-                        for (int  i = 0; i < size; i++) {
-                            component_list[i] = Component.fromValue( value_elem[i] );
-                        }
-                        query.filter( field + " in", component_list );
-                    } else {
-                        Component  component = Component.fromValue( value );
-                        query.filter( field, component );
-                    }
-                }
-            };
-
-
-            Handler  family_handler = new FilterHandler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value
-                                )
-                {
-                    if (_isEmpty( value )) {
-                        return;
-                    }
-
-                    if (_isList( value )) {
-                        String[]  value_elem = _asList( value );
-                        int  size = value_elem.length;
-                        Family[]  family_list = new Family[size];
-                        for (int  i = 0; i < size; i++) {
-                            family_list[i] = Family.fromValue( value_elem[i] );
-                        }
-                        query.filter( field + " in", family_list );
-                    } else {
-                        Family  family = Family.fromValue( value );
-                        query.filter( field, family );
-                    }
-                }
-            };
-
-
             Map<String, Handler>  mapping = CommonBuilder._createHandlers();
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler.INSTANCE );
 
             //definitions element
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
-            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   component_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( Family.class ) );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   new OvalEnumerationListHandler( Component.class ) );
 
             return mapping;
         }
@@ -1055,12 +1056,12 @@ implements QueryBuilder
         }
 
     }
-    //DefinitionsElementBuilder
+    //DefinitionsElement
 
 
 
     /**
-     * Definition.
+     * oval-def:definition
      */
     public static class DefinitionBuilder
     extends DefinitionsElementBuilder
@@ -1078,9 +1079,8 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
             mapping.put( DefinitionQueryParams.Key.CVE,                 "metadata.reference.ref_id" );
 
-            // common
+            // override common
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title,metadata.description" );
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title" );
 
             return mapping;
         }
@@ -1092,39 +1092,20 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  family_handler = new FilterHandler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value
-                                )
-                {
-                    if (_isEmpty( value )) {
-                        return;
-                    }
-
-                    FamilyEnumeration  family = FamilyEnumeration.fromValue( value );
-                    query.filter( field, family );
-                }
-            };
-
-
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             //common
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
 
             //definition
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    new OvalEnumerationListHandler( ClassEnumeration.class ) );
-            mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            PatternListHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.PRODUCT,             PatternListHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          HasAnyOfHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.REF_ID,              PatternListHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.CVE,                 PatternListHandler.INSTANCE );
-            // Overrides.
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
+
+            //overrides:
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( FamilyEnumeration.class ) );
 
             return mapping;
         }
