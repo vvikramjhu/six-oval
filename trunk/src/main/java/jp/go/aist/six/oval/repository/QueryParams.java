@@ -103,7 +103,6 @@ public class QueryParams
     }
 
 
-
     public String get(
                     final String key,
                     final String defaultValue
@@ -111,6 +110,17 @@ public class QueryParams
     {
         String  value = get( key );
         return (value == null ? defaultValue : value);
+    }
+
+
+
+    /**
+     */
+    public boolean containsKey(
+                    final String key
+                    )
+    {
+        return _params.containsKey( key );
     }
 
 
