@@ -80,7 +80,7 @@
     <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="CONTROL.oval.repository.saveElement"/>
+                <include name="MODEL.oval.sc.oval_system_characteristics"/>
             </run>
         </groups>
         <!--
@@ -93,11 +93,10 @@
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 -->
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests2"/>
-            <!--
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
-            <class name="jp.go.aist.six.test.oval.core.MongoOvalDefinitionRepositoryTests2"/>
-            <class name="jp.go.aist.six.test.oval.core.MongoOvalDefinitionResultRepositoryTests"/>
+            <!--
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests2"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
             <class name="jp.go.aist.six.test.oval.core.DefinitionElementAssocTests"/>
             <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
