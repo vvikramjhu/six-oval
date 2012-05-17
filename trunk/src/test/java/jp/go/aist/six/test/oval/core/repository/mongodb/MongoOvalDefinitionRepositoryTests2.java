@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -650,10 +651,11 @@ extends OvalCoreTestBase
                         "SIX: comment 101",
                         CheckEnumeration.AT_LEAST_ONE
                         );
-        test101.setObject( new SystemObjectRefType( "oval:jp.go.aist.six.oval.test:tst:101" ) );
+        test101.setObject( new SystemObjectRefType( "oval:jp.go.aist.six.oval.test:obj:101" ) );
         test101.setState( new StateRefType[] {
-                        new StateRefType( "oval:jp.go.aist.six.oval.test:tst:101" )
+                        new StateRefType( "oval:jp.go.aist.six.oval.test:ste:101" )
                         } );
+        test101.setCheckExistence( ExistenceEnumeration.AT_LEAST_ONE_EXISTS );
 
         return new Object[][] {
                         {
