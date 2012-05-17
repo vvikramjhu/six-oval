@@ -203,51 +203,104 @@ extends OvalCoreTestBase
         OvalSystemCharacteristicsQueryParams  params24 = new OvalSystemCharacteristicsQueryParams();
         params24.setMac( "00-50-56-C0-00-01" );
 
+
         // sc: OS
-        OvalSystemCharacteristicsQueryParams  params25 = new OvalSystemCharacteristicsQueryParams();
-        params25.setOs( "Windows*" );
+        OvalSystemCharacteristicsQueryParams  params31 = new OvalSystemCharacteristicsQueryParams();
+        params31.setOs( "Windows*" );
+
+
+        // sc: OS version
+        OvalSystemCharacteristicsQueryParams  params41 = new OvalSystemCharacteristicsQueryParams();
+        params41.setOsVersion( "6.1.7601" );
+
+        // sc: OS version
+        OvalSystemCharacteristicsQueryParams  params42 = new OvalSystemCharacteristicsQueryParams();
+        params42.setOs( "Windows*" );
+        params42.setOsVersion( "<6" );
+
+        // sc: OS version
+        OvalSystemCharacteristicsQueryParams  params43 = new OvalSystemCharacteristicsQueryParams();
+        params43.setOs( "Windows*" );
+        params43.setOsVersion( ">6.1" );
+
+        // sc: OS version
+        OvalSystemCharacteristicsQueryParams  params44 = new OvalSystemCharacteristicsQueryParams();
+        params44.setOsVersion( "!6.1.7601" );
+
 
 
         return new Object[][] {
                         {
+                            "01",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params01
                         }
                         ,
                         {
+                            "02",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params02
                         }
                         ,
                         {
+                            "03",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params03
                         }
                         ,
 
                         {
+                            "21",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params21
                         }
                         ,
                         {
+                            "22",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params22
                         }
                         ,
                         {
+                            "23",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params23
                         }
                         ,
                         {
+                            "24",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params24
                         }
                         ,
                         {
+                            "31",
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
-                            params25
+                            params31
+                        }
+                        ,
+                        {
+                            "41",
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params41
+                        }
+                        ,
+                        {
+                            "42",
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params42
+                        }
+                        ,
+                        {
+                            "43",
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params43
+                        }
+                        ,
+                        {
+                            "44",
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params44
                         }
         };
     }
@@ -465,12 +518,13 @@ extends OvalCoreTestBase
 //                    ,alwaysRun=true
                     )
     public void testFindOvalSc(
+                    final String                            data_id,
                     final Class<OvalSystemCharacteristics>  object_type,
                     final QueryParams                       params
                     )
     throws Exception
     {
-        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+        Reporter.log( "\n" + data_id + "//////////////////////////////////////////////////////////", true );
 
         Reporter.log( ">>> findOvalSc(params)...", true );
         Reporter.log( "  * params: " + params, true );
@@ -480,8 +534,9 @@ extends OvalCoreTestBase
         Assert.assertNotNull( oval_sc_list );
         Reporter.log( "  @ #OVAL SC: " + oval_sc_list.size(), true );
         for (OvalSystemCharacteristics  oval_sc : oval_sc_list) {
+            Reporter.log( "  @ SC._id: " + oval_sc.getPersistentID(), true );
             SystemInfoType  sys = oval_sc.getSystemInfo();
-            Reporter.log( "  @ SC.system_info: " + sys, true );
+            Reporter.log( "    system_info: " + sys, true );
         }
     }
 

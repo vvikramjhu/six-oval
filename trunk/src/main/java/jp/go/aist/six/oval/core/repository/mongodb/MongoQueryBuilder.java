@@ -36,7 +36,6 @@ import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
-import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -47,7 +46,6 @@ import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.TestQueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Criteria;
@@ -82,8 +80,8 @@ implements QueryBuilder
     {
         if (DefinitionType.class.isAssignableFrom( type )) {
             return (new DefinitionBuilder( params ));
-        } else if (TestType.class.isAssignableFrom( type )) {
-            return (new TestBuilder( params ));
+//        } else if (TestType.class.isAssignableFrom( type )) {
+//            return (new TestBuilder( params ));
         } else if (DefinitionsElement.class.isAssignableFrom( type )) {
             return (new DefinitionsElementBuilder( params ));
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
@@ -175,7 +173,7 @@ implements QueryBuilder
                     )
     {
         Handler  handler = _handlerMapping().get( key );
-        return (handler == null ? FilterHandler.INSTANCE : handler);
+        return (handler == null ? FilterHandler2.INSTANCE : handler);
 //        return (handler == null ? _DEFAULT_HANDLER_ : handler);
     }
 
@@ -388,7 +386,8 @@ implements QueryBuilder
 
         public static final String  DEFAULT_OPERATOR = "=";
 
-        private String  _operator;
+        private static final char[]       _QUERY_OPERATORS_ = new   char[] { '!',  '<', '>' };
+        private static final String[]  _INTERNAL_OPERATORS_ = new String[] { "!=", "<", ">" };
 
 
         public FilterHandler()
@@ -396,7 +395,49 @@ implements QueryBuilder
         }
 
 
-        public FilterHandler(
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (_isEmpty( value )) {
+                return;
+            }
+
+            String  op = DEFAULT_OPERATOR;
+            String  v = value;
+            char  c = value.charAt( 0 );
+            for (int  i = 0; i < _QUERY_OPERATORS_.length; i++) {
+                if (_QUERY_OPERATORS_[i] == c) {
+                    op = _INTERNAL_OPERATORS_[i];
+                    v = value.substring( 1 );
+                    break;
+                }
+            }
+
+            query.filter( field + " " + op, v );
+        }
+    }
+    // Filter
+
+    protected static class FilterHandler2
+    extends Handler
+    {
+        public static final FilterHandler2  INSTANCE = new FilterHandler2();
+
+        public static final String  DEFAULT_OPERATOR = "=";
+
+        private String  _operator;
+
+
+        public FilterHandler2()
+        {
+        }
+
+
+        public FilterHandler2(
                         final String operator
                         )
         {
@@ -423,7 +464,7 @@ implements QueryBuilder
         }
 
     }
-    // FilterHandler
+    // Filter2
 
 
 
@@ -1005,6 +1046,7 @@ implements QueryBuilder
             // DefinitionsElementQueryParams.Key.TYPE param is handled by the MongoOvalDefinitionRepository.
             mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
+            mapping.put( DefinitionsElementQueryParams.Key.TYPE,        null );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   "_oval_component" );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      "_oval_generator.schema_version" );
@@ -1029,7 +1071,8 @@ implements QueryBuilder
             //definitions element
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
-            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.TYPE,        IgnoringHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler2.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( Family.class ) );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   new OvalEnumerationListHandler( Component.class ) );
 
@@ -1150,68 +1193,69 @@ implements QueryBuilder
 
 
 
-    public static class TestBuilder
-    extends DefinitionsElementBuilder
-    {
-
-        protected static Map<String, String> _createFieldMapping()
-        {
-            Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
-
-            mapping.put( TestQueryParams.Key.OBJECT_REF,    "object.object_ref" );
-            mapping.put( TestQueryParams.Key.STATE_REF,     "state.state_ref" );
-
-            return mapping;
-        }
-
-
-        private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
-
-
-
-        protected static Map<String, Handler> _createHandlers()
-        {
-
-            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
-            mapping.put( TestQueryParams.Key.OBJECT_REF,    FilterHandler.INSTANCE );
-            mapping.put( TestQueryParams.Key.STATE_REF,     FilterHandler.INSTANCE );
-
-            return mapping;
-        }
-
-
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
-
-
-        public TestBuilder(
-                        final QueryParams params
-                        )
-        {
-            super( params );
-        }
-
-
-
-        @Override
-        protected Map<String, Handler> _handlerMapping()
-        {
-            return _HANDLERS_;
-        }
-
-
-        @Override
-        protected Map<String, String> _fieldMapping()
-        {
-            return _FIELDS_;
-        }
-
-    }
-    // Test
+//    public static class TestBuilder
+//    extends DefinitionsElementBuilder
+//    {
+//
+//        protected static Map<String, String> _createFieldMapping()
+//        {
+//            Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
+//
+//            mapping.put( TestQueryParams.Key.OBJECT_REF,    "object.object_ref" );
+//            mapping.put( TestQueryParams.Key.STATE_REF,     "state.state_ref" );
+//
+//            return mapping;
+//        }
+//
+//
+//        private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
+//
+//
+//
+//        protected static Map<String, Handler> _createHandlers()
+//        {
+//
+//            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
+//            mapping.put( TestQueryParams.Key.OBJECT_REF,    FilterHandler.INSTANCE );
+//            mapping.put( TestQueryParams.Key.STATE_REF,     FilterHandler.INSTANCE );
+//
+//            return mapping;
+//        }
+//
+//
+//        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
+//
+//
+//
+//        public TestBuilder(
+//                        final QueryParams params
+//                        )
+//        {
+//            super( params );
+//        }
+//
+//
+//
+//        @Override
+//        protected Map<String, Handler> _handlerMapping()
+//        {
+//            return _HANDLERS_;
+//        }
+//
+//
+//        @Override
+//        protected Map<String, String> _fieldMapping()
+//        {
+//            return _FIELDS_;
+//        }
+//
+//    }
+//    // Test
 
 
 
     /**
+     * oval-sc:oval_system_characteristics
      */
     public static class OvalSystemCharacteristicsBuilder
     extends CommonBuilder
@@ -1251,6 +1295,7 @@ implements QueryBuilder
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
+//            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler2.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          PatternListHandler.INSTANCE );
 
