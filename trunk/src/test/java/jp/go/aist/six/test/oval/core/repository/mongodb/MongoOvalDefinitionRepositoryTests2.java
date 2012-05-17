@@ -332,6 +332,11 @@ extends OvalCoreTestBase
         params05.setOrder( "-id" );
         params05.setSearchTerms( "negate,MITRE" );
 
+        // common: searchTerms, order
+        DefinitionQueryParams  params06 = new DefinitionQueryParams();
+        params06.setOrder( "id" );
+        params06.setSearchTerms( "arithmetic,begin,concat,end,escape_regex,regex_capture,split,substring,time_difference" );
+
         // element: version
         DefinitionQueryParams  params11 = new DefinitionQueryParams();
         params11.setVersion( "7" );
@@ -456,6 +461,13 @@ extends OvalCoreTestBase
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             DefinitionsElement.Type.DEFINITION,
                             params05
+                        }
+                        ,
+                        {
+                            "06",
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            DefinitionsElement.Type.DEFINITION,
+                            params06
                         }
 //                        ,
 //                        {
