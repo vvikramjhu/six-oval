@@ -7,10 +7,14 @@ import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.StateRefType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
+import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
@@ -628,6 +632,40 @@ extends OvalCoreTestBase
 
 
 
+    /**
+     * oval-def:element
+     *
+     *  <T extends DefinitionsElement>
+     *  String                      data_id
+     *  DefinitionsElement.Type     element_type,
+     *  Class<T>                    element_clazz,
+     *  T                           element
+     */
+    @DataProvider( name="DATA.oval.repository.element" )
+    public Object[][] provideRepositoryOvalDefElement()
+    {
+        FamilyTest  test101 = new FamilyTest(
+                        "oval:jp.go.aist.six.oval.test:tst:101",
+                        1,
+                        "SIX: comment 101",
+                        CheckEnumeration.AT_LEAST_ONE
+                        );
+        test101.setObject( new SystemObjectRefType( "oval:jp.go.aist.six.oval.test:tst:101" ) );
+        test101.setState( new StateRefType[] {
+                        new StateRefType( "oval:jp.go.aist.six.oval.test:tst:101" )
+                        } );
+
+        return new Object[][] {
+                        {
+                            "101",
+                            DefinitionsElement.Type.TEST,
+                            jp.go.aist.six.oval.model.definitions.TestType.class,
+                            test101
+                        }
+        };
+    }
+
+
 
     ////////////////////////////////////////////////////////////////
     //  test methods
@@ -692,6 +730,57 @@ extends OvalCoreTestBase
     //**************************************************************
     //  oval-def:element
     //**************************************************************
+
+    /**
+     * saveElement(element), findElementById(id)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.def.element",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveElement",
+                                    "CONTROL.oval.repository.findElementById"
+                                    }
+//                    ,dependsOnGroups={ "***" }
+                    ,dataProvider="DATA.oval.repository.element"
+                    ,alwaysRun=true
+                    )
+    public <T extends DefinitionsElement>
+    void testSaveElementAndFindById(
+                    final String                      data_id,
+                    final DefinitionsElement.Type     element_type,
+                    final Class<T>                    element_clazz,
+                    final T                           element
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n" + data_id + "//////////////////////////////////////////////////////////", true );
+
+        Reporter.log( "  * element type= " + element_type, true );
+        Reporter.log( "  * element class= " + element_clazz, true );
+        String  oval_id = element.getOvalID();
+        Reporter.log( "  * OVAL-ID: " + oval_id, true );
+        Reporter.log( "  * element object= " + element, true );
+
+        Assert.assertTrue( element_clazz.isInstance( element ) );
+
+        Reporter.log( ">>> saveElement(element)...", true );
+        String  p_id = _getDefinitionRepository().saveElement( element );
+        Reporter.log( "<<< ...saveElement(element)", true );
+        Reporter.log( "  @ persistent ID: " + p_id, true );
+        Assert.assertNotNull( p_id );
+
+        Reporter.log( ">>> findElementById(oval_id)...", true );
+        DefinitionsElement  p_element = _getDefinitionRepository().findElementById( oval_id );
+        Reporter.log( "<<< ...findElementById(oval_id)", true );
+        String  p_oval_id = p_element.getOvalID();
+        Reporter.log( "  @ OVAL-ID: " + p_oval_id, true );
+        Assert.assertEquals( oval_id, p_oval_id );
+        Assert.assertEquals( element.ovalGetElementType(), p_element.ovalGetElementType() );
+        Assert.assertTrue( element_clazz.isInstance( p_element ) );
+    }
+
+
 
     /**
      * findElement(params), countElement(params)
