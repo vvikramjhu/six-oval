@@ -603,9 +603,11 @@ implements QueryBuilder
 
 
 
-    //TODO:
-    // A value-list can be represented as ".*X|Y|Z.*" in regex.
-    // Now, we use OR of regex patterns, i.e. ".*X.* OR .*Y.* OR .*Z.*".
+    //NOTE: According to some tests, this implementation is slower than the SearchTermsHandler2.
+    // A value-list can be represented as a regex ".*X|Y|Z.*" .
+    // f1=.*X|Y|Z.* OR
+    // f2=.*X|Y|Z.* OR
+    // ...
     protected static class SearchTermsHandler
     extends Handler
     {
@@ -665,14 +667,18 @@ implements QueryBuilder
             }
         }
     }
-    // SearchTerm
-    protected static class SearchTermHandler2
+    // SearchTerms
+
+    // f1=.*X.* OR f1=.*Y.* OR f1=.*Z.*" OR
+    // f2=.*X.* OR f2=.*Y.* OR f2=.*Z.*" OR
+    // ...
+    protected static class SearchTermsHandler2
     extends Handler
     {
-        public static final SearchTermHandler2  INSTANCE = new SearchTermHandler2();
+        public static final SearchTermsHandler2  INSTANCE = new SearchTermsHandler2();
 
 
-        public SearchTermHandler2()
+        public SearchTermsHandler2()
         {
         }
 
@@ -737,6 +743,7 @@ implements QueryBuilder
             }
         }
     }
+    // SearchTerms2
 
 
 
@@ -981,7 +988,7 @@ implements QueryBuilder
 
 
     /**
-     * DefinitionsElement.
+     * oval-def:{definition,test,object,state,variable}
      *
      * @author	Akihito Nakamura, AIST
      * @version $Id$
@@ -1016,7 +1023,8 @@ implements QueryBuilder
         protected static Map<String, Handler> _createHandlers()
         {
             Map<String, Handler>  mapping = CommonBuilder._createHandlers();
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler.INSTANCE );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler2.INSTANCE );
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler.INSTANCE );
 
             //definitions element
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
