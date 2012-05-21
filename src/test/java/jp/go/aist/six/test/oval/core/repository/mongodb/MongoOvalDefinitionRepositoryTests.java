@@ -35,7 +35,7 @@ import org.testng.annotations.DataProvider;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDefinitionRepositoryTests2
+public class MongoOvalDefinitionRepositoryTests
 extends OvalCoreTestBase
 {
 

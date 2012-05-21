@@ -95,7 +95,7 @@
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
             <!--
-            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests2"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
             <class name="jp.go.aist.six.test.oval.core.DefinitionElementAssocTests"/>
             <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>
@@ -130,25 +130,6 @@
         </classes>
     </test>
 
-
-
-    <test name="oval.core.repository.mongodb.datastore" enabled="false">
-        <groups>
-            <run>
-                <include name="oval.core.repository.mongodb.saveAndLoad"/>
-                <!--
-                <include name="oval.definitions.oval_definitions"/>
-                <include name="oval.definitions.definition"/>
-                <include name="oval.definitions.state"/>
-                <include name="oval.definitions.variable"/>
-                -->
-            </run>
-        </groups>
-
-        <classes>
-            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoDatastoreTest"/>
-        </classes>
-    </test>
 
 
     <test name="oval.core.repository.mongodb" enabled="false">
