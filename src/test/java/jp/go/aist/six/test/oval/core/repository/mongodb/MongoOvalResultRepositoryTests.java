@@ -5,6 +5,8 @@ import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.DefinitionType;
+import jp.go.aist.six.oval.model.results.DefinitionsType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultsType;
 import jp.go.aist.six.oval.model.results.SystemType;
@@ -99,63 +101,97 @@ extends OvalCoreTestBase
         OvalResultsQueryParams  params31 = new OvalResultsQueryParams();
         params31.setDefinition( "oval:org.mitre.oval:def:6210" );
 
-
-        // res: definition
         OvalResultsQueryParams  params32 = new OvalResultsQueryParams();
-        params32.setDefinitionTrue( "oval:org.mitre.oval:def:6210" );
+        params32.setDefinition( "oval:org.mitre.oval:def:6210,oval:org.mitre.oval:def:12514" );
 
 
-        // res: definition
+        // res: definition true
         OvalResultsQueryParams  params33 = new OvalResultsQueryParams();
-        params33.setDefinitionTrue( "oval:org.mitre.oval:def:11985" );
+        params33.setDefinitionTrue( "oval:org.mitre.oval:def:6210" );
 
+        OvalResultsQueryParams  params34 = new OvalResultsQueryParams();
+        params34.setDefinitionTrue( "oval:org.mitre.oval:def:11985" );
+
+        OvalResultsQueryParams  params35 = new OvalResultsQueryParams();
+        params35.setDefinitionTrue( "oval:org.mitre.oval:def:11985,oval:org.mitre.oval:def:12514" );
+
+        OvalResultsQueryParams  params36 = new OvalResultsQueryParams();
+        params36.setOs( "Linux" );
+        params36.setDefinitionTrue( "oval:com.redhat.rhsa:def:20100332" );
 
 
 
         return new Object[][] {
                         {
+                            "21",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params21
                         }
                         ,
                         {
+                            "22",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params22
                         }
                         ,
                         {
+                            "23",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params23
                         }
                         ,
                         {
+                            "24",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params24
                         }
                         ,
                         {
+                            "25",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params25
                         }
                         ,
                         {
+                            "26",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params26
                         }
                         ,
                         {
+                            "31",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params31
                         }
                         ,
                         {
+                            "32",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params32
                         }
                         ,
                         {
+                            "33",
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             params33
+                        }
+                        ,
+                        {
+                            "34",
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params34
+                        }
+                        ,
+                        {
+                            "35",
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params35
+                        }
+                        ,
+                        {
+                            "36",
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params36
                         }
         };
     }
@@ -425,12 +461,13 @@ extends OvalCoreTestBase
 //                    ,alwaysRun=true
                     )
     public void testFindOvalResults(
+                    final String                data_id,
                     final Class<OvalResults>    object_type,
                     final QueryParams           params
                     )
     throws Exception
     {
-        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+        Reporter.log( "\n" + data_id + "//////////////////////////////////////////////////////////", true );
 
         Reporter.log( ">>> findOvalResults(params)...", true );
         Reporter.log( "  * params: " + params, true );
@@ -444,7 +481,12 @@ extends OvalCoreTestBase
             ResultsType  results = oval_results.getResults();
             for (SystemType  sys : results.getSystem()) {
                 SystemInfoType  sys_info = sys.getOvalSystemCharacteristics().getSystemInfo();
-                Reporter.log( "  @ SC.system_info: " + sys_info, true );
+                Reporter.log( "    SC.system_info: " + sys_info, true );
+
+                DefinitionsType  defs = sys.getDefinitions();
+                for (DefinitionType  def : defs.getDefinition()) {
+                    Reporter.log( "    def: ID=" + def.getOvalID() + ", result=" + def.getResult(), true );
+                }
             }
         }
     }

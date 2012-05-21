@@ -80,7 +80,7 @@
     <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="MODEL.oval.sc.oval_system_characteristics"/>
+                <include name="MODEL.oval.res.oval_results"/>
             </run>
         </groups>
         <!--

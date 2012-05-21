@@ -1364,7 +1364,7 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  definitionTrueHandler = new Handler()
+            Handler  definition_true_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -1402,7 +1402,7 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = OvalSystemCharacteristicsBuilder._createHandlers();
-            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    definitionTrueHandler );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    definition_true_handler );
             mapping.put( OvalResultsQueryParams.Key.DEFINITION,         HasAnyOfHandler.INSTANCE );
 
             return mapping;
