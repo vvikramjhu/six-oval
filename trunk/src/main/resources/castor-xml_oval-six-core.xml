@@ -41,7 +41,7 @@
                 />
         </field>
 
-        <field name="results" 
+        <field name="resultsElements" 
             type="jp.go.aist.six.oval.repository.QueryResultsElements"
             container="false"
             >

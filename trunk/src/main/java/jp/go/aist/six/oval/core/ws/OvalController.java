@@ -356,7 +356,7 @@ public class OvalController
                         "oval_definitions",
                         request.getRequestURL().toString(),
                         DEFINITIONS_REL,
-                        ids.getResults().getElements()
+                        ids.getResultsElements().getElements()
                         );
 
         return feed;
@@ -436,7 +436,7 @@ public class OvalController
                         "OVAL Definitions",
                         request.getRequestURL().toString(),
                         DEFINITION_REL,
-                        ids.getResults().getElements()
+                        ids.getResultsElements().getElements()
                         );
 
         return feed;
@@ -634,7 +634,7 @@ public class OvalController
                         "oval_system_characteristics",
                         request.getRequestURL().toString(),
                         SC_REL,
-                        ids.getResults().getElements()
+                        ids.getResultsElements().getElements()
                         );
 
         return feed;
@@ -725,7 +725,7 @@ public class OvalController
                         "oval_results",
                         request.getRequestURL().toString(),
                         RESULTS_REL,
-                        ids.getResults().getElements()
+                        ids.getResultsElements().getElements()
                         );
 
         return feed;

@@ -68,7 +68,7 @@ public class OvalQueryResultTest
 
         QueryResultsElements<DefinitionType>  elements = new QueryResultsElements<DefinitionType>();
         elements.addElement( DefinitionsSample.DEF_7222 );
-        result.setResults( elements );
+        result.setResultsElements( elements );
         Reporter.log( "\nobject: " + result, true );
         Reporter.log( ">>> marshalling...", true );
         xml = _xmlmapper.marshalToString( result );

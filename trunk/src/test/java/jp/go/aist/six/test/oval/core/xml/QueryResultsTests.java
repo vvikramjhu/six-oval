@@ -77,8 +77,8 @@ public class QueryResultsTests
      *  Class<T>            object_type,
      *  String[]            xml_filepath
      */
-    @DataProvider( name="oval.repository.QueryResults" )
-    public Object[][] provideOvalQueryResultsDef()
+    @DataProvider( name="DATA.oval.repository.QueryResults" )
+    public Object[][] provideQueryResultsOvalDefDefinition()
     {
 
         return new Object[][] {
@@ -104,11 +104,16 @@ public class QueryResultsTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.repository.QueryResults", "xmlns:oval-def.oval_definitions" },
-                    dataProvider="oval.repository.QueryResults",
-                    alwaysRun=true
+                    groups={
+                                    "MODEL.repository.QueryResults",
+                                    "PACKAGE.oval.core.xml",
+                                    "CONTROL.xml.unmarshal",
+                                    "CONTROL.xml.marshal"
+                                    }
+                    ,dataProvider="DATA.oval.repository.QueryResults"
+                    ,alwaysRun=true
                     )
-    public void testOvalDefinitionsQueryResultsXmlMapping(
+    public void testQueryResultsXmlMappingOvalDefinitions(
                     final Class<OvalDefinitions>  object_type,
                     final String[]  xml_filepaths
                     )
@@ -149,7 +154,7 @@ public class QueryResultsTests
                         _unmarshalObject( QueryResults.class, output_xml_filepath, null );
         Reporter.log( "* query results (unmarshalled): " + oval_defs_results2, true );
 
-        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getResults()) {
+        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getResultsElements()) {
             Reporter.log( "*   element (unmarshalled): " + oval_defs2, true );
         }
     }
@@ -159,12 +164,16 @@ public class QueryResultsTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.repository.QueryResults", "xmlns:oval-def.definition" },
-//                                    groups={ "oval.repository.QueryResults", "oval.def.definition" },
-                    dataProvider="oval.repository.QueryResults",
-                    alwaysRun=true
+                    groups={
+                                    "MODEL.repository.QueryResults",
+                                    "PACKAGE.oval.core.xml",
+                                    "CONTROL.xml.unmarshal",
+                                    "CONTROL.xml.marshal"
+                                    }
+                    ,dataProvider="DATA.oval.repository.QueryResults"
+                    ,alwaysRun=true
                     )
-    public void testDefinitionQueryResultsXmlMapping(
+    public void testQueryResultsXmlMappingDefinition(
                     final Class<OvalDefinitions>  object_type,
                     final String[]  xml_filepaths
                     )
@@ -190,8 +199,7 @@ public class QueryResultsTests
 
         // (2) build QueryResults
         QueryResults<DefinitionType>  def_results =
-                        new QueryResults<DefinitionType>(
-                                        (long)def_set.size(), 0L, (long)def_set.size(), def_set );
+                        new QueryResults<DefinitionType>( new ArrayList<DefinitionType>( def_set ) );
         Reporter.log( "* query results: " + def_results, true );
 
         // (3) marshal the QueryResults to an XML file
@@ -205,7 +213,7 @@ public class QueryResultsTests
                         _unmarshalObject( QueryResults.class, output_xml_filepath, null );
         Reporter.log( "* query results (unmarshalled): " + def_results2, true );
 
-        for (DefinitionType  def2 : def_results2.getResults()) {
+        for (DefinitionType  def2 : def_results2.getResultsElements()) {
             Reporter.log( "*   element (unmarshalled): " + def2, true );
         }
     }
