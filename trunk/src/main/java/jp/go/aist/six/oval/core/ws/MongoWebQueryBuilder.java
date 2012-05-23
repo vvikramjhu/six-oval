@@ -32,7 +32,6 @@ import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
-import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -43,7 +42,6 @@ import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.TestQueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Query;
@@ -77,8 +75,6 @@ implements QueryBuilder
     {
         if (DefinitionType.class.isAssignableFrom( type )) {
             return (new DefinitionBuilder( params ));
-        } else if (TestType.class.isAssignableFrom( type )) {
-            return (new TestBuilder( params ));
         } else if (DefinitionsElement.class.isAssignableFrom( type )) {
             return (new OvalEntityBuilder( params ));
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
@@ -758,66 +754,6 @@ implements QueryBuilder
     }
     // Definition
 
-
-
-    public static class TestBuilder
-    extends OvalEntityBuilder
-    {
-
-        protected static Map<String, String> _createFieldMapping()
-        {
-            Map<String, String>  mapping = OvalEntityBuilder._createFieldMapping();
-
-            mapping.put( TestQueryParams.Key.OBJECT_REF,    "object.object_ref" );
-            mapping.put( TestQueryParams.Key.STATE_REF,     "state.state_ref" );
-
-            return mapping;
-        }
-
-
-        private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
-
-
-
-        protected static Map<String, Handler> _createHandlers()
-        {
-
-            Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
-            mapping.put( TestQueryParams.Key.OBJECT_REF,    _DEFAULT_HANDLER_ );
-            mapping.put( TestQueryParams.Key.STATE_REF,     _DEFAULT_HANDLER_ );
-
-            return mapping;
-        }
-
-
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
-
-
-        public TestBuilder(
-                        final QueryParams params
-                        )
-        {
-            super( params );
-        }
-
-
-
-        @Override
-        protected Map<String, Handler> _handlerMapping()
-        {
-            return _HANDLERS_;
-        }
-
-
-        @Override
-        protected Map<String, String> _fieldMapping()
-        {
-            return _FIELDS_;
-        }
-
-    }
-    // Test
 
 
 

@@ -39,7 +39,6 @@ import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.oval.repository.ResultsQueryParams;
-import jp.go.aist.six.oval.repository.TestQueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -475,56 +474,56 @@ public class OvalController
 
 
 
-    //==============================================================
-    // /d/tests/{id}
-    //==============================================================
-
-    // GET (query)
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/tests"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody QueryResults<TestType> findTests(
-                    final TestQueryParams params
-                    )
-    throws OvalException
-    {
-        return _findResource( TestType.class, params );
-    }
-
-
-
-    // GET (list)
-    //
-    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/tests
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/tests"
-                    ,headers="Accept=application/atom+xml"
-    )
-    public @ResponseBody Feed findTestIDs(
-                    final HttpServletRequest request,
-                    final TestQueryParams params
-                    )
-    throws OvalException
-    {
-        QueryResults<String>  ids = _findResourceIDs( TestType.class, params );
-        if (ids == null) {
-            _LOG_.debug( "tests: #ids=0" );
-        } else {
-            _LOG_.debug( "tests: #ids=" + ids.size() );
-        }
-
-        Feed  feed = FeedHelper.buildAtomFeed(
-                        "OVAL Tests",
-                        request.getRequestURL().toString(),
-                        TEST_REL,
-                        ids.getResults().getElements()
-                        );
-
-        return feed;
-    }
+//    //==============================================================
+//    // /d/tests/{id}
+//    //==============================================================
+//
+//    // GET (query)
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/d/tests"
+//                    ,headers="Accept=application/xml"
+//    )
+//    public @ResponseBody QueryResults<TestType> findTests(
+//                    final TestQueryParams params
+//                    )
+//    throws OvalException
+//    {
+//        return _findResource( TestType.class, params );
+//    }
+//
+//
+//
+//    // GET (list)
+//    //
+//    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/tests
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/d/tests"
+//                    ,headers="Accept=application/atom+xml"
+//    )
+//    public @ResponseBody Feed findTestIDs(
+//                    final HttpServletRequest request,
+//                    final TestQueryParams params
+//                    )
+//    throws OvalException
+//    {
+//        QueryResults<String>  ids = _findResourceIDs( TestType.class, params );
+//        if (ids == null) {
+//            _LOG_.debug( "tests: #ids=0" );
+//        } else {
+//            _LOG_.debug( "tests: #ids=" + ids.size() );
+//        }
+//
+//        Feed  feed = FeedHelper.buildAtomFeed(
+//                        "OVAL Tests",
+//                        request.getRequestURL().toString(),
+//                        TEST_REL,
+//                        ids.getResults().getElements()
+//                        );
+//
+//        return feed;
+//    }
 
 
 
