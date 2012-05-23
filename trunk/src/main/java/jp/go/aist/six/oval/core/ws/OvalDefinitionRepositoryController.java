@@ -21,24 +21,15 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
-import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.StateType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
-import jp.go.aist.six.oval.model.definitions.TestType;
-import jp.go.aist.six.oval.model.definitions.VariableType;
-import jp.go.aist.six.oval.model.results.OvalResults;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
-import jp.go.aist.six.oval.repository.ResultsQueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,13 +40,11 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
-import com.sun.syndication.feed.atom.Feed;
 
 
 
@@ -64,14 +53,14 @@ import com.sun.syndication.feed.atom.Feed;
  * @version $Id$
  */
 @Controller
-public class OvalController
+public class OvalDefinitionRepositoryController
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalController.class );
+        LoggerFactory.getLogger( OvalDefinitionRepositoryController.class );
 
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
@@ -87,22 +76,14 @@ public class OvalController
     // "&" ampa  = %26
 
 
-//    /**
-//     * The data store sole instance.
-//     */
-//    private MongoDatastore  _datastore;
-
-
-//    private MongoOvalService  _service;
-
-    private MongoOvalRepository  _repository;
+    private MongoOvalDatastore  _datastore;
 
 
 
     /**
      * Constructor.
      */
-    public OvalController()
+    public OvalDefinitionRepositoryController()
     {
     }
 
@@ -111,31 +92,24 @@ public class OvalController
 
     /**
      */
-    public void setRepository(
-                    final MongoOvalRepository repository
+    public void setDatastore(
+                    final MongoOvalDatastore repository
                     )
     {
-        _repository = repository;
+        _datastore = repository;
+    }
+
+
+    protected MongoOvalDatastore _getDatastore()
+    {
+        return _datastore;
     }
 
 
 
-//    /**
-//     */
-//    public void setDatastore(
-//                    final MongoDatastore datastore
-//                    )
-//    {
-//        _datastore = datastore;
-//
-////        _service = new MongoOvalService();
-////        _service.setDatastore( _datastore );
-//
-//        _repository = new MongoOvalRepository();
-//        _repository.setDatastore( _datastore );
-//    }
-
-
+    //////////////////////////////////////////////////////////////////////
+    //  REST support methods
+    //////////////////////////////////////////////////////////////////////
 
     /**
      * Builds a location URI from the specified request URL
@@ -156,7 +130,7 @@ public class OvalController
 
 
     /**
-     * Gets the resource.
+     * Generic GET
      */
     private <K, T extends OvalObject & Persistable<K>>
     T _getResource(
@@ -166,9 +140,7 @@ public class OvalController
     throws OvalException
     {
         _LOG_.debug( "GET: type=" + type + ", id=" + id );
-
-        T  resource = _repository.get( type, id );
-//        T  resource = _service.getObject( type, id );
+        T  resource = _getDatastore().findById( type, id );
 
         return resource;
     }
@@ -176,7 +148,7 @@ public class OvalController
 
 
     /**
-     * Creates an OVAL resource.
+     * Creates a resource.
      */
     private <K, T extends OvalObject & Persistable<K>>
     ResponseEntity<Void> _createResource(
@@ -188,8 +160,7 @@ public class OvalController
     {
         _LOG_.debug( "POST: type=" + type + ", object=" + object );
 
-        K  id = _repository.create( type, object );
-//        K  id = _service.createObject( type, object );
+        K  id = _datastore.save( type, object );
 
         URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
 //        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
@@ -216,9 +187,48 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
-        QueryResults<T>  result = _repository.find( type, builder );
-        return result;
+        List<T>  list = _getDatastore().find( type, params );
+
+        return _buildQueryResults( params, list );
+    }
+
+
+
+    /**
+     */
+    protected static <T> QueryResults<T> _buildQueryResults(
+                    final QueryParams params,
+                    final List<T> elements
+                    )
+    {
+        QueryResults<T>  r = _buildQueryResults( elements );
+
+        if (params != null) {
+            String  key = CommonQueryParams.Key.COUNT;
+            if (params.containsKey( key )) {
+                int  count = params.getAsInt( key );
+                r.setItemsPerPage( (long)count );
+            }
+
+            key = CommonQueryParams.Key.START_INDEX;
+            if (params.containsKey( key )) {
+                int  index = params.getAsInt( key );
+                r.setItemsPerPage( (long)index );
+            }
+        }
+
+        return r;
+    }
+
+
+    protected static <T> QueryResults<T> _buildQueryResults(
+                    final List<T> elements
+                    )
+    {
+        QueryResults<T>  r = new QueryResults<T>();
+        r.setElements( elements );
+
+        return r;
     }
 
 
@@ -227,15 +237,16 @@ public class OvalController
      * Retrieves the resources.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResults<K> _findResourceIDs(
+    QueryResults<K> _getResourceIDs(
                     final Class<T> type
                     )
     throws OvalException
     {
         _LOG_.debug( "GET (find): type=" + type );
 
-        QueryResults<K>  result = _repository.findIDs( type );
-        return result;
+        List<K>  list = _getDatastore().findId( type );
+
+        return _buildQueryResults( list );
     }
 
 
@@ -248,16 +259,16 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
-        QueryResults<K>  result = _repository.findIDs( type, builder );
-        return result;
+        List<K>  list = _getDatastore().findId( type, params );
+
+        return _buildQueryResults( params, list );
     }
 
 
 
-    //==============================================================
+    //////////////////////////////////////////////////////////////////////
     // Exception Handlers, HTTP Status Code
-    //==============================================================
+    //////////////////////////////////////////////////////////////////////
 
     // 404: Not Found
     @ExceptionHandler( ObjectRetrievalFailureException.class )
@@ -297,171 +308,28 @@ public class OvalController
 
 
 
-    //**************************************************************
+    //////////////////////////////////////////////////////////////////////
     //  REST WS API
-    //**************************************************************
+    //////////////////////////////////////////////////////////////////////
 
-    //==============================================================
-    // /build_oval_definitions
-    //==============================================================
+    //********************************************************************
+    // oval-def:definition
+    //********************************************************************
 
-
-
-    //==============================================================
-    // /d/oval_definitions
-    //==============================================================
-
-    // POST (create) oval_definitions
-    //
-    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/oval_rep/d/oval_definitions
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/d/oval_definitions"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> createOvalDefinitions(
-                    @RequestBody final OvalDefinitions oval_definitions,
-                    final HttpServletRequest request
-    )
-    throws OvalException
-    {
-        return _createResource( request, OvalDefinitions.class, oval_definitions );
-    }
+    // POST (create)
 
 
-
-    // GET (list) oval_definitions
-    //
-    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/oval_definitions
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/oval_definitions"
-                    ,headers="Accept=application/atom+xml"
-    )
-    public @ResponseBody Feed findOvalDefinitions(
-                    final HttpServletRequest request
-                    )
-    throws OvalException
-    {
-        QueryResults<String>  ids = _findResourceIDs( OvalDefinitions.class );
-//        Collection<String>  ids = _service.getObjectIDs( OvalDefinitions.class );
-////        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
-        if (ids == null) {
-            _LOG_.debug( "oval_definitions: #ids=0" );
-        } else {
-            _LOG_.debug( "oval_definitions: #ids=" + ids.size() );
-        }
-
-        Feed  feed = FeedHelper.buildAtomFeed(
-                        "oval_definitions",
-                        request.getRequestURL().toString(),
-                        DEFINITIONS_REL,
-                        ids.getResultsElements().getElements()
-                        );
-
-        return feed;
-    }
-
-
-
-    //==============================================================
-    // /d/oval_definitions/{id}
-    //==============================================================
-
-    // GET (read) oval_definitions
-    //
-    // test: curl -v -X GET -HAccept:application/xml
-    //   http://localhost:8080/oval_rep/d/oval_definitions/{id}
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/oval_definitions/60a24882-7f30-40d8-a77e-9f61b8c2bd48"
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/oval_definitions/{id}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody OvalDefinitions getOvalDefinitions(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( OvalDefinitions.class, id );
-    }
-
-
-
-    //==============================================================
-    // /d/definitions
-    //==============================================================
-
-    // POST (create) --- NOT supported.
-
-
-    // GET (query)
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/definitions"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody QueryResults<DefinitionType> findDefinitions(
-                    final DefinitionQueryParams params
-                    )
-    throws OvalException
-    {
-        return _findResource( DefinitionType.class, params );
-    }
-
-
-
-    // GET (list) definition
-    //
-    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/definitions
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/definitions"
-                    ,headers="Accept=application/atom+xml"
-    )
-    public @ResponseBody Feed findDefinitionIDs(
-                    final HttpServletRequest request
-                    )
-    throws OvalException
-    {
-        QueryResults<String>  ids = _findResourceIDs( DefinitionType.class );
-        if (ids == null) {
-            _LOG_.debug( "definitions: #ids=0" );
-        } else {
-            _LOG_.debug( "definitions: #ids=" + ids.size() );
-        }
-
-        Feed  feed = FeedHelper.buildAtomFeed(
-                        "OVAL Definitions",
-                        request.getRequestURL().toString(),
-                        DEFINITION_REL,
-                        ids.getResultsElements().getElements()
-                        );
-
-        return feed;
-    }
-
-
-
-
-    //==============================================================
-    // /d/definitions/{id}
-    //==============================================================
-
-    // POST (create) definition --- error.
-
-
-    // GET /d/definitions/{id}
+    // GET
     //
     // NOTE: OVAL IDs contain "." (dot) characters.
     //       The character has special meaning for the Spring framework.
+    //
     // about path variables including ".":
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions/oval:org%2emitre%2eoval:def:7222"
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/d/definitions/{id:.*}"
+                    ,value="/def/definitions/{id:.*}"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody DefinitionType getDefinition(
@@ -472,302 +340,6 @@ public class OvalController
         return _getResource( DefinitionType.class, id );
     }
 
-
-
-//    //==============================================================
-//    // /d/tests/{id}
-//    //==============================================================
-//
-//    // GET (query)
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/d/tests"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody QueryResults<TestType> findTests(
-//                    final TestQueryParams params
-//                    )
-//    throws OvalException
-//    {
-//        return _findResource( TestType.class, params );
-//    }
-//
-//
-//
-//    // GET (list)
-//    //
-//    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/tests
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/d/tests"
-//                    ,headers="Accept=application/atom+xml"
-//    )
-//    public @ResponseBody Feed findTestIDs(
-//                    final HttpServletRequest request,
-//                    final TestQueryParams params
-//                    )
-//    throws OvalException
-//    {
-//        QueryResults<String>  ids = _findResourceIDs( TestType.class, params );
-//        if (ids == null) {
-//            _LOG_.debug( "tests: #ids=0" );
-//        } else {
-//            _LOG_.debug( "tests: #ids=" + ids.size() );
-//        }
-//
-//        Feed  feed = FeedHelper.buildAtomFeed(
-//                        "OVAL Tests",
-//                        request.getRequestURL().toString(),
-//                        TEST_REL,
-//                        ids.getResults().getElements()
-//                        );
-//
-//        return feed;
-//    }
-
-
-
-
-    // GET
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/tests/{id:.*}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody TestType getTest(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( TestType.class, id );
-    }
-
-
-
-    //==============================================================
-    // /d/objects/{id}
-    //==============================================================
-
-    // GET
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/objects/{id:.*}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody SystemObjectType getObject(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( SystemObjectType.class, id );
-    }
-
-
-
-    //==============================================================
-    // /d/states/{id}
-    //==============================================================
-
-    // GET
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/states/{id:.*}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody StateType getState(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( StateType.class, id );
-    }
-
-
-
-    //==============================================================
-    // /d/variables/{id}
-    //==============================================================
-
-    // GET
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/d/variables/{id:.*}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody VariableType getVariable(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( VariableType.class, id );
-    }
-
-
-
-    //==============================================================
-    // System Characteristics
-    //==============================================================
-
-    // GET (list) oval_system_characteristics
-    //
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/s/oval_system_characteristics"
-                    ,headers="Accept=application/atom+xml"
-    )
-    public @ResponseBody Feed findOvalSystemCharacteristics(
-                    final OvalSystemCharacteristicsQueryParams params,
-                    final HttpServletRequest request
-                    )
-    throws OvalException
-    {
-        QueryResults<String>  ids = _findResourceIDs( OvalSystemCharacteristics.class, params );
-//        Collection<String>  ids = _service.findOvalSystemCharacteristics( params );
-////        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
-        if (ids == null) {
-            _LOG_.debug( "oval_sc: #ids=0" );
-        } else {
-            _LOG_.debug( "oval_sc: #ids=" + ids.size() );
-        }
-
-        Feed  feed = FeedHelper.buildAtomFeed(
-                        "oval_system_characteristics",
-                        request.getRequestURL().toString(),
-                        SC_REL,
-                        ids.getResultsElements().getElements()
-                        );
-
-        return feed;
-    }
-
-
-
-//
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/oval_sc/{id}"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody OvalSystemCharacteristics getOvalSystemCharacteristics(
-//                    @PathVariable final String id
-//                    )
-//    throws OvalException
-//    {
-//        return _getResource( OvalSystemCharacteristics.class, id );
-//    }
-//
-//
-//
-//    @RequestMapping(
-//                    method=RequestMethod.POST,
-//                    value="/oval_sc"
-//    )
-//    public ResponseEntity<Void> createOvalSystemCharacteristics(
-//                    @RequestBody final OvalSystemCharacteristics sc,
-//                    final HttpServletRequest request
-//    )
-//    throws OvalException
-//    {
-//        return _createResource( request, OvalSystemCharacteristics.class, sc );
-//    }
-
-
-
-    //==============================================================
-    // /r/oval_results
-    //==============================================================
-
-    // POST /oval_results
-    //
-    // Example:
-    // >curl -v -X POST -HContent-Type:application/xml
-    //  --data-binary @oval-results.xml
-    //  http://localhost:8080/oval_repo/r/oval_results
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/r/oval_results"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> createOvalResults(
-                    @RequestBody final OvalResults ovalResults,
-                    final HttpServletRequest request
-    )
-    throws OvalException
-    {
-        return _createResource( request, OvalResults.class, ovalResults );
-    }
-
-
-
-    // GET (list) /oval_results
-    //
-    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_results
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/r/oval_results"
-                    ,headers="Accept=application/atom+xml"
-    )
-    public @ResponseBody Feed findOvalResults(
-                    final HttpServletRequest request
-                    )
-    throws OvalException
-    {
-        QueryResults<String>  ids = _findResourceIDs( OvalResults.class );
-//        Collection<String>  ids = _service.getObjectIDs( OvalResults.class );
-////        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
-        if (ids == null) {
-            _LOG_.debug( "oval_results: #ids=0" );
-        } else {
-            _LOG_.debug( "oval_results: #ids=" + ids.size() );
-        }
-
-        Feed  feed = FeedHelper.buildAtomFeed(
-                        "oval_results",
-                        request.getRequestURL().toString(),
-                        RESULTS_REL,
-                        ids.getResultsElements().getElements()
-                        );
-
-        return feed;
-    }
-
-
-
-
-    //==============================================================
-    // /oval_results/{id}
-    //==============================================================
-
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/r/oval_results/{id}"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody OvalResults getOvalResults(
-                    @PathVariable final String id
-                    )
-    throws OvalException
-    {
-        return _getResource( OvalResults.class, id );
-    }
-
-
-
-    // curl -v -o query_primary_host_name.xml -X GET -HAccept:application/xml
-    //   http://localhost:8080/oval_repo/oval_results/results?primary_host_name=host1
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/r/oval_results/results"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody QueryResults<OvalResults> getResults(
-                    final ResultsQueryParams params
-                    )
-    throws OvalException
-    {
-        return _findResource( OvalResults.class, params );
-    }
-
 }
-// OvalController
+//
 

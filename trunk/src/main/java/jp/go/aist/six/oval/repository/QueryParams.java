@@ -113,6 +113,19 @@ public class QueryParams
     }
 
 
+    public int getAsInt(
+                    final String key
+                    )
+    {
+        String  v = _params.get( key );
+        if (v == null) {
+            throw new IllegalArgumentException( "no such key: " + key );
+        }
+
+        return Integer.valueOf( v ).intValue();
+    }
+
+
 
     /**
      */
