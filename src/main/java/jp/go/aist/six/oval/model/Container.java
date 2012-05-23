@@ -70,7 +70,7 @@ public abstract class Container<E>
     {
         if (_getElement() != elements) {
             _getElement().clear();
-            if (elements != null  &&  elements.size() > 1) {
+            if (elements != null  &&  elements.size() > 0) {
                 for (E  e : elements) {
                     _addElement( e );
                 }
@@ -84,7 +84,7 @@ public abstract class Container<E>
                     )
     {
         _getElement().clear();
-        if (elements != null  &&  elements.length > 1) {
+        if (elements != null  &&  elements.length > 0) {
             for (E  e : elements) {
                 _addElement( e );
             }

@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.repository;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -36,10 +38,6 @@ public class QueryResults<T>
     implements Serializable
 {
 
-    //TODO:
-    //Integer.MAX_VALUE == 2^31 - 1 == 2147483647
-    //Is this sufficient?
-
     private Long  _totalResults;    //OpenSearch
     //{0..1}
 
@@ -50,7 +48,7 @@ public class QueryResults<T>
     //{0..1}
 
 
-    private QueryResultsElements<T>  _results;
+    private QueryResultsElements<T>  _results = _newResultsElements();
 //    private final List<T>  _elements = new ArrayList<T>();
 
 
@@ -63,7 +61,7 @@ public class QueryResults<T>
      */
     public QueryResults()
     {
-        this( 0L, null, null, null );
+        this( 0L, 0L );
     }
 
 
@@ -71,23 +69,25 @@ public class QueryResults<T>
      * Constructor.
      */
     public QueryResults(
-                    final Long totalResults,
+//                    final Long totalResults,
                     final Long startIndex,
                     final Long itemsPerPage
                     )
     {
-        this( totalResults, startIndex, itemsPerPage, null );
+        this( startIndex, itemsPerPage, null );
+//        this( totalResults, startIndex, itemsPerPage, null );
     }
 
 
     public QueryResults(
-                    final Long totalResults,
+//                    final Long totalResults,
                     final Long startIndex,
                     final Long itemsPerPage,
                     final Collection<? extends T> results
                     )
     {
-        _init( totalResults, startIndex, itemsPerPage, results );
+        _init( startIndex, itemsPerPage, results );
+//        _init( totalResults, startIndex, itemsPerPage, results );
     }
 
 
@@ -95,24 +95,25 @@ public class QueryResults<T>
                     final Collection<? extends T> results
                     )
     {
-        _init( (results == null ? 0L : results.size()), null, null, results );
+        _init( 0L, (results == null ? 0L : results.size()), results );
+//        _init( (results == null ? 0L : results.size()), null, null, results );
     }
 
 
     /**
      */
     private void _init(
-                    final Long totalResults,
+//                    final Long totalResults,
                     final Long startIndex,
                     final Long itemsPerPage,
                     final Collection<? extends T> results
                     )
     {
-        setTotalResults( totalResults );
+//        setTotalResults( totalResults );
         setStartIndex( startIndex );
         setItemsPerPage( itemsPerPage );
 
-        setResults( new QueryResultsElements<T>( results ) );
+        setResultsElements( new QueryResultsElements<T>( results ) );
 
         setTimestamp( new Date() );
     }
@@ -172,7 +173,7 @@ public class QueryResults<T>
 
     /**
      */
-    public void setResults(
+    public void setResultsElements(
                     final QueryResultsElements<T> results
                     )
     {
@@ -180,9 +181,55 @@ public class QueryResults<T>
     }
 
 
-    public QueryResultsElements<T> getResults()
+    public QueryResultsElements<T> getResultsElements()
     {
         return this._results;
+    }
+
+
+
+    /**
+     */
+    public void setElements(
+                    final Collection<? extends T> elements
+                    )
+    {
+        this._results.setElements( elements );
+    }
+
+    // A factory method.
+    private static <S>
+    QueryResultsElements<S> _newResultsElements()
+    {
+        return new QueryResultsElements<S>();
+    }
+
+
+    public void setElements(
+                    final T[] elements
+                    )
+    {
+        this._results.setElements( elements );
+    }
+
+
+    public boolean addElement(
+                    final T element
+                    )
+    {
+        return this._results.addElement( element );
+    }
+
+
+    public List<T> getElements()
+    {
+        return this._results.getElements();
+    }
+
+
+    public Iterator<T> iterateElements()
+    {
+        return this._results.iterateElements();
     }
 
 
@@ -239,11 +286,11 @@ public class QueryResults<T>
     @Override
     public String toString()
     {
-        return "QueryResults[timestamp=" + getTimestamp()
+        return "QueryResults[timestamp="    + getTimestamp()
                         + ", totalResults=" + getTotalResults()
-                        + ", startIndex=" + getStartIndex()
+                        + ", startIndex="   + getStartIndex()
                         + ", itemsPerPage=" + getItemsPerPage()
-                        + ", #elements=" + getResults().size()
+                        + ", #elements="    + getResultsElements().size()
                         + "]"
                         ;
     }

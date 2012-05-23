@@ -80,7 +80,22 @@ public class QueryResultsElements<T>
         if (elements != this._elements) {
             this._elements.clear();
             if (elements != null  &&  elements.size() > 0) {
-                this._elements.addAll( elements );
+                for (T  e : elements) {
+                    addElement( e );
+                }
+            }
+        }
+    }
+
+
+    public void setElements(
+                    final T[] elements
+                    )
+    {
+        this._elements.clear();
+        if (elements != null  &&  elements.length > 0) {
+            for (T  e : elements) {
+                addElement( e );
             }
         }
     }
