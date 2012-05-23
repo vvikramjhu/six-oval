@@ -64,14 +64,14 @@ import com.sun.syndication.feed.atom.Feed;
  * @version $Id$
  */
 @Controller
-public class OvalRepositoryController
+public class OldOvalRepositoryController
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalRepositoryController.class );
+        LoggerFactory.getLogger( OldOvalRepositoryController.class );
 
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
@@ -102,7 +102,7 @@ public class OvalRepositoryController
     /**
      * Constructor.
      */
-    public OvalRepositoryController()
+    public OldOvalRepositoryController()
     {
     }
 
