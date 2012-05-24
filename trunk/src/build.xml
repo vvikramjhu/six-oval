@@ -134,7 +134,7 @@ CONTENTS:
             <classes dir="${webapp.src.dir}/WEB-INF/classes" includes="*.xml,*.properties"/>
             <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
             <classes dir="${java.res.dir}" 
-                includes="castor.properties,six-oval.properties,*.xml"
+                includes="castor.properties,six-oval.properties,*.xml,*.xsl"
                 excludes="log4j.properties,logback.xml"/>
             <lib dir="${build.dir}" includes="*.jar"/>
             <lib dir="${lib.dir}" includes="**/*.jar" 

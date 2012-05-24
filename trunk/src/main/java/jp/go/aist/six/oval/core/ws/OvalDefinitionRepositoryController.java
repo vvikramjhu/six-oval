@@ -130,10 +130,10 @@ public class OvalDefinitionRepositoryController
 
 
     /**
-     * Generic GET
+     * GET: find one resource by ID.
      */
     private <K, T extends OvalObject & Persistable<K>>
-    T _getResource(
+    T _getResourceById(
                     final Class<T> type,
                     final K id
                     )
@@ -316,9 +316,6 @@ public class OvalDefinitionRepositoryController
     // oval-def:definition
     //********************************************************************
 
-    // POST (create)
-
-
     // GET
     //
     // NOTE: OVAL IDs contain "." (dot) characters.
@@ -326,19 +323,24 @@ public class OvalDefinitionRepositoryController
     //
     // about path variables including ".":
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions/oval:org%2emitre%2eoval:def:7222"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/def/definitions/oval:org%2emitre%2eoval:def:7222"
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/def/definitions/{id:.*}"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody DefinitionType getDefinition(
+    public @ResponseBody DefinitionType findDefinitionById(
                     @PathVariable final String id
                     )
     throws OvalException
     {
-        return _getResource( DefinitionType.class, id );
+        return _getResourceById( DefinitionType.class, id );
     }
+
+
+
+    // POST (create)
+
 
 }
 //
