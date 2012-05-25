@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.util.persist.Persistable;
@@ -71,9 +72,10 @@ public class OvalDefinitionRepositoryController
 
 
     // " " space = %20
-    // "/" slash = %2f
-    // "." dot   = %2e
     // "&" ampa  = %26
+    // "*" astah = %2a
+    // "." dot   = %2e
+    // "/" slash = %2f
 
 
     private MongoOvalDatastore  _datastore;
@@ -133,7 +135,7 @@ public class OvalDefinitionRepositoryController
      * GET: find one resource by ID.
      */
     private <K, T extends OvalObject & Persistable<K>>
-    T _getResourceById(
+    T _findResourceById(
                     final Class<T> type,
                     final K id
                     )
@@ -187,7 +189,8 @@ public class OvalDefinitionRepositoryController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        List<T>  list = _getDatastore().find( type, params );
+        QueryParams  p = ((params == null  ||  params.size() == 0) ? null : params);
+        List<T>  list = _getDatastore().find( type, p );
 
         return _buildQueryResults( params, list );
     }
@@ -225,10 +228,10 @@ public class OvalDefinitionRepositoryController
                     final List<T> elements
                     )
     {
-        QueryResults<T>  r = new QueryResults<T>();
-        r.setElements( elements );
+        return new QueryResults<T>( elements );
 
-        return r;
+//        QueryResults<T>  r = new QueryResults<T>( elements );
+//        return r;
     }
 
 
@@ -316,7 +319,7 @@ public class OvalDefinitionRepositoryController
     // oval-def:definition
     //********************************************************************
 
-    // GET
+    // GET: fetch one by ID
     //
     // NOTE: OVAL IDs contain "." (dot) characters.
     //       The character has special meaning for the Spring framework.
@@ -334,7 +337,41 @@ public class OvalDefinitionRepositoryController
                     )
     throws OvalException
     {
-        return _getResourceById( DefinitionType.class, id );
+        return _findResourceById( DefinitionType.class, id );
+    }
+
+
+
+    //NOTE: From URI viewpoint, this path is a special case of findDefinition(params), where params = null.
+    //If we activate this method, Spring MVC throws an exception.
+//    // GET: fetch all
+//    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/def/definitions"
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/def/definitions"
+//                    ,headers="Accept=application/xml"
+//    )
+//    public @ResponseBody QueryResults<DefinitionType> findAllDefinition()
+//    throws OvalException
+//    {
+//        return _findResource( DefinitionType.class, null );
+//    }
+
+
+
+    // GET: query
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/def/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/def/definitions"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody QueryResults<DefinitionType> findDefinition(
+                    final DefinitionQueryParams params
+                    )
+    throws OvalException
+    {
+        return _findResource( DefinitionType.class, params );
     }
 
 

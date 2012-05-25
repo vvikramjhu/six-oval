@@ -126,15 +126,17 @@ public class MongoOvalDatastore
                    final Class<T> type
                    )
    {
-       _LOG_.info( "find: type=" + type );
-       long  ts_start = System.currentTimeMillis();
+       return find( type, null );
 
-       DAO<T, K>  dao = getDAO( type );
-       List<T>  list = dao.find().asList();
-
-       _LOG_.info( "find: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
-       _LOG_.debug( "find: #objects=" + (list == null ? 0 : list.size()) );
-       return list;
+//       _LOG_.info( "find: type=" + type );
+//       long  ts_start = System.currentTimeMillis();
+//
+//       DAO<T, K>  dao = getDAO( type );
+//       List<T>  list = dao.find().asList();
+//
+//       _LOG_.info( "find: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+//       _LOG_.debug( "find: #objects=" + (list == null ? 0 : list.size()) );
+//       return list;
    }
 
 
