@@ -123,7 +123,7 @@ public class OvalDefinitionRepositoryController
      * Builds a location URI from the specified request URL
      * and the created object ID.
      */
-    private URI _buildResourceLocation(
+    protected URI _buildResourceLocation(
                     final HttpServletRequest request,
                     final String id
                     )
@@ -140,7 +140,7 @@ public class OvalDefinitionRepositoryController
     /**
      * Find one resource by ID.
      */
-    private <K, T extends OvalObject & Persistable<K>>
+    protected <K, T extends OvalObject & Persistable<K>>
     T _findResourceById(
                     final Class<T> type,
                     final K id
@@ -158,7 +158,7 @@ public class OvalDefinitionRepositoryController
     /**
      * Creates a resource.
      */
-    private <K, T extends OvalObject & Persistable<K>>
+    protected <K, T extends OvalObject & Persistable<K>>
     ResponseEntity<Void> _saveResource(
                     final HttpServletRequest request,
                     final Class<T> type,
@@ -186,7 +186,7 @@ public class OvalDefinitionRepositoryController
     /**
      * Retrieves the resources.
      */
-    public <K, T extends OvalObject & Persistable<K>>
+    protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<T> _findResource(
                     final Class<T> type,
                     final QueryParams params
@@ -245,7 +245,7 @@ public class OvalDefinitionRepositoryController
     /**
      * Retrieves the resources.
      */
-    public <K, T extends OvalObject & Persistable<K>>
+    protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<K> _getResourceIDs(
                     final Class<T> type
                     )
@@ -259,7 +259,7 @@ public class OvalDefinitionRepositoryController
     }
 
 
-    public <K, T extends OvalObject & Persistable<K>>
+    protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<K> _findResourceIDs(
                     final Class<T> type,
                     final QueryParams params
@@ -302,7 +302,7 @@ public class OvalDefinitionRepositoryController
     }
 
 
-    private void _handleException(
+    protected void _handleException(
                     final Exception ex
                     )
     {
@@ -492,30 +492,6 @@ public class OvalDefinitionRepositoryController
     {
         return _saveResource( request, OvalDefinitions.class, oval_definitions );
     }
-
-
-
-//    //********************************************************************
-//    // oval-sc:oval_system_characteristics
-//    //********************************************************************
-//
-//    // GET: query
-//    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/repository/definitions"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody QueryResults<DefinitionType> findDefinition(
-//                    final DefinitionQueryParams params
-//                    )
-//    throws OvalException
-//    {
-//        return _findResource( DefinitionType.class, params );
-//    }
-
-
-
 
 }
 //
