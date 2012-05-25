@@ -87,11 +87,18 @@
 
 
     <bean id="ovalController" 
-       class="jp.go.aist.six.oval.core.ws.OvalDefinitionRepositoryController">
+       class="jp.go.aist.six.oval.core.ws.OvalRepositoryController">
         <property name="datastore" ref="mongoOvalDatastore" />
     </bean>
     
 <!-- backup
+    <bean id="ovalController" 
+       class="jp.go.aist.six.oval.core.ws.OvalDefinitionRepositoryController">
+        <property name="datastore" ref="mongoOvalDatastore" />
+    </bean>
+    
+
+
     <bean id="ovalController" 
        class="jp.go.aist.six.oval.core.ws.OvalController">
         <property name="repository" ref="ovalRepository" />
