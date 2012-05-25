@@ -75,6 +75,13 @@
             <bind-xml name="xsi:schemaLocation" node="attribute"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </field>
+        
+        <field name="persistentID" type="string">
+            <bind-xml name="pid" node="attribute"
+            xmlns="http://aist.go.jp/six/oval"
+            />
+        </field>
+        
     </class>
 
 
