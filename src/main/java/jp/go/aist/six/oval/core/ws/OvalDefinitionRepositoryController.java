@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -41,6 +42,7 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -132,7 +134,7 @@ public class OvalDefinitionRepositoryController
 
 
     /**
-     * GET: find one resource by ID.
+     * Find one resource by ID.
      */
     private <K, T extends OvalObject & Persistable<K>>
     T _findResourceById(
@@ -153,7 +155,7 @@ public class OvalDefinitionRepositoryController
      * Creates a resource.
      */
     private <K, T extends OvalObject & Persistable<K>>
-    ResponseEntity<Void> _createResource(
+    ResponseEntity<Void> _saveResource(
                     final HttpServletRequest request,
                     final Class<T> type,
                     final T object
@@ -377,6 +379,33 @@ public class OvalDefinitionRepositoryController
 
 
     // POST (create)
+
+
+
+
+    //********************************************************************
+    // oval-def:oval_definitions
+    //********************************************************************
+
+    // POST (create):
+    //
+    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/oval_rep/def/oval_definitions
+    @RequestMapping(
+                    method=RequestMethod.POST
+                    ,value="/def/oval_definitions"
+                    ,headers="Content-Type=application/xml"
+    )
+    public ResponseEntity<Void> createOvalDefinitions(
+                    @RequestBody final OvalDefinitions oval_definitions,
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        return _saveResource( request, OvalDefinitions.class, oval_definitions );
+    }
+
+
+
 
 
 }
