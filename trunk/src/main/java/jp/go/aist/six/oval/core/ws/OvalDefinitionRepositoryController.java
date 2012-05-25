@@ -28,6 +28,10 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -380,6 +384,74 @@ public class OvalDefinitionRepositoryController
 
     // POST (create)
 
+
+
+
+    //********************************************************************
+    // oval-def:test, object, state, variable
+    //********************************************************************
+
+    // GET: fetch one by ID
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/tests/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody TestType findTestById(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _findResourceById( TestType.class, id );
+    }
+
+
+
+    // GET: fetch one by ID
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/objects/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody SystemObjectType findObjectById(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _findResourceById( SystemObjectType.class, id );
+    }
+
+
+
+    // GET: fetch one by ID
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/states/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody StateType findStateById(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _findResourceById( StateType.class, id );
+    }
+
+
+
+    // GET: fetch one by ID
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/variables/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody VariableType findVariableById(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _findResourceById( VariableType.class, id );
+    }
 
 
 
