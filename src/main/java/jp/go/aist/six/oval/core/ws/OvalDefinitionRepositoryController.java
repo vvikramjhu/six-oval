@@ -328,10 +328,10 @@ public class OvalDefinitionRepositoryController
     //
     // about path variables including ".":
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/def/definitions/oval:org%2emitre%2eoval:def:7222"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval:def:7222"
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/def/definitions/{id:.*}"
+                    ,value="/repository/definitions/{id:.*}"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody DefinitionType findDefinitionById(
@@ -362,10 +362,10 @@ public class OvalDefinitionRepositoryController
 
 
     // GET: query
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/def/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/def/definitions"
+                    ,value="/repository/definitions"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody QueryResults<DefinitionType> findDefinition(
@@ -387,12 +387,29 @@ public class OvalDefinitionRepositoryController
     // oval-def:oval_definitions
     //********************************************************************
 
+    // GET: fetch one by ID
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/fa54fd0a-2b71-4d6a-a17c-d1f123a74c2b"
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/oval_definitions/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody OvalDefinitions findOvalDefinitionsById(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _findResourceById( OvalDefinitions.class, id );
+    }
+
+
+
     // POST (create):
     //
-    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/oval_rep/def/oval_definitions
+    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
     @RequestMapping(
                     method=RequestMethod.POST
-                    ,value="/def/oval_definitions"
+                    ,value="/repository/oval_definitions"
                     ,headers="Content-Type=application/xml"
     )
     public ResponseEntity<Void> createOvalDefinitions(
@@ -404,6 +421,26 @@ public class OvalDefinitionRepositoryController
         return _saveResource( request, OvalDefinitions.class, oval_definitions );
     }
 
+
+
+//    //********************************************************************
+//    // oval-sc:oval_system_characteristics
+//    //********************************************************************
+//
+//    // GET: query
+//    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/repository/definitions"
+//                    ,headers="Accept=application/xml"
+//    )
+//    public @ResponseBody QueryResults<DefinitionType> findDefinition(
+//                    final DefinitionQueryParams params
+//                    )
+//    throws OvalException
+//    {
+//        return _findResource( DefinitionType.class, params );
+//    }
 
 
 
