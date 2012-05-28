@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -46,9 +46,9 @@ public enum LinuxPkgProperty
 
     /**
      */
-    public static EntityPropertyMap<LinuxPkgProperty> createPropertyMap()
+    public static EntityMap<LinuxPkgProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<LinuxPkgProperty>( LinuxPkgProperty.class ));
+        return (new EntityMap<LinuxPkgProperty>( LinuxPkgProperty.class ));
     }
 
 }

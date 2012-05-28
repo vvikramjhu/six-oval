@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
+ * The EntityAttributeGroup is a collection of attributes that are common to all entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -143,7 +144,7 @@ public abstract class EntityAttributeGroup
 
     public DatatypeEnumeration getDatatype()
     {
-        return this.datatype;
+        return datatype;
     }
 
 
@@ -177,7 +178,7 @@ public abstract class EntityAttributeGroup
 
     public OperationEnumeration getOperation()
     {
-        return this.operation;
+        return operation;
     }
 
 
@@ -211,7 +212,7 @@ public abstract class EntityAttributeGroup
 
     public Boolean getMask()
     {
-        return this.mask;
+        return mask;
     }
 
 
@@ -245,7 +246,7 @@ public abstract class EntityAttributeGroup
 
     public String getVarRef()
     {
-        return this.var_ref;
+        return var_ref;
     }
 
 
@@ -262,7 +263,7 @@ public abstract class EntityAttributeGroup
 
     public CheckEnumeration getVarCheck()
     {
-        return this.var_check;
+        return var_check;
     }
 
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -44,9 +44,9 @@ public enum UnameProperty
 
     /**
      */
-    public static EntityPropertyMap<UnameProperty> createPropertyMap()
+    public static EntityMap<UnameProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<UnameProperty>( UnameProperty.class ));
+        return (new EntityMap<UnameProperty>( UnameProperty.class ));
     }
 
 }

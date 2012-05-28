@@ -31,14 +31,14 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityPropertyMap<K extends Enum<K>>
+public class EntityMap<K extends Enum<K>>
     extends EnumMap<K, EntityAttributeGroup>
 {
 
     /**
      * constructor.
      */
-    public EntityPropertyMap(
+    public EntityMap(
                     final Class<K> keyType
                     )
     {
@@ -80,4 +80,4 @@ public class EntityPropertyMap<K extends Enum<K>>
     }
 
 }
-// EntityPropertyMap
+//

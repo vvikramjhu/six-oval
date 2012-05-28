@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.HashSet;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
@@ -294,6 +295,70 @@ public class DefinitionType
 //
 //        return _relatedCve;
 //    }
+
+
+    /**
+     */
+    public java.util.Set<String> referingElementIds()
+    {
+        java.util.Set<String>  ids = new HashSet<String>();
+        _collectReferingElementIds( ids, getCriteria() );
+
+        return ids;
+    }
+
+
+    private void _collectReferingElementIds(
+                    final java.util.Set<String> ids,
+                    final CriteriaType criteria
+                    )
+    {
+        if (criteria == null) {
+            return;
+        }
+
+        for (CriteriaElement  e : criteria.getElements()) {
+            if (CriterionType.class.isInstance( e )) {
+                CriterionType  criterion = CriterionType.class.cast( e );
+                _collectReferingElementIds( ids, criterion );
+            } else if (ExtendDefinitionType.class.isInstance( e )) {
+                ExtendDefinitionType  extend_definition = ExtendDefinitionType.class.cast( e );
+                _collectReferingElementIds( ids, extend_definition );
+            } else if (CriteriaType.class.isInstance( e )) {
+                CriteriaType  inner_criteria = CriteriaType.class.cast( e );
+                _collectReferingElementIds( ids, inner_criteria );
+            }
+        }
+    }
+
+
+    private void _collectReferingElementIds(
+                    final java.util.Set<String> ids,
+                    final CriterionType criterion
+                    )
+    {
+        if (criterion == null) {
+            return;
+        }
+
+        String  tst_id = criterion.getTestRef();
+        ids.add( tst_id );
+    }
+
+
+    private void _collectReferingElementIds(
+                    final java.util.Set<String> ids,
+                    final ExtendDefinitionType extend_definition
+                    )
+    {
+        if (extend_definition == null) {
+            return;
+        }
+
+        String  def_id = extend_definition.getDefinitionRef();
+        ids.add( def_id );
+    }
+
 
 
 
