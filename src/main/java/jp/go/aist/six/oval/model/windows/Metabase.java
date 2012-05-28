@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.definitions.EntityMap;
 
@@ -30,26 +30,27 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum LinuxPkgProperty
+public class Metabase
 {
-    NAME,
-    ARCH,           //Dpkg, RPM
-    ARCHITECTURE,   //Slackware
-    EPOCH,
-    RELEASE,        //Dpkg, RPM
-    REVISION,       //Slackware
-    VERSION,
-    EVR,
-    SIGNATURE_KEYID;    //RPM
+
+    public enum Entity
+    {
+        KEY,
+        ID,
+        NAME,
+        USER_TYPE,
+        DATA_TYPE,
+        DATA;
+    }
 
 
 
     /**
      */
-    public static EntityMap<LinuxPkgProperty> createPropertyMap()
+    public static EntityMap<Metabase.Entity> createEntityMap()
     {
-        return (new EntityMap<LinuxPkgProperty>( LinuxPkgProperty.class ));
+        return (new EntityMap<Metabase.Entity>());
     }
 
 }
-// LinuxPkgProperty
+//

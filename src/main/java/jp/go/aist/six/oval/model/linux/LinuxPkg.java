@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityMap;
 
@@ -30,25 +30,30 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum TextfileContentProperty
+public class LinuxPkg
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    PATTERN,
-    INSTANCE,
-    TEXT,
-    LINE,
-    SUBEXPRESSION;
+
+    public enum Entity
+    {
+        NAME,
+        ARCH,           //Dpkg, RPM
+        ARCHITECTURE,   //Slackware
+        EPOCH,
+        RELEASE,        //Dpkg, RPM
+        REVISION,       //Slackware
+        VERSION,
+        EVR,
+        SIGNATURE_KEYID;    //RPM
+    }
 
 
 
     /**
      */
-    public static EntityMap<TextfileContentProperty> createPropertyMap()
+    public static EntityMap<LinuxPkg.Entity> createEntityMap()
     {
-        return (new EntityMap<TextfileContentProperty>( TextfileContentProperty.class ));
+        return (new EntityMap<LinuxPkg.Entity>());
     }
 
 }
-// TextFileContentProperty
+//

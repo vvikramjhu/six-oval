@@ -18,48 +18,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
 /**
- * The Windows file properties.
+ * The Unix uname properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FileProperty
+public class Uname
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,           // Int
-    A_TIME,         // Int
-    C_TIME,         // Int
-    M_TIME,         // Int
-    MS_CHECKSUM,
-    VERSION,        // Version
-    TYPE,           // FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;    // Version
+    public enum Entity
+    {
+        MACHINE_CLASS,
+        NODE_NAME,
+        OS_NAME,
+        OS_RELEASE,
+        OS_VERSION,
+        PROCESSOR_TYPE;
+    }
 
 
 
     /**
      */
-    public static EntityMap<FileProperty> createPropertyMap()
+    public static EntityMap<Uname.Entity> createEntityMap()
     {
-        return (new EntityMap<FileProperty>( FileProperty.class ));
+        return (new EntityMap<Uname.Entity>());
     }
 
 }
-// FileProperty
+//
