@@ -25,9 +25,8 @@ import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
+import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,11 +46,11 @@ public class OvalRepositoryController
     extends OvalDefinitionRepositoryController
 {
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalRepositoryController.class );
+//    /**
+//     * Logger.
+//     */
+//    private static final Logger  _LOG_ =
+//        LoggerFactory.getLogger( OvalRepositoryController.class );
 
 
 
@@ -90,6 +89,41 @@ public class OvalRepositoryController
 
 
 
+    // GET: query
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_scs?host=server.foo.org"
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/oval_scs"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
+                    final OvalSystemCharacteristicsQueryParams params
+                    )
+    throws OvalException
+    {
+        return _findResource( OvalSystemCharacteristics.class, params );
+    }
+
+
+
+    // POST: create
+    //
+    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_scs
+    @RequestMapping(
+                    method=RequestMethod.POST
+                    ,value="/repository/oval_scs"
+                    ,headers="Content-Type=application/xml"
+    )
+    public ResponseEntity<Void> createOvalSystemCharacteristics(
+                    @RequestBody final OvalSystemCharacteristics oval_scs,
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        return _saveResource( request, OvalSystemCharacteristics.class, oval_scs );
+    }
+
+
 
     //********************************************************************
     // oval-sc:oval_results
@@ -113,7 +147,7 @@ public class OvalRepositoryController
 
 
     // GET: query
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_results?definition=oval:org%2emitre%2eoval:def:6210"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_results?definitionTrue=oval:org%2emitre%2eoval:def:6210"
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_results"
@@ -129,7 +163,7 @@ public class OvalRepositoryController
 
 
 
-    // POST (create):
+    // POST: create
     //
     // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_results
     @RequestMapping(
@@ -145,9 +179,6 @@ public class OvalRepositoryController
     {
         return _saveResource( request, OvalResults.class, oval_results );
     }
-
-
-
 
 }
 //
