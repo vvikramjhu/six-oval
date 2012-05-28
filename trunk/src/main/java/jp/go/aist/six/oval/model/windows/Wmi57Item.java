@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.sc.EntityItemRecordType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -37,12 +37,8 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 item and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class WmiItem
+public class Wmi57Item
     extends ItemType
 {
 
@@ -52,8 +48,8 @@ public class WmiItem
     private EntityItemStringType  wql;
     //{0..1}
 
-    private final Collection<EntityItemAnySimpleType>  result =
-        new ArrayList<EntityItemAnySimpleType>();
+    private final Collection<EntityItemRecordType>  result =
+        new ArrayList<EntityItemRecordType>();
     //{0..*}
 
 
@@ -61,13 +57,13 @@ public class WmiItem
     /**
      * Constructor.
      */
-    public WmiItem()
+    public Wmi57Item()
     {
         this( 0 );
     }
 
 
-    public WmiItem(
+    public Wmi57Item(
                     final int id
                     )
     {
@@ -118,7 +114,7 @@ public class WmiItem
     /**
      */
     public void setResult(
-                    final Collection<? extends EntityItemAnySimpleType> results
+                    final Collection<? extends EntityItemRecordType> results
                     )
     {
         if (results != result ) {
@@ -130,13 +126,13 @@ public class WmiItem
     }
 
 
-    public Collection<EntityItemAnySimpleType> getResult()
+    public Collection<EntityItemRecordType> getResult()
     {
         return result;
     }
 
 
-    public Iterator<EntityItemAnySimpleType> iterateResult()
+    public Iterator<EntityItemRecordType> iterateResult()
     {
         return result.iterator();
     }
@@ -150,7 +146,7 @@ public class WmiItem
     @Override
     public String toString()
     {
-        return "wmi_item[" + super.toString()
+        return "wmi57_item[" + super.toString()
              + ", namespace="   + getNamespace()
              + ", wql="         + getWql()
              + ", result="      + getResult()
@@ -158,4 +154,4 @@ public class WmiItem
     }
 
 }
-// WmiItem
+//

@@ -148,17 +148,17 @@ CONTENTS:
 
     
     <!-- ******************************************************* -->
-    <!-- *  Test                                               * -->
+    <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <target name="test.rest-client" depends="compile">
+    <target name="oval.xml.dump" depends="compile">
         <java
-            classname="jp.go.aist.six.oval.core.rest.OvalRepositoryClient"
+            classname="jp.go.aist.six.oval.core.xml.OvalXmlTool"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="256m"
             >
-            <arg line="src/test/data/results/oval-results-5.8_windows-xp_8050.xml"/>
+            <arg line="-dump src/win-def_wmi57_object_test_results.xml"/>
             <!-- arg line="src/test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml"/ -->
         </java>
     </target>

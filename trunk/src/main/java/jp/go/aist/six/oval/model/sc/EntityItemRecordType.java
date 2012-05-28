@@ -20,59 +20,78 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemRecordType defines an entity that consists of a number of named fields.
+ * This structure is used for representing a record from a database query
+ * and other similar structures where multiple related fields must be collected at once.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
-    extends EntityItemSimpleBaseType
+public class EntityItemRecordType
+    extends EntityItemComplexBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+    private final Collection<EntityItemFieldType>  field =
+                    new ArrayList<EntityItemFieldType>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemRecordType()
     {
     }
 
 
-    public EntityItemStringType(
-                    final String content
+
+    /**
+     */
+    public void setField(
+                    final Collection<? extends EntityItemFieldType> field_list
                     )
     {
-        super( content );
+        if (field != field_list) {
+            field.clear();
+            if (field_list != null  &&  field_list.size() > 0) {
+                for (EntityItemFieldType  p : field_list) {
+                    addField( p );
+                }
+            }
+        }
     }
 
 
-
-    //**************************************************************
-    //  EntityItemBase
-    //**************************************************************
-
-    @Override
-    public void setDatatype(
-                    final DatatypeEnumeration datatype
+    public boolean addField(
+                    final EntityItemFieldType field
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        if (field == null) {
+            throw new IllegalArgumentException( "empty field" );
         }
 
-        super.setDatatype( datatype );
+        return this.field.add( field );
+    }
+
+
+    public Collection<EntityItemFieldType> getField()
+    {
+        return field;
+    }
+
+
+    public Iterator<EntityItemFieldType> iterateField()
+    {
+        return getField().iterator();
     }
 
 
@@ -98,7 +117,7 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemRecordType)) {
             return false;
         }
 
@@ -114,4 +133,4 @@ public class EntityItemStringType
 //    }
 
 }
-// EntityItemStringType
+//

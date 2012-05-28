@@ -20,21 +20,17 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.Writer;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-import jp.go.aist.six.util.castor.CastorXmlMapper;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.OxmException;
-import jp.go.aist.six.util.xml.XmlException;
-import jp.go.aist.six.util.xml.XmlTransformer;
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,53 +40,99 @@ import org.slf4j.LoggerFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalTransformXmlMapper
-    extends CastorXmlMapper
+public class OvalXmlTool
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalTransformXmlMapper.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalXmlTool.class );
 
 
-    
-    private XmlTransformer  _transformer;
-    
-    
+
+    public static void main(
+                    final String[] args
+                    )
+    {
+        _LOG_.debug( "args=" + Arrays.toString( args ) );
+        if (args.length == 0 ) {
+            System.exit( 0 );
+        }
+
+        final String cmd = args[0];
+        _LOG_.debug( "cmd=" + cmd );
+
+        OvalXmlTool  tool = new OvalXmlTool();
+        if (cmd.equals( "-dump" )) {
+            if (args.length == 2) {
+                String  source = args[1];
+                _LOG_.debug( "source=" + source );
+                tool.dump( source );
+            }
+        } else {
+            _LOG_.debug( "unknown command: " + cmd );
+        }
+    }
+
+
+
+
+    private final XmlMapper  _mapper;
+
+
 
     /**
      * Constructor.
      */
-    public OvalTransformXmlMapper()
+    public OvalXmlTool()
     {
-        _LOG_.debug( "instantiated" );
+        _mapper = OvalContext.INSTANCE.getXmlMapper();
     }
 
-    
-    
+
+
     /**
      */
-    public void setTransformer( 
-                    final XmlTransformer transformer 
+    public void dump(
+                    final InputStream stream
                     )
     {
-        _transformer = transformer;
+        Object  obj = unmarshal( stream );
+        System.out.println( obj );
     }
 
-    
-    
-    private String _simpleMarshalToString(
-                    final Object obj
+
+    public void dump(
+                    final String source
                     )
-    throws XmlException
     {
-        StringWriter  writer = new StringWriter();
-        super.marshal( obj, new StreamResult( writer ) );
+        InputStream  stream = null;
 
-        return writer.toString();
+        if (source.startsWith( "http://" )  ||  source.startsWith( "https://" )) {
+            try {
+                URL  url = new URL( source );
+                stream = url.openStream();
+            } catch (MalformedURLException m_ex) {
+                throw new OxmException( m_ex );
+            } catch (IOException io_ex) {
+                throw new OxmException( io_ex );
+            }
+
+        } else {
+            File  file = new File( source );
+            if (file.exists()  &&  file.canRead()) {
+                try {
+                    stream = new FileInputStream( file );
+                } catch (FileNotFoundException io_ex) {
+                    throw new OxmException( io_ex );
+                }
+            } else {
+                throw new OxmException( "no such file: " + source );
+            }
+        }
+
+        dump( stream );
     }
-
 
 
 
@@ -98,156 +140,32 @@ public class OvalTransformXmlMapper
     //  XmlMapper
     //**************************************************************
 
-    public void marshal(
-                    final Object obj,
-                    final Result result
-                    )
-    throws OxmException
-    {
-        if (_transformer == null) {
-            super.marshal( obj, result );
-        } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
-        }
-    }
 
-
-
-    @Override
-    public void marshal(
-                    final Object obj,
-                    final OutputStream stream
-                    )
-    throws OxmException
-    {
-        if (_transformer == null) {
-            super.marshal( obj, stream );
-        } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                Result  result = new StreamResult( stream );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
-        }
-    }
-
-
-
-    @Override
-    public void marshal(
-                    final Object obj,
-                    final Writer writer
-                    )
-    throws OxmException
-    {
-        if (_transformer == null) {
-            super.marshal( obj, writer );
-        } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                Result  result = new StreamResult( writer );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
-        }
-    }
-
-
-
-    @Override
-    public String marshalToString(
-                    final Object obj
-                    )
-    throws OxmException
-    {
-        StringWriter  writer = new StringWriter();
-        marshal( obj, writer );
-        String  xml = writer.toString();
-
-        return xml;
-    }
-
-
-
-    @Override
     public Object unmarshal(
                     final InputStream stream
                     )
     throws OxmException
     {
-        Object  obj = null;
-
-        if (_transformer == null) {
-            obj = super.unmarshal( stream );
-        } else {
-            StringWriter  writer = new StringWriter();  
-            Result  result = new StreamResult( writer );
-            try {
-                _transformer.transform( new StreamSource( stream ), result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
-
-            String  xml = writer.toString();
-//            _LOG_.debug( "transformed XML: \n" + xml );
-            obj = super.unmarshal( new StringReader( xml ) );
-        }
-
-        return obj;
+        return _mapper.unmarshal( stream );
     }
 
 
 
-    @Override
     public Object unmarshal(
-                    final Reader reader
+                    final File file
                     )
     throws OxmException
     {
-        Object  obj = null;
-        if (_transformer == null) {
-            obj = super.unmarshal( reader );
-        } else {
-            StringWriter  writer = new StringWriter();  
-            Result  result = new StreamResult( writer );
-            try {
-                _transformer.transform( new StreamSource( reader ), result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
-            
-            obj = super.unmarshal( new StringReader( writer.toString() ) );
+        InputStream  stream = null;
+        try {
+            stream = new FileInputStream( file );
+        } catch (FileNotFoundException ex) {
+            throw new OxmException( ex );
         }
 
-        return obj;
-    }
-
-
-
-    @Override
-    public Object unmarshalFromString(
-                    final String xml
-                    )
-    throws OxmException
-    {
-        Reader  reader = new BufferedReader( new StringReader( xml ) );
-        Object  obj = unmarshal( reader );
-                      //@throws OxmException
-
-        return obj;
+        return unmarshal( stream );
     }
 
 }
-//OvalXmlMapper
+//
 

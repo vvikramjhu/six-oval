@@ -24,31 +24,34 @@ package jp.go.aist.six.oval.model.sc;
 
 
 /**
- * The EntityItemBase is an abstract type that serves as the base type
- * for all item entities.
+ * The EntityItemFieldType defines an element with simple content
+ * that represents a named field in a record that may contain any number of named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityItemSimpleBaseType
+public class EntityItemFieldType
     extends EntityAttributeGroup
 {
 
     private String  content;
     //{simpleContent, base="xsd:anySimpleType"}
 
+    private String  name;
+    //{required, pattern value="[^A-Z]+"}
+
 
 
     /**
      * Constructor.
      */
-    public EntityItemSimpleBaseType()
+    public EntityItemFieldType()
     {
     }
 
 
-    public EntityItemSimpleBaseType(
+    public EntityItemFieldType(
                     final String content
                     )
     {
@@ -69,7 +72,24 @@ public abstract class EntityItemSimpleBaseType
 
     public String getContent()
     {
-        return this.content;
+        return content;
+    }
+
+
+
+    /**
+     */
+    public void setName(
+                    final String name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public String getName()
+    {
+        return name;
     }
 
 
@@ -87,6 +107,9 @@ public abstract class EntityItemSimpleBaseType
         String  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
+        String  name = getName();
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+
         return result;
     }
 
@@ -101,17 +124,22 @@ public abstract class EntityItemSimpleBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityItemSimpleBaseType)) {
+        if (!(obj instanceof EntityItemFieldType)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            EntityItemSimpleBaseType  other = (EntityItemSimpleBaseType)obj;
-            String  other_content = other.getContent();
-            String   this_content =  this.getContent();
-            if (this_content == other_content
-                            ||  (this_content != null  &&  this_content.equals( other_content ))) {
-                return true;
+            EntityItemFieldType  other = (EntityItemFieldType)obj;
+            String  other_name = other.getName();
+            String   this_name =  this.getName();
+            if (this_name == other_name
+                            ||  (this_name != null  &&  this_name.equals( other_name ))) {
+                String  other_content = other.getContent();
+                String   this_content =  this.getContent();
+                if (this_content == other_content
+                                ||  (this_content != null  &&  this_content.equals( other_content ))) {
+                    return true;
+                }
             }
         }
 
@@ -123,10 +151,11 @@ public abstract class EntityItemSimpleBaseType
     @Override
     public String toString()
     {
-        return "" + getContent()
-                  + ", " + super.toString()
-                  ;
+        return "" + super.toString()
+                        + ", name=" + getName()
+                        + ", " + getContent()
+                        ;
     }
 
 }
-// EntityItemSimpleBaseType
+//

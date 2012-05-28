@@ -24,52 +24,22 @@ package jp.go.aist.six.oval.model.sc;
 
 
 /**
- * The EntityItemBase is an abstract type that serves as the base type
- * for all item entities.
+ * The EntityItemComplexBaseType is an abstract type that serves as
+ * the base type for all complex item entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityItemSimpleBaseType
+public abstract class EntityItemComplexBaseType
     extends EntityAttributeGroup
 {
-
-    private String  content;
-    //{simpleContent, base="xsd:anySimpleType"}
-
-
 
     /**
      * Constructor.
      */
-    public EntityItemSimpleBaseType()
+    public EntityItemComplexBaseType()
     {
-    }
-
-
-    public EntityItemSimpleBaseType(
-                    final String content
-                    )
-    {
-        setContent( content );
-    }
-
-
-
-    /**
-     */
-    public void setContent(
-                    final String content
-                    )
-    {
-        this.content = content;
-    }
-
-
-    public String getContent()
-    {
-        return this.content;
     }
 
 
@@ -78,55 +48,5 @@ public abstract class EntityItemSimpleBaseType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        String  content = getContent();
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof EntityItemSimpleBaseType)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            EntityItemSimpleBaseType  other = (EntityItemSimpleBaseType)obj;
-            String  other_content = other.getContent();
-            String   this_content =  this.getContent();
-            if (this_content == other_content
-                            ||  (this_content != null  &&  this_content.equals( other_content ))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "" + getContent()
-                  + ", " + super.toString()
-                  ;
-    }
-
 }
-// EntityItemSimpleBaseType
+//
