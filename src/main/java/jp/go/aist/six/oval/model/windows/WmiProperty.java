@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -41,9 +41,9 @@ public enum WmiProperty
 
     /**
      */
-    public static EntityPropertyMap<WmiProperty> createPropertyMap()
+    public static EntityMap<WmiProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<WmiProperty>( WmiProperty.class ));
+        return (new EntityMap<WmiProperty>( WmiProperty.class ));
     }
 
 }

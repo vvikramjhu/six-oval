@@ -493,6 +493,38 @@ public class OvalDefinitionRepositoryController
         return _saveResource( request, OvalDefinitions.class, oval_definitions );
     }
 
+
+
+//    // POST: generate
+//    //
+//    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
+//    @RequestMapping(
+//                    method=RequestMethod.POST
+//                    ,value="/repository/oval_definitions/generate"
+//                    ,headers="Content-Type=application/xml"
+//    )
+//    public ResponseEntity<Void> generateOvalDefinitions(
+//                    final DefinitionQueryParams params
+//                    )
+//    throws OvalException
+//    {
+//    }
+//
+//
+//
+//
+//    private OvalDefinitions _generateOvalDefinitions( final String id_pattern )
+//    {
+//        DefinitionQueryParams  params = new DefinitionQueryParams();
+//        params.setId( id_pattern );
+//
+//        QueryResults<DefinitionType>  def_results = _findResource( DefinitionType.class, params );
+//        if (def_results.size() == 0) {
+//            throw new OvalRepositoryException( "no definition found to generate OVAL Definitions document");
+//        }
+//
+//
+//    }
 }
 //
 

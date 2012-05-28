@@ -6,9 +6,17 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.model.definitions.CriteriaElement;
+import jp.go.aist.six.oval.model.definitions.CriteriaType;
+import jp.go.aist.six.oval.model.definitions.CriterionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -17,6 +25,7 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
@@ -117,6 +126,99 @@ public class MongoDatastoreTool
         }
     }
 
+
+
+    private static Map<DefinitionsElement.Type, java.util.Set<String>> _newReferencingMap()
+    {
+        Map<DefinitionsElement.Type, java.util.Set<String>>  map =
+                        new HashMap<DefinitionsElement.Type, java.util.Set<String>>();
+
+        for (DefinitionsElement.Type  type : DefinitionsElement.Type.values()) {
+            map.put( type, new HashSet<String>() );
+        }
+
+        return map;
+    }
+
+
+
+
+
+    /**
+     */
+    public OvalDefinitions generateOvalDefinitions(
+                    final Collection<DefinitionType> defs
+                    )
+    {
+        if (defs == null  ||  defs.size() == 0) {
+            throw new OvalRepositoryException( "empty Definition list" );
+        }
+
+        OvalDefinitions  oval_defs = new OvalDefinitions();
+        for (DefinitionType  def : defs) {
+            _buildOvalDefinitions( oval_defs, def );
+        }
+
+        _getDatastore().save( OvalDefinitions.class, oval_defs );
+
+        return oval_defs;
+    }
+
+
+    private void _buildOvalDefinitions(
+                    final OvalDefinitions oval_defs,
+                    final DefinitionType def
+                    )
+    {
+        CriteriaType  criteria = def.getCriteria();
+        if (criteria == null) {
+            return;
+        }
+
+        for (CriteriaElement  e : criteria.getElements()) {
+            if (CriterionType.class.isInstance( e )) {
+                // test
+                CriterionType  criterion = CriterionType.class.cast( e );
+            }
+        }
+    }
+
+
+    private void _buildOvalDefinitionsTest(
+                    final OvalDefinitions oval_defs,
+                    final String  test_id
+                    )
+    {
+        TestType  test = _getDatastore().findById( TestType.class, test_id );
+        if (test == null) {
+            throw new OvalRepositoryException( "no such Test: " + test_id );
+        }
+
+    }
+
+
+
+    private void _buildOvalDefinitionsTest(
+                    final OvalDefinitions oval_defs,
+                    final TestType test
+                    )
+    {
+
+    }
+
+
+    private void _buildOvalDefinitionsObject(
+                    final OvalDefinitions oval_defs,
+                    final String  object_id
+                    )
+    {
+        SystemObjectType  test = _getDatastore().findById( SystemObjectType.class, object_id );
+        if (test == null) {
+            throw new OvalRepositoryException( "no such Test: " + object_id );
+        }
+
+
+    }
 
 
 

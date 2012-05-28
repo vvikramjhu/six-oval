@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -45,9 +45,9 @@ public enum TextfileContentProperty
 
     /**
      */
-    public static EntityPropertyMap<TextfileContentProperty> createPropertyMap()
+    public static EntityMap<TextfileContentProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<TextfileContentProperty>( TextfileContentProperty.class ));
+        return (new EntityMap<TextfileContentProperty>( TextfileContentProperty.class ));
     }
 
 }

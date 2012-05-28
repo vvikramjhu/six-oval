@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -43,9 +43,9 @@ public enum MetabaseProperty
 
     /**
      */
-    public static EntityPropertyMap<MetabaseProperty> createPropertyMap()
+    public static EntityMap<MetabaseProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<MetabaseProperty>( MetabaseProperty.class ));
+        return (new EntityMap<MetabaseProperty>( MetabaseProperty.class ));
     }
 
 }

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -43,9 +43,9 @@ public enum RegistryProperty
 
     /**
      */
-    public static EntityPropertyMap<RegistryProperty> createPropertyMap()
+    public static EntityMap<RegistryProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<RegistryProperty>( RegistryProperty.class ));
+        return (new EntityMap<RegistryProperty>( RegistryProperty.class ));
     }
 
 }

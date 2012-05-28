@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
@@ -56,9 +56,9 @@ public enum FileProperty
 
     /**
      */
-    public static EntityPropertyMap<FileProperty> createPropertyMap()
+    public static EntityMap<FileProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<FileProperty>( FileProperty.class ));
+        return (new EntityMap<FileProperty>( FileProperty.class ));
     }
 
 }
