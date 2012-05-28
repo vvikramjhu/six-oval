@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.independent.EngineEnumeration;
 import jp.go.aist.six.oval.model.independent.HashTypeEnumeration;
 import jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration;
 import jp.go.aist.six.oval.model.independent.LdaptypeEnumeration;
-import jp.go.aist.six.oval.model.independent.TextfileContentProperty;
+import jp.go.aist.six.oval.model.independent.TextfileContent;
 import jp.go.aist.six.oval.model.linux.RpmVerifyResultEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
@@ -106,7 +106,7 @@ public class OvalConverter
         HashTypeEnumeration.class,
         LdapBehaviorsEnumeration.class,
         LdaptypeEnumeration.class,
-        TextfileContentProperty.class,
+        TextfileContent.class,
 
         // linux //
         RpmVerifyResultEnumeration.class,

@@ -51,8 +51,10 @@ public class RegistryObject
     //{0..1}
 
 
-//    private final EntityPropertyMap<RegistryProperty>  _properties =
-//        RegistryProperty.createPropertyMap();
+//    @Embedded(concreteClass = java.util.HashMap.class)
+//    private final Map<Registry.Entity, EntityAttributeGroup>  _properties =
+//    new HashMap<Registry.Entity, EntityAttributeGroup>();
+
 
     private EntityObjectRegistryHiveType  hive;
     //{1..1}
@@ -189,15 +191,17 @@ public class RegistryObject
                     )
     {
         this.hive = hive;
-//        _properties.setProperty( RegistryProperty.HIVE, hive );
+//        _properties.setEntity( Registry.Entity.hive, hive );
+//        _properties.put( Registry.Entity.hive, hive );
     }
 
 
     public EntityObjectRegistryHiveType getHive()
     {
         return hive;
-//        return _properties.getProperty(
-//                        RegistryProperty.HIVE, EntityObjectRegistryHiveType.class );
+//        return _properties.getEntity(
+//                        Registry.Entity.hive, EntityObjectRegistryHiveType.class );
+//        return EntityObjectRegistryHiveType.class.cast( _properties.get( Registry.Entity.hive ) );
     }
 
 
@@ -216,15 +220,17 @@ public class RegistryObject
                     )
     {
         this.key = key;
-//        _properties.setProperty( RegistryProperty.KEY, key );
+//        _properties.setEntity( Registry.Entity.key, key );
+//        _properties.put( Registry.Entity.key, key );
     }
 
 
     public EntityObjectStringType getKey()
     {
         return key;
-//        return _properties.getProperty(
-//                        RegistryProperty.KEY, EntityObjectStringType.class );
+//        return _properties.getEntity(
+//                        Registry.Entity.key, EntityObjectStringType.class );
+//        return EntityObjectStringType.class.cast( _properties.get( Registry.Entity.key ) );
     }
 
 
@@ -244,7 +250,8 @@ public class RegistryObject
                     )
     {
         this.name = name;
-//        _properties.setProperty( RegistryProperty.NAME, name );
+//        _properties.setEntity( Registry.Entity.name, name );
+//        _properties.put( Registry.Entity.name, name );
 
 //        EntityObjectString  n = name;
 //        if (name != null) {
@@ -261,8 +268,9 @@ public class RegistryObject
     public EntityObjectStringType getName()
     {
         return name;
-//        return _properties.getProperty(
-//                        RegistryProperty.NAME, EntityObjectStringType.class );
+//        return _properties.getEntity(
+//                        Registry.Entity.name, EntityObjectStringType.class );
+//        return EntityObjectStringType.class.cast( _properties.get( Registry.Entity.name ) );
     }
 
 

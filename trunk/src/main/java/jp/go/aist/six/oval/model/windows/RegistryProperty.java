@@ -31,22 +31,25 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RegistryProperty
+public class RegistryProperty
 {
+
+    public enum Entity
+    {
     HIVE,   //RegistryHive
     KEY,    //String
     NAME,   //String
     TYPE,   //RegistryType
     VALUE;  //AnySimple
-
+    }
 
 
     /**
      */
-    public static EntityMap<RegistryProperty> createPropertyMap()
+    public static EntityMap<RegistryProperty.Entity> createEntityMap()
     {
-        return (new EntityMap<RegistryProperty>( RegistryProperty.class ));
+        return (new EntityMap<RegistryProperty.Entity>());
     }
 
 }
-// RegistryProperty
+//

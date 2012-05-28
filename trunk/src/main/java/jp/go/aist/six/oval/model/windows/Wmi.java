@@ -18,36 +18,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
 /**
- * The Unix uname properties.
+ * The Windows WMI properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum UnameProperty
+public class Wmi
 {
-    MACHINE_CLASS,
-    NODE_NAME,
-    OS_NAME,
-    OS_RELEASE,
-    OS_VERSION,
-    PROCESSOR_TYPE;
 
+    public enum Entity
+    {
+    NAMESPACE,  //EntityStateString
+    WQL,        //EntityStateInt
+    RESULT;     //EntityStateAnySimple/Wmi, EntityStateRecord/Wmi57
+    }
 
 
     /**
      */
-    public static EntityMap<UnameProperty> createPropertyMap()
+    public static EntityMap<Wmi.Entity> createEntityMap()
     {
-        return (new EntityMap<UnameProperty>( UnameProperty.class ));
+        return (new EntityMap<Wmi.Entity>());
     }
 
 }
-// UnameProperty
+//

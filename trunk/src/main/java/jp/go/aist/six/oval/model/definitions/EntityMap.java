@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
@@ -32,24 +32,21 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityMap<K extends Enum<K>>
-    extends EnumMap<K, EntityAttributeGroup>
+    extends HashMap<K, EntityAttributeGroup>
 {
 
     /**
      * constructor.
      */
-    public EntityMap(
-                    final Class<K> keyType
-                    )
+    public EntityMap()
     {
-        super( keyType );
     }
 
 
 
     /**
      */
-    public Iterator<EntityAttributeGroup> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateEntity()
     {
         return values().iterator();
     }
@@ -58,20 +55,20 @@ public class EntityMap<K extends Enum<K>>
 
     /**
      */
-    public <T extends EntityAttributeGroup> T getProperty(
+    public <T extends EntityAttributeGroup> T getEntity(
                     final K key,
                     final Class<T> type
                     )
     {
-        EntityAttributeGroup  p = get( key );
-        return type.cast( p );
+        EntityAttributeGroup  e = get( key );
+        return type.cast( e );
     }
 
 
 
     /**
      */
-    public void setProperty(
+    public void setEntity(
                     final K key,
                     final EntityAttributeGroup value
                     )
@@ -80,4 +77,53 @@ public class EntityMap<K extends Enum<K>>
     }
 
 }
+//public class EntityMap<K extends Enum<K>>
+//extends EnumMap<K, EntityAttributeGroup>
+//{
+//
+///**
+// * constructor.
+// */
+//public EntityMap(
+//                final Class<K> keyType
+//                )
+//{
+//    super( keyType );
+//}
+//
+//
+//
+///**
+// */
+//public Iterator<EntityAttributeGroup> iterateEntities()
+//{
+//    return values().iterator();
+//}
+//
+//
+//
+///**
+// */
+//public <T extends EntityAttributeGroup> T getEntity(
+//                final K key,
+//                final Class<T> type
+//                )
+//{
+//    EntityAttributeGroup  p = get( key );
+//    return type.cast( p );
+//}
+//
+//
+//
+///**
+// */
+//public void setEntity(
+//                final K key,
+//                final EntityAttributeGroup value
+//                )
+//{
+//    put( key, value );
+//}
+//
+//}
 //

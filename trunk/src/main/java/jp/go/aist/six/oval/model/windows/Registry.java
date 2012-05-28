@@ -25,28 +25,34 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 /**
- * The Windows registry properties.
+ * The Windows registry.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RegistryProperty
+public class Registry
 {
-    HIVE,   //RegistryHive
-    KEY,    //String
-    NAME,   //String
-    TYPE,   //RegistryType
-    VALUE;  //AnySimple
+
+    public enum Entity
+    {
+        hive,               //RegistryHive
+        key,                //String
+        name,               //String
+        last_write_time,    //Int
+        type,               //RegistryType
+        value,              //AnySimple
+        windows_view;       //WindowsView
+    }
 
 
 
     /**
      */
-    public static EntityMap<RegistryProperty> createPropertyMap()
+    public static EntityMap<Registry.Entity> createEntityMap()
     {
-        return (new EntityMap<RegistryProperty>( RegistryProperty.class ));
+        return (new EntityMap<Registry.Entity>());
     }
 
 }
-// RegistryProperty
+//

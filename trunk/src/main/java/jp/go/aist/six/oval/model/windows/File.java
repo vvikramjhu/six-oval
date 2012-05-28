@@ -25,28 +25,41 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 /**
+ * The Windows file properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum MetabaseProperty
+public class File
 {
-    KEY,
-    ID,
-    NAME,
-    USER_TYPE,
-    DATA_TYPE,
-    DATA;
+
+    public enum Entity
+    {
+        FILEPATH, PATH, FILENAME, OWNER, SIZE, // Int
+        A_TIME, // Int
+        C_TIME, // Int
+        M_TIME, // Int
+        MS_CHECKSUM,
+        VERSION, // Version
+        TYPE, // FileType
+        DEVELOPMENT_CLASS,
+        COMPANY,
+        INTERNAL_NAME,
+        LANGUAGE,
+        ORIGINAL_FILENAME,
+        PRODUCT_NAME,
+        PRODUCT_VERSION; // Version
+    }
 
 
 
     /**
      */
-    public static EntityMap<MetabaseProperty> createPropertyMap()
+    public static EntityMap<File.Entity> createEntityMap()
     {
-        return (new EntityMap<MetabaseProperty>( MetabaseProperty.class ));
+        return (new EntityMap<File.Entity>());
     }
 
 }
-// MetabaseProperty
+//

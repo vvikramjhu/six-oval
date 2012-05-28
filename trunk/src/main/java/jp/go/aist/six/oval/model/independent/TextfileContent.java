@@ -18,33 +18,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 
 /**
- * The Windows WMI properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum WmiProperty
+public class TextfileContent
 {
-    NAMESPACE,  //EntityStateString
-    WQL,        //EntityStateInt
-    RESULT;     //EntityStateAnySimple/Wmi, EntityStateRecord/Wmi57
+
+    public enum Entity
+    {
+        FILEPATH,
+        PATH,
+        FILENAME,
+        PATTERN,
+        INSTANCE,
+        TEXT,
+        LINE,
+        SUBEXPRESSION;
+    }
 
 
 
     /**
      */
-    public static EntityMap<WmiProperty> createPropertyMap()
+    public static EntityMap<TextfileContent.Entity> createEntityMap()
     {
-        return (new EntityMap<WmiProperty>( WmiProperty.class ));
+        return (new EntityMap<TextfileContent.Entity>());
     }
 
 }
-// WmiProperty
+//
