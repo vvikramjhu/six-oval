@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 import com.google.code.morphia.annotations.Transient;
 
 
@@ -87,18 +89,52 @@ public abstract class ElementContainer<E extends Element>
 
 
 
-//    /**
-//     */
-//    private Set<String> _ovalIDSet()
-//    {
-//        Set<String>  set = new HashSet<String>();
-//        for (OvalElement  e : _getElement()) {
-//            set.add( e.getOvalID() );
-//        }
-//
-//        return set;
-//    }
+    /**
+     */
+    public boolean containsOvalId(
+                    final String id
+                    )
+    {
+        if (id == null) {
+            throw new IllegalArgumentException();
+        }
 
+        for (E  e : _getElement()) {
+            if (id.equals( e.getOvalID() )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    /**
+     */
+    public Set<String> ovalIDSet()
+    {
+        Set<String>  set = new HashSet<String>();
+        for (Element  e : _getElement()) {
+            set.add( e.getOvalID() );
+        }
+
+        return set;
+    }
+
+
+
+    //*********************************************************************
+    //  Container
+    //*********************************************************************
+
+//    public boolean add(
+//                    final E element
+//                    )
+//    {
+//        return _addElement( element );
+//    }
+//
 
 
     //==============================================================
