@@ -76,7 +76,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
@@ -100,6 +100,20 @@
             <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
             -->
+        </classes>
+    </test>
+
+
+    <test name="oval.core.repository.mongodb" enabled="true">
+        <!--
+        <groups>
+            <run>
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+            </run>
+        </groups>
+        -->
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.OvalDefinitionsGeneratorTests"/>
         </classes>
     </test>
 

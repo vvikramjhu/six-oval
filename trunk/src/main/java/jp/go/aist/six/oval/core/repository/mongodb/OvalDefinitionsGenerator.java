@@ -1,24 +1,17 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.StateType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
-import jp.go.aist.six.oval.model.definitions.TestType;
-import jp.go.aist.six.oval.model.definitions.VariableType;
-import jp.go.aist.six.oval.model.results.OvalResults;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.util.xml.XmlException;
-import jp.go.aist.six.util.xml.XmlMapper;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.repository.QueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,50 +22,26 @@ import org.slf4j.LoggerFactory;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDatastoreTool
+public class OvalDefinitionsGenerator
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDatastoreTool.class );
-
-
-
-    public static void main( final String[] args )
-    {
-        _LOG_.debug( "args=" + Arrays.toString( args ) );
-        if (args.length == 0 ) {
-            System.exit( 0 );
-        }
-
-        final String cmd = args[0];
-        _LOG_.debug( "cmd=" + cmd );
-        if (cmd.equals( "-install" )) {
-            if (args.length == 2) {
-                String  location = args[1];
-                _LOG_.debug( "location=" + location );
-                installOvalDefinitions( location );
-            }
-        } else if (cmd.equals( "-delete-all" )) {
-            deleteAllData();
-        }
-    }
+        LoggerFactory.getLogger( OvalDefinitionsGenerator.class );
 
 
 
 
     private static MongoOvalDatastore  _DATASTORE_;
 
-    private static XmlMapper  _XML_MAPPER_ = null;
-
 
 
     /**
      * Constructor.
      */
-    public MongoOvalDatastoreTool()
+    public OvalDefinitionsGenerator()
     {
     }
 
@@ -90,110 +59,78 @@ public class MongoOvalDatastoreTool
     }
 
 
-    private static XmlMapper _getXmlMapper()
+
+    public String generateByQuery(
+                    final QueryParams params
+                    )
+    throws OvalException
     {
-        if (_XML_MAPPER_ == null) {
-            _XML_MAPPER_ = OvalContext.INSTANCE.getBean( XmlMapper.class );
+        _LOG_.debug( "params=" + params );
+
+        List<DefinitionType>  def_list = _getDatastore().find( DefinitionType.class, params );
+        if (def_list == null) {
+            throw new OvalException( "no Definition found" );
         }
 
-        return _XML_MAPPER_;
+        OvalDefinitions  oval_defs = new OvalDefinitions();
+
+        DefinitionsType  defs = new DefinitionsType();
+        defs.setDefinition( def_list );
+        oval_defs.setDefinitions( defs );
+        for (DefinitionType  def : def_list) {
+            Collection<String>  ref_ids = EntityUtil.getElementRefId( def );
+            _addElements( oval_defs, ref_ids );
+        }
+
+        String  id = _getDatastore().save( OvalDefinitions.class, oval_defs );
+        return id;
     }
 
 
 
-    /**
-     */
-    private static <T> T _unmarshalObject(
-                    final Class<T> type,
-                    final InputStream in_stream
+    private void _addElements(
+                    final OvalDefinitions oval_defs,
+                    final Collection<String> oval_ids
                     )
-    throws XmlException
+    throws OvalException
     {
-        Object  obj = _getXmlMapper().unmarshal( in_stream );
-        T  object = type.cast( obj );
+        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
+        for (String  oval_id : oval_ids) {
+            DefinitionsElement  element = _addElement( oval_defs, oval_id );
+            if (element != null) {
+                added_elements.add( element );
+            }
+        }
 
-        return object;
+        if (added_elements.size() > 0) {
+            Collection<String>  added_ids = new HashSet<String>();
+            for (DefinitionsElement  e : added_elements) {
+                added_ids.add( e.getOvalID() );
+            }
+
+            _addElements( oval_defs, added_ids );
+        }
     }
 
 
-
-    /**
-     */
-    private static URL _toURL(
-                    final String value
+    private DefinitionsElement _addElement(
+                    final OvalDefinitions oval_defs,
+                    final String oval_id
                     )
+    throws OvalException
     {
-        if (value == null) {
+        boolean  contained = EntityUtil.containsElement( oval_defs, oval_id );
+        if(contained) {
             return null;
         }
 
-        URL  url = null;
-        try {
-            url = new URL( value );
-        } catch (MalformedURLException ex) {
-            // in case of a local file
-            url = null;
+        Class<? extends DefinitionsElement>  java_type = EntityUtil.objectTypeOf( oval_id );
+        DefinitionsElement  element = _getDatastore().findById( java_type, oval_id );
+        if (element == null) {
+            throw new OvalRepositoryException( "no such definitions element: " + oval_id );
         }
-
-        return url;
-    }
-
-
-
-
-    /**
-     */
-    public static String installOvalDefinitions(
-                    final String xml_location
-                    )
-    {
-        InputStream  in_stream = null;
-        try {
-            URL  url = _toURL( xml_location );
-            if (url == null) {
-                in_stream = new FileInputStream( xml_location );
-            } else {
-                in_stream = url.openStream();
-            }
-        } catch (IOException ex) {
-            throw new OvalException( ex );
-        }
-
-        Class<OvalDefinitions>  type = OvalDefinitions.class;
-        OvalDefinitions  object = _unmarshalObject( type, in_stream );
-        String  pid = _getDatastore().save( type, object );
-
-        return pid;
-    }
-
-
-
-    /**
-     */
-    public static void deleteAllData()
-    {
-        MongoOvalDatastore  ds = _getDatastore();
-
-        _LOG_.debug( "delete DefinitonsElementAssoc..." );
-        ds.delete( DefinitionsElementAssoc.class );
-
-        _LOG_.debug( "delete OvalDefinitons..." );
-        ds.delete( OvalDefinitions.class );
-        _LOG_.debug( "delete Definiton..." );
-        ds.delete( DefinitionType.class );
-        _LOG_.debug( "delete Test..." );
-        ds.delete( TestType.class );
-        _LOG_.debug( "delete SystemObject..." );
-        ds.delete( SystemObjectType.class );
-        _LOG_.debug( "delete State..." );
-        ds.delete( StateType.class );
-        _LOG_.debug( "delete Variable..." );
-        ds.delete( VariableType.class );
-
-        _LOG_.debug( "delete OvalSysChar..." );
-        ds.delete( OvalSystemCharacteristics.class );
-        _LOG_.debug( "delete OvalResults..." );
-        ds.delete( OvalResults.class );
+        EntityUtil.addElement( oval_defs, element );
+        return element;
     }
 
 }
