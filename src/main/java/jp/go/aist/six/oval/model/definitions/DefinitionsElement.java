@@ -221,7 +221,7 @@ public abstract class DefinitionsElement
 
 
     //TODO: Implement this method!
-//    public abstract java.util.Set<String> getReferingElementIds();
+//    public abstract java.util.Set<String> ovalGetElementRefId();
 
 
 

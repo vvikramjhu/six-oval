@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
@@ -287,13 +288,13 @@ public class TestType
     /**
      */
     public void setState(
-                    final Collection<? extends StateRefType> stateList
+                    final Collection<? extends StateRefType> state_list
                     )
     {
-        if (stateList != state) {
+        if (state_list != state) {
             state.clear();
-            if (stateList != null  &&  stateList.size() > 0) {
-                state.addAll( stateList );
+            if (state_list != null  &&  state_list.size() > 0) {
+                state.addAll( state_list );
             }
         }
     }
@@ -357,6 +358,27 @@ public class TestType
     public final Type ovalGetElementType()
     {
         return DefinitionsElement.Type.TEST;
+    }
+
+
+
+    public java.util.Set<String> ovalGetElementRefId()
+    {
+        java.util.Set<String>  ids = new HashSet<String>();
+
+        SystemObjectRefType  object_ref = getObject();
+        if (object_ref != null) {
+            ids.add( object_ref.getObjectRef() );
+        }
+
+        Collection<StateRefType>  state_list = getState();
+        if (state_list != null) {
+            for (StateRefType  state_ref : state_list) {
+                ids.add( state_ref.getStateRef() );
+            }
+        }
+
+        return ids;
     }
 
 
