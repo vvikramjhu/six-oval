@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
+
 
 
 /**
@@ -32,6 +34,7 @@ package jp.go.aist.six.oval.model.definitions;
  */
 public class ObjectComponentType
     extends ComponentGroup
+    implements ElementRef
 {
 
     private String  object_ref;
@@ -78,7 +81,7 @@ public class ObjectComponentType
 
     public String getObjectRef()
     {
-        return this.object_ref;
+        return object_ref;
     }
 
 
@@ -95,7 +98,7 @@ public class ObjectComponentType
 
     public String getItemField()
     {
-        return this.item_field;
+        return item_field;
     }
 
 
@@ -112,7 +115,19 @@ public class ObjectComponentType
 
     public String getRecordField()
     {
-        return this.record_field;
+        return record_field;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getObjectRef();
     }
 
 

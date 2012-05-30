@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
+
 
 
 /**
@@ -32,6 +34,7 @@ package jp.go.aist.six.oval.model.definitions;
  */
 public class CriterionType
     extends CriteriaElement
+    implements ElementRef
 {
 
     private String  test_ref;
@@ -72,13 +75,25 @@ public class CriterionType
                     final String testID
                     )
     {
-        this.test_ref = testID;
+        test_ref = testID;
     }
 
 
     public String getTestRef()
     {
-        return this.test_ref;
+        return test_ref;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getTestRef();
     }
 
 

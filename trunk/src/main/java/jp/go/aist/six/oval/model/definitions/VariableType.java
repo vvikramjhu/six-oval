@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Collection;
+import java.util.Collections;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
@@ -165,6 +168,20 @@ public class VariableType
     public DatatypeEnumeration getDatatype()
     {
         return datatype;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        return Collections.emptyList();
+//        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+//        return ref_list;
     }
 
 

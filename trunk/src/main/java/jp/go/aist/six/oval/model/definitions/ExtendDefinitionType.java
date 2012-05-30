@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
+
 
 
 /**
@@ -32,6 +34,7 @@ package jp.go.aist.six.oval.model.definitions;
  */
 public class ExtendDefinitionType
     extends CriteriaElement
+    implements ElementRef
 {
 
     private String  definition_ref;
@@ -72,13 +75,25 @@ public class ExtendDefinitionType
                     final String definitionID
                     )
     {
-        this.definition_ref = definitionID;
+        definition_ref = definitionID;
     }
 
 
     public String getDefinitionRef()
     {
-        return this.definition_ref;
+        return definition_ref;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getDefinitionRef();
     }
 
 

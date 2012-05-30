@@ -22,8 +22,8 @@ package jp.go.aist.six.oval.model.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
@@ -350,6 +350,31 @@ public class TestType
 
 
 
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        SystemObjectRefType  object_ref = getObject();
+        if (object_ref != null) {
+            ref_list.add( object_ref );
+        }
+
+        Collection<StateRefType>  state_list = getState();
+        if (state_list != null) {
+            for (StateRefType  state_ref : state_list) {
+                ref_list.add( state_ref );
+            }
+        }
+
+        return ref_list;
+    }
+
+
+
     //**************************************************************
     //  SIX extension
     //**************************************************************
@@ -358,27 +383,6 @@ public class TestType
     public final Type ovalGetElementType()
     {
         return DefinitionsElement.Type.TEST;
-    }
-
-
-
-    public java.util.Set<String> ovalGetElementRefId()
-    {
-        java.util.Set<String>  ids = new HashSet<String>();
-
-        SystemObjectRefType  object_ref = getObject();
-        if (object_ref != null) {
-            ids.add( object_ref.getObjectRef() );
-        }
-
-        Collection<StateRefType>  state_list = getState();
-        if (state_list != null) {
-            for (StateRefType  state_ref : state_list) {
-                ids.add( state_ref.getStateRef() );
-            }
-        }
-
-        return ids;
     }
 
 
