@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
+
 
 
 /**
@@ -32,6 +34,7 @@ package jp.go.aist.six.oval.model.definitions;
  */
 public class VariableComponentType
     extends ComponentGroup
+    implements ElementRef
 {
 
     private String  var_ref;
@@ -60,7 +63,19 @@ public class VariableComponentType
 
     public String getVarRef()
     {
-        return this.var_ref;
+        return var_ref;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getVarRef();
     }
 
 

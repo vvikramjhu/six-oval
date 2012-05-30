@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
@@ -231,6 +233,43 @@ public class DefinitionType
 
 
 
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        _collectElementRef( ref_list, getCriteria() );
+
+        return ref_list;
+    }
+
+
+    private void _collectElementRef(
+                    final Collection<? super ElementRef> ids,
+                    final CriteriaType criteria
+                    )
+    {
+        if (criteria == null) {
+            return;
+        }
+
+        for (CriteriaElement  e : criteria.getElements()) {
+            if (ElementRef.class.isInstance( e )) {
+                ElementRef  ref = ElementRef.class.cast( e );
+                ids.add( ref );
+            }
+
+            if (CriteriaType.class.isInstance( e )) {
+                CriteriaType  inner_criteria = CriteriaType.class.cast( e );
+                _collectElementRef( ids, inner_criteria );
+            }
+        }
+    }
+
+
+
     //**************************************************************
     //  SIX extension
     //**************************************************************
@@ -297,94 +336,70 @@ public class DefinitionType
 //    }
 
 
-    /**
-     */
-    public java.util.Set<String> referingElementIds()
-    {
-        java.util.Set<String>  ids = new HashSet<String>();
-        _collectReferingElementIds( ids, getCriteria() );
-
-        return ids;
-    }
-
-
-    private void _collectReferingElementIds(
-                    final java.util.Set<String> ids,
-                    final CriteriaType criteria
-                    )
-    {
-        if (criteria == null) {
-            return;
-        }
-
-        for (CriteriaElement  e : criteria.getElements()) {
-            if (CriterionType.class.isInstance( e )) {
-                CriterionType  criterion = CriterionType.class.cast( e );
-                _collectReferingElementIds( ids, criterion );
-            } else if (ExtendDefinitionType.class.isInstance( e )) {
-                ExtendDefinitionType  extend_definition = ExtendDefinitionType.class.cast( e );
-                _collectReferingElementIds( ids, extend_definition );
-            } else if (CriteriaType.class.isInstance( e )) {
-                CriteriaType  inner_criteria = CriteriaType.class.cast( e );
-                _collectReferingElementIds( ids, inner_criteria );
-            }
-        }
-    }
-
-
-    private void _collectReferingElementIds(
-                    final java.util.Set<String> ids,
-                    final CriterionType criterion
-                    )
-    {
-        if (criterion == null) {
-            return;
-        }
-
-        String  tst_id = criterion.getTestRef();
-        ids.add( tst_id );
-    }
-
-
-    private void _collectReferingElementIds(
-                    final java.util.Set<String> ids,
-                    final ExtendDefinitionType extend_definition
-                    )
-    {
-        if (extend_definition == null) {
-            return;
-        }
-
-        String  def_id = extend_definition.getDefinitionRef();
-        ids.add( def_id );
-    }
-
-
-
-
-    //**************************************************************
-    //  MongoDB/Morphia Lifecycle
-    //**************************************************************
-
-//    @PrePersist
-//    protected void _computeReferencingElements()
+//    /**
+//     */
+//    public java.util.Set<String> referingElementIds()
 //    {
-//        for (DefinitionsElement.Type  type : DefinitionsElement.Type.values()) {
-//            Set<String>  set = _referencing_elements.get( type );
-//            if (set != null) {
-//                set.clear();
-//            }
-//        }
+//        java.util.Set<String>  ids = new HashSet<String>();
+//        _collectReferingElementIds( ids, getCriteria() );
 //
-//        CriteriaType  criteria = getCriteria();
+//        return ids;
+//    }
+//
+//
+//    private void _collectReferingElementIds(
+//                    final java.util.Set<String> ids,
+//                    final CriteriaType criteria
+//                    )
+//    {
 //        if (criteria == null) {
 //            return;
 //        }
 //
-//        //TODO: collect test and definition references!!!
+//        for (CriteriaElement  e : criteria.getElements()) {
+//            if (CriterionType.class.isInstance( e )) {
+//                CriterionType  criterion = CriterionType.class.cast( e );
+//                _collectReferingElementIds( ids, criterion );
+//            } else if (ExtendDefinitionType.class.isInstance( e )) {
+//                ExtendDefinitionType  extend_definition = ExtendDefinitionType.class.cast( e );
+//                _collectReferingElementIds( ids, extend_definition );
+//            } else if (CriteriaType.class.isInstance( e )) {
+//                CriteriaType  inner_criteria = CriteriaType.class.cast( e );
+//                _collectReferingElementIds( ids, inner_criteria );
+//            }
+//        }
 //    }
 //
 //
+//    private void _collectReferingElementIds(
+//                    final java.util.Set<String> ids,
+//                    final CriterionType criterion
+//                    )
+//    {
+//        if (criterion == null) {
+//            return;
+//        }
+//
+//        String  tst_id = criterion.getTestRef();
+//        ids.add( tst_id );
+//    }
+//
+//
+//    private void _collectReferingElementIds(
+//                    final java.util.Set<String> ids,
+//                    final ExtendDefinitionType extend_definition
+//                    )
+//    {
+//        if (extend_definition == null) {
+//            return;
+//        }
+//
+//        String  def_id = extend_definition.getDefinitionRef();
+//        ids.add( def_id );
+//    }
+
+
+
 
     //**************************************************************
     //  java.lang.Object

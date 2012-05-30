@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -35,7 +36,7 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class EntityAttributeGroup
-    implements OvalObject
+    implements ElementRef, OvalObject
 {
 
     public static final DatatypeEnumeration  DEFAULT_DATATYPE =
@@ -282,6 +283,18 @@ public abstract class EntityAttributeGroup
 //
 //        return var_check;
 //    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getVarRef();
+    }
 
 
 

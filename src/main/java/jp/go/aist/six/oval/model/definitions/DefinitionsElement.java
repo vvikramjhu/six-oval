@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Collection;
 import jp.go.aist.six.oval.model.DocumentGenerator;
 import jp.go.aist.six.oval.model.Element;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.util.persist.Persistable;
@@ -220,8 +222,7 @@ public abstract class DefinitionsElement
 
 
 
-    //TODO: Implement this method!
-//    public abstract EntityAttributeGroup[] ovalGetEntity();
+    public abstract Collection<ElementRef> ovalGetElementRef();
 
 
 
