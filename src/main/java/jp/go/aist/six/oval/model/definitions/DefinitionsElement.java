@@ -221,7 +221,7 @@ public abstract class DefinitionsElement
 
 
     //TODO: Implement this method!
-//    public abstract java.util.Set<String> ovalGetElementRefId();
+//    public abstract EntityAttributeGroup[] ovalGetEntity();
 
 
 
