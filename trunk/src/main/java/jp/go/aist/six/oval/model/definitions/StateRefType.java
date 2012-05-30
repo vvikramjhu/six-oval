@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.ElementRef;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class StateRefType
-    extends ElementRef
+    implements ElementRef
 //    implements Dependent<TestType>
 {
 
@@ -73,30 +73,36 @@ public class StateRefType
 
     public String getStateRef()
     {
-        return this.state_ref;
+        return state_ref;
     }
 
 
 
     //**************************************************************
-    //  OvalEntityRef
+    //  ElementRef
     //**************************************************************
 
-    @Override
-    protected void _setRef(
-                    final String id
-                    )
-    {
-        setStateRef( id );
-    }
+//    @Override
+//    protected void _setRef(
+//                    final String id
+//                    )
+//    {
+//        setStateRef( id );
+//    }
+//
+//
+//    @Override
+//    protected String _getRef()
+//    {
+//        return getStateRef();
+//    }
 
 
     @Override
-    protected String _getRef()
+    public String ovalGetRefId()
     {
         return getStateRef();
     }
-
 
 
 //    //**************************************************************
@@ -131,7 +137,13 @@ public class StateRefType
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = 17;
+
+        String  id = getStateRef();
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+
+        return result;
     }
 
 
@@ -141,12 +153,32 @@ public class StateRefType
                     final Object obj
                     )
     {
-        if (!(obj instanceof StateRefType)) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof ElementRef)) {
             return false;
         }
 
-        return super.equals( obj );
+        StateRefType  other = (StateRefType)obj;
+        String  other_id = other.getStateRef();
+        String   this_id =  this.getStateRef();
+        if (this_id == other_id
+                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return getStateRef();
     }
 
 }
-// StateRefType
+//

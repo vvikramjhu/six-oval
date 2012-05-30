@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RegistryObject
+public class RegistryObject2
     extends SystemObjectType
 {
 
@@ -71,13 +71,13 @@ public class RegistryObject
     /**
      * Constructor.
      */
-    public RegistryObject()
+    public RegistryObject2()
     {
         this( null, 0 );
     }
 
 
-    public RegistryObject(
+    public RegistryObject2(
                     final String id,
                     final int version
                     )
@@ -86,7 +86,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject(
+    public RegistryObject2(
                     final String id,
                     final int version,
                     final String comment
@@ -100,7 +100,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject(
+    public RegistryObject2(
                     final String id,
                     final int version,
                     final String comment,
@@ -117,7 +117,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject(
+    public RegistryObject2(
                     final String id,
                     final int version,
                     final String comment,
@@ -172,7 +172,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject behaviors(
+    public RegistryObject2 behaviors(
                     final RegistryBehaviors behaviors
                     )
     {
@@ -201,7 +201,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject hive(
+    public RegistryObject2 hive(
                     final EntityObjectRegistryHiveType hive
                     )
     {
@@ -228,7 +228,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject key(
+    public RegistryObject2 key(
                     final EntityObjectStringType key
                     )
     {
@@ -266,7 +266,7 @@ public class RegistryObject
     }
 
 
-    public RegistryObject name(
+    public RegistryObject2 name(
                     final EntityObjectStringType name
                     )
     {
@@ -321,7 +321,7 @@ public class RegistryObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegistryObject)) {
+        if (!(obj instanceof RegistryObject2)) {
             return false;
         }
 

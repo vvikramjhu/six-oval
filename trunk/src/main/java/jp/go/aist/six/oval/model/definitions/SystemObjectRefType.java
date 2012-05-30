@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.ElementRef;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemObjectRefType
-    extends ElementRef
+    implements ElementRef
 //    implements Dependent<TestType>
 {
 
@@ -73,26 +73,34 @@ public class SystemObjectRefType
 
     public String getObjectRef()
     {
-        return this.object_ref;
+        return object_ref;
     }
 
 
 
     //**************************************************************
-    //  OvalEntityRef
+    //  ElementRef
     //**************************************************************
 
-    @Override
-    protected void _setRef(
-                    final String id
-                    )
-    {
-        setObjectRef( id );
-    }
+//    @Override
+//    protected void _setRef(
+//                    final String id
+//                    )
+//    {
+//        setObjectRef( id );
+//    }
+//
+//
+//    @Override
+//    protected String _getRef()
+//    {
+//        return getObjectRef();
+//    }
 
 
+
     @Override
-    protected String _getRef()
+    public String ovalGetRefId()
     {
         return getObjectRef();
     }
@@ -131,7 +139,13 @@ public class SystemObjectRefType
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = 17;
+
+        String  id = getObjectRef();
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+
+        return result;
     }
 
 
@@ -141,12 +155,32 @@ public class SystemObjectRefType
                     final Object obj
                     )
     {
-        if (!(obj instanceof SystemObjectRefType)) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof ElementRef)) {
             return false;
         }
 
-        return super.equals( obj );
+        SystemObjectRefType  other = (SystemObjectRefType)obj;
+        String  other_id = other.getObjectRef();
+        String   this_id =  this.getObjectRef();
+        if (this_id == other_id
+                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return getObjectRef();
     }
 
 }
-// SystemObjectRefType
+//

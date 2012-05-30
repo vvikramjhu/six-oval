@@ -30,87 +30,15 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class ElementRef
-    implements OvalObject
+public interface ElementRef
+    extends OvalObject
 {
 
-//    private String  _ovalID;
+    public String ovalGetRefId();
 
-
-    /**
-     * Constructor.
-     */
-    public ElementRef()
-    {
-    }
-
-
-//    public OvalEntityRef(
-//                    final String ref
-//                    )
-//    {
-//        _setRef( ref );
-//    }
-
-
-
-    /**
-     */
-    protected abstract void _setRef( String id );
-    protected abstract String _getRef();
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = 17;
-
-        String  id = _getRef();
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof ElementRef)) {
-            return false;
-        }
-
-        ElementRef  other = (ElementRef)obj;
-        String  other_id = other._getRef();
-        String   this_id =  this._getRef();
-        if (this_id == other_id
-                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return _getRef();
-    }
+//    protected abstract void _setRef( String id );
+//    protected abstract String _getRef();
 
 }
-//ElementRef
+//
 
