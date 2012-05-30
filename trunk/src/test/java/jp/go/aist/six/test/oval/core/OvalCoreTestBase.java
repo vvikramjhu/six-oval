@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.ElementContainer;
@@ -239,7 +240,12 @@ public abstract class OvalCoreTestBase
         } else {
             Iterator<T>  i = container.iterator();
             while (i.hasNext()) {
-                Reporter.log( "  @ : " + i.next().getOvalID(), true );
+                Element  e = i.next();
+                Reporter.log( "  @ : " + e.getOvalID(), true );
+                if (DefinitionsElement.class.isInstance( e )) {
+                    DefinitionsElement  de = DefinitionsElement.class.cast( e );
+                    _print( de );
+                }
             }
             Reporter.log( "  #elements: " + container.size(), true );
         }
@@ -260,6 +266,18 @@ public abstract class OvalCoreTestBase
             }
             Reporter.log( "  #elements: " + container.size(), true );
         }
+    }
+
+
+
+    protected void _print(
+                    final DefinitionsElement element
+                    )
+    throws Exception
+    {
+        Collection<String>  ref_ids = EntityUtil.getElementRefId( element );
+//        Reporter.log( "    ID: " + element.getOvalID(), true );
+        Reporter.log( "    ref IDs: " + ref_ids.toString(), true );
     }
 
 
