@@ -123,7 +123,11 @@ extends OvalCoreTestBase
 
         // element: id
         DefinitionQueryParams  params17 = new DefinitionQueryParams();
-        params17.setId( "oval:org.mitre.oval.test:def:*" );
+        params17.setId( "oval:org.mitre.oval.test:def:9*" );
+
+        // element: id - extend_definition, var_ref
+        DefinitionQueryParams  params18 = new DefinitionQueryParams();
+        params18.setId( "oval:org.mitre.oval.test:def:712,oval:org.mitre.oval.test:def:283" );
 
 
         // definition: definitionClass
@@ -276,12 +280,19 @@ extends OvalCoreTestBase
 //                            params16
 //                        }
 //                        ,
-                        {
-                            "17",
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params17
-                        }
+//                        {
+//                            "17",
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params17
+//                        }
+//                      ,
+                      {
+                          "18",
+                          jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                          DefinitionsElement.Type.DEFINITION,
+                          params18
+                      }
 //                        ,
 //                        {
 //                            "20",
