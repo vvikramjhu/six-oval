@@ -1,16 +1,19 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
+import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.util.IsoDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +33,11 @@ public class OvalDefinitionsGenerator
     private static final Logger  _LOG_ =
         LoggerFactory.getLogger( OvalDefinitionsGenerator.class );
 
+
+
+    private static final String  _SCHEMA_VERSION_ = "5.10.1";
+    private static final String  _PRODUCT_NAME_ = "cpe:/a:aist:six-oval:0.7.0";
+    private static final String  _PRODUCT_VERSION_ = "0.7.0";
 
 
 
@@ -59,6 +67,29 @@ public class OvalDefinitionsGenerator
 
 
 
+    /**
+     */
+    protected GeneratorType _newGenerator()
+    {
+        return _newGenerator( new Date() );
+    }
+
+
+    protected GeneratorType _newGenerator(
+                    final Date timestamp
+                    )
+    {
+        GeneratorType  generator = new GeneratorType();
+        generator.setSchemaVersion(  _SCHEMA_VERSION_ );
+        generator.setTimestamp(      IsoDate.format( timestamp ) );
+        generator.setProductName(    _PRODUCT_NAME_ );
+        generator.setProductVersion( _PRODUCT_VERSION_ );
+
+        return generator;
+    }
+
+
+
     public String generateByQuery(
                     final QueryParams params
                     )
@@ -81,6 +112,7 @@ public class OvalDefinitionsGenerator
             _addElements( oval_defs, ref_ids );
         }
 
+        oval_defs.setGenerator( _newGenerator() );
         String  id = _getDatastore().save( OvalDefinitions.class, oval_defs );
         return id;
     }
