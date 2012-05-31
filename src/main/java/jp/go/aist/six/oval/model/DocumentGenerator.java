@@ -56,7 +56,7 @@ public class DocumentGenerator
     /**
      * The required timestamp specifies when the particular
      * OVAL document was compiled.
-     * The format for the timestamp is yyyy-mm-ddThh:mm:ss.
+     * The format for the timestamp is yyyy-mm-dd'T'hh:mm:ss.
      */
     private String  timestamp;
 //    private Date  _timestamp;

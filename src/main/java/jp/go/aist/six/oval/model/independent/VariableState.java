@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -111,6 +114,25 @@ public class VariableState
     public EntityStateAnySimpleType getValue()
     {
         return value;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = super.ovalGetElementRef();
+        EntityStateVariableRefType  var_ref = getVarRef();
+        if (var_ref != null) {
+            ref_list = new ArrayList<ElementRef>( ref_list );
+            ref_list.add( var_ref );
+        }
+
+        return ref_list;
     }
 
 

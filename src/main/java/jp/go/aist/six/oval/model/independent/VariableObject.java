@@ -175,10 +175,19 @@ public class VariableObject
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>( super.ovalGetElementRef() );
-        ref_list.add( getVarRef() );
+        Collection<ElementRef>  ref_list = super.ovalGetElementRef();
+        EntityObjectVariableRefType  var_ref = getVarRef();
+        if (var_ref != null) {
+            ref_list = new ArrayList<ElementRef>( ref_list );
+            ref_list.add( var_ref );
+        }
 
         return ref_list;
+
+//        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>( super.ovalGetElementRef() );
+//        ref_list.add( getVarRef() );
+//
+//        return ref_list;
     }
 
 
