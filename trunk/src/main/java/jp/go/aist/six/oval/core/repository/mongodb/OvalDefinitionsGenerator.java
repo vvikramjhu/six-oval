@@ -1,7 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.OvalContext;
@@ -94,22 +93,24 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
-        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
+//        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
         for (String  oval_id : oval_ids) {
             DefinitionsElement  element = _addElement( oval_defs, oval_id );
             if (element != null) {
-                added_elements.add( element );
+//                added_elements.add( element );
+                Collection<String>  ref_ids = EntityUtil.getElementRefId( element );
+                _addElements( oval_defs, ref_ids );
             }
         }
 
-        if (added_elements.size() > 0) {
-            Collection<String>  added_ids = new HashSet<String>();
-            for (DefinitionsElement  e : added_elements) {
-                added_ids.add( e.getOvalID() );
-            }
-
-            _addElements( oval_defs, added_ids );
-        }
+//        if (added_elements.size() > 0) {
+//            Collection<String>  added_ids = new HashSet<String>();
+//            for (DefinitionsElement  e : added_elements) {
+//                added_ids.add( e.getOvalID() );
+//            }
+//
+//            _addElements( oval_defs, added_ids );
+//        }
     }
 
 
@@ -121,6 +122,7 @@ public class OvalDefinitionsGenerator
     {
         boolean  contained = EntityUtil.containsElement( oval_defs, oval_id );
         if(contained) {
+            _LOG_.debug( "element already contained: " + oval_id );
             return null;
         }
 
