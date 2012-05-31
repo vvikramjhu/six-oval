@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Collection;
+import java.util.Collections;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
@@ -43,6 +45,15 @@ public abstract class ComponentGroup
      */
     public ComponentGroup()
     {
+    }
+
+
+
+    /**
+     */
+    public Collection<ComponentGroup> ovalGetSubComponent()
+    {
+        return Collections.emptyList();
     }
 
 }

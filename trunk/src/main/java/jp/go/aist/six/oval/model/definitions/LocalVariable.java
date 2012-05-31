@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
@@ -125,6 +128,46 @@ public class LocalVariable
     public String xmlGetComponent()
     {
         return _componentXml;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = super.ovalGetElementRef();
+        ComponentGroup  component = getComponent();
+        if (component == null) {
+            return ref_list;
+        }
+
+        ref_list = new ArrayList<ElementRef>( ref_list );
+        _collectElementRef( ref_list, component );
+
+        return ref_list;
+    }
+
+
+
+    private void _collectElementRef(
+                    final Collection<ElementRef> ref_list,
+                    final ComponentGroup component
+                    )
+    {
+        if (ElementRef.class.isInstance( component )) {
+            ref_list.add( ElementRef.class.cast( component ) );
+        }
+
+        Collection<ComponentGroup>  subcomponent_list = component.ovalGetSubComponent();
+        if (subcomponent_list != null  &&  subcomponent_list.size() > 0) {
+            for (ComponentGroup  subcomponent : subcomponent_list) {
+                _collectElementRef( ref_list, subcomponent );
+            }
+        }
     }
 
 

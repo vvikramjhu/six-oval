@@ -93,6 +93,7 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
+        _LOG_.debug( "OVAL IDs: " + String.valueOf( oval_ids ) );
 //        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
         for (String  oval_id : oval_ids) {
             DefinitionsElement  element = _addElement( oval_defs, oval_id );
@@ -120,6 +121,7 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
+        _LOG_.debug( "OVAL ID: " + oval_id );
         boolean  contained = EntityUtil.containsElement( oval_defs, oval_id );
         if(contained) {
             _LOG_.debug( "element already contained: " + oval_id );
