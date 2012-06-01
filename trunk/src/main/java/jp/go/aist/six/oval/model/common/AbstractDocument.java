@@ -70,8 +70,8 @@ public abstract class AbstractDocument
 
     public GeneratorType getGenerator()
     {
-        return this.generator;
+        return generator;
     }
 
 }
-//AbstractOvalDocument
+//
