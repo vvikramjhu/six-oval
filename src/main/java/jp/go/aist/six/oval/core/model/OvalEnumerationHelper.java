@@ -29,12 +29,13 @@ public final class OvalEnumerationHelper
 
     /**
      */
-    public static <T extends OvalEnumeration> T fromValue(
+    public static <T extends OvalEnumeration>
+    T fromValue(
                     final Class<T> type,
                     final String value
                     )
     {
-        T  obj = null;
+        Object  obj = null;
 
         Method  method = _FROM_VALUE_METHODS_.get( type );
         try {
@@ -43,37 +44,70 @@ public final class OvalEnumerationHelper
                               //throws NoSuchMethodexception
                 _FROM_VALUE_METHODS_.put( type, method );
             }
-            obj = type.cast( method.invoke( null, value ) );
-                                    //throws IllegalAccessException, InvocationTargetException
+            obj = method.invoke( null, value );
+                         //throws IllegalAccessException, InvocationTargetException
         } catch (Exception ex) {
             _LOG_.error( ex.getMessage() );
             throw new OvalException( ex );
         }
 
-        return obj;
+        return type.cast( obj );
     }
+//    {
+//        T  obj = null;
+//
+//        Method  method = _FROM_VALUE_METHODS_.get( type );
+//        try {
+//            if (method == null) {
+//                method = type.getMethod( "fromValue", String.class );
+//                              //throws NoSuchMethodexception
+//                _FROM_VALUE_METHODS_.put( type, method );
+//            }
+//            obj = type.cast( method.invoke( null, value ) );
+//                                    //throws IllegalAccessException, InvocationTargetException
+//        } catch (Exception ex) {
+//            _LOG_.error( ex.getMessage() );
+//            throw new OvalException( ex );
+//        }
+//
+//        return obj;
+//    }
 
 
 
     /**
      */
     public static String value(
-                    final Object object
+                    final Object obj
                     )
     {
-        if (object == null) {
+        if (obj == null) {
             return null;
         }
 
-        Class<?>  type = object.getClass();
+        Class<?>  type = obj.getClass();
         _LOG_.trace( String.valueOf( type ) );
-        if (OvalEnumeration.class.isAssignableFrom( type )) {
-            OvalEnumeration  e = OvalEnumeration.class.cast( object );
+        if (OvalEnumeration.class.isInstance( obj )) {
+            OvalEnumeration  e = OvalEnumeration.class.cast( obj );
             return e.value();
         }
 
-        throw new IllegalArgumentException( "Invalid type: " + String.valueOf( type ) );
+        throw new IllegalArgumentException( "Invalid type: " + type );
     }
+//    {
+//        if (object == null) {
+//            return null;
+//        }
+//
+//        Class<?>  type = object.getClass();
+//        _LOG_.trace( String.valueOf( type ) );
+//        if (OvalEnumeration.class.isAssignableFrom( type )) {
+//            OvalEnumeration  e = OvalEnumeration.class.cast( object );
+//            return e.value();
+//        }
+//
+//        throw new IllegalArgumentException( "Invalid type: " + String.valueOf( type ) );
+//    }
 
 }
 //

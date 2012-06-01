@@ -36,7 +36,7 @@ public abstract class AbstractDocument
 {
 
     private GeneratorType  generator = new GeneratorType();
-    //{1..1} / OvalDefinitions, OvalSystemCharacteristics, OvalResults
+    //{1..1} // OvalDefinitions, OvalSystemCharacteristics, OvalResults, OvalVariables, OvalDirectives
 
 
 

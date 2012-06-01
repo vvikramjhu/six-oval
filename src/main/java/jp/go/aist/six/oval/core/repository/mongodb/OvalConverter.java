@@ -44,8 +44,8 @@ import jp.go.aist.six.oval.model.windows.AdstypeEnumeration;
 import jp.go.aist.six.oval.model.windows.AuditEnumeration;
 import jp.go.aist.six.oval.model.windows.DriveTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
-import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
 import jp.go.aist.six.oval.model.windows.InterfaceTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
 import jp.go.aist.six.oval.model.windows.ProtocolEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
@@ -219,32 +219,6 @@ public class OvalConverter
 
 
 
-//    //**************************************************************
-//    //  supporting NameEntity
-//    //**************************************************************
-//
-//    /**
-//     */
-//    public static Object nameFromValue(
-//                    final Class<? extends NameEntity> targetClass,
-//                    final String name
-//                    )
-//    {
-//        NameEntity  obj = null;
-//
-//        try {
-//            obj = targetClass.newInstance();
-//        } catch (Exception ex) {
-//            _LOG_.error( ex.getMessage() );
-//            throw new MappingException( ex.getMessage() );
-//        }
-//
-//        obj.setName( name );
-//        return obj;
-//    }
-
-
-
     /**
      * Constructor.
      */
@@ -254,6 +228,10 @@ public class OvalConverter
     }
 
 
+
+    //*********************************************************************
+    //
+    //*********************************************************************
 
     // Object (Java) --> simple value (Mongo)
     @Override
@@ -310,6 +288,32 @@ public class OvalConverter
                         + String.valueOf( targetClass ) );
     }
 
+
+
+//  //**************************************************************
+//  //  supporting NameEntity
+//  //**************************************************************
+//
+//  /**
+//   */
+//  public static Object nameFromValue(
+//                  final Class<? extends NameEntity> targetClass,
+//                  final String name
+//                  )
+//  {
+//      NameEntity  obj = null;
+//
+//      try {
+//          obj = targetClass.newInstance();
+//      } catch (Exception ex) {
+//          _LOG_.error( ex.getMessage() );
+//          throw new MappingException( ex.getMessage() );
+//      }
+//
+//      obj.setName( name );
+//      return obj;
+//  }
+
 }
-// OvalConverter
+//
 
