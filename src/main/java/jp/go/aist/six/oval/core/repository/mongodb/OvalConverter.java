@@ -1,7 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalEnumeration;
@@ -150,73 +149,6 @@ public class OvalConverter
 //        Product.class
         };
 
-//    public static final Collection<Class<?>>  SUPPORTED_CLASSES =
-//    Arrays.asList( _SUPPORTED_CLASSES_ );
-
-
-
-    //**************************************************************
-    //  supporting OvalEnumeration
-    //**************************************************************
-
-    private static final HashMap<Class<? extends OvalEnumeration>, Method>
-    _VALUE_OF_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
-
-//    private static final HashMap<Class<? extends OvalEnumeration>, Method>
-//    _VALUE_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
-
-    /**
-     */
-    public static Object enumerationFromValue(
-                    final Class<? extends OvalEnumeration> targetClass,
-                    final String value
-                    )
-    {
-        Object  obj = null;
-
-        Method  method = _VALUE_OF_METHODS_.get( targetClass );
-        try {
-            if (method == null) {
-                //reflection
-                method = targetClass.getMethod( "fromValue", String.class );
-                _VALUE_OF_METHODS_.put( targetClass, method );
-            }
-            obj = method.invoke( null, value );
-        } catch (Exception ex) {
-            _LOG_.error( ex.getMessage() );
-            throw new MappingException( ex.getMessage() );
-        }
-
-        return obj;
-    }
-
-
-
-    /**
-     */
-    public static Object enumerationValue(
-                    final Object object
-                    )
-    {
-        if (object == null)
-            return null;
-
-        Class<?>  targetClass = object.getClass();
-        if (! OvalEnumeration.class.isAssignableFrom( targetClass )) {
-            throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
-        }
-
-        Object  value = null;
-        try {
-            OvalEnumeration  e = OvalEnumeration.class.cast( object );
-            value = e.value();
-        } catch (ClassCastException ex) {
-            throw new MappingException( ex.getMessage() );
-        }
-
-        return value;
-    }
-
 
 
     /**
@@ -230,7 +162,7 @@ public class OvalConverter
 
 
     //*********************************************************************
-    //
+    //  TypeConverter
     //*********************************************************************
 
     // Object (Java) --> simple value (Mongo)
@@ -246,13 +178,13 @@ public class OvalConverter
         }
 
         if (object instanceof OvalEnumeration) {
-            return enumerationValue( object );
+            return OvalEnumerationHelper.value( object );
 //        } else if (object instanceof NameEntity) {
 //            return NameEntity.class.cast( object ).getName();
         }
 
         throw new MappingException( "unsupported type: "
-                        + String.valueOf( object ) );
+                        + String.valueOf( object.getClass() ) );
     }
 
 
@@ -275,7 +207,7 @@ public class OvalConverter
             @SuppressWarnings( "unchecked" )
             Class<? extends OvalEnumeration>  enumClass =
                 targetClass.asSubclass( OvalEnumeration.class );
-            return enumerationFromValue( enumClass, fromDBObject.toString() );
+            return OvalEnumerationHelper.fromValue( enumClass, fromDBObject.toString() );
 
 //        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
 //            @SuppressWarnings( "unchecked" )
