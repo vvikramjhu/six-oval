@@ -63,7 +63,7 @@ import com.google.code.morphia.mapping.MappingException;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalConverter
+public class OvalConverter2
     extends TypeConverter
     implements SimpleValueConverter
 {
@@ -71,7 +71,7 @@ public class OvalConverter
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalConverter.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalConverter2.class );
 
 
 
@@ -222,7 +222,7 @@ public class OvalConverter
     /**
      * Constructor.
      */
-    public OvalConverter()
+    public OvalConverter2()
     {
         super( _SUPPORTED_CLASSES_ );
     }
