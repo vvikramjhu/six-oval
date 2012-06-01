@@ -39,6 +39,15 @@ public class OvalDefinitionsGenerator
     private static final String  _PRODUCT_NAME_ = "cpe:/a:aist:six-oval:0.7.0";
     private static final String  _PRODUCT_VERSION_ = "0.7.0";
 
+    private static final String  _XML_SCHEMA_LOCATION_ =
+                    "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd"
+                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd"
+                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd"
+                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd"
+                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd"
+                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd"
+                                    ;
+
 
 
     private static MongoOvalDatastore  _DATASTORE_;
@@ -112,6 +121,7 @@ public class OvalDefinitionsGenerator
             _addElements( oval_defs, ref_ids );
         }
 
+        oval_defs.setSchemaLocation( _XML_SCHEMA_LOCATION_ );
         oval_defs.setGenerator( _newGenerator() );
         String  id = _getDatastore().save( OvalDefinitions.class, oval_defs );
         return id;
