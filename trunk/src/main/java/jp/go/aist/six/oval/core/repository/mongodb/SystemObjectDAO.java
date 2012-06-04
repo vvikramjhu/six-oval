@@ -10,8 +10,8 @@ import com.google.code.morphia.Datastore;
  * @version $Id$
  */
 public class SystemObjectDAO
-    extends OvalEntityDAO<SystemObjectType>
-//    extends BasicDAO<SystemObjectType, String>
+    extends DefinitionsElementDAO<SystemObjectType>
+//    extends OvalEntityDAO<SystemObjectType>
 {
 
     /**

@@ -114,30 +114,6 @@
     </bean> 
 
 
-<!--
-    <bean id="datastore" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore"> 
-        <property name="DAO">
-            <set>
-                <ref bean="ovalDefinitionsDAO"/>
-                <ref bean="definitionDAO"/>
-                <ref bean="testDAO"/>
-                <ref bean="systemObjectDAO"/>
-                <ref bean="stateDAO"/>
-                <ref bean="variableDAO"/>
-                <ref bean="ovalSystemCharacteristicsDAO"/>
-                <ref bean="ovalResultsDAO"/>
-            </set>
-        </property>
-    </bean>
-
-    <bean id="ovalRepository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository"> 
-        <property name="datastore" ref="datastore"/>
-    </bean>
--->
-
-
 
     <!-- ******************************************************* -->
 

@@ -118,13 +118,6 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb.query" enabled="false">
-        <classes>
-            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MorphiaQueryBuilderTest"/>
-        </classes>
-    </test>
-
-
 
     <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
