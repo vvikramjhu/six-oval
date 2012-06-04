@@ -383,11 +383,11 @@ public class OvalDefinitions
 //                        + ", tests=" + String.valueOf( tests )
                         + ", #objects="
                         + (objects == null ? 0 : objects.size())
+//                        + ", objects=" + String.valueOf( objects )
                         + ", #states="
                         + (states == null ? 0 : states.size())
                         + ", #variables="
                         + (variables == null ? 0 : variables.size())
-                        + ", objects=" + String.valueOf( objects )
                         + "]";
     }
 
