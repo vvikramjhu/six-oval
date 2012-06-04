@@ -25,6 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
+import jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -86,6 +87,8 @@ public class OvalDefinitionRepositoryController
 
     private MongoOvalDatastore  _datastore;
 
+    private OvalDefinitionsGenerator  _generator;
+
 
 
     /**
@@ -101,16 +104,33 @@ public class OvalDefinitionRepositoryController
     /**
      */
     public void setDatastore(
-                    final MongoOvalDatastore repository
+                    final MongoOvalDatastore datastore
                     )
     {
-        _datastore = repository;
+        _datastore = datastore;
     }
 
 
     protected MongoOvalDatastore _getDatastore()
     {
         return _datastore;
+    }
+
+
+
+    /**
+     */
+    public void setGenerator(
+                    final OvalDefinitionsGenerator generator
+                    )
+    {
+        _generator = generator;
+    }
+
+
+    protected OvalDefinitionsGenerator _getGenerator()
+    {
+        return _generator;
     }
 
 
@@ -528,20 +548,29 @@ public class OvalDefinitionRepositoryController
 
 
 
-//    // POST: generate
-//    //
-//    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
-//    @RequestMapping(
-//                    method=RequestMethod.POST
-//                    ,value="/repository/oval_definitions/generate"
-//                    ,headers="Content-Type=application/xml"
-//    )
-//    public ResponseEntity<Void> generateOvalDefinitions(
-//                    final DefinitionQueryParams params
-//                    )
-//    throws OvalException
-//    {
-//    }
+    // POST: generate
+    //
+    // test: curl -v -X POST -HContent-Type:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/generate?searchTerm=win-def:file"
+    @RequestMapping(
+                    method=RequestMethod.POST
+                    ,value="/repository/oval_definitions/generate"
+                    ,headers="Content-Type=application/xml"
+    )
+    public ResponseEntity<Void> generateOvalDefinitions(
+                    final DefinitionQueryParams params,
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        String  id = _getGenerator().generateByQuery( params );
+        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
+
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setLocation( locationUri );
+        _LOG_.debug( "HTTP response headers=" + headers );
+
+        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+    }
 
 }
 //

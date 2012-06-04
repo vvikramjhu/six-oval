@@ -327,6 +327,23 @@ public class RegistryObject
 
         return ref_list;
     }
+//    {
+//        Collection<ElementRef>  ref_list = super.ovalGetElementRef();
+//
+//        ElementRef[]  refs = new ElementRef[] { getHive(), getKey(), getName() };
+//        boolean  all_null = true;
+//        for (ElementRef  r : refs) {
+//            if (r != null) {
+//                if (all_null) {
+//                    ref_list = new ArrayList<ElementRef>( ref_list );
+//                    all_null = false;
+//                }
+//                ref_list.add( r );
+//            }
+//        }
+//
+//        return ref_list;
+//    }
 
 
 

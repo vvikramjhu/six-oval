@@ -148,4 +148,12 @@
     </bean>
 
 
+    <bean id="mongoOvalDefinitionsGenerator" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
+<!--
+        <property name="datastore" ref="mongoOvalDatastore"/>
+-->
+    </bean>
+
+
 </beans>

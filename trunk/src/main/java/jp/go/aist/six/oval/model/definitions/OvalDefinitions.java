@@ -387,6 +387,7 @@ public class OvalDefinitions
                         + (states == null ? 0 : states.size())
                         + ", #variables="
                         + (variables == null ? 0 : variables.size())
+                        + ", objects=" + String.valueOf( objects )
                         + "]";
     }
 

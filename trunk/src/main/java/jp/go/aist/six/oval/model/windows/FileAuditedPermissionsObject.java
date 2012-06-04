@@ -64,7 +64,7 @@ public class FileAuditedPermissionsObject
     private EntityObjectStringType  path;
     //{1..1}
 
-    private EntityObjectStringType  filename;
+    private EntityObjectStringType  filename = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private EntityObjectStringType  trustee_name;
@@ -249,7 +249,7 @@ public class FileAuditedPermissionsObject
         return "fileauditedpermissions_object[" + super.toString()
                         + ", set="          + getSet()
                         + ", behaviors="    + getBehaviors()
-                        + ", path"          + getPath()
+                        + ", path="         + getPath()
                         + ", filename="     + getFilename()
                         + ", trustee_name=" + getTrusteeName()
                         + "]";
