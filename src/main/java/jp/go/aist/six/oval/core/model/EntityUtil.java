@@ -252,6 +252,9 @@ public final class EntityUtil
         Set<String>  ids = new HashSet<String>();
         Collection<ElementRef>  ref_list = element.ovalGetElementRef();
         for (ElementRef  e : ref_list) {
+            if (e == null) {
+                continue;
+            }
             String  id = e.ovalGetRefId();
             if (id != null  &&  id.length() > 0) {
                 ids.add( id );

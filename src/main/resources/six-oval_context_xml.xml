@@ -56,6 +56,7 @@
         <property name="encoding"
                  value="UTF-8"/>
 <!-- NO such property is defined in CastorMarshaller!!!
+Spring 3.1 supports this???
         <property name="schemaLocation"
                 value="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"/>
 -->
@@ -71,8 +72,10 @@
                     value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
                 <entry key="oval-sc"
                     value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+<!--
                 <entry key="six"
                     value="http://aist.go.jp/six/oval"/>
+-->
 <!--
                 <entry key="oval-def"
                     value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>

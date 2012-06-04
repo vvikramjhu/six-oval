@@ -89,6 +89,7 @@
     <bean id="ovalController" 
        class="jp.go.aist.six.oval.core.ws.OvalRepositoryController">
         <property name="datastore" ref="mongoOvalDatastore" />
+        <property name="generator" ref="mongoOvalDefinitionsGenerator" />
     </bean>
     
 <!-- backup

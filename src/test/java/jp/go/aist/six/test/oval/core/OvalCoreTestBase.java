@@ -325,28 +325,28 @@ public abstract class OvalCoreTestBase
                             null
                         }
 //mitre repository//
-                        ,
-                        // linux //
-                        {
-                            OvalContentCategory.MITRE_REPOSITORY,
-                            "5.10.1",
-                            OvalDefinitions.class,
-                            Family.LINUX,
-                            "test/resources/mitre_repository/oval-5.10/def/linux",
-                            null,
-                            null
-                        }
-                        ,
-                        // windows //
-                        {
-                            OvalContentCategory.MITRE_REPOSITORY,
-                            "5.10.1",
-                            OvalDefinitions.class,
-                            Family.WINDOWS,
-                            "test/resources/mitre_repository/oval-5.10/def/windows",
-                            null,
-                            null
-                        }
+//                        ,
+//                        // linux //
+//                        {
+//                            OvalContentCategory.MITRE_REPOSITORY,
+//                            "5.10.1",
+//                            OvalDefinitions.class,
+//                            Family.LINUX,
+//                            "test/resources/mitre_repository/oval-5.10/def/linux",
+//                            null,
+//                            null
+//                        }
+//                        ,
+//                        // windows //
+//                        {
+//                            OvalContentCategory.MITRE_REPOSITORY,
+//                            "5.10.1",
+//                            OvalDefinitions.class,
+//                            Family.WINDOWS,
+//                            "test/resources/mitre_repository/oval-5.10/def/windows",
+//                            null,
+//                            null
+//                        }
         };
 
     }
