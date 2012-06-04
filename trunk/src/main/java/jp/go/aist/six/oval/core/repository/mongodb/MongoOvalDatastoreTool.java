@@ -57,15 +57,27 @@ public class MongoOvalDatastoreTool
             }
         } else if (cmd.equals( "-delete-all" )) {
             deleteAllData();
+//        } else if (cmd.equals( "-drop-all-collections" )) {
+//            _INSTANCE_.dropAllCollections();
         }
     }
 
 
 
 
+//    private static final MongoDatastoreTool  _INSTANCE_ = new MongoDatastoreTool();
+
     private static MongoOvalDatastore  _DATASTORE_;
 
     private static XmlMapper  _XML_MAPPER_ = null;
+
+
+//    private OvalContext  _context;
+//    private Mongo  _mongo;
+//    private Morphia  _morphia;
+//    private String  _db_name;
+
+
 
 
 
@@ -75,6 +87,32 @@ public class MongoOvalDatastoreTool
     public MongoOvalDatastoreTool()
     {
     }
+
+
+
+//    private void _setUp()
+//    {
+//        _context = OvalContext.INSTANCE;
+//        _mongo = _context.getBean( "mongo", Mongo.class );
+//        _morphia = _context.getBean( "morphia", Morphia.class );
+//
+//        _db_name = _context.getProperty( "six.oval.repository.datastore.name" );
+//        _LOG_.info( "DB name: " + _db_name );
+//        for (MappedClass  clazz : _morphia.getMapper().getMappedClasses()) {
+//            _LOG_.info( "% Morphia mapped collection: " + clazz.getCollectionName(), true );
+//        }
+//    }
+//
+//
+//
+//    public void dropAllCollections()
+//    {
+//        DB  db = _mongo.getDB( _db_name );
+//        for (MappedClass  clazz : _morphia.getMapper().getMappedClasses()) {
+//            _LOG_.info( "dropping collection: " + clazz.getCollectionName(), true );
+//            db.getCollection( clazz.getCollectionName() ).drop();
+//        }
+//    }
 
 
 
