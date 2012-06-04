@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 
 /**
+ * This is a helper functions for the OvalEnumeration.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
@@ -28,12 +30,21 @@ public final class OvalEnumerationHelper
 
 
     /**
+     * Invokes the static fromValue(String) method of the given OvalEnumeration class.
+     *
+     * @param   type
+     *  the concrete OvalEnumeration type.
+     * @param   value
+     *  the value of the enumeration.
+     * @return
+     *  the OvalEnumeration instance of the given type and value.
      */
     public static <T extends OvalEnumeration>
     T fromValue(
                     final Class<T> type,
                     final String value
                     )
+    throws OvalException
     {
         Object  obj = null;
 
@@ -53,33 +64,21 @@ public final class OvalEnumerationHelper
 
         return type.cast( obj );
     }
-//    {
-//        T  obj = null;
-//
-//        Method  method = _FROM_VALUE_METHODS_.get( type );
-//        try {
-//            if (method == null) {
-//                method = type.getMethod( "fromValue", String.class );
-//                              //throws NoSuchMethodexception
-//                _FROM_VALUE_METHODS_.put( type, method );
-//            }
-//            obj = type.cast( method.invoke( null, value ) );
-//                                    //throws IllegalAccessException, InvocationTargetException
-//        } catch (Exception ex) {
-//            _LOG_.error( ex.getMessage() );
-//            throw new OvalException( ex );
-//        }
-//
-//        return obj;
-//    }
 
 
 
     /**
+     * Invokes the value() method of the given OvalEnumeration instance.
+     *
+     * @param   obj
+     *  the OvalEnumeration instance.
+     * @return
+     *  the return value of the value() method.
      */
     public static String value(
                     final Object obj
                     )
+    throws OvalException
     {
         if (obj == null) {
             return null;
@@ -92,22 +91,9 @@ public final class OvalEnumerationHelper
             return e.value();
         }
 
-        throw new IllegalArgumentException( "Invalid type: " + type );
+        throw new OvalException( "Invalid type: " + type );
+//        throw new IllegalArgumentException( "Invalid type: " + type );
     }
-//    {
-//        if (object == null) {
-//            return null;
-//        }
-//
-//        Class<?>  type = object.getClass();
-//        _LOG_.trace( String.valueOf( type ) );
-//        if (OvalEnumeration.class.isAssignableFrom( type )) {
-//            OvalEnumeration  e = OvalEnumeration.class.cast( object );
-//            return e.value();
-//        }
-//
-//        throw new IllegalArgumentException( "Invalid type: " + String.valueOf( type ) );
-//    }
 
 }
 //
