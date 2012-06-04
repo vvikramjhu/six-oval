@@ -476,6 +476,39 @@ public class OvalDefinitionRepositoryController
 
 
 
+    // returns the list as Atom feed.
+//    // GET (list) oval_definitions
+//    //
+//    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/oval_definitions
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/d/oval_definitions"
+//                    ,headers="Accept=application/atom+xml"
+//    )
+//    public @ResponseBody Feed findOvalDefinitions(
+//                    final HttpServletRequest request
+//                    )
+//    throws OvalException
+//    {
+//        QueryResults<String>  ids = _findResourceIDs( OvalDefinitions.class );
+//        if (ids == null) {
+//            _LOG_.debug( "oval_definitions: #ids=0" );
+//        } else {
+//            _LOG_.debug( "oval_definitions: #ids=" + ids.size() );
+//        }
+//
+//        Feed  feed = FeedHelper.buildAtomFeed(
+//                        "oval_definitions",
+//                        request.getRequestURL().toString(),
+//                        DEFINITIONS_REL,
+//                        ids.getResultsElements().getElements()
+//                        );
+//
+//        return feed;
+//    }
+
+
+
     // POST (create):
     //
     // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
@@ -509,22 +542,7 @@ public class OvalDefinitionRepositoryController
 //    throws OvalException
 //    {
 //    }
-//
-//
-//
-//
-//    private OvalDefinitions _generateOvalDefinitions( final String id_pattern )
-//    {
-//        DefinitionQueryParams  params = new DefinitionQueryParams();
-//        params.setId( id_pattern );
-//
-//        QueryResults<DefinitionType>  def_results = _findResource( DefinitionType.class, params );
-//        if (def_results.size() == 0) {
-//            throw new OvalRepositoryException( "no definition found to generate OVAL Definitions document");
-//        }
-//
-//
-//    }
+
 }
 //
 

@@ -114,6 +114,7 @@
     </bean> 
 
 
+<!--
     <bean id="datastore" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore"> 
         <property name="DAO">
@@ -130,11 +131,11 @@
         </property>
     </bean>
 
-
     <bean id="ovalRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository"> 
         <property name="datastore" ref="datastore"/>
     </bean>
+-->
 
 
 
