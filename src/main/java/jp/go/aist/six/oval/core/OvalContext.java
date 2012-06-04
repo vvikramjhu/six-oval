@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.core;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -200,17 +199,17 @@ public class OvalContext
 
 
 
-    /**
-     */
-    public OvalRepository getRepository()
-    {
-        if (_repositoryContext == null) {
-            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
-            //throws BeansException: Runtime
-        }
-
-        return _repositoryContext.getBean( OvalRepository.class );
-    }
+//    /**
+//     */
+//    public OvalRepository getRepository()
+//    {
+//        if (_repositoryContext == null) {
+//            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
+//            //throws BeansException: Runtime
+//        }
+//
+//        return _repositoryContext.getBean( OvalRepository.class );
+//    }
 
 
 

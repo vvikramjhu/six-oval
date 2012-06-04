@@ -10,8 +10,8 @@ import com.google.code.morphia.Datastore;
  * @version $Id$
  */
 public class StateDAO
-    extends OvalEntityDAO<StateType>
-//    extends BasicDAO<StateType, String>
+    extends DefinitionsElementDAO<StateType>
+//    extends OvalEntityDAO<StateType>
 {
 
     /**
