@@ -11,7 +11,6 @@ import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
-import jp.go.aist.six.oval.model.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.StatesType;
@@ -267,24 +266,24 @@ public final class EntityUtil
 
 
 
-    /**
-     */
-    public static Collection<String> collectVariableId(
-                    final EntityAttributeGroup[] entity_list
-                    )
-    {
-        Set<String>  ids = new HashSet<String>();
-
-        if (entity_list == null  ||  entity_list.length == 0) {
-            // Do nothing.
-        } else {
-            for (EntityAttributeGroup  e : entity_list) {
-                ids.add( e.getVarRef() );
-            }
-        }
-
-        return ids;
-    }
+//    /**
+//     */
+//    public static Collection<String> collectVariableId(
+//                    final EntityAttributeGroup[] entity_list
+//                    )
+//    {
+//        Set<String>  ids = new HashSet<String>();
+//
+//        if (entity_list == null  ||  entity_list.length == 0) {
+//            // Do nothing.
+//        } else {
+//            for (EntityAttributeGroup  e : entity_list) {
+//                ids.add( e.getVarRef() );
+//            }
+//        }
+//
+//        return ids;
+//    }
 
 }
 //
