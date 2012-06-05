@@ -81,12 +81,14 @@ public class EntityItemVariableRefType
     @Override
     public String ovalGetRefId()
     {
-        String  id = getContent();
-        if (id != null  &&  id.length() > 0) {
-            return id;
-        }
+        return getContent();
 
-        return null;
+//        String  id = getContent();
+//        if (id != null  &&  id.length() > 0) {
+//            return id;
+//        }
+//
+//        return null;
     }
 
 
