@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -1045,6 +1048,75 @@ public class AuditEventPolicySubcategoriesState
     public EntityStateAuditType getSystemIntegrity()
     {
         return system_integrity;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getCredentialValidation() );
+        ref_list.add( getKerberosAuthenticationService() );
+        ref_list.add( getKerberosServiceTicketOperations() );
+        ref_list.add( getKerberosTicketEvents() );
+        ref_list.add( getOtherAccountLogonEvents() );
+        ref_list.add( getApplicationGroupManagement() );
+        ref_list.add( getComputerAccountManagement() );
+        ref_list.add( getDistributionGroupManagement() );
+        ref_list.add( getOtherAccountManagementEvents() );
+        ref_list.add( getSecurityGroupManagement() );
+        ref_list.add( getUserAccountManagement() );
+        ref_list.add( getDpapiActivity() );
+        ref_list.add( getProcessCreation() );
+        ref_list.add( getProcessTermination() );
+        ref_list.add( getRpcEvents() );
+        ref_list.add( getDirectoryServiceAccess() );
+        ref_list.add( getDirectoryServiceChanges() );
+        ref_list.add( getDirectoryServiceReplication() );
+        ref_list.add( getDetailedDirectoryServiceReplication() );
+        ref_list.add( getAccountLockout() );
+        ref_list.add( getIpsecExtendedMode() );
+        ref_list.add( getIpsecMainMode() );
+        ref_list.add( getIpsecQuickMode() );
+        ref_list.add( getLogoff() );
+        ref_list.add( getLogon() );
+        ref_list.add( getNetworkPolicyServer() );
+        ref_list.add( getOtherLogonLogoffEvents() );
+        ref_list.add( getSpecialLogon() );
+        ref_list.add( getApplicationGenerated() );
+        ref_list.add( getCertificationServices() );
+        ref_list.add( getDetailedFileShare() );
+        ref_list.add( getFileShare() );
+        ref_list.add( getFileSystem() );
+        ref_list.add( getFilteringPlatformConnection() );
+        ref_list.add( getFilteringPlatformPacketDrop() );
+        ref_list.add( getHandleManipulation() );
+        ref_list.add( getKernelObject() );
+        ref_list.add( getOtherObjectAccessEvents() );
+        ref_list.add( getRegistry() );
+        ref_list.add( getSam() );
+        ref_list.add( getAuditPolicyChange() );
+        ref_list.add( getAuthenticationPolicyChange() );
+        ref_list.add( getAuthorizationPolicyChange() );
+        ref_list.add( getFilteringPlatformPolicyChange() );
+        ref_list.add( getMpssvcRuleLevelPolicyChange() );
+        ref_list.add( getOtherPolicyChangeEvents() );
+        ref_list.add( getNonSensitivePrivilegeUse() );
+        ref_list.add( getOtherPrivilegeUseEvents() );
+        ref_list.add( getSensitivePrivilegeUse() );
+        ref_list.add( getIpsecDriver() );
+        ref_list.add( getOtherSystemEvents() );
+        ref_list.add( getSecurityStateChange() );
+        ref_list.add( getSecuritySystemExtension() );
+        ref_list.add( getSystemIntegrity() );
+
+        return ref_list;
     }
 
 

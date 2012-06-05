@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -523,6 +526,39 @@ public class FileState
     public EntityStateWindowsViewType getWindowsView()
     {
         return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getOwner() );
+        ref_list.add( getSize() );
+        ref_list.add( getATime() );
+        ref_list.add( getCTime() );
+        ref_list.add( getMTime() );
+        ref_list.add( getMsChecksum() );
+        ref_list.add( getVersion() );
+        ref_list.add( getType() );
+        ref_list.add( getDevelopmentClass() );
+        ref_list.add( getCompany() );
+        ref_list.add( getInternalName() );
+        ref_list.add( getLanguage() );
+        ref_list.add( getOriginalFilename() );
+        ref_list.add( getProductName() );
+        ref_list.add( getProductVersion() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

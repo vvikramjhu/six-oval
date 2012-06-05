@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -237,6 +240,30 @@ public class Process58State
     public EntityStateStringType getPrimaryWindowText()
     {
         return primary_window_text;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getCommandLine() );
+        ref_list.add( getPid() );
+        ref_list.add( getPpid() );
+        ref_list.add( getPriority() );
+        ref_list.add( getImagePath() );
+        ref_list.add( getCurrentDir() );
+        ref_list.add( getCreationTime() );
+        ref_list.add( getDepEnabled() );
+        ref_list.add( getPrimaryWindowText() );
+
+        return ref_list;
     }
 
 

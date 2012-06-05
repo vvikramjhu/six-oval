@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -362,6 +365,37 @@ public class PrinterEffectiveRightsState
     public EntityStateBoolType getJobAccessRead()
     {
         return job_access_read;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getPrinterName() );
+        ref_list.add( getTrusteeSid() );
+        ref_list.add( getStandardDelete() );
+        ref_list.add( getStandardReadControl() );
+        ref_list.add( getStandardWriteDac() );
+        ref_list.add( getStandardWriteOwner() );
+        ref_list.add( getStandardSyncronize() );
+        ref_list.add( getAccessSystemSecurity() );
+        ref_list.add( getGenericRead() );
+        ref_list.add( getGenericWrite() );
+        ref_list.add( getGenericExecute() );
+        ref_list.add( getGenericAll() );
+        ref_list.add( getPrinterAccessAdminister() );
+        ref_list.add( getPrinterAccessUse() );
+        ref_list.add( getJobAccessAdminister() );
+        ref_list.add( getJobAccessRead() );
+
+        return ref_list;
     }
 
 

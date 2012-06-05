@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -255,6 +258,30 @@ public class AuditEventPolicyState
     public EntityStateAuditType getSystem()
     {
         return system;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getAccountLogon() );
+        ref_list.add( getAccountManagement() );
+        ref_list.add( getDetailedTracking() );
+        ref_list.add( getDirectoryServiceAccess() );
+        ref_list.add( getLogon() );
+        ref_list.add( getObjectAccess() );
+        ref_list.add( getPolicyChange() );
+        ref_list.add( getPrivilegeUse() );
+        ref_list.add( getSystem() );
+
+        return ref_list;
     }
 
 

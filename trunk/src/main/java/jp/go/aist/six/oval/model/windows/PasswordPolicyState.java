@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -171,6 +174,27 @@ public class PasswordPolicyState
     public EntityStateBoolType getReversibleEncryption()
     {
         return reversible_encryption;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getMaxPasswdAge() );
+        ref_list.add( getMinPasswdAge() );
+        ref_list.add( getMinPasswdLen() );
+        ref_list.add( getPasswordHistLen() );
+        ref_list.add( getPasswordComplexity() );
+        ref_list.add( getReversibleEncryption() );
+
+        return ref_list;
     }
 
 
