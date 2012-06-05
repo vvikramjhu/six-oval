@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -344,6 +347,35 @@ public class SelinuxSecurityContextState
     public EntityStateStringType getRawHighCategory()
     {
         return rawhigh_category;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getPid() );
+        ref_list.add( getUser() );
+        ref_list.add( getRole() );
+        ref_list.add( getType() );
+        ref_list.add( getLowSensitivity() );
+        ref_list.add( getLowCategory() );
+        ref_list.add( getHighSensitivity() );
+        ref_list.add( getHighCategory() );
+        ref_list.add( getRawLowSensitivity() );
+        ref_list.add( getRawLowCategory() );
+        ref_list.add( getRawHighSensitivity() );
+        ref_list.add( getRawHighCategory() );
+
+        return ref_list;
     }
 
 

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -366,6 +369,36 @@ public class RpmVerifyState
     public EntityStateBoolType getReadmeFile()
     {
         return readme_file;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getName() );
+        ref_list.add( getFilepath() );
+        ref_list.add( getSizeDiffers() );
+        ref_list.add( getModeDiffers() );
+        ref_list.add( getMd5Differs() );
+        ref_list.add( getDeviceDiffers() );
+        ref_list.add( getLinkMismatch() );
+        ref_list.add( getOwnershipDiffers() );
+        ref_list.add( getGroupDiffers() );
+        ref_list.add( getMtimeDiffers() );
+        ref_list.add( getCapabilitiesDiffer() );
+        ref_list.add( getConfigurationFile() );
+        ref_list.add( getDocumentationFile() );
+        ref_list.add( getGhostFile() );
+        ref_list.add( getLicenseFile() );
+        ref_list.add( getReadmeFile() );
+
+        return ref_list;
     }
 
 

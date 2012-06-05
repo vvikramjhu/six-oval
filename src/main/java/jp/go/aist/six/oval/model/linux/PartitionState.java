@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -218,6 +221,28 @@ public class PartitionState
     public EntityStateIntType getSpaceLeft()
     {
         return space_left;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getMountPoint() );
+        ref_list.add( getDevice() );
+        ref_list.add( getUuid() );
+        ref_list.add( getFsType() );
+        ref_list.add( getMountOptions() );
+        ref_list.add( getTotalSpace() );
+        ref_list.add( getSpaceUsed() );
+        ref_list.add( getSpaceLeft() );
+
+        return ref_list;
     }
 
 

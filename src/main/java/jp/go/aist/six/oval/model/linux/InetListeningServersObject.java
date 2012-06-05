@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
@@ -200,6 +201,24 @@ public class InetListeningServersObject
     public Iterator<Filter> iterateFilter()
     {
         return filter.iterator();
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getProtocol() );
+        ref_list.add( getLocalAddress() );
+        ref_list.add( getLocalPort() );
+        ref_list.addAll( getFilter() );
+
+        return ref_list;
     }
 
 
