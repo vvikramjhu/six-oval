@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -494,6 +497,44 @@ public class RegkeyEffectiveRightsState
     public EntityStateWindowsViewType getWindowsView()
     {
         return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getHive() );
+        ref_list.add( getKey() );
+        ref_list.add( getTrusteeName() );
+        ref_list.add( getStandardDelete() );
+        ref_list.add( getStandardReadControl() );
+        ref_list.add( getStandardWriteDac() );
+        ref_list.add( getStandardWriteOwner() );
+        ref_list.add( getStandardSyncronize() );
+        ref_list.add( getAccessSystemSecurity() );
+        ref_list.add( getGenericRead() );
+        ref_list.add( getGenericWrite() );
+        ref_list.add( getGenericExecute() );
+        ref_list.add( getGenericAll() );
+        ref_list.add( getKeyQueryValue() );
+        ref_list.add( getKeySetValue() );
+        ref_list.add( getKeyCreateSubKey() );
+        ref_list.add( getKeyEnumerateSubKeys() );
+        ref_list.add( getKeyNotify() );
+        ref_list.add( getKeyCreateLink() );
+        ref_list.add( getKeyWow6464key() );
+        ref_list.add( getKeyWow6432key() );
+        ref_list.add( getKeyWow64Res() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

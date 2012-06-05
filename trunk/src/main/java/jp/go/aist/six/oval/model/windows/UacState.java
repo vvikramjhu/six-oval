@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -236,6 +239,30 @@ public class UacState
     public EntityStateBoolType getVirtualizeWriteFailures()
     {
         return virtualize_write_failures;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getAdminApprovalMode() );
+        ref_list.add( getElevationPromptAdmin() );
+        ref_list.add( getElevationPromptStandard() );
+        ref_list.add( getDetectInstallations() );
+        ref_list.add( getElevateSignedExecutables() );
+        ref_list.add( getElevateUiaccess() );
+        ref_list.add( getRunAdminsAam() );
+        ref_list.add( getSecureDesktop() );
+        ref_list.add( getVirtualizeWriteFailures() );
+
+        return ref_list;
     }
 
 
