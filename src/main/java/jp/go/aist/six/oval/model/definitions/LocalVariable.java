@@ -133,7 +133,7 @@ public class LocalVariable
 
 
     //*********************************************************************
-    //  SIX extension
+    //  VariableType
     //*********************************************************************
 
     @Override
@@ -143,6 +143,10 @@ public class LocalVariable
     }
 
 
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
 
     @Override
     public Collection<ElementRef> ovalGetElementRef()
