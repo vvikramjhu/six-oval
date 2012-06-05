@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -255,6 +258,30 @@ public class InetListeningServersState
     public EntityStateIntType getUserId()
     {
         return user_id;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getProtocol() );
+        ref_list.add( getLocalAddress() );
+        ref_list.add( getLocalPort() );
+        ref_list.add( getLocalFullAddress() );
+        ref_list.add( getProgramName() );
+        ref_list.add( getForeignAddress() );
+        ref_list.add( getForeignPort() );
+        ref_list.add( getForeignFullAddress() );
+        ref_list.add( getPid() );
+        ref_list.add( getUserId() );
+
+        return ref_list;
     }
 
 

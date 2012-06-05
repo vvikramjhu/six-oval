@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -139,6 +142,24 @@ public class SlackwarePkgInfoState
 
 
 
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getName() );
+        ref_list.add( getVersion() );
+        ref_list.add( getArchitecture() );
+        ref_list.add( getRevision() );
+
+        return ref_list;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -170,8 +191,8 @@ public class SlackwarePkgInfoState
     {
         return "slackwarepkginfo_state[" + super.toString()
                         + ", name="         + getName()
-                        + ", architecture=" + getArchitecture()
                         + ", version="      + getVersion()
+                        + ", architecture=" + getArchitecture()
                         + ", revision="     + getRevision()
                         + "]";
     }

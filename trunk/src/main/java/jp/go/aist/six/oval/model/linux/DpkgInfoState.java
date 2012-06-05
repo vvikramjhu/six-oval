@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
@@ -182,6 +185,26 @@ public class DpkgInfoState
     {
         setEvr( evr );
         return this;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getName() );
+        ref_list.add( getArch() );
+        ref_list.add( getEpoch() );
+        ref_list.add( getRelease() );
+        ref_list.add( getVersion() );
+        ref_list.add( getEvr() );
+
+        return ref_list;
     }
 
 

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
@@ -191,7 +194,7 @@ public class RpmInfoState
 
     /**
      */
-    public void setSignatureKeyID(
+    public void setSignatureKeyid(
                     final EntityStateStringType keyid
                     )
     {
@@ -199,17 +202,17 @@ public class RpmInfoState
     }
 
 
-    public EntityStateStringType getSignatureKeyId()
+    public EntityStateStringType getSignatureKeyid()
     {
         return signature_keyid;
     }
 
 
-    public RpmInfoState signatureKeyId(
+    public RpmInfoState signatureKeyid(
                     final EntityStateStringType keyid
                     )
     {
-        setSignatureKeyID( keyid );
+        setSignatureKeyid( keyid );
         return this;
     }
 
@@ -245,6 +248,29 @@ public class RpmInfoState
     public EntityStateStringType getFilepath()
     {
         return filepath;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getName() );
+        ref_list.add( getArch() );
+        ref_list.add( getEpoch() );
+        ref_list.add( getRelease() );
+        ref_list.add( getVersion() );
+        ref_list.add( getEvr() );
+        ref_list.add( getSignatureKeyid() );
+        ref_list.add( getExtendedName() );
+        ref_list.add( getFilepath() );
+
+        return ref_list;
     }
 
 
@@ -285,7 +311,7 @@ public class RpmInfoState
                         + ", release="  + getRelease()
                         + ", version="  + getVersion()
                         + ", evr="      + getEvr()
-                        + ", signature_keyid="  + getSignatureKeyId()
+                        + ", signature_keyid="  + getSignatureKeyid()
                         + ", extended_name="    + getExtendedName()
                         + ", filepath=" + getFilepath()
                         + "]";
