@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model;
 
 
 
+
 /**
  * A reference to an OVAL element, independent of its version.
  *
@@ -34,7 +35,19 @@ public interface ElementRef
     extends OvalObject
 {
 
+    /**
+     * Returns the OVAL ID of the refering element.
+     *
+     * @return
+     *  the OVAL ID.
+     */
     public String ovalGetRefId();
+
+
+    //TODO:
+//    public DefinitionsElement.Type ovalGetRefType();
+
+
 
 //    protected abstract void _setRef( String id );
 //    protected abstract String _getRef();

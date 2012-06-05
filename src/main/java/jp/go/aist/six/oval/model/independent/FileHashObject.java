@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -61,6 +64,7 @@ public class FileHashObject
     private Set  set;
 
     private FileBehaviors  behaviors;
+    //{0..1}
 
     private EntityObjectStringType  filepath;
 
@@ -140,6 +144,23 @@ public class FileHashObject
 
     /**
      */
+    public void setFilepath(
+                    final EntityObjectStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityObjectStringType getFilepath()
+    {
+        return filepath;
+    }
+
+
+
+    /**
+     */
     public void setPath(
                     final EntityObjectStringType path
                     )
@@ -172,19 +193,19 @@ public class FileHashObject
 
 
 
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
 
-
-    public EntityObjectStringType getFilepath()
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
     {
-        return filepath;
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+
+        return ref_list;
     }
 
 

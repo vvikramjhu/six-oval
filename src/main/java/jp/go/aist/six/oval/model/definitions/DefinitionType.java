@@ -234,9 +234,18 @@ public class DefinitionType
 
 
     //*********************************************************************
-    //  DefinitionsElement
+    //  SIX extension
     //*********************************************************************
 
+    @Override
+    public final Type ovalGetElementType()
+    {
+        return DefinitionsElement.Type.DEFINITION;
+    }
+
+
+
+    @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
@@ -247,7 +256,7 @@ public class DefinitionType
 
 
     private void _collectElementRef(
-                    final Collection<? super ElementRef> ids,
+                    final Collection<? super ElementRef> ref_list,
                     final CriteriaType criteria
                     )
     {
@@ -258,27 +267,17 @@ public class DefinitionType
         for (CriteriaElement  e : criteria.getElements()) {
             if (ElementRef.class.isInstance( e )) {
                 ElementRef  ref = ElementRef.class.cast( e );
-                ids.add( ref );
+                ref_list.add( ref );
             }
 
             if (CriteriaType.class.isInstance( e )) {
                 CriteriaType  inner_criteria = CriteriaType.class.cast( e );
-                _collectElementRef( ids, inner_criteria );
+                _collectElementRef( ref_list, inner_criteria );
             }
         }
     }
 
 
-
-    //**************************************************************
-    //  SIX extension
-    //**************************************************************
-
-    @Override
-    public final Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.DEFINITION;
-    }
 
 //    /**
 //     */

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -63,6 +66,9 @@ public class TextfileContent54State
     private EntityStateAnySimpleType  subexpression;
     //{0..1}
 
+
+    private EntityStateWindowsViewType  windows_view;
+    //{0..1}
 
 //    private final EntityPropertyMap<TextfileContentProperty>  _properties =
 //        TextfileContentProperty.createPropertyMap();
@@ -302,6 +308,45 @@ public class TextfileContent54State
     {
         setSubexpression( subexpression );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setWindowsView(
+                    final EntityStateWindowsViewType windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public EntityStateWindowsViewType getWindowsView()
+    {
+        return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getPattern() );
+        ref_list.add( getInstance() );
+        ref_list.add( getText() );
+        ref_list.add( getSubexpression() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

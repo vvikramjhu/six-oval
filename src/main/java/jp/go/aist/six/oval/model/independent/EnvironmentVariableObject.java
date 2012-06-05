@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.Collection;
+import java.util.Collections;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -122,6 +125,19 @@ public class EnvironmentVariableObject
     public EntityObjectStringType getName()
     {
         return name;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        ElementRef  ref = getName();
+        return Collections.singletonList( ref );
     }
 
 

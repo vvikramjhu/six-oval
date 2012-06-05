@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -185,6 +188,24 @@ public class SqlObject
     public EntityObjectStringType getSql()
     {
         return sql;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getEngine() );
+        ref_list.add( getVersion() );
+        ref_list.add( getConnectionString() );
+        ref_list.add( getSql() );
+
+        return ref_list;
     }
 
 

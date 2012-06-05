@@ -133,8 +133,16 @@ public class LocalVariable
 
 
     //*********************************************************************
-    //  DefinitionsElement
+    //  SIX extension
     //*********************************************************************
+
+    @Override
+    public VariableType.Type ovalGetVariableType()
+    {
+        return VariableType.Type.LOCAL;
+    }
+
+
 
     @Override
     public Collection<ElementRef> ovalGetElementRef()
@@ -168,18 +176,6 @@ public class LocalVariable
                 _collectElementRef( ref_list, subcomponent );
             }
         }
-    }
-
-
-
-    //**************************************************************
-    //  SIX extension
-    //**************************************************************
-
-    @Override
-    public VariableType.Type ovalGetVariableType()
-    {
-        return VariableType.Type.LOCAL;
     }
 
 

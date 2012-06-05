@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
@@ -56,7 +57,7 @@ public class EnvironmentVariable58Object
     //{1..1}
 
 
-    private EntityObjectIntType  pid;
+    private EntityObjectIntType  pid = new EntityObjectIntType();
     //{1..1, nillable="true"}
 
 
@@ -199,6 +200,23 @@ public class EnvironmentVariable58Object
     {
         addFilter( filter );
         return this;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getPid() );
+        ref_list.add( getName() );
+        ref_list.addAll( getFilter() );
+
+        return ref_list;
     }
 
 

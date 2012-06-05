@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -192,6 +195,26 @@ public class FileHash58State
     public EntityStateWindowsViewType getWindowsView()
     {
         return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getHashType() );
+        ref_list.add( getHash() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
@@ -114,10 +114,8 @@ public class FamilyState
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>( super.ovalGetElementRef() );
-        ref_list.add( getFamily() );
-
-        return ref_list;
+        ElementRef  ref = getFamily();
+        return Collections.singletonList( ref );
     }
 
 

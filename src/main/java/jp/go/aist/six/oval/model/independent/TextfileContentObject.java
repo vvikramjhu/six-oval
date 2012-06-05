@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -224,6 +227,23 @@ public class TextfileContentObject
     public EntityObjectStringType getLine()
     {
         return line;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getLine() );
+
+        return ref_list;
     }
 
 
