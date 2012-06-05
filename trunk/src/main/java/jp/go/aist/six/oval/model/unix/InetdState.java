@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -199,6 +202,27 @@ public class InetdState
     public EntityStateWaitStatusType getWaitStatus()
     {
         return wait_status;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getProtocol() );
+        ref_list.add( getServiceName() );
+        ref_list.add( getServerProgram() );
+        ref_list.add( getServerArguments() );
+        ref_list.add( getEndpointType() );
+        ref_list.add( getExecAsUser() );
+        ref_list.add( getWaitStatus() );
+
+        return ref_list;
     }
 
 

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -253,6 +256,30 @@ public class ShadowState
     public EntityStateEncryptMethodType getEncryptMethod()
     {
         return encrypt_method;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getUsername() );
+        ref_list.add( getPassword() );
+        ref_list.add( getChgLst() );
+        ref_list.add( getChgAllow() );
+        ref_list.add( getChgReq() );
+        ref_list.add( getExpWarn() );
+        ref_list.add( getExpInact() );
+        ref_list.add( getExpDate() );
+        ref_list.add( getFlag() );
+        ref_list.add( getEncryptMethod() );
+
+        return ref_list;
     }
 
 

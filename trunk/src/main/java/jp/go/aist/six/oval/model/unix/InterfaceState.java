@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -41,7 +44,7 @@ public class InterfaceState
 
     //{0..1}
     private EntityStateStringType               name;
-    private EntityStateInterfaceType     type;
+    private EntityStateInterfaceType            type;
     private EntityStateStringType               hardware_addr;
     private EntityStateIPAddressStringType      inet_addr;
     private EntityStateIPAddressStringType      broadcast_addr;
@@ -199,6 +202,27 @@ public class InterfaceState
     public EntityStateStringType getFlag()
     {
         return flag;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getName() );
+        ref_list.add( getType() );
+        ref_list.add( getHardwareAddr() );
+        ref_list.add( getInetAddr() );
+        ref_list.add( getBroadcastAddr() );
+        ref_list.add( getNetmask() );
+        ref_list.add( getFlag() );
+
+        return ref_list;
     }
 
 

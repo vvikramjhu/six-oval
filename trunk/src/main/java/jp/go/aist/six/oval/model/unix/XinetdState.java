@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
@@ -310,6 +313,33 @@ public class XinetdState
     public EntityStateBoolType getDisabled()
     {
         return disabled;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getProtocol() );
+        ref_list.add( getServiceName() );
+        ref_list.add( getFlags() );
+        ref_list.add( getNoAccess() );
+        ref_list.add( getOnlyFrom() );
+        ref_list.add( getPort() );
+        ref_list.add( getServer() );
+        ref_list.add( getServerArguments() );
+        ref_list.add( getSocketType() );
+        ref_list.add( getType() );
+        ref_list.add( getUser() );
+        ref_list.add( getWait() );
+        ref_list.add( getDisabled() );
+
+        return ref_list;
     }
 
 

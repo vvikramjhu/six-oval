@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -342,6 +345,35 @@ public class Process58State
     public EntityStateIntType getSessionId()
     {
         return session_id;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getCommandLine() );
+        ref_list.add( getExecTime() );
+        ref_list.add( getPid() );
+        ref_list.add( getPpid() );
+        ref_list.add( getPriority() );
+        ref_list.add( getRuid() );
+        ref_list.add( getSchedulingClass() );
+        ref_list.add( getStartTime() );
+        ref_list.add( getTty() );
+        ref_list.add( getUserId() );
+        ref_list.add( getExecShield() );
+        ref_list.add( getLoginuid() );
+        ref_list.add( getPosixCapability() );
+        ref_list.add( getSelinuxDomainLabel() );
+        ref_list.add( getSessionId() );
+
+        return ref_list;
     }
 
 
