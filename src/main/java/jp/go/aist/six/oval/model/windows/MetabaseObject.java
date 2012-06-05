@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
@@ -127,7 +128,7 @@ public class MetabaseObject
     {
         super( id, version );
         setKey( mbKey );
-        setID( mbID );
+        setId( mbID );
 
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.metabase;
@@ -185,7 +186,7 @@ public class MetabaseObject
 
     /**
      */
-    public void setID(
+    public void setId(
                     final EntityObjectIntType id
                     )
     {
@@ -194,7 +195,7 @@ public class MetabaseObject
     }
 
 
-    public EntityObjectIntType getID()
+    public EntityObjectIntType getId()
     {
         return id;
 //        return _properties.getProperty(
@@ -202,11 +203,11 @@ public class MetabaseObject
     }
 
 
-    public MetabaseObject ID(
+    public MetabaseObject id(
                     final EntityObjectIntType id
                     )
     {
-        setID( id );
+        setId( id );
         return this;
     }
 
@@ -261,6 +262,24 @@ public class MetabaseObject
 
 
 
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getKey() );
+        ref_list.add( getId() );
+        ref_list.addAll( getFilter() );
+
+        return ref_list;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -293,7 +312,7 @@ public class MetabaseObject
         return "metabase_object[" + super.toString()
                         + ", set=" + getSet()
                         + ", key=" + getKey()
-                        + ", id=" + getID()
+                        + ", id=" + getId()
                         + ", filter=" + getFilter()
                         + "]";
     }

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -186,6 +189,27 @@ public class ProcessState
     public EntityStateStringType getCurrentDir()
     {
         return current_dir;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getCommandLine() );
+        ref_list.add( getPid() );
+        ref_list.add( getPpid() );
+        ref_list.add( getPriority() );
+        ref_list.add( getImagePath() );
+        ref_list.add( getCurrentDir() );
+
+        return ref_list;
     }
 
 

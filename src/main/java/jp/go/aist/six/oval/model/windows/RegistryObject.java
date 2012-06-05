@@ -320,7 +320,7 @@ public class RegistryObject
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>( super.ovalGetElementRef() );
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getHive() );
         ref_list.add( getKey() );
         ref_list.add( getName() );

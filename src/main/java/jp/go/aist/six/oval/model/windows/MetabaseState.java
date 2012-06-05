@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -120,7 +123,7 @@ public class MetabaseState
 
     /**
      */
-    public void setID(
+    public void setId(
                     final EntityStateIntType id
                     )
     {
@@ -129,7 +132,7 @@ public class MetabaseState
     }
 
 
-    public EntityStateIntType getID()
+    public EntityStateIntType getId()
     {
         return id;
 //        return _properties.getProperty(
@@ -137,11 +140,11 @@ public class MetabaseState
     }
 
 
-    public MetabaseState ID(
+    public MetabaseState id(
                     final EntityStateIntType id
                     )
     {
-        setID( id );
+        setId( id );
         return this;
     }
 
@@ -263,6 +266,27 @@ public class MetabaseState
 
 
 
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getKey() );
+        ref_list.add( getId() );
+        ref_list.add( getName() );
+        ref_list.add( getUserType() );
+        ref_list.add( getDataType() );
+        ref_list.add( getData() );
+
+        return ref_list;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -294,7 +318,7 @@ public class MetabaseState
     {
         return "metabase_state[" + super.toString()
                         + ", key="          + getKey()
-                        + ", ID="           + getID()
+                        + ", ID="           + getId()
                         + ", name="         + getName()
                         + ", user_type="    + getUserType()
                         + ", data_type="    + getDataType()

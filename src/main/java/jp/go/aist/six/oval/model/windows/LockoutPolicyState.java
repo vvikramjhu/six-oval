@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -142,6 +145,24 @@ public class LockoutPolicyState
     public EntityStateIntType getLockoutThreshold()
     {
         return lockout_threshold;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getForceLogoff() );
+        ref_list.add( getLockoutDuration() );
+        ref_list.add( getLockoutObservationWindow() );
+        ref_list.add( getLockoutThreshold() );
+
+        return ref_list;
     }
 
 

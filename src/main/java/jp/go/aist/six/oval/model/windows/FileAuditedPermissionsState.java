@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -493,6 +496,44 @@ public class FileAuditedPermissionsState
     public EntityStateWindowsViewType getWindowsView()
     {
         return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getTrusteeName() );
+        ref_list.add( getStandardDelete() );
+        ref_list.add( getStandardReadControl() );
+        ref_list.add( getStandardWriteDac() );
+        ref_list.add( getStandardWriteOwner() );
+        ref_list.add( getStandardSyncronize() );
+        ref_list.add( getAccessSystemSecurity() );
+        ref_list.add( getGenericRead() );
+        ref_list.add( getGenericWrite() );
+        ref_list.add( getGenericExecute() );
+        ref_list.add( getGenericAll() );
+        ref_list.add( getFileReadData() );
+        ref_list.add( getFileWriteData() );
+        ref_list.add( getFileAppendData() );
+        ref_list.add( getFileReadEa() );
+        ref_list.add( getFileWriteEa() );
+        ref_list.add( getFileExecute() );
+        ref_list.add( getFileDeleteChild() );
+        ref_list.add( getFileReadAttributes() );
+        ref_list.add( getFileWriteAttributes() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

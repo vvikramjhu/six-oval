@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.Collection;
+import java.util.Collections;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -149,6 +152,20 @@ public class ProcessObject
     public EntityObjectStringType getCommandLine()
     {
         return command_line;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        ElementRef  ref = getCommandLine();
+
+        return Collections.singleton( ref );
     }
 
 

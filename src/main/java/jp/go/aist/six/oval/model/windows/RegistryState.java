@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -258,6 +261,28 @@ public class RegistryState
     public EntityStateWindowsViewType getWindowsView()
     {
         return windows_view;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getHive() );
+        ref_list.add( getKey() );
+        ref_list.add( getName() );
+        ref_list.add( getLastWriteTime() );
+        ref_list.add( getType() );
+        ref_list.add( getValue() );
+        ref_list.add( getWindowsView() );
+
+        return ref_list;
     }
 
 

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -835,6 +838,65 @@ public class AccesstokenState
 
     public EntityStateBoolType getSetrustedcredmanaccessnameright()    {
         return setrustedcredmanaccessnameright;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add(  getSecurityPrinciple() );
+        ref_list.add( getSeassignprimarytokenprivilege() );
+        ref_list.add(  getSechangenotifyprivilege() );
+        ref_list.add(  getSecreateglobalprivilege() );
+        ref_list.add( getSecreatepagefileprivilege() );
+        ref_list.add( getSecreatepermanentprivilege() );
+        ref_list.add( getSecreatesymboliclinkprivilege() );
+        ref_list.add( getSecreatetokenprivilege() );
+        ref_list.add( getSedebugprivilege() );
+        ref_list.add( getSeenabledelegationprivilege() );
+        ref_list.add( getSeimpersonateprivilege() );
+        ref_list.add( getSeincreasebasepriorityprivilege() );
+        ref_list.add( getSeincreasequotaprivilege() );
+        ref_list.add( getSeincreaseworkingsetprivilege() );
+        ref_list.add( getSeloaddriverprivilege() );
+        ref_list.add( getSelockmemoryprivilege() );
+        ref_list.add( getSemachineaccountprivilege() );
+        ref_list.add( getSemanagevolumeprivilege() );
+        ref_list.add( getSeprofilesingleprocessprivilege() );
+        ref_list.add( getSerelabelprivilege() );
+        ref_list.add( getSeremoteshutdownprivilege() );
+        ref_list.add( getSerestoreprivilege() );
+        ref_list.add( getSesecurityprivilege() );
+        ref_list.add( getSeshutdownprivilege() );
+        ref_list.add( getSesyncagentprivilege() );
+        ref_list.add( getSesystemenvironmentprivilege() );
+        ref_list.add( getSesystemprofileprivilege() );
+        ref_list.add( getSesystemtimeprivilege() );
+        ref_list.add( getSetakeownershipprivilege() );
+        ref_list.add( getSetcbprivilege() );
+        ref_list.add( getSetimezoneprivilege() );
+        ref_list.add( getSeundockprivilege() );
+        ref_list.add( getSeunsolicitedinputprivilege() );
+        ref_list.add( getSebatchlogonright() );
+        ref_list.add( getSeinteractivelogonright() );
+        ref_list.add( getSenetworklogonright() );
+        ref_list.add( getSeremoteinteractivelogonright() );
+        ref_list.add( getSeservicelogonright() );
+        ref_list.add( getSedenybatchLogonright() );
+        ref_list.add( getSedenyinteractivelogonright() );
+        ref_list.add( getSedenynetworklogonright() );
+        ref_list.add( getSedenyremoteInteractivelogonright() );
+        ref_list.add( getSedenyservicelogonright() );
+        ref_list.add( getSetrustedcredmanaccessnameright() );
+
+        return ref_list;
     }
 
 
