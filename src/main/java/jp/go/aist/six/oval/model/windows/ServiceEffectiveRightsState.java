@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -434,6 +437,41 @@ public class ServiceEffectiveRightsState
     public EntityStateBoolType getServiceUserDefined()
     {
         return service_user_defined;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getServiceName() );
+        ref_list.add( getTrusteeSid() );
+        ref_list.add( getStandardDelete() );
+        ref_list.add( getStandardReadControl() );
+        ref_list.add( getStandardWriteDac() );
+        ref_list.add( getStandardWriteOwner() );
+        ref_list.add( getStandardSyncronize() );
+        ref_list.add( getAccessSystemSecurity() );
+        ref_list.add( getGenericRead() );
+        ref_list.add( getGenericWrite() );
+        ref_list.add( getGenericExecute() );
+        ref_list.add( getServiceQueryConf() );
+        ref_list.add( getServiceChangeConf() );
+        ref_list.add( getServiceQueryStat() );
+        ref_list.add( getServiceEnumDependents() );
+        ref_list.add( getServiceStart() );
+        ref_list.add( getServiceStop() );
+        ref_list.add( getServicePause() );
+        ref_list.add( getServiceInterrogate() );
+        ref_list.add( getServiceUserDefined() );
+
+        return ref_list;
     }
 
 

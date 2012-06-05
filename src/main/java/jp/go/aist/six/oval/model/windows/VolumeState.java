@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -435,6 +438,41 @@ public class VolumeState
     public EntityStateBoolType getFileReadOnlyVolume()
     {
         return file_read_only_volume;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getRootpath() );
+        ref_list.add( getFileSystem() );
+        ref_list.add( getName() );
+        ref_list.add( getDriveType() );
+        ref_list.add( getVolumeMaxComponentLength() );
+        ref_list.add( getSerialNumber() );
+        ref_list.add( getFileCaseSensitiveSearch() );
+        ref_list.add( getFileCasePreservedNames() );
+        ref_list.add( getFileUnicodeOnDisk() );
+        ref_list.add( getFilePersistentAcls() );
+        ref_list.add( getFileFileCompression() );
+        ref_list.add( getFileVolumeQuotas() );
+        ref_list.add( getFileSupportsSparseFiles() );
+        ref_list.add( getFileSupportsReparsePoints() );
+        ref_list.add( getFileSupportsRemoteStorage() );
+        ref_list.add( getFileVolumeIsCompressed() );
+        ref_list.add( getFileSupportsObjectIds() );
+        ref_list.add( getFileSupportsEncryption() );
+        ref_list.add( getFileNamedStreams() );
+        ref_list.add( getFileReadOnlyVolume() );
+
+        return ref_list;
     }
 
 

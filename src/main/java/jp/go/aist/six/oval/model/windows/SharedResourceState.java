@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -309,6 +312,34 @@ public class SharedResourceState
     public EntityStateBoolType getAccessAllPermission()
     {
         return access_all_permission;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add( getNetname() );
+        ref_list.add( getSharedType() );
+        ref_list.add( getMaxUses() );
+        ref_list.add( getCurrentUses() );
+        ref_list.add( getLocalPath() );
+        ref_list.add( getAccessReadPermission() );
+        ref_list.add( getAccessWritePermission() );
+        ref_list.add( getAccessCreatePermission() );
+        ref_list.add( getAccessExecPermission() );
+        ref_list.add( getAccessDeletePermission() );
+        ref_list.add( getAccessAtribPermission() );
+        ref_list.add( getAccessPermPermission() );
+        ref_list.add( getAccessAllPermission() );
+
+        return ref_list;
     }
 
 
