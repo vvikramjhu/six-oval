@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -193,6 +196,26 @@ public class LdapState
     public EntityStateAnySimpleType getValue()
     {
         return value;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getSuffix() );
+        ref_list.add( getRelativeDn() );
+        ref_list.add( getAttribute() );
+        ref_list.add( getObjectClass() );
+        ref_list.add( getLdaptype() );
+        ref_list.add( getValue() );
+
+        return ref_list;
     }
 
 

@@ -351,38 +351,26 @@ public class TestType
 
 
     //*********************************************************************
-    //  DefinitionsElement
-    //*********************************************************************
-
-    public Collection<ElementRef> ovalGetElementRef()
-    {
-        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-
-        SystemObjectRefType  object_ref = getObject();
-        if (object_ref != null) {
-            ref_list.add( object_ref );
-        }
-
-        Collection<StateRefType>  state_list = getState();
-        if (state_list != null) {
-            for (StateRefType  state_ref : state_list) {
-                ref_list.add( state_ref );
-            }
-        }
-
-        return ref_list;
-    }
-
-
-
-    //**************************************************************
     //  SIX extension
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public final Type ovalGetElementType()
     {
         return DefinitionsElement.Type.TEST;
+    }
+
+
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add(    getObject() );
+        ref_list.addAll( getState()  );
+
+        return ref_list;
     }
 
 

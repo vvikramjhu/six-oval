@@ -125,12 +125,9 @@ public class VariableState
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        Collection<ElementRef>  ref_list = super.ovalGetElementRef();
-        EntityStateVariableRefType  var_ref = getVarRef();
-        if (var_ref != null) {
-            ref_list = new ArrayList<ElementRef>( ref_list );
-            ref_list.add( var_ref );
-        }
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getVarRef() );
+        ref_list.add( getValue() );
 
         return ref_list;
     }

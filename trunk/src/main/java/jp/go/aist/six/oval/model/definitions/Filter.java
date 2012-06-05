@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
@@ -37,7 +38,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Filter
-    implements OvalObject
+    implements ElementRef, OvalObject
 {
 
     private String  content;
@@ -91,7 +92,7 @@ public class Filter
 
     public String getContent()
     {
-        return this.content;
+        return content;
     }
 
 
@@ -108,7 +109,7 @@ public class Filter
 
     public FilterActionEnumeration getAction()
     {
-        return this.action;
+        return action;
     }
 
 
@@ -116,6 +117,20 @@ public class Filter
     {
         FilterActionEnumeration  action = getAction();
         return (action == null ? DEFAULT_ACTION : action);
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        String  state_id = getContent();
+
+        return state_id;
     }
 
 

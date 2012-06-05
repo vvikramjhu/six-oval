@@ -173,8 +173,15 @@ public class VariableType
 
 
     //*********************************************************************
-    //  DefinitionsElement
+    //  SIX extension
     //*********************************************************************
+
+    @Override
+    public final DefinitionsElement.Type ovalGetElementType()
+    {
+        return DefinitionsElement.Type.VARIABLE;
+    }
+
 
     @Override
     public Collection<ElementRef> ovalGetElementRef()
@@ -184,17 +191,6 @@ public class VariableType
 //        return ref_list;
     }
 
-
-
-    //**************************************************************
-    //  SIX extension
-    //**************************************************************
-
-    @Override
-    public final DefinitionsElement.Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.VARIABLE;
-    }
 
 
     public VariableType.Type ovalGetVariableType()

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -57,10 +60,10 @@ public class LdapObject
 
     private EntityObjectStringType  suffix;
 
-    private EntityObjectStringType  relative_dn;
+    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
     //{nillable="true"}
 
-    private EntityObjectStringType  attribute;
+    private EntityObjectStringType  attribute = new EntityObjectStringType();
     //{nillable="true"}
 
 
@@ -180,6 +183,23 @@ public class LdapObject
     public EntityObjectStringType getAttribute()
     {
         return attribute;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getSuffix() );
+        ref_list.add( getRelativeDn() );
+        ref_list.add( getAttribute() );
+
+        return ref_list;
     }
 
 

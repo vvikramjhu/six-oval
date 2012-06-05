@@ -205,8 +205,7 @@ public abstract class DefinitionsElement
     //  SIX extension
     //**************************************************************
 
-    //TODO: rename this to "ovalGetGenrator"
-    public void generator(
+    public void ovalGetGenerator(
                     final DocumentGenerator generator
                     )
     {
@@ -222,6 +221,16 @@ public abstract class DefinitionsElement
 
 
 
+    /**
+     * Returns the element references.
+     * The result collection may contain null.
+     *
+     * If this element is a Definition, this method returns
+     * the Test and Definition references contained in the "criteria" part.
+     *
+     * @return
+     *  a collection of the references.
+     */
     public abstract Collection<ElementRef> ovalGetElementRef();
 
 

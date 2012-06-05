@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
@@ -34,6 +35,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
  */
 public class EntityStateVariableRefType
     extends EntityStateStringType
+    implements ElementRef
 {
 
     /**
@@ -68,7 +70,12 @@ public class EntityStateVariableRefType
     @Override
     public String ovalGetRefId()
     {
-        return getContent();
+        String  var_id = getContent();
+        if (var_id != null  &&  var_id.length() > 0) {
+            return var_id;
+        }
+
+        return null;
     }
 
 
