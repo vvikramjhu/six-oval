@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -199,7 +202,7 @@ public class FileState
 
     /**
      */
-    public void setGroupID(
+    public void setGroupId(
                     final EntityStateIntType group_id
                     )
     {
@@ -207,17 +210,17 @@ public class FileState
     }
 
 
-    public EntityStateIntType getGroupID()
+    public EntityStateIntType getGroupId()
     {
         return group_id;
     }
 
 
-    public FileState groupID(
+    public FileState groupId(
                     final EntityStateIntType group_id
                     )
     {
-        setGroupID( group_id );
+        setGroupId( group_id );
         return this;
     }
 
@@ -225,7 +228,7 @@ public class FileState
 
     /**
      */
-    public void setUserID(
+    public void setUserId(
                     final EntityStateIntType user_id
                     )
     {
@@ -233,17 +236,17 @@ public class FileState
     }
 
 
-    public EntityStateIntType getUserID()
+    public EntityStateIntType getUserId()
     {
         return user_id;
     }
 
 
-    public FileState userID(
+    public FileState userId(
                     final EntityStateIntType user_id
                     )
     {
-        setUserID( user_id );
+        setUserId( user_id );
         return this;
     }
 
@@ -319,7 +322,7 @@ public class FileState
 
     /**
      */
-    public void setSuID(
+    public void setSuid(
                     final EntityStateBoolType suid
                     )
     {
@@ -327,7 +330,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getSuID()
+    public EntityStateBoolType getSuid()
     {
         return suid;
     }
@@ -336,7 +339,7 @@ public class FileState
 
     /**
      */
-    public void setSgID(
+    public void setSgid(
                     final EntityStateBoolType sgid
                     )
     {
@@ -344,7 +347,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getSgID()
+    public EntityStateBoolType getSgid()
     {
         return sgid;
     }
@@ -370,7 +373,7 @@ public class FileState
 
     /**
      */
-    public void setURead(
+    public void setUread(
                     final EntityStateBoolType uread
                     )
     {
@@ -378,7 +381,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getURead()
+    public EntityStateBoolType getUread()
     {
         return uread;
     }
@@ -386,7 +389,7 @@ public class FileState
 
     /**
      */
-    public void setUWrite(
+    public void setUwrite(
                     final EntityStateBoolType uwrite
                     )
     {
@@ -394,7 +397,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getUWrite()
+    public EntityStateBoolType getUwrite()
     {
         return uwrite;
     }
@@ -403,7 +406,7 @@ public class FileState
 
     /**
      */
-    public void setUExec(
+    public void setUexec(
                     final EntityStateBoolType uexec
                     )
     {
@@ -411,7 +414,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getUExec()
+    public EntityStateBoolType getUexec()
     {
         return uexec;
     }
@@ -420,7 +423,7 @@ public class FileState
 
     /**
      */
-    public void setGRead(
+    public void setGread(
                     final EntityStateBoolType gread
                     )
     {
@@ -428,7 +431,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getGRead()
+    public EntityStateBoolType getGread()
     {
         return gread;
     }
@@ -436,7 +439,7 @@ public class FileState
 
     /**
      */
-    public void setGWrite(
+    public void setGwrite(
                     final EntityStateBoolType gwrite
                     )
     {
@@ -444,7 +447,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getGWrite()
+    public EntityStateBoolType getGwrite()
     {
         return gwrite;
     }
@@ -453,7 +456,7 @@ public class FileState
 
     /**
      */
-    public void setGExec(
+    public void setGexec(
                     final EntityStateBoolType gexec
                     )
     {
@@ -461,7 +464,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getGExec()
+    public EntityStateBoolType getGexec()
     {
         return gexec;
     }
@@ -470,7 +473,7 @@ public class FileState
 
     /**
      */
-    public void setORead(
+    public void setOread(
                     final EntityStateBoolType oread
                     )
     {
@@ -478,7 +481,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getORead()
+    public EntityStateBoolType getOread()
     {
         return oread;
     }
@@ -486,7 +489,7 @@ public class FileState
 
     /**
      */
-    public void setOWrite(
+    public void setOwrite(
                     final EntityStateBoolType owrite
                     )
     {
@@ -494,7 +497,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getOWrite()
+    public EntityStateBoolType getOwrite()
     {
         return owrite;
     }
@@ -503,7 +506,7 @@ public class FileState
 
     /**
      */
-    public void setOExec(
+    public void setOexec(
                     final EntityStateBoolType oexec
                     )
     {
@@ -511,7 +514,7 @@ public class FileState
     }
 
 
-    public EntityStateBoolType getOExec()
+    public EntityStateBoolType getOexec()
     {
         return oexec;
     }
@@ -533,6 +536,45 @@ public class FileState
         return has_extended_acl;
     }
 
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
+        ref_list.add( getType() );
+        ref_list.add( getGroupId() );
+        ref_list.add( getUserId() );
+        ref_list.add( getATime() );
+        ref_list.add( getCTime() );
+        ref_list.add( getMTime() );
+        ref_list.add( getSize() );
+
+        ref_list.add( getSuid() );
+        ref_list.add( getSgid() );
+        ref_list.add( getSticky() );
+
+        ref_list.add( getUread() );
+        ref_list.add( getUwrite() );
+        ref_list.add( getUexec() );
+        ref_list.add( getGread() );
+        ref_list.add( getGwrite() );
+        ref_list.add( getGexec() );
+        ref_list.add( getOread() );
+        ref_list.add( getOwrite() );
+        ref_list.add( getOexec() );
+
+        ref_list.add( getHasExtendedAcl() );
+
+        return ref_list;
+    }
 
 
 
@@ -570,24 +612,24 @@ public class FileState
              + ", path="                + getPath()
              + ", filename="            + getFilename()
              + ", type="                + getType()
-             + ", group_id="            + getGroupID()
-             + ", user_id="             + getUserID()
+             + ", group_id="            + getGroupId()
+             + ", user_id="             + getUserId()
              + ", a_time="              + getATime()
              + ", c_time="              + getCTime()
              + ", m_time="              + getMTime()
              + ", size="                + getSize()
-             + ", suid="                + getSuID()
-             + ", sgid="                + getSgID()
+             + ", suid="                + getSuid()
+             + ", sgid="                + getSgid()
              + ", sticky="              + getSticky()
-             + ", uread="               + getURead()
-             + ", uwrite="              + getUWrite()
-             + ", uexec="               + getUExec()
-             + ", gread="               + getGRead()
-             + ", gwrite="              + getGWrite()
-             + ", gexec="               + getGExec()
-             + ", oread="               + getORead()
-             + ", owrite="              + getOWrite()
-             + ", oexec="               + getOExec()
+             + ", uread="               + getUread()
+             + ", uwrite="              + getUwrite()
+             + ", uexec="               + getUexec()
+             + ", gread="               + getGread()
+             + ", gwrite="              + getGwrite()
+             + ", gexec="               + getGexec()
+             + ", oread="               + getOread()
+             + ", owrite="              + getOwrite()
+             + ", oexec="               + getOexec()
              + ", has_extended_acl="    + getHasExtendedAcl()
              + "]";
     }

@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -218,6 +221,28 @@ public class PasswordState
     public EntityStateIntType getLastLogin()
     {
         return last_login;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getUsername() );
+        ref_list.add( getPassword() );
+        ref_list.add( getUserId() );
+        ref_list.add( getGroupId() );
+        ref_list.add( getGcos() );
+        ref_list.add( getHomeDir() );
+        ref_list.add( getLoginShell() );
+        ref_list.add( getLastLogin() );
+
+        return ref_list;
     }
 
 

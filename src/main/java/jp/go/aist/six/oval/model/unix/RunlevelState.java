@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -146,6 +149,24 @@ public class RunlevelState
     public EntityStateBoolType getKill()
     {
         return kill;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getServiceName() );
+        ref_list.add( getRunlevel() );
+        ref_list.add( getStart() );
+        ref_list.add( getKill() );
+
+        return ref_list;
     }
 
 

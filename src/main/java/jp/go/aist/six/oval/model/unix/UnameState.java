@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -268,6 +271,26 @@ public class UnameState
     {
         setProcessorType( type );
         return this;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getMachineClass() );
+        ref_list.add( getNodeName() );
+        ref_list.add( getOsName() );
+        ref_list.add( getOsRelease() );
+        ref_list.add( getOsVersion() );
+        ref_list.add( getProcessorType() );
+
+        return ref_list;
     }
 
 
