@@ -36,10 +36,10 @@ import jp.go.aist.six.oval.model.Container;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalIdContainer
-    extends Container<OvalIdentifier>
+    extends Container<OvalId>
 {
 
-    private final Set<OvalIdentifier>  id = new HashSet<OvalIdentifier>();
+    private final Set<OvalId>  id = new HashSet<OvalId>();
 
 
 
@@ -52,7 +52,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final Collection<OvalIdentifier> id_list
+                    final Collection<OvalId> id_list
                     )
     {
         super( id_list );
@@ -60,7 +60,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final OvalIdentifier[] id_list
+                    final OvalId[] id_list
                     )
     {
         super( id_list );
@@ -71,7 +71,7 @@ public class OvalIdContainer
     /**
      */
     public void setIds(
-                    final Collection<OvalIdentifier> id_list
+                    final Collection<OvalId> id_list
                     )
     {
         _setElement( id_list );
@@ -79,27 +79,27 @@ public class OvalIdContainer
 
 
     public void setIds(
-                    final OvalIdentifier[] id_list
+                    final OvalId[] id_list
                     )
     {
         _setElement( id_list );
     }
 
 
-    public Collection<OvalIdentifier> getIds()
+    public Collection<OvalId> getIds()
     {
         return _getElement();
     }
 
 
-    public Iterator<OvalIdentifier> iterateIds()
+    public Iterator<OvalId> iterateIds()
     {
         return iterator();
     }
 
 
     public boolean addId(
-                    final OvalIdentifier id
+                    final OvalId id
                     )
     {
         return _addElement( id );
@@ -112,7 +112,7 @@ public class OvalIdContainer
     //**************************************************************
 
     @Override
-    protected Collection<OvalIdentifier> _getElement()
+    protected Collection<OvalId> _getElement()
     {
         return id;
     }

@@ -8,7 +8,7 @@ import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.ElementContainer;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
-import jp.go.aist.six.oval.model.common.OvalIdentifier;
+import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -49,7 +49,7 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        ElementType  type = OvalIdentifier.elementTypeOf( oval_id );
+        ElementType  type = OvalId.elementTypeOf( oval_id );
         ElementContainer<? extends DefinitionsElement>  container = _findContainer( oval_defs, type );
 
 //        ElementContainer<? extends DefinitionsElement>  container = null;
@@ -321,7 +321,7 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        return javaTypeOf( OvalIdentifier.elementTypeOf( oval_id ) );
+        return javaTypeOf( OvalId.elementTypeOf( oval_id ) );
     }
 
 
