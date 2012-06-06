@@ -4,8 +4,8 @@ import java.io.File;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.OvalIdContainer;
 import jp.go.aist.six.oval.model.common.OvalID;
+import jp.go.aist.six.oval.model.common.OvalIdContainer;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 
