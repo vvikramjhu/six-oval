@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 
 
 
@@ -98,7 +99,15 @@ public class ExtendDefinitionType
 
 
 
-    //**************************************************************
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.DEFINITION;
+    }
+
+
+
+   //**************************************************************
     //  java.lang.Object
     //**************************************************************
 

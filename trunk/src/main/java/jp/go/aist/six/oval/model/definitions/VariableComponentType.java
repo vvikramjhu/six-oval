@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 
 
 
@@ -76,6 +77,14 @@ public class VariableComponentType
     public String ovalGetRefId()
     {
         return getVarRef();
+    }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.VARIABLE;
     }
 
 

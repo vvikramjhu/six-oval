@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -294,6 +295,14 @@ public abstract class EntityAttributeGroup
     public String ovalGetRefId()
     {
         return getVarRef();
+    }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.VARIABLE;
     }
 
 

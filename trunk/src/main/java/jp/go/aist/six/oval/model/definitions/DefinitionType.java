@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
@@ -234,7 +235,19 @@ public class DefinitionType
 
 
     //*********************************************************************
-    //  SIX extension
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.DEFINITION;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
     //*********************************************************************
 
     @Override

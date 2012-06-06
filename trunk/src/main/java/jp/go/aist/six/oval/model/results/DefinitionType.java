@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 
 
@@ -90,7 +91,7 @@ public class DefinitionType
 
     public CriteriaType getCriteria()
     {
-        return this.criteria;
+        return criteria;
     }
 
 
@@ -133,9 +134,20 @@ public class DefinitionType
 
     public ClassEnumeration getDefinitionClass()
     {
-        return this.definition_class;
+        return definition_class;
     }
 
+
+
+    //*********************************************************************
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.DEFINITION;
+    }
 
 
 

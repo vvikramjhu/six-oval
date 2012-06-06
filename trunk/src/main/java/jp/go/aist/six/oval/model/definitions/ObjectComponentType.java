@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 
 
 
@@ -128,6 +129,14 @@ public class ObjectComponentType
     public String ovalGetRefId()
     {
         return getObjectRef();
+    }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.OBJECT;
     }
 
 
