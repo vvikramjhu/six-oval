@@ -13,6 +13,7 @@ import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.ElementContainer;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -374,7 +375,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             DefinitionType.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
                             null,
                             "oval:org.mitre.oval.test:def:140",
@@ -385,7 +386,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             DefinitionType.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
                             null,
                             "oval:org.mitre.oval.test:def:16",
@@ -431,7 +432,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             Family.WINDOWS,
                             Component.FILE,
                             "oval:org.mitre.oval.test:tst:1303",
@@ -442,7 +443,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             SystemObjectType.class,
-                            DefinitionsElement.Type.OBJECT,
+                            ElementType.OBJECT,
                             Family.WINDOWS,
                             Component.FILE,
                             "oval:org.mitre.oval.test:obj:1060",
@@ -453,7 +454,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             StateType.class,
-                            DefinitionsElement.Type.STATE,
+                            ElementType.STATE,
                             Family.WINDOWS,
                             Component.FILE,
                             "oval:org.mitre.oval.test:ste:1161",
@@ -466,7 +467,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             Family.LINUX,
                             Component.DPKGINFO,
                             "oval:org.mitre.oval.test:tst:709",
@@ -477,7 +478,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             SystemObjectType.class,
-                            DefinitionsElement.Type.OBJECT,
+                            ElementType.OBJECT,
                             Family.LINUX,
                             Component.DPKGINFO,
                             "oval:org.mitre.oval.test:obj:102",
@@ -488,7 +489,7 @@ public abstract class OvalCoreTestBase
                             OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.9",
                             StateType.class,
-                            DefinitionsElement.Type.STATE,
+                            ElementType.STATE,
                             Family.LINUX,
                             Component.DPKGINFO,
                             "oval:org.mitre.oval.test:ste:787",

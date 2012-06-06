@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
@@ -76,45 +77,45 @@ extends OvalCoreTestBase
      * DefinitionsElement.
      *
      *  QueryParams               params,
-     *  DefinitionsElement.Type[] types
+     *  ElementType[] types
      */
     @DataProvider( name="DATA.oval.repository.query_params.definitions_element" )
     public Object[][] provideRepositoryQueryParamsOvalDefDefinitionsElement()
     {
         // order, count
         DefinitionsElementQueryParams  params01 = new DefinitionsElementQueryParams();
-        params01.setType( DefinitionsElement.Type.TEST.value() );
+        params01.setType( ElementType.TEST.value() );
         params01.setOrder( "id" );
         params01.setCount( "3" );
 
         // order, count, starIndex
         DefinitionsElementQueryParams  params02 = new DefinitionsElementQueryParams();
-        params02.setType( DefinitionsElement.Type.TEST.value() );
+        params02.setType( ElementType.TEST.value() );
         params02.setOrder( "id" );
         params02.setStartIndex( "3" );
         params02.setCount( "2" );
 
         // order, count
         DefinitionsElementQueryParams  params03 = new DefinitionsElementQueryParams();
-        params03.setType( DefinitionsElement.Type.TEST.value() );
+        params03.setType( ElementType.TEST.value() );
         params03.setOrder( "-id" );
         params03.setCount( "5" );
 
         // order, count
         DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
-        params04.setType( DefinitionsElement.Type.TEST.value() );
+        params04.setType( ElementType.TEST.value() );
         params04.setOrder( "-version,-id" );
         params04.setCount( "5" );
 
         // searchTerms, order
         DefinitionsElementQueryParams  params05 = new DefinitionsElementQueryParams();
-        params05.setType( DefinitionsElement.Type.STATE.value() );
+        params05.setType( ElementType.STATE.value() );
         params05.setOrder( "id" );
         params05.setSearchTerms( "Validation" );
 
         // searchTerms, order
         DefinitionsElementQueryParams  params06 = new DefinitionsElementQueryParams();
-        params06.setType( DefinitionsElement.Type.STATE.value() );
+        params06.setType( ElementType.STATE.value() );
         params06.setOrder( "id" );
         params06.setSearchTerms( "Validation,security" );
 
@@ -151,39 +152,39 @@ extends OvalCoreTestBase
 
         // OVAL version, order
         DefinitionsElementQueryParams  params31 = new DefinitionsElementQueryParams();
-        params31.setType( DefinitionsElement.Type.TEST.value() );
+        params31.setType( ElementType.TEST.value() );
         params31.setOrder( "id" );
         params31.setVersion( ">1" );
 
 
         // family (1) --- single
         DefinitionsElementQueryParams  params41 = new DefinitionsElementQueryParams();
-        params41.setType( DefinitionsElement.Type.TEST.value() );
+        params41.setType( ElementType.TEST.value() );
         params41.setOrder( "id" );
         params41.setFamily( Family.LINUX.value() );
 
         // family (2) --- list
         DefinitionsElementQueryParams  params42 = new DefinitionsElementQueryParams();
-        params42.setType( DefinitionsElement.Type.TEST.value() );
+        params42.setType( ElementType.TEST.value() );
         params42.setOrder( "id" );
         params42.setFamily( Family.LINUX.value() + "," + Family.UNIX.value() );
 
 
         // component (1) --- single
         DefinitionsElementQueryParams  params51 = new DefinitionsElementQueryParams();
-        params51.setType( DefinitionsElement.Type.TEST.value() );
+        params51.setType( ElementType.TEST.value() );
         params51.setOrder( "id" );
         params51.setComponent( Component.FAMILY.value() );
 
         // component (2) --- list
         DefinitionsElementQueryParams  params52 = new DefinitionsElementQueryParams();
-        params52.setType( DefinitionsElement.Type.TEST.value() );
+        params52.setType( ElementType.TEST.value() );
         params52.setOrder( "id" );
         params52.setComponent( new Component[] { Component.FILE, Component.PROCESS58 } );
 
         // component (3) --- family
         DefinitionsElementQueryParams  params53 = new DefinitionsElementQueryParams();
-//        params53.setType( DefinitionsElement.Type.TEST.value() );
+//        params53.setType( ElementType.TEST.value() );
         params53.setOrder( "id" );
         params53.setComponent( Component.FILE );
         params53.setFamily( Family.WINDOWS.value() );
@@ -192,108 +193,108 @@ extends OvalCoreTestBase
         return new Object[][] {
                         {
                             "01", params01,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "02", params02,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "03", params03,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "04", params04,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "05", params05,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
+                            new ElementType[] { ElementType.STATE }
                         }
                         ,
                         {
                             "06", params06,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
+                            new ElementType[] { ElementType.STATE }
                         }
                         ,
                         {
                             "21", params21,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "22", params22,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "23", params23,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.OBJECT,
-                                            DefinitionsElement.Type.STATE
+                            new ElementType[] {
+                                            ElementType.TEST,
+                                            ElementType.OBJECT,
+                                            ElementType.STATE
                                             }
                         }
                         ,
                         {
                             "24", params24,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.OBJECT,
-                                            DefinitionsElement.Type.STATE,
-                                            DefinitionsElement.Type.DEFINITION
+                            new ElementType[] {
+                                            ElementType.TEST,
+                                            ElementType.OBJECT,
+                                            ElementType.STATE,
+                                            ElementType.DEFINITION
                                             }
                         }
                         ,
                         {
                             "25", params25,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "26", params26,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.STATE
+                            new ElementType[] {
+                                            ElementType.TEST,
+                                            ElementType.STATE
                                             }
                         }
                         ,
                         {
                             "31", params31,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "41", params41,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "42", params42,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "51", params51,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "52", params52,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            new ElementType[] { ElementType.TEST }
                         }
                         ,
                         {
                             "53", params53,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.OBJECT,
-                                            DefinitionsElement.Type.STATE,
-                                            DefinitionsElement.Type.DEFINITION
+                            new ElementType[] {
+                                            ElementType.TEST,
+                                            ElementType.OBJECT,
+                                            ElementType.STATE,
+                                            ElementType.DEFINITION
                                             }
                         }
         };
@@ -305,7 +306,7 @@ extends OvalCoreTestBase
      * Definition.
      *
      *  Class<DefinitionType>     object_type,
-     *  DefinitionsElement.Type   type,
+     *  ElementType   type,
      *  QueryParams               params
      */
     @DataProvider( name="DATA.oval.repository.query_params.definition" )
@@ -436,196 +437,196 @@ extends OvalCoreTestBase
                         {
                             "01",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params01
                         }
                         ,
                         {
                             "02",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params02
                         }
                         ,
                         {
                             "03",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params03
                         }
                         ,
                         {
                             "04",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params04
                         }
                         ,
                         {
                             "05",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params05
                         }
                         ,
                         {
                             "06",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params06
                         }
                         ,
                         {
                             "11",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params11
                         }
                         ,
                         {
                             "12",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params12
                         }
                         ,
                         {
                             "13",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params13
                         }
                         ,
                         {
                             "14",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params14
                         }
                         ,
                         {
                             "15",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params15
                         }
                         ,
                         {
                             "16",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params16
                         }
                         ,
                         {
                             "20",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params20
                         }
                         ,
                         {
                             "21",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params21
                         }
                         ,
                         {
                             "22",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params22
                         }
                         ,
                         {
                             "23",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params23
                         }
                         ,
                         {
                             "31",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params31
                         }
                         ,
                         {
                             "32",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params32
                         }
                         ,
                         {
                             "41",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params41
                         }
                         ,
                         {
                             "42",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params42
                         }
                         ,
                         {
                             "51",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params51
                         }
                         ,
                         {
                             "52",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params52
                         }
                         ,
                         {
                             "55",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params55
                         }
                         ,
                         {
                             "56",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params56
                         }
                         ,
                         {
                             "57",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params57
                         }
                         ,
                         {
                             "58",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params58
                         }
                         ,
                         {
                             "61",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params61
                         }
                         ,
                         {
                             "62",
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params62
                         }
         };
@@ -638,7 +639,7 @@ extends OvalCoreTestBase
      *
      *  <T extends DefinitionsElement>
      *  String                      data_id
-     *  DefinitionsElement.Type     element_type,
+     *  ElementType     element_type,
      *  Class<T>                    element_clazz,
      *  T                           element
      */
@@ -660,7 +661,7 @@ extends OvalCoreTestBase
         return new Object[][] {
                         {
                             "101",
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             jp.go.aist.six.oval.model.definitions.TestType.class,
                             test101
                         }
@@ -750,7 +751,7 @@ extends OvalCoreTestBase
     public <T extends DefinitionsElement>
     void testSaveElementAndFindById(
                     final String                      data_id,
-                    final DefinitionsElement.Type     element_type,
+                    final ElementType     element_type,
                     final Class<T>                    element_clazz,
                     final T                           element
                     )
@@ -778,7 +779,7 @@ extends OvalCoreTestBase
         String  p_oval_id = p_element.getOvalID();
         Reporter.log( "  @ OVAL-ID: " + p_oval_id, true );
         Assert.assertEquals( oval_id, p_oval_id );
-        Assert.assertEquals( element.ovalGetElementType(), p_element.ovalGetElementType() );
+        Assert.assertEquals( element.ovalGetType(), p_element.ovalGetType() );
         Assert.assertTrue( element_clazz.isInstance( p_element ) );
     }
 
@@ -801,7 +802,7 @@ extends OvalCoreTestBase
     public void testFindElementAndCountElementByQuery(
                     final String                    dataId,
                     final QueryParams               params,
-                    final DefinitionsElement.Type[] types
+                    final ElementType[] types
                     )
     throws Exception
     {
@@ -816,9 +817,9 @@ extends OvalCoreTestBase
         _printOvalIds( element_list );
 
         if (element_list.size() > 0) {
-            Collection<DefinitionsElement.Type>  type_set = Arrays.asList( types );
+            Collection<ElementType>  type_set = Arrays.asList( types );
             for (DefinitionsElement  e : element_list) {
-                Assert.assertTrue( type_set.contains( e.ovalGetElementType() ) );
+                Assert.assertTrue( type_set.contains( e.ovalGetType() ) );
             }
         }
 
@@ -895,7 +896,7 @@ extends OvalCoreTestBase
                     final OvalContentCategory       category,
                     final String                    schema_version,
                     final Class<DefinitionType>     object_type,
-                    final DefinitionsElement.Type   type,
+                    final ElementType   type,
                     final ClassEnumeration          definition_class,
                     final Family                    family,
                     final String                    oval_id,
@@ -932,7 +933,7 @@ extends OvalCoreTestBase
     public void testFindDefinitionAndCountByQuery(
                     final String                    dataId,
                     final Class<DefinitionType>     object_type,
-                    final DefinitionsElement.Type   type,
+                    final ElementType   type,
                     final QueryParams               params
                     )
     throws Exception
