@@ -1,8 +1,8 @@
 package jp.go.aist.six.test.oval.core.repository.mongodb;
 
 import jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
@@ -290,7 +290,7 @@ extends OvalCoreTestBase
                       {
                           "18",
                           jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                          DefinitionsElement.Type.DEFINITION,
+                          ElementType.DEFINITION,
                           params18
                       }
 //                        ,
@@ -430,7 +430,7 @@ extends OvalCoreTestBase
     public void testGenerateByQuery(
                     final String                    dataId,
                     final Class<DefinitionType>     object_type,
-                    final DefinitionsElement.Type   type,
+                    final ElementType               type,
                     final QueryParams               params
                     )
     throws Exception

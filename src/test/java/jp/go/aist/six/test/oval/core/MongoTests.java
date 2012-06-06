@@ -3,8 +3,8 @@ package jp.go.aist.six.test.oval.core;
 import java.io.File;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -146,7 +146,7 @@ public abstract class MongoTests
      * definitions element.
      *
      *  Class<? extends DefinitionsElement>     object_type,
-     *  DefinitionsElement.Type   type,
+     *  ElementType   type,
      *  QueryParams               params
      */
     @DataProvider( name="DATA.oval.repository.query_params.def.element" )
@@ -156,37 +156,37 @@ public abstract class MongoTests
         DefinitionsElementQueryParams  params01 = new DefinitionsElementQueryParams();
         params01.setOrder( "id" );
         params01.setCount( "3" );
-        params01.setType( DefinitionsElement.Type.TEST.value() );
+        params01.setType( ElementType.TEST.value() );
 
         // common: order, count, startIndex
         DefinitionsElementQueryParams  params02 = new DefinitionsElementQueryParams();
         params02.setOrder( "id" );
         params02.setCount( "2" );
         params02.setStartIndex( "4" );
-        params02.setType( DefinitionsElement.Type.TEST.value() );
+        params02.setType( ElementType.TEST.value() );
 
         // common: order, count, startIndex
         DefinitionsElementQueryParams  params03 = new DefinitionsElementQueryParams();
         params03.setOrder( "-id" );
         params03.setCount( "5" );
-        params03.setType( DefinitionsElement.Type.TEST.value() );
+        params03.setType( ElementType.TEST.value() );
 
         // common: searchTerms, order
         DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
         params04.setOrder( "id" );
         params04.setSearchTerms( "iexplore.exe" );
-        params04.setType( DefinitionsElement.Type.OBJECT.value() );
+        params04.setType( ElementType.OBJECT.value() );
 
         // common: searchTerms, order
         DefinitionsElementQueryParams  params05 = new DefinitionsElementQueryParams();
         params05.setOrder( "-id" );
         params05.setSearchTerms( "regular expression" );
-        params05.setType( DefinitionsElement.Type.STATE.value() );
+        params05.setType( ElementType.STATE.value() );
 
         // element: version
         DefinitionsElementQueryParams  params11 = new DefinitionsElementQueryParams();
         params11.setVersion( "3" );
-        params11.setType( DefinitionsElement.Type.TEST.value() );
+        params11.setType( ElementType.TEST.value() );
 
         // element: id --- linux rpminfo
         DefinitionsElementQueryParams  params12 = new DefinitionsElementQueryParams();
@@ -211,37 +211,37 @@ public abstract class MongoTests
         return new Object[][] {
                         {
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             params01
                         }
                         ,
                         {
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             params02
                         }
                         ,
                         {
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             params03
                         }
                         ,
                         {
                             SystemObjectType.class,
-                            DefinitionsElement.Type.OBJECT,
+                            ElementType.OBJECT,
                             params04
                         }
                         ,
                         {
                             StateType.class,
-                            DefinitionsElement.Type.STATE,
+                            ElementType.STATE,
                             params05
                         }
                         ,
                         {
                             TestType.class,
-                            DefinitionsElement.Type.TEST,
+                            ElementType.TEST,
                             params11
                         }
                         ,
@@ -283,7 +283,7 @@ public abstract class MongoTests
      * Definition.
      *
      *  Class<DefinitionType>     object_type,
-     *  DefinitionsElement.Type   type,
+     *  ElementType   type,
      *  QueryParams               params
      */
     @DataProvider( name="DATA.oval.repository.query_params.def.definition" )
@@ -358,91 +358,91 @@ public abstract class MongoTests
         return new Object[][] {
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params1
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params2
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params3
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params4
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params5
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params11
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params12
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params13
 //                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            DefinitionsElement.Type.DEFINITION,
+//                            ElementType.DEFINITION,
 //                            params14
 //                        }
 //                        ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params21
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params22
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params23
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params24
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params25
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
+                            ElementType.DEFINITION,
                             params26
                         }
         };
