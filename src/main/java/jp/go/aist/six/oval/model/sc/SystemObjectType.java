@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Element;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.MessageType;
 
 
@@ -326,6 +327,18 @@ public class SystemObjectType
     public FlagEnumeration getFlag()
     {
         return flag;
+    }
+
+
+
+    //*********************************************************************
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.OBJECT;
     }
 
 

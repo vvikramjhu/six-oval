@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
@@ -135,7 +136,15 @@ public class Filter
 
 
 
-    //**************************************************************
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.STATE;
+    }
+
+
+
+   //**************************************************************
     //  java.lang.Object
     //**************************************************************
 

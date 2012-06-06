@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -32,7 +34,7 @@ import jp.go.aist.six.oval.model.ElementRef;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class StateRefType
-    implements ElementRef
+    implements ElementRef, OvalObject
 //    implements Dependent<TestType>
 {
 
@@ -82,27 +84,20 @@ public class StateRefType
     //  ElementRef
     //**************************************************************
 
-//    @Override
-//    protected void _setRef(
-//                    final String id
-//                    )
-//    {
-//        setStateRef( id );
-//    }
-//
-//
-//    @Override
-//    protected String _getRef()
-//    {
-//        return getStateRef();
-//    }
-
-
     @Override
     public String ovalGetRefId()
     {
         return getStateRef();
     }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.STATE;
+    }
+
 
 
 //    //**************************************************************

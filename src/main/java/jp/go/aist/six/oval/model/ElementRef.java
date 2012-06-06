@@ -32,11 +32,10 @@ package jp.go.aist.six.oval.model;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public interface ElementRef
-    extends OvalObject
 {
 
     /**
-     * Returns the OVAL ID of the refering element.
+     * Returns the OVAL ID of the referring element.
      *
      * @return
      *  the OVAL ID.
@@ -44,13 +43,14 @@ public interface ElementRef
     public String ovalGetRefId();
 
 
-    //TODO:
-//    public DefinitionsElement.Type ovalGetRefType();
 
-
-
-//    protected abstract void _setRef( String id );
-//    protected abstract String _getRef();
+    /**
+     * Returns the type of the referring element.
+     *
+     * @return
+     *  the type.
+     */
+    public ElementType ovalGetRefType();
 
 }
 //

@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.results;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
@@ -124,7 +125,7 @@ public class TestType
 
     public Collection<TestedItemType> getTestedItem()
     {
-        return this.tested_item;
+        return tested_item;
     }
 
 
@@ -144,10 +145,10 @@ public class TestType
                     final Collection<? extends TestedVariableType> variableList
                     )
     {
-        if (variableList != this.tested_variable) {
-            this.tested_variable.clear();
+        if (variableList != tested_variable) {
+            tested_variable.clear();
             if (variableList != null  &&  variableList.size() > 0) {
-                this.tested_variable.addAll( variableList );
+                tested_variable.addAll( variableList );
             }
         }
     }
@@ -163,7 +164,7 @@ public class TestType
 
     public Collection<TestedVariableType> getTestedVariable()
     {
-        return this.tested_variable;
+        return tested_variable;
     }
 
 
@@ -206,7 +207,7 @@ public class TestType
 
     public ExistenceEnumeration getCheckExistence()
     {
-        return this.check_existence;
+        return check_existence;
     }
 
 
@@ -232,7 +233,7 @@ public class TestType
 
     public CheckEnumeration getCheck()
     {
-        return this.check;
+        return check;
     }
 
 
@@ -267,7 +268,19 @@ public class TestType
 
     public OperatorEnumeration getStateOperator()
     {
-        return this.state_operator;
+        return state_operator;
+    }
+
+
+
+    //*********************************************************************
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.TEST;
     }
 
 

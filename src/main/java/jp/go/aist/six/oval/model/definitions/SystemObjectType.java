@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.Collection;
 import java.util.Collections;
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import com.google.code.morphia.annotations.Entity;
 
 
@@ -109,7 +110,19 @@ public class SystemObjectType
 
 
     //*********************************************************************
-    //  SIX extension
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.OBJECT;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
     //*********************************************************************
 
     @Override

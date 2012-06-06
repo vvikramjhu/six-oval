@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
@@ -351,7 +352,19 @@ public class TestType
 
 
     //*********************************************************************
-    //  SIX extension
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.TEST;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
     //*********************************************************************
 
     @Override

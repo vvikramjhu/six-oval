@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.Collection;
 import java.util.Collections;
 import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
@@ -173,7 +174,19 @@ public class VariableType
 
 
     //*********************************************************************
-    //  SIX extension
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public final ElementType ovalGetType()
+    {
+        return ElementType.VARIABLE;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
     //*********************************************************************
 
     @Override

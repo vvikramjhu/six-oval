@@ -2,6 +2,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
 import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
@@ -78,6 +79,7 @@ public class OvalConverter
         // six //
         Family.class,
         Component.class,
+        ElementType.class,
 
         RecurseDirectionEnumeration.class,
         RecurseEnumeration.class,
