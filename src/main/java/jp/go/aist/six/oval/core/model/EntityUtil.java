@@ -8,7 +8,7 @@ import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.ElementContainer;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
-import jp.go.aist.six.oval.model.common.OvalID;
+import jp.go.aist.six.oval.model.common.OvalIdentifier;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -49,11 +49,11 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        ElementType  type = OvalID.elementTypeOf( oval_id );
+        ElementType  type = OvalIdentifier.elementTypeOf( oval_id );
         ElementContainer<? extends DefinitionsElement>  container = _findContainer( oval_defs, type );
 
 //        ElementContainer<? extends DefinitionsElement>  container = null;
-//        ElementType  type = OvalID.elementTypeOf( oval_id );
+//        ElementType  type = OvalIdentifier.elementTypeOf( oval_id );
 //        if (type == ElementType.DEFINITION) {
 //            container = oval_defs.getDefinitions();
 //        } else if (type == ElementType.TEST) {
@@ -321,7 +321,7 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        return javaTypeOf( OvalID.elementTypeOf( oval_id ) );
+        return javaTypeOf( OvalIdentifier.elementTypeOf( oval_id ) );
     }
 
 
@@ -343,15 +343,15 @@ public final class EntityUtil
 
     //OLD
 
-//    private static EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>  _TYPE_MAP_ =
-//                    new EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>( OvalId.Type.class );
+//    private static EnumMap<OvalIdentifier.Type, Class<? extends DefinitionsElement>>  _TYPE_MAP_ =
+//                    new EnumMap<OvalIdentifier.Type, Class<? extends DefinitionsElement>>( OvalIdentifier.Type.class );
 //
 //    static {
-//            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
-//            _TYPE_MAP_.put( OvalId.Type.tst, TestType.class );
-//            _TYPE_MAP_.put( OvalId.Type.obj, SystemObjectType.class );
-//            _TYPE_MAP_.put( OvalId.Type.ste, StateType.class );
-//            _TYPE_MAP_.put( OvalId.Type.var, VariableType.class );
+//            _TYPE_MAP_.put( OvalIdentifier.Type.def, DefinitionType.class );
+//            _TYPE_MAP_.put( OvalIdentifier.Type.tst, TestType.class );
+//            _TYPE_MAP_.put( OvalIdentifier.Type.obj, SystemObjectType.class );
+//            _TYPE_MAP_.put( OvalIdentifier.Type.ste, StateType.class );
+//            _TYPE_MAP_.put( OvalIdentifier.Type.var, VariableType.class );
 //    }
 //
 //
@@ -362,9 +362,9 @@ public final class EntityUtil
 //                    )
 //    throws OvalException
 //    {
-//        OvalId.Type  id_type = null;
+//        OvalIdentifier.Type  id_type = null;
 //        try {
-//            id_type = OvalId.typeOf( oval_id );
+//            id_type = OvalIdentifier.typeOf( oval_id );
 //        } catch (Exception ex) {
 //            throw new OvalRepositoryException( ex );
 //        }
@@ -375,7 +375,7 @@ public final class EntityUtil
 //
 //
 //    public static Class<? extends DefinitionsElement> objectTypeOf(
-//                    final OvalId.Type id_type
+//                    final OvalIdentifier.Type id_type
 //                    )
 //    throws OvalException
 //    {
@@ -394,7 +394,7 @@ public final class EntityUtil
 //                    )
 //    throws OvalRepositoryException
 //    {
-//        return objectTypeOf( type.getOvalIdType() );
+//        return objectTypeOf( type.getOvalIdentifierType() );
 //    }
 
 
