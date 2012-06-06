@@ -18,10 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.common;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import jp.go.aist.six.oval.model.ElementType;
+import jp.go.aist.six.oval.model.OvalIdSyntaxException;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -33,57 +36,220 @@ import java.util.Arrays;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OvalId
+public final class OvalID
     implements OvalObject, Cloneable, Serializable
 {
 
     public static final String  PREFIX = "oval";
 
-    public static final char  SEPARATOR = ':';
+    public static final String  SEPARATOR = ":";
 
 
     /**
-     * The types of OVAL entity for which the OVAL-ID is used.
+     * The types of OVAL element for which the OVAL-ID is used.
      */
     public enum Type
     {
-        def,
-        tst,
-        obj,
-        ste,
-        var
+        def( ElementType.DEFINITION ),
+        tst( ElementType.TEST       ),
+        obj( ElementType.OBJECT     ),
+        ste( ElementType.STATE      ),
+        var( ElementType.VARIABLE   );
+
+
+        private ElementType  _elementType;
+
+        Type( final ElementType element_type )
+        {
+            _elementType = element_type;
+        }
+
+
+        public ElementType elementType()
+        {
+            return _elementType;
+        }
     }
 
 
 
-//    private String  _ovalIdString;
 
+    ///////////////////////////////////////////////////////////////////////
+    //  functions
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     */
+    public static final void validate(
+                    final String oval_id
+                    )
+    throws OvalIdSyntaxException
+    {
+        if (oval_id == null) {
+            throw new OvalIdSyntaxException( "empty OVAL-ID (null)" );
+        }
+
+        //validation
+        new OvalID( oval_id );
+    }
+
+
+
+    /**
+     */
+    public static final Type typeOf(
+                    final String oval_id
+                    )
+    throws OvalIdSyntaxException
+    {
+        if (oval_id == null) {
+            throw new OvalIdSyntaxException( "empty OVAL-ID (null)" );
+        }
+
+        String[]  components = oval_id.split( SEPARATOR );
+        if (components.length != 4) {
+            throw new OvalIdSyntaxException(
+                            "insufficient or surplus components: " + oval_id );
+        }
+
+        return Type.valueOf( components[2] );
+    }
+
+
+
+    /**
+     */
+    public static final ElementType elementTypeOf(
+                    final String oval_id
+                    )
+    throws OvalIdSyntaxException
+    {
+        Type  type = typeOf( oval_id );
+
+        return type.elementType();
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  instance definition
+    ///////////////////////////////////////////////////////////////////////
 
     private String  _namespace;
-    private Type  _type;
-    private int  _idValue;
+    private Type    _type;
+    private int     _idValue;
 
-    private String  _string_representation;
+    private String  _id;
+
 
 
     /**
      * Constructor.
      */
-    protected OvalId()
+    protected OvalID()
     {
     }
 
 
-    public OvalId(
+    public OvalID(
                     final String oval_id
                     )
     throws OvalIdSyntaxException
     {
-        this( oval_id.split( ":" ) );
+        _set( oval_id );
+
+//        this( oval_id.split( SEPARATOR ) );
     }
 
 
-    public OvalId(
+    public OvalID(
+                    final String[] components
+                    )
+    throws OvalIdSyntaxException
+    {
+        _set( components );
+
+//        if (components.length == 3) {
+//            _set( PREFIX, components[0], components[1], components[2] );
+//        } else if (components.length == 4) {
+//            _set( components[0], components[1], components[2], components[3] );
+//        } else {
+//
+//            throw new OvalIdSyntaxException(
+//                            "insufficient or surplus components: "
+//                                            + Arrays.toString( components ) );
+//        }
+    }
+
+
+    public OvalID(
+                    final String namespace,
+                    final String type,
+                    final String id_value
+                    )
+    throws OvalIdSyntaxException
+    {
+        this( PREFIX, namespace, type, id_value );
+    }
+
+
+    public OvalID(
+                    final String namespace,
+                    final Type type,
+                    final int id_value
+                    )
+    throws OvalIdSyntaxException
+    {
+        this( PREFIX, namespace, type, id_value );
+    }
+
+
+    public OvalID(
+                    final String prefix,
+                    final String namespace,
+                    final String type,
+                    final String id_value
+                    )
+    throws OvalIdSyntaxException
+    {
+        _set( prefix, namespace, type, id_value );
+    }
+
+
+    public OvalID(
+                    final String prefix,
+                    final String namespace,
+                    final Type type,
+                    final int id_value
+                    )
+    throws OvalIdSyntaxException
+    {
+        _set( prefix, namespace, type, id_value );
+    }
+
+
+
+    /**
+     */
+    private void _set(
+                    final String oval_id
+                    )
+    throws OvalIdSyntaxException
+    {
+        String[] components = null;
+        try {
+            components = oval_id.split( SEPARATOR );
+        } catch (Exception ex) {
+            throw new OvalIdSyntaxException( "invalid OVAL-ID: " + oval_id
+                            + ", cause=" + ex.getMessage()
+                            );
+        }
+
+        _set( components );
+    }
+
+
+    private void _set(
                     final String[] components
                     )
     throws OvalIdSyntaxException
@@ -101,88 +267,6 @@ public final class OvalId
     }
 
 
-    public OvalId(
-                    final String namespace,
-                    final String type,
-                    final String id_value
-                    )
-    throws OvalIdSyntaxException
-    {
-        this( PREFIX, namespace, type, id_value );
-    }
-
-
-    public OvalId(
-                    final String namespace,
-                    final Type type,
-                    final int id_value
-                    )
-    throws OvalIdSyntaxException
-    {
-        this( PREFIX, namespace, type, id_value );
-    }
-
-
-    public OvalId(
-                    final String prefix,
-                    final String namespace,
-                    final String type,
-                    final String id_value
-                    )
-    throws OvalIdSyntaxException
-    {
-        _set( prefix, namespace, type, id_value );
-    }
-
-
-    public OvalId(
-                    final String prefix,
-                    final String namespace,
-                    final Type type,
-                    final int id_value
-                    )
-    throws OvalIdSyntaxException
-    {
-        _set( prefix, namespace, type, id_value );
-    }
-
-
-
-    /**
-     */
-    public static final void validate(
-                    final String oval_id
-                    )
-    throws OvalIdSyntaxException
-    {
-        if (oval_id == null) {
-            throw new IllegalArgumentException( "empty OVAL-ID (null)" );
-        }
-
-        //validation
-        new OvalId( oval_id );
-    }
-
-
-
-    /**
-     */
-    public static final Type typeOf(
-                    final String oval_id
-                    )
-    {
-        String[]  components = oval_id.split( ":" );
-        if (components.length != 4) {
-            throw new OvalIdSyntaxException( "invalid OVAL-ID: " + oval_id );
-        }
-
-        return Type.valueOf( components[2] );
-    }
-
-
-
-    /**
-     */
     private void _set(
                     final String prefix,
                     final String namespace,
@@ -192,6 +276,7 @@ public final class OvalId
     {
         try {
             _set( prefix, namespace, Type.valueOf( type ), Integer.valueOf( id_value ).intValue() );
+            //throws IllegalArgumentException, NullPointerException, NumberFormatException
         } catch (OvalIdSyntaxException ex) {
             throw ex;
         } catch (Exception ex) {
@@ -199,6 +284,7 @@ public final class OvalId
                             + ", namespace=" + namespace
                             + ", type=" + type
                             + ", ID value=" + id_value
+                            + ", cause=" + ex.getMessage()
                             );
         }
     }
@@ -214,12 +300,23 @@ public final class OvalId
                     final int id_value
                     )
     {
-        _setPrefix( prefix );
-        _setNamespace( namespace );
-        _setType( type );
-        _setIdValue( id_value );
+        try {
+            _setPrefix( prefix );
+            _setNamespace( namespace );
+            _setType( type );
+            _setIdValue( id_value );
+        } catch (OvalIdSyntaxException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw new OvalIdSyntaxException( "invalid OVAL-ID: prefix=" + prefix
+                            + ", namespace=" + namespace
+                            + ", type=" + type
+                            + ", ID value=" + id_value
+                            + ", cause=" + ex.getMessage()
+                            );
+        }
 
-        _string_representation = toString();
+        _id = PREFIX + SEPARATOR + _namespace + SEPARATOR + _type.name() + SEPARATOR + _idValue;
     }
 
 
@@ -233,7 +330,8 @@ public final class OvalId
         if (PREFIX == prefix  ||  PREFIX.equals( prefix )) {
             //valid
         } else {
-            throw new OvalIdSyntaxException( "invalid prefix: " + prefix );
+            throw new IllegalArgumentException( "empty or invalid prefix" );
+//            throw new OvalIdSyntaxException( "invalid prefix: " + prefix );
         }
     }
 
@@ -252,7 +350,8 @@ public final class OvalId
                     )
     {
         if (namespace == null  ||  namespace.length() == 0) {
-            throw new OvalIdSyntaxException( "invalid namespace: " + namespace );
+            throw new IllegalArgumentException( "empty or invalid namespace" );
+//            throw new OvalIdSyntaxException( "empty or invalid namespace: " + namespace );
         }
 
         _namespace = namespace;
@@ -273,7 +372,8 @@ public final class OvalId
                     )
     {
         if (type == null) {
-            throw new OvalIdSyntaxException( "invalid type: " + type );
+            throw new IllegalArgumentException( "empty type" );
+//            throw new OvalIdSyntaxException( "empty type" );
         }
 
         _type = type;
@@ -300,6 +400,26 @@ public final class OvalId
     public int getIdValue()
     {
         return _idValue;
+    }
+
+
+
+    /**
+     * Returns the string representation.
+     */
+    public String value()
+    {
+        return _id;
+    }
+
+
+
+    /**
+     *
+     */
+    public ElementType getElementType()
+    {
+        return _type.elementType();
     }
 
 
@@ -337,13 +457,6 @@ public final class OvalId
 
 
 
-    public String getValue()
-    {
-        return _string_representation;
-    }
-
-
-
     //**************************************************************
     //  Comparable
     //**************************************************************
@@ -369,7 +482,7 @@ public final class OvalId
     public Object clone()
     throws CloneNotSupportedException
     {
-        return (new OvalId( _namespace, _type, _idValue ));
+        return (new OvalID( _namespace, _type, _idValue ));
     }
 
 
@@ -402,20 +515,16 @@ public final class OvalId
             return true;
         }
 
-        if (!(obj instanceof OvalId)) {
+        if (!(obj instanceof OvalID)) {
             return false;
         }
 
-        OvalId  other = (OvalId)obj;
-        if (this.getIdValue() == other.getIdValue()) {
-            if (this.getType() == other.getType()) {
-                String  this_namespace = getNamespace();
-                String  other_namespace = other.getNamespace();
-                if (this_namespace == other_namespace
-                                ||  (this_namespace != null  &&  this_namespace.equals( other_namespace ))) {
-                    return true;
-                }
-            }
+        OvalID  other = (OvalID)obj;
+        String  other_id = other.toString();
+        String   this_id = this.toString();
+        if (this_id == other_id
+                        ||  (this_id != null  &&  this_id.equalsIgnoreCase( other_id ))) {
+            return true;
         }
 
         return false;
@@ -426,7 +535,8 @@ public final class OvalId
     @Override
     public String toString()
     {
-        return PREFIX + SEPARATOR + _namespace + SEPARATOR + _type.name() + SEPARATOR + _idValue;
+        return _id;
+//        return PREFIX + SEPARATOR + _namespace + SEPARATOR + _type.name() + SEPARATOR + _idValue;
     }
 
 }
