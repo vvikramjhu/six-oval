@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.util.ArrayList;
 import java.util.List;
 import jp.go.aist.six.oval.core.model.EntityUtil;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -295,7 +296,8 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-        Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( oval_id );
+        Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( oval_id );
+//        Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( oval_id );
 //        Class<? extends DefinitionsElement>  objectType = _toObjectType( oval_id );
         DefinitionsElement p_object = null;
         try {
@@ -344,7 +346,8 @@ public class MongoOvalDefinitionRepository
                 p_list.addAll( p_sub_list );
             } else {
                 adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
+                Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
+//                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
 //                Class<? extends DefinitionsElement>  objectType = _toObjectType( DefinitionsElement.Type.fromValue( type ) );
                 try {
                     p_sub_list = _datastore.find( objectType, adjustedParams );
@@ -406,7 +409,8 @@ public class MongoOvalDefinitionRepository
                 p_count += p_sub_count;
             } else {
                 adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
+                Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
+//                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
 //                Class<? extends DefinitionsElement>  objectType = _toObjectType( DefinitionsElement.Type.fromValue( type ) );
                 try {
                     p_count = _datastore.count( objectType, adjustedParams );

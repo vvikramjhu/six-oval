@@ -7,7 +7,8 @@ import java.util.Set;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.ElementContainer;
 import jp.go.aist.six.oval.model.ElementRef;
-import jp.go.aist.six.oval.model.OvalId;
+import jp.go.aist.six.oval.model.ElementType;
+import jp.go.aist.six.oval.model.common.OvalID;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -48,23 +49,27 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        DefinitionsElement.Type  element_type = DefinitionsElement.Type.fromOvalId( oval_id );
-        ElementContainer<? extends DefinitionsElement>  container = null;
-        if (element_type == DefinitionsElement.Type.DEFINITION) {
-            container = oval_defs.getDefinitions();
-        } else if (element_type == DefinitionsElement.Type.TEST) {
-            container = oval_defs.getTests();
-        } else if (element_type == DefinitionsElement.Type.OBJECT) {
-            container = oval_defs.getObjects();
-        } else if (element_type == DefinitionsElement.Type.STATE) {
-            container = oval_defs.getStates();
-        } else if (element_type == DefinitionsElement.Type.VARIABLE) {
-            container = oval_defs.getVariables();
-        }
+        ElementType  type = OvalID.elementTypeOf( oval_id );
+        ElementContainer<? extends DefinitionsElement>  container = _findContainer( oval_defs, type );
 
-        if (container == null) {
-            return false;
-        }
+//        ElementContainer<? extends DefinitionsElement>  container = null;
+//        ElementType  type = OvalID.elementTypeOf( oval_id );
+//        if (type == ElementType.DEFINITION) {
+//            container = oval_defs.getDefinitions();
+//        } else if (type == ElementType.TEST) {
+//            container = oval_defs.getTests();
+//        } else if (type == ElementType.OBJECT) {
+//            container = oval_defs.getObjects();
+//        } else if (type == ElementType.STATE) {
+//            container = oval_defs.getStates();
+//        } else if (type == ElementType.VARIABLE) {
+//            container = oval_defs.getVariables();
+//        }
+//
+//        if (container == null) {
+//            throw new OvalException( "design error" );
+////            return false;
+//        }
 
         return container.containsOvalId( oval_id );
     }
@@ -79,52 +84,170 @@ public final class EntityUtil
                     )
     throws OvalException
     {
-        DefinitionsElement.Type  element_type = element.ovalGetElementType();
+        if (oval_defs == null  ||  element == null) {
+            throw new IllegalArgumentException( "empty OVAL Definitions or element" );
+        }
+
+        ElementType  element_type = element.ovalGetType();
 
         boolean  added = false;
-        if (element_type == DefinitionsElement.Type.DEFINITION) {
+        if (element_type == ElementType.DEFINITION) {
             DefinitionsType  definitions = oval_defs.getDefinitions();
             if (definitions == null) {
                 definitions = new DefinitionsType();
                 oval_defs.setDefinitions( definitions );
             }
-            added = definitions.addDefinition( toDefinition( element ) );
+            added = definitions.addDefinition( asDefinition( element ) );
 
-        } else if (element_type == DefinitionsElement.Type.TEST) {
+        } else if (element_type == ElementType.TEST) {
             TestsType  tests = oval_defs.getTests();
             if (tests == null) {
                 tests = new TestsType();
                 oval_defs.setTests( tests );
             }
-            added = tests.addTest( toTest( element ) );
+            added = tests.addTest( asTest( element ) );
 
-        } else if (element_type == DefinitionsElement.Type.OBJECT) {
+        } else if (element_type == ElementType.OBJECT) {
             SystemObjectsType  objects = oval_defs.getObjects();
             if (objects == null) {
                 objects = new SystemObjectsType();
                 oval_defs.setObjects( objects );
             }
-            added = objects.addObject( toObject( element ) );
+            added = objects.addObject( asObject( element ) );
 
-        } else if (element_type == DefinitionsElement.Type.STATE) {
+        } else if (element_type == ElementType.STATE) {
             StatesType  states = oval_defs.getStates();
             if (states == null) {
                 states = new StatesType();
                 oval_defs.setStates( states );
             }
-            added = states.addState( toState( element ) );
+            added = states.addState( asState( element ) );
 
-        } else if (element_type == DefinitionsElement.Type.VARIABLE) {
+        } else if (element_type == ElementType.VARIABLE) {
             VariablesType  variables = oval_defs.getVariables();
             if (variables == null) {
                 variables = new VariablesType();
                 oval_defs.setVariables( variables );
             }
-            added = variables.addVariable( toVariable( element ) );
+            added = variables.addVariable( asVariable( element ) );
         }
 
         return added;
     }
+//    {
+//        if (oval_defs == null  ||  element == null) {
+//            throw new IllegalArgumentException( "empty OVAL Definitions or element" );
+//        }
+//
+//        DefinitionsElement.Type  element_type = element.ovalGetElementType();
+//
+//        boolean  added = false;
+//        if (element_type == DefinitionsElement.Type.DEFINITION) {
+//            DefinitionsType  definitions = oval_defs.getDefinitions();
+//            if (definitions == null) {
+//                definitions = new DefinitionsType();
+//                oval_defs.setDefinitions( definitions );
+//            }
+//            added = definitions.addDefinition( toDefinition( element ) );
+//
+//        } else if (element_type == DefinitionsElement.Type.TEST) {
+//            TestsType  tests = oval_defs.getTests();
+//            if (tests == null) {
+//                tests = new TestsType();
+//                oval_defs.setTests( tests );
+//            }
+//            added = tests.addTest( toTest( element ) );
+//
+//        } else if (element_type == DefinitionsElement.Type.OBJECT) {
+//            SystemObjectsType  objects = oval_defs.getObjects();
+//            if (objects == null) {
+//                objects = new SystemObjectsType();
+//                oval_defs.setObjects( objects );
+//            }
+//            added = objects.addObject( toObject( element ) );
+//
+//        } else if (element_type == DefinitionsElement.Type.STATE) {
+//            StatesType  states = oval_defs.getStates();
+//            if (states == null) {
+//                states = new StatesType();
+//                oval_defs.setStates( states );
+//            }
+//            added = states.addState( toState( element ) );
+//
+//        } else if (element_type == DefinitionsElement.Type.VARIABLE) {
+//            VariablesType  variables = oval_defs.getVariables();
+//            if (variables == null) {
+//                variables = new VariablesType();
+//                oval_defs.setVariables( variables );
+//            }
+//            added = variables.addVariable( toVariable( element ) );
+//        }
+//
+//        return added;
+//    }
+
+
+
+    private static ElementContainer<? extends DefinitionsElement> _findContainer(
+                    final OvalDefinitions oval_defs,
+                    final ElementType type
+                    )
+    throws OvalException
+    {
+        if (oval_defs == null  ||  type == null) {
+            throw new IllegalArgumentException( "empty OVAL Definitions or element type" );
+        }
+
+        ElementContainer<? extends DefinitionsElement>  container = null;
+        if (type == ElementType.DEFINITION) {
+            container = oval_defs.getDefinitions();
+        } else if (type == ElementType.TEST) {
+            container = oval_defs.getTests();
+        } else if (type == ElementType.OBJECT) {
+            container = oval_defs.getObjects();
+        } else if (type == ElementType.STATE) {
+            container = oval_defs.getStates();
+        } else if (type == ElementType.VARIABLE) {
+            container = oval_defs.getVariables();
+        }
+
+        if (container == null) {
+            throw new OvalException( "design error" );
+        }
+
+        return container;
+    }
+
+
+
+//    private static ElementContainer<? extends DefinitionsElement> _newContainer(
+//                    final ElementType type
+//                    )
+//    throws OvalException
+//    {
+//        if (type == null) {
+//            throw new IllegalArgumentException( "empty OVAL Definitions or element type" );
+//        }
+//
+//        ElementContainer<? extends DefinitionsElement>  container = null;
+//        if (type == ElementType.DEFINITION) {
+//            container = new DefinitionsType();
+//        } else if (type == ElementType.TEST) {
+//            container = new TestsType();
+//        } else if (type == ElementType.OBJECT) {
+//            container = new SystemObjectsType();
+//        } else if (type == ElementType.STATE) {
+//            container = new StatesType();
+//        } else if (type == ElementType.VARIABLE) {
+//            container = new VariablesType();
+//        }
+//
+//        if (container == null) {
+//            throw new OvalException( "design error" );
+//        }
+//
+//        return container;
+//    }
 
 
 
@@ -132,7 +255,7 @@ public final class EntityUtil
     //  type conversion
     ///////////////////////////////////////////////////////////////////////
 
-    public static DefinitionType toDefinition(
+    public static DefinitionType asDefinition(
                     final DefinitionsElement element
                     )
     {
@@ -140,7 +263,7 @@ public final class EntityUtil
     }
 
 
-    public static TestType toTest(
+    public static TestType asTest(
                     final DefinitionsElement element
                     )
     {
@@ -148,7 +271,7 @@ public final class EntityUtil
     }
 
 
-    public static SystemObjectType toObject(
+    public static SystemObjectType asObject(
                     final DefinitionsElement element
                     )
     {
@@ -156,7 +279,7 @@ public final class EntityUtil
     }
 
 
-    public static StateType toState(
+    public static StateType asState(
                     final DefinitionsElement element
                     )
     {
@@ -164,7 +287,7 @@ public final class EntityUtil
     }
 
 
-    public static VariableType toVariable(
+    public static VariableType asVariable(
                     final DefinitionsElement element
                     )
     {
@@ -180,60 +303,99 @@ public final class EntityUtil
     /**
      * OVAL entity type - Java class mapping.
      */
-    private static EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>  _TYPE_MAP_ =
-                    new EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>( OvalId.Type.class );
+    private static EnumMap<ElementType, Class<? extends DefinitionsElement>>  _TYPES_ =
+                    new EnumMap<ElementType, Class<? extends DefinitionsElement>>( ElementType.class );
 
     static {
-            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
-            _TYPE_MAP_.put( OvalId.Type.tst, TestType.class );
-            _TYPE_MAP_.put( OvalId.Type.obj, SystemObjectType.class );
-            _TYPE_MAP_.put( OvalId.Type.ste, StateType.class );
-            _TYPE_MAP_.put( OvalId.Type.var, VariableType.class );
+            _TYPES_.put( ElementType.DEFINITION, DefinitionType.class );
+            _TYPES_.put( ElementType.TEST, TestType.class );
+            _TYPES_.put( ElementType.OBJECT, SystemObjectType.class );
+            _TYPES_.put( ElementType.STATE, StateType.class );
+            _TYPES_.put( ElementType.VARIABLE, VariableType.class );
     }
-
-
 
     /**
      */
-    public static Class<? extends DefinitionsElement> objectTypeOf(
+    public static Class<? extends DefinitionsElement> javaTypeOf(
                     final String oval_id
                     )
     throws OvalException
     {
-        OvalId.Type  id_type = null;
-        try {
-            id_type = OvalId.typeOf( oval_id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return objectTypeOf( id_type );
+        return javaTypeOf( OvalID.elementTypeOf( oval_id ) );
     }
 
 
-
-    public static Class<? extends DefinitionsElement> objectTypeOf(
-                    final OvalId.Type id_type
-                    )
-    throws OvalException
-    {
-        Class<? extends DefinitionsElement>  object_type = _TYPE_MAP_.get( id_type );
-        if (object_type == null) {
-            throw new OvalRepositoryException( "unknown OVAL-ID type: " + id_type );
-        }
-
-        return object_type;
-    }
-
-
-
-    public static Class<? extends DefinitionsElement> objectTypeOf(
-                    final DefinitionsElement.Type type
+    public static Class<? extends DefinitionsElement> javaTypeOf(
+                    final ElementType type
                     )
     throws OvalRepositoryException
     {
-        return objectTypeOf( type.getOvalIdType() );
+        Class<? extends DefinitionsElement>  javaType = _TYPES_.get( type );
+        if (javaType == null) {
+            throw new OvalRepositoryException( "Java type mapping error: element type=" + type );
+        }
+
+        return javaType;
     }
+
+
+
+
+    //OLD
+
+//    private static EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>  _TYPE_MAP_ =
+//                    new EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>( OvalId.Type.class );
+//
+//    static {
+//            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
+//            _TYPE_MAP_.put( OvalId.Type.tst, TestType.class );
+//            _TYPE_MAP_.put( OvalId.Type.obj, SystemObjectType.class );
+//            _TYPE_MAP_.put( OvalId.Type.ste, StateType.class );
+//            _TYPE_MAP_.put( OvalId.Type.var, VariableType.class );
+//    }
+//
+//
+//    /**
+//     */
+//    public static Class<? extends DefinitionsElement> objectTypeOf(
+//                    final String oval_id
+//                    )
+//    throws OvalException
+//    {
+//        OvalId.Type  id_type = null;
+//        try {
+//            id_type = OvalId.typeOf( oval_id );
+//        } catch (Exception ex) {
+//            throw new OvalRepositoryException( ex );
+//        }
+//
+//        return objectTypeOf( id_type );
+//    }
+//
+//
+//
+//    public static Class<? extends DefinitionsElement> objectTypeOf(
+//                    final OvalId.Type id_type
+//                    )
+//    throws OvalException
+//    {
+//        Class<? extends DefinitionsElement>  object_type = _TYPE_MAP_.get( id_type );
+//        if (object_type == null) {
+//            throw new OvalRepositoryException( "unknown OVAL-ID type: " + id_type );
+//        }
+//
+//        return object_type;
+//    }
+//
+//
+//
+//    public static Class<? extends DefinitionsElement> objectTypeOf(
+//                    final DefinitionsElement.Type type
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        return objectTypeOf( type.getOvalIdType() );
+//    }
 
 
 
@@ -263,27 +425,6 @@ public final class EntityUtil
         _LOG_.debug( "referencing OVAL IDs: " + String.valueOf( ids ) );
         return ids;
     }
-
-
-
-//    /**
-//     */
-//    public static Collection<String> collectVariableId(
-//                    final EntityAttributeGroup[] entity_list
-//                    )
-//    {
-//        Set<String>  ids = new HashSet<String>();
-//
-//        if (entity_list == null  ||  entity_list.length == 0) {
-//            // Do nothing.
-//        } else {
-//            for (EntityAttributeGroup  e : entity_list) {
-//                ids.add( e.getVarRef() );
-//            }
-//        }
-//
-//        return ids;
-//    }
 
 }
 //

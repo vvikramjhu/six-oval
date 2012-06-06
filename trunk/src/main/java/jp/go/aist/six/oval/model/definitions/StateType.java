@@ -165,11 +165,11 @@ public class StateType
     //  DefinitionsElement
     //*********************************************************************
 
-    @Override
-    public final Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.STATE;
-    }
+//    @Override
+//    public final Type ovalGetElementType()
+//    {
+//        return DefinitionsElement.Type.STATE;
+//    }
 
 
 

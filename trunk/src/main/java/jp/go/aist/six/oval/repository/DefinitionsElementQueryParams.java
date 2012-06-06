@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.repository;
 
 import jp.go.aist.six.oval.model.Component;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.ElementType;
 
 
 
@@ -122,7 +122,8 @@ public class DefinitionsElementQueryParams
                     )
     {
         if (type != null) {
-            DefinitionsElement.Type.fromValue( type );
+            ElementType.fromValue( type );
+//            DefinitionsElement.Type.fromValue( type );
 //            OvalEntityType.valueOf( type );
         }
 

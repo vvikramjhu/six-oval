@@ -189,11 +189,11 @@ public class VariableType
     //  DefinitionsElement
     //*********************************************************************
 
-    @Override
-    public final DefinitionsElement.Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.VARIABLE;
-    }
+//    @Override
+//    public final DefinitionsElement.Type ovalGetElementType()
+//    {
+//        return DefinitionsElement.Type.VARIABLE;
+//    }
 
 
     @Override
