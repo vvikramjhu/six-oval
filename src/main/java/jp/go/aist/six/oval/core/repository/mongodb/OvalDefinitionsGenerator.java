@@ -170,7 +170,8 @@ public class OvalDefinitionsGenerator
             return null;
         }
 
-        Class<? extends DefinitionsElement>  java_type = EntityUtil.objectTypeOf( oval_id );
+        Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( oval_id );
+//        Class<? extends DefinitionsElement>  java_type = EntityUtil.objectTypeOf( oval_id );
         DefinitionsElement  element = _getDatastore().findById( java_type, oval_id );
         if (element == null) {
             throw new OvalRepositoryException( "no such definitions element: " + oval_id );

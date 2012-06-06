@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import jp.go.aist.six.oval.model.ElementType;
+import jp.go.aist.six.oval.model.common.OvalID;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
@@ -39,12 +41,12 @@ import com.google.code.morphia.annotations.Id;
  */
 @Entity( "oval.def.element_assoc" )
 public class DefinitionsElementAssoc
-implements Persistable<String>
+    implements Persistable<String>
 {
     public static final class Ref
     implements Serializable
     {
-        private final DefinitionsElement.Type  type;
+        private final ElementType  type;
         private final String  oval_id;
 
 
@@ -52,11 +54,11 @@ implements Persistable<String>
                         final String oval_id
                         )
         {
-            this( DefinitionsElement.Type.fromOvalId( oval_id ), oval_id );
+            this( OvalID.elementTypeOf( oval_id ), oval_id );
         }
 
         public Ref(
-                        final DefinitionsElement.Type type,
+                        final ElementType type,
                         final String oval_id
                         )
         {
@@ -64,7 +66,7 @@ implements Persistable<String>
             this.oval_id = oval_id;
         }
 
-        public DefinitionsElement.Type getType()
+        public ElementType getType()
         {
             return type;
         }
@@ -126,7 +128,7 @@ implements Persistable<String>
     @Id
     private String  oval_id;
 
-    private DefinitionsElement.Type  type;
+    private ElementType  type;
     private final Set<Ref>  references = new HashSet<Ref>();
 
 
@@ -145,7 +147,7 @@ implements Persistable<String>
                     )
     {
         setOvalID( def.getOvalID() );
-        setType( DefinitionsElement.Type.DEFINITION );
+        setType( ElementType.DEFINITION );
 
         _build( references, def );
     }
@@ -156,7 +158,7 @@ implements Persistable<String>
                     )
     {
         setOvalID( tst.getOvalID() );
-        setType( DefinitionsElement.Type.TEST );
+        setType( ElementType.TEST );
 
         _build( references, tst );
     }
@@ -193,14 +195,14 @@ implements Persistable<String>
     /**
      */
     public void setType(
-                    final DefinitionsElement.Type type
+                    final ElementType type
                     )
     {
         this.type = type;
     }
 
 
-    public DefinitionsElement.Type getType()
+    public ElementType getType()
     {
         return type;
     }
@@ -237,7 +239,7 @@ implements Persistable<String>
 
 
     public Set<Ref> getReferences(
-                    final DefinitionsElement.Type type
+                    final ElementType type
                     )
     {
         Set<Ref>  refs = new HashSet<Ref>();
@@ -286,7 +288,7 @@ implements Persistable<String>
         if (object != null) {
             String  oval_id = object.getObjectRef();
             if (oval_id != null) {
-                refs.add( new Ref( DefinitionsElement.Type.OBJECT, oval_id ) );
+                refs.add( new Ref( ElementType.OBJECT, oval_id ) );
             }
         }
     }
@@ -303,7 +305,7 @@ implements Persistable<String>
         if (state != null) {
             String  oval_id = state.getStateRef();
             if (oval_id != null) {
-                refs.add( new Ref( DefinitionsElement.Type.STATE, oval_id ) );
+                refs.add( new Ref( ElementType.STATE, oval_id ) );
             }
         }
     }
@@ -356,7 +358,7 @@ implements Persistable<String>
             throw new IllegalArgumentException( "null test_ref" );
         }
 
-        refs.add( new Ref( DefinitionsElement.Type.TEST, oval_id ) );
+        refs.add( new Ref( ElementType.TEST, oval_id ) );
     }
 
 
@@ -374,7 +376,7 @@ implements Persistable<String>
             throw new IllegalArgumentException( "null definition_ref" );
         }
 
-        refs.add( new Ref( DefinitionsElement.Type.DEFINITION, oval_id ) );
+        refs.add( new Ref( ElementType.DEFINITION, oval_id ) );
     }
 
 

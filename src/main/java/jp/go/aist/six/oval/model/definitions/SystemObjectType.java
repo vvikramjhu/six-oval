@@ -125,11 +125,11 @@ public class SystemObjectType
     //  DefinitionsElement
     //*********************************************************************
 
-    @Override
-    public final Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.OBJECT;
-    }
+//    @Override
+//    public final Type ovalGetElementType()
+//    {
+//        return DefinitionsElement.Type.OBJECT;
+//    }
 
 
 

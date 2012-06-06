@@ -24,21 +24,22 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import jp.go.aist.six.oval.model.common.OvalID;
 
 
 
 /**
- * A container for one or more Definition instances.
+ * A container for one or more OVAL IDs.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalIdContainer
-    extends Container<OvalId>
+    extends Container<OvalID>
 {
 
-    private final Set<OvalId>  id = new HashSet<OvalId>();
+    private final Set<OvalID>  id = new HashSet<OvalID>();
 
 
 
@@ -51,7 +52,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final Collection<OvalId> id_list
+                    final Collection<OvalID> id_list
                     )
     {
         super( id_list );
@@ -59,7 +60,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final OvalId[] id_list
+                    final OvalID[] id_list
                     )
     {
         super( id_list );
@@ -70,7 +71,7 @@ public class OvalIdContainer
     /**
      */
     public void setIds(
-                    final Collection<OvalId> id_list
+                    final Collection<OvalID> id_list
                     )
     {
         _setElement( id_list );
@@ -78,27 +79,27 @@ public class OvalIdContainer
 
 
     public void setIds(
-                    final OvalId[] id_list
+                    final OvalID[] id_list
                     )
     {
         _setElement( id_list );
     }
 
 
-    public Collection<OvalId> getIds()
+    public Collection<OvalID> getIds()
     {
         return _getElement();
     }
 
 
-    public Iterator<OvalId> iterateIds()
+    public Iterator<OvalID> iterateIds()
     {
         return iterator();
     }
 
 
     public boolean addId(
-                    final OvalId id
+                    final OvalID id
                     )
     {
         return _addElement( id );
@@ -111,7 +112,7 @@ public class OvalIdContainer
     //**************************************************************
 
     @Override
-    protected Collection<OvalId> _getElement()
+    protected Collection<OvalID> _getElement()
     {
         return id;
     }
@@ -119,7 +120,7 @@ public class OvalIdContainer
 
 
     //**************************************************************
-    //  Iterable
+    //  java.lang.String
     //**************************************************************
 
 }

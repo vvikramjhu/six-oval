@@ -250,11 +250,11 @@ public class DefinitionType
     //  DefinitionsElement
     //*********************************************************************
 
-    @Override
-    public final Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.DEFINITION;
-    }
+//    @Override
+//    public final Type ovalGetElementType()
+//    {
+//        return DefinitionsElement.Type.DEFINITION;
+//    }
 
 
 

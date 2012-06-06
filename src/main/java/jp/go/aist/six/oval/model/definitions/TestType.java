@@ -367,11 +367,11 @@ public class TestType
     //  DefinitionsElement
     //*********************************************************************
 
-    @Override
-    public final Type ovalGetElementType()
-    {
-        return DefinitionsElement.Type.TEST;
-    }
+//    @Override
+//    public final Type ovalGetElementType()
+//    {
+//        return DefinitionsElement.Type.TEST;
+//    }
 
 
 
