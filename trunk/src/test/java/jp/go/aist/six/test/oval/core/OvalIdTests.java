@@ -5,7 +5,7 @@ import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.OvalIdContainer;
-import jp.go.aist.six.oval.model.common.OvalIdentifier;
+import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 
@@ -72,7 +72,7 @@ public class OvalIdTests
         Reporter.log( ">>> marshalling OvalId...", true );
         Reporter.log( "  * id: " + oval_id, true );
 
-        OvalIdentifier  id = new OvalIdentifier( oval_id );
+        OvalId  id = new OvalId( oval_id );
         File  file = new File( "oval_id_" + id.getNamespace() + "_" + id.getIdValue() + ".xml" );
         Reporter.log( "  * XML file: " + file, true );
         _marshalToFile( id, file.getCanonicalPath() );
