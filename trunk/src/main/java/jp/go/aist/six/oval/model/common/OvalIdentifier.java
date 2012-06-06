@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OvalID
+public final class OvalIdentifier
     implements OvalObject, Cloneable, Serializable
 {
 
@@ -90,7 +90,7 @@ public final class OvalID
         }
 
         //validation
-        new OvalID( oval_id );
+        new OvalIdentifier( oval_id );
     }
 
 
@@ -146,12 +146,12 @@ public final class OvalID
     /**
      * Constructor.
      */
-    protected OvalID()
+    protected OvalIdentifier()
     {
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String oval_id
                     )
     throws OvalIdSyntaxException
@@ -162,7 +162,7 @@ public final class OvalID
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String[] components
                     )
     throws OvalIdSyntaxException
@@ -182,7 +182,7 @@ public final class OvalID
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String namespace,
                     final String type,
                     final String id_value
@@ -193,7 +193,7 @@ public final class OvalID
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String namespace,
                     final Type type,
                     final int id_value
@@ -204,7 +204,7 @@ public final class OvalID
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String prefix,
                     final String namespace,
                     final String type,
@@ -216,7 +216,7 @@ public final class OvalID
     }
 
 
-    public OvalID(
+    public OvalIdentifier(
                     final String prefix,
                     final String namespace,
                     final Type type,
@@ -482,7 +482,7 @@ public final class OvalID
     public Object clone()
     throws CloneNotSupportedException
     {
-        return (new OvalID( _namespace, _type, _idValue ));
+        return (new OvalIdentifier( _namespace, _type, _idValue ));
     }
 
 
@@ -515,11 +515,11 @@ public final class OvalID
             return true;
         }
 
-        if (!(obj instanceof OvalID)) {
+        if (!(obj instanceof OvalIdentifier)) {
             return false;
         }
 
-        OvalID  other = (OvalID)obj;
+        OvalIdentifier  other = (OvalIdentifier)obj;
         String  other_id = other.toString();
         String   this_id = this.toString();
         if (this_id == other_id

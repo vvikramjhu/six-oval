@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementType;
-import jp.go.aist.six.oval.model.common.OvalID;
+import jp.go.aist.six.oval.model.common.OvalIdentifier;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
@@ -54,7 +54,7 @@ public class DefinitionsElementAssoc
                         final String oval_id
                         )
         {
-            this( OvalID.elementTypeOf( oval_id ), oval_id );
+            this( OvalIdentifier.elementTypeOf( oval_id ), oval_id );
         }
 
         public Ref(

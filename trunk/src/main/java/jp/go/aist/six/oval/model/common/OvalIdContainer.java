@@ -36,10 +36,10 @@ import jp.go.aist.six.oval.model.Container;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalIdContainer
-    extends Container<OvalID>
+    extends Container<OvalIdentifier>
 {
 
-    private final Set<OvalID>  id = new HashSet<OvalID>();
+    private final Set<OvalIdentifier>  id = new HashSet<OvalIdentifier>();
 
 
 
@@ -52,7 +52,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final Collection<OvalID> id_list
+                    final Collection<OvalIdentifier> id_list
                     )
     {
         super( id_list );
@@ -60,7 +60,7 @@ public class OvalIdContainer
 
 
     public OvalIdContainer(
-                    final OvalID[] id_list
+                    final OvalIdentifier[] id_list
                     )
     {
         super( id_list );
@@ -71,7 +71,7 @@ public class OvalIdContainer
     /**
      */
     public void setIds(
-                    final Collection<OvalID> id_list
+                    final Collection<OvalIdentifier> id_list
                     )
     {
         _setElement( id_list );
@@ -79,27 +79,27 @@ public class OvalIdContainer
 
 
     public void setIds(
-                    final OvalID[] id_list
+                    final OvalIdentifier[] id_list
                     )
     {
         _setElement( id_list );
     }
 
 
-    public Collection<OvalID> getIds()
+    public Collection<OvalIdentifier> getIds()
     {
         return _getElement();
     }
 
 
-    public Iterator<OvalID> iterateIds()
+    public Iterator<OvalIdentifier> iterateIds()
     {
         return iterator();
     }
 
 
     public boolean addId(
-                    final OvalID id
+                    final OvalIdentifier id
                     )
     {
         return _addElement( id );
@@ -112,7 +112,7 @@ public class OvalIdContainer
     //**************************************************************
 
     @Override
-    protected Collection<OvalID> _getElement()
+    protected Collection<OvalIdentifier> _getElement()
     {
         return id;
     }
