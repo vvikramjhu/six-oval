@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -56,18 +57,22 @@ public class InterfacesType
 
 
     public InterfacesType(
-                    final Collection<? extends InterfaceType> netifs
+                    final Collection<? extends InterfaceType> network_interface_list
                     )
     {
-        super( netifs );
+//        super( netifs );
+
+        network_interface.addAll( network_interface_list );
     }
 
 
     public InterfacesType(
-                    final InterfaceType[] netifs
+                    final InterfaceType[] network_interface_list
                     )
     {
-        super( netifs );
+//        super( netifs );
+
+        this( Arrays.asList( network_interface_list ) );
     }
 
 
@@ -75,10 +80,10 @@ public class InterfacesType
     /**
      */
     public void setInterface(
-                    final Collection<? extends InterfaceType> network_interface
+                    final Collection<? extends InterfaceType> network_interface_list
                     )
     {
-        _setElement( network_interface );
+        _setElement( network_interface_list );
     }
 
 

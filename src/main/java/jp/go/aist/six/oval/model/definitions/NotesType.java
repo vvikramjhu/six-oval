@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -51,30 +52,32 @@ public class NotesType
     }
 
 
-//    public NotesType(
-//                    final Collection<String> notes
-//                    )
-//    {
-//        setNote( notes );
-//    }
-//
-//
-//    public NotesType(
-//                    final String[] notes
-//                    )
-//    {
-//        setNote( Arrays.asList( notes ) );
-//    }
+    public NotesType(
+                    final Collection<String> notes
+                    )
+    {
+        for (String  s : notes) {
+            addNote( new Note( s ) );
+        }
+    }
+
+
+    public NotesType(
+                    final String[] notes
+                    )
+    {
+        this( Arrays.asList( notes ) );
+    }
 
 
 
     /**
      */
     public void setNote(
-                    final Collection<? extends Note> notes
+                    final Collection<? extends Note> note_list
                     )
     {
-        _setElement( notes );
+        _setElement( note_list );
     }
 
 
@@ -106,7 +109,7 @@ public class NotesType
     @Override
     protected Collection<Note> _getElement()
     {
-        return this.note;
+        return note;
     }
 
 }

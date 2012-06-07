@@ -65,13 +65,13 @@ public abstract class Container<E>
     /**
      */
     protected void _setElement(
-                    final Collection<? extends E> elements
+                    final Collection<? extends E> element_list
                     )
     {
-        if (_getElement() != elements) {
+        if (_getElement() != element_list) {
             _getElement().clear();
-            if (elements != null  &&  elements.size() > 0) {
-                for (E  e : elements) {
+            if (element_list != null  &&  element_list.size() > 0) {
+                for (E  e : element_list) {
                     _addElement( e );
                 }
             }
@@ -80,12 +80,12 @@ public abstract class Container<E>
 
 
     protected void _setElement(
-                    final E[] elements
+                    final E[] element_list
                     )
     {
         _getElement().clear();
-        if (elements != null  &&  elements.length > 0) {
-            for (E  e : elements) {
+        if (element_list != null  &&  element_list.length > 0) {
+            for (E  e : element_list) {
                 _addElement( e );
             }
         }
@@ -110,6 +110,13 @@ public abstract class Container<E>
     public Iterator<E> iterator()
     {
         return _getElement().iterator();
+    }
+
+
+
+    public void clear()
+    {
+        _getElement().clear();
     }
 
 

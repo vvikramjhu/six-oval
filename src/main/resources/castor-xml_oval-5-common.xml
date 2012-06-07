@@ -22,20 +22,23 @@
             />
 
         <field name="value" type="string"
-            get-method="getValue"
+            get-method="value"
             set-method="%1">
             <bind-xml name="value" node="attribute"/>
+
+<!-- NOTE: Castor restriction.
+Constructor arguments only valid for attribute mapped fields!!!
+            <bind-xml node="text"/>
+-->
         </field>
     </class>
-<!--
--->
 
 
     <class name="jp.go.aist.six.oval.model.common.OvalIdContainer">
         <map-to  xml="oval-id-list"/>
 
         <field name="ids" 
-            type="jp.go.aist.six.oval.model.OvalId"
+            type="jp.go.aist.six.oval.model.common.OvalId"
             collection="collection">
             <bind-xml name="oval-id" node="element"/>
         </field>

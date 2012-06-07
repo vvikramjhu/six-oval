@@ -138,12 +138,12 @@
             <bind-xml name="type" node="element"/>
         </field>
 
-        <field name="groupID" 
+        <field name="groupId" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="group_id" node="element"/>
         </field>
 
-        <field name="userID" 
+        <field name="userId" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="user_id" node="element"/>
         </field>
@@ -168,12 +168,12 @@
             <bind-xml name="size" node="element"/>
         </field>
 
-        <field name="suID" 
+        <field name="suid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="suid" node="element"/>
         </field>
 
-        <field name="sgID" 
+        <field name="sgid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="sgid" node="element"/>
         </field>
@@ -183,47 +183,47 @@
             <bind-xml name="sticky" node="element"/>
         </field>
 
-        <field name="uRead" 
+        <field name="uread" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="uread" node="element"/>
         </field>
 
-        <field name="uWrite" 
+        <field name="uwrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="uwrite" node="element"/>
         </field>
 
-        <field name="uExec" 
+        <field name="uexec" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="uexec" node="element"/>
         </field>
 
-        <field name="gRead" 
+        <field name="gread" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="gread" node="element"/>
         </field>
 
-        <field name="gWrite" 
+        <field name="gwrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="gwrite" node="element"/>
         </field>
 
-        <field name="gExec" 
+        <field name="gexec" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="gexec" node="element"/>
         </field>
 
-        <field name="oRead" 
+        <field name="oread" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="oread" node="element"/>
         </field>
 
-        <field name="oWrite" 
+        <field name="owrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="owrite" node="element"/>
         </field>
 
-        <field name="oExec" 
+        <field name="oexec" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="oexec" node="element"/>
         </field>

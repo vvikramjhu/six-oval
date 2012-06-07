@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,27 +56,31 @@ public class StatesType
 
 
     public StatesType(
-                    final Collection<? extends StateType> states
+                    final Collection<? extends StateType> state_list
                     )
     {
-        super( states );
+//        super( states );
+
+        state.addAll( state_list );
     }
 
 
     public StatesType(
-                    final StateType[] states
+                    final StateType[] state_list
                     )
     {
-        super( states );
+//        super( states );
+
+        this( Arrays.asList( state_list ) );
     }
 
 
 
     public void setState(
-                    final Collection<? extends StateType> states
+                    final Collection<? extends StateType> state_list
                     )
     {
-        _setElement( states );
+        _setElement( state_list );
     }
 
 

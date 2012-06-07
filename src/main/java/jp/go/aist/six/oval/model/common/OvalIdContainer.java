@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,7 +56,9 @@ public class OvalIdContainer
                     final Collection<OvalId> id_list
                     )
     {
-        super( id_list );
+//        super( id_list );
+
+        id.addAll( id_list );
     }
 
 
@@ -63,7 +66,9 @@ public class OvalIdContainer
                     final OvalId[] id_list
                     )
     {
-        super( id_list );
+//        super( id_list );
+
+        this( Arrays.asList( id_list ) );
     }
 
 

@@ -51,6 +51,9 @@ public final class EntityUtil
     {
         ElementType  type = OvalId.elementTypeOf( oval_id );
         ElementContainer<? extends DefinitionsElement>  container = _findContainer( oval_defs, type );
+        if (container == null) {
+            return false;
+        }
 
 //        ElementContainer<? extends DefinitionsElement>  container = null;
 //        ElementType  type = OvalIdentifier.elementTypeOf( oval_id );
@@ -211,9 +214,9 @@ public final class EntityUtil
             container = oval_defs.getVariables();
         }
 
-        if (container == null) {
-            throw new OvalException( "design error" );
-        }
+//        if (container == null) {
+//            throw new OvalException( "design error" );
+//        }
 
         return container;
     }

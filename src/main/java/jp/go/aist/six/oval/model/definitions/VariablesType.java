@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -54,18 +55,22 @@ public class VariablesType
 
 
     public VariablesType(
-                    final Collection<? extends VariableType> variables
+                    final Collection<? extends VariableType> variable_list
                     )
     {
-        super( variables );
+//        super( variables );
+
+        variable.addAll( variable_list );
     }
 
 
     public VariablesType(
-                    final VariableType[] variables
+                    final VariableType[] variable_list
                     )
     {
-        super( variables );
+//        super( variables );
+
+        this( Arrays.asList( variable_list ) );
     }
 
 
@@ -73,10 +78,10 @@ public class VariablesType
     /**
      */
     public void setVariable(
-                    final Collection<? extends VariableType> variables
+                    final Collection<? extends VariableType> variable_list
                     )
     {
-        _setElement( variables );
+        _setElement( variable_list );
     }
 
 

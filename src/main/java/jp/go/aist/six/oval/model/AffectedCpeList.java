@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -52,18 +53,22 @@ public class AffectedCpeList
 
 
     public AffectedCpeList(
-                    final Collection<? extends Cpe> cpes
+                    final Collection<? extends Cpe> cpe_list
                     )
     {
-        super( cpes );
+//        super( cpes );
+
+        cpe.addAll( cpe_list );
     }
 
 
     public AffectedCpeList(
-                    final Cpe[] cpes
+                    final Cpe[] cpe_list
                     )
     {
-        super( cpes );
+//        super( cpes );
+
+        this( Arrays.asList( cpe_list ) );
     }
 
 
@@ -71,10 +76,10 @@ public class AffectedCpeList
     /**
      */
     public void setCpe(
-                    final Collection<? extends Cpe> cpes
+                    final Collection<? extends Cpe> cpe_list
                     )
     {
-        _setElement( cpes );
+        _setElement( cpe_list );
     }
 
 

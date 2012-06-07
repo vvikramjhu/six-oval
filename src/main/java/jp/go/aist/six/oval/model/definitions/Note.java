@@ -48,6 +48,14 @@ public class Note
     }
 
 
+    public Note(
+                    final String content
+                    )
+    {
+        setContent( content );
+    }
+
+
 
     /**
      */
@@ -61,7 +69,7 @@ public class Note
 
     public String getContent()
     {
-        return this.content;
+        return content;
     }
 
 

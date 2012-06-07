@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -54,27 +55,31 @@ public class TestsType
 
 
     public TestsType(
-                    final Collection<? extends TestType> tests
+                    final Collection<? extends TestType> test_list
                     )
     {
-        super( tests );
+//        super( tests );
+
+        test.addAll( test_list );
     }
 
 
     public TestsType(
-                    final TestType[] tests
+                    final TestType[] test_list
                     )
     {
-        super( tests );
+//        super( tests );
+
+        this( Arrays.asList( test_list ) );
     }
 
 
 
     public void setTest(
-                    final Collection<? extends TestType> tests
+                    final Collection<? extends TestType> test_list
                     )
     {
-        _setElement( tests );
+        _setElement( test_list );
     }
 
 

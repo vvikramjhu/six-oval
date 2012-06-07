@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,18 +56,22 @@ public class DefinitionsType
 
 
     public DefinitionsType(
-                    final Collection<? extends DefinitionType> definitionList
+                    final Collection<? extends DefinitionType> definition_list
                     )
     {
-        super( definitionList );
+//        super( definition_list );
+
+        definition.addAll( definition_list );
     }
 
 
     public DefinitionsType(
-                    final DefinitionType[] definitions
+                    final DefinitionType[] definition_list
                     )
     {
-        super( definitions );
+//        super( definitions );
+
+        this( Arrays.asList( definition_list ) );
     }
 
 
@@ -74,18 +79,18 @@ public class DefinitionsType
     /**
      */
     public void setDefinition(
-                    final Collection<? extends DefinitionType> definitionList
+                    final Collection<? extends DefinitionType> definition_list
                     )
     {
-        _setElement( definitionList );
+        _setElement( definition_list );
     }
 
 
     public void setDefinition(
-                    final DefinitionType[] definitionList
+                    final DefinitionType[] definition_list
                     )
     {
-        _setElement( definitionList );
+        _setElement( definition_list );
     }
 
 
