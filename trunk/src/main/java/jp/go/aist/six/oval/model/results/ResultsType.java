@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -53,18 +54,22 @@ public class ResultsType
 
 
     public ResultsType(
-                    final Collection<? extends SystemType> systems
+                    final Collection<? extends SystemType> system_list
                     )
     {
-        super( systems );
+//        super( systems );
+
+        system.addAll( system_list );
     }
 
 
     public ResultsType(
-                    final SystemType[] systems
+                    final SystemType[] system_list
                     )
     {
-        super( systems );
+//        super( systems );
+
+        this( Arrays.asList( system_list ) );
     }
 
 
@@ -115,7 +120,7 @@ public class ResultsType
     @Override
     protected Collection<SystemType> _getElement()
     {
-        return this.system;
+        return system;
     }
 
 

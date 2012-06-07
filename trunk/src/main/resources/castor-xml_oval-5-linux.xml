@@ -601,7 +601,7 @@
             <bind-xml name="evr" node="element"/>
         </field>
 
-        <field name="signatureKeyId" 
+        <field name="signatureKeyid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="signature_keyid" node="element"/>
         </field>

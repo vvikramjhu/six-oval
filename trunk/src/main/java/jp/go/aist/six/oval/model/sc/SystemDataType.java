@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -53,18 +54,22 @@ public class SystemDataType
 
 
     public SystemDataType(
-                    final Collection<? extends ItemType> items
+                    final Collection<? extends ItemType> item_list
                     )
     {
-        super( items );
+//        super( items );
+
+        item.addAll( item_list );
     }
 
 
     public SystemDataType(
-                    final ItemType[] items
+                    final ItemType[] item_list
                     )
     {
-        super( items );
+//        super( items );
+
+        this( Arrays.asList( item_list ) );
     }
 
 
@@ -72,10 +77,10 @@ public class SystemDataType
     /**
      */
     public void setItem(
-                    final Collection<? extends ItemType> items
+                    final Collection<? extends ItemType> item_list
                     )
     {
-        _setElement( items );
+        _setElement( item_list );
     }
 
 
@@ -107,7 +112,7 @@ public class SystemDataType
     @Override
     protected Collection<ItemType> _getElement()
     {
-        return this.item;
+        return item;
     }
 
 

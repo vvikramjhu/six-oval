@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -57,27 +58,31 @@ public class SystemObjectsType
 
 
     public SystemObjectsType(
-                    final Collection<? extends SystemObjectType> objects
+                    final Collection<? extends SystemObjectType> object_list
                     )
     {
-        super( objects );
+//        super( objects );
+
+        object.addAll( object_list );
     }
 
 
     public SystemObjectsType(
-                    final SystemObjectType[] objects
+                    final SystemObjectType[] object_list
                     )
     {
-        super( objects );
+//        super( objects );
+
+        this( Arrays.asList( object_list ) );
     }
 
 
 
     public void setObject(
-                    final Collection<? extends SystemObjectType> objects
+                    final Collection<? extends SystemObjectType> object_list
                     )
     {
-        _setElement( objects );
+        _setElement( object_list );
     }
 
 

@@ -111,10 +111,9 @@ public class OvalDefinitionsGenerator
             throw new OvalException( "no Definition found" );
         }
 
-        OvalDefinitions  oval_defs = new OvalDefinitions();
+        DefinitionsType  defs = new DefinitionsType( def_list );
 
-        DefinitionsType  defs = new DefinitionsType();
-        defs.setDefinition( def_list );
+        OvalDefinitions  oval_defs = new OvalDefinitions();
         oval_defs.setDefinitions( defs );
         for (DefinitionType  def : def_list) {
             Collection<String>  ref_ids = EntityUtil.getElementRefId( def );

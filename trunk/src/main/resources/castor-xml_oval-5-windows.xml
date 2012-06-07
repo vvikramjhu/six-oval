@@ -3182,7 +3182,7 @@
             <bind-xml name="key" node="element"/>
         </field>
         
-        <field name="ID" 
+        <field name="id" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
             <bind-xml name="id" node="element"/>
         </field>
@@ -3202,7 +3202,7 @@
             <bind-xml name="key" node="element"/>
         </field>
 
-        <field name="ID" 
+        <field name="id" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="id" node="element"/>
         </field>
