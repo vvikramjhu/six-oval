@@ -20,10 +20,9 @@
 
 package jp.go.aist.six.oval.model.variables;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashSet;
 import jp.go.aist.six.oval.model.Container;
 
 
@@ -39,7 +38,7 @@ public class VariablesType
     extends Container<VariableType> //{1..*}
 {
 
-    private final Collection<VariableType>  variable = new ArrayList<VariableType>();
+    private final Collection<VariableType>  variable = new HashSet<VariableType>();
 
 
 
@@ -52,18 +51,18 @@ public class VariablesType
 
 
     public VariablesType(
-                    final Collection<VariableType> variableList
+                    final Collection<VariableType> variable_list
                     )
     {
-        setVariable( variableList );
+        _copy( variable, variable_list );
     }
 
 
     public VariablesType(
-                    final VariableType[] variableList
+                    final VariableType[] variable_list
                     )
     {
-        setVariable( Arrays.asList( variableList ) );
+        this( Arrays.asList( variable_list ) );
     }
 
 
@@ -71,31 +70,32 @@ public class VariablesType
     /**
      */
     public void setVariable(
-                    final Collection<? extends VariableType> variableList
+                    final Collection<? extends VariableType> variable_list
                     )
     {
-        _setElement( variableList );
-    }
-
-
-    public boolean addVariable(
-                    final VariableType variable
-                    )
-    {
-        return _addElement( variable );
+        reset( variable_list );
+//        _setElement( variable_list );
     }
 
 
     public Collection<VariableType> getVariable()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<VariableType> iterateVariable()
-    {
-        return iterator();
-    }
+//    public boolean addVariable(
+//                    final VariableType variable
+//                    )
+//    {
+//        return add( variable );
+//    }
+//
+//
+//    public Iterator<VariableType> iterateVariable()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -104,10 +104,10 @@ public class VariablesType
     //**************************************************************
 
     @Override
-    protected Collection<VariableType> _getElement()
+    protected Collection<VariableType> _getCollection()
     {
-        return this.variable;
+        return variable;
     }
 
 }
-//VariablesType
+//

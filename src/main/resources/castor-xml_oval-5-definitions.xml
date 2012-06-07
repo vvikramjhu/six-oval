@@ -105,9 +105,12 @@
         <field name="definition" 
             type="jp.go.aist.six.oval.model.definitions.DefinitionType"
             collection="collection"
-            set-method="addDefinition"
-            get-method="iterateDefinition">
+            >
             <bind-xml name="definition" node="element"/>
+            <!-- 
+            set-method="addDefinition"
+            get-method="iterateDefinition"
+            -->
         </field>
     </class>
 

@@ -37,7 +37,7 @@ Constructor arguments only valid for attribute mapped fields!!!
     <class name="jp.go.aist.six.oval.model.common.OvalIdContainer">
         <map-to  xml="oval-id-list"/>
 
-        <field name="ids" 
+        <field name="id" 
             type="jp.go.aist.six.oval.model.common.OvalId"
             collection="collection">
             <bind-xml name="oval-id" node="element"/>

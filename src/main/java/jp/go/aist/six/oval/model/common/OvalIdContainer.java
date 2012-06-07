@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.common;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
@@ -58,7 +57,8 @@ public class OvalIdContainer
     {
 //        super( id_list );
 
-        id.addAll( id_list );
+//        id.addAll( id_list );
+        _copy( id, id_list );
     }
 
 
@@ -75,40 +75,42 @@ public class OvalIdContainer
 
     /**
      */
-    public void setIds(
+    public void setId(
                     final Collection<OvalId> id_list
                     )
     {
-        _setElement( id_list );
+        reset( id_list );
+//        _setElement( id_list );
     }
 
 
-    public void setIds(
+    public void setId(
                     final OvalId[] id_list
                     )
     {
-        _setElement( id_list );
+        reset( id_list );
+//      _setElement( id_list );
     }
 
 
-    public Collection<OvalId> getIds()
+    public Collection<OvalId> getId()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<OvalId> iterateIds()
-    {
-        return iterator();
-    }
-
-
-    public boolean addId(
-                    final OvalId id
-                    )
-    {
-        return _addElement( id );
-    }
+//    public boolean addId(
+//                    final OvalId id
+//                    )
+//    {
+//        return add( id );
+//    }
+//
+//
+//    public Iterator<OvalId> iterateIds()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -117,7 +119,7 @@ public class OvalIdContainer
     //**************************************************************
 
     @Override
-    protected Collection<OvalId> _getElement()
+    protected Collection<OvalId> _getCollection()
     {
         return id;
     }

@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementContainer;
 import com.google.code.morphia.annotations.Reference;
@@ -63,7 +62,8 @@ public class SystemObjectsType
     {
 //        super( objects );
 
-        object.addAll( object_list );
+//        object.addAll( object_list );
+        _copy( object, object_list );
     }
 
 
@@ -82,28 +82,29 @@ public class SystemObjectsType
                     final Collection<? extends SystemObjectType> object_list
                     )
     {
-        _setElement( object_list );
-    }
-
-
-    public boolean addObject(
-                    final SystemObjectType object
-                    )
-    {
-        return _addElement( object );
+        reset( object_list );
+//        _setElement( object_list );
     }
 
 
     public Collection<SystemObjectType> getObject()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<SystemObjectType> iterateObject()
-    {
-        return iterator();
-    }
+//    public boolean addObject(
+//                    final SystemObjectType object
+//                    )
+//    {
+//        return add( object );
+//    }
+//
+//
+//    public Iterator<SystemObjectType> iterateObject()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -112,10 +113,10 @@ public class SystemObjectsType
     //**************************************************************
 
     @Override
-    protected Collection<SystemObjectType> _getElement()
+    protected Collection<SystemObjectType> _getCollection()
     {
         return object;
     }
 
 }
-// SystemObjectsType
+//

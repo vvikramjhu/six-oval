@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementContainer;
 
@@ -62,7 +61,8 @@ public class CollectedSystemObjectsType
     {
 //        super( objects );
 
-        object.addAll( object_list );
+//        object.addAll( object_list );
+        _copy( object, object_list );
     }
 
 
@@ -80,40 +80,42 @@ public class CollectedSystemObjectsType
     /**
      */
     public void setObject(
-                    final Collection<? extends SystemObjectType> object
+                    final Collection<? extends SystemObjectType> object_list
                     )
     {
-        _setElement( object );
+        reset( object_list );
+//        _setElement( object );
     }
 
 
     public void setObject(
-                    final SystemObjectType[] object
+                    final SystemObjectType[] object_list
                     )
     {
-        _setElement( object );
-    }
-
-
-    public boolean addObject(
-                    final SystemObjectType object
-                    )
-    {
-        return _addElement( object );
+        reset( object_list );
+//        _setElement( object );
     }
 
 
     public Collection<SystemObjectType> getObject()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
 
-    public Iterator<SystemObjectType> iterateObject()
-    {
-        return iterator();
-    }
+//    public boolean addObject(
+//                    final SystemObjectType object
+//                    )
+//    {
+//        return add( object );
+//    }
+//
+//
+//    public Iterator<SystemObjectType> iterateObject()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -122,7 +124,7 @@ public class CollectedSystemObjectsType
     //**************************************************************
 
     @Override
-    protected Collection<SystemObjectType> _getElement()
+    protected Collection<SystemObjectType> _getCollection()
     {
         return object;
     }
@@ -133,13 +135,13 @@ public class CollectedSystemObjectsType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "["
-                        + _getElement()
-                        + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "["
+//                        + _getCollection()
+//                        + "]";
+//    }
 
 }
-// CollectedSystemObjectsType
+//

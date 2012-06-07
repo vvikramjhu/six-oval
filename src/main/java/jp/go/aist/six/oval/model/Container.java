@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -36,6 +37,18 @@ import java.util.Iterator;
 public abstract class Container<E>
     implements OvalObject
 {
+
+    /*
+     * TODO: (1) Rename the methods and make them public!
+     * add(E), addAll(Collection<? extends E>), addAll(E[]),
+     * clear(), remove(E),
+     * iterator(), contains(E), size(), isEmpty(),
+     * toArray(), toArray(T[])
+     *
+     * TODO: (2) Prevent the collection to be exposed, in the subclasses!
+     * Implements two kinds of methods: iterateXxx and addXxx.
+     * http://www.castor.org/how-to-prevent-collection-from-being-exposed.html
+     */
 
     /**
      * Constructor.
@@ -68,11 +81,11 @@ public abstract class Container<E>
                     final Collection<? extends E> element_list
                     )
     {
-        if (_getElement() != element_list) {
-            _getElement().clear();
+        if (_getCollection() != element_list) {
+            _getCollection().clear();
             if (element_list != null  &&  element_list.size() > 0) {
                 for (E  e : element_list) {
-                    _addElement( e );
+                    add( e );
                 }
             }
         }
@@ -83,19 +96,49 @@ public abstract class Container<E>
                     final E[] element_list
                     )
     {
-        _getElement().clear();
+        _getCollection().clear();
         if (element_list != null  &&  element_list.length > 0) {
             for (E  e : element_list) {
-                _addElement( e );
+                add( e );
             }
         }
     }
 
 
-    protected abstract Collection<E> _getElement();
+    ///////////////////////////////////////////////////////////////////////
+
+    protected abstract Collection<E> _getCollection();
 
 
-    protected boolean _addElement(
+    public void reset(
+                    final Collection<? extends E> element_list
+                    )
+    {
+        Collection<E>  this_collection = _getCollection();
+
+        if (this_collection != element_list) {
+            this_collection.clear();
+            if (element_list != null  &&  element_list.size() > 0) {
+                addAll( element_list );
+            }
+        }
+    }
+
+
+    public void reset(
+                    final E[] element_list
+                    )
+    {
+        if (element_list == null) {
+            return;
+        }
+
+        reset( Arrays.asList( element_list ) );
+    }
+
+
+
+    public boolean add(
                     final E e
                     )
     {
@@ -103,39 +146,136 @@ public abstract class Container<E>
             throw new NullPointerException( "adding null element" );
         }
 
-        return _getElement().add( e );
+        return _getCollection().add( e );
     }
 
 
-    public Iterator<E> iterator()
+    public boolean addAll(
+                    final Collection<? extends E> c
+                    )
     {
-        return _getElement().iterator();
+        if (c == null) {
+            throw new NullPointerException( "adding null collection" );
+        }
+
+        boolean  modified = false;
+        Iterator<? extends E>  e = c.iterator();
+        while (e.hasNext()) {
+            if (add( e.next() )) {
+                modified = true;
+            }
+        }
+
+        return modified;
+    }
+
+
+    public boolean addAll(
+                    final E[] c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "adding null array" );
+        }
+
+        return addAll( Arrays.asList( c ) );
     }
 
 
 
     public void clear()
     {
-        _getElement().clear();
+        _getCollection().clear();
+    }
+
+
+
+    public boolean remove(
+                    final E e
+                    )
+    {
+        if (e == null) {
+            throw new NullPointerException( "removing null element" );
+        }
+
+        return _getCollection().remove( e );
+    }
+
+
+
+    public Iterator<E> iterator()
+    {
+        return _getCollection().iterator();
+    }
+
+
+
+    public boolean contains(
+                    final E e
+                    )
+    {
+        if (e == null) {
+            throw new NullPointerException( "testing null element" );
+        }
+
+        return _getCollection().contains( e );
     }
 
 
 
     public int size()
     {
-        return _getElement().size();
+        return _getCollection().size();
+    }
+
+
+    public boolean isEmpty()
+    {
+        return (size() == 0);
     }
 
 
 
-    //**************************************************************
+    public Object[] toArray()
+    {
+        return _getCollection().toArray();
+    }
+
+
+    public <T> T[] toArray(
+                    final T[] a
+                    )
+    {
+        return _getCollection().toArray( a );
+    }
+
+
+
+    /**
+     * A utility function.
+     */
+    protected static <T> void _copy(
+                    final Collection<T> dst,
+                    final Collection<? extends T> src
+                    )
+    {
+        for (T  e : src) {
+            if (e != null) {
+                dst.add( e );
+            }
+        }
+    }
+
+
+
+    //*********************************************************************
     //  java.lang.Object
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public int hashCode()
     {
-        return _getElement().hashCode();
+        return _getCollection().hashCode();
     }
 
 
@@ -155,8 +295,8 @@ public abstract class Container<E>
 
         @SuppressWarnings( "unchecked" )
         Container<E>  other = (Container<E>)obj;
-        Collection<E>  other_elements = other._getElement();
-        Collection<E>   this_elements =  this._getElement();
+        Collection<E>  other_elements = other._getCollection();
+        Collection<E>   this_elements =  this._getCollection();
         if (this_elements == other_elements
                         ||  (this_elements != null
                                         &&  this_elements.equals( other_elements ))) {
@@ -171,7 +311,7 @@ public abstract class Container<E>
     @Override
     public String toString()
     {
-        return String.valueOf( _getElement() );
+        return String.valueOf( _getCollection() );
     }
 
 }

@@ -23,17 +23,19 @@ package jp.go.aist.six.oval.model;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import com.google.code.morphia.annotations.Transient;
 
 
 
 /**
- * A container which can contain OvalElement objects.
+ * A container which can contain Element objects.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -70,16 +72,18 @@ public abstract class ElementContainer<E extends Element>
 
     /**
      */
-    public E find(
-                    final String id
+    public E findByOvalId(
+                    final String oval_id
                     )
     {
-        if (id == null) {
-            throw new IllegalArgumentException();
+        if (oval_id == null) {
+            throw new IllegalArgumentException( "null OVAL ID" );
         }
 
-        for (E  e : _getElement()) {
-            if (id.equals( e.getOvalID() )) {
+        Iterator<E>  itr = iterator();
+        while (itr.hasNext()) {
+            E  e = itr.next();
+            if (oval_id.equals( e.getOvalID() )) {
                 return e;
             }
         }
@@ -92,54 +96,34 @@ public abstract class ElementContainer<E extends Element>
     /**
      */
     public boolean containsOvalId(
-                    final String id
+                    final String oval_id
                     )
     {
-        if (id == null) {
-            throw new IllegalArgumentException();
-        }
-
-        for (E  e : _getElement()) {
-            if (id.equals( e.getOvalID() )) {
-                return true;
-            }
-        }
-
-        return false;
+        return (findByOvalId( oval_id ) != null);
     }
 
 
 
     /**
      */
-    public Set<String> ovalIDSet()
+    public Set<String> ovalIdSet()
     {
-        Set<String>  set = new HashSet<String>();
-        for (Element  e : _getElement()) {
-            set.add( e.getOvalID() );
+        Set<String>  oval_id_list = new HashSet<String>();
+
+        Iterator<E>  itr = iterator();
+        while (itr.hasNext()) {
+            E  e = itr.next();
+            oval_id_list.add( e.getOvalID() );
         }
 
-        return set;
+        return oval_id_list;
     }
 
 
 
-    //*********************************************************************
-    //  Container
-    //*********************************************************************
-
-//    public boolean add(
-//                    final E element
-//                    )
-//    {
-//        return _addElement( element );
-//    }
-//
-
-
-    //==============================================================
+    ///////////////////////////////////////////////////////////////////////
     //  digest computation
-    //==============================================================
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      * The default digest algorithm.
@@ -168,12 +152,24 @@ public abstract class ElementContainer<E extends Element>
     {
         int  thisHash = hashCode();
         if (_digest == null  ||  thisHash != _hashOnDigest) {
-            _digest = _computeDigest( _getElement() );
+            Element[]  elements = toArray( new Element[0] );
+            _digest = _computeDigest2( elements );
             _hashOnDigest = thisHash;
         }
 
         return _digest;
     }
+    //backup:
+//    {
+//        int  thisHash = hashCode();
+//        if (_digest == null  ||  thisHash != _hashOnDigest) {
+//            _digest = _computeDigest( _getElement() );
+//            _hashOnDigest = thisHash;
+//        }
+//
+//        return _digest;
+//    }
+
 //    {
 //        int  thisHash = hashCode();
 //        if (_digest == null  ||  thisHash != _hashOnDigest) {
@@ -223,10 +219,36 @@ public abstract class ElementContainer<E extends Element>
             _updateDigest( digest, "" );
         } else {
             ArrayList<E>  list = new ArrayList<E>( elements );
-            Collections.sort( list, new OvalElementComparator() );
+            Collections.sort( list, new ElementComparator() );
             // OvalElement is Comparable
 
             for (Element  element : list) {
+                _updateDigest( digest, element );
+            }
+        }
+
+        return _byteArrayToHexString( digest.digest() );
+    }
+
+
+
+    protected String _computeDigest2(
+                    final Element[] element_list
+                    )
+    {
+        MessageDigest  digest = null;
+        try {
+            digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
+                                              //@throws NoSuchAlgorithmException
+        } catch (NoSuchAlgorithmException ex) {
+            return null;
+        }
+
+        if (element_list == null  ||  element_list.length == 0) {
+            _updateDigest( digest, "" );
+        } else {
+            Arrays.sort( element_list, ElementComparator.INSTANCE );
+            for (Element  element : element_list) {
                 _updateDigest( digest, element );
             }
         }
@@ -306,11 +328,13 @@ public abstract class ElementContainer<E extends Element>
 
 
 
-    private static class OvalElementComparator
+    private static class ElementComparator
     implements Comparator<Element>
     {
+        public static final ElementComparator  INSTANCE = new ElementComparator();
 
-        public OvalElementComparator()
+
+        public ElementComparator()
         {
         }
 
@@ -341,7 +365,7 @@ public abstract class ElementContainer<E extends Element>
                         final Object obj
                         )
         {
-            return (obj instanceof OvalElementComparator);
+            return (obj instanceof ElementComparator);
         }
     }
 

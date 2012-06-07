@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.model.results;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
 
@@ -40,7 +38,7 @@ public class TestsType
     extends Container<TestType>   //{1..*}
 {
 
-    private final Set<TestType>  test = new HashSet<TestType>();
+    private final Collection<TestType>  test = new HashSet<TestType>();
 
 
 
@@ -58,7 +56,8 @@ public class TestsType
     {
 //        super( tests );
 
-        test.addAll( test_list );
+//        test.addAll( test_list );
+        _copy( test, test_list );
     }
 
 
@@ -76,39 +75,41 @@ public class TestsType
     /**
      */
     public void setTest(
-                    final Collection<? extends TestType> testList
+                    final Collection<? extends TestType> test_list
                     )
     {
-        _setElement( testList );
+        reset( test_list );
+//        _setElement( test_list );
     }
 
 
     public void setTest(
-                    final TestType[] testList
+                    final TestType[] test_list
                     )
     {
-        _setElement( testList );
-    }
-
-
-    public boolean addTest(
-                    final TestType test
-                    )
-    {
-        return _addElement( test );
+        reset( test_list );
+//      _setElement( test_list );
     }
 
 
     public Collection<TestType> getTest()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<TestType> iterateTest()
-    {
-        return iterator();
-    }
+//    public boolean addTest(
+//                    final TestType test
+//                    )
+//    {
+//        return add( test );
+//    }
+//
+//
+//    public Iterator<TestType> iterateTest()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -117,7 +118,7 @@ public class TestsType
     //**************************************************************
 
     @Override
-    protected Collection<TestType> _getElement()
+    protected Collection<TestType> _getCollection()
     {
         return test;
     }
@@ -128,11 +129,11 @@ public class TestsType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "[" + getTest() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "[" + getTest() + "]";
+//    }
 
 }
-// TestsType
+//

@@ -20,11 +20,9 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
 
@@ -41,7 +39,7 @@ public class ResultsType
 {
 
 //    @Reference
-    private final Set<SystemType>  system = new HashSet<SystemType>();
+    private final Collection<SystemType>  system = new ArrayList<SystemType>();
 
 
 
@@ -59,7 +57,8 @@ public class ResultsType
     {
 //        super( systems );
 
-        system.addAll( system_list );
+//        system.addAll( system_list );
+        _copy( system, system_list );
     }
 
 
@@ -77,39 +76,41 @@ public class ResultsType
     /**
      */
     public void setSystem(
-                    final Collection<? extends SystemType> systemList
+                    final Collection<? extends SystemType> system_list
                     )
     {
-        _setElement( systemList );
+        reset( system_list );
+//        _setElement( system_list );
     }
 
 
     public void setSystem(
-                    final SystemType[] systemList
+                    final SystemType[] system_list
                     )
     {
-        _setElement( systemList );
-    }
-
-
-    public boolean addSystem(
-                    final SystemType system
-                    )
-    {
-        return _addElement( system );
+        reset( system_list );
+//        _setElement( system_list );
     }
 
 
     public Collection<SystemType> getSystem()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<SystemType> iterateSystem()
-    {
-        return iterator();
-    }
+//    public boolean addSystem(
+//                    final SystemType system
+//                    )
+//    {
+//        return add( system );
+//    }
+//
+//
+//    public Iterator<SystemType> iterateSystem()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -118,7 +119,7 @@ public class ResultsType
     //**************************************************************
 
     @Override
-    protected Collection<SystemType> _getElement()
+    protected Collection<SystemType> _getCollection()
     {
         return system;
     }
@@ -129,11 +130,5 @@ public class ResultsType
     //  java.lang.Object
     //**************************************************************
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// ResultsType
+//

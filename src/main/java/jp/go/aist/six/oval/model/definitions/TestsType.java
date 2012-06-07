@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementContainer;
 import com.google.code.morphia.annotations.Reference;
@@ -60,7 +59,8 @@ public class TestsType
     {
 //        super( tests );
 
-        test.addAll( test_list );
+//        test.addAll( test_list );
+        _copy( test, test_list );
     }
 
 
@@ -79,28 +79,29 @@ public class TestsType
                     final Collection<? extends TestType> test_list
                     )
     {
-        _setElement( test_list );
-    }
-
-
-    public boolean addTest(
-                    final TestType test
-                    )
-    {
-        return _addElement( test );
+        reset( test_list );
+//        _setElement( test_list );
     }
 
 
     public Collection<TestType> getTest()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<TestType> iterateTest()
-    {
-        return iterator();
-    }
+//    public boolean addTest(
+//                    final TestType test
+//                    )
+//    {
+//        return add( test );
+//    }
+//
+//
+//    public Iterator<TestType> iterateTest()
+//    {
+//        return iterator();
+//    }
 
 
     //**************************************************************
@@ -108,10 +109,10 @@ public class TestsType
     //**************************************************************
 
     @Override
-    protected Collection<TestType> _getElement()
+    protected Collection<TestType> _getCollection()
     {
         return test;
     }
 
 }
-// TestsType
+//

@@ -228,7 +228,7 @@ public class OvalResults
             results = new ResultsType();
             setResults( results );
         }
-        results.addSystem( system );
+        results.add( system );
 
         return this;
     }
