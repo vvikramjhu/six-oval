@@ -39,13 +39,13 @@ public abstract class Container<E>
 {
 
     /*
-     * TODO: (1) Rename the methods and make them public!
+     * (1) Rename the methods and make them public!
      * add(E), addAll(Collection<? extends E>), addAll(E[]),
      * clear(), remove(E),
      * iterator(), contains(E), size(), isEmpty(),
      * toArray(), toArray(T[])
      *
-     * TODO: (2) Prevent the collection to be exposed, in the subclasses!
+     * (2) Prevent the collection to be exposed, in the subclasses!
      * Implements two kinds of methods: iterateXxx and addXxx.
      * http://www.castor.org/how-to-prevent-collection-from-being-exposed.html
      */
@@ -75,34 +75,34 @@ public abstract class Container<E>
 
 
 
-    /**
-     */
-    protected void _setElement(
-                    final Collection<? extends E> element_list
-                    )
-    {
-        if (_getCollection() != element_list) {
-            _getCollection().clear();
-            if (element_list != null  &&  element_list.size() > 0) {
-                for (E  e : element_list) {
-                    add( e );
-                }
-            }
-        }
-    }
-
-
-    protected void _setElement(
-                    final E[] element_list
-                    )
-    {
-        _getCollection().clear();
-        if (element_list != null  &&  element_list.length > 0) {
-            for (E  e : element_list) {
-                add( e );
-            }
-        }
-    }
+//    /**
+//     */
+//    protected void _setElement(
+//                    final Collection<? extends E> element_list
+//                    )
+//    {
+//        if (_getCollection() != element_list) {
+//            _getCollection().clear();
+//            if (element_list != null  &&  element_list.size() > 0) {
+//                for (E  e : element_list) {
+//                    add( e );
+//                }
+//            }
+//        }
+//    }
+//
+//
+//    protected void _setElement(
+//                    final E[] element_list
+//                    )
+//    {
+//        _getCollection().clear();
+//        if (element_list != null  &&  element_list.length > 0) {
+//            for (E  e : element_list) {
+//                add( e );
+//            }
+//        }
+//    }
 
 
     ///////////////////////////////////////////////////////////////////////
