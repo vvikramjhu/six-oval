@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.common;
 import java.io.Serializable;
 import java.util.Arrays;
 import jp.go.aist.six.oval.model.ElementType;
-import jp.go.aist.six.oval.model.OvalIdSyntaxException;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
