@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
@@ -84,7 +84,7 @@ public class PasswordTest
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.password;
         _oval_family = Family.UNIX;
-        _oval_component = Component.PASSWORD;
+        _oval_component = ComponentType.PASSWORD;
     }
 
 

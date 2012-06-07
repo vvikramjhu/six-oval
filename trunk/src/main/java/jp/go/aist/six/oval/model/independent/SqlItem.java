@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -77,7 +77,7 @@ public class SqlItem
 //        _oval_platform_type = OvalPlatformType.independent;
 //        _oval_component_type = OvalComponentType.sql;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = Component.SQL;
+        _oval_component = ComponentType.SQL;
     }
 
 

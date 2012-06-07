@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.model;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -44,13 +44,13 @@ public class ComponentTests
     throws Exception
     {
         Reporter.log( "\n//////////////////////////////////////////////////////////", true );
-        Reporter.log( "*** target class: " + Component.class.getName(), true );
+        Reporter.log( "*** target class: " + ComponentType.class.getName(), true );
 
         Reporter.log( "* listing all the names and values...", true );
-        for (Component  c : Component.values()) {
+        for (ComponentType  c : ComponentType.values()) {
             Reporter.log( "name=: " + c.name() + ", value=" + c.value(), true );
         }
-        Reporter.log( "* #enum constants: " + Component.values().length, true );
+        Reporter.log( "* #enum constants: " + ComponentType.values().length, true );
     }
 
 

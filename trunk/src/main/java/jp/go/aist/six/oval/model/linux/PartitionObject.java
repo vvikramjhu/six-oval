@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
@@ -94,7 +94,7 @@ public class PartitionObject
 //        _oval_platform_type = OvalPlatformType.linux;
 //        _oval_component_type = OvalComponentType.partition;
         _oval_family = Family.LINUX;
-        _oval_component = Component.PARTITION;
+        _oval_component = ComponentType.PARTITION;
     }
 
 

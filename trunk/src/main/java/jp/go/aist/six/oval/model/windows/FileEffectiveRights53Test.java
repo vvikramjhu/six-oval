@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
@@ -84,7 +84,7 @@ public class FileEffectiveRights53Test
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.fileeffectiverights53;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.FILEEFFECTIVERIGHTS53;
+        _oval_component = ComponentType.FILEEFFECTIVERIGHTS53;
     }
 
 

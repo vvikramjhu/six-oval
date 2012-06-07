@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.independent;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
@@ -79,7 +79,7 @@ public class VariableState
 //        _oval_platform_type = OvalPlatformType.independent;
 //        _oval_component_type = OvalComponentType.variable;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = Component.VARIABLE;
+        _oval_component = ComponentType.VARIABLE;
     }
 
 

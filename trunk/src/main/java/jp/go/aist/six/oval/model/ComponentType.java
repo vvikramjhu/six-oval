@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum Component
+public enum ComponentType
     implements OvalEnumeration
 {
     // independent, linux, unix, windows
@@ -118,7 +118,7 @@ public enum Component
     /**
      * A factory method.
      */
-    public static Component fromValue(
+    public static ComponentType fromValue(
                     final String value
                     )
     {
@@ -140,13 +140,13 @@ public enum Component
     /**
      * Constructor.
      */
-    Component()
+    ComponentType()
     {
         value = name().toLowerCase();
     }
 
 
-    Component(
+    ComponentType(
                     final String value
                     )
     {
@@ -179,85 +179,85 @@ public enum Component
     // grouped by the OS family, i.e. OVAL namespace
     ////////////////////////////////////////////////////////////////
 
-    public static final Component[]  INDEPENDENT = new Component[] {
-        Component.ENVIRONMENTVARIABLE,
-        Component.ENVIRONMENTVARIABLE58,
-        Component.FAMILY,
-        Component.FILEHASH,
-        Component.FILEHASH58,
-        Component.LDAP,
-        Component.SQL,
-        Component.TEXTFILECONTENT,
-        Component.TEXTFILECONTENT54,
-        Component.UNKNOWN,
-        Component.VARIABLE,
-        Component.XMLFILECONTENT
+    public static final ComponentType[]  INDEPENDENT = new ComponentType[] {
+        ComponentType.ENVIRONMENTVARIABLE,
+        ComponentType.ENVIRONMENTVARIABLE58,
+        ComponentType.FAMILY,
+        ComponentType.FILEHASH,
+        ComponentType.FILEHASH58,
+        ComponentType.LDAP,
+        ComponentType.SQL,
+        ComponentType.TEXTFILECONTENT,
+        ComponentType.TEXTFILECONTENT54,
+        ComponentType.UNKNOWN,
+        ComponentType.VARIABLE,
+        ComponentType.XMLFILECONTENT
     };
 
 
-    public static final Component[]  LINUX = new Component[] {
-        Component.DPKGINFO,
-        Component.INETLISTENINGSERVERS,
-        Component.PARTITION,
-        Component.RPMINFO,
-        Component.RPMVERIFY,
-        Component.SELINUXBOOLEAN,
-        Component.SELINUXSECURITYCONTEXT,
-        Component.SLACKWAREPKGINFO,
+    public static final ComponentType[]  LINUX = new ComponentType[] {
+        ComponentType.DPKGINFO,
+        ComponentType.INETLISTENINGSERVERS,
+        ComponentType.PARTITION,
+        ComponentType.RPMINFO,
+        ComponentType.RPMVERIFY,
+        ComponentType.SELINUXBOOLEAN,
+        ComponentType.SELINUXSECURITYCONTEXT,
+        ComponentType.SLACKWAREPKGINFO,
     };
 
 
-    public static final Component[]  UNIX = new Component[] {
-        Component.FILE,
-        Component.INETD,
-        Component.INTERFACE,
-        Component.PASSWORD,
-        Component.PROCESS,
-        Component.PROCESS58,
-        Component.RUNLEVEL,
-        Component.SHADOW,
-        Component.UNAME,
-        Component.XINETD
+    public static final ComponentType[]  UNIX = new ComponentType[] {
+        ComponentType.FILE,
+        ComponentType.INETD,
+        ComponentType.INTERFACE,
+        ComponentType.PASSWORD,
+        ComponentType.PROCESS,
+        ComponentType.PROCESS58,
+        ComponentType.RUNLEVEL,
+        ComponentType.SHADOW,
+        ComponentType.UNAME,
+        ComponentType.XINETD
     };
 
 
-    public static final Component[]  WINDOWS = new Component[] {
-        Component.ACCESSTOKEN,
-        Component.ACTIVEDIRECTORY,
-        Component.AUDITEVENTPOLICY,
-        Component.AUDITEVENTPOLICYSUBCATEGORIES,
-        Component.FILE,
-        Component.FILEAUDITEDPERMISSIONS,
-        Component.FILEAUDITEDPERMISSIONS53,
-        Component.FILEEFFECTIVERIGHTS,
-        Component.FILEEFFECTIVERIGHTS53,
-        Component.GROUP,
-        Component.GROUP_SID,
-        Component.INTERFACE,
-        Component.LOCKOUTPOLICY,
-        Component.METABASE,
-        Component.PASSWORDPOLICY,
-        Component.PORT,
-        Component.PRINTEREFFECTIVERIGHTS,
-        Component.PROCESS,
-        Component.PROCESS58,
-        Component.REGISTRY,
-        Component.REGKEYAUDITEDPERMISSIONS,
-        Component.REGKEYAUDITEDPERMISSIONS53,
-        Component.REGKEYEFFECTIVERIGHTS,
-        Component.REGKEYEFFECTIVERIGHTS53,
-        Component.SERVICEEFFECTIVERIGHTS,
-        Component.SHAREDRESOURCE,
-        Component.SID,
-        Component.SID_SID,
-        Component.UAC,
-        Component.USER,
-        Component.USER_SID,
-        Component.USER_SID55,
-        Component.VOLUME,
-        Component.WMI,
-        Component.WMI57,
-        Component.WUAUPDATESEARCHER
+    public static final ComponentType[]  WINDOWS = new ComponentType[] {
+        ComponentType.ACCESSTOKEN,
+        ComponentType.ACTIVEDIRECTORY,
+        ComponentType.AUDITEVENTPOLICY,
+        ComponentType.AUDITEVENTPOLICYSUBCATEGORIES,
+        ComponentType.FILE,
+        ComponentType.FILEAUDITEDPERMISSIONS,
+        ComponentType.FILEAUDITEDPERMISSIONS53,
+        ComponentType.FILEEFFECTIVERIGHTS,
+        ComponentType.FILEEFFECTIVERIGHTS53,
+        ComponentType.GROUP,
+        ComponentType.GROUP_SID,
+        ComponentType.INTERFACE,
+        ComponentType.LOCKOUTPOLICY,
+        ComponentType.METABASE,
+        ComponentType.PASSWORDPOLICY,
+        ComponentType.PORT,
+        ComponentType.PRINTEREFFECTIVERIGHTS,
+        ComponentType.PROCESS,
+        ComponentType.PROCESS58,
+        ComponentType.REGISTRY,
+        ComponentType.REGKEYAUDITEDPERMISSIONS,
+        ComponentType.REGKEYAUDITEDPERMISSIONS53,
+        ComponentType.REGKEYEFFECTIVERIGHTS,
+        ComponentType.REGKEYEFFECTIVERIGHTS53,
+        ComponentType.SERVICEEFFECTIVERIGHTS,
+        ComponentType.SHAREDRESOURCE,
+        ComponentType.SID,
+        ComponentType.SID_SID,
+        ComponentType.UAC,
+        ComponentType.USER,
+        ComponentType.USER_SID,
+        ComponentType.USER_SID55,
+        ComponentType.VOLUME,
+        ComponentType.WMI,
+        ComponentType.WMI57,
+        ComponentType.WUAUPDATESEARCHER
     };
 
 }

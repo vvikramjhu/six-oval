@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
@@ -83,7 +83,7 @@ public class InterfaceTest
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.network_interface;
         _oval_family = Family.UNIX;
-        _oval_component = Component.INTERFACE;
+        _oval_component = ComponentType.INTERFACE;
     }
 
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
@@ -67,7 +67,7 @@ public class AuditEventPolicySubcategoriesObject
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.AUDITEVENTPOLICYSUBCATEGORIES;
+        _oval_component = ComponentType.AUDITEVENTPOLICYSUBCATEGORIES;
     }
 
 

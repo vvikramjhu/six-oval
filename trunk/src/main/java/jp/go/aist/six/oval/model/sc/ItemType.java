@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.MessageType;
@@ -69,7 +69,7 @@ public class ItemType
 //    protected OvalPlatformType   _oval_platform_type;
 //    protected OvalComponentType  _oval_component_type;
     protected Family       _oval_family;
-    protected Component    _oval_component;
+    protected ComponentType    _oval_component;
 
 
 

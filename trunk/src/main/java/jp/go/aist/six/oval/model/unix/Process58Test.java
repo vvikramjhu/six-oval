@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -68,7 +68,7 @@ public class Process58Test
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.process58;
         _oval_family = Family.UNIX;
-        _oval_component = Component.PROCESS58;
+        _oval_component = ComponentType.PROCESS58;
     }
 
 

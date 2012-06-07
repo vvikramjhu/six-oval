@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
@@ -111,7 +111,7 @@ public class SelinuxSecurityContextObject
 //        _oval_platform_type = OvalPlatformType.linux;
 //        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
         _oval_family = Family.LINUX;
-        _oval_component = Component.SELINUXSECURITYCONTEXT;
+        _oval_component = ComponentType.SELINUXSECURITYCONTEXT;
     }
 
 

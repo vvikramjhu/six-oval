@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -202,7 +202,7 @@ public abstract class MongoTests
 
         // element: component
         DefinitionsElementQueryParams  params21 = new DefinitionsElementQueryParams();
-        params21.setComponent( Component.DPKGINFO.value() );
+        params21.setComponent( ComponentType.DPKGINFO.value() );
 
         // definition: family
         DefinitionsElementQueryParams  params22 = new DefinitionsElementQueryParams();
