@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType;
@@ -104,7 +104,7 @@ public class InetListeningServersObject
 //        _oval_platform_type = OvalPlatformType.linux;
 //        _oval_component_type = OvalComponentType.inetlisteningservers;
         _oval_family = Family.LINUX;
-        _oval_component = Component.INETLISTENINGSERVERS;
+        _oval_component = ComponentType.INETLISTENINGSERVERS;
     }
 
 

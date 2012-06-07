@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -83,7 +83,7 @@ public class ProcessItem
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.process;
         _oval_family = Family.UNIX;
-        _oval_component = Component.PROCESS;
+        _oval_component = ComponentType.PROCESS;
     }
 
 

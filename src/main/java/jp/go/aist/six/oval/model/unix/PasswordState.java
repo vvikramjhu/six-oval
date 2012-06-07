@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -84,7 +84,7 @@ public class PasswordState
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.password;
         _oval_family = Family.UNIX;
-        _oval_component = Component.PASSWORD;
+        _oval_component = ComponentType.PASSWORD;
     }
 
 

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
@@ -64,7 +64,7 @@ public class DefinitionType
 
 
     // SIX: extended properties //
-    protected final Component    _oval_component = null;
+    protected final ComponentType    _oval_component = null;
 
 //    private String  _lastModifiedDate;
 //    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();

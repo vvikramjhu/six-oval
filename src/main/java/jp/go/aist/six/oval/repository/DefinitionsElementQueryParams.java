@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.repository;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 
 
@@ -175,7 +175,7 @@ public class DefinitionsElementQueryParams
 
 
     public void setComponent(
-                    final Component component
+                    final ComponentType component
                     )
     {
 //        if (component != null) {
@@ -191,7 +191,7 @@ public class DefinitionsElementQueryParams
 
 
     public void setComponent(
-                    final Component[] component_list
+                    final ComponentType[] component_list
                     )
     {
 
@@ -199,7 +199,7 @@ public class DefinitionsElementQueryParams
             setComponent( (String)null );
         } else {
             StringBuffer  s = new StringBuffer();
-            for (Component  c : component_list) {
+            for (ComponentType  c : component_list) {
                 if (c != null) {
                     if (s.length() > 0) {
                         s.append( LIST_DELIMITER );

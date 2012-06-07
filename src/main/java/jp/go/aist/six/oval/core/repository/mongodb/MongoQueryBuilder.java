@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
@@ -1023,7 +1023,7 @@ implements QueryBuilder
             mapping.put( DefinitionsElementQueryParams.Key.TYPE,        IgnoringHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler2.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( Family.class ) );
-            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   new OvalEnumerationListHandler( Component.class ) );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   new OvalEnumerationListHandler( ComponentType.class ) );
 
             return mapping;
         }

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -75,7 +75,7 @@ public class UserSidItem
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.user_sid;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.USER_SID;
+        _oval_component = ComponentType.USER_SID;
     }
 
 

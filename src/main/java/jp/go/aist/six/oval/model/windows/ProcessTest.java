@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
@@ -87,7 +87,7 @@ public class ProcessTest
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.process;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.PROCESS;
+        _oval_component = ComponentType.PROCESS;
     }
 
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -76,7 +76,7 @@ public class RunlevelItem
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.runlevel;
         _oval_family = Family.UNIX;
-        _oval_component = Component.RUNLEVEL;
+        _oval_component = ComponentType.RUNLEVEL;
     }
 
 

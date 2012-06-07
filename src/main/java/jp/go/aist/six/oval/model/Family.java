@@ -44,14 +44,14 @@ public enum Family
 //      freebsd,
 //      hpux,
 //      ios,
-    INDEPENDENT(     Component.INDEPENDENT ),
-    LINUX(           Component.LINUX       ),
+    INDEPENDENT(     ComponentType.INDEPENDENT ),
+    LINUX(           ComponentType.LINUX       ),
 //        macos,
 //        pixos,
 //        sharepoint,
 //        solaris,
-    UNIX(            Component.UNIX        ),
-    WINDOWS(         Component.WINDOWS     );
+    UNIX(            ComponentType.UNIX        ),
+    WINDOWS(         ComponentType.WINDOWS     );
 
 
 
@@ -76,14 +76,14 @@ public enum Family
 
 
     private String  value = null;
-    private final Collection<Component>  _components;
+    private final Collection<ComponentType>  _components;
 
 
     /**
      * Constructor.
      */
     Family(
-                    final Component[] components
+                    final ComponentType[] components
                     )
     {
         value = name().toLowerCase();
@@ -94,7 +94,7 @@ public enum Family
 
     /**
      */
-    public Collection<Component> getComponents()
+    public Collection<ComponentType> getComponents()
     {
         return _components;
     }

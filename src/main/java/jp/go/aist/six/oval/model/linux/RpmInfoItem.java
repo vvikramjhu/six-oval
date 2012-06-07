@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
@@ -82,7 +82,7 @@ public class RpmInfoItem
 //        _oval_platform_type = OvalPlatformType.linux;
 //        _oval_component_type = OvalComponentType.rpminfo;
         _oval_family = Family.LINUX;
-        _oval_component = Component.RPMINFO;
+        _oval_component = ComponentType.RPMINFO;
     }
 
 //    public RpmInfoItem(

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
@@ -71,7 +71,7 @@ public class PasswordPolicyState
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.passwordpolicy;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.PASSWORDPOLICY;
+        _oval_component = ComponentType.PASSWORDPOLICY;
     }
 
 

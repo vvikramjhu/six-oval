@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.OvalIdContainer;
@@ -60,7 +60,7 @@ public class OvalIdTests
                     final Class<T>                  object_type,
                     final ElementType               type,
                     final Family                    family,
-                    final Component                 component,
+                    final ComponentType                 component,
                     final String                    oval_id,
                     final T                         expected_object
                     )

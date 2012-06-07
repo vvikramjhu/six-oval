@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.independent;
 
 import java.util.Collection;
 import java.util.Collections;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
@@ -90,7 +90,7 @@ public class EnvironmentVariableObject
 //        _oval_platform_type = OvalPlatformType.independent;
 //        _oval_component_type = OvalComponentType.environmentvariable;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = Component.ENVIRONMENTVARIABLE;
+        _oval_component = ComponentType.ENVIRONMENTVARIABLE;
     }
 
 

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
@@ -90,7 +90,7 @@ public class Process58State
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.process58;
         _oval_family = Family.UNIX;
-        _oval_component = Component.PROCESS58;
+        _oval_component = ComponentType.PROCESS58;
     }
 
 

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.linux;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -69,7 +69,7 @@ public class SlackwarePkgInfoState
 //        _oval_platform_type = OvalPlatformType.linux;
 //        _oval_component_type = OvalComponentType.slackwarepkginfo;
         _oval_family = Family.LINUX;
-        _oval_component = Component.SLACKWAREPKGINFO;
+        _oval_component = ComponentType.SLACKWAREPKGINFO;
     }
 
 

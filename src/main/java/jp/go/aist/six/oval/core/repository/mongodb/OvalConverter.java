@@ -1,7 +1,7 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalEnumeration;
@@ -78,7 +78,7 @@ public class OvalConverter
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         // six //
         Family.class,
-        Component.class,
+        ComponentType.class,
         ElementType.class,
 
         RecurseDirectionEnumeration.class,

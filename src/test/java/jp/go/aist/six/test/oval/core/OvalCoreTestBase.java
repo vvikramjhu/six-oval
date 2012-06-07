@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.ElementContainer;
 import jp.go.aist.six.oval.model.ElementType;
@@ -434,7 +434,7 @@ public abstract class OvalCoreTestBase
                             TestType.class,
                             ElementType.TEST,
                             Family.WINDOWS,
-                            Component.FILE,
+                            ComponentType.FILE,
                             "oval:org.mitre.oval.test:tst:1303",
                             null
                         }
@@ -445,7 +445,7 @@ public abstract class OvalCoreTestBase
                             SystemObjectType.class,
                             ElementType.OBJECT,
                             Family.WINDOWS,
-                            Component.FILE,
+                            ComponentType.FILE,
                             "oval:org.mitre.oval.test:obj:1060",
                             null
                         }
@@ -456,7 +456,7 @@ public abstract class OvalCoreTestBase
                             StateType.class,
                             ElementType.STATE,
                             Family.WINDOWS,
-                            Component.FILE,
+                            ComponentType.FILE,
                             "oval:org.mitre.oval.test:ste:1161",
                             null
                         }
@@ -469,7 +469,7 @@ public abstract class OvalCoreTestBase
                             TestType.class,
                             ElementType.TEST,
                             Family.LINUX,
-                            Component.DPKGINFO,
+                            ComponentType.DPKGINFO,
                             "oval:org.mitre.oval.test:tst:709",
                             null
                         }
@@ -480,7 +480,7 @@ public abstract class OvalCoreTestBase
                             SystemObjectType.class,
                             ElementType.OBJECT,
                             Family.LINUX,
-                            Component.DPKGINFO,
+                            ComponentType.DPKGINFO,
                             "oval:org.mitre.oval.test:obj:102",
                             null
                         }
@@ -491,7 +491,7 @@ public abstract class OvalCoreTestBase
                             StateType.class,
                             ElementType.STATE,
                             Family.LINUX,
-                            Component.DPKGINFO,
+                            ComponentType.DPKGINFO,
                             "oval:org.mitre.oval.test:ste:787",
                             null
                         }

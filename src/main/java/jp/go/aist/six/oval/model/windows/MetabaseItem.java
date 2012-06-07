@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
@@ -91,7 +91,7 @@ public class MetabaseItem
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.metabase;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.METABASE;
+        _oval_component = ComponentType.METABASE;
     }
 
 

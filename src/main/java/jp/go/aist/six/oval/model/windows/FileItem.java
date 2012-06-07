@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -183,7 +183,7 @@ public class FileItem
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.file;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.FILE;
+        _oval_component = ComponentType.FILE;
     }
 
 
@@ -234,7 +234,7 @@ public class FileItem
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.file;
         _oval_family = Family.WINDOWS;
-        _oval_component = Component.FILE;
+        _oval_component = ComponentType.FILE;
     }
 
 

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.independent;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
@@ -93,7 +93,7 @@ public class XmlfileContentState
 //        _oval_platform_type = OvalPlatformType.independent;
 //        _oval_component_type = OvalComponentType.xmlfilecontent;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = Component.XMLFILECONTENT;
+        _oval_component = ComponentType.XMLFILECONTENT;
     }
 
 

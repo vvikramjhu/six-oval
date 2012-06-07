@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
@@ -174,19 +174,19 @@ extends OvalCoreTestBase
         DefinitionsElementQueryParams  params51 = new DefinitionsElementQueryParams();
         params51.setType( ElementType.TEST.value() );
         params51.setOrder( "id" );
-        params51.setComponent( Component.FAMILY.value() );
+        params51.setComponent( ComponentType.FAMILY.value() );
 
         // component (2) --- list
         DefinitionsElementQueryParams  params52 = new DefinitionsElementQueryParams();
         params52.setType( ElementType.TEST.value() );
         params52.setOrder( "id" );
-        params52.setComponent( new Component[] { Component.FILE, Component.PROCESS58 } );
+        params52.setComponent( new ComponentType[] { ComponentType.FILE, ComponentType.PROCESS58 } );
 
         // component (3) --- family
         DefinitionsElementQueryParams  params53 = new DefinitionsElementQueryParams();
 //        params53.setType( ElementType.TEST.value() );
         params53.setOrder( "id" );
-        params53.setComponent( Component.FILE );
+        params53.setComponent( ComponentType.FILE );
         params53.setFamily( Family.WINDOWS.value() );
 
 

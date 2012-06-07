@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.unix;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -81,7 +81,7 @@ public class ShadowObject
 //        _oval_platform_type = OvalPlatformType.unix;
 //        _oval_component_type = OvalComponentType.shadow;
         _oval_family = Family.UNIX;
-        _oval_component = Component.SHADOW;
+        _oval_component = ComponentType.SHADOW;
     }
 
 
