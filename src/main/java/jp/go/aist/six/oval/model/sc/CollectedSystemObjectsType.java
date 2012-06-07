@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -56,18 +57,22 @@ public class CollectedSystemObjectsType
 
 
     public CollectedSystemObjectsType(
-                    final Collection<? extends SystemObjectType> objects
+                    final Collection<? extends SystemObjectType> object_list
                     )
     {
-        super( objects );
+//        super( objects );
+
+        object.addAll( object_list );
     }
 
 
     public CollectedSystemObjectsType(
-                    final SystemObjectType[] objects
+                    final SystemObjectType[] object_list
                     )
     {
-        super( objects );
+//        super( objects );
+
+        this( Arrays.asList( object_list ) );
     }
 
 
@@ -119,7 +124,7 @@ public class CollectedSystemObjectsType
     @Override
     protected Collection<SystemObjectType> _getElement()
     {
-        return this.object;
+        return object;
     }
 
 

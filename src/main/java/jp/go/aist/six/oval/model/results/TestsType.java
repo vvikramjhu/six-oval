@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -52,18 +53,22 @@ public class TestsType
 
 
     public TestsType(
-                    final Collection<? extends TestType> tests
+                    final Collection<? extends TestType> test_list
                     )
     {
-        super( tests );
+//        super( tests );
+
+        test.addAll( test_list );
     }
 
 
     public TestsType(
-                    final TestType[] tests
+                    final TestType[] test_list
                     )
     {
-        super( tests );
+//        super( tests );
+
+        this( Arrays.asList( test_list ) );
     }
 
 
@@ -114,7 +119,7 @@ public class TestsType
     @Override
     protected Collection<TestType> _getElement()
     {
-        return this.test;
+        return test;
     }
 
 
