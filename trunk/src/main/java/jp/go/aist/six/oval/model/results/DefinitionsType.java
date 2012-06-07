@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.model.results;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
 
@@ -41,7 +39,7 @@ public class DefinitionsType
 //extends OvalElementContainer<DefinitionResult>  //{1..*}
 {
 
-    private final Set<DefinitionType>  definition = new HashSet<DefinitionType>();
+    private final Collection<DefinitionType>  definition = new HashSet<DefinitionType>();
 
 
 
@@ -59,7 +57,8 @@ public class DefinitionsType
     {
 //        super( definitions );
 
-        definition.addAll( definition_list );
+//        definition.addAll( definition_list );
+        _copy( definition, definition_list );
     }
 
 
@@ -77,39 +76,41 @@ public class DefinitionsType
     /**
      */
     public void setDefinition(
-                    final Collection<? extends DefinitionType> definitionList
+                    final Collection<? extends DefinitionType> definition_list
                     )
     {
-        _setElement( definitionList );
+        reset( definition_list );
+//        _setElement( definition_list );
     }
 
 
     public void setDefinition(
-                    final DefinitionType[] definitionList
+                    final DefinitionType[] definition_list
                     )
     {
-        _setElement( definitionList );
-    }
-
-
-    public boolean addDefinition(
-                    final DefinitionType definition
-                    )
-    {
-        return _addElement( definition );
+        reset( definition_list );
+//        _setElement( definition_list );
     }
 
 
     public Collection<DefinitionType> getDefinition()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<DefinitionType> iterateDefinition()
-    {
-        return iterator();
-    }
+//    public boolean addDefinition(
+//                    final DefinitionType definition
+//                    )
+//    {
+//        return add( definition );
+//    }
+//
+//
+//    public Iterator<DefinitionType> iterateDefinition()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -118,7 +119,7 @@ public class DefinitionsType
     //**************************************************************
 
     @Override
-    protected Collection<DefinitionType> _getElement()
+    protected Collection<DefinitionType> _getCollection()
     {
         return definition;
     }
@@ -129,11 +130,5 @@ public class DefinitionsType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return String.valueOf( getDefinition() );
-    }
-
 }
-// DefinitionsType
+//

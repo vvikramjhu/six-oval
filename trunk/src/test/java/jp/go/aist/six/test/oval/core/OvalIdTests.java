@@ -4,8 +4,8 @@ import java.io.File;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.common.OvalIdContainer;
 import jp.go.aist.six.oval.model.common.OvalId;
+import jp.go.aist.six.oval.model.common.OvalIdContainer;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 
@@ -60,7 +60,7 @@ public class OvalIdTests
                     final Class<T>                  object_type,
                     final ElementType               type,
                     final Family                    family,
-                    final ComponentType                 component,
+                    final ComponentType             component_type,
                     final String                    oval_id,
                     final T                         expected_object
                     )
@@ -78,7 +78,7 @@ public class OvalIdTests
         _marshalToFile( id, file.getCanonicalPath() );
         Reporter.log( "<<< ...marshalling done", true );
 
-        oval_id_list.addId( id );
+        oval_id_list.add( id );
         Reporter.log( ">>> marshalling OvalIdContainer...", true );
         File  list_file = new File( "oval_id_list_" + id.getNamespace() + "_" + id.getIdValue() + ".xml" );
         Reporter.log( "  * XML file: " + list_file, true );

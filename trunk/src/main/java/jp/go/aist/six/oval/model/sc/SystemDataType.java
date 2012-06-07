@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
@@ -59,7 +58,8 @@ public class SystemDataType
     {
 //        super( items );
 
-        item.addAll( item_list );
+//        item.addAll( item_list );
+        _copy( item, item_list );
     }
 
 
@@ -80,28 +80,29 @@ public class SystemDataType
                     final Collection<? extends ItemType> item_list
                     )
     {
-        _setElement( item_list );
-    }
-
-
-    public boolean addItem(
-                    final ItemType item
-                    )
-    {
-        return _addElement( item );
+        reset( item_list );
+//        _setElement( item_list );
     }
 
 
     public Collection<ItemType> getItem()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<ItemType> iterateItem()
-    {
-        return iterator();
-    }
+//    public boolean addItem(
+//                    final ItemType item
+//                    )
+//    {
+//        return add( item );
+//    }
+//
+//
+//    public Iterator<ItemType> iterateItem()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -110,7 +111,7 @@ public class SystemDataType
     //**************************************************************
 
     @Override
-    protected Collection<ItemType> _getElement()
+    protected Collection<ItemType> _getCollection()
     {
         return item;
     }
@@ -121,13 +122,13 @@ public class SystemDataType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "["
-                        + _getElement()
-                        + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "["
+//                        + _getCollection()
+//                        + "]";
+//    }
 
 }
-// SystemDataType
+//

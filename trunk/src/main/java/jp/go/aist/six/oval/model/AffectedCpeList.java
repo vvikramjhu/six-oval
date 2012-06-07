@@ -87,13 +87,13 @@ public class AffectedCpeList
                     final Cpe cpe
                     )
     {
-        return _addElement( cpe );
+        return add( cpe );
     }
 
 
     public Collection<Cpe> getCpe()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
@@ -109,7 +109,7 @@ public class AffectedCpeList
     //**************************************************************
 
     @Override
-    protected Collection<Cpe> _getElement()
+    protected Collection<Cpe> _getCollection()
     {
         return cpe;
     }

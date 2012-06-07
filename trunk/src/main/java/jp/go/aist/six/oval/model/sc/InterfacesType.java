@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 import com.google.code.morphia.annotations.Embedded;
@@ -60,9 +59,10 @@ public class InterfacesType
                     final Collection<? extends InterfaceType> network_interface_list
                     )
     {
-//        super( netifs );
+//        super( network_interface_list );
 
-        network_interface.addAll( network_interface_list );
+//        network_interface.addAll( network_interface_list );
+        _copy( network_interface, network_interface_list );
     }
 
 
@@ -70,7 +70,7 @@ public class InterfacesType
                     final InterfaceType[] network_interface_list
                     )
     {
-//        super( netifs );
+//        super( network_interface_list );
 
         this( Arrays.asList( network_interface_list ) );
     }
@@ -83,36 +83,37 @@ public class InterfacesType
                     final Collection<? extends InterfaceType> network_interface_list
                     )
     {
-        _setElement( network_interface_list );
+        reset( network_interface_list );
+//        _setElement( network_interface_list );
     }
 
 
     public void setInterface(
-                    final InterfaceType[] network_interface
+                    final InterfaceType[] network_interface_list
                     )
     {
-        _setElement( network_interface );
-    }
-
-
-    public boolean addInterface(
-                    final InterfaceType network_interface
-                    )
-    {
-        return _addElement( network_interface );
+        reset( network_interface_list );
     }
 
 
     public Collection<InterfaceType> getInterface()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<InterfaceType> iterateInterface()
-    {
-        return iterator();
-    }
+//    public boolean addInterface(
+//                    final InterfaceType network_interface
+//                    )
+//    {
+//        return add( network_interface );
+//    }
+//
+//
+//    public Iterator<InterfaceType> iterateInterface()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -121,7 +122,7 @@ public class InterfacesType
     //**************************************************************
 
     @Override
-    protected Collection<InterfaceType> _getElement()
+    protected Collection<InterfaceType> _getCollection()
     {
         return network_interface;
     }
@@ -133,4 +134,4 @@ public class InterfacesType
     //**************************************************************
 
 }
-//InterfacesType
+//

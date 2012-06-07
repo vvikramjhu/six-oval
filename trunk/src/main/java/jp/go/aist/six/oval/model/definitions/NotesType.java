@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
@@ -40,6 +40,37 @@ public class NotesType
     extends Container<Note> //{1..*}
 {
 
+    private static Collection<Note> _convert(
+                    final Collection<String> note_string_list
+                    )
+    {
+        Collection<Note>  note_list = new ArrayList<Note>();
+        for (String  s : note_string_list) {
+            note_list.add( new Note( s ) );
+        }
+
+        return note_list;
+    }
+
+
+
+    public NotesType newInstance(
+                    final Collection<String> note_string_list
+                    )
+    {
+        return new NotesType( _convert( note_string_list ) );
+    }
+
+
+    public NotesType newInstance(
+                    final String[] note_string_list
+                    )
+    {
+        return newInstance( Arrays.asList( note_string_list ) );
+    }
+
+
+
     private final Set<Note>  note = new HashSet<Note>();
 
 
@@ -53,20 +84,18 @@ public class NotesType
 
 
     public NotesType(
-                    final Collection<String> notes
+                    final Collection<? extends Note> note_list
                     )
     {
-        for (String  s : notes) {
-            addNote( new Note( s ) );
-        }
+        reset( note_list );
     }
 
 
     public NotesType(
-                    final String[] notes
+                    final Note[] note_list
                     )
     {
-        this( Arrays.asList( notes ) );
+        this( Arrays.asList( note_list ) );
     }
 
 
@@ -77,28 +106,28 @@ public class NotesType
                     final Collection<? extends Note> note_list
                     )
     {
-        _setElement( note_list );
-    }
-
-
-    public boolean addNote(
-                    final Note note
-                    )
-    {
-        return _addElement( note );
+        reset( note_list );
     }
 
 
     public Collection<Note> getNote()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<Note> iterateNote()
-    {
-        return iterator();
-    }
+//    public boolean addNote(
+//                    final Note note
+//                    )
+//    {
+//        return add( note );
+//    }
+//
+//
+//    public Iterator<Note> iterateNote()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -107,10 +136,10 @@ public class NotesType
     //**************************************************************
 
     @Override
-    protected Collection<Note> _getElement()
+    protected Collection<Note> _getCollection()
     {
         return note;
     }
 
 }
-// NotesType
+//

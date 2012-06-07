@@ -152,7 +152,7 @@ public class OvalDefinitions
             defs = new DefinitionsType();
             setDefinitions( defs );
         }
-        defs.addDefinition( definition );
+        defs.add( definition );
 
         return this;
     }
@@ -184,7 +184,7 @@ public class OvalDefinitions
             tests = new TestsType();
             setTests( tests );
         }
-        tests.addTest( test );
+        tests.add( test );
 
         return this;
     }
@@ -216,7 +216,7 @@ public class OvalDefinitions
             objects = new SystemObjectsType();
             setObjects( objects );
         }
-        objects.addObject( object );
+        objects.add( object );
 
         return this;
     }
@@ -248,7 +248,7 @@ public class OvalDefinitions
             states = new StatesType();
             setStates( states );
         }
-        states.addState( state );
+        states.add( state );
 
         return this;
     }
@@ -280,7 +280,7 @@ public class OvalDefinitions
             variables = new VariablesType();
             setVariables( variables );
         }
-        variables.addVariable( variable );
+        variables.add( variable );
 
         return this;
     }

@@ -115,7 +115,7 @@ public class SystemType
 
     public DefinitionsType getDefinitions()
     {
-        return this.definitions;
+        return definitions;
     }
 
 
@@ -128,7 +128,7 @@ public class SystemType
             defs = new DefinitionsType();
             setDefinitions( defs );
         }
-        defs.addDefinition( definition );
+        defs.add( definition );
 
         return this;
     }
@@ -147,7 +147,7 @@ public class SystemType
 
     public TestsType getTests()
     {
-        return this.tests;
+        return tests;
     }
 
 
@@ -160,7 +160,7 @@ public class SystemType
             tests = new TestsType();
             setTests( tests );
         }
-        tests.addTest( test );
+        tests.add( test );
 
         return this;
     }
@@ -173,13 +173,13 @@ public class SystemType
                     final OvalSystemCharacteristics sc
                     )
     {
-        this.oval_system_characteristics = sc;
+        oval_system_characteristics = sc;
     }
 
 
     public OvalSystemCharacteristics getOvalSystemCharacteristics()
     {
-        return this.oval_system_characteristics;
+        return oval_system_characteristics;
     }
 
 

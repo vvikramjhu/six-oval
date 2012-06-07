@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementContainer;
 import com.google.code.morphia.annotations.Reference;
@@ -60,7 +59,8 @@ public class VariablesType
     {
 //        super( variables );
 
-        variable.addAll( variable_list );
+//        variable.addAll( variable_list );
+        _copy( variable, variable_list );
     }
 
 
@@ -81,28 +81,29 @@ public class VariablesType
                     final Collection<? extends VariableType> variable_list
                     )
     {
-        _setElement( variable_list );
-    }
-
-
-    public boolean addVariable(
-                    final VariableType variable
-                    )
-    {
-        return _addElement( variable );
+        reset( variable_list );
+//        _setElement( variable_list );
     }
 
 
     public Collection<VariableType> getVariable()
     {
-        return _getElement();
+        return _getCollection();
     }
 
 
-    public Iterator<VariableType> iterateVariable()
-    {
-        return iterator();
-    }
+//    public boolean addVariable(
+//                    final VariableType variable
+//                    )
+//    {
+//        return add( variable );
+//    }
+//
+//
+//    public Iterator<VariableType> iterateVariable()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -111,10 +112,10 @@ public class VariablesType
     //**************************************************************
 
     @Override
-    protected Collection<VariableType> _getElement()
+    protected Collection<VariableType> _getCollection()
     {
         return variable;
     }
 
 }
-// VariablesType
+//

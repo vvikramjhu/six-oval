@@ -100,7 +100,7 @@ public final class EntityUtil
                 definitions = new DefinitionsType();
                 oval_defs.setDefinitions( definitions );
             }
-            added = definitions.addDefinition( asDefinition( element ) );
+            added = definitions.add( asDefinition( element ) );
 
         } else if (element_type == ElementType.TEST) {
             TestsType  tests = oval_defs.getTests();
@@ -108,7 +108,7 @@ public final class EntityUtil
                 tests = new TestsType();
                 oval_defs.setTests( tests );
             }
-            added = tests.addTest( asTest( element ) );
+            added = tests.add( asTest( element ) );
 
         } else if (element_type == ElementType.OBJECT) {
             SystemObjectsType  objects = oval_defs.getObjects();
@@ -116,7 +116,7 @@ public final class EntityUtil
                 objects = new SystemObjectsType();
                 oval_defs.setObjects( objects );
             }
-            added = objects.addObject( asObject( element ) );
+            added = objects.add( asObject( element ) );
 
         } else if (element_type == ElementType.STATE) {
             StatesType  states = oval_defs.getStates();
@@ -124,7 +124,7 @@ public final class EntityUtil
                 states = new StatesType();
                 oval_defs.setStates( states );
             }
-            added = states.addState( asState( element ) );
+            added = states.add( asState( element ) );
 
         } else if (element_type == ElementType.VARIABLE) {
             VariablesType  variables = oval_defs.getVariables();
@@ -132,7 +132,7 @@ public final class EntityUtil
                 variables = new VariablesType();
                 oval_defs.setVariables( variables );
             }
-            added = variables.addVariable( asVariable( element ) );
+            added = variables.add( asVariable( element ) );
         }
 
         return added;
