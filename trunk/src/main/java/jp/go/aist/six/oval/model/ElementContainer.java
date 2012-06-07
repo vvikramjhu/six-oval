@@ -51,20 +51,20 @@ public abstract class ElementContainer<E extends Element>
     }
 
 
-    public ElementContainer(
-                    final Collection<? extends E> elements
-                    )
-    {
-        super( elements );
-    }
-
-
-    public ElementContainer(
-                    final E[] elements
-                    )
-    {
-        super( elements );
-    }
+//    public ElementContainer(
+//                    final Collection<? extends E> elements
+//                    )
+//    {
+//        super( elements );
+//    }
+//
+//
+//    public ElementContainer(
+//                    final E[] elements
+//                    )
+//    {
+//        super( elements );
+//    }
 
 
 

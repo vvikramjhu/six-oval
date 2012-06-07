@@ -45,20 +45,20 @@ public abstract class Container<E>
     }
 
 
-    public Container(
-                    final Collection<? extends E> elements
-                    )
-    {
-        _setElement( elements );
-    }
-
-
-    public Container(
-                    final E[] elements
-                    )
-    {
-        _setElement( elements );
-    }
+//    public Container(
+//                    final Collection<? extends E> elements
+//                    )
+//    {
+//        _setElement( elements );
+//    }
+//
+//
+//    public Container(
+//                    final E[] elements
+//                    )
+//    {
+//        _setElement( elements );
+//    }
 
 
 
