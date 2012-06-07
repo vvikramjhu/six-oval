@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.model;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 
 
@@ -41,7 +39,7 @@ public class AffectedCpeList
     extends Container<Cpe> //{0..* ?}
 {
 
-    private final Set<Cpe>  cpe = new HashSet<Cpe>();
+    private final Collection<Cpe>  cpe = new HashSet<Cpe>();
 
 
     /**
@@ -58,7 +56,8 @@ public class AffectedCpeList
     {
 //        super( cpes );
 
-        cpe.addAll( cpe_list );
+//        cpe.addAll( cpe_list );
+        _copy( cpe, cpe_list );
     }
 
 
@@ -79,15 +78,8 @@ public class AffectedCpeList
                     final Collection<? extends Cpe> cpe_list
                     )
     {
-        _setElement( cpe_list );
-    }
-
-
-    public boolean addCpe(
-                    final Cpe cpe
-                    )
-    {
-        return add( cpe );
+        reset( cpe_list );
+//        _setElement( cpe_list );
     }
 
 
@@ -97,10 +89,18 @@ public class AffectedCpeList
     }
 
 
-    public Iterator<Cpe> iterateCpe()
-    {
-        return iterator();
-    }
+//    public boolean addCpe(
+//                    final Cpe cpe
+//                    )
+//    {
+//        return add( cpe );
+//    }
+//
+//
+//    public Iterator<Cpe> iterateCpe()
+//    {
+//        return iterator();
+//    }
 
 
 
@@ -121,4 +121,4 @@ public class AffectedCpeList
     //**************************************************************
 
 }
-//AffectedCpeList
+//
