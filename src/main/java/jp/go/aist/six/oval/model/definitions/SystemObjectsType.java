@@ -87,6 +87,14 @@ public class SystemObjectsType
     }
 
 
+    public void setObject(
+                    final SystemObjectType[] object_list
+                    )
+    {
+        reset( object_list );
+    }
+
+
     public Collection<SystemObjectType> getObject()
     {
         return _getCollection();

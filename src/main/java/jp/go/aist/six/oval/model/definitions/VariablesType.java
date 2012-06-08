@@ -86,6 +86,14 @@ public class VariablesType
     }
 
 
+    public void setVariable(
+                    final VariableType[] variable_list
+                    )
+    {
+        reset( variable_list );
+    }
+
+
     public Collection<VariableType> getVariable()
     {
         return _getCollection();

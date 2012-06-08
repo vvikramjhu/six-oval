@@ -28,7 +28,12 @@ import jp.go.aist.six.oval.model.Container;
 
 
 /**
- * The DefinitionResults is a container for one or more DefinitionResult instances.
+ * The DefinitionsType is a container for one or more Definition instances.
+ *
+ * <p>Constraints:
+ * The combination of definition id, version, and variable instance of each definition
+ * is unique in this container.
+ * </p>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

@@ -30,6 +30,10 @@ import jp.go.aist.six.oval.model.Container;
 /**
  * The VariablesType is a container for one or more variables.
  *
+ * <p>Constraints:
+ * The id of each object is unique in this container.
+ * </p>
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
@@ -75,6 +79,14 @@ public class VariablesType
     {
         reset( variable_list );
 //        _setElement( variable_list );
+    }
+
+
+    public void setVariable(
+                    final VariableType[] variable_list
+                    )
+    {
+        reset( variable_list );
     }
 
 

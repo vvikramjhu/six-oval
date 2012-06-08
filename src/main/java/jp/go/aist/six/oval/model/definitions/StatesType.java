@@ -85,6 +85,14 @@ public class StatesType
     }
 
 
+    public void setState(
+                    final StateType[] state_list
+                    )
+    {
+        reset( state_list );
+    }
+
+
     public Collection<StateType> getState()
     {
         return _getCollection();
