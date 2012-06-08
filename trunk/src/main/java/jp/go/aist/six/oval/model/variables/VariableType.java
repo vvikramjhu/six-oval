@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.variables;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalObject;
@@ -69,17 +70,35 @@ public class VariableType
     public VariableType(
                     final String id,
                     final DatatypeEnumeration datatype,
-                    final String comment
+                    final String comment,
+                    final Collection<String> value_list
                     )
     {
+        setId( id );
         setDatatype( datatype );
+        setComment( comment );
+        setValue( value_list );
+    }
+
+
+    public VariableType(
+                    final String id,
+                    final DatatypeEnumeration datatype,
+                    final String comment,
+                    final String[] value_list
+                    )
+    {
+        setId( id );
+        setDatatype( datatype );
+        setComment( comment );
+        setValue( value_list );
     }
 
 
 
     /**
      */
-    public void setID(
+    public void setId(
                     final String id
                     )
     {
@@ -87,9 +106,9 @@ public class VariableType
     }
 
 
-    public String getID()
+    public String getId()
     {
-        return this.id;
+        return id;
     }
 
 
@@ -106,7 +125,7 @@ public class VariableType
 
     public DatatypeEnumeration getDatatype()
     {
-        return this.datatype;
+        return datatype;
     }
 
 
@@ -123,7 +142,7 @@ public class VariableType
 
     public String getComment()
     {
-        return this.comment;
+        return comment;
     }
 
 
@@ -131,27 +150,35 @@ public class VariableType
     /**
      */
     public void setValue(
-                    final Collection<String> valueList
+                    final Collection<String> value_list
                     )
     {
-        if (valueList != this.value) {
-            this.value.clear();
-            if (valueList != null  &&  valueList.size() > 0) {
-                this.value.addAll( valueList );
+        if (value_list != value) {
+            value.clear();
+            if (value_list != null  &&  value_list.size() > 0) {
+                value.addAll( value_list );
             }
         }
     }
 
 
+    public void setValue(
+                    final String[] value_list
+                    )
+    {
+        setValue( Arrays.asList( value_list ) );
+    }
+
+
     public Collection<String> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<String> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
     }
 
 
@@ -163,7 +190,7 @@ public class VariableType
     @Override
     public String toString()
     {
-        return "[id=" + getID()
+        return "[id=" + getId()
                         + ", datatype=" + getDatatype()
                         + ", comment=" + getComment()
                         + ", valeu=" + getValue()
@@ -171,4 +198,4 @@ public class VariableType
     }
 
 }
-//VariableType
+//

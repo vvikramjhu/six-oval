@@ -20,10 +20,9 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import jp.go.aist.six.oval.model.ElementContainer;
 
 
@@ -34,6 +33,10 @@ import jp.go.aist.six.oval.model.ElementContainer;
  * The name "objects" in the OVAL Schema is renamed
  * because the name has the special meaning in Java.
  *
+ * <p>Constraints:
+ * The combination of id, version, and variable instance of each object is unique in this container.
+ * </p>
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
@@ -42,7 +45,8 @@ public class CollectedSystemObjectsType
     extends ElementContainer<SystemObjectType>    //{1..*}
 {
 
-    private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();
+    //TODO: Uniqueness constraints, i.e. xsd:key.
+    private final Collection<SystemObjectType>  object = new ArrayList<SystemObjectType>();
     //{1..*}
 
 

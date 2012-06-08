@@ -37,7 +37,7 @@ public class DefinitionType
 //    implements Dependent<SystemType>
 {
 
-    //TODO: Move "id" from OvalElement to here.
+    //TODO: Is this class a subclass of ElementRef?
 //    private String  definition_id;
 //    //{oval:DefinitionIDPattern, required}
 

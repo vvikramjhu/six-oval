@@ -20,10 +20,9 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
 
@@ -39,7 +38,7 @@ public class OvalIdContainer
     extends Container<OvalId>
 {
 
-    private final Set<OvalId>  id = new HashSet<OvalId>();
+    private final Collection<OvalId>  id = new ArrayList<OvalId>();
 
 
 

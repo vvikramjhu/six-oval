@@ -75,12 +75,22 @@ public class TestsType
 
 
 
+    /**
+     */
     public void setTest(
                     final Collection<? extends TestType> test_list
                     )
     {
         reset( test_list );
 //        _setElement( test_list );
+    }
+
+
+    public void setTest(
+                    final TestType[] test_list
+                    )
+    {
+        reset( test_list );
     }
 
 

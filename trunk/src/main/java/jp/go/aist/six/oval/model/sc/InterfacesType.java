@@ -20,10 +20,9 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 import com.google.code.morphia.annotations.Embedded;
 
@@ -42,8 +41,8 @@ public class InterfacesType
 {
 
     @Embedded( "interface" )
-    private final Set<InterfaceType>  network_interface =
-        new HashSet<InterfaceType>();
+    private final Collection<InterfaceType>  network_interface =
+        new ArrayList<InterfaceType>();
 
 
 
@@ -56,23 +55,23 @@ public class InterfacesType
 
 
     public InterfacesType(
-                    final Collection<? extends InterfaceType> network_interface_list
+                    final Collection<? extends InterfaceType> interface_list
                     )
     {
 //        super( network_interface_list );
 
 //        network_interface.addAll( network_interface_list );
-        _copy( network_interface, network_interface_list );
+        _copy( network_interface, interface_list );
     }
 
 
     public InterfacesType(
-                    final InterfaceType[] network_interface_list
+                    final InterfaceType[] interface_list
                     )
     {
 //        super( network_interface_list );
 
-        this( Arrays.asList( network_interface_list ) );
+        this( Arrays.asList( interface_list ) );
     }
 
 
@@ -80,19 +79,18 @@ public class InterfacesType
     /**
      */
     public void setInterface(
-                    final Collection<? extends InterfaceType> network_interface_list
+                    final Collection<? extends InterfaceType> interface_list
                     )
     {
-        reset( network_interface_list );
-//        _setElement( network_interface_list );
+        reset( interface_list );
     }
 
 
     public void setInterface(
-                    final InterfaceType[] network_interface_list
+                    final InterfaceType[] interface_list
                     )
     {
-        reset( network_interface_list );
+        reset( interface_list );
     }
 
 
