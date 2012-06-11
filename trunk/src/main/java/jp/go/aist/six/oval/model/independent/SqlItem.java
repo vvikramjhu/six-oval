@@ -37,7 +37,11 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the sql57 item and
+ *             will be removed in a future version of the language.
  */
+@Deprecated
 public class SqlItem
     extends ItemType
 {
@@ -219,7 +223,7 @@ public class SqlItem
     @Override
     public String toString()
     {
-        return "ldap_item[" + super.toString()
+        return "sql_item[" + super.toString()
                         + ", engine="               + getEngine()
                         + ", version="              + getVersion()
                         + ", connection_string="    + getConnectionString()
@@ -229,4 +233,4 @@ public class SqlItem
     }
 
 }
-// SqlItem
+//

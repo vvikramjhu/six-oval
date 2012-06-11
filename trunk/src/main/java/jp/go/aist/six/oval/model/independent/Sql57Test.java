@@ -33,25 +33,21 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the sql57 test and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class SqlTest
+public class Sql57Test
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public SqlTest()
+    public Sql57Test()
     {
         this( null, 0 );
     }
 
 
-    public SqlTest(
+    public Sql57Test(
                     final String id,
                     final int version
                     )
@@ -60,7 +56,7 @@ public class SqlTest
     }
 
 
-    public SqlTest(
+    public Sql57Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -69,10 +65,8 @@ public class SqlTest
     {
         super( id, version, comment, check );
 
-//        _oval_platform_type = OvalPlatformType.independent;
-//        _oval_component_type = OvalComponentType.sql;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.SQL;
+        _oval_component = ComponentType.SQL57;
     }
 
 
@@ -94,7 +88,7 @@ public class SqlTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof SqlTest)) {
+        if (!(obj instanceof Sql57Test)) {
             return false;
         }
 
@@ -106,8 +100,8 @@ public class SqlTest
     @Override
     public String toString()
     {
-        return "sql_test[" + super.toString() + "]";
+        return "sql57_test[" + super.toString() + "]";
     }
 
 }
-//SqlTest
+//

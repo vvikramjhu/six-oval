@@ -25,25 +25,21 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definitions.EntityStateRecordType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The SQL state contains two entities that are used to check
+ * The SQL57 state contains two entities that are used to check
  * the name of the specified field and the value associated with it.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the sql57 state and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class SqlState
+public class Sql57State
     extends StateType
 {
 
@@ -59,21 +55,21 @@ public class SqlState
     private EntityStateStringType  sql;
     //{0..1}
 
-    private EntityStateAnySimpleType  result;
-    //{0..1}
+    private EntityStateRecordType  result;
+    //{0..1, unique="field/@name"}
 
 
 
     /**
      * Constructor.
      */
-    public SqlState()
+    public Sql57State()
     {
         this( null, 0 );
     }
 
 
-    public SqlState(
+    public Sql57State(
                     final String id,
                     final int version
                     )
@@ -82,7 +78,7 @@ public class SqlState
     }
 
 
-    public SqlState(
+    public Sql57State(
                     final String id,
                     final int version,
                     final String comment
@@ -90,10 +86,8 @@ public class SqlState
     {
         super( id, version, comment );
 
-//        _oval_platform_type = OvalPlatformType.independent;
-//        _oval_component_type = OvalComponentType.sql;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.SQL;
+        _oval_component = ComponentType.SQL57;
     }
 
 
@@ -169,14 +163,14 @@ public class SqlState
     /**
      */
     public void setResult(
-                    final EntityStateAnySimpleType result
+                    final EntityStateRecordType result
                     )
     {
         this.result = result;
     }
 
 
-    public EntityStateAnySimpleType getResult()
+    public EntityStateRecordType getResult()
     {
         return result;
     }
@@ -219,7 +213,7 @@ public class SqlState
                     final Object obj
                     )
     {
-        if (!(obj instanceof SqlState)) {
+        if (!(obj instanceof Sql57State)) {
             return false;
         }
 
@@ -231,7 +225,7 @@ public class SqlState
     @Override
     public String toString()
     {
-        return "sql_state[" + super.toString()
+        return "sql57_state[" + super.toString()
                         + ", engine="           + getEngine()
                         + ", version="          + getVersion()
                         + ", conection_string=" + getConnectionString()
@@ -241,4 +235,4 @@ public class SqlState
     }
 
 }
-// SqlState
+//

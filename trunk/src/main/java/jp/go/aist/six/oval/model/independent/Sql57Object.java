@@ -22,28 +22,26 @@ package jp.go.aist.six.oval.model.independent;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The SQL object is used by a sql test to define the specific database
+ * The SQL57 object is used by a sql test to define the specific database
  * and query to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the sql57 object and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class SqlObject
+public class Sql57Object
     extends SystemObjectType
 {
     // XSD model:
@@ -54,6 +52,7 @@ public class SqlObject
     //                   version
     //                   connection_string
     //                   sql
+    //                   filter
     //          )
     // )
 
@@ -71,18 +70,21 @@ public class SqlObject
     private EntityObjectStringType  sql;
     //{1..1}
 
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
 
 
     /**
      * Constructor.
      */
-    public SqlObject()
+    public Sql57Object()
     {
         this( null, 0 );
     }
 
 
-    public SqlObject(
+    public Sql57Object(
                     final String id,
                     final int version
                     )
@@ -91,7 +93,7 @@ public class SqlObject
     }
 
 
-    public SqlObject(
+    public Sql57Object(
                     final String id,
                     final int version,
                     final String comment
@@ -99,10 +101,8 @@ public class SqlObject
     {
         super( id, version, comment );
 
-//        _oval_platform_type = OvalPlatformType.independent;
-//        _oval_component_type = OvalComponentType.sql;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.SQL;
+        _oval_component = ComponentType.SQL57;
     }
 
 
@@ -192,6 +192,46 @@ public class SqlObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filterList
+                    )
+    {
+        if (filter != filterList) {
+            filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                filter.addAll( filterList );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
+    }
+
+
+
     //*********************************************************************
     //  DefinitionsElement
     //*********************************************************************
@@ -204,6 +244,7 @@ public class SqlObject
         ref_list.add( getVersion() );
         ref_list.add( getConnectionString() );
         ref_list.add( getSql() );
+        ref_list.addAll( getFilter() );
 
         return ref_list;
     }
@@ -227,7 +268,7 @@ public class SqlObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof SqlObject)) {
+        if (!(obj instanceof Sql57Object)) {
             return false;
         }
 
@@ -239,14 +280,15 @@ public class SqlObject
     @Override
     public String toString()
     {
-        return "sql_object[" + super.toString()
+        return "sql57_object[" + super.toString()
                         + ", set="              + getSet()
                         + ", engine="           + getEngine()
                         + ", version="          + getVersion()
                         + ", conection_string=" + getConnectionString()
                         + ", sql="              + getSql()
+                        + ", filter="           + getFilter()
                        + "]";
     }
 
 }
-//SqlObject
+//
