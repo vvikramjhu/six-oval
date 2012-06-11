@@ -17,8 +17,7 @@
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, inetlisteningservers, partition, rpminfo, rpmverify, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
 || unix || file, inetd, interface, password, process, process58, runlevel, shadow, uname, xinetd ||
-|| windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, 
-user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
+|| windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
   
 
 
