@@ -1,6 +1,6 @@
 #summary Release Notes.
 
-= Summary =
+= <font color="#0044CC">Summary</font> =
 
 || *SIX OVAL version* || *OVAL Schema version* ||
 || 0.7.0              || 5.10.1                ||
@@ -8,15 +8,15 @@
 
 
 ----
-= Version 0.7.0 =
+= <font color="#0044CC">Version 0.7.0</font> =
 
-== Changes ==
+== <font color="#0044CC">Changes</font> ==
   * Now we use [http://www.mongodb.org/ MongoDB] for the OVAL repository implementation.
 
 
-== OVAL Support ==
-
-=== Supported Platforms and Components ===
+== <font color="#0044CC">OVAL Support</font> ==
+  * OVAL Schema Version: 5.10.1
+  * Platforms and Components:
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, inetlisteningservers, partition, rpminfo, rpmverify, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
@@ -25,5 +25,5 @@
   
 
 
-== Tested Environment ==
+== <font color="#0044CC">Tested Environment</font> ==
 T.B.D.
