@@ -695,9 +695,9 @@
 
 
 
-    <!-- ******************************************************* -->
-    <!-- sql                                                     -->
-    <!-- ******************************************************* -->
+    <!-- ************************************************************** -->
+    <!-- sql, sql57                                                     -->
+    <!-- ************************************************************** -->
 
     <class name="jp.go.aist.six.oval.model.independent.SqlTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
@@ -816,6 +816,136 @@
 
         <field name="result" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.Sql57Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sql57_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.Sql57Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sql57_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityObjectEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+        
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+        
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+        
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.Sql57State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sql57_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateRecordType">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.Sql57Item"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sql57_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemRecordType"
             collection="collection">
             <bind-xml name="result" node="element"/>
         </field>

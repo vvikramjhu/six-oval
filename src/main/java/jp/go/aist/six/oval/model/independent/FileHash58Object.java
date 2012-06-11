@@ -310,7 +310,7 @@ public class FileHash58Object
                         + ", path="      + getPath()
                         + ", filename="  + getFilename()
                         + ", hash_type=" + getHashType()
-                        + ", filter=" + getFilter()
+                        + ", filter="    + getFilter()
                        + "]";
     }
 

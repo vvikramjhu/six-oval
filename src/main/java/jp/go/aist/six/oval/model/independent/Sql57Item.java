@@ -25,20 +25,20 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.sc.EntityItemRecordType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The SQL item outlines information collected from a database via an SQL query.
+ * The SQL57 item outlines information collected from a database via an SQL query.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SqlItem
+public class Sql57Item
     extends ItemType
 {
 
@@ -54,7 +54,8 @@ public class SqlItem
     private EntityItemStringType  sql;
     //{0..1}
 
-    private final Collection<EntityItemAnySimpleType>  result = new ArrayList<EntityItemAnySimpleType>();
+    private final Collection<EntityItemRecordType>  result =
+                    new ArrayList<EntityItemRecordType>();
     //{0..*}
 
 
@@ -62,22 +63,20 @@ public class SqlItem
     /**
      * Constructor.
      */
-    public SqlItem()
+    public Sql57Item()
     {
         this( 0 );
     }
 
 
-    public SqlItem(
+    public Sql57Item(
                     final int id
                     )
     {
         super( id );
 
-//        _oval_platform_type = OvalPlatformType.independent;
-//        _oval_component_type = OvalComponentType.sql;
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.SQL;
+        _oval_component = ComponentType.SQL57;
     }
 
 
@@ -153,37 +152,25 @@ public class SqlItem
     /**
      */
     public void setResult(
-                    final Collection<? extends EntityItemAnySimpleType> results
+                    final Collection<? extends EntityItemRecordType> results
                     )
     {
-        result.clear();
-        if (results != null  &&  results.size() > 0) {
-            for (EntityItemAnySimpleType  result : results) {
-                addResult( result );
+        if (results != result ) {
+            result.clear();
+            if (results != null  &&  results.size() > 0) {
+                result.addAll( results );
             }
         }
     }
 
 
-    public boolean addResult(
-                    final EntityItemAnySimpleType result
-                    )
-    {
-        if (result == null) {
-            throw new IllegalArgumentException( "empty result" );
-        }
-
-        return this.result.add( result );
-    }
-
-
-    public Collection<EntityItemAnySimpleType> getResult()
+    public Collection<EntityItemRecordType> getResult()
     {
         return result;
     }
 
 
-    public Iterator<EntityItemAnySimpleType> iterateResult()
+    public Iterator<EntityItemRecordType> iterateResult()
     {
         return result.iterator();
     }
@@ -207,7 +194,7 @@ public class SqlItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof SqlItem)) {
+        if (!(obj instanceof Sql57Item)) {
             return false;
         }
 
@@ -219,7 +206,7 @@ public class SqlItem
     @Override
     public String toString()
     {
-        return "ldap_item[" + super.toString()
+        return "sql57_item[" + super.toString()
                         + ", engine="               + getEngine()
                         + ", version="              + getVersion()
                         + ", connection_string="    + getConnectionString()
@@ -229,4 +216,4 @@ public class SqlItem
     }
 
 }
-// SqlItem
+//

@@ -90,6 +90,7 @@ public enum ComponentType
     SID_SID,                        // windows
     SLACKWAREPKGINFO,               // linux
     SQL,                            // independent @deprecated
+    SQL57,                          // independent
 
     TEXTFILECONTENT,                // independent @deprecated
     TEXTFILECONTENT54,              // independent
@@ -187,6 +188,7 @@ public enum ComponentType
         ComponentType.FILEHASH58,
         ComponentType.LDAP,
         ComponentType.SQL,
+        ComponentType.SQL57,
         ComponentType.TEXTFILECONTENT,
         ComponentType.TEXTFILECONTENT54,
         ComponentType.UNKNOWN,
