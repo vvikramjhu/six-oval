@@ -761,7 +761,7 @@ extends OvalCoreTestBase
 
         Reporter.log( "  * element type= " + element_type, true );
         Reporter.log( "  * element class= " + element_clazz, true );
-        String  oval_id = element.getOvalID();
+        String  oval_id = element.getOvalId();
         Reporter.log( "  * OVAL-ID: " + oval_id, true );
         Reporter.log( "  * element object= " + element, true );
 
@@ -776,7 +776,7 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findElementById(oval_id)...", true );
         DefinitionsElement  p_element = _getDefinitionRepository().findElementById( oval_id );
         Reporter.log( "<<< ...findElementById(oval_id)", true );
-        String  p_oval_id = p_element.getOvalID();
+        String  p_oval_id = p_element.getOvalId();
         Reporter.log( "  @ OVAL-ID: " + p_oval_id, true );
         Assert.assertEquals( oval_id, p_oval_id );
         Assert.assertEquals( element.ovalGetType(), p_element.ovalGetType() );
@@ -912,7 +912,7 @@ extends OvalCoreTestBase
         DefinitionType  def = _getDefinitionRepository().findDefinitionById( oval_id );
         Reporter.log( "<<< ...findDefinitionById(oval_id)", true );
         Assert.assertNotNull( def );
-        Assert.assertEquals( def.getOvalID(), oval_id );
+        Assert.assertEquals( def.getOvalId(), oval_id );
     }
 
 

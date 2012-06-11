@@ -373,7 +373,7 @@ public class MongoOvalDatastoreTests
         Reporter.log( "OVAL ID,class,elapsed time (ms)", true );
 //        int  index = 0;
         for (DefinitionType  def : defs.getDefinition()) {
-            final String  def_id = def.getOvalID();
+            final String  def_id = def.getOvalId();
             def_ids.add( def_id );
 
             // What CVEs are saved?

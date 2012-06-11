@@ -42,13 +42,6 @@ public abstract class Element
     //{required, xsd:nonNegativeInteger}
 
 
-    /**
-     * ovalID + ":" + ovalVersion
-     */
-    @Transient
-    private transient String  _ovalGlobalRef;
-
-
 
     /**
      * Constructor.
@@ -71,7 +64,7 @@ public abstract class Element
                     final int version
                     )
     {
-        setOvalID( id );
+        setOvalId( id );
         setOvalVersion( version );
     }
 
@@ -83,7 +76,7 @@ public abstract class Element
      * @param   id
      *  the OVAL-ID.
      */
-    public abstract void setOvalID( String id );
+    public abstract void setOvalId( String id );
 //    public void setOvalID(
 //                    final String id
 //                    )
@@ -98,7 +91,7 @@ public abstract class Element
      * @return
      *  the OVAL-ID.
      */
-    public abstract String getOvalID();
+    public abstract String getOvalId();
 //    public String getOvalID()
 //    {
 //        return oval_id;
@@ -156,7 +149,7 @@ public abstract class Element
             throw new IllegalArgumentException( "null version" );
         }
 
-        return globalRefOf( e.getOvalID(), version.intValue() );
+        return globalRefOf( e.getOvalId(), version.intValue() );
     }
 
 
@@ -171,6 +164,14 @@ public abstract class Element
 
         return id + ":" + version;
     }
+
+
+
+    /**
+     * ovalID + ":" + ovalVersion
+     */
+    @Transient
+    private transient String  _ovalGlobalRef;
 
 
 
@@ -211,8 +212,8 @@ public abstract class Element
                     final Element o
                     )
     {
-        String  id1 = getOvalID();
-        String  id2 = o.getOvalID();
+        String  id1 = getOvalId();
+        String  id2 = o.getOvalId();
         int  order = id1.compareTo( id2 );
         if (order != 0) {
             return order;
@@ -235,7 +236,7 @@ public abstract class Element
         final int  prime = 37;
         int  result = 17;
 
-        String  id = getOvalID();
+        String  id = getOvalId();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
         result = prime * result + getOvalVersion();
@@ -259,8 +260,8 @@ public abstract class Element
         }
 
         Element  other = (Element)obj;
-        String  other_id = other.getOvalID();
-        String   this_id =  this.getOvalID();
+        String  other_id = other.getOvalId();
+        String   this_id =  this.getOvalId();
         if (this_id == other_id
                         ||  (this_id != null  &&  this_id.equals( other_id ))) {
             if (this.getOvalVersion() == other.getOvalVersion()) {
@@ -276,7 +277,7 @@ public abstract class Element
     @Override
     public String toString()
     {
-        return "id=" + getOvalID()
+        return "id=" + getOvalId()
                 + ", version=" + getOvalVersion();
     }
 

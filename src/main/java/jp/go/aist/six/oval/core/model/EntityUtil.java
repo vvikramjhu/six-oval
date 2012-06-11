@@ -412,7 +412,7 @@ public final class EntityUtil
                     final DefinitionsElement element
                     )
     {
-        _LOG_.debug( "OVAL ID: " + element.getOvalID() );
+        _LOG_.debug( "OVAL ID: " + element.getOvalId() );
         Set<String>  ids = new HashSet<String>();
         Collection<ElementRef>  ref_list = element.ovalGetElementRef();
         for (ElementRef  e : ref_list) {

@@ -202,28 +202,28 @@ public abstract class OvalCoreTestBase
             DefinitionsType  defs = oval_defs.getDefinitions();
             if (defs != null) {
                 for (DefinitionType  def : defs.getDefinition()) {
-                    Reporter.log( "  @ definition: " + def.getOvalID(), true );
+                    Reporter.log( "  @ definition: " + def.getOvalId(), true );
                 }
             }
 
             TestsType tsts = oval_defs.getTests();
             if (tsts != null) {
                 for (TestType  tst : tsts.getTest()) {
-                    Reporter.log( "  @ test: " + tst.getOvalID(), true );
+                    Reporter.log( "  @ test: " + tst.getOvalId(), true );
                 }
             }
 
             SystemObjectsType  objs = oval_defs.getObjects();
             if (objs != null) {
                 for (SystemObjectType  obj : objs.getObject()) {
-                    Reporter.log( "  @ object: " + obj.getOvalID(), true );
+                    Reporter.log( "  @ object: " + obj.getOvalId(), true );
                 }
             }
 
             StatesType          stes = oval_defs.getStates();
             if (stes != null) {
                 for (StateType  ste : stes.getState()) {
-                    Reporter.log( "  @ state: " + ste.getOvalID(), true );
+                    Reporter.log( "  @ state: " + ste.getOvalId(), true );
                 }
             }
         }
@@ -242,7 +242,7 @@ public abstract class OvalCoreTestBase
             Iterator<T>  i = container.iterator();
             while (i.hasNext()) {
                 Element  e = i.next();
-                Reporter.log( "  @ : " + e.getOvalID(), true );
+                Reporter.log( "  @ : " + e.getOvalId(), true );
                 if (DefinitionsElement.class.isInstance( e )) {
                     DefinitionsElement  de = DefinitionsElement.class.cast( e );
                     _print( de );
@@ -263,7 +263,7 @@ public abstract class OvalCoreTestBase
             Reporter.log( "  #elements: 0", true );
         } else {
             for (Element  e : container) {
-                Reporter.log( "  @ : " + e.getOvalID(), true );
+                Reporter.log( "  @ : " + e.getOvalId(), true );
             }
             Reporter.log( "  #elements: " + container.size(), true );
         }

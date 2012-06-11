@@ -340,7 +340,7 @@ public class SystemObjectType
     //*********************************************************************
 
     @Override
-    public void setOvalID(
+    public void setOvalId(
                     final String id
                     )
     {
@@ -349,7 +349,7 @@ public class SystemObjectType
 
 
     @Override
-    public String getOvalID()
+    public String getOvalId()
     {
         return oval_id;
     }

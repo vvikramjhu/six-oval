@@ -43,7 +43,7 @@ public class OvalTestContentXmlTest
             if (actual instanceof OvalDefinitions) {
                 OvalDefinitions  oval_defs = OvalDefinitions.class.cast( actual );
                 for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
-                    Reporter.log( "  @ definition: id=" + def.getOvalID(), true );
+                    Reporter.log( "  @ definition: id=" + def.getOvalId(), true );
                     Reporter.log( "                title=" + def.getMetadata().getTitle(), true );
                 }
             }

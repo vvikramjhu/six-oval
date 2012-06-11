@@ -139,7 +139,7 @@
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
-        <field name="ovalID" type="string">
+        <field name="ovalId" type="string">
             <bind-xml name="id" node="attribute"/>
         </field>
 

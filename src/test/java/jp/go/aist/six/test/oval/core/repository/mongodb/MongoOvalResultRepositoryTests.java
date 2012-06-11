@@ -485,7 +485,7 @@ extends OvalCoreTestBase
 
                 DefinitionsType  defs = sys.getDefinitions();
                 for (DefinitionType  def : defs.getDefinition()) {
-                    Reporter.log( "    def: ID=" + def.getOvalID() + ", result=" + def.getResult(), true );
+                    Reporter.log( "    def: ID=" + def.getOvalId() + ", result=" + def.getResult(), true );
                 }
             }
         }
