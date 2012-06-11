@@ -44,6 +44,10 @@ public class SystemObjectType
 //    implements Dependent<OvalSystemCharacteristics>
 {
 
+    private String  oval_id;
+    //{required, oval:ObjectIDPattern}
+
+
     private final Collection<MessageType>  message = new ArrayList<MessageType>();
     //{0..*}
 //    /*** We have never seen a result which has multiple messages. ***/
@@ -334,6 +338,23 @@ public class SystemObjectType
     //*********************************************************************
     //  Element
     //*********************************************************************
+
+    @Override
+    public void setOvalID(
+                    final String id
+                    )
+    {
+        oval_id = id;
+    }
+
+
+    @Override
+    public String getOvalID()
+    {
+        return oval_id;
+    }
+
+
 
     @Override
     public final ElementType ovalGetType()

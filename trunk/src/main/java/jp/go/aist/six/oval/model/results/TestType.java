@@ -43,6 +43,11 @@ public class TestType
 //    implements Dependent<SystemType>
 {
 
+    private String  test_id;
+    //{oval:TestIDPattern, required}
+
+
+
     private final Collection<TestedItemType>  tested_item =
         new ArrayList<TestedItemType>();
     //{0..*}
@@ -184,13 +189,13 @@ public class TestType
                     final String test_id
                     )
     {
-        setOvalID( test_id );
+        this.test_id = test_id;
     }
 
 
     public String getTestID()
     {
-        return getOvalID();
+        return test_id;
     }
 
 
@@ -276,6 +281,23 @@ public class TestType
     //*********************************************************************
     //  Element
     //*********************************************************************
+
+    @Override
+    public void setOvalID(
+                    final String id
+                    )
+    {
+        setTestID( id );
+    }
+
+
+    @Override
+    public String getOvalID()
+    {
+        return getTestID();
+    }
+
+
 
     @Override
     public final ElementType ovalGetType()

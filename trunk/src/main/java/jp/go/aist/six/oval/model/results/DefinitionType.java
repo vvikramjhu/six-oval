@@ -38,8 +38,9 @@ public class DefinitionType
 {
 
     //TODO: Is this class a subclass of ElementRef?
-//    private String  definition_id;
-//    //{oval:DefinitionIDPattern, required}
+    private String  definition_id;
+    //{oval:DefinitionIDPattern, required}
+
 
 
     private CriteriaType  criteria;
@@ -111,13 +112,13 @@ public class DefinitionType
                     final String definition_id
                     )
     {
-        setOvalID( definition_id );
+        this.definition_id = definition_id;
     }
 
 
     public String getDefinitionID()
     {
-        return getOvalID();
+        return definition_id;
     }
 
 
@@ -142,6 +143,23 @@ public class DefinitionType
     //*********************************************************************
     //  Element
     //*********************************************************************
+
+    @Override
+    public void setOvalID(
+                    final String id
+                    )
+    {
+        setDefinitionID( id );
+    }
+
+
+    @Override
+    public String getOvalID()
+    {
+        return getDefinitionID();
+    }
+
+
 
     @Override
     public final ElementType ovalGetType()

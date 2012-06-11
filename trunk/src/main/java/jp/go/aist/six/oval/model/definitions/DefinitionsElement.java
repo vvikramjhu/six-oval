@@ -45,103 +45,8 @@ public abstract class DefinitionsElement
     implements Persistable<String>
 {
 
-//    public enum Type
-//    implements OvalEnumeration
-//    {
-//        DEFINITION( OvalId.Type.def ),
-//        TEST(       OvalId.Type.tst ),
-//        OBJECT(     OvalId.Type.obj ),
-//        STATE(      OvalId.Type.ste ),
-//        VARIABLE(   OvalId.Type.var );
-//
-//
-//        ////////////////////////////////////////////////////////////
-//
-//        /**
-//         * A factory method.
-//         */
-//        public static Type fromValue(
-//                        final String value
-//                        )
-//        {
-//            for (Type  e : Type.values()) {
-//                if (e.value.equals( value )) {
-//                    return e;
-//                }
-//            }
-//
-//            throw new IllegalArgumentException( value );
-//        }
-//
-//
-//        public static Type fromOvalIdType(
-//                        final OvalId.Type id_type
-//                        )
-//        {
-//            for (Type  e : Type.values()) {
-//                if (e.getOvalIdType() == id_type) {
-//                    return e;
-//                }
-//            }
-//
-//            throw new IllegalArgumentException( String.valueOf( id_type ) );
-//        }
-//
-//
-//        public static Type fromOvalId(
-//                        final String oval_id
-//                        )
-//        {
-//            return fromOvalIdType( OvalId.typeOf( oval_id ) );
-//        }
-//
-//
-//        private String  value;
-//        private OvalId.Type  id_type = null;
-//
-//
-//        Type(
-//                        final OvalId.Type type
-//                        )
-//        {
-//            value = name().toLowerCase();
-//            id_type = type;
-//        }
-//
-//
-//
-//        /**
-//         * The type indicator in the OVAL-ID.
-//         */
-//        public OvalId.Type getOvalIdType()
-//        {
-//            return id_type;
-//        }
-//
-//
-//
-//        //OvalEnumeration
-//        @Override
-//        public String value()
-//        {
-//            return value;
-//        }
-//
-//
-//        // java.lang.String
-//        @Override
-//        public String toString()
-//        {
-//            return value;
-//        }
-//    }
-//    //Type
-
-
-
-    // MongoDB
-    @Id
-    private String  _id;
+    private String  oval_id;
+    //{required, oval:XxxIDPattern}
 
 
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
@@ -158,6 +63,12 @@ public abstract class DefinitionsElement
 
 //    @Transient
 //    protected Type  _definitions_element_type;
+
+
+
+    // MongoDB
+    @Id
+    private String  _id;
 
 
 
@@ -195,6 +106,27 @@ public abstract class DefinitionsElement
     public Boolean getDeprecated()
     {
         return deprecated;
+    }
+
+
+
+    //*********************************************************************
+    //  Element
+    //*********************************************************************
+
+    @Override
+    public void setOvalID(
+                    final String id
+                    )
+    {
+        oval_id = id;
+    }
+
+
+    @Override
+    public String getOvalID()
+    {
+        return oval_id;
     }
 
 
@@ -308,6 +240,100 @@ public abstract class DefinitionsElement
 
         return super.equals( obj );
     }
+
+//  public enum Type
+//  implements OvalEnumeration
+//  {
+//      DEFINITION( OvalId.Type.def ),
+//      TEST(       OvalId.Type.tst ),
+//      OBJECT(     OvalId.Type.obj ),
+//      STATE(      OvalId.Type.ste ),
+//      VARIABLE(   OvalId.Type.var );
+//
+//
+//      ////////////////////////////////////////////////////////////
+//
+//      /**
+//       * A factory method.
+//       */
+//      public static Type fromValue(
+//                      final String value
+//                      )
+//      {
+//          for (Type  e : Type.values()) {
+//              if (e.value.equals( value )) {
+//                  return e;
+//              }
+//          }
+//
+//          throw new IllegalArgumentException( value );
+//      }
+//
+//
+//      public static Type fromOvalIdType(
+//                      final OvalId.Type id_type
+//                      )
+//      {
+//          for (Type  e : Type.values()) {
+//              if (e.getOvalIdType() == id_type) {
+//                  return e;
+//              }
+//          }
+//
+//          throw new IllegalArgumentException( String.valueOf( id_type ) );
+//      }
+//
+//
+//      public static Type fromOvalId(
+//                      final String oval_id
+//                      )
+//      {
+//          return fromOvalIdType( OvalId.typeOf( oval_id ) );
+//      }
+//
+//
+//      private String  value;
+//      private OvalId.Type  id_type = null;
+//
+//
+//      Type(
+//                      final OvalId.Type type
+//                      )
+//      {
+//          value = name().toLowerCase();
+//          id_type = type;
+//      }
+//
+//
+//
+//      /**
+//       * The type indicator in the OVAL-ID.
+//       */
+//      public OvalId.Type getOvalIdType()
+//      {
+//          return id_type;
+//      }
+//
+//
+//
+//      //OvalEnumeration
+//      @Override
+//      public String value()
+//      {
+//          return value;
+//      }
+//
+//
+//      // java.lang.String
+//      @Override
+//      public String toString()
+//      {
+//          return value;
+//      }
+//  }
+//  //Type
+
+
 
 }
 //
