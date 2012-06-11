@@ -1,4 +1,4 @@
-#summary SIX-OVAL Release Notes.
+#summary Release Notes.
 
 = Summary =
 
