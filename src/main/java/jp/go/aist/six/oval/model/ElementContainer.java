@@ -22,14 +22,11 @@ package jp.go.aist.six.oval.model;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import com.google.code.morphia.annotations.Transient;
 
 
@@ -153,86 +150,16 @@ public abstract class ElementContainer<E extends Element>
         int  thisHash = hashCode();
         if (_digest == null  ||  thisHash != _hashOnDigest) {
             Element[]  elements = toArray( new Element[0] );
-            _digest = _computeDigest2( elements );
+            _digest = _computeDigest3( elements );
             _hashOnDigest = thisHash;
         }
 
         return _digest;
     }
-    //backup:
-//    {
-//        int  thisHash = hashCode();
-//        if (_digest == null  ||  thisHash != _hashOnDigest) {
-//            _digest = _computeDigest( _getElement() );
-//            _hashOnDigest = thisHash;
-//        }
-//
-//        return _digest;
-//    }
-
-//    {
-//        int  thisHash = hashCode();
-//        if (_digest == null  ||  thisHash != _hashOnDigest) {
-//            Set<String>  ovalIDs = _ovalIDSet();
-//            int  ovalIDsHash = ovalIDs.hashCode();
-//            MessageDigest  digest = null;
-//            try {
-//                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
-//                                                  //@throws NoSuchAlgorithmException
-//            } catch (NoSuchAlgorithmException ex) {
-//                return null;
-//            }
-//
-//            _updateDigest( digest, String.valueOf( ovalIDsHash ) );
-//
-//            _digest = _byteArrayToHexString( digest.digest() );
-//            _hashOnDigest = thisHash;
-//        }
-//
-//        return _digest;
-//    }
 
 
 
-//  private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
-//  new OvalElementComparator();
-
-
-
-
-    /**
-     */
-    protected String _computeDigest(
-                    final Collection<E> elements
-                    )
-    {
-        MessageDigest  digest = null;
-        try {
-            digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
-                                              //@throws NoSuchAlgorithmException
-        } catch (NoSuchAlgorithmException ex) {
-            return null;
-        }
-
-//        Collection<E>  elements = _getElement();
-        if (elements == null  ||  elements.size() == 0) {
-            _updateDigest( digest, "" );
-        } else {
-            ArrayList<E>  list = new ArrayList<E>( elements );
-            Collections.sort( list, new ElementComparator() );
-            // OvalElement is Comparable
-
-            for (Element  element : list) {
-                _updateDigest( digest, element );
-            }
-        }
-
-        return _byteArrayToHexString( digest.digest() );
-    }
-
-
-
-    protected String _computeDigest2(
+    protected static String _computeDigest3(
                     final Element[] element_list
                     )
     {
@@ -247,9 +174,9 @@ public abstract class ElementContainer<E extends Element>
         if (element_list == null  ||  element_list.length == 0) {
             _updateDigest( digest, "" );
         } else {
-            Arrays.sort( element_list, ElementComparator.INSTANCE );
-            for (Element  element : element_list) {
-                _updateDigest( digest, element );
+            SortedSet<String>  values = _digestValuesOf( element_list );
+            for (String  v : values) {
+                _updateDigest( digest, v );
             }
         }
 
@@ -258,19 +185,22 @@ public abstract class ElementContainer<E extends Element>
 
 
 
-    /**
-     */
-    private static void _updateDigest(
-                    final MessageDigest digest,
-                    final Element element
+    private static SortedSet<String> _digestValuesOf(
+                    final Element[] element_list
                     )
     {
-        _updateDigest( digest, element.ovalGetGlobalRef() );
-//        _updateDigest( digest, element.getOvalID() );
-//        _updateDigest( digest, String.valueOf( element.getOvalVersion() ) );
+        SortedSet<String>  values = new TreeSet<String>();
+        for (Element  e : element_list) {
+            values.add( Element.globalRefOf( e ) );
+        }
+
+        return values;
     }
 
 
+
+
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      */
@@ -324,49 +254,6 @@ public abstract class ElementContainer<E extends Element>
         }
 
         return s.toString();
-    }
-
-
-
-    private static class ElementComparator
-    implements Comparator<Element>
-    {
-        public static final ElementComparator  INSTANCE = new ElementComparator();
-
-
-        public ElementComparator()
-        {
-        }
-
-
-
-        @Override
-        public int compare(
-                        final Element e1,
-                        final Element e2
-                        )
-        {
-            String  id1 = e1.getOvalID();
-            String  id2 = e2.getOvalID();
-            int  order = id1.compareTo( id2 );
-            if (order != 0) {
-                return order;
-            }
-
-            int  version1 = e1.getOvalVersion();
-            int  version2 = e2.getOvalVersion();
-            return (version1 - version2);
-        }
-
-
-
-        @Override
-        public boolean equals(
-                        final Object obj
-                        )
-        {
-            return (obj instanceof ElementComparator);
-        }
     }
 
 }

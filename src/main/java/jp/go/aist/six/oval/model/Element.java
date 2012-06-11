@@ -280,5 +280,50 @@ public abstract class Element
                 + ", version=" + getOvalVersion();
     }
 
+
+
+//    /**
+//     */
+//    public static class ElementComparator
+//    implements Comparator<Element>
+//    {
+//        public static final ElementComparator  INSTANCE = new ElementComparator();
+//
+//
+//        public ElementComparator()
+//        {
+//        }
+//
+//
+//
+//        @Override
+//        public int compare(
+//                        final Element e1,
+//                        final Element e2
+//                        )
+//        {
+//            String  id1 = e1.getOvalID();
+//            String  id2 = e2.getOvalID();
+//            int  order = id1.compareTo( id2 );
+//            if (order != 0) {
+//                return order;
+//            }
+//
+//            int  version1 = e1.getOvalVersion();
+//            int  version2 = e2.getOvalVersion();
+//            return (version1 - version2);
+//        }
+//
+//
+//
+//        @Override
+//        public boolean equals(
+//                        final Object obj
+//                        )
+//        {
+//            return (obj instanceof ElementComparator);
+//        }
+//    }
+
 }
 //Element
