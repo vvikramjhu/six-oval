@@ -382,7 +382,7 @@ public class MongoOvalDatastoreTests
                 for (ReferenceType  ref : refs) {
                     String  ref_source = ref.getSource();
                     if ("CVE".equals( ref_source )) {
-                        String  ref_id = ref.getRefID();
+                        String  ref_id = ref.getRefId();
                         if (_saved_cves == null) {
                             _saved_cves = new ArrayList<String>();
                         }

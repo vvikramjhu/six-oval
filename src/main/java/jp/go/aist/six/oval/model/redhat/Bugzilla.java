@@ -55,7 +55,7 @@ public class Bugzilla
                     final String title
                     )
     {
-        setID( id );
+        setId( id );
         setHref( href );
         setTitle( title );
     }
@@ -64,7 +64,7 @@ public class Bugzilla
 
     /**
      */
-    public void setID(
+    public void setId(
                     final String id
                     )
     {
@@ -72,7 +72,7 @@ public class Bugzilla
     }
 
 
-    public String getID()
+    public String getId()
     {
         return this.id;
     }
@@ -120,7 +120,7 @@ public class Bugzilla
     @Override
     public String toString()
     {
-        return "bugzilla[id=" + getID()
+        return "bugzilla[id=" + getId()
                         + ", href=" + getHref()
                         + ", title=" + getTitle()
                         + "]";

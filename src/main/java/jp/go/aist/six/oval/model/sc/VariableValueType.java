@@ -60,7 +60,7 @@ public class VariableValueType
                     final String content
                     )
     {
-        setVariableID( variable_id );
+        setVariableId( variable_id );
         setContent( content );
     }
 
@@ -68,7 +68,7 @@ public class VariableValueType
 
     /**
      */
-    public void setVariableID(
+    public void setVariableId(
                     final String id
                     )
     {
@@ -76,7 +76,7 @@ public class VariableValueType
     }
 
 
-    public String getVariableID()
+    public String getVariableId()
     {
         return this.variable_id;
     }
@@ -132,7 +132,7 @@ public class VariableValueType
     @Override
     public String toString()
     {
-        return "[variable_id=" + getVariableID()
+        return "[variable_id=" + getVariableId()
                         + ", " + getContent()
                         + "]";
     }

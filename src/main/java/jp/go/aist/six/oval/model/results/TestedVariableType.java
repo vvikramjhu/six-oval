@@ -60,7 +60,7 @@ public class TestedVariableType
                     final String content
                     )
     {
-        setVariableID( variable_id );
+        setVariableId( variable_id );
         setContent( content );
     }
 
@@ -85,7 +85,7 @@ public class TestedVariableType
 
     /**
      */
-    public void setVariableID(
+    public void setVariableId(
                     final String variable_id
                     )
     {
@@ -93,7 +93,7 @@ public class TestedVariableType
     }
 
 
-    public String getVariableID()
+    public String getVariableId()
     {
         return this.variable_id;
     }
@@ -139,7 +139,7 @@ public class TestedVariableType
         String  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
-        String  variable_id = getVariableID();
+        String  variable_id = getVariableId();
         result = prime * result + ((variable_id == null) ? 0 : variable_id.hashCode());
 
         return result;
@@ -165,8 +165,8 @@ public class TestedVariableType
         String   this_content =  this.getContent();
         if (this_content == other_content
                         ||  (this_content != null  &&  this_content.equals( other_content ))) {
-            String  other_variable_id = other.getVariableID();
-            String   this_variable_id =  this.getVariableID();
+            String  other_variable_id = other.getVariableId();
+            String   this_variable_id =  this.getVariableId();
             if (this_variable_id == other_variable_id
                             ||  (this_variable_id != null  &&  this_variable_id.equals( other_variable_id ))) {
                 return true;
@@ -181,7 +181,7 @@ public class TestedVariableType
     @Override
     public String toString()
     {
-        return "tested_variable[variable_id=" + getVariableID()
+        return "tested_variable[variable_id=" + getVariableId()
                         + ", content=" + getContent()
                         + "]";
     }

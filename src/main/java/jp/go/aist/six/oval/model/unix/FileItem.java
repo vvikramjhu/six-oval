@@ -171,7 +171,7 @@ public class FileItem
 
     /**
      */
-    public void setGroupID(
+    public void setGroupId(
                     final EntityItemIntType group_id
                     )
     {
@@ -179,17 +179,17 @@ public class FileItem
     }
 
 
-    public EntityItemIntType getGroupID()
+    public EntityItemIntType getGroupId()
     {
         return group_id;
     }
 
 
-    public FileItem groupID(
+    public FileItem groupId(
                     final EntityItemIntType group_id
                     )
     {
-        setGroupID( group_id );
+        setGroupId( group_id );
         return this;
     }
 
@@ -197,7 +197,7 @@ public class FileItem
 
     /**
      */
-    public void setUserID(
+    public void setUserId(
                     final EntityItemIntType user_id
                     )
     {
@@ -205,7 +205,7 @@ public class FileItem
     }
 
 
-    public EntityItemIntType getUserID()
+    public EntityItemIntType getUserId()
     {
         return user_id;
     }
@@ -282,7 +282,7 @@ public class FileItem
 
     /**
      */
-    public void setSuID(
+    public void setSuid(
                     final EntityItemBoolType suid
                     )
     {
@@ -290,7 +290,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getSuID()
+    public EntityItemBoolType getSuid()
     {
         return suid;
     }
@@ -299,7 +299,7 @@ public class FileItem
 
     /**
      */
-    public void setSgID(
+    public void setSgid(
                     final EntityItemBoolType sgid
                     )
     {
@@ -307,7 +307,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getSgID()
+    public EntityItemBoolType getSgid()
     {
         return sgid;
     }
@@ -333,7 +333,7 @@ public class FileItem
 
     /**
      */
-    public void setURead(
+    public void setUread(
                     final EntityItemBoolType uread
                     )
     {
@@ -341,7 +341,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getURead()
+    public EntityItemBoolType getUread()
     {
         return uread;
     }
@@ -349,7 +349,7 @@ public class FileItem
 
     /**
      */
-    public void setUWrite(
+    public void setUwrite(
                     final EntityItemBoolType uwrite
                     )
     {
@@ -357,7 +357,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getUWrite()
+    public EntityItemBoolType getUwrite()
     {
         return uwrite;
     }
@@ -366,7 +366,7 @@ public class FileItem
 
     /**
      */
-    public void setUExec(
+    public void setUexec(
                     final EntityItemBoolType uexec
                     )
     {
@@ -374,7 +374,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getUExec()
+    public EntityItemBoolType getUexec()
     {
         return uexec;
     }
@@ -383,7 +383,7 @@ public class FileItem
 
     /**
      */
-    public void setGRead(
+    public void setGread(
                     final EntityItemBoolType gread
                     )
     {
@@ -391,7 +391,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getGRead()
+    public EntityItemBoolType getGread()
     {
         return gread;
     }
@@ -399,7 +399,7 @@ public class FileItem
 
     /**
      */
-    public void setGWrite(
+    public void setGwrite(
                     final EntityItemBoolType gwrite
                     )
     {
@@ -407,7 +407,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getGWrite()
+    public EntityItemBoolType getGwrite()
     {
         return gwrite;
     }
@@ -416,7 +416,7 @@ public class FileItem
 
     /**
      */
-    public void setGExec(
+    public void setGexec(
                     final EntityItemBoolType gexec
                     )
     {
@@ -424,7 +424,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getGExec()
+    public EntityItemBoolType getGexec()
     {
         return gexec;
     }
@@ -433,7 +433,7 @@ public class FileItem
 
     /**
      */
-    public void setORead(
+    public void setOread(
                     final EntityItemBoolType oread
                     )
     {
@@ -441,7 +441,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getORead()
+    public EntityItemBoolType getOread()
     {
         return oread;
     }
@@ -449,7 +449,7 @@ public class FileItem
 
     /**
      */
-    public void setOWrite(
+    public void setOwrite(
                     final EntityItemBoolType owrite
                     )
     {
@@ -457,7 +457,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getOWrite()
+    public EntityItemBoolType getOwrite()
     {
         return owrite;
     }
@@ -466,7 +466,7 @@ public class FileItem
 
     /**
      */
-    public void setOExec(
+    public void setOexec(
                     final EntityItemBoolType oexec
                     )
     {
@@ -474,7 +474,7 @@ public class FileItem
     }
 
 
-    public EntityItemBoolType getOExec()
+    public EntityItemBoolType getOexec()
     {
         return oexec;
     }
@@ -533,24 +533,24 @@ public class FileItem
              + ", path="                + getPath()
              + ", filename="            + getFilename()
              + ", type="                + getType()
-             + ", group_id="            + getGroupID()
-             + ", user_id="             + getUserID()
+             + ", group_id="            + getGroupId()
+             + ", user_id="             + getUserId()
              + ", a_time="              + getATime()
              + ", c_time="              + getCTime()
              + ", m_time="              + getMTime()
              + ", size="                + getSize()
-             + ", suid="                + getSuID()
-             + ", sgid="                + getSgID()
+             + ", suid="                + getSuid()
+             + ", sgid="                + getSgid()
              + ", sticky="              + getSticky()
-             + ", uread="               + getURead()
-             + ", uwrite="              + getUWrite()
-             + ", uexec="               + getUExec()
-             + ", gread="               + getGRead()
-             + ", gwrite="              + getGWrite()
-             + ", gexec="               + getGExec()
-             + ", oread="               + getORead()
-             + ", owrite="              + getOWrite()
-             + ", oexec="               + getOExec()
+             + ", uread="               + getUread()
+             + ", uwrite="              + getUwrite()
+             + ", uexec="               + getUexec()
+             + ", gread="               + getGread()
+             + ", gwrite="              + getGwrite()
+             + ", gexec="               + getGexec()
+             + ", oread="               + getOread()
+             + ", owrite="              + getOwrite()
+             + ", oexec="               + getOexec()
              + ", has_extended_acl="    + getHasExtendedAcl()
              + "]";
     }
