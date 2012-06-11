@@ -196,9 +196,14 @@
             <bind-xml name="criteria" node="element"/>
         </field>
 
+        <field name="definitionID" type="string">
+            <bind-xml name="definition_id" node="attribute"/>
+        </field>
+<!--
         <field name="ovalID" type="string">
             <bind-xml name="definition_id" node="attribute"/>
         </field>
+-->
 
         <field name="ovalVersion" type="int">
             <bind-xml name="version" node="attribute"/>
@@ -308,9 +313,15 @@
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
+        <field name="testID" type="string">
+            <bind-xml name="test_id" node="attribute"/>
+        </field>
+<!--
         <field name="ovalID" type="string">
             <bind-xml name="test_id" node="attribute"/>
         </field>
+-->
+
 
         <field name="ovalVersion" type="int">
             <bind-xml name="version" node="attribute"/>

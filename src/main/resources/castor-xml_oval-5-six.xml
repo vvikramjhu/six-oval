@@ -27,9 +27,11 @@
         extends="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
 
+<!--
         <field name="ovalID" type="string">
             <bind-xml name="id" node="attribute"/>
         </field>
+-->
 
         <field name="ovalVersion" type="integer">
             <bind-xml name="version" node="attribute"/>

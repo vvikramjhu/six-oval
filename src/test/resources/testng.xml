@@ -76,7 +76,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
@@ -104,7 +104,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
         <!--
         <groups>
             <run>
@@ -177,8 +177,9 @@
                 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.XsiNilTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.XsiNilTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <class name="jp.go.aist.six.test.oval.core.OvalIdTests"/>

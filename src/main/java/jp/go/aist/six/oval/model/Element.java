@@ -35,8 +35,8 @@ public abstract class Element
     implements OvalObject, Comparable<Element>
 {
 
-    private String  oval_id;
-    //{required, oval:DefinitionIDPattern}
+//    private String  oval_id;
+//    //{required, oval:XxxIDPattern}
 
     private Integer  oval_version;
     //{required, xsd:nonNegativeInteger}
@@ -83,12 +83,13 @@ public abstract class Element
      * @param   id
      *  the OVAL-ID.
      */
-    public void setOvalID(
-                    final String id
-                    )
-    {
-        oval_id = id;
-    }
+    public abstract void setOvalID( String id );
+//    public void setOvalID(
+//                    final String id
+//                    )
+//    {
+//        oval_id = id;
+//    }
 
 
     /**
@@ -97,10 +98,11 @@ public abstract class Element
      * @return
      *  the OVAL-ID.
      */
-    public String getOvalID()
-    {
-        return oval_id;
-    }
+    public abstract String getOvalID();
+//    public String getOvalID()
+//    {
+//        return oval_id;
+//    }
 
 
 
@@ -149,7 +151,12 @@ public abstract class Element
             throw new IllegalArgumentException( "null element" );
         }
 
-        return globalRefOf( e.getOvalID(), e.getOvalVersion() );
+        Integer  version = e.getOvalVersion();
+        if (version == null) {
+            throw new IllegalArgumentException( "null version" );
+        }
+
+        return globalRefOf( e.getOvalID(), version.intValue() );
     }
 
 
