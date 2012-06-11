@@ -1,0 +1,13 @@
+#summary Object-XML Mapping Guide.
+
+T.B.D.
+
+= Introduction =
+
+This feature supports marshalling/unmarshalling of OVAL objects. That is, it is possible to serialize/deserialize the OVAL objects to/from an XML document.
+
+
+= Unmarshalling =
+
+
+= Marshalling =
