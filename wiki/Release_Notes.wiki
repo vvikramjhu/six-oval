@@ -11,7 +11,7 @@
 = Version 0.7.0 =
 
 == Changes ==
-* Now we use [http://www.mongodb.org/ MongoDB] for the OVAL repository.
+  * Now we use [http://www.mongodb.org/ MongoDB] for the OVAL repository implementation.
 
 
 == OVAL Support ==
