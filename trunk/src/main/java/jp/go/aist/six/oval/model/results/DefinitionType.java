@@ -108,7 +108,7 @@ public class DefinitionType
 
     /**
      */
-    public void setDefinitionID(
+    public void setDefinitionId(
                     final String definition_id
                     )
     {
@@ -116,7 +116,7 @@ public class DefinitionType
     }
 
 
-    public String getDefinitionID()
+    public String getDefinitionId()
     {
         return definition_id;
     }
@@ -145,18 +145,18 @@ public class DefinitionType
     //*********************************************************************
 
     @Override
-    public void setOvalID(
+    public void setOvalId(
                     final String id
                     )
     {
-        setDefinitionID( id );
+        setDefinitionId( id );
     }
 
 
     @Override
-    public String getOvalID()
+    public String getOvalId()
     {
-        return getDefinitionID();
+        return getDefinitionId();
     }
 
 

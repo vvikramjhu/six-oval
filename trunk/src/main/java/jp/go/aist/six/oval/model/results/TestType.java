@@ -185,7 +185,7 @@ public class TestType
 
     /**
      */
-    public void setTestID(
+    public void setTestId(
                     final String test_id
                     )
     {
@@ -193,7 +193,7 @@ public class TestType
     }
 
 
-    public String getTestID()
+    public String getTestId()
     {
         return test_id;
     }
@@ -283,18 +283,18 @@ public class TestType
     //*********************************************************************
 
     @Override
-    public void setOvalID(
+    public void setOvalId(
                     final String id
                     )
     {
-        setTestID( id );
+        setTestId( id );
     }
 
 
     @Override
-    public String getOvalID()
+    public String getOvalId()
     {
-        return getTestID();
+        return getTestId();
     }
 
 

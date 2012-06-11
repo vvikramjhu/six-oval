@@ -115,7 +115,7 @@ public abstract class DefinitionsElement
     //*********************************************************************
 
     @Override
-    public void setOvalID(
+    public void setOvalId(
                     final String id
                     )
     {
@@ -124,7 +124,7 @@ public abstract class DefinitionsElement
 
 
     @Override
-    public String getOvalID()
+    public String getOvalId()
     {
         return oval_id;
     }
@@ -172,7 +172,7 @@ public abstract class DefinitionsElement
     {
         String  pid = getPersistentID();
         if (pid == null) {
-            pid = getOvalID();
+            pid = getOvalId();
 //            pid = globalRefOf( this );
             setPersistentID( pid );
         }

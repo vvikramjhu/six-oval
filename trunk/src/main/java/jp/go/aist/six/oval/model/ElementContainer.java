@@ -80,7 +80,7 @@ public abstract class ElementContainer<E extends Element>
         Iterator<E>  itr = iterator();
         while (itr.hasNext()) {
             E  e = itr.next();
-            if (oval_id.equals( e.getOvalID() )) {
+            if (oval_id.equals( e.getOvalId() )) {
                 return e;
             }
         }
@@ -110,7 +110,7 @@ public abstract class ElementContainer<E extends Element>
         Iterator<E>  itr = iterator();
         while (itr.hasNext()) {
             E  e = itr.next();
-            oval_id_list.add( e.getOvalID() );
+            oval_id_list.add( e.getOvalId() );
         }
 
         return oval_id_list;

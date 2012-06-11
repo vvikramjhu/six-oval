@@ -146,7 +146,7 @@ public class DefinitionsElementAssoc
                     final DefinitionType def
                     )
     {
-        setOvalID( def.getOvalID() );
+        setOvalID( def.getOvalId() );
         setType( ElementType.DEFINITION );
 
         _build( references, def );
@@ -157,7 +157,7 @@ public class DefinitionsElementAssoc
                     final TestType tst
                     )
     {
-        setOvalID( tst.getOvalID() );
+        setOvalID( tst.getOvalId() );
         setType( ElementType.TEST );
 
         _build( references, tst );

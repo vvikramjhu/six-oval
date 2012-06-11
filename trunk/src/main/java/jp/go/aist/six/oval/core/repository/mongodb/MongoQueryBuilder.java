@@ -1265,7 +1265,7 @@ implements QueryBuilder
                         for (int  i = 0; i < num_value_elem; i++) {
                             jp.go.aist.six.oval.model.results.DefinitionType  result_def =
                                             new jp.go.aist.six.oval.model.results.DefinitionType();
-                            result_def.setOvalID( value_elem[i] );
+                            result_def.setOvalId( value_elem[i] );
                             result_def.setResult( ResultEnumeration.TRUE );
                             criteria[i] = query.criteria( field ).hasThisElement( result_def );
                         }
@@ -1273,7 +1273,7 @@ implements QueryBuilder
                     } else {
                         jp.go.aist.six.oval.model.results.DefinitionType  result_def =
                                         new jp.go.aist.six.oval.model.results.DefinitionType();
-                        result_def.setDefinitionID( value );
+                        result_def.setDefinitionId( value );
                         result_def.setResult( ResultEnumeration.TRUE );
                         query.filter( field + " elem", result_def );
                     }
