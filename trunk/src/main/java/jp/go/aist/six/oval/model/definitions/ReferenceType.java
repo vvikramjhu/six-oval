@@ -72,8 +72,8 @@ public class ReferenceType
                     )
     {
         setSource( source );
-        setRefID( ref_id );
-        setRefURL( ref_url );
+        setRefId( ref_id );
+        setRefUrl( ref_url );
     }
 
 
@@ -97,7 +97,7 @@ public class ReferenceType
 
     /**
      */
-    public void setRefID(
+    public void setRefId(
                     final String ref_id
                     )
     {
@@ -105,7 +105,7 @@ public class ReferenceType
     }
 
 
-    public String getRefID()
+    public String getRefId()
     {
         return this.ref_id;
     }
@@ -114,7 +114,7 @@ public class ReferenceType
 
     /**
      */
-    public void setRefURL(
+    public void setRefUrl(
                     final String ref_url
                     )
     {
@@ -122,7 +122,7 @@ public class ReferenceType
     }
 
 
-    public String getRefURL()
+    public String getRefUrl()
     {
         return this.ref_url;
     }
@@ -142,7 +142,7 @@ public class ReferenceType
         String  source = getSource();
         result = prime * result + ((source == null) ? 0 : source.hashCode());
 
-        String  id = getRefID();
+        String  id = getRefId();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
 //        String  url = getReferenceURL();
@@ -167,8 +167,8 @@ public class ReferenceType
         }
 
         ReferenceType  other = (ReferenceType)obj;
-        String  other_id = other.getRefID();
-        String   this_id =  this.getRefID();
+        String  other_id = other.getRefId();
+        String   this_id =  this.getRefId();
         if (this_id == other_id
                         ||  (this_id != null
                                         &&  this_id.equals( other_id ))) {
@@ -190,8 +190,8 @@ public class ReferenceType
     public String toString()
     {
         return "[source=" + getSource()
-                        + ", ref_id=" + getRefID()
-                        + ", ref_url=" + getRefURL()
+                        + ", ref_id=" + getRefId()
+                        + ", ref_url=" + getRefUrl()
                         + "]";
     }
 

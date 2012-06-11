@@ -119,7 +119,7 @@ public class MetabaseItem
      * This property is renamed from "id" to "objectID"
      * because the super class ItemType has the property of the same name.
      */
-    public void setObjectID(
+    public void setObjectId(
                     final EntityItemIntType id
                     )
     {
@@ -128,7 +128,7 @@ public class MetabaseItem
     }
 
 
-    public EntityItemIntType getObjectID()
+    public EntityItemIntType getObjectId()
     {
         return id;
 //        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
@@ -230,7 +230,7 @@ public class MetabaseItem
     {
         return "mtabase_item[" + super.toString()
              + ", key="         + getKey()
-             + ", id="          + getObjectID()
+             + ", id="          + getObjectId()
              + ", name="        + getObjectName()
              + ", user_type="   + getUserType()
              + ", data_type="   + getDataType()

@@ -54,7 +54,7 @@ public class Cve
                     final String href
                     )
     {
-        setID( id );
+        setId( id );
         setHref( href );
     }
 
@@ -62,7 +62,7 @@ public class Cve
 
     /**
      */
-    public void setID(
+    public void setId(
                     final String id
                     )
     {
@@ -70,7 +70,7 @@ public class Cve
     }
 
 
-    public String getID()
+    public String getId()
     {
         return this.id;
     }
@@ -101,7 +101,7 @@ public class Cve
     @Override
     public String toString()
     {
-        return "cve[id=" + getID()
+        return "cve[id=" + getId()
                         + ", href=" + getHref()
                         + "]";
     }

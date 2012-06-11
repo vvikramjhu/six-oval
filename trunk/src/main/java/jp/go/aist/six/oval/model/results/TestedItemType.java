@@ -67,7 +67,7 @@ public class TestedItemType
                     final ResultEnumeration result
                     )
     {
-        setItemID( item_id );
+        setItemId( item_id );
         setResult( result );
     }
 
@@ -103,7 +103,7 @@ public class TestedItemType
 
     /**
      */
-    public void setItemID(
+    public void setItemId(
                     final int item_id
                     )
     {
@@ -111,7 +111,7 @@ public class TestedItemType
     }
 
 
-    public int getItemID()
+    public int getItemId()
     {
         return this.item_id;
     }
@@ -169,7 +169,7 @@ public class TestedItemType
         final int  prime = 37;
         int  hash = 17;
 
-        int  item_id = getItemID();
+        int  item_id = getItemId();
         hash = prime * hash + item_id;
 
         ResultEnumeration  result = getResult();
@@ -194,8 +194,8 @@ public class TestedItemType
         }
 
         TestedItemType  other = (TestedItemType)obj;
-        int  other_item_id = other.getItemID();
-        int   this_item_id =  this.getItemID();
+        int  other_item_id = other.getItemId();
+        int   this_item_id =  this.getItemId();
         if (this_item_id == other_item_id) {
             ResultEnumeration  other_reault = other.getResult();
             ResultEnumeration   this_result =  this.getResult();
@@ -212,7 +212,7 @@ public class TestedItemType
     @Override
     public String toString()
     {
-        return "tested_item[item_id=" + getItemID()
+        return "tested_item[item_id=" + getItemId()
                         + ", result=" + getResult()
                         + "]";
     }

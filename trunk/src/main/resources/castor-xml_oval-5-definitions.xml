@@ -64,14 +64,6 @@
             <bind-xml name="generator" node="element"/>
         </field>
 
-
-<!--
-        <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definitions.DefinitionType"
-            collection="collection">
-            <bind-xml name="definition" node="element" location="definitions"/>
-        </field>
--->
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definitions.DefinitionsType">
             <bind-xml name="definitions" node="element"/>
@@ -81,7 +73,6 @@
             type="jp.go.aist.six.oval.model.definitions.TestsType">
             <bind-xml name="tests" node="element" />
         </field>
-
 
         <field name="objects" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectsType">
@@ -257,11 +248,11 @@
             <bind-xml name="source" node="attribute"/>
         </field>
 
-        <field name="refID" type="string">
+        <field name="refId" type="string">
             <bind-xml name="ref_id" node="attribute"/>
         </field>
 
-        <field name="refURL" type="string">
+        <field name="refUrl" type="string">
             <bind-xml name="ref_url" node="attribute"/>
         </field>
     </class>
@@ -1281,7 +1272,7 @@
         <map-to xml="cve"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
-        <field name="ID" type="string">
+        <field name="id" type="string">
             <bind-xml node="text"/>
         </field>
 
@@ -1296,7 +1287,7 @@
         <map-to xml="bugzilla"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
-        <field name="ID" type="string">
+        <field name="id" type="string">
             <bind-xml name="id" node="attribute"/>
         </field>
 

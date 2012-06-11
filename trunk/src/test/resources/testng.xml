@@ -76,7 +76,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
@@ -154,7 +154,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <!--
         <groups>
             <run>
