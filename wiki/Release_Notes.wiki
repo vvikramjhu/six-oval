@@ -1,4 +1,5 @@
 #summary Release Notes.
+#labels Featured
 
 = <font color="#0044CC">Summary</font> =
 
@@ -9,6 +10,7 @@
 
 ----
 = <font color="#0044CC">Version 0.7.0</font> =
+_coming soon_
 
 == <font color="#0044CC">Changes</font> ==
   * Now we use [http://www.mongodb.org/ MongoDB] for the OVAL repository implementation.
@@ -27,3 +29,7 @@
 
 == <font color="#0044CC">Tested Environment</font> ==
 T.B.D.
+
+  * MongoDB: version 2.0.6, win32, x86_64
+  * Java 2 SE: Oracle JDK 6 update 32, windows x64
+  * Java dependencies:
