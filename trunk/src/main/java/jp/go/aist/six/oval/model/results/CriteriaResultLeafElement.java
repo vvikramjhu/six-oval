@@ -117,7 +117,7 @@ public abstract class CriteriaResultLeafElement
 
     public int getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -141,7 +141,7 @@ public abstract class CriteriaResultLeafElement
 
     public Integer getVariableInstance()
     {
-        return this.variable_instance;
+        return variable_instance;
     }
 
 

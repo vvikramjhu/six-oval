@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
+
 
 
 /**
@@ -32,6 +35,7 @@ package jp.go.aist.six.oval.model.results;
  */
 public class ExtendDefinitionType
     extends CriteriaResultLeafElement
+    implements ElementRef
 {
 
     private String  definition_ref;
@@ -100,7 +104,27 @@ public class ExtendDefinitionType
     @Override
     protected String _getEntityRef()
     {
-        return this.definition_ref;
+        return definition_ref;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getDefinitionRef();
+    }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.DEFINITION;
     }
 
 
