@@ -1,0 +1,21 @@
+#summary Release Notes.
+
+= Summary =
+
+|| *SIX OVAL version* || *OVAL Schema version* ||
+|| 0.7.0              || 5.10.1                ||
+
+
+
+----
+= Version 0.7.0 =
+
+== OVAL Support ==
+
+=== Supported Platforms and Components ===
+|| *Family* || *Components* ||
+|| independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
+
+
+== Tested Environment ==
+T.B.D.
