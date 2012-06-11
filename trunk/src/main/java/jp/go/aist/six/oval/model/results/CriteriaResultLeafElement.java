@@ -33,12 +33,6 @@ public abstract class CriteriaResultLeafElement
     extends CriteriaResultElement
 {
 
-    /* moved to the subclasses */
-//    private String  _entityRef;
-    //{test_ref, oval:TestIDPattern}
-    //{definition_ref, oval:DefinitionIDPattern}
-
-
     private int  version;
     //{xsd:nonNegativeInteger, required}
 

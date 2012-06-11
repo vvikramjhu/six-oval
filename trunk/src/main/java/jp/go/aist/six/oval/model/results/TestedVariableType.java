@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.ElementRef;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
@@ -34,7 +36,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestedVariableType
-    implements OvalObject
+    implements ElementRef, OvalObject
 //    implements Dependent<TestType>
 {
 
@@ -78,7 +80,7 @@ public class TestedVariableType
 
     public String getContent()
     {
-        return this.content;
+        return content;
     }
 
 
@@ -95,7 +97,27 @@ public class TestedVariableType
 
     public String getVariableId()
     {
-        return this.variable_id;
+        return variable_id;
+    }
+
+
+
+    //*********************************************************************
+    //  ElementRef
+    //*********************************************************************
+
+    @Override
+    public String ovalGetRefId()
+    {
+        return getVariableId();
+    }
+
+
+
+    @Override
+    public ElementType ovalGetRefType()
+    {
+        return ElementType.VARIABLE;
     }
 
 
