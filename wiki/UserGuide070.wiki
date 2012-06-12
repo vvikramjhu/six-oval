@@ -78,8 +78,21 @@ That is, it is possible to save/load the OVAL objects
 to/from a database, and to retrieve objects 
 in a programmatic way.
 
-Limitation: In this version, only 
-[http://www.mongodb.org/ MongoDB] is supported.
+In this version, we use
+[http://www.mongodb.org/ MongoDB]
+as the database engine.
+
+The reasons why we use MongoDB are: 
+the schema of the OVAL data model is evolving and
+multiple versions should be co-exist, 
+the model contains many subclasses derived
+from the same abstract class 
+to represent platform dependent data, 
+and the model contains a composit pattern, 
+sometimes called as self-referring structure,
+of arbitrary repetitions. 
+Conventional relational databases are not suited 
+for such a model.
 
 
 == Database Setup ==
