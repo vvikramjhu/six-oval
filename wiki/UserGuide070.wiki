@@ -13,8 +13,11 @@ T.B.D.
 ----
 = <font color="#0044CC">Object-XML Mapping</font> =
 
-This feature supports marshalling/unmarshalling of Java OVAL objects.
-That is, it is possible to serialize/deserialize the objects to/from an XML document.
+This feature supports marshalling/unmarshalling 
+of Java objects.
+That is, it is possible to serialize/deserialize 
+the domain model objects to/from OVAL XML documents
+in a few steps.
 
 
 Listing 1 shows how to read an OVAL object from an XML file
