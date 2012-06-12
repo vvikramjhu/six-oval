@@ -1,7 +1,7 @@
 #summary User Guide.
 #labels Featured
 
-= <font color="#0044CC">Introduction =
+= <font color="#0044CC">Introduction</font> =
 
 This document will assist you in installing and using the SIX OVAL features.
 
@@ -13,10 +13,11 @@ T.B.D.
 ----
 = <font color="#0044CC">Object-XML Mapping</font> =
 
-This feature supports marshalling/unmarshalling of OVAL objects.
-That is, it is possible to serialize/deserialize the OVAL objects to/from an XML document.
+This feature supports marshalling/unmarshalling of Java OVAL objects.
+That is, it is possible to serialize/deserialize the objects to/from an XML document.
 
 
+----
 = <font color="#0044CC">Object Persistence</font> =
 T.B.D.
 
@@ -25,4 +26,3 @@ T.B.D.
 
 = <font color="#0044CC">Interpreter Driving</font> =
 T.B.D.
-
