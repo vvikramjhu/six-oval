@@ -81,18 +81,13 @@ in a programmatic way.
 In this version, we use
 [http://www.mongodb.org/ MongoDB]
 as the database engine.
+MongoDB is a kind of document-oriented database or 
+NoSQL, so-called.
 
-The reasons why we use MongoDB are: 
-the schema of the OVAL data model is evolving and
-multiple versions should be co-exist, 
-the model contains many subclasses derived
-from the same abstract class 
-to represent platform dependent data, 
-and the model contains a composit pattern, 
-sometimes called as self-referring structure,
-of arbitrary repetitions. 
-Conventional relational databases are not suited 
-for such a model.
+The reasons why we abandoned relational databases are: 
+  * the schema of the OVAL data model is evolving and multiple versions should be co-exist, 
+  * the model contains many subclasses derived from the same abstract class to represent platform dependent data, 
+  * and the model contains a composit pattern, sometimes called as self-referring structure, of arbitrary repetitions. 
 
 
 == Database Setup ==
