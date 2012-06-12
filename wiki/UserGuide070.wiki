@@ -73,6 +73,33 @@ String marshalToString(Object obj)
 = <font color="#0044CC">Object Persistence</font> =
 T.B.D.
 
+This feature supports persistence of OVAL objects. 
+That is, it is possible to save/load the OVAL objects 
+to/from a database, and to retrieve objects 
+in a programmatic way.
+
+Limitation: In this version, only 
+[http://www.mongodb.org/ MongoDB] is supported.
+
+
+== Database Setup ==
+
+T.B.D.
+
+Before using the ORM feature, 
+you must create a user account with the read/write privileges.
+
+
+== Java Configuration ==
+
+
+== CRUD Operations ==
+
+== Queries ==
+
+
+
+----
 = <font color="#0044CC">RESTful Web Services</font> =
 T.B.D.
 
