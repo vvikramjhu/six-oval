@@ -17,6 +17,53 @@ This feature supports marshalling/unmarshalling of Java OVAL objects.
 That is, it is possible to serialize/deserialize the objects to/from an XML document.
 
 
+Listing 1 shows how to read an OVAL object from an XML file
+and write the object to an XML file.
+
+{{{
+// Listing 1: Unmarshalling/Marshalling (Local File)
+
+import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.util.xml.XmlMapper;
+.....
+
+XmlMapper  xml_mapper = OvalContext.INSTANCE.getXmlMapper();
+
+String  local_src = "definitions.xml";
+File  src_file = new File( local_src );
+Object  obj1 = xml_mapper.unmarshal( new FileInputStream( src_file ) );
+System.out.println( obj1 );
+xml_mapper.marshal( obj1, System.out );
+}}}
+
+
+Listing 2 shows how to read an OVAL object from a network resource, i.e. URL.
+
+{{{
+// Listing 2: Unmarshalling (Network Resource)
+
+XmlMapper  xml_mapper = OvalContext.INSTANCE.getXmlMapper();
+
+String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?"
+                     + "id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
+URL  src_url = new URL( network_src );
+Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
+System.out.println( obj2 );
+}}}
+
+
+Several variant unmarshal and marshal methods 
+are defined in the !XmlMapper:
+  * Object unmarshal(java.xml.transform.Source source)
+  * Object unmarshal(java.io.Reader reader)
+  * Object unmarshalFromString(java.lang.String xml)
+  * void marshal(Object obj, javax.xml.transform.Result result)
+  * void marshal(Object obj, java.io.OutputStream result)
+  * void marshal(Object obj, java.io.Writer result)
+  * String marshalToString(Object obj)
+
+
+
 ----
 = <font color="#0044CC">Object Persistence</font> =
 T.B.D.
