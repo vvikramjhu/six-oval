@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.XmlMapper;
 .....
 
-XmlMapper  xml_mapper = OvalContext.INSTANCE.getXmlMapper();
+XmlMapper  xml_mapper = (new OvalContext()).getXmlMapper();
 
 String  local_src = "definitions.xml";
 File  src_file = new File( local_src );
@@ -44,8 +44,6 @@ Listing 2 shows how to read an OVAL object from a network resource, i.e. URL.
 
 {{{
 // Listing 2: Unmarshalling (Network Resource)
-
-XmlMapper  xml_mapper = OvalContext.INSTANCE.getXmlMapper();
 
 String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?"
                      + "id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
