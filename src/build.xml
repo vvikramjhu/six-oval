@@ -93,7 +93,26 @@ CONTENTS:
     <target name="pre-compile" depends="codegen">
     </target>
     -->
+
+    <!-- ************************************************************** -->
+    <!-- *  Examples                                                  * -->
+    <!-- ************************************************************** -->
+
+    <target name="oval.example.xml-mapping" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        	<!--
+            <arg line="-install src/test/resources/OvalTestContent/5.10/20120301_v_microsoft.windows.7.xml"/>
+            -->
+        </java>
+    </target>
+
     
+
     
 
     <!-- ******************************************************* -->
