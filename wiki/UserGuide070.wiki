@@ -56,15 +56,19 @@ System.out.println( obj2 );
 
 
 Several variant unmarshal and marshal methods 
-are defined in the !XmlMapper:
-  * Object unmarshal(java.xml.transform.Source source)
-  * Object unmarshal(java.io.Reader reader)
-  * Object unmarshalFromString(java.lang.String xml)
-  * void marshal(Object obj, javax.xml.transform.Result result)
-  * void marshal(Object obj, java.io.OutputStream result)
-  * void marshal(Object obj, java.io.Writer result)
-  * String marshalToString(Object obj)
+are defined in !XmlMapper:
+{{{
+// Listing 3: XmlMapper interface
 
+Object unmarshal(java.xml.transform.Source source)
+Object unmarshal(java.io.Reader reader)
+Object unmarshalFromString(java.lang.String xml)
+
+void marshal(Object obj, javax.xml.transform.Result result)
+void marshal(Object obj, java.io.OutputStream result)
+void marshal(Object obj, java.io.Writer result)
+String marshalToString(Object obj)
+}}}
 
 
 ----
