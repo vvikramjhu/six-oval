@@ -1,0 +1,13 @@
+#summary Inside of the XML-Mapping feature.
+
+= Version 0.7.0 =
+
+
+
+== XSLT Stylesheet ==
+  * file: src/main/resources/jp/go/aist/six/oval/core/xml/oval5-transform.xsl
+
+
+== Castor Properties ==
+  * file: src/main/resources/castor.properties
+|| org.exolab.castor.indent || true ||
