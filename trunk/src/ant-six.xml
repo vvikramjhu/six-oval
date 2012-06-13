@@ -351,15 +351,33 @@
 
     <!-- jar -->
     <target name="jar" depends="compile,manifest">
+
+    	<jar destfile="${product.jar}" index="true" manifest="${build.manifest}">
+    		<fileset dir="${build.classes.dir}"
+                     excludes="${java.resource.files.excludes},*.xml,*.properties,jp/go/aist/six/test/**"
+    		/>
+            <fileset dir="${java.res.dir}"
+                     excludes="*.*"
+            />
+        </jar>
+    </target>
+<!-- BACKUP
+    <target name="jar" depends="compile,manifest">
+        <copy todir="${build.classes.dir}">
+            <fileset dir="${java.res.dir}">
+                <patternset refid="java.resource.files" />
+            </fileset>
+        </copy>
+
         <jar
             destfile    ="${product.jar}"
             basedir     ="${build.classes.dir}"
-            excludes    ="${java.resource.files.excludes},six-oval_castor-jdo-conf.xml,six-oval_spring-app-context.xml,jp/go/aist/six/test/**"
+            excludes    ="${java.resource.files.excludes},*.xml,*.properties,jp/go/aist/six/test/**"
             index       ="true"
             manifest    ="${build.manifest}"
             />
     </target>
-
+-->
 
     <!-- manifest -->
     <target name="manifest" depends="init">
