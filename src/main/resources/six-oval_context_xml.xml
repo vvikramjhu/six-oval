@@ -91,7 +91,11 @@ Spring 3.1 supports this???
 
     <bean id="ovalTransformer" 
         class="jp.go.aist.six.util.xml.XmlTransformer"> 
+        <constructor-arg type="java.net.URL" value="classpath:jp/go/aist/six/oval/core/xml/oval5-transform.xsl"/>
+<!-- backup:
         <constructor-arg type="java.net.URL" value="classpath:oval5-transform.xsl"/>
+-->
+
 <!-- The following constructor-based DI does NOT work, 
      because there is the constructor with a String argument: XmlTransformer( String stylesheet ) .
         <constructor-arg>
