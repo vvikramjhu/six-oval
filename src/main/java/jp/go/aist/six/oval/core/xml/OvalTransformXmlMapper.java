@@ -54,32 +54,33 @@ public class OvalTransformXmlMapper
     private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalTransformXmlMapper.class );
 
 
-    
+
     private XmlTransformer  _transformer;
-    
-    
+
+
 
     /**
      * Constructor.
      */
     public OvalTransformXmlMapper()
     {
-        _LOG_.debug( "instantiated" );
+//        XMLContext.setProperty( "", "" );
+        _LOG_.trace( "instantiated" );
     }
 
-    
-    
+
+
     /**
      */
-    public void setTransformer( 
-                    final XmlTransformer transformer 
+    public void setTransformer(
+                    final XmlTransformer transformer
                     )
     {
         _transformer = transformer;
     }
 
-    
-    
+
+
     private String _simpleMarshalToString(
                     final Object obj
                     )
@@ -98,6 +99,7 @@ public class OvalTransformXmlMapper
     //  XmlMapper
     //**************************************************************
 
+    @Override
     public void marshal(
                     final Object obj,
                     final Result result
@@ -191,7 +193,7 @@ public class OvalTransformXmlMapper
         if (_transformer == null) {
             obj = super.unmarshal( stream );
         } else {
-            StringWriter  writer = new StringWriter();  
+            StringWriter  writer = new StringWriter();
             Result  result = new StreamResult( writer );
             try {
                 _transformer.transform( new StreamSource( stream ), result );
@@ -219,14 +221,14 @@ public class OvalTransformXmlMapper
         if (_transformer == null) {
             obj = super.unmarshal( reader );
         } else {
-            StringWriter  writer = new StringWriter();  
+            StringWriter  writer = new StringWriter();
             Result  result = new StreamResult( writer );
             try {
                 _transformer.transform( new StreamSource( reader ), result );
             } catch (XmlException ex) {
                 throw new OxmException( ex );
             }
-            
+
             obj = super.unmarshal( new StringReader( writer.toString() ) );
         }
 
