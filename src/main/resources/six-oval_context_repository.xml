@@ -3,7 +3,7 @@
 <!-- /////////////////////////////////////////////////////////// -->
 <!-- // Project SIX: OVAL                                     // -->
 <!-- //                                                       // -->
-<!-- // Spring Application Context: Repository server         // -->
+<!-- // Spring Application Context: Repository                // -->
 <!-- /////////////////////////////////////////////////////////// -->
 
 <!--
@@ -117,7 +117,7 @@
 
     <!-- ******************************************************* -->
 
-    <bean id="mongoOvalDatastore" 
+    <bean id="oval-Datastore" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore"> 
         <property name="DAO">
             <set>
@@ -138,20 +138,20 @@
 
     <bean id="mongoOvalDefinitionRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
-        <property name="datastore" ref="mongoOvalDatastore"/>
+        <property name="datastore" ref="oval-Datastore"/>
     </bean>
 
 
     <bean id="mongoOvalDefinitionResultRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository">
-        <property name="datastore" ref="mongoOvalDatastore"/>
+        <property name="datastore" ref="oval-Datastore"/>
     </bean>
 
 
     <bean id="mongoOvalDefinitionsGenerator" 
         class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
 <!--
-        <property name="datastore" ref="mongoOvalDatastore"/>
+        <property name="datastore" ref="oval-Datastore"/>
 -->
     </bean>
 

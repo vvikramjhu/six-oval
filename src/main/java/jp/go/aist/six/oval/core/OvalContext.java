@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core;
 import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -101,10 +102,10 @@ public class OvalContext
     private ApplicationContext  _springContext;
 
 
-//    /**
-//     * The data store sole instance.
-//     */
-//    private DataStore  _store;
+    /**
+     * The data store sole instance.
+     */
+    private OvalDatastore  _datastore;
 
 
     /**
@@ -207,6 +208,40 @@ public class OvalContext
 
 
 
+
+    /**
+     */
+    private ApplicationContext _getRepositoryContext()
+    {
+        if (_repositoryContext == null) {
+            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
+            //throws BeansException/runtime
+        }
+
+        return _repositoryContext;
+    }
+
+
+
+    /**
+     * Returns an OvalDatastore instance.
+     *
+     * @throws  OvalConfigurationException
+     *  when it is NOT possible to create OvalDatastore instance.
+     */
+    public OvalDatastore getDatastore()
+    {
+        if (_datastore == null) {
+            try {
+                _datastore = _getRepositoryContext().getBean( "oval-Datastore", OvalDatastore.class );
+            } catch (Exception ex) {
+                throw new OvalConfigurationException( ex );
+            }
+        }
+
+        return _datastore;
+    }
+
 //    /**
 //     */
 //    public OvalRepository getRepository()
@@ -230,9 +265,13 @@ public class OvalContext
     public XmlMapper getXmlMapper()
     {
         if (_xmlMapper == null) {
-            ApplicationContext  xml_context = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
-                                              //throws BeansException/runtime
-            _xmlMapper = xml_context.getBean( "oval-XmlMapper", XmlMapper.class );
+            try {
+                ApplicationContext  xml_context = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
+                                                  //throws BeansException/runtime
+                _xmlMapper = xml_context.getBean( "oval-XmlMapper", XmlMapper.class );
+            } catch (Exception ex) {
+                throw new OvalConfigurationException( ex );
+            }
         }
 
         return _xmlMapper;
