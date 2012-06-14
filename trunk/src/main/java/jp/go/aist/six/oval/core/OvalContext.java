@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core;
 
+import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import jp.go.aist.six.util.xml.XmlMapper;
@@ -35,6 +36,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class OvalContext
 {
 
+    private static class EmptyResourceBundle
+    extends ListResourceBundle
+    {
+        @Override
+        protected Object[][] getContents()
+        {
+            return new Object[0][0];
+        }
+    }
+    //
+
+
+
     public static final OvalContext  INSTANCE = new OvalContext();
 
 
@@ -42,7 +56,7 @@ public class OvalContext
     /**
      * The base name of the resource bundle.
      */
-    private static final String _RESOURCE_BUNDLE_ = "six-oval";
+    private static final String _RESOURCE_BUNDLE_NAME_ = "six-oval";
 
 
 
@@ -123,11 +137,12 @@ public class OvalContext
     private void _initResourceBundle()
 //    throws MissingResourceException
     {
-//        try {
-            _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_ );
-//        } catch (MissingResourceException ex) {
-//            //negligible
-//        }
+        try {
+            _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
+        } catch (MissingResourceException ex) {
+            //negligible
+            _resourceBundle = new EmptyResourceBundle();
+        }
     }
 
 
@@ -159,7 +174,7 @@ public class OvalContext
 
     /**
      */
-    private ApplicationContext _getContext()
+    private ApplicationContext _getSpringContext()
     {
         if (_springContext == null) {
             _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
@@ -177,7 +192,7 @@ public class OvalContext
                     final String name
                     )
     {
-        return _getContext().getBean( name );
+        return _getSpringContext().getBean( name );
     }
 
 
@@ -185,7 +200,7 @@ public class OvalContext
                     final Class<T> requiredType
                     )
     {
-        return _getContext().getBean( requiredType );
+        return _getSpringContext().getBean( requiredType );
     }
 
 
@@ -194,7 +209,7 @@ public class OvalContext
                     final Class<T> requiredType
                     )
     {
-        return _getContext().getBean( name, requiredType );
+        return _getSpringContext().getBean( name, requiredType );
     }
 
 
@@ -218,12 +233,9 @@ public class OvalContext
     public XmlMapper getXmlMapper()
     {
         if (_xmlMapper == null) {
-            if (_xmlContext == null) {
-                _xmlContext = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
-                //throws BeansException: Runtime
-            }
-
-            _xmlMapper = _xmlContext.getBean( "ovalXmlMapper", XmlMapper.class );
+            ApplicationContext  xml_context = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
+                                              //throws BeansException/runtime
+            _xmlMapper = xml_context.getBean( "oval-XmlMapper", XmlMapper.class );
         }
 
         return _xmlMapper;

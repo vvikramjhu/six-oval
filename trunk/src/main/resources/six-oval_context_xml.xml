@@ -31,8 +31,8 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <bean id="ovalMarshaller" 
-      class="org.springframework.oxm.castor.CastorMarshaller">
+    <bean id="oval-Marshaller" 
+       class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocations">
             <list>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-six.xml</value>
@@ -47,19 +47,17 @@
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-six-core.xml</value>
             </list>
         </property>
-        <property name="ignoreExtraAttributes"
-                 value="false"/>
-        <property name="ignoreExtraElements"
-                 value="false"/>
-        <property name="suppressXsiType"
-                 value="true"/>
-        <property name="encoding"
-                 value="UTF-8"/>
+        <property name="ignoreExtraAttributes" value="false"/>
+        <property name="ignoreExtraElements"   value="false"/>
+        <property name="suppressXsiType"       value="true"/>
+        <property name="encoding"              value="UTF-8"/>
+
 <!-- NO such property is defined in CastorMarshaller!!!
 Spring 3.1 supports this???
         <property name="schemaLocation"
                 value="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"/>
 -->
+
         <property name="namespaceMappings">
             <map>
                 <entry key="xsi"
@@ -89,15 +87,12 @@ Spring 3.1 supports this???
     </bean> 
 
 
-    <bean id="ovalTransformer" 
-        class="jp.go.aist.six.util.xml.XmlTransformer"> 
+    <bean id="oval-XmlTransformer" 
+       class="jp.go.aist.six.util.xml.XmlTransformer"> 
         <constructor-arg type="java.net.URL" value="classpath:jp/go/aist/six/oval/core/xml/oval5-transform.xsl"/>
-<!-- backup:
-        <constructor-arg type="java.net.URL" value="classpath:oval5-transform.xsl"/>
--->
 
 <!-- The following constructor-based DI does NOT work, 
-     because there is the constructor with a String argument: XmlTransformer( String stylesheet ) .
+     because there is a constructor with a String argument: XmlTransformer( String stylesheet ).
         <constructor-arg>
             <value>classpath:oval5-transform.xsl</value>
         </constructor-arg>
@@ -105,10 +100,11 @@ Spring 3.1 supports this???
     </bean>
 
 
-    <bean id="ovalXmlMapper" class="jp.go.aist.six.oval.core.xml.OvalTransformXmlMapper">
-        <property name="marshaller"   ref="ovalMarshaller"/>
-        <property name="unmarshaller" ref="ovalMarshaller"/>
-        <property name="transformer" ref="ovalTransformer"/>
+    <bean id="oval-XmlMapper" 
+       class="jp.go.aist.six.oval.core.xml.OvalTransformXmlMapper">
+        <property name="marshaller"   ref="oval-Marshaller"/>
+        <property name="unmarshaller" ref="oval-Marshaller"/>
+        <property name="transformer"  ref="oval-XmlTransformer"/>
     </bean>
 
 <!--

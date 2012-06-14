@@ -105,9 +105,6 @@ CONTENTS:
             fork="true"
             maxmemory="512m"
             >
-        	<!--
-            <arg line="-install src/test/resources/OvalTestContent/5.10/20120301_v_microsoft.windows.7.xml"/>
-            -->
         </java>
     </target>
 

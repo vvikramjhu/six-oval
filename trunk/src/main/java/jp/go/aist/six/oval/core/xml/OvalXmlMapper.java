@@ -46,9 +46,9 @@ public class OvalXmlMapper
      */
     public OvalXmlMapper()
     {
-        _LOG_.debug( "instantiated" );
+        _LOG_.trace( "instantiated" );
     }
 
 }
-//OvalXmlMapper
+//
 
