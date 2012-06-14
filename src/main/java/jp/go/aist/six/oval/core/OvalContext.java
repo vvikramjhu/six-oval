@@ -85,13 +85,6 @@ public class OvalContext
     /**
      * The Spring application context.
      */
-    private ApplicationContext  _xmlContext;
-
-
-
-    /**
-     * The Spring application context.
-     */
     private ApplicationContext  _repositoryContext;
 
 
@@ -229,6 +222,8 @@ public class OvalContext
 
 
     /**
+     * @throws  OvalConfigurationException
+     *  when it is NOT possible to create XmlMapper instance.
      */
     public XmlMapper getXmlMapper()
     {
@@ -242,5 +237,5 @@ public class OvalContext
     }
 
 }
-//OvalContext
+//
 
