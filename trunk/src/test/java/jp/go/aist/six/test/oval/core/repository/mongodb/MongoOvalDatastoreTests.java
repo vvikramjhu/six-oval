@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -62,7 +63,7 @@ public class MongoOvalDatastoreTests
 
     /**
      */
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     void _saveObject(
                     final Class<T>  object_type,
                     final T         object,
@@ -74,7 +75,7 @@ public class MongoOvalDatastoreTests
     }
 
 
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     void _saveObject(
                     final Class<T>  object_type,
                     final T         object,
@@ -115,7 +116,7 @@ public class MongoOvalDatastoreTests
     }
 
 
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     void _readFromFileAndSaveToDatastore(
                     final Class<T> object_type,
                     final String   xml_filepath,
@@ -132,7 +133,7 @@ public class MongoOvalDatastoreTests
 
 
 
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     T _findObjectById(
                     final Class<T>  object_type,
                     final K         id,
@@ -156,7 +157,7 @@ public class MongoOvalDatastoreTests
 
 
 
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     List<T> _findObjectByQuery(
                     final Class<T>  object_type,
                     final QueryParams params,
@@ -191,7 +192,8 @@ public class MongoOvalDatastoreTests
                     dataProvider="oval.test_content.def",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>> void testSaveAndLoadDef(
+    public <K, T extends Persistable<K> & OvalObject>
+    void testSaveAndLoadDef(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,
@@ -213,7 +215,8 @@ public class MongoOvalDatastoreTests
                     dataProvider="oval.test_content.sc",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>> void testSaveAndLoadOvalSc(
+    public <K, T extends Persistable<K> & OvalObject>
+    void testSaveAndLoadOvalSc(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,
@@ -235,7 +238,8 @@ public class MongoOvalDatastoreTests
                     dataProvider="oval.test_content.res",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>> void testSaveAndLoadOvalRes(
+    public <K, T extends Persistable<K> & OvalObject>
+    void testSaveAndLoadOvalRes(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,
@@ -250,7 +254,8 @@ public class MongoOvalDatastoreTests
 
 
 
-    private <K, T extends Persistable<K>> void _testSaveAndLoad(
+    private <K, T extends Persistable<K> & OvalObject>
+    void _testSaveAndLoad(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,

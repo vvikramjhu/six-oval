@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -64,7 +65,7 @@ public abstract class MongoTests
 
     /**
      */
-    protected <K, T extends Persistable<K>>
+    protected <K, T extends Persistable<K> & OvalObject>
     void _unmarshalFromFileAndSaveToDatastore(
                     final Class<T>  object_type,
                     final String    schema_version,
@@ -90,7 +91,7 @@ public abstract class MongoTests
     }
 
 
-    private <K, T extends Persistable<K>>
+    private <K, T extends Persistable<K> & OvalObject>
     void _saveToDatastore(
                     final Class<T>  object_type,
                     final T         object,
@@ -102,7 +103,7 @@ public abstract class MongoTests
     }
 
 
-    protected <K, T extends Persistable<K>>
+    protected <K, T extends Persistable<K> & OvalObject>
     void _saveToDatastore(
                     final Class<T>  object_type,
                     final T         object,
@@ -465,7 +466,7 @@ public abstract class MongoTests
                     dataProvider="DATA.oval.def.oval_definitions",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
     void testSaveOvalDefOvalDefinitions(
                     final OvalContentCategory category,
                     final String    schema_version,
@@ -495,7 +496,7 @@ public abstract class MongoTests
                     dataProvider="DATA.oval.sc.oval_system_characteristics",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
     void testSaveOvalScOvalSystemCharacteristics(
                     final OvalContentCategory category,
                     final String    schema_version,
@@ -525,7 +526,7 @@ public abstract class MongoTests
                     dataProvider="DATA.oval.res.oval_results",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
     void testSaveOvalResOvalResults(
                     final OvalContentCategory category,
                     final String    schema_version,
