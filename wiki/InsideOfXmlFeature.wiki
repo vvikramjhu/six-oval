@@ -3,6 +3,12 @@
 = Version 0.7.0 =
 
 
+<wiki:comment>
+== Configuration Properties ==
+
+|| * Property Name* || *Default Value* || *Description* ||
+</wiki:comment>
+
 
 == XSLT Stylesheet ==
   * file: src/main/resources/jp/go/aist/six/oval/core/xml/oval5-transform.xsl
