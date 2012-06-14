@@ -222,6 +222,8 @@ public class OvalContext
 
 
     /**
+     * Returns an XmlMapper instance which is dedicated to the OVAL Domain Model.
+     *
      * @throws  OvalConfigurationException
      *  when it is NOT possible to create XmlMapper instance.
      */
