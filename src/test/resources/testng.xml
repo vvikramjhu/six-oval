@@ -76,15 +76,16 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
+        <!--
         <groups>
             <run>
-                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
             </run>
         </groups>
-        <!--
         -->
                 <!--
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 <include name="MODEL.oval.res.oval_results"/>
                 <include name="MODEL.oval.sc.oval_system_characteristics"/>
                 <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
@@ -154,7 +155,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <!--
         <groups>
             <run>

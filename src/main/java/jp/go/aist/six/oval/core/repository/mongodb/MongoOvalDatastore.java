@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -101,7 +102,7 @@ public class MongoOvalDatastore
     /**
      *
      */
-    public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
     T findById(
                     final Class<T> type,
                     final K id
@@ -119,9 +120,7 @@ public class MongoOvalDatastore
 
 
 
-   /**
-    */
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    List<T> find(
                    final Class<T> type
                    )
@@ -141,9 +140,7 @@ public class MongoOvalDatastore
 
 
 
-   /**
-    */
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    List<T> find(
                    final Class<T> type,
                    final QueryParams params
@@ -171,7 +168,7 @@ public class MongoOvalDatastore
 
 
 
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    List<K> findId(
                    final Class<T> type
                    )
@@ -189,7 +186,7 @@ public class MongoOvalDatastore
 
 
 
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    List<K> findId(
                    final Class<T> type,
                    final QueryParams params
@@ -217,9 +214,7 @@ public class MongoOvalDatastore
 
 
 
-   /**
-    */
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    long count(
                    final Class<T> type
                    )
@@ -237,9 +232,7 @@ public class MongoOvalDatastore
 
 
 
-   /**
-    */
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    long count(
                    final Class<T> type,
                    final QueryParams params
@@ -279,7 +272,7 @@ public class MongoOvalDatastore
 
 
 
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    K save(
                    final Class<T> type,
                    final T object
@@ -298,7 +291,7 @@ public class MongoOvalDatastore
 
 
 
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    void deleteById(
                    final Class<T> type,
                    final K id
@@ -314,7 +307,7 @@ public class MongoOvalDatastore
 
 
 
-   public <K, T extends Persistable<K>>
+    public <K, T extends Persistable<K> & OvalObject>
    void delete(
                    final Class<T> type
                    )

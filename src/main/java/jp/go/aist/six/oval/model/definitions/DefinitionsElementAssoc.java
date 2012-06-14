@@ -26,6 +26,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.ElementType;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Entity;
@@ -41,7 +42,7 @@ import com.google.code.morphia.annotations.Id;
  */
 @Entity( "oval.def.element_assoc" )
 public class DefinitionsElementAssoc
-    implements Persistable<String>
+    implements Persistable<String>, OvalObject
 {
     public static final class Ref
     implements Serializable
