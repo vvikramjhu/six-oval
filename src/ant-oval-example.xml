@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="six-example" basedir="..">
+<project name="oval-example" basedir="..">
 
-    <property name="lib.dir"            location="${basedir}/lib"/>
+    <property name="lib.dir" location="${basedir}/lib"/>
+    <property name="example.classes.dir"  location="${lib.dir}/classes"/>
 
     <path id="java.lib.classpath">
-        <fileset dir="${lib.dir}" includes="**/*.jar" />
+        <fileset dir="${lib.dir}" includes="**/*.jar,**/*.properties" />
     </path>
 
     <path id="java.compile.classpath">
@@ -14,6 +15,7 @@
 
     <path id="java.run.classpath">
         <path refid="java.compile.classpath"/>
+        <pathelement location="${example.classes.dir}"/>
     </path>
 
 
