@@ -19,7 +19,7 @@ import com.google.code.morphia.query.Query;
 
 
 /**
- * A datastore for OVAL objects.
+ * A MongoDB-based implementation of the OvalDatastore.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
