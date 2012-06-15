@@ -32,6 +32,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/adoption/usecasesguide.html">OVAL Use Case Guide</a>
  */
 public interface OvalDefinitionRepository
 {

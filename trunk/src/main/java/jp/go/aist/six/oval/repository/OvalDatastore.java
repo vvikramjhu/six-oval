@@ -7,8 +7,16 @@ import jp.go.aist.six.util.persist.Persistable;
 
 
 /**
- * A prescription for the low-level repository operations
+ * A prescription for the low-level persistent storage operations
  * of the OVAL Domain Model objects.
+ * This can be a building block for the OVAL Repository capability.
+ * <p>
+ * The classes of the objects that can be persisted MUST implement the
+ * <code>Persistable</code> interface.
+ * That is, such objects in the storage has persistent identifier.
+ * If a relational database is used as the storage,
+ * the identifier corresponds to the primary key.
+ * </p>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -17,6 +25,15 @@ public interface OvalDatastore
 {
 
     /**
+     * Loads the object of the specified identifier.
+     * If no such object exists in the storage, this method returns null.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   id
+     *  the identifier of the object.
+     * @return
+     *  the object if exists, or null otherwise.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -26,6 +43,12 @@ public interface OvalDatastore
 
 
     /**
+     * Loads all the objects of the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  all the objects of the specified type.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -35,6 +58,14 @@ public interface OvalDatastore
 
 
     /**
+     * Searches for the objects that match the specified query parameters.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   params
+     *  the parameters to select the objects.
+     * @return
+     *  all the objects of the specified type.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -44,6 +75,12 @@ public interface OvalDatastore
 
 
     /**
+     * Returns identifiers of all the objects of the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the identifiers of all the objects.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -53,6 +90,14 @@ public interface OvalDatastore
 
 
     /**
+     * Searches for the identifiers of the objects that match the specified query parameters.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   params
+     *  the parameters to select the objects.
+     * @return
+     *  the identifiers of all the objects.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -62,6 +107,12 @@ public interface OvalDatastore
 
 
     /**
+     * Counts the number of all the objects of the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the number of the objects.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -71,6 +122,14 @@ public interface OvalDatastore
 
 
     /**
+     * Counts the number of the objects that match the specified query parameters.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   params
+     *  the parameters to select the objects.
+     * @return
+     *  the number of the objects.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -80,6 +139,14 @@ public interface OvalDatastore
 
 
     /**
+     * Saves the object, either inserting or updating the existing one.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   object
+     *  the object.
+     * @return
+     *  the identifier of the object.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -89,6 +156,13 @@ public interface OvalDatastore
 
 
     /**
+     * Removes the object of the specified identifier.
+     * If no such object exists, this method returns immediately without any exception.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   id
+     *  the identifier of the object.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -98,6 +172,10 @@ public interface OvalDatastore
 
 
     /**
+     * Removes all the object of the specified type.
+     *
+     * @param   type
+     *  the type of the object.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
