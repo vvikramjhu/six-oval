@@ -73,7 +73,7 @@ public class FileObject
     private EntityObjectStringType  path;
     //{1..1}
 
-    private EntityObjectStringType  filename;
+    private EntityObjectStringType  filename = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
