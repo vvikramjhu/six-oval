@@ -156,12 +156,12 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.xml" enabled="true">
+        <!--
         <groups>
             <run>
                 <include name="MODEL.oval.def.oval_definitions"/>
             </run>
         </groups>
-        <!--
         -->
                 <!--
                 <include name="MODEL.oval.sc.oval_system_characteristics"/>
@@ -178,12 +178,13 @@
                 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalIdTests"/>
             <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.XsiNilTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
-            <class name="jp.go.aist.six.test.oval.core.OvalIdTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalIdTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>
             -->
         </classes>

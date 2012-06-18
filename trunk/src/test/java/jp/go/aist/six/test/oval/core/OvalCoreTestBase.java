@@ -185,6 +185,23 @@ public abstract class OvalCoreTestBase
     }
 
 
+    /**
+     */
+    protected String _marshalToString(
+                    final Object object
+                    )
+    throws Exception
+    {
+        Reporter.log( ">>> marshalling...", true );
+        long  time = System.currentTimeMillis();
+        String  xml = _getXmlMapper().marshalToString( object );
+        Reporter.log( "<<< ...marshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+
+        return xml;
+    }
+
+
+
 
     protected <K, T extends Persistable<K>>
     void _printObject(
