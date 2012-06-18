@@ -63,7 +63,7 @@ public class MetabaseObject
     private EntityObjectStringType  key;
     //{1..1}
 
-    private EntityObjectIntType  id;
+    private EntityObjectIntType  id = new EntityObjectIntType();
     //{1..1, nillable="true"}
 
 
