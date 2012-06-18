@@ -16,7 +16,7 @@ import org.testng.annotations.DataProvider;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalIdTests
+public class OvalIdXmlMappingTests
     extends OvalCoreTestBase
 {
 

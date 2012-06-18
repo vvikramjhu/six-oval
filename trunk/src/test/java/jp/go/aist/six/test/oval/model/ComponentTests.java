@@ -37,7 +37,7 @@ public class ComponentTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.model" },
+                    groups={ "MODEL.oval" },
                     alwaysRun=true
                     )
     public void testComponent()
@@ -58,7 +58,7 @@ public class ComponentTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.model" },
+                    groups={ "MODEL.oval" },
                     alwaysRun=true
                     )
     public void testFamily()

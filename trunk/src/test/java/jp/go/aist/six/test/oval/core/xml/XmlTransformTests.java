@@ -15,7 +15,7 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class XmlTransformTest
+public class XmlTransformTests
 {
 
     private XmlTransformer  _transformer;
@@ -24,7 +24,7 @@ public class XmlTransformTest
 
     /**
      */
-    public XmlTransformTest()
+    public XmlTransformTests()
     {
     }
 

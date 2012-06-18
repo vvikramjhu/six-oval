@@ -180,11 +180,11 @@
         <classes>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <!--
-            <class name="jp.go.aist.six.test.oval.core.xml.XsiNilTests"/>
-            <class name="jp.go.aist.six.test.oval.core.xml.OvalIdTests"/>
-            <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalIdXmlMappingTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
-            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsXmlMappingTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XsiNilMappingTests"/>
             -->
         </classes>
     </test>

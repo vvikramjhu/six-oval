@@ -21,13 +21,13 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryResultsTests
+public class QueryResultsXmlMappingTests
     extends TestBase
 {
 
     /**
      */
-    public QueryResultsTests()
+    public QueryResultsXmlMappingTests()
     {
     }
 
