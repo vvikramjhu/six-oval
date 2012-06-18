@@ -139,7 +139,7 @@ public class OvalContext
     ///////////////////////////////////////////////////////////////////////
 
     private static final String _REPOSITORY_CONTEXT_DEF_
-        = "six-oval_context_repository.xml";
+        = "jp/go/aist/six/oval/core/six-oval_context_repository.xml";
 
 
     private static ApplicationContext  _REPOSITORY_CONTEXT_;
@@ -194,7 +194,7 @@ public class OvalContext
     /**
      * The Spring application context specification: XML component.
      */
-    private static final String  _XML_CONTEXT_DEF_ = "six-oval_context_xml.xml";
+    private static final String  _XML_CONTEXT_DEF_ = "jp/go/aist/six/oval/core/six-oval_context_xml.xml";
 
     private static ApplicationContext  _XML_CONTEXT_;
 
@@ -273,7 +273,7 @@ public class OvalContext
      * The Spring application context specification.
      */
     private static final String _WHOLE_CONTEXT_DEF_
-        = "six-oval_context.xml";
+        = "jp/go/aist/six/oval/core/six-oval_context.xml";
 
 
     private static ApplicationContext  _WHOLE_CONTEXT_;
