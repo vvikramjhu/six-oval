@@ -18,13 +18,13 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class XsiNilTests
+public class XsiNilMappingTests
     extends OvalCoreTestBase
 {
 
     /**
      */
-    public XsiNilTests()
+    public XsiNilMappingTests()
     {
     }
 
