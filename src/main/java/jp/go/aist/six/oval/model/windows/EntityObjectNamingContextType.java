@@ -54,6 +54,15 @@ public class EntityObjectNamingContextType
     }
 
 
+    public EntityObjectNamingContextType(
+                    final NamingContextEnumeration content
+                    )
+    {
+        this( (content == null ? null : content.value()) );
+    }
+
+
+
 
     //**************************************************************
     //  EntitySimpleBaseType

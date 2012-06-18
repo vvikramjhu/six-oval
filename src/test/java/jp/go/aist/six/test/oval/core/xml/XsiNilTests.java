@@ -2,8 +2,9 @@ package jp.go.aist.six.test.oval.core.xml;
 
 import java.io.File;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.windows.FileAuditedPermissionsObject;
+import jp.go.aist.six.oval.model.windows.ActiveDirectoryObject;
+import jp.go.aist.six.oval.model.windows.EntityObjectNamingContextType;
+import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
 import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -58,18 +59,16 @@ public class XsiNilTests
     @DataProvider( name="DATA.oval.def.nil" )
     public Object[][] provideOvalObjectNil()
     {
-        FileAuditedPermissionsObject  obj_01 = new FileAuditedPermissionsObject(
-                        "oval:org.mitre.oval.test:obj:529", 1
-                        );
-        obj_01.setPath( new EntityObjectStringType( "C:\\Program Files\\Internet Explorer") );
-//        obj_01.setFilename( new EntityObjectStringType() );
-        obj_01.setTrusteeName( new EntityObjectStringType( "ADMINISTRATOR" ) );
+
+        //win-def:activedirectory_object// relative_dn:nillable=true, attribute:nillable=true
+        ActiveDirectoryObject  obj_01 = new ActiveDirectoryObject( "oval:org.mitre.oval.test:obj:902", 1 );
+        obj_01.setNamingContext( new EntityObjectNamingContextType( NamingContextEnumeration.DOMAIN ) );
 
 
         return new Object[][] {
                         {
                             "01",
-                            FileAuditedPermissionsObject.class,
+                            ActiveDirectoryObject.class,
                             obj_01
                         }
         };
