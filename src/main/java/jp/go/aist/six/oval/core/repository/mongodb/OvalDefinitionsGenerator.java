@@ -11,6 +11,7 @@ import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.IsoDate;
@@ -50,7 +51,7 @@ public class OvalDefinitionsGenerator
 
 
 
-    private static MongoOvalDatastore  _DATASTORE_;
+    private static OvalDatastore  _DATASTORE_;
 
 
 
@@ -65,10 +66,10 @@ public class OvalDefinitionsGenerator
 
     /**
      */
-    private static MongoOvalDatastore _getDatastore()
+    private static OvalDatastore _getDatastore()
     {
         if (_DATASTORE_ == null) {
-            _DATASTORE_ = OvalContext.INSTANCE.getBean( MongoOvalDatastore.class );
+            _DATASTORE_ = OvalContext.getDatastore();
         }
 
         return _DATASTORE_;

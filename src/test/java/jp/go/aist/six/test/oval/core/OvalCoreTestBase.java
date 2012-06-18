@@ -44,7 +44,7 @@ import org.testng.annotations.DataProvider;
 public abstract class OvalCoreTestBase
 {
 
-    private OvalContext  _context = null;
+//    private OvalContext  _context = null;
 
     private XmlMapper  _xmlMapper = null;
 
@@ -64,14 +64,6 @@ public abstract class OvalCoreTestBase
     public void setUp()
     throws Exception
     {
-        _context = new OvalContext();
-    }
-
-
-    protected OvalContext _getContext()
-    throws Exception
-    {
-        return _context;
     }
 
 
@@ -79,7 +71,7 @@ public abstract class OvalCoreTestBase
     throws Exception
     {
         if (_xmlMapper == null) {
-            _xmlMapper = _context.getXmlMapper();
+            _xmlMapper = OvalContext.getXmlMapper();
         }
 
         return _xmlMapper;

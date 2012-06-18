@@ -21,10 +21,9 @@ import org.testng.annotations.DataProvider;
 public abstract class CoreTestBase
 {
 
-    private OvalContext  _context = null;
+//    private OvalContext  _context = null;
 
     private XmlMapper  _xmlMapper = null;
-//    private DataStore  _store = null;
 
 
 
@@ -42,37 +41,26 @@ public abstract class CoreTestBase
     public void setUp()
     throws Exception
     {
-        _context = OvalContext.INSTANCE;
+//        _context = OvalContext.INSTANCE;
     }
 
 
-    protected OvalContext _getContext()
-    throws Exception
-    {
-        return _context;
-    }
+//    protected OvalContext _getContext()
+//    throws Exception
+//    {
+//        return _context;
+//    }
 
 
     protected XmlMapper _getXmlMapper()
     throws Exception
     {
         if (_xmlMapper == null) {
-            _xmlMapper = _context.getXmlMapper();
+            _xmlMapper = OvalContext.getXmlMapper();
         }
 
         return _xmlMapper;
     }
-
-
-//    protected DataStore _getStore()
-//    throws Exception
-//    {
-//        if (_store == null) {
-//            _store = _context.getStore();
-//        }
-//
-//        return _store;
-//    }
 
 
 

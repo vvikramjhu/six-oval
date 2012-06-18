@@ -15,7 +15,7 @@ public class OvalXmlMappingExample
     public static void main( final String[] args )
     throws Exception
     {
-        XmlMapper  xml_mapper = (new OvalContext()).getXmlMapper();
+        XmlMapper  xml_mapper = OvalContext.getXmlMapper();
 
         //local file
         String  local_src = "src/test/resources/oval_test-content/oval-5.9/def/windows/ind-def_unknown_test.xml";

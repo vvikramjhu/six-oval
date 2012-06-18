@@ -36,8 +36,7 @@ public class XmlTransformTests
     public void setUp()
     throws Exception
     {
-        OvalContext  context = new OvalContext();
-        _transformer = context.getBean( "oval-XmlTransformer", XmlTransformer.class );
+        _transformer = OvalContext.getBean( "oval-XmlTransformer", XmlTransformer.class );
     }
 
 
