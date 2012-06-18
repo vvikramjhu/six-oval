@@ -78,7 +78,8 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
 
     <bean id="oval-XmlTransformer" 
        class="jp.go.aist.six.util.xml.XmlTransformer"> 
-        <constructor-arg type="java.net.URL" value="classpath:jp/go/aist/six/oval/core/xml/oval5-transform.xsl"/>
+        <constructor-arg type="java.net.URL" 
+                        value="classpath:jp/go/aist/six/oval/core/xml/oval5-transform.xsl"/>
 
 <!-- The following constructor-based DI does NOT work, 
      because there is a constructor with a String argument: XmlTransformer( String stylesheet ).

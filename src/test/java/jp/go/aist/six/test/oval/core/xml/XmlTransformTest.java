@@ -3,9 +3,10 @@ package jp.go.aist.six.test.oval.core.xml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.net.URL;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.XmlTransformer;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
 
@@ -17,9 +18,7 @@ import org.testng.annotations.DataProvider;
 public class XmlTransformTest
 {
 
-    private static final String  _XSLT_STYLESHEET_ =
-        "/oval5-transform.xsl";
-//    "/oval5.xsl";
+    private XmlTransformer  _transformer;
 
 
 
@@ -31,9 +30,21 @@ public class XmlTransformTest
 
 
 
-    //**************************************************************
-    //
-    //**************************************************************
+    /**
+     */
+    @BeforeClass( alwaysRun=true )
+    public void setUp()
+    throws Exception
+    {
+        OvalContext  context = new OvalContext();
+        _transformer = context.getBean( "oval-XmlTransformer", XmlTransformer.class );
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // test data
+    ///////////////////////////////////////////////////////////////////////
 
     @DataProvider( name="oval.definitions.xml.transform" )
     public Object[][] provideOvalResultsXml()
@@ -83,6 +94,10 @@ public class XmlTransformTest
 
 
 
+    ///////////////////////////////////////////////////////////////////////
+    // test methods
+    ///////////////////////////////////////////////////////////////////////
+
     @org.testng.annotations.Test(
                     groups={"oval.core.xml", "oval.definitions.oval_definitions"},
                     dataProvider="oval.definitions.xml.transform",
@@ -96,15 +111,10 @@ public class XmlTransformTest
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
 
-        URL  stylesheetLocation = getClass().getResource( _XSLT_STYLESHEET_ );
-//        File  stylesheetLocation = new File( _XSLT_STYLESHEET_ );
-        Reporter.log( "  @ XSLT stylesheet location: " + stylesheetLocation, true );
-        XmlTransformer  transformer = new XmlTransformer( stylesheetLocation );
-
-        transformer.transform(
+        _transformer.transform(
                         new FileInputStream( new File( sourceFilepath ) ),
                         new FileOutputStream( new File( resultFilepath ) ) );
     }
 
 }
-// XmlTransformTest
+//

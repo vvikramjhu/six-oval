@@ -64,7 +64,7 @@ public abstract class OvalCoreTestBase
     public void setUp()
     throws Exception
     {
-        _context = OvalContext.INSTANCE;
+        _context = new OvalContext();
     }
 
 
@@ -304,17 +304,17 @@ public abstract class OvalCoreTestBase
     {
         return new Object[][] {
 // OVAL test content //
-//                        // linux //
-//                        {
-//                            OvalContentCategory.OVAL_TEST_CONTENT,
-//                            "5.9",
-//                            OvalDefinitions.class,
-//                            Family.LINUX,
-//                            "test/resources/oval_test-content/oval-5.9/def/linux",
-//                            null,
-//                            null
-//                        }
-//                        ,
+                        // linux //
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            OvalDefinitions.class,
+                            Family.LINUX,
+                            "test/resources/oval_test-content/oval-5.9/def/linux",
+                            null,
+                            null
+                        }
+                        ,
                         // Windows //
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
@@ -326,28 +326,28 @@ public abstract class OvalCoreTestBase
                             null
                         }
 //mitre repository//
-//                        ,
-//                        // linux //
-//                        {
-//                            OvalContentCategory.MITRE_REPOSITORY,
-//                            "5.10.1",
-//                            OvalDefinitions.class,
-//                            Family.LINUX,
-//                            "test/resources/mitre_repository/oval-5.10/def/linux",
-//                            null,
-//                            null
-//                        }
-//                        ,
-//                        // windows //
-//                        {
-//                            OvalContentCategory.MITRE_REPOSITORY,
-//                            "5.10.1",
-//                            OvalDefinitions.class,
-//                            Family.WINDOWS,
-//                            "test/resources/mitre_repository/oval-5.10/def/windows",
-//                            null,
-//                            null
-//                        }
+                        ,
+                        // linux //
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalDefinitions.class,
+                            Family.LINUX,
+                            "test/resources/mitre_repository/oval-5.10/def/linux",
+                            null,
+                            null
+                        }
+                        ,
+                        // windows //
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalDefinitions.class,
+                            Family.WINDOWS,
+                            "test/resources/mitre_repository/oval-5.10/def/windows",
+                            null,
+                            null
+                        }
         };
 
     }
