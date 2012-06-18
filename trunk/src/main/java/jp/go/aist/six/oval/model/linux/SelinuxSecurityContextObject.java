@@ -71,10 +71,10 @@ public class SelinuxSecurityContextObject
 
     private EntityObjectStringType  path;
 
-    private EntityObjectStringType  filename;
+    private EntityObjectStringType  filename = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectIntType  pid;
+    private EntityObjectIntType  pid = new EntityObjectIntType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();

@@ -1064,12 +1064,14 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="pid" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
+            nillable="true" required="true">
             <bind-xml name="pid" node="element"/>
         </field>
 

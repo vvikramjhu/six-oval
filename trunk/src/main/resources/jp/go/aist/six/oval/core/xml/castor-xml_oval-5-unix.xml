@@ -24,11 +24,12 @@
     <!-- ******************************************************* -->
     <!-- file                                                    -->
     <!-- ******************************************************* -->
-    
-    <!-- TODO:
-    map-to xml="file_test" conflicts with windows "file_test" class mapping,
-    whether the ns-uri attribute is specified or not.       
-    -->
+
+<!-- NOTE: Element name conflicts.
+unix-def and win-def namespaces have the same "file_xxx" elements.
+Castor fails their mappings whether the ns-uri attribute is specified or not.
+-->
+
     <class name="jp.go.aist.six.oval.model.unix.FileTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="unix_file_test"
@@ -94,7 +95,8 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
