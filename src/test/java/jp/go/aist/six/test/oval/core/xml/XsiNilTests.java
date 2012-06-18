@@ -60,7 +60,8 @@ public class XsiNilTests
     public Object[][] provideOvalObjectNil()
     {
 
-        //win-def:activedirectory_object// relative_dn:nillable=true, attribute:nillable=true
+        //win-def:activedirectory_object
+        // relative_dn:nillable=true, attribute:nillable=true
         ActiveDirectoryObject  obj_01 = new ActiveDirectoryObject( "oval:org.mitre.oval.test:obj:902", 1 );
         obj_01.setNamingContext( new EntityObjectNamingContextType( NamingContextEnumeration.DOMAIN ) );
 

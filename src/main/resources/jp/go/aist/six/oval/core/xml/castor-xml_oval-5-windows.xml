@@ -2,7 +2,7 @@
 
 <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
                          "http://castor.org/mapping.dtd">
-                          
+
 <!--
 <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping Schema Version 1.0//EN"
                          "http://castor.exolab.org/mapping.xsd">
@@ -1393,7 +1393,8 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
@@ -1673,7 +1674,8 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
@@ -2216,7 +2218,8 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
@@ -2421,7 +2424,8 @@
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="filename" node="element"/>
         </field>
 
@@ -3190,7 +3194,8 @@
         </field>
         
         <field name="id" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
+            nillable="true" required="true">
             <bind-xml name="id" node="element"/>
         </field>
 
@@ -4070,7 +4075,8 @@
         </field>
         
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
 
@@ -4588,7 +4594,8 @@
         </field>
         
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
 
@@ -5105,12 +5112,14 @@
         </field>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
         
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="name" node="element"/>
         </field>
 
