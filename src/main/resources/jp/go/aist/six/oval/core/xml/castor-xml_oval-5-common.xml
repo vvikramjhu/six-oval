@@ -19,7 +19,8 @@
         verify-constructable="false">
 
         <map-to xml="oval-id"
-            />
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
+            ns-prefix=""/>
 
         <field name="value" type="string"
             get-method="value"
@@ -35,7 +36,10 @@ Constructor arguments only valid for attribute mapped fields!!!
 
 
     <class name="jp.go.aist.six.oval.model.common.OvalIdContainer">
-        <map-to  xml="oval-id-list"/>
+        <map-to xml="oval-id-list"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
+            ns-prefix=""/>
+
 
         <field name="id" 
             type="jp.go.aist.six.oval.model.common.OvalId"
