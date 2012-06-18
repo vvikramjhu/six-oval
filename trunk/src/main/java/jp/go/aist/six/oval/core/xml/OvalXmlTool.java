@@ -86,7 +86,7 @@ public class OvalXmlTool
      */
     public OvalXmlTool()
     {
-        _mapper = OvalContext.INSTANCE.getXmlMapper();
+        _mapper = OvalContext.getXmlMapper();
     }
 
 

@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
@@ -17,6 +17,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.ReferenceType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
+import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.TestBase;
 import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
@@ -36,7 +37,7 @@ public class MongoOvalDatastoreTests
     extends TestBase
 {
 
-    private MongoOvalDatastore  _datastore;
+    private OvalDatastore  _datastore;
 
 
 
@@ -49,11 +50,11 @@ public class MongoOvalDatastoreTests
 	{
         super.setUp();
 
-        _datastore = _getContext().getBean( MongoOvalDatastore.class );
+        _datastore = OvalContext.getDatastore();
 	}
 
 
-    protected MongoOvalDatastore _getDatastore()
+    protected OvalDatastore _getDatastore()
     throws Exception
     {
         return _datastore;

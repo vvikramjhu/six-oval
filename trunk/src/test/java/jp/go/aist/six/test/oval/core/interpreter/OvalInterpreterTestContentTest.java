@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core.interpreter;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
 import jp.go.aist.six.oval.core.interpreter.OvaldiOptions;
 import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
@@ -36,7 +37,7 @@ public class OvalInterpreterTestContentTest
     private OvalInterpreter _createOvalInterpreter()
     throws Exception
     {
-        String  executable = _getContext().getProperty( "six.oval.interpreter.executable" );
+        String  executable = OvalContext.getProperty( "six.oval.interpreter.executable" );
         if (executable == null) {
             executable = _OVALDI_EXECUTABLE_;
         }

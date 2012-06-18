@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
@@ -11,6 +12,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
+import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -29,7 +31,7 @@ public abstract class MongoTests
     extends OvalCoreTestBase
 {
 
-    private MongoOvalDatastore  _datastore;
+    private OvalDatastore  _datastore;
 
 
 
@@ -42,16 +44,16 @@ public abstract class MongoTests
 	{
         super.setUp();
 
-        _datastore = _getContext().getBean( MongoOvalDatastore.class );
+        _datastore = OvalContext.getBean( MongoOvalDatastore.class );
 
-        Morphia  morphia = _getContext().getBean( "morphia", Morphia.class );
+        Morphia  morphia = OvalContext.getBean( "morphia", Morphia.class );
         for (MappedClass  clazz : morphia.getMapper().getMappedClasses()) {
             Reporter.log( "% Morphia mapped MongoDB collection: " + clazz.getCollectionName(), true );
         }
 	}
 
 
-    protected MongoOvalDatastore _getDatastore()
+    protected OvalDatastore _getDatastore()
     throws Exception
     {
         return _datastore;

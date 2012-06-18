@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
@@ -53,7 +54,7 @@ extends OvalCoreTestBase
 	{
         super.setUp();
 
-        _oval_def_repository = _getContext().getBean( "mongoOvalDefinitionRepository", MongoOvalDefinitionRepository.class );
+        _oval_def_repository = OvalContext.getBean( "mongoOvalDefinitionRepository", MongoOvalDefinitionRepository.class );
 	}
 
 

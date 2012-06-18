@@ -137,6 +137,9 @@ public class OvaldiProxy
     private Options  _options;
 
 
+//    private OvalContext  _context;
+
+
 
     /**
      * Constructor.
@@ -328,8 +331,7 @@ public class OvaldiProxy
     {
         String  value = _config.get( property );
         if (value == null) {
-//            value = System.getProperty( property.name );
-            value = OvalContext.INSTANCE.getProperty( property.name );
+            value = OvalContext.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);

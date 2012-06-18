@@ -192,7 +192,7 @@
 
     <test name="oval.core.xml.transform" enabled="false">
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTests"/>
         </classes>
     </test>
 

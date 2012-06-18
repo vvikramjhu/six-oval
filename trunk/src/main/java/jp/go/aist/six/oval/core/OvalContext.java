@@ -25,6 +25,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.util.xml.XmlMapper;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -50,9 +51,38 @@ public class OvalContext
 
 
 
-    public static final OvalContext  INSTANCE = new OvalContext();
+//    public static final OvalContext  INSTANCE = new OvalContext();
 
 
+
+    /**
+     * Constructor.
+     */
+    protected OvalContext()
+    {
+//        _initResourceBundle();
+    }
+
+
+
+//    /**
+//     */
+//    private void _initResourceBundle()
+////    throws MissingResourceException
+//    {
+//        try {
+//            _RESOURCE_BUNDLE_ = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
+//        } catch (MissingResourceException ex) {
+//            //negligible
+//            _RESOURCE_BUNDLE_ = new EmptyResourceBundle();
+//        }
+//    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  properties
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      * The base name of the resource bundle.
@@ -62,88 +92,32 @@ public class OvalContext
 
 
     /**
-     * The Spring application context specification.
      */
-    private static final String _SPRING_APP_CONTEXT_
-        = "six-oval_context.xml";
-
-
-    /**
-     * The Spring application context specification: XML component.
-     */
-    private static final String _XML_CONTEXT_
-        = "six-oval_context_xml.xml";
-
-
-    /**
-     * The Spring application context specification: XML component.
-     */
-    private static final String _REPOSITORY_CONTEXT_
-        = "six-oval_context_repository.xml";
-
-
-
-    /**
-     * The Spring application context.
-     */
-    private ApplicationContext  _repositoryContext;
+    private static ResourceBundle  _RESOURCE_BUNDLE_;
 
 
 
     /**
      */
-    private ResourceBundle  _resourceBundle;
-
-
-
-    /**
-     * The Spring application context.
-     */
-    private ApplicationContext  _springContext;
-
-
-    /**
-     * The data store sole instance.
-     */
-    private OvalDatastore  _datastore;
-
-
-    /**
-     * The XML mapper sole instance.
-     */
-    private XmlMapper  _xmlMapper;
-
-
-
-
-    /**
-     * Constructor.
-     */
-    public OvalContext()
+    private static ResourceBundle _getResourceBundle()
     {
-        _initResourceBundle();
-    }
-
-
-
-    /**
-     */
-    private void _initResourceBundle()
-//    throws MissingResourceException
-    {
-        try {
-            _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
-        } catch (MissingResourceException ex) {
-            //negligible
-            _resourceBundle = new EmptyResourceBundle();
+        if (_RESOURCE_BUNDLE_ == null) {
+            try {
+                _RESOURCE_BUNDLE_ = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
+            } catch (MissingResourceException ex) {
+                //negligible
+                _RESOURCE_BUNDLE_ = new EmptyResourceBundle();
+            }
         }
+
+        return _RESOURCE_BUNDLE_;
     }
 
 
 
     /**
      */
-    public String getProperty(
+    public static String getProperty(
                     final String key
                     )
     {
@@ -152,73 +126,42 @@ public class OvalContext
             return value;
         }
 
-        if (_resourceBundle != null) {
-            try {
-                value = _resourceBundle.getString( key );
-            } catch (MissingResourceException ex) {
-                // if no such object is found.
-                value = null;
-            }
-        }
+        value = _getResourceBundle().getString( key );
 
         return value;
     }
 
 
 
-    /**
-     */
-    private ApplicationContext _getSpringContext()
+
+    ///////////////////////////////////////////////////////////////////////
+    //  repository context
+    ///////////////////////////////////////////////////////////////////////
+
+    private static final String _REPOSITORY_CONTEXT_DEF_
+        = "six-oval_context_repository.xml";
+
+
+    private static ApplicationContext  _REPOSITORY_CONTEXT_;
+
+
+    private static OvalDatastore  _DATASTORE_;
+
+
+
+
+    private static ApplicationContext _getRepositoryContext()
     {
-        if (_springContext == null) {
-            _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
-            //throws BeansException/runtime
+        if (_REPOSITORY_CONTEXT_ == null) {
+            try {
+                _REPOSITORY_CONTEXT_ = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_DEF_ );
+                                       //throws BeansException/runtime
+            } catch (BeansException ex) {
+                throw new OvalConfigurationException( ex );
+            }
         }
 
-        return _springContext;
-    }
-
-
-
-    /**
-     */
-    public Object getBean(
-                    final String name
-                    )
-    {
-        return _getSpringContext().getBean( name );
-    }
-
-
-    public <T> T getBean(
-                    final Class<T> requiredType
-                    )
-    {
-        return _getSpringContext().getBean( requiredType );
-    }
-
-
-    public <T> T getBean(
-                    final String name,
-                    final Class<T> requiredType
-                    )
-    {
-        return _getSpringContext().getBean( name, requiredType );
-    }
-
-
-
-
-    /**
-     */
-    private ApplicationContext _getRepositoryContext()
-    {
-        if (_repositoryContext == null) {
-            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
-            //throws BeansException/runtime
-        }
-
-        return _repositoryContext;
+        return _REPOSITORY_CONTEXT_;
     }
 
 
@@ -229,30 +172,53 @@ public class OvalContext
      * @throws  OvalConfigurationException
      *  when it is NOT possible to create OvalDatastore instance.
      */
-    public OvalDatastore getDatastore()
+    public static OvalDatastore getDatastore()
     {
-        if (_datastore == null) {
+        if (_DATASTORE_ == null) {
             try {
-                _datastore = _getRepositoryContext().getBean( "oval-Datastore", OvalDatastore.class );
+                _DATASTORE_ = _getRepositoryContext().getBean( "oval-Datastore", OvalDatastore.class );
             } catch (Exception ex) {
                 throw new OvalConfigurationException( ex );
             }
         }
 
-        return _datastore;
+        return _DATASTORE_;
     }
 
-//    /**
-//     */
-//    public OvalRepository getRepository()
-//    {
-//        if (_repositoryContext == null) {
-//            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
-//            //throws BeansException: Runtime
-//        }
-//
-//        return _repositoryContext.getBean( OvalRepository.class );
-//    }
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  XML context
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     * The Spring application context specification: XML component.
+     */
+    private static final String  _XML_CONTEXT_DEF_ = "six-oval_context_xml.xml";
+
+    private static ApplicationContext  _XML_CONTEXT_;
+
+
+    /**
+     * The XML mapper sole instance.
+     */
+    private static XmlMapper  _XML_MAPPER_;
+
+
+
+    private static ApplicationContext _getXmlContext()
+    {
+        if (_XML_CONTEXT_ == null) {
+            try {
+                _XML_CONTEXT_ = new ClassPathXmlApplicationContext( _XML_CONTEXT_DEF_ );
+                                //throws BeansException/runtime
+            } catch (BeansException ex) {
+                throw new OvalConfigurationException( ex );
+            }
+        }
+
+        return _XML_CONTEXT_;
+    }
 
 
 
@@ -260,22 +226,102 @@ public class OvalContext
      * Returns an XmlMapper instance which is dedicated to the OVAL Domain Model.
      *
      * @throws  OvalConfigurationException
-     *  when it is NOT possible to create XmlMapper instance.
+     *  when it is NOT possible to create an XmlMapper instance.
      */
-    public XmlMapper getXmlMapper()
+    public static XmlMapper getXmlMapper()
     {
-        if (_xmlMapper == null) {
+        if (_XML_MAPPER_ == null) {
             try {
-                ApplicationContext  xml_context = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
-                                                  //throws BeansException/runtime
-                _xmlMapper = xml_context.getBean( "oval-XmlMapper", XmlMapper.class );
-            } catch (Exception ex) {
+                _XML_MAPPER_ = _getXmlContext().getBean( "oval-XmlMapper", XmlMapper.class );
+                                         //throws BeansException/runtime
+            } catch (BeansException ex) {
                 throw new OvalConfigurationException( ex );
             }
         }
 
-        return _xmlMapper;
+        return _XML_MAPPER_;
     }
+
+
+
+//    /**
+//     * Returns an XmlTransformer instance.
+//     *
+//     * @throws  OvalConfigurationException
+//     *  when it is NOT possible to create an XmlTransformer instance.
+//     */
+//    public static XmlTransformer getXmlTransformer()
+//    {
+//        XmlTransformer  xml_transformer = null;
+//        try {
+//            xml_transformer = _getXmlContext().getBean( "oval-XmlTransformer", XmlTransformer.class );
+//                                               //throws BeansException/runtime
+//        } catch (BeansException ex) {
+//            throw new OvalConfigurationException( ex );
+//        }
+//
+//        return xml_transformer;
+//    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  whole context
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     * The Spring application context specification.
+     */
+    private static final String _WHOLE_CONTEXT_DEF_
+        = "six-oval_context.xml";
+
+
+    private static ApplicationContext  _WHOLE_CONTEXT_;
+
+
+
+    /**
+     */
+    private static ApplicationContext _getWholeContext()
+    {
+        if (_WHOLE_CONTEXT_ == null) {
+            try {
+                _WHOLE_CONTEXT_ = new ClassPathXmlApplicationContext( _WHOLE_CONTEXT_DEF_ );
+                                 // throws BeansException/runtime
+            } catch (BeansException ex) {
+                throw new OvalConfigurationException( ex );
+            }
+        }
+
+        return _WHOLE_CONTEXT_;
+    }
+
+
+    //NOTE: We DON'T use non-type-safe bean factory.
+// public Object getBean(
+//                 final String name
+//                 )
+// {
+//     return _getSpringContext().getBean( name );
+// }
+
+
+    public static <T> T getBean(
+                    final Class<T> requiredType
+                    )
+    {
+        return _getWholeContext().getBean( requiredType );
+    }
+
+
+    public static <T> T getBean(
+                    final String name,
+                    final Class<T> requiredType
+                    )
+    {
+        return _getWholeContext().getBean( name, requiredType );
+    }
+
 
 }
 //

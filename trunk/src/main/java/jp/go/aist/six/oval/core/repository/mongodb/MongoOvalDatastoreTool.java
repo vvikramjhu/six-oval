@@ -17,6 +17,7 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
@@ -67,7 +68,7 @@ public class MongoOvalDatastoreTool
 
 //    private static final MongoDatastoreTool  _INSTANCE_ = new MongoDatastoreTool();
 
-    private static MongoOvalDatastore  _DATASTORE_;
+    private static OvalDatastore  _DATASTORE_;
 
     private static XmlMapper  _XML_MAPPER_ = null;
 
@@ -118,10 +119,10 @@ public class MongoOvalDatastoreTool
 
     /**
      */
-    private static MongoOvalDatastore _getDatastore()
+    private static OvalDatastore _getDatastore()
     {
         if (_DATASTORE_ == null) {
-            _DATASTORE_ = OvalContext.INSTANCE.getBean( MongoOvalDatastore.class );
+            _DATASTORE_ = OvalContext.getDatastore();
         }
 
         return _DATASTORE_;
@@ -131,7 +132,7 @@ public class MongoOvalDatastoreTool
     private static XmlMapper _getXmlMapper()
     {
         if (_XML_MAPPER_ == null) {
-            _XML_MAPPER_ = OvalContext.INSTANCE.getBean( XmlMapper.class );
+            _XML_MAPPER_ = OvalContext.getXmlMapper();
         }
 
         return _XML_MAPPER_;
@@ -210,7 +211,7 @@ public class MongoOvalDatastoreTool
      */
     public static void deleteAllData()
     {
-        MongoOvalDatastore  ds = _getDatastore();
+        OvalDatastore  ds = _getDatastore();
 
         _LOG_.debug( "delete DefinitonsElementAssoc..." );
         ds.delete( DefinitionsElementAssoc.class );
