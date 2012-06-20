@@ -87,8 +87,9 @@ public class OvalContext
     /**
      * The base name of the resource bundle.
      */
-    private static final String _RESOURCE_BUNDLE_NAME_ = "six-oval";
+    private static final String _RESOURCE_BUNDLE_NAME_ = "jp/go/aist/six/oval/core/six-oval_defaults";
 
+//    private static final String _RESOURCE_BUNDLE_NAME_ = "six-oval";
 
 
     /**
@@ -126,7 +127,12 @@ public class OvalContext
             return value;
         }
 
-        value = _getResourceBundle().getString( key );
+        try {
+            value = _getResourceBundle().getString( key );
+        } catch (MissingResourceException ex) {
+            //negligible
+            value = null;
+        }
 
         return value;
     }
@@ -176,7 +182,7 @@ public class OvalContext
     {
         if (_DATASTORE_ == null) {
             try {
-                _DATASTORE_ = _getRepositoryContext().getBean( "oval-Datastore", OvalDatastore.class );
+                _DATASTORE_ = _getRepositoryContext().getBean( "oval-datastore", OvalDatastore.class );
             } catch (Exception ex) {
                 throw new OvalConfigurationException( ex );
             }

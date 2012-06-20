@@ -14,18 +14,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
     xmlns:mvc="http://www.springframework.org/schema/mvc" 
     xsi:schemaLocation="
       http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/util 
+      http://www.springframework.org/schema/util/spring-util-3.0.xsd
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 
     <!-- external configurations -->
-    <context:property-placeholder location="classpath:six-oval.properties"/>
+    <context:property-placeholder location="classpath:six-oval.properties,classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"
+        ignore-resource-not-found="true"
+        />
+
+
+<!--
+    <context:property-override location="classpath:six-oval.properties"
+        ignore-resource-not-found="true"
+        />
+-->
+    <util:properties id="oval-properties" location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
 
 
 
@@ -33,7 +46,7 @@
     <!-- %  OVAL Repository                                    % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
-    <import resource="jp/go/aist/six/oval/core/six-oval_context_repository.xml"/>
+    <import resource="six-oval_context_repository.xml"/>
 
 
 
@@ -41,7 +54,7 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <import resource="jp/go/aist/six/oval/core/six-oval_context_xml.xml"/>
+    <import resource="six-oval_context_xml.xml"/>
 
 
 
