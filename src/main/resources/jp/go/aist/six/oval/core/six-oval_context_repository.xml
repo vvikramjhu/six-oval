@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- /////////////////////////////////////////////////////////// -->
-<!-- // Project SIX: OVAL                                     // -->
-<!-- //                                                       // -->
-<!-- // Spring Application Context: Repository                // -->
-<!-- /////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                            // -->
+<!-- //                                                              // -->
+<!-- // Spring Application Context: Repository                       // -->
+<!-- ////////////////////////////////////////////////////////////////// -->
 
 <!--
 @author     Akihito Nakamura, AIST
@@ -26,7 +26,15 @@
 
 
     <!-- external configurations -->
-    <context:property-placeholder location="classpath:six-oval.properties"/>
+    <context:property-placeholder location="classpath:six-oval.properties,classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"
+        ignore-resource-not-found="true"
+        />
+
+<!--
+    <context:property-override location="classpath:six-oval.properties"
+        ignore-resource-not-found="true"
+        />
+-->
 
 
 
@@ -117,7 +125,7 @@
 
     <!-- ******************************************************* -->
 
-    <bean id="oval-Datastore" 
+    <bean id="oval-datastore" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore"> 
         <property name="DAO">
             <set>
@@ -138,20 +146,20 @@
 
     <bean id="mongoOvalDefinitionRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
-        <property name="datastore" ref="oval-Datastore"/>
+        <property name="datastore" ref="oval-datastore"/>
     </bean>
 
 
     <bean id="mongoOvalDefinitionResultRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository">
-        <property name="datastore" ref="oval-Datastore"/>
+        <property name="datastore" ref="oval-datastore"/>
     </bean>
 
 
     <bean id="mongoOvalDefinitionsGenerator" 
         class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
 <!--
-        <property name="datastore" ref="oval-Datastore"/>
+        <property name="datastore" ref="oval-datastore"/>
 -->
     </bean>
 
