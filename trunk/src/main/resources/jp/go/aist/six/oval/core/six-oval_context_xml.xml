@@ -21,20 +21,11 @@
       http://www.springframework.org/schema/context/spring-context.xsd"
       >
 
-
     <!-- external configurations -->
-    <context:property-placeholder location="classpath:six-oval.properties,classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"
+    <context:property-placeholder location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties,classpath:six-oval.properties"
         ignore-resource-not-found="true"
         />
         
-<!--
-    <context:property-placeholder location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
-
-    <context:property-override location="classpath:six-oval.properties"
-        ignore-resource-not-found="true"
-        />
--->
-
 
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
