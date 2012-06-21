@@ -28,21 +28,24 @@
 
 
     <!-- external configurations -->
+<!-- NOTE: These properties are loaded in the imported contexts; repository and xml.
     <context:property-placeholder location="classpath:six-oval.properties,classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"
         ignore-resource-not-found="true"
         />
-
-
-<!--
-    <context:property-override location="classpath:six-oval.properties"
-        ignore-resource-not-found="true"
-        />
 -->
+
+
     <util:properties id="six-oval-default-properties" 
         location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
 
     <util:properties id="six-oval-properties" 
         location="classpath:six-oval.properties"/>
+
+<!-- DO NOT USE THIS!
+    <context:property-override location="classpath:six-oval.properties"
+        ignore-resource-not-found="true"
+        />
+-->
 
 
 
