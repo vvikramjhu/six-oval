@@ -22,9 +22,12 @@ package jp.go.aist.six.oval.core;
 
 import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import jp.go.aist.six.oval.repository.OvalDatastore;
 import jp.go.aist.six.util.xml.XmlMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -37,6 +40,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class OvalContext
 {
+
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext.class );
+
+
 
     private static class EmptyResourceBundle
     extends ListResourceBundle
@@ -84,12 +94,71 @@ public class OvalContext
     //  properties
     ///////////////////////////////////////////////////////////////////////
 
+    private static final String _DEFAULT_PROPS_NAME_ = "six-oval-default-properties";
+    private static final String _PROPS_NAME_ = "six-oval-properties";
+
+    private static Properties  _PROPERTIES_;
+
+
+    /**
+     */
+    public static String getProperty(
+                    final String key
+                    )
+    {
+        String  value = System.getProperty( key );
+        if (value != null) {
+            return value;
+        }
+
+        value = _getProperties().getProperty( key );
+
+        return value;
+    }
+
+
+
+    /**
+     * @throws  OvalConfigurationException
+     */
+    private static Properties _getProperties()
+    {
+        if (_PROPERTIES_ == null) {
+            _LOG_.debug( "loading default properties" );
+            Properties  default_props = getBean( _DEFAULT_PROPS_NAME_, Properties.class );
+            _LOG_.debug( "default properties: " + default_props.toString() );
+
+            _LOG_.debug( "loading properties" );
+            Properties  props = null;
+            try {
+                props = getBean( _PROPS_NAME_, Properties.class );
+            } catch (Exception ex) {
+                // neglisible
+                props = null;
+            }
+            _LOG_.debug( "properties: " + String.valueOf( props ) );
+
+            if (props == null) {
+                _PROPERTIES_ = default_props;
+            } else {
+                _PROPERTIES_ = new Properties( default_props );
+                for (String  key : props.stringPropertyNames()) {
+                    _PROPERTIES_.setProperty( key, props.getProperty( key ) );
+                }
+            }
+        }
+
+        return _PROPERTIES_;
+    }
+
+
+
+
+
     /**
      * The base name of the resource bundle.
      */
     private static final String _RESOURCE_BUNDLE_NAME_ = "jp/go/aist/six/oval/core/six-oval_defaults";
-
-//    private static final String _RESOURCE_BUNDLE_NAME_ = "six-oval";
 
 
     /**
@@ -118,7 +187,7 @@ public class OvalContext
 
     /**
      */
-    public static String getProperty(
+    public static String getProperty2(
                     final String key
                     )
     {
@@ -287,6 +356,7 @@ public class OvalContext
 
 
     /**
+     * @throws  OvalConfigurationException
      */
     private static ApplicationContext _getWholeContext()
     {
@@ -312,22 +382,43 @@ public class OvalContext
 // }
 
 
+    /**
+     * @throws  OvalConfigurationException
+     */
     public static <T> T getBean(
                     final Class<T> requiredType
                     )
     {
-        return _getWholeContext().getBean( requiredType );
+        T  bean = null;
+        try {
+            bean = _getWholeContext().getBean( requiredType );
+        } catch (BeansException ex) {
+            _LOG_.warn( "No such bean: type=" + requiredType );
+            throw new OvalConfigurationException( ex );
+        }
+
+        return bean;
     }
 
 
+    /**
+     * @throws  OvalConfigurationException
+     */
     public static <T> T getBean(
                     final String name,
                     final Class<T> requiredType
                     )
     {
-        return _getWholeContext().getBean( name, requiredType );
-    }
+        T  bean = null;
+        try {
+            bean = _getWholeContext().getBean( name, requiredType );
+        } catch (BeansException ex) {
+            _LOG_.warn( "No such bean: name=" + name + ", type=" + requiredType );
+            throw new OvalConfigurationException( ex );
+        }
 
+        return bean;
+    }
 
 }
 //
