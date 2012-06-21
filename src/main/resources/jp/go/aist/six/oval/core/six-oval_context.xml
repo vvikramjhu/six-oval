@@ -38,13 +38,11 @@
         ignore-resource-not-found="true"
         />
 -->
-    <util:properties id="oval-default-properties" 
-        location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"
-        />
+    <util:properties id="six-oval-default-properties" 
+        location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
 
-    <util:properties id="oval-properties" 
-        location="classpath:six-oval.properties"
-        />
+    <util:properties id="six-oval-properties" 
+        location="classpath:six-oval.properties"/>
 
 
 

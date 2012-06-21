@@ -103,7 +103,14 @@ public class OvalContextTests
         Reporter.log( "\n//////////////////////////////////////////////////////////", true );
 
         Reporter.log( "default properties:::", true );
-        Properties  props = OvalContext.getBean( "oval-properties", Properties.class );
+        Properties  props = OvalContext.getBean( "six-oval-default-properties", Properties.class );
+        for (String  key : props.stringPropertyNames()) {
+            String  value = props.getProperty( key );
+            Reporter.log( "  * property: key=" + key + ", value=" + value, true );
+        }
+
+        Reporter.log( "user properties:::", true );
+        props = OvalContext.getBean( "six-oval-properties", Properties.class );
         for (String  key : props.stringPropertyNames()) {
             String  value = props.getProperty( key );
             Reporter.log( "  * property: key=" + key + ", value=" + value, true );
