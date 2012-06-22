@@ -77,12 +77,12 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.repository.mongodb" enabled="false">
-        <!--
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
             </run>
         </groups>
+        <!--
         -->
                 <!--
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
