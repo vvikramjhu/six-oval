@@ -37,8 +37,8 @@
 
     <bean id="mongo" 
         class="com.mongodb.Mongo">
-        <constructor-arg type="java.lang.String" value="${six.oval.repository.datastore.host}"/>
-        <constructor-arg type="int" value="${six.oval.repository.datastore.port}"/>
+        <constructor-arg type="java.lang.String" value="${six.oval.repository.database.host}"/>
+        <constructor-arg type="int" value="${six.oval.repository.database.port}"/>
     </bean> 
 
 
@@ -62,9 +62,9 @@
         factory-bean="morphia" 
         factory-method="createDatastore"> 
         <constructor-arg ref="mongo"/> 
-        <constructor-arg value="${six.oval.repository.datastore.name}"/> <!-- String: database name -->
-        <constructor-arg value="${six.oval.repository.datastore.username}"/> <!-- String: user name -->
-        <constructor-arg value="${six.oval.repository.datastore.password}"/> <!-- String: user password -->
+        <constructor-arg value="${six.oval.repository.database.name}"/>     <!-- String: database name -->
+        <constructor-arg value="${six.oval.repository.database.username}"/> <!-- String: user name -->
+        <constructor-arg value="${six.oval.repository.database.password}"/> <!-- String: user password -->
     </bean>
 
 
@@ -149,7 +149,7 @@
     </bean>
 
 
-    <bean id="mongoOvalDefinitionsGenerator" 
+    <bean id="oval-definitions-generator" 
         class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
 <!--
         <property name="datastore" ref="oval-database"/>

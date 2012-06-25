@@ -69,13 +69,13 @@
     <!-- %  REST                                               % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <bean id="marshallingConverter" 
+    <bean id="marshalling-converter" 
         class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
         <constructor-arg ref="oval-Marshaller" /> 
         <property name="supportedMediaTypes" value="application/xml"/> 
     </bean> 
 
-    <bean id="atomConverter" 
+    <bean id="atom-converter" 
         class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter"> 
         <property name="supportedMediaTypes" value="application/atom+xml"/> 
     </bean> 
