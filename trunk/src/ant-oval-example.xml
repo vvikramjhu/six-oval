@@ -23,7 +23,18 @@
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
-    <target name="oval.example.xml-mapping" depends="">
+    <target name="oval.example.database" depends="">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalRepositoryBasicExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+	<target name="oval.example.xml-mapping" depends="">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
             classpathref="java.run.classpath"
