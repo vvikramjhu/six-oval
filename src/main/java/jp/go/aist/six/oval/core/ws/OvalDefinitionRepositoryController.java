@@ -24,7 +24,7 @@ import java.net.URI;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabase;
 import jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -85,7 +85,7 @@ public class OvalDefinitionRepositoryController
     // "/" slash = %2f
 
 
-    private MongoOvalDatastore  _datastore;
+    private MongoOvalDatabase  _datastore;
 
     private OvalDefinitionsGenerator  _generator;
 
@@ -104,14 +104,14 @@ public class OvalDefinitionRepositoryController
     /**
      */
     public void setDatastore(
-                    final MongoOvalDatastore datastore
+                    final MongoOvalDatabase datastore
                     )
     {
         _datastore = datastore;
     }
 
 
-    protected MongoOvalDatastore _getDatastore()
+    protected MongoOvalDatabase _getDatastore()
     {
         return _datastore;
     }

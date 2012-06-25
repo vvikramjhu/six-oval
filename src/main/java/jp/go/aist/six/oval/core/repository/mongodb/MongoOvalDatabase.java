@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
-import jp.go.aist.six.oval.repository.OvalDatastore;
+import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.persist.Persistable;
@@ -24,14 +24,14 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDatastore
-    implements OvalDatastore, DAORegistry
+public class MongoOvalDatabase
+    implements OvalDatabase, DAORegistry
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoOvalDatastore.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoOvalDatabase.class );
 
 
 
@@ -45,7 +45,7 @@ public class MongoOvalDatastore
     /**
      * Constructor.
      */
-    public MongoOvalDatastore()
+    public MongoOvalDatabase()
     {
     }
 
