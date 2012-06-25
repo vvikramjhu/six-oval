@@ -1,5 +1,0 @@
-#summary Database Query Parameters.
-
-= Introduction =
-
-T.B.D.
