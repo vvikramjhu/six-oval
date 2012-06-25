@@ -88,8 +88,6 @@ The reasons why we abandoned relational databases are:
 
 == <font color="#0044CC">Database Setup</font> ==
 
-T.B.D.
-
 Before using the object persistence feature, 
 you must install the MongoDB and set up the database.
 Please refer to the [MongoDB step-by-step guide]
