@@ -6,10 +6,6 @@
 This document will assist you in installing and using the SIX OVAL features.
 
 
-= <font color="#0044CC">Setup</font> =
-T.B.D.
-
-
 ----
 = <font color="#0044CC">Object-XML Mapping</font> =
 
@@ -96,8 +92,9 @@ T.B.D.
 
 Before using the object persistence feature, 
 you must install the MongoDB and set up the database.
-Please refer to the MongoDB 
-[http://www.mongodb.org/display/DOCS/Quickstart Installation Guides].
+Please refer to the [MongoDB step-by-step guide]
+and the official 
+[http://www.mongodb.org/display/DOCS/Quickstart MongoDB  Installation Guides].
 
 You may need to run the MongoDB server 
 with access control functionality.
@@ -130,7 +127,7 @@ Listing 5 shows example overriding values.
 
 six.oval.repository.datastore.host      =localhost
 six.oval.repository.datastore.port      =27017
-six.oval.repository.datastore.name      =six
+six.oval.repository.datastore.name      =oval
 six.oval.repository.datastore.username  =six
 six.oval.repository.datastore.password  =six
 }}}
@@ -138,7 +135,7 @@ six.oval.repository.datastore.password  =six
 {{{
 # Listing 5: Overriding Java properties (six-oval.properties)
 
-six.oval.repository.datastore.name      =oval
+six.oval.repository.datastore.name      =ovalrepo
 six.oval.repository.datastore.username  =foo
 six.oval.repository.datastore.password  =bar
 }}}
