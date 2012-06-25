@@ -251,7 +251,7 @@ public class OvalContext
     {
         if (_DATASTORE_ == null) {
             try {
-                _DATASTORE_ = _getRepositoryContext().getBean( "oval-datastore", OvalDatabase.class );
+                _DATASTORE_ = _getRepositoryContext().getBean( "oval-database", OvalDatabase.class );
             } catch (Exception ex) {
                 throw new OvalConfigurationException( ex );
             }
