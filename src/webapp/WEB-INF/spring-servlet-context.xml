@@ -30,8 +30,8 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters"> 
             <list> 
-                <ref bean="marshallingConverter" /> 
-                <ref bean="atomConverter" /> 
+                <ref bean="marshalling-converter" /> 
+                <ref bean="atom-converter" /> 
 
                 <!-- the default set of converters registered automatically, e.g. --> 
                 <!-- ref bean="stringConverter" / -->
@@ -88,8 +88,8 @@
 
     <bean id="ovalController" 
        class="jp.go.aist.six.oval.core.ws.OvalRepositoryController">
-        <property name="datastore" ref="mongoOvalDatastore" />
-        <property name="generator" ref="mongoOvalDefinitionsGenerator" />
+        <property name="database" ref="oval-database" />
+        <property name="generator" ref="oval-definitions-generator" />
     </bean>
     
 <!-- backup

@@ -9,11 +9,12 @@ import jp.go.aist.six.util.persist.Persistable;
 /**
  * A prescription for the low-level persistent storage operations
  * of the OVAL Domain Model objects.
- * This can be a building block for the OVAL Repository capability.
+ * Example storage systems are relational databases, NoSQL databases,
+ * and file systems.
  * <p>
  * The classes of the objects that can be persisted MUST implement the
- * <code>Persistable</code> interface.
- * That is, such objects in the storage has persistent identifier.
+ * <code>Persistable</code> interface, in addition to the <code>OvalObject</code>.
+ * That is, every object in the storage has a persistent identifier.
  * If a relational database is used as the storage,
  * the identifier corresponds to the primary key.
  * </p>

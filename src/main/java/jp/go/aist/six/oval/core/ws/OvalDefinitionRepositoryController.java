@@ -85,7 +85,7 @@ public class OvalDefinitionRepositoryController
     // "/" slash = %2f
 
 
-    private MongoOvalDatabase  _datastore;
+    private MongoOvalDatabase  _database;
 
     private OvalDefinitionsGenerator  _generator;
 
@@ -103,17 +103,17 @@ public class OvalDefinitionRepositoryController
 
     /**
      */
-    public void setDatastore(
-                    final MongoOvalDatabase datastore
+    public void setDatabase(
+                    final MongoOvalDatabase database
                     )
     {
-        _datastore = datastore;
+        _database = database;
     }
 
 
-    protected MongoOvalDatabase _getDatastore()
+    protected MongoOvalDatabase _getDatabase()
     {
-        return _datastore;
+        return _database;
     }
 
 
@@ -168,7 +168,7 @@ public class OvalDefinitionRepositoryController
     throws OvalException
     {
         _LOG_.debug( "GET: type=" + type + ", id=" + id );
-        T  resource = _getDatastore().findById( type, id );
+        T  resource = _getDatabase().findById( type, id );
 
         return resource;
     }
@@ -188,7 +188,7 @@ public class OvalDefinitionRepositoryController
     {
         _LOG_.debug( "POST: type=" + type + ", object=" + object );
 
-        K  id = _datastore.save( type, object );
+        K  id = _database.save( type, object );
 
         URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
 //        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
@@ -216,7 +216,7 @@ public class OvalDefinitionRepositoryController
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
         QueryParams  p = ((params == null  ||  params.size() == 0) ? null : params);
-        List<T>  list = _getDatastore().find( type, p );
+        List<T>  list = _getDatabase().find( type, p );
 
         return _buildQueryResults( params, list );
     }
@@ -273,7 +273,7 @@ public class OvalDefinitionRepositoryController
     {
         _LOG_.debug( "GET (find): type=" + type );
 
-        List<K>  list = _getDatastore().findId( type );
+        List<K>  list = _getDatabase().findId( type );
 
         return _buildQueryResults( list );
     }
@@ -288,7 +288,7 @@ public class OvalDefinitionRepositoryController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        List<K>  list = _getDatastore().findId( type, params );
+        List<K>  list = _getDatabase().findId( type, params );
 
         return _buildQueryResults( params, list );
     }
