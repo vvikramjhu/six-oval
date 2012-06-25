@@ -1,4 +1,4 @@
-#summary MongoDB installation and configuration.
+#summary MongoDB installation and configuration step-by-step.
 
 = <font color="#0044CC">Introduction</font> =
 
