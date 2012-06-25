@@ -1,6 +1,6 @@
 #summary MongoDB installation and configuration.
 
-= Introduction =
+= <font color="#0044CC">Introduction</font> =
 
 In this page, 
 we describe the step-by-step process to install MongoDB 
@@ -11,11 +11,10 @@ on various kinds of platforms.
 
 
 
-= Installation and Configuration Process =
+= <font color="#0044CC">Installation and Configuration Process</font> =
 
-T.B.D.
 
-== 1 Download the Distribution Archive and Extract ==
+== <font color="#0044CC">1 Download the Distribution Archive and Extract</font> ==
 
 Download the appropriate archive from the 
 [http://www.mongodb.org/downloads downloads page].
@@ -26,7 +25,7 @@ Extract the archive file into the appropriate location.
 Rename the directory if necessary.
 
 
-== 2 Create the Data Directory ==
+== <font color="#0044CC">2 Create the Data Directory</font> ==
 
 MongoDB requires a directory to store 
 its database files.
@@ -39,7 +38,7 @@ Create the directory if you want to change the location.
  http://staff.aist.go.jp/nakamura-akihito/six/oval/mongodb/mongodb-step-01.png
 
 
-== 3 Set up the Security ==
+== <font color="#0044CC">3 Set up the Security</font> ==
 
 Start the server, i.e. execute the *mongod* command. 
 The data directory is specified with *--dbpath* option.
@@ -77,7 +76,7 @@ explicitly.
 
 
 
-== 4 Verify the Environment ==
+== <font color="#0044CC">4 Verify the Environment</font> ==
 
 Restart the server with the secure mode,
 with *--auth* option.
@@ -95,6 +94,3 @@ user name and password.
  Figure 6: Connecting the Server with Authentication.
 
  http://staff.aist.go.jp/nakamura-akihito/six/oval/mongodb/mongodb-step-07.png
-
-
-
