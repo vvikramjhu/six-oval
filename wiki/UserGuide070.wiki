@@ -112,12 +112,16 @@ please read the
 
 == <font color="#0044CC">Java Configuration</font> ==
 
-Several configuration parameters must be set into 
-the Java properties file named "six-oval.properties".
+Several configuration parameters must be set 
+to get the right access to the database.
+Listing 4 shows the default property values.
+Users can override these values to reflect 
+the database settings.
+This is done with the Java properties file 
+named "six-oval.properties".
 This file name can't be changed but located in 
 any directory in the Java classpath. 
-Listing 4 shows the system default values
-and Listing 5 shows an example overriding values.
+Listing 5 shows example overriding values.
 
 
 {{{
