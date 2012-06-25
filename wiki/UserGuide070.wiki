@@ -132,6 +132,7 @@ six.oval.repository.datastore.password  =six
 
 {{{
 # Listing 5: Overriding Java properties (six-oval.properties)
+
 six.oval.repository.datastore.name      =oval
 six.oval.repository.datastore.username  =foo
 six.oval.repository.datastore.password  =bar
