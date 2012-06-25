@@ -32,7 +32,7 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <bean id="oval-Marshaller" 
+    <bean id="oval-marshaller" 
        class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocations">
             <list>
@@ -77,7 +77,7 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
     </bean> 
 
 
-    <bean id="oval-XmlTransformer" 
+    <bean id="oval-xml-transformer" 
        class="jp.go.aist.six.util.xml.XmlTransformer"> 
         <constructor-arg type="java.net.URL" 
                         value="classpath:jp/go/aist/six/oval/core/xml/oval5-transform.xsl"/>
@@ -91,11 +91,11 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
     </bean>
 
 
-    <bean id="oval-XmlMapper" 
+    <bean id="oval-xml-mapper" 
        class="jp.go.aist.six.oval.core.xml.OvalTransformXmlMapper">
-        <property name="marshaller"   ref="oval-Marshaller"/>
-        <property name="unmarshaller" ref="oval-Marshaller"/>
-        <property name="transformer"  ref="oval-XmlTransformer"/>
+        <property name="marshaller"   ref="oval-marshaller"/>
+        <property name="unmarshaller" ref="oval-marshaller"/>
+        <property name="transformer"  ref="oval-xml-transformer"/>
     </bean>
 
 <!--
