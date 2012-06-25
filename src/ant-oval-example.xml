@@ -23,9 +23,9 @@
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
-    <target name="oval.example.database" depends="">
+    <target name="oval.example.db-basic" depends="">
         <java
-            classname="jp.go.aist.six.test.oval.example.OvalRepositoryBasicExample"
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseBasicExample"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="512m"
@@ -34,7 +34,18 @@
     </target>
 
 
-	<target name="oval.example.xml-mapping" depends="">
+    <target name="oval.example.db-query" depends="">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseQueryExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="oval.example.xml-mapping" depends="">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
             classpathref="java.run.classpath"
