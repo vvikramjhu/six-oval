@@ -123,7 +123,7 @@ and Listing 5 shows an example overriding values.
 {{{
 # Listing 4: Default Java properties
 
-six.oval.repository.datastore.host     =localhost
+six.oval.repository.datastore.host      =localhost
 six.oval.repository.datastore.port      =27017
 six.oval.repository.datastore.name      =six
 six.oval.repository.datastore.username  =six
