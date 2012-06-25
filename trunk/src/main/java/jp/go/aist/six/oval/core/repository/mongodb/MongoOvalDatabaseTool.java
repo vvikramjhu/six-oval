@@ -30,14 +30,14 @@ import org.slf4j.LoggerFactory;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDatastoreTool
+public class MongoOvalDatabaseTool
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDatastoreTool.class );
+        LoggerFactory.getLogger( MongoOvalDatabaseTool.class );
 
 
 
@@ -68,7 +68,7 @@ public class MongoOvalDatastoreTool
 
 //    private static final MongoDatastoreTool  _INSTANCE_ = new MongoDatastoreTool();
 
-    private static OvalDatabase  _DATASTORE_;
+    private static OvalDatabase  _DATABASE_;
 
     private static XmlMapper  _XML_MAPPER_ = null;
 
@@ -85,7 +85,7 @@ public class MongoOvalDatastoreTool
     /**
      * Constructor.
      */
-    public MongoOvalDatastoreTool()
+    public MongoOvalDatabaseTool()
     {
     }
 
@@ -119,13 +119,13 @@ public class MongoOvalDatastoreTool
 
     /**
      */
-    private static OvalDatabase _getDatastore()
+    private static OvalDatabase _getDatabase()
     {
-        if (_DATASTORE_ == null) {
-            _DATASTORE_ = OvalContext.getDatabase();
+        if (_DATABASE_ == null) {
+            _DATABASE_ = OvalContext.getDatabase();
         }
 
-        return _DATASTORE_;
+        return _DATABASE_;
     }
 
 
@@ -200,7 +200,7 @@ public class MongoOvalDatastoreTool
 
         Class<OvalDefinitions>  type = OvalDefinitions.class;
         OvalDefinitions  object = _unmarshalObject( type, in_stream );
-        String  pid = _getDatastore().save( type, object );
+        String  pid = _getDatabase().save( type, object );
 
         return pid;
     }
@@ -211,7 +211,7 @@ public class MongoOvalDatastoreTool
      */
     public static void deleteAllData()
     {
-        OvalDatabase  ds = _getDatastore();
+        OvalDatabase  ds = _getDatabase();
 
         _LOG_.debug( "delete DefinitonsElementAssoc..." );
         ds.delete( DefinitionsElementAssoc.class );

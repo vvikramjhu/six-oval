@@ -98,9 +98,20 @@ CONTENTS:
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
-    <target name="oval.example.database" depends="test.compile,init">
+    <target name="oval.example.db-basic" depends="test.compile,init">
         <java
-            classname="jp.go.aist.six.test.oval.example.OvalRepositoryBasicExample"
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseBasicExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="oval.example.db-query" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseQueryExample"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="512m"
@@ -271,9 +282,9 @@ CONTENTS:
     <!-- ******************************************************* -->
 
     <!-- datastore: Installs the OVAL objects to the datastore. -->
-    <target name="oval.datastore.install-definitions" depends="compile,init">
+    <target name="oval.database.install-definitions" depends="compile,init">
         <java
-            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastoreTool"
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabaseTool"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="512m"
@@ -288,9 +299,9 @@ CONTENTS:
 	
 
     <!-- datastore: Deletes all the data. -->
-    <target name="oval.datastore.delete-all" depends="compile,init">
+    <target name="oval.database.delete-all" depends="compile,init">
         <java
-            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastoreTool"
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabaseTool"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="256m"
@@ -300,9 +311,9 @@ CONTENTS:
     </target>
 
     <!-- datastore: Drops all the collections. -->
-    <target name="oval.datastore.drop-all-collections" depends="compile,init">
+    <target name="oval.database.drop-all-collections" depends="compile,init">
         <java
-            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoDatastoreTool"
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoDatabaseTool"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="256m"

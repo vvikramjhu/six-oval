@@ -10,7 +10,7 @@ import jp.go.aist.six.util.xml.XmlMapper;
 
 
 
-public class OvalRepositoryBasicExample
+public class OvalDatabaseBasicExample
 {
 
     public static void main( final String[] args )
