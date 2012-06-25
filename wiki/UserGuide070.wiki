@@ -175,6 +175,8 @@ for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
 // keyword in the title or description
 DefinitionQueryParams  params04 = new DefinitionQueryParams();
 params04.setSearchTerms( "XSS" );
+params04.setOrder( "id" );
+params04.setCount( "10" );
 
 // Definition IDs
 DefinitionQueryParams  params13 = new DefinitionQueryParams();
