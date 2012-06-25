@@ -8,7 +8,7 @@ import jp.go.aist.six.oval.repository.OvalDatabase;
 
 
 
-public class OvalRepositoryQueryExample
+public class OvalDatabaseQueryExample
 {
 
     public static void main( final String[] args )
