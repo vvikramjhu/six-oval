@@ -103,7 +103,7 @@ is enabled with "--auth" option and
 applications need the user name and password
 to access the database.
 For further details on security settings, 
-please read the 
+please read the above step-by-step guide and the official 
 [http://www.mongodb.org/display/DOCS/Security+and+Authentication Security and Authentication] document.
 
 
