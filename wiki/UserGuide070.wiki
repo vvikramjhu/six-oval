@@ -179,7 +179,7 @@ params04.setCount( "10" );
 
 // Definition IDs
 DefinitionQueryParams  params13 = new DefinitionQueryParams();
-params13.setId( "oval:org.mitre.oval.test:def:889,oval:org.mitre.oval.test:def:121,oval:org.mitre.oval.test:def:140" );
+params13.setId( "oval:org.mitre.oval.test:def:121,oval:org.mitre.oval.test:def:140" );
 
 // definition class
 DefinitionQueryParams  params20 = new DefinitionQueryParams();
