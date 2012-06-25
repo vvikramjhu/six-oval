@@ -96,14 +96,15 @@ T.B.D.
 
 Before using the object persistence feature, 
 you must install the MongoDB and set up the database.
-Please refer to the 
+Please refer to the MongoDB 
 [http://www.mongodb.org/display/DOCS/Quickstart Installation Guides].
 
-You may need to run the MongoDB server with access control functionality.
-In this guide, we assume that the secure mode is enabled
-with "--auth" option and
-SIX OVAL applications need the user name and password
-to access the OVAL database.
+You may need to run the MongoDB server 
+with access control functionality.
+In this guide, we assume that the server's secure mode 
+is enabled with "--auth" option and
+applications need the user name and password
+to access the database.
 For further details on security settings, 
 please read the 
 [http://www.mongodb.org/display/DOCS/Security+and+Authentication Security and Authentication] document.
