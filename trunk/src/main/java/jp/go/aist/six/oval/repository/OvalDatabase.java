@@ -21,7 +21,7 @@ import jp.go.aist.six.util.persist.Persistable;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public interface OvalDatastore
+public interface OvalDatabase
 {
 
     /**

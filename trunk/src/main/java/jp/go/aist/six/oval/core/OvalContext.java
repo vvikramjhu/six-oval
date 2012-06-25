@@ -24,7 +24,7 @@ import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import jp.go.aist.six.oval.repository.OvalDatastore;
+import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -220,7 +220,7 @@ public class OvalContext
     private static ApplicationContext  _REPOSITORY_CONTEXT_;
 
 
-    private static OvalDatastore  _DATASTORE_;
+    private static OvalDatabase  _DATASTORE_;
 
 
 
@@ -247,11 +247,11 @@ public class OvalContext
      * @throws  OvalConfigurationException
      *  when it is NOT possible to create OvalDatastore instance.
      */
-    public static OvalDatastore getDatastore()
+    public static OvalDatabase getDatabase()
     {
         if (_DATASTORE_ == null) {
             try {
-                _DATASTORE_ = _getRepositoryContext().getBean( "oval-datastore", OvalDatastore.class );
+                _DATASTORE_ = _getRepositoryContext().getBean( "oval-datastore", OvalDatabase.class );
             } catch (Exception ex) {
                 throw new OvalConfigurationException( ex );
             }

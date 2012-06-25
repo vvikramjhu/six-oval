@@ -17,7 +17,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.ReferenceType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.oval.repository.OvalDatastore;
+import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.TestBase;
 import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
@@ -37,7 +37,7 @@ public class MongoOvalDatastoreTests
     extends TestBase
 {
 
-    private OvalDatastore  _datastore;
+    private OvalDatabase  _datastore;
 
 
 
@@ -50,11 +50,11 @@ public class MongoOvalDatastoreTests
 	{
         super.setUp();
 
-        _datastore = OvalContext.getDatastore();
+        _datastore = OvalContext.getDatabase();
 	}
 
 
-    protected OvalDatastore _getDatastore()
+    protected OvalDatabase _getDatastore()
     throws Exception
     {
         return _datastore;

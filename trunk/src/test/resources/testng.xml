@@ -76,7 +76,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
@@ -202,7 +202,7 @@
     <!-- *  core package                                              * -->
     <!-- ************************************************************** -->
 
-    <test name="oval.core" enabled="true">
+    <test name="oval.core" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.OvalContextTests"/>
         </classes>
