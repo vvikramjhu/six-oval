@@ -101,7 +101,7 @@ Please refer to the MongoDB
 
 You may need to run the MongoDB server 
 with access control functionality.
-In this guide, we assume that the server's secure mode 
+In this guide, we assume that the server's _secure mode_ 
 is enabled with "--auth" option and
 applications need the user name and password
 to access the database.
