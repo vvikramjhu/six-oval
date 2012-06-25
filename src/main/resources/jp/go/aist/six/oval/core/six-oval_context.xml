@@ -71,7 +71,7 @@
 
     <bean id="marshalling-converter" 
         class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
-        <constructor-arg ref="oval-Marshaller" /> 
+        <constructor-arg ref="oval-marshaller" /> 
         <property name="supportedMediaTypes" value="application/xml"/> 
     </bean> 
 

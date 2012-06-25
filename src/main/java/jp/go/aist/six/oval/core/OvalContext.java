@@ -307,7 +307,7 @@ public class OvalContext
     {
         if (_XML_MAPPER_ == null) {
             try {
-                _XML_MAPPER_ = _getXmlContext().getBean( "oval-XmlMapper", XmlMapper.class );
+                _XML_MAPPER_ = _getXmlContext().getBean( "oval-xml-mapper", XmlMapper.class );
                                          //throws BeansException/runtime
             } catch (BeansException ex) {
                 throw new OvalConfigurationException( ex );
@@ -329,7 +329,7 @@ public class OvalContext
 //    {
 //        XmlTransformer  xml_transformer = null;
 //        try {
-//            xml_transformer = _getXmlContext().getBean( "oval-XmlTransformer", XmlTransformer.class );
+//            xml_transformer = _getXmlContext().getBean( "oval-xml-transformer", XmlTransformer.class );
 //                                               //throws BeansException/runtime
 //        } catch (BeansException ex) {
 //            throw new OvalConfigurationException( ex );
