@@ -190,12 +190,16 @@ params20.setDefinitionClass( "compliance" );
 DefinitionQueryParams  params32 = new DefinitionQueryParams();
 params32.setPlatform( "Microsoft Windows XP*,Microsoft Windows 7*" );
 
+// affected products
+DefinitionQueryParams  params41 = new DefinitionQueryParams();
+params41.setProduct( "Mozilla Firefox,Mozilla Thunderbird" );
+
 // CVE IDs
 DefinitionQueryParams  params62 = new DefinitionQueryParams();
 params62.setCve( "CVE-2011-*,CVE-2010-0176" );
 
 DefinitionQueryParams[]  params_list = new DefinitionQueryParams[] {
-    params04, params13, params20, params32, params62
+    params04, params13, params20, params32, params41, params62
 };
 
 // Execute Queries
