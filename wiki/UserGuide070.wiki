@@ -67,7 +67,6 @@ String marshalToString(Object obj)
 
 ----
 = <font color="#0044CC">Object Persistence</font> =
-T.B.D.
 
 This feature supports persistence of OVAL objects. 
 That is, it is possible to save/load the OVAL objects 
