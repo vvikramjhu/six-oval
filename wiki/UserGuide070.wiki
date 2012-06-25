@@ -168,6 +168,9 @@ for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
 
 == <font color="#0044CC">Queries</font> ==
 
+Listing 7 shows example queries for the OVAL Database.
+Please refer to the [QueryParams070 query parameter specifications] for details.
+
 {{{
 // Listing 7: Queries
 
