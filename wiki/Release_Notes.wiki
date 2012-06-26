@@ -36,7 +36,6 @@ T.B.D.
   * *Java 2 SE*: Oracle JDK 6 update 32, windows x64
   * *Java components*: See the following table.
 
-  *Java dependencies*
 || *Product Name* || *Tested Version* || *Required JAR Files* ||
 || [http://commons.apache.org/lang/ Apache Commons Lang] || 2.6  (Note 1) || commons-lang-2.6.jar ||
 || [http://commons.apache.org/logging/ Apache Commons Logging] || 1.1.1 || commons-logging-1.1.1.jar ||
