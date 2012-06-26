@@ -30,7 +30,7 @@ _coming soon_
 == <font color="#0044CC">Tested Environment</font> ==
 T.B.D.
 
-  * *OVAL Definition Interpreter*: ovaldi 5.10.1, build 2
+  * *OVAL Definition Interpreter*: ovaldi 5.10.1, build 2, x64
   * *Database*: MongoDB 2.0.6, win32, x86_64
   * *Servlet Container*: Tomcat 6.0.35
   * *Java 2 SE*: Oracle JDK 6 update 32, windows x64
