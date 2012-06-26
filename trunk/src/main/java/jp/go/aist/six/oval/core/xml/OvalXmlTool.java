@@ -30,6 +30,7 @@ import java.net.URL;
 import java.util.Arrays;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.OxmException;
+import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -144,7 +145,6 @@ public class OvalXmlTool
     public Object unmarshal(
                     final InputStream stream
                     )
-    throws OxmException
     {
         return _mapper.unmarshal( stream );
     }
@@ -154,13 +154,12 @@ public class OvalXmlTool
     public Object unmarshal(
                     final File file
                     )
-    throws OxmException
     {
         InputStream  stream = null;
         try {
             stream = new FileInputStream( file );
         } catch (FileNotFoundException ex) {
-            throw new OxmException( ex );
+            throw new XmlException( ex );
         }
 
         return unmarshal( stream );

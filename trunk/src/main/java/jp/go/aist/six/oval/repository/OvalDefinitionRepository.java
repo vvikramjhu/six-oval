@@ -49,11 +49,10 @@ public interface OvalDefinitionRepository
      *  the OVAL-ID of the Definition.
      * @return
      *  the found Definition, or null if such Definition does not exist.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public DefinitionType findDefinitionById(
-                    String oval_id
-                    )
-    throws OvalRepositoryException;
+    public DefinitionType findDefinitionById( String oval_id );
 
 
 
@@ -62,9 +61,10 @@ public interface OvalDefinitionRepository
      *
      * @return
      *  all the Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionType> findDefinition()
-    throws OvalRepositoryException;
+    public List<DefinitionType> findDefinition();
 
 
 
@@ -75,11 +75,10 @@ public interface OvalDefinitionRepository
      *  the query parameters.
      * @return
      *  the found Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionType> findDefinition(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<DefinitionType> findDefinition( QueryParams params );
 
 
 
@@ -90,11 +89,10 @@ public interface OvalDefinitionRepository
      *  the query parameters.
      * @return
      *  the found Definition IDs.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findDefinitionId(
-                    final QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<String> findDefinitionId( QueryParams params );
 
 
 
@@ -103,9 +101,10 @@ public interface OvalDefinitionRepository
      *
      * @return
      *  the number of Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public long countDefinition()
-    throws OvalRepositoryException;
+    public long countDefinition();
 
 
 
@@ -116,11 +115,10 @@ public interface OvalDefinitionRepository
      *  the query parameters.
      * @return
      *  the number of Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public long countDefinition(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public long countDefinition( QueryParams params );
 
 
 
@@ -131,11 +129,12 @@ public interface OvalDefinitionRepository
 //     *  the Definition to save.
 //     * @return
 //     *  the ID of the Definition.
+//    * @throws  OvalRepositoryException
+//    *  when an exceptional condition occurred during the OVAL repository processing.
 //     */
 //    public String saveDefinition(
 //                    final DefinitionType def
-//                    )
-//    throws OvalRepositoryException;
+//                    );
 
 
 
@@ -151,11 +150,10 @@ public interface OvalDefinitionRepository
      *  the OVAL-ID.
      * @return
      *  the found entity, or null if such entity does not exist.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public DefinitionsElement findElementById(
-                    String oval_id
-                    )
-    throws OvalRepositoryException;
+    public DefinitionsElement findElementById( String oval_id );
 
 
 
@@ -164,9 +162,10 @@ public interface OvalDefinitionRepository
 //     *
 //     * @return
 //     *  all the entities in the repository.
+//    * @throws  OvalRepositoryException
+//    *  when an exceptional condition occurred during the OVAL repository processing.
 //     */
-//    public List<OvalEntity> findEntity()
-//    throws OvalRepositoryException;
+//    public List<OvalEntity> findEntity();
 
 
 
@@ -177,11 +176,10 @@ public interface OvalDefinitionRepository
      *  the query parameters.
      * @return
      *  the found entities.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionsElement> findElement(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<DefinitionsElement> findElement( QueryParams params );
 
 
 
@@ -192,11 +190,10 @@ public interface OvalDefinitionRepository
      *  the query parameters.
      * @return
      *  the number of entities.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public long countElement(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public long countElement( QueryParams params );
 
 
 
@@ -207,11 +204,10 @@ public interface OvalDefinitionRepository
      *  the entity to save.
      * @return
      *  the ID of the entity.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public String saveElement(
-                    DefinitionsElement element
-                    )
-    throws OvalRepositoryException;
+    public String saveElement( DefinitionsElement element );
 
 
 
@@ -222,11 +218,12 @@ public interface OvalDefinitionRepository
 //     *  the OVAL Definitions document.
 //     * @return
 //     *  the IDs of the entities.
+//    * @throws  OvalRepositoryException
+//    *  when an exceptional condition occurred during the OVAL repository processing.
 //     */
 //    public List<String> saveEntities(
 //                    OvalDefinitions oval_defs
-//                    )
-//    throws OvalRepositoryException;
+//                    );
 
 
 
@@ -237,11 +234,12 @@ public interface OvalDefinitionRepository
 //     *  the entity to update.
 //     * @return
 //     *  the ID of the entity.
+//    * @throws  OvalRepositoryException
+//    *  when an exceptional condition occurred during the OVAL repository processing.
 //     */
 //    public String updateEntity(
 //                    OvalEntity entity
-//                    )
-//    throws OvalRepositoryException;
+//                    );
 
 
 
@@ -257,11 +255,10 @@ public interface OvalDefinitionRepository
      *  the ID.
      * @return
      *  the found OVAL Definition Document, or null if such object does not exist.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public OvalDefinitions findOvalDefinitionsById(
-                    String id
-                    )
-    throws OvalRepositoryException;
+    public OvalDefinitions findOvalDefinitionsById( String id );
 
 
 
@@ -273,11 +270,10 @@ public interface OvalDefinitionRepository
      *  the OVAL Definition Document object.
      * @return
      *  the ID of the object.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public String saveOvalDefinitions(
-                    OvalDefinitions oval_defs
-                    )
-    throws OvalRepositoryException;
+    public String saveOvalDefinitions( OvalDefinitions oval_defs );
 
 }
 //
