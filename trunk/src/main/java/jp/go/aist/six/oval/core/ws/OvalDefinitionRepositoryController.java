@@ -43,7 +43,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -299,15 +298,15 @@ public class OvalDefinitionRepositoryController
     // Exception Handlers, HTTP Status Code
     //////////////////////////////////////////////////////////////////////
 
-    // 404: Not Found
-    @ExceptionHandler( ObjectRetrievalFailureException.class )
-    @ResponseStatus( HttpStatus.NOT_FOUND )
-    public void handleNotFound(
-                    final ObjectRetrievalFailureException ex
-                    )
-    {
-        _handleException( ex );
-    }
+//    // 404: Not Found
+//    @ExceptionHandler( ObjectRetrievalFailureException.class )
+//    @ResponseStatus( HttpStatus.NOT_FOUND )
+//    public void handleNotFound(
+//                    final ObjectRetrievalFailureException ex
+//                    )
+//    {
+//        _handleException( ex );
+//    }
 
 
     // 500: Internal Server Error
