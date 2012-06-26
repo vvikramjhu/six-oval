@@ -32,8 +32,6 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import jp.go.aist.six.util.castor.CastorXmlMapper;
-import jp.go.aist.six.util.xml.OxmException;
-import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,7 +82,6 @@ public class OvalTransformXmlMapper
     private String _simpleMarshalToString(
                     final Object obj
                     )
-    throws XmlException
     {
         StringWriter  writer = new StringWriter();
         super.marshal( obj, new StreamResult( writer ) );
@@ -104,18 +101,13 @@ public class OvalTransformXmlMapper
                     final Object obj,
                     final Result result
                     )
-    throws OxmException
     {
         if (_transformer == null) {
             super.marshal( obj, result );
         } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
+            String  xml = _simpleMarshalToString( obj );
+            Source  source = new StreamSource( new StringReader( xml ) );
+            _transformer.transform( source, result );
         }
     }
 
@@ -126,19 +118,14 @@ public class OvalTransformXmlMapper
                     final Object obj,
                     final OutputStream stream
                     )
-    throws OxmException
     {
         if (_transformer == null) {
             super.marshal( obj, stream );
         } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                Result  result = new StreamResult( stream );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
+            String  xml = _simpleMarshalToString( obj );
+            Source  source = new StreamSource( new StringReader( xml ) );
+            Result  result = new StreamResult( stream );
+            _transformer.transform( source, result );
         }
     }
 
@@ -149,19 +136,14 @@ public class OvalTransformXmlMapper
                     final Object obj,
                     final Writer writer
                     )
-    throws OxmException
     {
         if (_transformer == null) {
             super.marshal( obj, writer );
         } else {
-            try {
-                String  xml = _simpleMarshalToString( obj );
-                Source  source = new StreamSource( new StringReader( xml ) );
-                Result  result = new StreamResult( writer );
-                _transformer.transform( source, result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
+            String  xml = _simpleMarshalToString( obj );
+            Source  source = new StreamSource( new StringReader( xml ) );
+            Result  result = new StreamResult( writer );
+            _transformer.transform( source, result );
         }
     }
 
@@ -171,7 +153,6 @@ public class OvalTransformXmlMapper
     public String marshalToString(
                     final Object obj
                     )
-    throws OxmException
     {
         StringWriter  writer = new StringWriter();
         marshal( obj, writer );
@@ -186,7 +167,6 @@ public class OvalTransformXmlMapper
     public Object unmarshal(
                     final InputStream stream
                     )
-    throws OxmException
     {
         Object  obj = null;
 
@@ -195,11 +175,7 @@ public class OvalTransformXmlMapper
         } else {
             StringWriter  writer = new StringWriter();
             Result  result = new StreamResult( writer );
-            try {
-                _transformer.transform( new StreamSource( stream ), result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
+            _transformer.transform( new StreamSource( stream ), result );
 
             String  xml = writer.toString();
 //            _LOG_.debug( "transformed XML: \n" + xml );
@@ -215,7 +191,6 @@ public class OvalTransformXmlMapper
     public Object unmarshal(
                     final Reader reader
                     )
-    throws OxmException
     {
         Object  obj = null;
         if (_transformer == null) {
@@ -223,11 +198,7 @@ public class OvalTransformXmlMapper
         } else {
             StringWriter  writer = new StringWriter();
             Result  result = new StreamResult( writer );
-            try {
-                _transformer.transform( new StreamSource( reader ), result );
-            } catch (XmlException ex) {
-                throw new OxmException( ex );
-            }
+            _transformer.transform( new StreamSource( reader ), result );
 
             obj = super.unmarshal( new StringReader( writer.toString() ) );
         }
@@ -241,15 +212,13 @@ public class OvalTransformXmlMapper
     public Object unmarshalFromString(
                     final String xml
                     )
-    throws OxmException
     {
         Reader  reader = new BufferedReader( new StringReader( xml ) );
         Object  obj = unmarshal( reader );
-                      //@throws OxmException
 
         return obj;
     }
 
 }
-//OvalXmlMapper
+//
 
