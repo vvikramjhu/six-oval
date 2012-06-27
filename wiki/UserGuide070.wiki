@@ -33,6 +33,9 @@ File  src_file = new File( local_src );
 Object  obj1 = xml_mapper.unmarshal( new FileInputStream( src_file ) );
 System.out.println( obj1 );
 xml_mapper.marshal( obj1, System.out );
+
+// type-safe method, may throw ClassCastException
+OvalDefinitions  oval_defs = xml_mapper.unmarshal( new FileInputStream( src_file ), OvalDefinitions.class );
 }}}
 
 
@@ -62,7 +65,6 @@ Object unmarshalFromString(java.lang.String xml)
 <T> T unmarshal(java.xml.transform.Source source, java.lang.Class<T> type)
 <T> T unmarshal(java.io.Reader reader, java.lang.Class<T> type)
 <T> T unmarshalFromString(java.lang.String xml, java.lang.Class<T> type)
-
 
 void marshal(Object obj, javax.xml.transform.Result result)
 void marshal(Object obj, java.io.OutputStream result)
@@ -146,6 +148,12 @@ six.oval.repository.database.password  =bar
 
 
 == <font color="#0044CC">CRUD Operations</font> ==
+
+OvalDatabase interface defines 
+the low-level persistent storage operations 
+for the OVAL Domain Model objects.
+Listing 6 shows an example to store and load 
+an OVAL Definitions document and the element Definitions.
 
 {{{
 // Listing 6: Save and Load Operations
