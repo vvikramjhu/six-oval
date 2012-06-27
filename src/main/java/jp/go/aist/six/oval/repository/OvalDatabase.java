@@ -8,7 +8,7 @@ import jp.go.aist.six.util.persist.Persistable;
 
 /**
  * A prescription for the low-level persistent storage operations
- * of the OVAL Domain Model objects.
+ * for the OVAL Domain Model objects.
  * Example storage systems are relational databases, NoSQL databases,
  * and file systems.
  * <p>

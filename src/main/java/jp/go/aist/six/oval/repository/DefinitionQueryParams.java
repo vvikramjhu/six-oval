@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
+
 
 
 /**
@@ -62,6 +64,30 @@ public class DefinitionQueryParams
                     )
     {
         set( Key.DEFINITION_CLASS, definition_class );
+    }
+
+
+    public void setDefinitionClass(
+                    final String[] definition_classes
+                    )
+    {
+        set( Key.DEFINITION_CLASS, definition_classes );
+    }
+
+
+    public void setDefinitionClass(
+                    final ClassEnumeration definition_class
+                    )
+    {
+        set( Key.DEFINITION_CLASS, definition_class.value() );
+    }
+
+
+    public void setDefinitionClass(
+                    final ClassEnumeration[] definition_classes
+                    )
+    {
+        set( Key.DEFINITION_CLASS, definition_classes );
     }
 
 
