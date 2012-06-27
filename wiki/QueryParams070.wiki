@@ -3,3 +3,32 @@
 = Introduction =
 
 T.B.D.
+
+In this version, 0.7, the least query means are provided.
+
+  * Parameter as a key-value pair.
+  * Logical "AND" concatenation of parameters.
+  * Comma ',' as a list value delimiter.
+
+
+In the following sections, 
+we show the query parameters for the OVAL object types.
+In the tables, each column means that:
+  * Parameter Name: 
+  * Java Type:
+  * OVAL XPath: the relative xpath of the key field from the target OVAL element.
+  * List?: whether the value can be a list or not.
+  * Wildcard?: whether the value can contain wildcard(s); `'*'`.
+  * Examples: examples, as a string representation.
+  * Notes: additional notes.
+
+
+
+== Definition ==
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| definitionClass || !ClassEnumeration or String || ./metadata/affected/@class || Yes || No || `definitionsClass=vulnerability,patch` || The word "class" is a Java reserved word. ||
+|| platform || String || ./metadata/affected/platform || Yes || Yes || `platform=Windows*`<br>`platform=Windows*,Solaris*` || - ||
+|| product || String || ./metadata/affected/product || Yes || Yes || `product=Acrobat*`<br>`product=Internet Explorer*,Google Chrome*,Mozilla Firefox*` || - ||
+|| refSource || String || ./metadata/reference/@source || Yes || No || `refSource=CVE`<br>`refSource=CVE,CPE` || - ||
+|| refId || String || ./metadata/reference/@ref_id || Yes || Yes || `refId=CVE-2010-0176`<br>`refId=CVE-2012-*`<br>`refId=cpe:/a:adobe:acrobat:*,cpe:/a:adobe:flash:*` || - ||
