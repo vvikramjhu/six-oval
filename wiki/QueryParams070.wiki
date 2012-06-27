@@ -35,6 +35,18 @@ In the tables, each column means that:
 
 
 
+== <font color="#0044CC">Common</font> ==
+
+The common parameters can be used for any type of objects.
+
+|| *Parameter Name* || *Java Type* || *Examples* || *Notes* ||
+|| searchTerms || String || `searchTerms=buffer` || - ||
+|| count || int || `count=10` || - ||
+|| startIndex || int || `startIndex=50` || - ||
+|| order || String || `order=id,version` || - ||
+
+
+
 == <font color="#0044CC">Definition</font> ==
 
 || *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
@@ -59,4 +71,13 @@ In the tables, each column means that:
 || type || !ElementType or String || - || No || No || `type=test` || - ||
 || family || Family or String || - || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
 || component || ComponentType or String || - || Yes || No || `component=file`<br>`component=file,registry` || - ||
+|| searchTerms || String || `./@comment` || Yes || No || `searchTerms=buffer` || - ||
+
+
+
+== <font color="#0044CC">OVAL System Characteristics</font> ==
+
+
+
+== <font color="#0044CC">OVAL Results</font> ==
 
