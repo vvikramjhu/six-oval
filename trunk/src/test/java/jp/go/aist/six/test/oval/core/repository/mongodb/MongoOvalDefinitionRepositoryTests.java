@@ -371,11 +371,14 @@ extends OvalCoreTestBase
 
         // definition: definitionClass
         DefinitionQueryParams  params20 = new DefinitionQueryParams();
-        params20.setDefinitionClass( "compliance" );
+//        params20.setDefinitionClass( "compliance" );
+        params20.setDefinitionClass( ClassEnumeration.COMPLIANCE );
 
         // definition: definitionClass
         DefinitionQueryParams  params21 = new DefinitionQueryParams();
-        params21.setDefinitionClass( "compliance,inventory" );
+//        params21.setDefinitionClass( "compliance,inventory" );
+        params21.setDefinitionClass(
+                        new ClassEnumeration[] { ClassEnumeration.COMPLIANCE, ClassEnumeration.INVENTORY } );
 
         // definition: family
         DefinitionQueryParams  params22 = new DefinitionQueryParams();

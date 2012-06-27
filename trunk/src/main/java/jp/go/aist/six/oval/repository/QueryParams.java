@@ -24,12 +24,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 /**
  * A set of query parameters to be interpreted as a filter
- * for collections of OVAL entities.
+ * for collections of OVAL objects.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -92,6 +93,50 @@ public class QueryParams
 
         return this;
     }
+
+
+    public QueryParams set(
+                    final String key,
+                    final String[] values
+                    )
+    {
+        StringBuilder  s = new StringBuilder();
+        boolean  first = true;
+        for (String  v : values) {
+            if (first) {
+                first = false;
+            } else {
+                s.append( "," );
+            }
+            s.append( v );
+        }
+        _params.put( key, s.toString() );
+
+        return this;
+    }
+
+
+    public QueryParams set(
+                    final String key,
+                    final OvalEnumeration[] values
+                    )
+    {
+        StringBuilder  s = new StringBuilder();
+        boolean  first = true;
+        for (OvalEnumeration  e : values) {
+            if (first) {
+                first = false;
+            } else {
+                s.append( "," );
+            }
+            s.append( e.value() );
+        }
+        _params.put( key, s.toString() );
+
+        return this;
+    }
+
+
 
 
 
