@@ -50,13 +50,19 @@ System.out.println( obj2 );
 
 
 Several variant unmarshal and marshal methods 
-are defined in !XmlMapper:
+are defined in !XmlMapper.
+Listing 3 shows the signatures.
 {{{
 // Listing 3: XmlMapper interface
 
 Object unmarshal(java.xml.transform.Source source)
 Object unmarshal(java.io.Reader reader)
 Object unmarshalFromString(java.lang.String xml)
+
+<T> T unmarshal(java.xml.transform.Source source, java.lang.Class<T> type)
+<T> T unmarshal(java.io.Reader reader, java.lang.Class<T> type)
+<T> T unmarshalFromString(java.lang.String xml, java.lang.Class<T> type)
+
 
 void marshal(Object obj, javax.xml.transform.Result result)
 void marshal(Object obj, java.io.OutputStream result)
