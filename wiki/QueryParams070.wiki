@@ -11,7 +11,18 @@ In this version, 0.7, the least query means are provided.
   * Comma ',' as a list delimiter. Logical "OR" concatenation of list values.
 
 
-In the following sections, 
+
+== <font color="#0044CC">Queries in Java Applications</font> ==
+
+== <font color="#0044CC">Queries in Web Services</font> ==
+
+
+
+
+----
+= <font color="#0044CC">Parameter Definitions</font> =
+
+Here,
 we show the query parameters for the OVAL object types.
 In the tables, each column means that:
   * *Parameter Name*: name of the parameter.
@@ -24,16 +35,13 @@ In the tables, each column means that:
 
 
 
-----
-= <font color="#0044CC">Parameter Definitions</font> =
-
-
 == <font color="#0044CC">Definition</font> ==
 
 || *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
 || id || String || `./@id` || Yes || Yes || `id=oval:org.foo:def:100`<br>`id=oval:org.foo:def:*`<br>`id=oval:org.foo:def:100,oval:org.foo:def:101`<br>`id=oval:org.foo:def:*,oval:org.bar:def:*,oval:org.baz:def:*` || - ||
 || version || int || `./@version` || No || No || `version=2` || - ||
 || definitionClass || !ClassEnumeration or String || `./@class` || Yes || No || `definitionsClass=vulnerability,patch` || The word "class" is a Java reserved word. ||
+|| family || Family or String || `./metadata/affected/@family` || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
 || platform || String || `./metadata/affected/platform` || Yes || Yes || `platform=Windows*`<br>`platform=Windows*,Solaris*` || - ||
 || product || String || `./metadata/affected/product` || Yes || Yes || `product=Acrobat*`<br>`product=Internet Explorer*,Google Chrome*,Mozilla Firefox*` || - ||
 || refSource || String || `./metadata/reference/@source` || Yes || No || `refSource=CVE`<br>`refSource=CVE,CPE` || - ||
@@ -44,4 +52,11 @@ In the tables, each column means that:
 
 
 == <font color="#0044CC">Test, Object, State, Variable</font> ==
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| id || String || `./@id` || Yes || Yes || `id=oval:org.foo:def:100`<br>`id=oval:org.foo:def:*`<br>`id=oval:org.foo:def:100,oval:org.foo:def:101`<br>`id=oval:org.foo:def:*,oval:org.bar:def:*,oval:org.baz:def:*` || - ||
+|| version || int || `./@version` || No || No || `version=2` || - ||
+|| type || !ElementType or String || - || No || No || `type=test` || - ||
+|| family || Family or String || - || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
+|| component || ComponentType or String || - || Yes || No || `component=file`<br>`component=file,registry` || - ||
 
