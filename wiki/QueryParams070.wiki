@@ -70,7 +70,7 @@ The common parameters can be used for any type of objects.
 || version || int || `./@version` || No || No || `version=2` || - ||
 || type || !ElementType or String || - || No || No || `type=test` || - ||
 || family || Family or String || - || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
-|| component || ComponentType or String || - || Yes || No || `component=file`<br>`component=file,registry` || - ||
+|| component || !ComponentType or String || - || Yes || No || `component=file`<br>`component=file,registry` || - ||
 || searchTerms || String || `./@comment` || Yes || No || `searchTerms=buffer` || - ||
 
 
@@ -80,4 +80,3 @@ The common parameters can be used for any type of objects.
 
 
 == <font color="#0044CC">OVAL Results</font> ==
-
