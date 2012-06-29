@@ -77,6 +77,13 @@ The common parameters can be used for any type of objects.
 
 == <font color="#0044CC">OVAL System Characteristics</font> ==
 
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| host || String || `./system_info/primary_host_name` || Yes || Yes || `host=mailserver`<br>`host=mailserver,webserver`<br>`host=*.foo.org`<br>`host=*.a.foo.org,*.b.foo.org` || - ||
+|| os || String || `./system_info/os_name` || Yes || No || `os=Windows*`<br>`os=Windows*,Solaris*`<br>`os=*Linux*` || - ||
+|| osVersion || String || `./system_info/os_version` || Yes || Yes || `osVersion=6.1.7601`<br>`osVersion=>5`<br>`osVersion=5.1.*,5.2.*` || '>' and '<' means 'greater than' and 'less than', respectively. ||
+|| ip || String || `./system_info/interfaces/interface/ip_address` || Yes || Yes || `ip=192.168.1.2`<br>`ip=192.168.1.*`<br>`ip=192.168.1.*,192.168.2.*` || - ||
+
+
 
 
 == <font color="#0044CC">OVAL Results</font> ==
