@@ -28,7 +28,7 @@ CONTENTS:
 
     <import file="ant-six.xml"/>
 
-    <property file="src/config/six-oval.properties"/>
+    <property file="${java.res.dir}/six-oval.properties"/>
 
 
 
@@ -40,7 +40,7 @@ CONTENTS:
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- webapp -->
-    <property name="webapp.src.dir"     location="${src.dir}/webapp"/>
+    <property name="webapp.src.dir"     location="${src.dir}/main/webapp"/>
     <property name="web.xml"            location="${webapp.src.dir}/WEB-INF/web.xml"/>
     <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.oval.webapp.context}"/>
 
