@@ -254,10 +254,12 @@ via HTTP.
 == <font color="#0044CC">Web Application Setup</font> ==
 
 Before using this Web services feature, 
-you must set up a servlet container
-and the Web application, 
-in addition to the persistence feature.
-Here, we assume that Tomcat is used.
+you must set up a servlet container like Tomcat. 
+Here, we don't describe how to install it.
+
+Deployment of our Web application is easy;
+just put the WAR file on the appropriate path 
+indicated by the container.
 
 
 
