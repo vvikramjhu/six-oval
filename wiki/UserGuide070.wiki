@@ -260,6 +260,31 @@ Here, we don't describe how to install it.
 Deployment of our Web application is easy;
 just put the WAR file on the appropriate path 
 indicated by the container.
+For example, if you use Tomcat, 
+copy the WAR file to "$CATALINA_BASE/webapps".
+
+
+== <font color="#0044CC">API</font> ==
+
+Here, we show some examples.
+Please refer to the 
+[WebApi RESTful Web Services API specifications]
+for details.
+
+
+Figure 1 shows an example call to the API using 
+[http://curl.haxx.se/ curl].
+
+
+  Figure 1: An example of RESTful Web Services invocation.
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/version-0_7_0/six-oval-070_ws-get-definition.png]
+
+
+{{{
+// Listing 8: RESTful Web Services
+
+}}}
+
 
 
 
