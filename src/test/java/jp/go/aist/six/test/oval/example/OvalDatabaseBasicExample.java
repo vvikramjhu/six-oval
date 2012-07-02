@@ -1,7 +1,6 @@
 package jp.go.aist.six.test.oval.example;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.net.URL;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -18,9 +17,13 @@ public class OvalDatabaseBasicExample
     {
         // Unmarshal XML document
         XmlMapper  xml_mapper = OvalContext.getXmlMapper();
-        String  local_src = "src/test/resources/oval_test-content/oval-5.9/def/windows/ind-def_family_test.xml";
-        File  src_file = new File( local_src );
-        OvalDefinitions  oval_defs = (OvalDefinitions)xml_mapper.unmarshal( new FileInputStream( src_file ) );
+        String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
+        URL  src_url = new URL( network_src );
+        OvalDefinitions  oval_defs = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
+
+//        String  local_src = "src/test/resources/oval_test-content/oval-5.9/def/windows/ind-def_family_test.xml";
+//        File  src_file = new File( local_src );
+//        OvalDefinitions  oval_defs = (OvalDefinitions)xml_mapper.unmarshal( new FileInputStream( src_file ) );
 
         // Save OVAL Definition document
         OvalDatabase  db = OvalContext.getDatabase();
