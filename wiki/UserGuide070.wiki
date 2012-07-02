@@ -10,7 +10,7 @@ This document will assist you in installing and using the SIX OVAL features.
 
 Put the SIX-OVAL JAR and dependent JAR files
 in the Java classpath.
-Please consult the [ReleaseNote release note] 
+Please consult the [Release_Notes release note] 
 for finding the dependent components.
 
 
