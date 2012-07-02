@@ -351,6 +351,7 @@ public class OvalDefinitionRepositoryController
     //
     // about path variables including ".":
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval%2etest:def:165"
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval:def:7222"
     @RequestMapping(
                     method=RequestMethod.GET
