@@ -45,14 +45,14 @@
             type="jp.go.aist.six.oval.repository.QueryResultsElements"
             container="false"
             >
-            <bind-xml name="results" node="element"/>
+            <bind-xml name="result_elements" node="element"/>
         </field>
     </class>
 
 
 
     <class name="jp.go.aist.six.oval.repository.QueryResultsElements">
-        <map-to xml="elements"
+        <map-to xml="result_elements"
             />
 
         <field name="elements" 
