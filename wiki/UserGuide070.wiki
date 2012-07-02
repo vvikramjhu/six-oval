@@ -246,5 +246,20 @@ T.B.D.
 = <font color="#0044CC">RESTful Web Services</font> =
 T.B.D.
 
+This feature supports Web-based OVAL database services.
+That is, it is possible to access remote OVAL database 
+via HTTP.
+
+
+== <font color="#0044CC">Web Application Setup</font> ==
+
+Before using this Web services feature, 
+you must set up a servlet container
+and the Web application, 
+in addition to the persistence feature.
+Here, we assume that Tomcat is used.
+
+
+
 = <font color="#0044CC">Interpreter Driving</font> =
 T.B.D.
