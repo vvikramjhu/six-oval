@@ -80,6 +80,8 @@ public interface OvalDefinitionRepository
      */
     public List<DefinitionType> findDefinition( QueryParams params );
 
+    public QueryResults<DefinitionType> findDefinitionByQuery( QueryParams params );
+
 
 
     /**

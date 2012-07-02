@@ -31,10 +31,12 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResults;
 
 
 
@@ -87,6 +89,43 @@ public class MongoOvalDefinitionRepository
 
 
 
+
+    /**
+     */
+    protected static <T> QueryResults<T> _buildQueryResults(
+                    final QueryParams params,
+                    final List<T> elements
+                    )
+    {
+        QueryResults<T>  r = _buildQueryResults( elements );
+
+        if (params != null) {
+            String  key = CommonQueryParams.Key.COUNT;
+            if (params.containsKey( key )) {
+                r.setItemsPerPage( (long)r.size() );
+            }
+
+            key = CommonQueryParams.Key.START_INDEX;
+            if (params.containsKey( key )) {
+                int  index = params.getAsInt( key );
+                r.setStartIndex( (long)index );
+            }
+        }
+
+        return r;
+    }
+
+
+    protected static <T> QueryResults<T> _buildQueryResults(
+                    final List<T> elements
+                    )
+    {
+        return new QueryResults<T>( elements );
+    }
+
+
+
+
     //**************************************************************
     //  OvalDefinitionRepository
     //**************************************************************
@@ -99,7 +138,6 @@ public class MongoOvalDefinitionRepository
     public DefinitionType findDefinitionById(
                     final String oval_id
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -118,7 +156,6 @@ public class MongoOvalDefinitionRepository
 
     @Override
     public List<DefinitionType> findDefinition()
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -139,7 +176,6 @@ public class MongoOvalDefinitionRepository
     public List<DefinitionType> findDefinition(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -157,10 +193,26 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
+    public QueryResults<DefinitionType> findDefinitionByQuery(
+                    final QueryParams params
+                    )
+    {
+        List<DefinitionType>  p_list = null;
+        try {
+            p_list = _database.find( DefinitionType.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return _buildQueryResults( params, p_list );
+    }
+
+
+
+    @Override
     public List<String> findDefinitionId(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
         List<String>  p_list = null;
         try {
@@ -176,7 +228,6 @@ public class MongoOvalDefinitionRepository
 
     @Override
     public long countDefinition()
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -197,7 +248,6 @@ public class MongoOvalDefinitionRepository
     public long countDefinition(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
         long  count = 0L;
         try {
@@ -294,7 +344,6 @@ public class MongoOvalDefinitionRepository
     public DefinitionsElement findElementById(
                     final String oval_id
                     )
-    throws OvalRepositoryException
     {
         Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( oval_id );
 //        Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( oval_id );
@@ -317,7 +366,6 @@ public class MongoOvalDefinitionRepository
     public List<DefinitionsElement> findElement(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -383,7 +431,6 @@ public class MongoOvalDefinitionRepository
     public long countElement(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
         long  p_count = 0L;
         try {
@@ -434,7 +481,6 @@ public class MongoOvalDefinitionRepository
     public String saveElement(
                     final DefinitionsElement entity
                     )
-    throws OvalRepositoryException
     {
 //        @SuppressWarnings( "unchecked" )
 //        Class<T>  objectType = (Class<T>)_objectTypeOf( entity );
@@ -469,7 +515,6 @@ public class MongoOvalDefinitionRepository
     public OvalDefinitions findOvalDefinitionsById(
                     final String id
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -508,7 +553,6 @@ public class MongoOvalDefinitionRepository
     public String saveOvalDefinitions(
                     final OvalDefinitions oval_defs
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -524,4 +568,4 @@ public class MongoOvalDefinitionRepository
     }
 
 }
-//MongoOvalDefinitionRepository
+//
