@@ -265,7 +265,8 @@ Here, we don't describe how to install it.
 Deployment of our Web application is easy;
 just put the WAR file on the appropriate path 
 indicated by the container.
-For example, if you use Tomcat, 
+For example, if you use 
+[http://tomcat.apache.org/ Tomcat], 
 copy the WAR file to "$CATALINA_BASE/webapps".
 
 
