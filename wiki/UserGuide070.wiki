@@ -155,7 +155,7 @@ six.oval.repository.database.password  =bar
 
 == <font color="#0044CC">CRUD Operations</font> ==
 
-OvalDatabase interface defines 
+!OvalDatabase interface defines 
 the low-level persistent storage operations 
 for the OVAL Domain Model objects.
 Listing 6 shows an example to store and load 
@@ -274,11 +274,16 @@ for details.
 
 Figure 1 shows an example call to the API using 
 [http://curl.haxx.se/ curl].
+Here, a Definition is retrieved using its OVAL ID;
+"oval:org.mitre.oval.test:def:165".
 
 
-  Figure 1: An example of RESTful Web Services invocation.
+  <b>Figure 1</b>: An example of RESTful Web Services invocation.
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/version-0_7_0/six-oval-070_ws-get-definition.png]
 
+
+Listing 8 shows some examples to invoke the API
+from Java code.
 
 {{{
 // Listing 8: RESTful Web Services
