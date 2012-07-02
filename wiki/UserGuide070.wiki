@@ -90,14 +90,15 @@ String marshalToString(Object obj)
 ----
 = <font color="#0044CC">Repository</font> =
 
-This feature supports persistent storage of Java objects. 
-That is, it is possible to save/load the OVAL model objects 
+This feature supports persistent storage 
+for the OVAL domain model. 
+That is, it is possible to save/load the Java objects 
 to/from a persistent storage, and to retrieve the objects 
 in a programmatic way.
 
 In this version, we use
 [http://www.mongodb.org/ MongoDB]
-as a the storage.
+as a the internal storage system.
 MongoDB is a kind of document-oriented database or 
 NoSQL, so-called.
 
