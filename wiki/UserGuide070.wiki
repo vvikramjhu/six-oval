@@ -1,4 +1,4 @@
-#summary User Guide to SIX OVAL version 0.7.
+#summary User Guide.
 #labels Featured
 
 = <font color="#0044CC">Introduction</font> =
@@ -88,9 +88,9 @@ String marshalToString(Object obj)
 
 
 ----
-= <font color="#0044CC">Object Persistence</font> =
+= <font color="#0044CC">Repository</font> =
 
-This feature supports persistence of Java objects. 
+This feature supports persistent storage of Java objects. 
 That is, it is possible to save/load the OVAL model objects 
 to/from a persistent storage, and to retrieve the objects 
 in a programmatic way.
