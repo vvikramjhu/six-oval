@@ -1,4 +1,4 @@
-#summary User Guide to SIX-OVAL version 0.7.
+#summary User Guide to SIX OVAL version 0.7.
 #labels Featured
 
 = <font color="#0044CC">Introduction</font> =
@@ -8,7 +8,7 @@ This document will assist you in installing and using the SIX OVAL features.
 
 == <font color="#0044CC">Installation</font> ==
 
-Put the SIX-OVAL JAR and dependent JAR files
+Put the SIX OVAL JAR and dependent JAR files
 in the Java classpath.
 Please consult the [Release_Notes release note] 
 for finding the dependent components.
