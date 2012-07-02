@@ -1,4 +1,4 @@
-#summary User Guide.
+#summary User Guide to SIX-OVAL version 0.7.
 #labels Featured
 
 = <font color="#0044CC">Introduction</font> =
