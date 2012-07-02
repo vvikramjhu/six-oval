@@ -6,9 +6,12 @@
 This document will assist you in installing and using the SIX OVAL features.
 
 
-== <font color="#0044CC">Basic Setup</font> ==
-T.B.D.
+== <font color="#0044CC">Installation</font> ==
 
+Put the SIX-OVAL JAR and dependent JAR files
+in the Java classpath.
+Please consult the [ReleaseNote release note] 
+for finding the dependent components.
 
 
 ----
