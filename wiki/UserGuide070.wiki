@@ -108,7 +108,7 @@ The reasons why we abandoned relational databases are:
   * and the model contains a composit pattern, sometimes called as self-referring structure, of arbitrary repetitions. 
 
 
-== <font color="#0044CC">Database Setup</font> ==
+== <font color="#0044CC">Database Setup and Configuration</font> ==
 
 Before using the object persistence feature, 
 you must install the MongoDB and set up the database.
@@ -127,12 +127,10 @@ please read the above step-by-step guide and the original
 [http://www.mongodb.org/display/DOCS/Security+and+Authentication Security and Authentication] document.
 
 
-
-== <font color="#0044CC">Java Configuration</font> ==
-
-Several configuration parameters must be set 
+In applications,
+several configuration parameters must be set 
 to get the right access to the database.
-Listing 4 shows the default property values.
+Listing 4 shows the default Java property values.
 Users can override these values to reflect 
 the database settings.
 This is done with the Java properties file 
@@ -274,6 +272,15 @@ For example, if you use
 copy the WAR file to "$CATALINA_BASE/webapps".
 
 
+If you need to configure the Java properties
+to access the database,
+please edit the properties file, 
+"six-oval.properties" as shown above,
+in the application's context; 
+e.g. "$CATALINA_BASE/webapps/six-oval/WEB-INF"
+in case of Tomcat.
+
+
 == <font color="#0044CC">API</font> ==
 
 Here, we show some examples.
@@ -288,15 +295,24 @@ Here, a Definition is retrieved using its OVAL ID;
 "oval:org.mitre.oval.test:def:165".
 
 
-  <b>Figure 1</b>: An example of RESTful Web Services invocation.
+  <b>Figure 1</b>: RESTful Web Services invocation using curl.
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/version-0_7_0/six-oval-070_ws-get-definition.png]
 
 
-Listing 8 shows some examples to invoke the API
+Listing 8 shows the same service invocation 
 from Java code.
 
 {{{
-// Listing 8: RESTful Web Services
+// Listing 8: RESTful Web Services invocation using Java API.
+
+}}}
+
+
+Listing 9 shows some examples to invoke the API
+from Java code.
+
+{{{
+// Listing 8: RESTful Web Services API
 
 }}}
 
