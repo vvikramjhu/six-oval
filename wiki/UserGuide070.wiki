@@ -285,7 +285,7 @@ in case of Tomcat.
 
 Here, we show some examples.
 Please refer to the 
-[WebApi RESTful Web Services API specifications]
+[WebServicesApi070 RESTful Web Services API specifications]
 for details.
 
 
