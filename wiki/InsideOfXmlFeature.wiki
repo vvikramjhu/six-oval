@@ -1,6 +1,6 @@
 #summary Inside of the XML-Mapping feature.
 
-= Version 0.7.0 =
+= Version 1.0.0 =
 
 
 <wiki:comment>
