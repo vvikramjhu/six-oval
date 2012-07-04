@@ -4,18 +4,17 @@
  *    @product.vendor@
  *    Registration Number: @product.registration-number@
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package jp.go.aist.six.oval.model.redhat;
@@ -73,7 +72,7 @@ public class Advisory
 
     public String getFrom()
     {
-        return this.from;
+        return from;
     }
 
 
@@ -90,7 +89,7 @@ public class Advisory
 
     public SeverityEnumeration getSeverity()
     {
-        return this.severity;
+        return severity;
     }
 
 
@@ -107,7 +106,7 @@ public class Advisory
 
     public String getRights()
     {
-        return this.rights;
+        return rights;
     }
 
 
@@ -124,7 +123,7 @@ public class Advisory
 
     public Issued getIssued()
     {
-        return this.issued;
+        return issued;
     }
 
 
@@ -141,7 +140,7 @@ public class Advisory
 
     public Updated getUpdated()
     {
-        return this.updated;
+        return updated;
     }
 
 
@@ -152,10 +151,10 @@ public class Advisory
                     final Collection<? extends Cve> cveList
                     )
     {
-        if (cveList != this.cve) {
-            this.cve.clear();
+        if (cveList != cve) {
+            cve.clear();
             if (cveList != null  &&  cveList.size() > 0) {
-                this.cve.addAll( cveList );
+                cve.addAll( cveList );
             }
         }
     }
@@ -171,7 +170,7 @@ public class Advisory
 
     public Collection<Cve> getCve()
     {
-        return this.cve;
+        return cve;
     }
 
 
@@ -182,10 +181,10 @@ public class Advisory
                     final Collection<? extends Bugzilla> bugzillaList
                     )
     {
-        if (bugzillaList != this.bugzilla) {
-            this.bugzilla.clear();
+        if (bugzillaList != bugzilla) {
+            bugzilla.clear();
             if (bugzillaList != null  &&  bugzillaList.size() > 0) {
-                this.bugzilla.addAll( bugzillaList );
+                bugzilla.addAll( bugzillaList );
             }
         }
     }
@@ -201,7 +200,7 @@ public class Advisory
 
     public Collection<Bugzilla> getBugzilla()
     {
-        return this.bugzilla;
+        return bugzilla;
     }
 
 
@@ -218,7 +217,7 @@ public class Advisory
 
     public AffectedCpeList getAffectedCpeList()
     {
-        return this.affected_cpe_list;
+        return affected_cpe_list;
     }
 
 
