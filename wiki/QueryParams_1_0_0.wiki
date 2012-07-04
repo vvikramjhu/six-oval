@@ -1,4 +1,4 @@
-#summary Database Query Parameters.
+#summary Repository Query Parameters.
 #labels Phase-Implementation
 
 = <font color="#0044CC">Introduction</font> =
