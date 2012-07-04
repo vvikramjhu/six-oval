@@ -5,7 +5,7 @@
 
 T.B.D.
 
-In this version, 0.7, the least query means are provided.
+In this version, 1.0.0, the least query means are provided.
 
   * Parameter as a key-value pair.
   * Logical "AND" concatenation of parameters.
