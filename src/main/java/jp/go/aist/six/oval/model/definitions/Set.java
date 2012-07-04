@@ -4,18 +4,17 @@
  *    @product.vendor@
  *    Registration Number: @product.registration-number@
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package jp.go.aist.six.oval.model.definitions;
@@ -88,7 +87,7 @@ public class Set
                     final Collection<? extends Set> filters
                     )
     {
-        if (this.set != filters) {
+        if (set != filters) {
             int  size = (filters == null ? 0 : filters.size());
             if (filters != null  &&  size > 2) {
                 throw new IllegalArgumentException(
@@ -96,9 +95,9 @@ public class Set
                                 + size );
             }
 
-            this.filter.clear();
+            filter.clear();
             if (size > 0) {
-                this.set.addAll( filters );
+                set.addAll( filters );
             }
         }
     }
@@ -123,13 +122,13 @@ public class Set
 
     public Collection<Set> getSet()
     {
-        return this.set;
+        return set;
     }
 
 
     public Iterator<Set> iterateSet()
     {
-        return this.set.iterator();
+        return set.iterator();
     }
 
 
@@ -140,7 +139,7 @@ public class Set
                     final Collection<String> object_references
                     )
     {
-        if (this.object_reference != object_references) {
+        if (object_reference != object_references) {
             int  size = (object_references == null ? 0 : object_references.size());
             if (object_references != null  &&  size > 2) {
                 throw new IllegalArgumentException(
@@ -148,9 +147,9 @@ public class Set
                                 + size );
             }
 
-            this.object_reference.clear();
+            object_reference.clear();
             if (size > 0) {
-                this.object_reference.addAll( object_references );
+                object_reference.addAll( object_references );
             }
         }
     }
@@ -175,13 +174,13 @@ public class Set
 
     public Collection<String> getObjectReference()
     {
-        return this.object_reference;
+        return object_reference;
     }
 
 
     public Iterator<String> iterateObjectReference()
     {
-        return this.object_reference.iterator();
+        return object_reference.iterator();
     }
 
 
@@ -192,10 +191,10 @@ public class Set
                     final Collection<? extends Filter> filterSeq
                     )
     {
-        if (this.filter != filterSeq) {
-            this.filter.clear();
+        if (filter != filterSeq) {
+            filter.clear();
             if (filterSeq != null  &&  filterSeq.size() > 0) {
-                this.filter.addAll( filterSeq );
+                filter.addAll( filterSeq );
             }
         }
     }
@@ -215,13 +214,13 @@ public class Set
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 
@@ -232,13 +231,13 @@ public class Set
                     final SetOperatorEnumeration action
                     )
     {
-        this.set_operator = action;
+        set_operator = action;
     }
 
 
     public SetOperatorEnumeration getSetOperator()
     {
-        return this.set_operator;
+        return set_operator;
     }
 
 
