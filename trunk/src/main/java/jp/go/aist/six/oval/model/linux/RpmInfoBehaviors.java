@@ -4,18 +4,17 @@
  *    @product.vendor@
  *    Registration Number: @product.registration-number@
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package jp.go.aist.six.oval.model.linux;
@@ -25,7 +24,7 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
- * The RpmInfoBehaviors defines a set of behaviors for controlling what data, 
+ * The RpmInfoBehaviors defines a set of behaviors for controlling what data,
  * for installed rpms, is collected.
  *
  * @author  Akihito Nakamura, AIST
@@ -64,16 +63,16 @@ public class RpmInfoBehaviors
 
     public Boolean getFilepaths()
     {
-        return this.filepaths;
+        return filepaths;
     }
 
 
-    public static boolean filepaths( 
+    public static boolean filepaths(
                     final RpmInfoBehaviors behaviors
                     )
     {
         Boolean  filepaths = behaviors.getFilepaths();
-        
+
         return (filepaths == null ? DEFAULT_FILEPATHS.booleanValue() : filepaths.booleanValue());
     }
 
