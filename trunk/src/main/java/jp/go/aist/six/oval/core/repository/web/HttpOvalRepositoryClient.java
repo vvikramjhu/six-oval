@@ -80,7 +80,7 @@ public class HttpOvalRepositoryClient
         _repositoryBaseUrl = OvalContext.getProperty( "six.oval.repository.web.base-url" );
         _LOG_.info( "repository base URL: " + _repositoryBaseUrl );
 
-        _LOG_.debug( "....initialized" );
+        _LOG_.debug( "...initialized" );
     }
 
 
