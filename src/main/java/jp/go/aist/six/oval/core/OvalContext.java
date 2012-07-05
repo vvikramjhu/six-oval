@@ -19,10 +19,7 @@
 
 package jp.go.aist.six.oval.core;
 
-import java.util.ListResourceBundle;
-import java.util.MissingResourceException;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
@@ -44,19 +41,6 @@ public class OvalContext
      * Logger.
      */
     private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext.class );
-
-
-
-    private static class EmptyResourceBundle
-    extends ListResourceBundle
-    {
-        @Override
-        protected Object[][] getContents()
-        {
-            return new Object[0][0];
-        }
-    }
-    //
 
 
 
@@ -154,56 +138,69 @@ public class OvalContext
 
 
 
-    /**
-     * The base name of the resource bundle.
-     */
-    private static final String _RESOURCE_BUNDLE_NAME_ = "jp/go/aist/six/oval/core/six-oval_defaults";
-
-
-    /**
-     */
-    private static ResourceBundle  _RESOURCE_BUNDLE_;
-
-
-
-    /**
-     */
-    private static ResourceBundle _getResourceBundle()
-    {
-        if (_RESOURCE_BUNDLE_ == null) {
-            try {
-                _RESOURCE_BUNDLE_ = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
-            } catch (MissingResourceException ex) {
-                //negligible
-                _RESOURCE_BUNDLE_ = new EmptyResourceBundle();
-            }
-        }
-
-        return _RESOURCE_BUNDLE_;
-    }
-
-
-
-    /**
-     */
-    public static String getProperty2(
-                    final String key
-                    )
-    {
-        String  value = System.getProperty( key );
-        if (value != null) {
-            return value;
-        }
-
-        try {
-            value = _getResourceBundle().getString( key );
-        } catch (MissingResourceException ex) {
-            //negligible
-            value = null;
-        }
-
-        return value;
-    }
+//    /**
+//     * The base name of the resource bundle.
+//     */
+//    private static final String _RESOURCE_BUNDLE_NAME_ = "jp/go/aist/six/oval/core/six-oval_defaults";
+//
+//
+//    /**
+//     */
+//    private static ResourceBundle  _RESOURCE_BUNDLE_;
+//
+//
+//
+//    private static class EmptyResourceBundle
+//    extends ListResourceBundle
+//    {
+//        @Override
+//        protected Object[][] getContents()
+//        {
+//            return new Object[0][0];
+//        }
+//    }
+//    //
+//
+//
+//
+//    /**
+//     */
+//    private static ResourceBundle _getResourceBundle()
+//    {
+//        if (_RESOURCE_BUNDLE_ == null) {
+//            try {
+//                _RESOURCE_BUNDLE_ = ResourceBundle.getBundle( _RESOURCE_BUNDLE_NAME_ );
+//            } catch (MissingResourceException ex) {
+//                //negligible
+//                _RESOURCE_BUNDLE_ = new EmptyResourceBundle();
+//            }
+//        }
+//
+//        return _RESOURCE_BUNDLE_;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public static String getProperty2(
+//                    final String key
+//                    )
+//    {
+//        String  value = System.getProperty( key );
+//        if (value != null) {
+//            return value;
+//        }
+//
+//        try {
+//            value = _getResourceBundle().getString( key );
+//        } catch (MissingResourceException ex) {
+//            //negligible
+//            value = null;
+//        }
+//
+//        return value;
+//    }
 
 
 
