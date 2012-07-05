@@ -17,14 +17,17 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.web;
 
 import java.util.List;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.OvalResultRepository;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResults;
 
 
 
@@ -34,9 +37,8 @@ import jp.go.aist.six.oval.repository.QueryParams;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDefinitionResultRepository
-    extends MongoOvalDefinitionRepository
-    implements OvalResultRepository
+public class HttpOvalRepositoryClient
+    implements OvalRepository
 {
 
 //    /**
@@ -50,32 +52,142 @@ public class MongoOvalDefinitionResultRepository
     /**
      * Constructor.
      */
-    public MongoOvalDefinitionResultRepository()
+    public HttpOvalRepositoryClient()
     {
     }
 
 
 
-    //**************************************************************
-    //  OvalResultsRepository
-    //**************************************************************
+    //*********************************************************************
+    //  implements OvalDefinitionRepository
+    //*********************************************************************
+
+    //=====================================================================
+    //  Definition
+    //=====================================================================
 
     @Override
-    public OvalResults findOvalResultsById(
-                    final String id
-                    )
+    public DefinitionType findDefinitionById( final String oval_id )
     {
-//        long  ts_start = System.currentTimeMillis();
+        throw new UnsupportedOperationException();
+    }
 
-        OvalResults  p_object = null;
-        try {
-            p_object = getDatabase().findById( OvalResults.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_object;
+
+    @Override
+    public List<DefinitionType> findDefinition()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public List<DefinitionType> findDefinition( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Override
+    public QueryResults<DefinitionType> findDefinitionByQuery( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public List<String> findDefinitionId( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+
+    @Override
+    public long countDefinition()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public long countDefinition( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+
+
+    //=====================================================================
+    // definitions element (Definition, Test, Object, State, Variable)
+    //=====================================================================
+
+    @Override
+    public DefinitionsElement findElementById( final String oval_id )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public List<DefinitionsElement> findElement( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public long countElement( final QueryParams params )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public String saveElement( final DefinitionsElement element )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    //=====================================================================
+    // OvalDefinitions
+    //=====================================================================
+
+    @Override
+    public OvalDefinitions findOvalDefinitionsById( final String id )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    @Override
+    public String saveOvalDefinitions( final OvalDefinitions oval_defs )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    //*********************************************************************
+    //  implements OvalResultRepository
+    //*********************************************************************
+
+    @Override
+    public OvalResults findOvalResultsById( final String id )
+    {
+        throw new UnsupportedOperationException();
     }
 
 
@@ -83,37 +195,15 @@ public class MongoOvalDefinitionResultRepository
     @Override
     public List<OvalResults> findOvalResults()
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        List<OvalResults>  p_list = null;
-        try {
-            p_list = getDatabase().find( OvalResults.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public List<OvalResults> findOvalResults(
-                    final QueryParams params
-                    )
+    public List<OvalResults> findOvalResults( final QueryParams params )
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        List<OvalResults>  p_list = null;
-        try {
-            p_list = getDatabase().find( OvalResults.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        throw new UnsupportedOperationException();
     }
 
 
@@ -121,38 +211,15 @@ public class MongoOvalDefinitionResultRepository
     @Override
     public List<String> findOvalResultsId()
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        List<String>  list = null;
-        try {
-            list = getDatabase().findId( OvalResults.class );
-//            keys = dao.findIds(); // this code does NOT work. why???
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return list;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public List<String> findOvalResultsId(
-                    final QueryParams params
-                    )
+    public List<String> findOvalResultsId( final QueryParams params )
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        List<String>  p_list = null;
-        try {
-            p_list = getDatabase().findId( OvalResults.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        throw new UnsupportedOperationException();
     }
 
 
@@ -160,85 +227,39 @@ public class MongoOvalDefinitionResultRepository
     @Override
     public long countOvalResults()
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        long  count = 0L;
-        try {
-            count = getDatabase().count( OvalResults.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return count;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public String saveOvalResults(
-                    final OvalResults oval_results
-                    )
+    public String saveOvalResults( final OvalResults oval_results )
     {
-        String  id = null;
-        try {
-            id = getDatabase().save( OvalResults.class, oval_results );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return id;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
-                    final String id
-                    )
+    public OvalSystemCharacteristics findOvalSystemCharacteristicsById( final String id )
     {
-        OvalSystemCharacteristics  p_object = null;
-        try {
-            p_object = getDatabase().findById( OvalSystemCharacteristics.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return p_object;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
-                    final QueryParams params
-                    )
+    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics( final QueryParams params )
     {
-        List<OvalSystemCharacteristics>  p_list = null;
-        try {
-            p_list = getDatabase().find( OvalSystemCharacteristics.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return p_list;
+        throw new UnsupportedOperationException();
     }
 
 
 
     @Override
-    public String saveOvalSystemCharacteristics(
-                    final OvalSystemCharacteristics oval_sc
-                    )
+    public String saveOvalSystemCharacteristics( final OvalSystemCharacteristics oval_sc )
     {
-        String  id = null;
-        try {
-            id = getDatabase().save( OvalSystemCharacteristics.class, oval_sc );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return id;
+        throw new UnsupportedOperationException();
     }
 
 }
