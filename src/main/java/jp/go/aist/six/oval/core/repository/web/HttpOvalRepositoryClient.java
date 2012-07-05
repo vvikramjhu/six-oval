@@ -20,14 +20,21 @@
 package jp.go.aist.six.oval.core.repository.web;
 
 import java.util.List;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepository;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
 
 
 
@@ -49,11 +56,52 @@ public class HttpOvalRepositoryClient
 
 
 
+
+
     /**
      * Constructor.
      */
     public HttpOvalRepositoryClient()
     {
+    }
+
+
+
+    /**
+     */
+    private RestTemplate _newRestTemplate()
+    {
+        return OvalContext.getBean( RestTemplate.class );
+    }
+
+
+
+    /**
+     * HTTP GET
+     *
+     * @return
+     */
+    private <T> T _httpGet(
+                    final String url,
+                    final Class<T> response_type,
+                    final Object... uriVariables
+                    )
+    {
+        HttpHeaders  request_headers = new HttpHeaders();
+        request_headers.setContentType( MediaType.APPLICATION_XML );
+        HttpEntity<?> requestEntity = new HttpEntity<Void>( request_headers );
+
+        HttpEntity<T>  response = null;
+        try {
+            response = _newRestTemplate().exchange(
+                            url, HttpMethod.GET, requestEntity, response_type, uriVariables );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        T  body = response.getBody();
+
+        return body;
     }
 
 
@@ -66,10 +114,17 @@ public class HttpOvalRepositoryClient
     //  Definition
     //=====================================================================
 
+    private static final String  _URL_DEFINITON_BY_ID_ =
+                    "http://localhost:8080/six-oval/repository/definitions/{id}";
+
+
     @Override
-    public DefinitionType findDefinitionById( final String oval_id )
+    public DefinitionType findDefinitionById(
+                    final String oval_id
+                    )
     {
-        throw new UnsupportedOperationException();
+        DefinitionType  def = _httpGet( _URL_DEFINITON_BY_ID_, DefinitionType.class, oval_id );
+        return def;
     }
 
 
