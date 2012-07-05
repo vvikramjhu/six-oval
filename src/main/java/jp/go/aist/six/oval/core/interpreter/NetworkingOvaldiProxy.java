@@ -213,9 +213,7 @@ public class NetworkingOvaldiProxy
                     * send the file to the remote execution.
                     */
                    String  filepath = localizedOptions.get( option );
-
                    _httpPost( url, new File( filepath ), option.contentType );
-//                   _restPostFile( url, new File( filepath ), option.contentType );
                }
            }
        }
@@ -354,9 +352,7 @@ public class NetworkingOvaldiProxy
                      * Then, replace the argument for local execution.
                      */
                     File  file = _createWorkingFile( option.defaultArgument );
-
                     _httpGet( url, file, option.contentType );
-//                    _restGetFile( url, file, option.contentType );
 
                     localizedOptions.set( option, file.getAbsolutePath() );
                 }
@@ -400,15 +396,6 @@ public class NetworkingOvaldiProxy
     // HTTP support
     //==============================================================
 
-//    /**
-//     */
-//    protected RestTemplate _getRestTemplate()
-//    {
-//        return (new RestTemplate());
-//    }
-
-
-
     /**
      * HTTP GET to file
      *
@@ -435,45 +422,6 @@ public class NetworkingOvaldiProxy
     }
 
 
-//    protected void _restGetFile(
-//                    final URL location,
-//                    final File file,
-//                    final String contentType
-//                    )
-//    throws OvalInterpreterException
-//    {
-//        _LOG_.debug( "GET: location=" + location
-//                        + ", file=" + file
-//                        + ", content-type=" + contentType );
-//
-//        URI  uri = null;
-//        try {
-//            uri = location.toURI();
-//                      //throws URISyntaxException
-//        } catch (Exception ex) {
-//            throw new OvalInterpreterException( ex );
-//        }
-//
-//        RestTemplate  rest = _getRestTemplate();
-//        try {
-//            FileResponseExtractor  extractor = new FileResponseExtractor( file );
-//            MediaType  mediaType = MediaType.valueOf( contentType );
-//            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType } );
-//            AcceptHeaderRequestCallback  callback =
-//                new AcceptHeaderRequestCallback( mediaTypes );
-//            rest.execute(
-//                            uri,
-//                            HttpMethod.GET,
-//                            callback,
-//                            extractor
-//                            );
-//        } catch (RestClientException ex) {
-//            _LOG_.error( "REST GET error: " + ex );
-//            throw new OvalInterpreterException( ex );
-//        }
-//    }
-
-
 
     /**
      * HTTP POST file
@@ -498,43 +446,6 @@ public class NetworkingOvaldiProxy
             throw new OvalInterpreterException( ex );
         }
     }
-
-
-//    protected void _restPostFile(
-//                    final URL location,
-//                    final File file,
-//                    final String contentType
-//                    )
-//    throws OvalInterpreterException
-//    {
-//        _LOG_.debug( "POST: location=" + location
-//                        + ", file=" + file
-//                        + ", content-type=" + contentType );
-//
-//        URI  uri = null;
-//        try {
-//            uri = location.toURI();
-//                      //throws URISyntaxException
-//        } catch (Exception ex) {
-//            throw new OvalInterpreterException( ex );
-//        }
-//
-//        RestTemplate  rest = _getRestTemplate();
-//        MediaType  mediaType = MediaType.valueOf( contentType );
-//        try {
-//            FileRequestCallback  callback =
-//                new FileRequestCallback( file, mediaType );
-//            rest.execute(
-//                            uri,
-//                            HttpMethod.POST,
-//                            callback,
-//                            null
-//                            );
-//        } catch (RestClientException ex) {
-//            _LOG_.error( "REST POST error: " + ex );
-//            throw new OvalInterpreterException( ex );
-//        }
-//    }
 
 
 
