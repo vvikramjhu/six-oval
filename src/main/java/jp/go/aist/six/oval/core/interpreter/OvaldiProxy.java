@@ -159,10 +159,11 @@ public class OvaldiProxy
 
     /**
      * Starts a new OVAL interpreter process.
+     *
+     * @throws  OvalInterpreterException
      */
     @Override
     public int execute()
-    throws OvalInterpreterException
     {
         final ProcessBuilder  builder = _createProcessBuilder();
         Process  process = null;
@@ -186,11 +187,11 @@ public class OvaldiProxy
      *
      * @return
      *  the exit value of the process.
+     * @throws  OvalInterpreterException
      */
     private int _waitFor(
                     final Process process
                     )
-    throws OvalInterpreterException
     {
         final String  lineSeparator = System.getProperty( "line.separator" );
         final BufferedReader  reader = new BufferedReader(
@@ -265,9 +266,10 @@ public class OvaldiProxy
     /**
      * Creates a command line: the program and its arguments.
      * E.g. ovaldi -m -o definitions.xml
+     *
+     * @throws  OvalInterpreterException
      */
     private List<String> _createCommand()
-    throws OvalInterpreterException
     {
         final List<String>  command = new ArrayList<String>();
 
@@ -417,5 +419,5 @@ public class OvaldiProxy
 //    }
 
 }
-//OvaldiProxy
+//
 

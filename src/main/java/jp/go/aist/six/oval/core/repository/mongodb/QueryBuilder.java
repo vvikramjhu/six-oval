@@ -34,10 +34,10 @@ public interface QueryBuilder
 {
 
     // predefined filter
-    public <T> Query<T> build(
-                    Query<T> query
-                    )
-    throws OvalRepositoryException;
+    /**
+     * @throws OvalRepositoryException
+     */
+    public <T> Query<T> build( Query<T> query );
 
 
 //    // paging
@@ -45,9 +45,8 @@ public interface QueryBuilder
 //                    Query<T> query,
 //                    List<? extends Order> orders,
 //                    Limit limit
-//                    )
-//    throws OvalRepositoryException;
+//                    );
 
 }
-// QueryBuilder
+//
 

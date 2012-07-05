@@ -79,9 +79,10 @@ public class Options
 
 
     /**
+     *
+     * @throws  OvalInterpreterException
      */
     public List<String> toCommandLine()
-    throws OvalInterpreterException
     {
         List<String>  command_line = new ArrayList<String>();
 

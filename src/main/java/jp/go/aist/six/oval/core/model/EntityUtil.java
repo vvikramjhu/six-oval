@@ -40,7 +40,6 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.TestsType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.definitions.VariablesType;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,12 +60,13 @@ public final class EntityUtil
 
 
     /**
+     *
+     * @throws  OvalException
      */
     public static boolean containsElement(
                     final OvalDefinitions oval_defs,
                     final String oval_id
                     )
-    throws OvalException
     {
         ElementType  type = OvalId.elementTypeOf( oval_id );
         ElementContainer<? extends DefinitionsElement>  container = _findContainer( oval_defs, type );
@@ -99,12 +99,13 @@ public final class EntityUtil
 
 
     /**
+     *
+     * @throws  OvalException
      */
     public static boolean addElement(
                     final OvalDefinitions oval_defs,
                     final DefinitionsElement element
                     )
-    throws OvalException
     {
         if (oval_defs == null  ||  element == null) {
             throw new IllegalArgumentException( "empty OVAL Definitions or element" );
@@ -210,11 +211,13 @@ public final class EntityUtil
 
 
 
+    /**
+     * @throws  OvalException
+     */
     private static ElementContainer<? extends DefinitionsElement> _findContainer(
                     final OvalDefinitions oval_defs,
                     final ElementType type
                     )
-    throws OvalException
     {
         if (oval_defs == null  ||  type == null) {
             throw new IllegalArgumentException( "empty OVAL Definitions or element type" );
@@ -336,25 +339,30 @@ public final class EntityUtil
             _TYPES_.put( ElementType.VARIABLE, VariableType.class );
     }
 
+
     /**
+     *
+     * @throws  OvalException
      */
     public static Class<? extends DefinitionsElement> javaTypeOf(
                     final String oval_id
                     )
-    throws OvalException
     {
         return javaTypeOf( OvalId.elementTypeOf( oval_id ) );
     }
 
 
+    /**
+     *
+     * @throws  OvalException
+     */
     public static Class<? extends DefinitionsElement> javaTypeOf(
                     final ElementType type
                     )
-    throws OvalRepositoryException
     {
         Class<? extends DefinitionsElement>  javaType = _TYPES_.get( type );
         if (javaType == null) {
-            throw new OvalRepositoryException( "Java type mapping error: element type=" + type );
+            throw new OvalException( "Java type mapping error: element type=" + type );
         }
 
         return javaType;

@@ -157,13 +157,14 @@ public class OvalDefinitionRepositoryController
 
     /**
      * Find one resource by ID.
+     *
+     * @throws  OvalException
      */
     protected <K, T extends OvalObject & Persistable<K>>
     T _findResourceById(
                     final Class<T> type,
                     final K id
                     )
-    throws OvalException
     {
         _LOG_.debug( "GET: type=" + type + ", id=" + id );
         T  resource = _getDatabase().findById( type, id );
@@ -175,6 +176,8 @@ public class OvalDefinitionRepositoryController
 
     /**
      * Creates a resource.
+     *
+     * @throws  OvalException
      */
     protected <K, T extends OvalObject & Persistable<K>>
     ResponseEntity<Void> _saveResource(
@@ -182,7 +185,6 @@ public class OvalDefinitionRepositoryController
                     final Class<T> type,
                     final T object
                     )
-    throws OvalException
     {
         _LOG_.debug( "POST: type=" + type + ", object=" + object );
 
@@ -203,13 +205,14 @@ public class OvalDefinitionRepositoryController
 
     /**
      * Retrieves the resources.
+     *
+     * @throws  OvalException
      */
     protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<T> _findResource(
                     final Class<T> type,
                     final QueryParams params
                     )
-    throws OvalException
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
@@ -262,12 +265,13 @@ public class OvalDefinitionRepositoryController
 
     /**
      * Retrieves the resources.
+     *
+     * @throws  OvalException
      */
     protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<K> _getResourceIDs(
                     final Class<T> type
                     )
-    throws OvalException
     {
         _LOG_.debug( "GET (find): type=" + type );
 
@@ -277,12 +281,15 @@ public class OvalDefinitionRepositoryController
     }
 
 
+    /**
+     *
+     * @throws  OvalException
+     */
     protected <K, T extends OvalObject & Persistable<K>>
     QueryResults<K> _findResourceIDs(
                     final Class<T> type,
                     final QueryParams params
                     )
-    throws OvalException
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
@@ -352,6 +359,10 @@ public class OvalDefinitionRepositoryController
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval%2etest:def:165"
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval:def:7222"
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/definitions/{id:.*}"
@@ -360,7 +371,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody DefinitionType findDefinitionById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( DefinitionType.class, id );
     }
@@ -386,6 +396,10 @@ public class OvalDefinitionRepositoryController
 
     // GET: query
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions?platform=Microsoft%20Windows%20XP*,Microsoft%20Windows%207*"
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/definitions"
@@ -394,7 +408,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody QueryResults<DefinitionType> findDefinition(
                     final DefinitionQueryParams params
                     )
-    throws OvalException
     {
         return _findResource( DefinitionType.class, params );
     }
@@ -411,6 +424,10 @@ public class OvalDefinitionRepositoryController
     //********************************************************************
 
     // GET: fetch one by ID
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/tests/{id:.*}"
@@ -419,7 +436,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody TestType findTestById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( TestType.class, id );
     }
@@ -427,6 +443,10 @@ public class OvalDefinitionRepositoryController
 
 
     // GET: fetch one by ID
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/objects/{id:.*}"
@@ -435,7 +455,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody SystemObjectType findObjectById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( SystemObjectType.class, id );
     }
@@ -443,6 +462,10 @@ public class OvalDefinitionRepositoryController
 
 
     // GET: fetch one by ID
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/states/{id:.*}"
@@ -451,7 +474,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody StateType findStateById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( StateType.class, id );
     }
@@ -459,6 +481,10 @@ public class OvalDefinitionRepositoryController
 
 
     // GET: fetch one by ID
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/variables/{id:.*}"
@@ -467,7 +493,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody VariableType findVariableById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( VariableType.class, id );
     }
@@ -480,6 +505,10 @@ public class OvalDefinitionRepositoryController
 
     // GET: fetch one by ID
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/fa54fd0a-2b71-4d6a-a17c-d1f123a74c2b"
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_definitions/{id:.*}"
@@ -488,7 +517,6 @@ public class OvalDefinitionRepositoryController
     public @ResponseBody OvalDefinitions findOvalDefinitionsById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( OvalDefinitions.class, id );
     }
@@ -531,6 +559,10 @@ public class OvalDefinitionRepositoryController
     // POST (create):
     //
     // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/repository/oval_definitions"
@@ -540,7 +572,6 @@ public class OvalDefinitionRepositoryController
                     @RequestBody final OvalDefinitions oval_definitions,
                     final HttpServletRequest request
                     )
-    throws OvalException
     {
         return _saveResource( request, OvalDefinitions.class, oval_definitions );
     }
@@ -550,6 +581,10 @@ public class OvalDefinitionRepositoryController
     // POST: generate
     //
     // test: curl -v -X POST -HContent-Type:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/generate?searchTerm=win-def:file"
+    /**
+     *
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/repository/oval_definitions/generate"
@@ -559,7 +594,6 @@ public class OvalDefinitionRepositoryController
                     final DefinitionQueryParams params,
                     final HttpServletRequest request
                     )
-    throws OvalException
     {
         String  id = _getGenerator().generateByQuery( params );
         URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );

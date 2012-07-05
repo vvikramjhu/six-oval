@@ -42,11 +42,10 @@ public interface OvalResultRepository
      *  the ID.
      * @return
      *  the OVAL Results object if exists, null otherwise.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public OvalResults findOvalResultsById(
-                    String id
-                    )
-    throws OvalRepositoryException;
+    public OvalResults findOvalResultsById( String id );
 
 
 
@@ -55,9 +54,10 @@ public interface OvalResultRepository
      *
      * @return
      *  all the OVAL Results in the repository.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalResults> findOvalResults()
-    throws OvalRepositoryException;
+    public List<OvalResults> findOvalResults();
 
 
 
@@ -68,11 +68,10 @@ public interface OvalResultRepository
      *  the query parameters.
      * @return
      *  the OVAL Results.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalResults> findOvalResults(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<OvalResults> findOvalResults( QueryParams params );
 
 
 
@@ -81,9 +80,10 @@ public interface OvalResultRepository
      *
      * @return
      *  the IDs of all the OVAL Results in the repository.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findOvalResultsId()
-    throws OvalRepositoryException;
+    public List<String> findOvalResultsId();
 
 
 
@@ -95,11 +95,10 @@ public interface OvalResultRepository
      *  the query parameters.
      * @return
      *  the IDs of OVAL Results.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findOvalResultsId(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<String> findOvalResultsId( QueryParams params );
 
 
 
@@ -108,9 +107,10 @@ public interface OvalResultRepository
      *
      * @return
      *  the number of Definitions in the repository.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public long countOvalResults()
-    throws OvalRepositoryException;
+    public long countOvalResults();
 
 
 
@@ -121,11 +121,10 @@ public interface OvalResultRepository
      *  the OVAL Results document.
      * @return
      *  the ID of the document.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public String saveOvalResults(
-                    OvalResults oval_results
-                    )
-    throws OvalRepositoryException;
+    public String saveOvalResults( OvalResults oval_results );
 
 
 
@@ -137,11 +136,10 @@ public interface OvalResultRepository
      *  the ID.
      * @return
      *  the OVAL System Characteristics object if exists, null otherwise.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
-                    String id
-                    )
-    throws OvalRepositoryException;
+    public OvalSystemCharacteristics findOvalSystemCharacteristicsById( String id );
 
 
 
@@ -152,11 +150,10 @@ public interface OvalResultRepository
      *  the query parameters.
      * @return
      *  the OVAL System Characteristics objects.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
-                    QueryParams params
-                    )
-    throws OvalRepositoryException;
+    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics( QueryParams params );
 
 
 
@@ -167,11 +164,10 @@ public interface OvalResultRepository
      *  the OVAL System Characteristics document.
      * @return
      *  the ID of the document.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public String saveOvalSystemCharacteristics(
-                    OvalSystemCharacteristics oval_sc
-                    )
-    throws OvalRepositoryException;
+    public String saveOvalSystemCharacteristics( OvalSystemCharacteristics oval_sc );
 
 }
 //

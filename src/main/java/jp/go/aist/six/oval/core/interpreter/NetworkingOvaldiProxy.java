@@ -180,12 +180,12 @@ public class NetworkingOvaldiProxy
 
 
     /**
-    *
-    */
+     *
+     * @throws  OvalInterpreterException
+     */
    private void _preProcess(
                    final Options localOptions
                    )
-   throws OvalInterpreterException
    {
        _prepareInputFiles( localOptions );
        _prepareOutputFiles( localOptions );
@@ -193,41 +193,42 @@ public class NetworkingOvaldiProxy
 
 
 
-   /**
-    */
-   private void _postProcess(
-                   final Options localizedOptions
-                   )
-   throws OvalInterpreterException
-   {
-       Options  originalOptions = getOptions();
-       for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
-           String  original_file_location = originalOptions.get( option );
-           if (original_file_location != null) {
-               URL  url = _toURL( original_file_location );
-               if (url == null) {
-                   // local filepath
-               } else {
-                   /** This option argument is an URL.
-                    * Obtain the local filepath, and
-                    * send the file to the remote execution.
-                    */
-                   String  filepath = localizedOptions.get( option );
-                   _httpPost( url, new File( filepath ), option.contentType );
-               }
-           }
-       }
-   }
+    /**
+     *
+     * @throws  OvalInterpreterException
+     */
+    private void _postProcess(
+                    final Options localizedOptions
+                    )
+    {
+        Options originalOptions = getOptions();
+        for (Option option : _NETWORK_OUTPUT_OPTIONS_) {
+            String original_file_location = originalOptions.get( option );
+            if (original_file_location != null) {
+                URL url = _toURL( original_file_location );
+                if (url == null) {
+                    // local filepath
+                } else {
+                    /**
+                     * This option argument is an URL. Obtain the local
+                     * filepath, and send the file to the remote execution.
+                     */
+                    String filepath = localizedOptions.get( option );
+                    _httpPost( url, new File( filepath ), option.contentType );
+                }
+            }
+        }
+    }
 
 
 
-   /**
-    * TODO: Send all the error results to the given locations.
-    * @param netOptions
-    */
-   private void _postErrorProcess()
-   {
-   }
+    /**
+     * TODO: Send all the error results to the given locations.
+     * @param netOptions
+     */
+    private void _postErrorProcess()
+    {
+    }
 
 
 
@@ -449,13 +450,12 @@ public class NetworkingOvaldiProxy
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  OvalInterpreter
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public int execute()
-    throws OvalInterpreterException
     {
         _init();
 
