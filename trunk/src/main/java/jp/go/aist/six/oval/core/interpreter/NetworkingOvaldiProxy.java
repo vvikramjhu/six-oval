@@ -20,25 +20,22 @@
 package jp.go.aist.six.oval.core.interpreter;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
+import jp.go.aist.six.util.net.Http;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequest;
-import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
 
 
@@ -216,7 +213,9 @@ public class NetworkingOvaldiProxy
                     * send the file to the remote execution.
                     */
                    String  filepath = localizedOptions.get( option );
-                   _restPostFile( url, new File( filepath ), option.contentType );
+
+                   _httpPost( url, new File( filepath ), option.contentType );
+//                   _restPostFile( url, new File( filepath ), option.contentType );
                }
            }
        }
@@ -355,7 +354,10 @@ public class NetworkingOvaldiProxy
                      * Then, replace the argument for local execution.
                      */
                     File  file = _createWorkingFile( option.defaultArgument );
-                    _restGetFile( url, file, option.contentType );
+
+                    _httpGet( url, file, option.contentType );
+//                    _restGetFile( url, file, option.contentType );
+
                     localizedOptions.set( option, file.getAbsolutePath() );
                 }
             }
@@ -395,99 +397,144 @@ public class NetworkingOvaldiProxy
 
 
     //==============================================================
-    // REST
+    // HTTP support
     //==============================================================
 
-    /**
-     */
-    protected RestTemplate _getRestTemplate()
-    {
-        return (new RestTemplate());
-    }
+//    /**
+//     */
+//    protected RestTemplate _getRestTemplate()
+//    {
+//        return (new RestTemplate());
+//    }
 
 
 
     /**
-     * REST: GET file
+     * HTTP GET to file
+     *
+     * @throws  OvalInterpreterException
      */
-    protected void _restGetFile(
-                    final URL location,
-                    final File file,
-                    final String contentType
+    protected void _httpGet(
+                    final URL from_url,
+                    final File to_file,
+                    final String content_type
                     )
-    throws OvalInterpreterException
     {
-        _LOG_.debug( "GET: location=" + location
-                        + ", file=" + file
-                        + ", content-type=" + contentType );
+        _LOG_.debug( "GET: from URL=" + from_url
+                        + ", to file=" + to_file
+                        + ", content-type=" + content_type );
 
-        URI  uri = null;
         try {
-            uri = location.toURI();
-                      //throws URISyntaxException
+            MediaType  media_type = MediaType.valueOf( content_type );
+            List<MediaType>  accept_media_types = Collections.singletonList( media_type );
+            Http.getTo( from_url, new FileOutputStream( to_file ), accept_media_types );
         } catch (Exception ex) {
-            throw new OvalInterpreterException( ex );
-        }
-
-        RestTemplate  rest = _getRestTemplate();
-        try {
-            FileResponseExtractor  extractor = new FileResponseExtractor( file );
-            MediaType  mediaType = MediaType.valueOf( contentType );
-            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType } );
-            AcceptHeaderRequestCallback  callback =
-                new AcceptHeaderRequestCallback( mediaTypes );
-            rest.execute(
-                            uri,
-                            HttpMethod.GET,
-                            callback,
-                            extractor
-                            );
-        } catch (RestClientException ex) {
-            _LOG_.error( "REST GET error: " + ex );
+            _LOG_.error( "HTTP GET error: " + ex );
             throw new OvalInterpreterException( ex );
         }
     }
+
+
+//    protected void _restGetFile(
+//                    final URL location,
+//                    final File file,
+//                    final String contentType
+//                    )
+//    throws OvalInterpreterException
+//    {
+//        _LOG_.debug( "GET: location=" + location
+//                        + ", file=" + file
+//                        + ", content-type=" + contentType );
+//
+//        URI  uri = null;
+//        try {
+//            uri = location.toURI();
+//                      //throws URISyntaxException
+//        } catch (Exception ex) {
+//            throw new OvalInterpreterException( ex );
+//        }
+//
+//        RestTemplate  rest = _getRestTemplate();
+//        try {
+//            FileResponseExtractor  extractor = new FileResponseExtractor( file );
+//            MediaType  mediaType = MediaType.valueOf( contentType );
+//            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType } );
+//            AcceptHeaderRequestCallback  callback =
+//                new AcceptHeaderRequestCallback( mediaTypes );
+//            rest.execute(
+//                            uri,
+//                            HttpMethod.GET,
+//                            callback,
+//                            extractor
+//                            );
+//        } catch (RestClientException ex) {
+//            _LOG_.error( "REST GET error: " + ex );
+//            throw new OvalInterpreterException( ex );
+//        }
+//    }
 
 
 
     /**
-     * REST: POST file
+     * HTTP POST file
+     *
+     * @throws  OvalInterpreterException
      */
-    protected void _restPostFile(
-                    final URL location,
-                    final File file,
-                    final String contentType
+    protected void _httpPost(
+                    final URL to_url,
+                    final File from_file,
+                    final String content_type
                     )
-    throws OvalInterpreterException
     {
-        _LOG_.debug( "POST: location=" + location
-                        + ", file=" + file
-                        + ", content-type=" + contentType );
+        _LOG_.debug( "HTTP POST: to URL=" + to_url
+                        + ", from file=" + from_file
+                        + ", content-type=" + content_type );
 
-        URI  uri = null;
         try {
-            uri = location.toURI();
-                      //throws URISyntaxException
+            MediaType  media_type = MediaType.valueOf( content_type );
+            Http.postFrom( to_url, new FileInputStream( from_file ), media_type );
         } catch (Exception ex) {
-            throw new OvalInterpreterException( ex );
-        }
-
-        RestTemplate  rest = _getRestTemplate();
-        MediaType  mediaType = MediaType.valueOf( contentType );
-        try {
-            FileRequestCallback  callback =
-                new FileRequestCallback( file, mediaType );
-            rest.execute(
-                            uri,
-                            HttpMethod.POST,
-                            callback,
-                            null
-                            );
-        } catch (RestClientException ex) {
-            _LOG_.error( "REST POST error: " + ex );
+            _LOG_.error( "HTTP POST error: " + ex );
             throw new OvalInterpreterException( ex );
         }
     }
+
+
+//    protected void _restPostFile(
+//                    final URL location,
+//                    final File file,
+//                    final String contentType
+//                    )
+//    throws OvalInterpreterException
+//    {
+//        _LOG_.debug( "POST: location=" + location
+//                        + ", file=" + file
+//                        + ", content-type=" + contentType );
+//
+//        URI  uri = null;
+//        try {
+//            uri = location.toURI();
+//                      //throws URISyntaxException
+//        } catch (Exception ex) {
+//            throw new OvalInterpreterException( ex );
+//        }
+//
+//        RestTemplate  rest = _getRestTemplate();
+//        MediaType  mediaType = MediaType.valueOf( contentType );
+//        try {
+//            FileRequestCallback  callback =
+//                new FileRequestCallback( file, mediaType );
+//            rest.execute(
+//                            uri,
+//                            HttpMethod.POST,
+//                            callback,
+//                            null
+//                            );
+//        } catch (RestClientException ex) {
+//            _LOG_.error( "REST POST error: " + ex );
+//            throw new OvalInterpreterException( ex );
+//        }
+//    }
 
 
 
@@ -524,44 +571,6 @@ public class NetworkingOvaldiProxy
         return exitValue;
     }
 
-
-
-
-    //**************************************************************
-    //  nested classes
-    //**************************************************************
-
-    /**
-     * A simple callback for the Spring RestTemplate.
-     */
-    private static class AcceptHeaderRequestCallback
-    implements RequestCallback
-    {
-
-        private final List<MediaType>  _acceptableMediaTypes;
-
-
-
-        private AcceptHeaderRequestCallback(
-                        final List<MediaType> mediaTypes
-                        )
-        {
-            _acceptableMediaTypes = mediaTypes;
-        }
-
-
-
-        @Override
-        public void doWithRequest(
-                        final ClientHttpRequest request
-                        )
-        throws IOException
-        {
-            request.getHeaders().setAccept( _acceptableMediaTypes );
-        }
-    }
-    //AcceptHeaderRequestCallback
-
 }
-//NetworkingOvaldiProxy
+//
 
