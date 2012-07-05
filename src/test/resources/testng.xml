@@ -72,11 +72,23 @@
 
 
 
+    <!-- ************************************************************** -->
+    <!-- *  oval.core.repository.web                                  * -->
+    <!-- ************************************************************** -->
+
+    <test name="oval.core.repository.web" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.web.HttpOvalRepositoryClientTests"/>
+        </classes>
+    </test>
+
+
+
     <!-- ******************************************************* -->
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
