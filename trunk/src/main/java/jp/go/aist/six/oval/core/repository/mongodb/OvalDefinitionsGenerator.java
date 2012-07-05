@@ -119,10 +119,12 @@ public class OvalDefinitionsGenerator
 
 
 
+    /**
+     * @throws  OvalException
+     */
     public String generateByQuery(
                     final QueryParams params
                     )
-    throws OvalException
     {
         _LOG_.debug( "params=" + params );
 
@@ -148,11 +150,13 @@ public class OvalDefinitionsGenerator
 
 
 
+    /**
+     * @throws  OvalException
+     */
     private void _addElements(
                     final OvalDefinitions oval_defs,
                     final Collection<String> oval_ids
                     )
-    throws OvalException
     {
         _LOG_.debug( "OVAL IDs: " + String.valueOf( oval_ids ) );
 //        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
@@ -176,11 +180,13 @@ public class OvalDefinitionsGenerator
     }
 
 
+    /**
+     * @throws  OvalException
+     */
     private DefinitionsElement _addElement(
                     final OvalDefinitions oval_defs,
                     final String oval_id
                     )
-    throws OvalException
     {
         _LOG_.debug( "OVAL ID: " + oval_id );
         boolean  contained = EntityUtil.containsElement( oval_defs, oval_id );

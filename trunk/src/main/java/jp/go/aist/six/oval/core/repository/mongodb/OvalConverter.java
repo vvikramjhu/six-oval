@@ -192,7 +192,6 @@ public class OvalConverter
                     final Object object,
                     final MappedField optionalExtraInfo
                     )
-    throws MappingException
     {
         if (object == null) {
             return null;
@@ -217,7 +216,6 @@ public class OvalConverter
                     final Object fromDBObject,
                     final MappedField optionalExtraInfo
                     )
-    throws MappingException
     {
         _LOG_.trace( "target class: " + targetClass );
         if (fromDBObject == null) {

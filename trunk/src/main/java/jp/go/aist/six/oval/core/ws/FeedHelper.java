@@ -74,6 +74,7 @@ public class FeedHelper
 
 
     /**
+     * @throws  OvalException
      */
     public static <T> Feed buildAtomFeed(
                     final String title,
@@ -81,7 +82,6 @@ public class FeedHelper
                     final String rel,
                     final List<Key<T>> ids
                     )
-    throws OvalException
     {
         Feed  feed = _createAtomFeedSkeleton( title );
 
@@ -110,6 +110,7 @@ public class FeedHelper
 
 
     /**
+     * @throws  OvalException
      */
     public static Feed buildAtomFeed(
                     final String title,
@@ -117,7 +118,6 @@ public class FeedHelper
                     final String rel,
                     final Collection<?> ids
                     )
-    throws OvalException
     {
         Feed  feed = _createAtomFeedSkeleton( title );
 
@@ -146,13 +146,13 @@ public class FeedHelper
 
 
     /**
+     * @throws  OvalException
      */
     public static Link buildLink(
                     final String baseUri,
                     final String rel,
                     final Object id
                     )
-    throws OvalException
     {
         if (id == null) {
             throw new OvalException( new IllegalArgumentException( "null id for Atom Link") );
@@ -169,5 +169,5 @@ public class FeedHelper
     }
 
 }
-// FeedHelper
+//
 

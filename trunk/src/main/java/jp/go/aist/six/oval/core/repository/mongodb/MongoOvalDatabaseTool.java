@@ -160,12 +160,12 @@ public class MongoOvalDatabaseTool
 
 
     /**
+     * @throws  XmlException
      */
     private static <T> T _unmarshalObject(
                     final Class<T> type,
                     final InputStream in_stream
                     )
-    throws XmlException
     {
         Object  obj = _getXmlMapper().unmarshal( in_stream );
         T  object = type.cast( obj );

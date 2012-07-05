@@ -57,13 +57,13 @@ public final class OvalEnumerationHelper
      *  the value of the enumeration.
      * @return
      *  the OvalEnumeration instance of the given type and value.
+     * @throws  OvalException
      */
     public static <T extends OvalEnumeration>
     T fromValue(
                     final Class<T> type,
                     final String value
                     )
-    throws OvalException
     {
         Object  obj = null;
 
@@ -93,11 +93,11 @@ public final class OvalEnumerationHelper
      *  the OvalEnumeration instance.
      * @return
      *  the return value of the value() method.
+     * @throws  OvalException
      */
     public static String value(
                     final Object obj
                     )
-    throws OvalException
     {
         if (obj == null) {
             return null;

@@ -33,9 +33,10 @@ public interface OvalInterpreter
 
     /**
      * Starts a new OVAL interpreter process.
+     *
+     * @throws  OvalInterpreterException
      */
-    public int execute()
-    throws OvalInterpreterException;
+    public int execute();
 
 
 
@@ -47,5 +48,5 @@ public interface OvalInterpreter
     public Options getOptions();
 
 }
-//OvalDefinitionInterpreter
+//
 

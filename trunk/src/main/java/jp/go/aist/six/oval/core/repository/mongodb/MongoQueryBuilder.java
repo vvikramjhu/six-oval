@@ -288,7 +288,6 @@ implements QueryBuilder
     Query<T> build(
                     final Query<T> query
                     )
-    throws OvalRepositoryException
     {
         buildQuery( query, _params );
 

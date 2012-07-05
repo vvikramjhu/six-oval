@@ -73,6 +73,9 @@ public class OvalRepositoryController
 
     // GET: fetch one by ID
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_scs/fa54fd0a-2b71-4d6a-a17c-d1f123a74c2b"
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_scs/{id:.*}"
@@ -81,7 +84,6 @@ public class OvalRepositoryController
     public @ResponseBody OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( OvalSystemCharacteristics.class, id );
     }
@@ -90,6 +92,9 @@ public class OvalRepositoryController
 
     // GET: query
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_scs?host=server.foo.org"
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_scs"
@@ -98,7 +103,6 @@ public class OvalRepositoryController
     public @ResponseBody QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final OvalSystemCharacteristicsQueryParams params
                     )
-    throws OvalException
     {
         return _findResource( OvalSystemCharacteristics.class, params );
     }
@@ -108,6 +112,9 @@ public class OvalRepositoryController
     // POST: create
     //
     // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_scs
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/repository/oval_scs"
@@ -117,7 +124,6 @@ public class OvalRepositoryController
                     @RequestBody final OvalSystemCharacteristics oval_scs,
                     final HttpServletRequest request
                     )
-    throws OvalException
     {
         return _saveResource( request, OvalSystemCharacteristics.class, oval_scs );
     }
@@ -130,6 +136,9 @@ public class OvalRepositoryController
 
     // GET: fetch one by ID
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_results/fa54fd0a-2b71-4d6a-a17c-d1f123a74c2b"
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_results/{id:.*}"
@@ -138,7 +147,6 @@ public class OvalRepositoryController
     public @ResponseBody OvalResults findOvalResultsById(
                     @PathVariable final String id
                     )
-    throws OvalException
     {
         return _findResourceById( OvalResults.class, id );
     }
@@ -147,6 +155,9 @@ public class OvalRepositoryController
 
     // GET: query
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_results?definitionTrue=oval:org%2emitre%2eoval:def:6210"
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_results"
@@ -155,7 +166,6 @@ public class OvalRepositoryController
     public @ResponseBody QueryResults<OvalResults> findOvalResults(
                     final OvalResultsQueryParams params
                     )
-    throws OvalException
     {
         return _findResource( OvalResults.class, params );
     }
@@ -165,6 +175,9 @@ public class OvalRepositoryController
     // POST: create
     //
     // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_results
+    /**
+     * @throws  OvalException
+     */
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/repository/oval_results"
@@ -174,7 +187,6 @@ public class OvalRepositoryController
                     @RequestBody final OvalResults oval_results,
                     final HttpServletRequest request
                     )
-    throws OvalException
     {
         return _saveResource( request, OvalResults.class, oval_results );
     }

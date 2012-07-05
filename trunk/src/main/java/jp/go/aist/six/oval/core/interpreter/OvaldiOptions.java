@@ -48,11 +48,12 @@ public class OvaldiOptions
 
     /**
      * A factory method.
+     *
+     * @throws  OvalInterpreterException
      */
     public static Options fromCommandLine(
                     final List<String> strings
                     )
-    throws OvalInterpreterException
     {
         Options  options = new OvaldiOptions();
         if (strings == null  ||  strings.size() == 0) {
@@ -102,13 +103,12 @@ public class OvaldiOptions
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  Options
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public List<String> toCommandLine()
-    throws OvalInterpreterException
     {
         List<String>  command_line = new ArrayList<String>();
 
@@ -131,5 +131,5 @@ public class OvaldiOptions
     }
 
 }
-//OvaldiOptions
+//
 

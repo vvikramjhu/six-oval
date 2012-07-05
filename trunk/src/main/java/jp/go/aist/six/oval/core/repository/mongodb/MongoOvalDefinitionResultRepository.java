@@ -64,7 +64,6 @@ public class MongoOvalDefinitionResultRepository
     public OvalResults findOvalResultsById(
                     final String id
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -83,7 +82,6 @@ public class MongoOvalDefinitionResultRepository
 
     @Override
     public List<OvalResults> findOvalResults()
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -104,7 +102,6 @@ public class MongoOvalDefinitionResultRepository
     public List<OvalResults> findOvalResults(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -123,7 +120,6 @@ public class MongoOvalDefinitionResultRepository
 
     @Override
     public List<String> findOvalResultsId()
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -145,7 +141,6 @@ public class MongoOvalDefinitionResultRepository
     public List<String> findOvalResultsId(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -164,7 +159,6 @@ public class MongoOvalDefinitionResultRepository
 
     @Override
     public long countOvalResults()
-    throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -185,7 +179,6 @@ public class MongoOvalDefinitionResultRepository
     public String saveOvalResults(
                     final OvalResults oval_results
                     )
-    throws OvalRepositoryException
     {
         String  id = null;
         try {
@@ -203,7 +196,6 @@ public class MongoOvalDefinitionResultRepository
     public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     final String id
                     )
-    throws OvalRepositoryException
     {
         OvalSystemCharacteristics  p_object = null;
         try {
@@ -221,7 +213,6 @@ public class MongoOvalDefinitionResultRepository
     public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
-    throws OvalRepositoryException
     {
         List<OvalSystemCharacteristics>  p_list = null;
         try {
@@ -239,7 +230,6 @@ public class MongoOvalDefinitionResultRepository
     public String saveOvalSystemCharacteristics(
                     final OvalSystemCharacteristics oval_sc
                     )
-    throws OvalRepositoryException
     {
         String  id = null;
         try {
