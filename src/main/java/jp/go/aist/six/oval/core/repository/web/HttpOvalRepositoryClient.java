@@ -19,6 +19,7 @@
 
 package jp.go.aist.six.oval.core.repository.web;
 
+import java.util.Arrays;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -105,6 +106,10 @@ public class HttpOvalRepositoryClient
                     final Object... uri_variables
                     )
     {
+        _LOG_.debug( "HTTP GET: URL path=" + url_path
+                        + ", response type=" + response_type
+                        + ", variables=" + Arrays.toString( uri_variables ) );
+
         HttpHeaders  request_headers = new HttpHeaders();
         request_headers.setContentType( MediaType.APPLICATION_XML );
         HttpEntity<?> request_entity = new HttpEntity<Void>( request_headers );
