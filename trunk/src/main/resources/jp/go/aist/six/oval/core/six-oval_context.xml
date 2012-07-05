@@ -65,9 +65,9 @@
 
 
 
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %  REST                                               % -->
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %  REST                                                      % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <bean id="marshalling-converter" 
         class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
@@ -87,5 +87,16 @@
         <property name="supportedMediaTypes" value="text/plain"/> 
     </bean> 
     --> 
+
+
+    <bean id="rest-template" scope="prototype" 
+        class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters"> 
+            <list> 
+                <ref bean="marshalling-converter" /> 
+                <!-- ref bean="atom-converter" / --> 
+            </list> 
+        </property>
+    </bean>
 
 </beans>
