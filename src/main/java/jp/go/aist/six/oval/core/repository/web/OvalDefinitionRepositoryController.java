@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.repository.web;
 
 import java.net.URI;
 import java.util.ArrayList;

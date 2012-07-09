@@ -87,7 +87,7 @@
 
 
     <bean id="ovalController" 
-       class="jp.go.aist.six.oval.core.ws.OvalRepositoryController">
+       class="jp.go.aist.six.oval.core.repository.web.OvalRepositoryController">
         <property name="database" ref="oval-database" />
         <property name="generator" ref="oval-definitions-generator" />
     </bean>
