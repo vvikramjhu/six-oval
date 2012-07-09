@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
@@ -167,6 +168,28 @@ public class HttpOvalRepositoryClient
 
 
 
+    /**
+     */
+    private QueryResults<String> _toStringIdResults(
+                    final QueryResults<OvalId>  oval_id_results
+                    )
+    {
+        List<String>  id_list = new ArrayList<String>();
+        for (OvalId  oval_id : oval_id_results.getElements()) {
+            id_list.add( oval_id.toString() );
+        }
+
+        QueryResults<String>  query_results = new QueryResults<String>( id_list );
+        query_results.setTimestamp( oval_id_results.getTimestamp() );
+        query_results.setTotalResults( oval_id_results.getTotalResults() );
+        query_results.setItemsPerPage( oval_id_results.getItemsPerPage() );
+
+        return query_results;
+    }
+
+
+
+
     //*********************************************************************
     //  implements OvalDefinitionRepository
     //*********************************************************************
@@ -263,15 +286,17 @@ public class HttpOvalRepositoryClient
         QueryResults<OvalId>  oval_id_results = _httpGet(
                         _URL_DEFINITON_ + query_part, QueryResults.class );
 
-        List<String>  id_list = new ArrayList<String>();
-        for (OvalId  oval_id : oval_id_results.getElements()) {
-            id_list.add( oval_id.toString() );
-        }
+        QueryResults<String>  query_results = _toStringIdResults( oval_id_results );
 
-        QueryResults<String>  query_results = new QueryResults<String>( id_list );
-        query_results.setTimestamp( oval_id_results.getTimestamp() );
-        query_results.setTotalResults( oval_id_results.getTotalResults() );
-        query_results.setItemsPerPage( oval_id_results.getItemsPerPage() );
+//        List<String>  id_list = new ArrayList<String>();
+//        for (OvalId  oval_id : oval_id_results.getElements()) {
+//            id_list.add( oval_id.toString() );
+//        }
+//
+//        QueryResults<String>  query_results = new QueryResults<String>( id_list );
+//        query_results.setTimestamp( oval_id_results.getTimestamp() );
+//        query_results.setTotalResults( oval_id_results.getTotalResults() );
+//        query_results.setItemsPerPage( oval_id_results.getItemsPerPage() );
 
         return query_results;
     }
@@ -340,10 +365,18 @@ public class HttpOvalRepositoryClient
     // definitions element (Definition, Test, Object, State, Variable)
     //=====================================================================
 
+    private static final String  _URL_ELEMENT_BY_ID_ =
+                    "/{type}s/{id}";
+
     @Override
-    public DefinitionsElement findElementById( final String oval_id )
+    public DefinitionsElement findElementById(
+                    final String oval_id
+                    )
     {
-        throw new UnsupportedOperationException();
+        ElementType  type = OvalId.elementTypeOf( oval_id );
+        DefinitionsElement  element = _httpGet(
+                        _URL_ELEMENT_BY_ID_, DefinitionsElement.class, type.value(), oval_id );
+        return element;
     }
 
 
