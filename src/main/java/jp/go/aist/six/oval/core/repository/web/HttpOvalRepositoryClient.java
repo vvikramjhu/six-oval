@@ -129,6 +129,38 @@ public class HttpOvalRepositoryClient
 
 
 
+    /**
+     *
+     * @param params
+     * @return
+     */
+    private String _toUriQueryStrings(
+                    final QueryParams params
+                    )
+    {
+        if (params == null  ||  params.size() == 0) {
+            return "";
+        }
+
+        StringBuilder  s = new StringBuilder();
+        boolean  first_key = true;
+        for (String  key : params.keys()) {
+            if (first_key) {
+                s.append( "?" );
+                first_key = false;
+            } else {
+                s.append( "&" );
+            }
+
+            String  value = params.get( key );
+            s.append( key ).append( "=" ).append( value );
+        }
+
+        return s.toString();
+    }
+
+
+
     //*********************************************************************
     //  implements OvalDefinitionRepository
     //*********************************************************************
@@ -159,23 +191,47 @@ public class HttpOvalRepositoryClient
     @Override
     public QueryResults<DefinitionType> findDefinition()
     {
-        throw new UnsupportedOperationException();
+        @SuppressWarnings( "unchecked" )
+        QueryResults<DefinitionType>  query_results = _httpGet(
+                        _URL_DEFINITON_, QueryResults.class );
+
+        return query_results;
     }
 
 
 
     @Override
-    public QueryResults<DefinitionType> findDefinition( final QueryParams params )
+    public QueryResults<DefinitionType> findDefinition(
+                    final QueryParams params
+                    )
     {
-        throw new UnsupportedOperationException();
+        String  query_part = _toUriQueryStrings( params );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<DefinitionType>  query_results = _httpGet(
+                        _URL_DEFINITON_ + query_part, QueryResults.class );
+
+        return query_results;
     }
 
 
 
+    private static final String  _URL_DEFINITON_ID_ =
+                    "/definitions/id";
+
+
     @Override
-    public QueryResults<String> findDefinitionId( final QueryParams params )
+    public QueryResults<String> findDefinitionId(
+                    final QueryParams params
+                    )
     {
-        throw new UnsupportedOperationException();
+        String  query_part = _toUriQueryStrings( params );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<String>  query_results = _httpGet(
+                        _URL_DEFINITON_ID_ + query_part, QueryResults.class );
+
+        return query_results;
     }
 
 
@@ -184,7 +240,7 @@ public class HttpOvalRepositoryClient
     @Override
     public long countDefinition()
     {
-        throw new UnsupportedOperationException();
+        return countDefinition( null );
     }
 
 
@@ -192,7 +248,8 @@ public class HttpOvalRepositoryClient
     @Override
     public long countDefinition( final QueryParams params )
     {
-        throw new UnsupportedOperationException();
+        QueryResults<String>  query_results = findDefinitionId( params );
+        return query_results.size();
     }
 
 

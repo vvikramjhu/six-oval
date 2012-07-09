@@ -413,6 +413,21 @@ public class OvalDefinitionRepositoryController
     }
 
 
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/repository/definitions/id"
+                    ,headers="Accept=application/xml"
+                    )
+    public @ResponseBody QueryResults<String> findDefinitionId(
+                    final DefinitionQueryParams params
+                    )
+    {
+        List<String>  list = _getDatabase().findId( DefinitionType.class, params );
+
+        return _buildQueryResults( params, list );
+    }
+
+
 
     // POST (create)
 
