@@ -20,14 +20,16 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabase;
 import jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator;
 import jp.go.aist.six.oval.model.OvalObject;
+import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -213,13 +215,31 @@ public class OvalDefinitionRepositoryController
         return _buildQueryResults( params, list );
     }
 
+    protected <T extends DefinitionsElement>
+    QueryResults<OvalId> _findResourceOvalId(
+                    final Class<T> type,
+                    final QueryParams params
+                    )
+    {
+        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
+
+        List<String>  list = _getDatabase().findId( type, params );
+        List<OvalId>  id_list = new ArrayList<OvalId>();
+        for (String  id : list) {
+            id_list.add( new OvalId( id ) );
+        }
+
+        return _buildQueryResults( params, id_list );
+    }
+
+
 
 
    /**
     * COUNT
     */
     protected <K, T extends OvalObject & Persistable<K>>
-    QueryResults<Long> _findResourceCount(
+    QueryResults<Void> _findResourceCount(
                     final Class<T> type,
                     final QueryParams params
                     )
@@ -227,8 +247,12 @@ public class OvalDefinitionRepositoryController
         _LOG_.debug( "GET (count): type=" + type + ", params=" + params );
 
         long  count = _getDatabase().count( type, params );
+        QueryResults<Void>  results = new QueryResults<Void>();
+        results.setTotalResults( count );
 
-        return _buildQueryResults( null, Collections.singletonList( count ) );
+        return results;
+
+//        return _buildQueryResults( null, Collections.singletonList( count ) );
     }
 
 
@@ -434,7 +458,8 @@ public class OvalDefinitionRepositoryController
         View  view = (view_value == null ? View.complete : View.valueOf( view_value ));
         params.remove( CommonQueryParams.Key.VIEW );
         if (view == View.id) {
-            results = _findResourceId( DefinitionType.class, params );
+            results = _findResourceOvalId( DefinitionType.class, params );
+//            results = _findResourceId( DefinitionType.class, params );
         } else if (view == View.count) {
             results = _findResourceCount( DefinitionType.class, params );
         } else {

@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
 import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
@@ -104,7 +105,9 @@ public class HttpOvalRepositoryClientTests
                     groups={
                                     "MODEL.oval.def.definition",
                                     "PACKAGE.oval.core.repository.web",
-                                    "CONTROL.oval.repository.findDefinition"
+                                    "CONTROL.oval.repository.findDefinitionByQuery",
+                                    "CONTROL.oval.repository.findDefinitionIdByQuery",
+                                    "CONTROL.oval.repository.countDefinitionByQuery"
                                     }
 //                    ,dependsOnGroups={ "CONTROL.oval.repository.findDefinition" }
                     ,alwaysRun=true
@@ -115,12 +118,30 @@ public class HttpOvalRepositoryClientTests
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        Reporter.log( ">>> findDefinition()...", true );
-        QueryResults<DefinitionType>  def = _repository_client.findDefinition();
-        Reporter.log( "<<< ...findDefinition()", true );
-        Reporter.log( "  @ response: " + def, true );
-        Assert.assertNotNull( def );
-//        Assert.assertEquals( def.getOvalId(), oval_id );
+        // definition: definitionClass
+        DefinitionQueryParams  params20 = new DefinitionQueryParams();
+        params20.setDefinitionClass( ClassEnumeration.COMPLIANCE );
+
+        Reporter.log( ">>> findDefinition(params)...", true );
+        QueryResults<DefinitionType>  def_results = _repository_client.findDefinition( params20 );
+        Reporter.log( "<<< ...findDefinition(params)", true );
+        Reporter.log( "  @ response: " + def_results, true );
+        Assert.assertNotNull( def_results );
+
+        Reporter.log( ">>> findDefinitionId(params)...", true );
+        QueryResults<String>  id_results = _repository_client.findDefinitionId( params20 );
+        Reporter.log( "<<< ...findDefinitionId(params)", true );
+        Reporter.log( "  @ response: " + id_results, true );
+        Assert.assertNotNull( id_results );
+
+        Reporter.log( ">>> countDefinition(params)...", true );
+        long  count_results = _repository_client.countDefinition( params20 );
+        Reporter.log( "<<< ...countDefinition(params)", true );
+        Reporter.log( "  @ response: " + count_results, true );
+
+
+        Assert.assertEquals( def_results.size(), count_results );
+        Assert.assertEquals(  id_results.size(), count_results );
     }
 
 
