@@ -3,7 +3,7 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.io.File;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.DefinitionType;
@@ -36,7 +36,7 @@ public class MongoOvalResultRepositoryTests
 extends OvalCoreTestBase
 {
 
-    private MongoOvalDefinitionResultRepository  _oval_res_repository;
+    private MongoOvalRepository  _oval_res_repository;
 
 
 
@@ -49,12 +49,12 @@ extends OvalCoreTestBase
     {
         super.setUp();
 
-        _oval_res_repository = OvalContext.getBean( "mongoOvalDefinitionResultRepository", MongoOvalDefinitionResultRepository.class );
+        _oval_res_repository = OvalContext.getBean( "mongoOvalDefinitionResultRepository", MongoOvalRepository.class );
     }
 
 
 
-    protected MongoOvalDefinitionResultRepository _getDefinitionResultRepository()
+    protected MongoOvalRepository _getDefinitionResultRepository()
     {
         return _oval_res_repository;
     }

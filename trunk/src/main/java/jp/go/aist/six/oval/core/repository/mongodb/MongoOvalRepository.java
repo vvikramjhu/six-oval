@@ -22,8 +22,8 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.OvalResultRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 
@@ -35,9 +35,9 @@ import jp.go.aist.six.oval.repository.QueryResults;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDefinitionResultRepository
+public class MongoOvalRepository
     extends MongoOvalDefinitionRepository
-    implements OvalResultRepository
+    implements OvalRepository
 {
 
 //    /**
@@ -51,7 +51,7 @@ public class MongoOvalDefinitionResultRepository
     /**
      * Constructor.
      */
-    public MongoOvalDefinitionResultRepository()
+    public MongoOvalRepository()
     {
     }
 
