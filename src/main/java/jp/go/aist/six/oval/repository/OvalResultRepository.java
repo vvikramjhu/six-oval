@@ -19,7 +19,6 @@
 
 package jp.go.aist.six.oval.repository;
 
-import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 
@@ -57,7 +56,8 @@ public interface OvalResultRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalResults> findOvalResults();
+    public QueryResults<OvalResults> findOvalResults();
+//    public List<OvalResults> findOvalResults();
 
 
 
@@ -71,7 +71,8 @@ public interface OvalResultRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalResults> findOvalResults( QueryParams params );
+    public QueryResults<OvalResults> findOvalResults( QueryParams params );
+//    public List<OvalResults> findOvalResults( QueryParams params );
 
 
 
@@ -83,7 +84,8 @@ public interface OvalResultRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findOvalResultsId();
+    public QueryResults<String> findOvalResultsId();
+//    public List<String> findOvalResultsId();
 
 
 
@@ -98,7 +100,8 @@ public interface OvalResultRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findOvalResultsId( QueryParams params );
+    public QueryResults<String> findOvalResultsId( QueryParams params );
+//    public List<String> findOvalResultsId( QueryParams params );
 
 
 
@@ -153,7 +156,8 @@ public interface OvalResultRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics( QueryParams params );
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics( QueryParams params );
+//    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics( QueryParams params );
 
 
 

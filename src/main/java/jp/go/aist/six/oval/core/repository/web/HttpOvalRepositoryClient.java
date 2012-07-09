@@ -20,7 +20,6 @@
 package jp.go.aist.six.oval.core.repository.web;
 
 import java.util.Arrays;
-import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
@@ -154,8 +153,11 @@ public class HttpOvalRepositoryClient
 
 
 
+    private static final String  _URL_DEFINITON_ =
+                    "/definitions";
+
     @Override
-    public List<DefinitionType> findDefinition()
+    public QueryResults<DefinitionType> findDefinition()
     {
         throw new UnsupportedOperationException();
     }
@@ -163,14 +165,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<DefinitionType> findDefinition( final QueryParams params )
-    {
-        throw new UnsupportedOperationException();
-    }
-
-
-    @Override
-    public QueryResults<DefinitionType> findDefinitionByQuery( final QueryParams params )
+    public QueryResults<DefinitionType> findDefinition( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }
@@ -178,7 +173,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<String> findDefinitionId( final QueryParams params )
+    public QueryResults<String> findDefinitionId( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }
@@ -217,7 +212,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<DefinitionsElement> findElement( final QueryParams params )
+    public QueryResults<DefinitionsElement> findElement( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }
@@ -273,7 +268,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<OvalResults> findOvalResults()
+    public QueryResults<OvalResults> findOvalResults()
     {
         throw new UnsupportedOperationException();
     }
@@ -281,7 +276,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<OvalResults> findOvalResults( final QueryParams params )
+    public QueryResults<OvalResults> findOvalResults( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }
@@ -289,7 +284,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<String> findOvalResultsId()
+    public QueryResults<String> findOvalResultsId()
     {
         throw new UnsupportedOperationException();
     }
@@ -297,7 +292,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<String> findOvalResultsId( final QueryParams params )
+    public QueryResults<String> findOvalResultsId( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }
@@ -329,7 +324,7 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics( final QueryParams params )
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics( final QueryParams params )
     {
         throw new UnsupportedOperationException();
     }

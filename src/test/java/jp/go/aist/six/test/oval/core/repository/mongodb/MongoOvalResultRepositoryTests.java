@@ -16,6 +16,7 @@ import jp.go.aist.six.oval.model.sc.SystemInfoType;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
 import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
 import org.testng.Assert;
@@ -429,18 +430,19 @@ extends OvalCoreTestBase
         Reporter.log( "<<< ...countOvalResults()", true );
 
         Reporter.log( ">>> findOvalResults()...", true );
-        List<OvalResults>  res_list = _getDefinitionResultRepository().findOvalResults();
+        QueryResults<OvalResults>  result_list = _getDefinitionResultRepository().findOvalResults();
         Reporter.log( "<<< ...findOvalResults()", true );
-        Assert.assertNotNull( res_list );
-        Assert.assertEquals( count, res_list.size() );
+        Assert.assertNotNull( result_list );
+        Assert.assertEquals( count, result_list.size() );
 
         Reporter.log( ">>> findOvalResultsId()...", true );
-        List<String>  id_list = _getDefinitionResultRepository().findOvalResultsId();
+        QueryResults<String>  result_id_list = _getDefinitionResultRepository().findOvalResultsId();
         Reporter.log( "<<< ...findOvalResultsId()", true );
-        Assert.assertNotNull( id_list );
-        Assert.assertEquals( count, id_list.size() );
+        Assert.assertNotNull( result_id_list );
+        Assert.assertEquals( count, result_id_list.size() );
 
-        for (OvalResults  res : res_list) {
+        List<String>  id_list = result_id_list.getElements();
+        for (OvalResults  res : result_list.getElements()) {
             String  id = res.getPersistentID();
             Assert.assertTrue( id_list.contains( id ) );
         }
@@ -473,11 +475,11 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findOvalResults(params)...", true );
         Reporter.log( "  * params: " + params, true );
 
-        List<OvalResults>  oval_results_list = _getDefinitionResultRepository().findOvalResults( params );
+        QueryResults<OvalResults>  oval_results_list = _getDefinitionResultRepository().findOvalResults( params );
         Reporter.log( "<<< ...findOvalResults(params)", true );
         Assert.assertNotNull( oval_results_list );
         Reporter.log( "  @ #OVAL Results: " + oval_results_list.size(), true );
-        for (OvalResults  oval_results : oval_results_list) {
+        for (OvalResults  oval_results : oval_results_list.getElements()) {
             Reporter.log( "  @ ID: " + oval_results.getPersistentID(), true );
             ResultsType  results = oval_results.getResults();
             for (SystemType  sys : results.getSystem()) {
@@ -572,11 +574,12 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findOvalSc(params)...", true );
         Reporter.log( "  * params: " + params, true );
 
-        List<OvalSystemCharacteristics>  oval_sc_list = _getDefinitionResultRepository().findOvalSystemCharacteristics( params );
+        QueryResults<OvalSystemCharacteristics>  query_results =
+                        _getDefinitionResultRepository().findOvalSystemCharacteristics( params );
         Reporter.log( "<<< ...findOvalSc(params)", true );
-        Assert.assertNotNull( oval_sc_list );
-        Reporter.log( "  @ #OVAL SC: " + oval_sc_list.size(), true );
-        for (OvalSystemCharacteristics  oval_sc : oval_sc_list) {
+        Assert.assertNotNull( query_results );
+        Reporter.log( "  @ #OVAL SC: " + query_results.size(), true );
+        for (OvalSystemCharacteristics  oval_sc : query_results.getElements()) {
             Reporter.log( "  @ SC._id: " + oval_sc.getPersistentID(), true );
             SystemInfoType  sys = oval_sc.getSystemInfo();
             Reporter.log( "    system_info: " + sys, true );

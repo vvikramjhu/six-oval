@@ -3,7 +3,6 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.ComponentType;
@@ -22,6 +21,7 @@ import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
 import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
 import org.testng.Assert;
@@ -814,15 +814,15 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findElement(params)...", true );
         Reporter.log( "  * params: " + params, true );
 
-        List<DefinitionsElement>  element_list = _getDefinitionRepository().findElement( params );
+        QueryResults<DefinitionsElement>  result_list = _getDefinitionRepository().findElement( params );
         Reporter.log( "<<< ...findElement(params)", true );
-        Assert.assertNotNull( element_list );
-        Reporter.log( "  @ #Elements: " + element_list.size(), true );
-        _printOvalIds( element_list );
+        Assert.assertNotNull( result_list );
+        Reporter.log( "  @ #Elements: " + result_list.size(), true );
+        _printOvalIds( result_list.getElements() );
 
-        if (element_list.size() > 0) {
+        if (result_list.size() > 0) {
             Collection<ElementType>  type_set = Arrays.asList( types );
-            for (DefinitionsElement  e : element_list) {
+            for (DefinitionsElement  e : result_list.getElements()) {
                 Assert.assertTrue( type_set.contains( e.ovalGetType() ) );
             }
         }
@@ -838,7 +838,7 @@ extends OvalCoreTestBase
             Reporter.log( "<<< ...countElement(params)", true );
             Reporter.log( "  @ #Elements: " + count, true );
 
-            Assert.assertEquals( element_list.size(), count );
+            Assert.assertEquals( result_list.size(), count );
         }
     }
 
@@ -868,17 +868,17 @@ extends OvalCoreTestBase
                         true );
 
         Reporter.log( ">>> findDefinition()...", true );
-        List<DefinitionType>  def_list = _getDefinitionRepository().findDefinition();
+        QueryResults<DefinitionType>  result_list = _getDefinitionRepository().findDefinition();
         Reporter.log( "<<< ...findDefinition()", true );
-        Assert.assertNotNull( def_list );
-        _printOvalIds( def_list );
+        Assert.assertNotNull( result_list );
+        _printOvalIds( result_list.getElements() );
 
         Reporter.log( ">>> countDefinition()...", true );
         long  count = _getDefinitionRepository().countDefinition();
         Reporter.log( "<<< ...countDefinition()", true );
         Reporter.log( "  @ #Definitions: " + count, true );
 
-        Assert.assertEquals( def_list.size(), count );
+        Assert.assertEquals( result_list.size(), count );
     }
 
 
@@ -946,22 +946,22 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findDefinition(params)...", true );
         Reporter.log( "  * params: "          + params, true );
 
-        List<DefinitionType>  def_list = _getDefinitionRepository().findDefinition( params );
+        QueryResults<DefinitionType>  result_list = _getDefinitionRepository().findDefinition( params );
         Reporter.log( "<<< ...findDefinition(params)", true );
-        Assert.assertNotNull( def_list );
-        Reporter.log( "  @ #Definition: " + def_list.size(), true );
-        _printOvalIds( def_list );
+        Assert.assertNotNull( result_list );
+        Reporter.log( "  @ #Definition: " + result_list.size(), true );
+        _printOvalIds( result_list.getElements() );
 
 
         Reporter.log( ">>> findDefinitionId(params)...", true );
         Reporter.log( "  * params: "          + params, true );
 
-        List<String>  def_id_list = _getDefinitionRepository().findDefinitionId( params );
+        QueryResults<String>  result_id_list = _getDefinitionRepository().findDefinitionId( params );
         Reporter.log( "<<< ...findDefinitionId(params)", true );
-        Assert.assertNotNull( def_id_list );
-        Reporter.log( "  @ #IDs: " + def_id_list.size(), true );
+        Assert.assertNotNull( result_id_list );
+        Reporter.log( "  @ #IDs: " + result_id_list.size(), true );
 
-        Assert.assertEquals( def_list.size(), def_id_list.size() );
+        Assert.assertEquals( result_list.size(), result_id_list.size() );
 
 
         Reporter.log( ">>> countDefinition(params)...", true );
@@ -973,7 +973,7 @@ extends OvalCoreTestBase
         //And then, the number of results does not equal to the number returned from the countXxx() methods.
         String  count_param = params.get( CommonQueryParams.Key.COUNT );
         if (count_param == null) {
-            Assert.assertEquals( def_list.size(), count );
+            Assert.assertEquals( result_list.size(), count );
         }
     }
 

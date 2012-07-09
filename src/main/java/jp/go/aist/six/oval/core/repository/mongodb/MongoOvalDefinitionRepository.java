@@ -154,10 +154,8 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public List<DefinitionType> findDefinition()
+    public QueryResults<DefinitionType> findDefinition()
     {
-//        long  ts_start = System.currentTimeMillis();
-
         List<DefinitionType>  p_list = null;
         try {
             p_list = _database.find( DefinitionType.class );
@@ -165,34 +163,14 @@ public class MongoOvalDefinitionRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        return new QueryResults<DefinitionType>( p_list );
+//        return p_list;
     }
 
 
 
     @Override
-    public List<DefinitionType> findDefinition(
-                    final QueryParams params
-                    )
-    {
-//        long  ts_start = System.currentTimeMillis();
-
-        List<DefinitionType>  p_list = null;
-        try {
-            p_list = _database.find( DefinitionType.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
-    }
-
-
-
-    @Override
-    public QueryResults<DefinitionType> findDefinitionByQuery(
+    public QueryResults<DefinitionType> findDefinition(
                     final QueryParams params
                     )
     {
@@ -203,13 +181,13 @@ public class MongoOvalDefinitionRepository
             throw new OvalRepositoryException( ex );
         }
 
-        return _buildQueryResults( params, p_list );
+        return new QueryResults<DefinitionType>( p_list );
     }
 
 
 
     @Override
-    public List<String> findDefinitionId(
+    public QueryResults<String> findDefinitionId(
                     final QueryParams params
                     )
     {
@@ -220,7 +198,7 @@ public class MongoOvalDefinitionRepository
             throw new OvalRepositoryException( ex );
         }
 
-        return p_list;
+        return new QueryResults<String>( p_list );
     }
 
 
@@ -362,7 +340,7 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public List<DefinitionsElement> findElement(
+    public QueryResults<DefinitionsElement> findElement(
                     final QueryParams params
                     )
     {
@@ -409,8 +387,7 @@ public class MongoOvalDefinitionRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        return new QueryResults<DefinitionsElement>( p_list );
     }
 
 
