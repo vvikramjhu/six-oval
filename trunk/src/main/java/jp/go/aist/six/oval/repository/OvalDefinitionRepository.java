@@ -19,7 +19,6 @@
 
 package jp.go.aist.six.oval.repository;
 
-import java.util.List;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -63,7 +62,8 @@ public interface OvalDefinitionRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionType> findDefinition();
+    public QueryResults<DefinitionType> findDefinition();
+//    public List<DefinitionType> findDefinition();
 
 
 
@@ -77,9 +77,8 @@ public interface OvalDefinitionRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionType> findDefinition( QueryParams params );
-
-    public QueryResults<DefinitionType> findDefinitionByQuery( QueryParams params );
+    public QueryResults<DefinitionType> findDefinition( QueryParams params );
+//    public List<DefinitionType> findDefinition( QueryParams params );
 
 
 
@@ -93,7 +92,8 @@ public interface OvalDefinitionRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<String> findDefinitionId( QueryParams params );
+    public QueryResults<String> findDefinitionId( QueryParams params );
+//    public List<String> findDefinitionId( QueryParams params );
 
 
 
@@ -180,7 +180,8 @@ public interface OvalDefinitionRepository
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public List<DefinitionsElement> findElement( QueryParams params );
+    public QueryResults<DefinitionsElement> findElement( QueryParams params );
+//    public List<DefinitionsElement> findElement( QueryParams params );
 
 
 

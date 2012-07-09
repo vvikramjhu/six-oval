@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResults;
 
 
 
@@ -81,7 +82,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public List<OvalResults> findOvalResults()
+    public QueryResults<OvalResults> findOvalResults()
     {
 //        long  ts_start = System.currentTimeMillis();
 
@@ -93,13 +94,13 @@ public class MongoOvalDefinitionResultRepository
         }
 
 //        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        return new QueryResults<OvalResults>( p_list );
     }
 
 
 
     @Override
-    public List<OvalResults> findOvalResults(
+    public QueryResults<OvalResults> findOvalResults(
                     final QueryParams params
                     )
     {
@@ -113,16 +114,14 @@ public class MongoOvalDefinitionResultRepository
         }
 
 //        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        return new QueryResults<OvalResults>( p_list );
     }
 
 
 
     @Override
-    public List<String> findOvalResultsId()
+    public QueryResults<String> findOvalResultsId()
     {
-//        long  ts_start = System.currentTimeMillis();
-
         List<String>  list = null;
         try {
             list = getDatabase().findId( OvalResults.class );
@@ -131,19 +130,16 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return list;
+        return new QueryResults<String>( list );
     }
 
 
 
     @Override
-    public List<String> findOvalResultsId(
+    public QueryResults<String> findOvalResultsId(
                     final QueryParams params
                     )
     {
-//        long  ts_start = System.currentTimeMillis();
-
         List<String>  p_list = null;
         try {
             p_list = getDatabase().findId( OvalResults.class, params );
@@ -151,8 +147,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_list;
+        return new QueryResults<String>( p_list );
     }
 
 
@@ -210,7 +205,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
     {
@@ -221,7 +216,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        return p_list;
+        return new QueryResults<OvalSystemCharacteristics>( p_list );
     }
 
 
