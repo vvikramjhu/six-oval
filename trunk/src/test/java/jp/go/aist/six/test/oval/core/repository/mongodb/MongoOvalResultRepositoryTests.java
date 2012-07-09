@@ -49,7 +49,7 @@ extends OvalCoreTestBase
     {
         super.setUp();
 
-        _oval_res_repository = OvalContext.getBean( "mongoOvalDefinitionResultRepository", MongoOvalRepository.class );
+        _oval_res_repository = OvalContext.getBean( MongoOvalRepository.class );
     }
 
 

@@ -137,14 +137,14 @@
     </bean>
 
 
-    <bean id="mongoOvalDefinitionRepository" 
+    <bean id="mongo-oval-definition-repository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
 
-    <bean id="mongoOvalDefinitionResultRepository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository">
+    <bean id="mongo-oval-repository" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
