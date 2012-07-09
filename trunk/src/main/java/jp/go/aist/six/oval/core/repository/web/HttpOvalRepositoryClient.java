@@ -19,10 +19,12 @@
 
 package jp.go.aist.six.oval.core.repository.web;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -133,6 +135,59 @@ public class HttpOvalRepositoryClient
 
         return body;
     }
+
+
+
+    /**
+     * HTTP POST
+     *
+     * @throws  OvalInterpreterException
+     */
+    protected <T> String _httpPost(
+                    final String url_path,
+                    final T object,
+                    final Class<T> type
+                    )
+    {
+//        _LOG_.debug( "HTTP POST: to URL=" + to_url
+//                        + ", from file=" + from_file
+//                        + ", content-type=" + content_type );
+
+        HttpHeaders  request_headers = new HttpHeaders();
+        request_headers.setContentType( MediaType.APPLICATION_XML );
+        HttpEntity<T> request_entity = new HttpEntity<T>( object, request_headers );
+
+        URI  location = null;
+        try {
+            location= _newRestTemplate().postForLocation(
+                            _repositoryBaseUrl + url_path, request_entity );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+//        HttpEntity<Void>  response = null;
+//        try {
+//            response = _newRestTemplate().exchange(
+//                            _repositoryBaseUrl + url_path, HttpMethod.POST,
+//                            request_entity, Void.class );
+//        } catch (Exception ex) {
+//            throw new OvalRepositoryException( ex );
+//        }
+//
+//        HttpHeaders  response_headers = response.getHeaders();
+//        URI  location = response_headers.getLocation();
+//        if (location == null) {
+//            throw new OvalRepositoryException( "no location in HTTP headers" );
+//        }
+
+        String  path = location.getPath();
+        String  id = path.substring( path.lastIndexOf( '/' ) + 1 );
+
+        return id;
+    }
+
+
+
 
 
 
@@ -409,18 +464,36 @@ public class HttpOvalRepositoryClient
     // OvalDefinitions
     //=====================================================================
 
+    private static final String  _URL_OVAL_DEFINITONS_ =
+                    "/oval_definitions";
+
+    private static final String  _URL_OVAL_DEFINITONS_BY_ID_ =
+                    "/oval_definitions/{id}";
+
+
+
     @Override
-    public OvalDefinitions findOvalDefinitionsById( final String id )
+    public OvalDefinitions findOvalDefinitionsById(
+                    final String id
+                    )
     {
-        throw new UnsupportedOperationException();
+        OvalDefinitions  oval_defs = _httpGet(
+                        _URL_OVAL_DEFINITONS_BY_ID_, OvalDefinitions.class, id );
+        return oval_defs;
     }
 
 
 
+
     @Override
-    public String saveOvalDefinitions( final OvalDefinitions oval_defs )
+    public String saveOvalDefinitions(
+                    final OvalDefinitions oval_defs
+                    )
     {
-        throw new UnsupportedOperationException();
+
+        String  id = _httpPost( _URL_OVAL_DEFINITONS_, oval_defs, OvalDefinitions.class );
+
+        return id;
     }
 
 

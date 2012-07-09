@@ -1,11 +1,13 @@
 package jp.go.aist.six.test.oval.core.repository.web;
 
+import java.io.File;
 import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
@@ -179,6 +181,58 @@ public class HttpOvalRepositoryClientTests
         }
 
     }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.def.oval_definitions",
+                                    "PACKAGE.oval.core.repository.web",
+                                    "CONTROL.oval.repository.saveOvalDefinitions"
+                                    }
+                    ,dataProvider="DATA.oval.def.oval_definitions"
+                    ,alwaysRun=true
+                    )
+    public void testSaveOvalDefinitionsAndFindById(
+                    final OvalContentCategory       category,
+                    final String                    schema_version,
+                    final Class<OvalDefinitions>    object_type,
+                    final Family                    family,
+                    final String                    dirpath,
+                    final String                    xml_filepath,
+                    final OvalDefinitions           expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        File[]  files = _toXmlFileList( dirpath, xml_filepath );
+        for (File  file : files) {
+            Reporter.log( "  * file= " + file, true );
+            OvalDefinitions  oval_defs = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
+            _printOvalIds( oval_defs.getDefinitions() );
+
+            Reporter.log( ">>> saveOvalDefinitions(oval_defs)...", true );
+            String  p_id = _repository_client.saveOvalDefinitions( oval_defs );
+            Reporter.log( "<<< ...saveOvalDefinitions(oval_defs)", true );
+            Reporter.log( "  @ ID: " + p_id, true );
+            Assert.assertNotNull( p_id );
+
+            Reporter.log( ">>> findOvalDefinitionsById(id)...", true );
+            OvalDefinitions  p_oval_defs = _repository_client.findOvalDefinitionsById( p_id );
+            Reporter.log( "<<< ...findOvalDefinitionsById(id)", true );
+            Assert.assertNotNull( p_oval_defs );
+            _printOvalIds( p_oval_defs.getDefinitions() );
+
+            String    digest =   oval_defs.getDefinitionsDigest();
+            String  p_digest = p_oval_defs.getDefinitionsDigest();
+            Assert.assertEquals( digest, p_digest );
+        }
+    }
+
 
 
 

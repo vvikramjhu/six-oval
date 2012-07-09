@@ -79,10 +79,11 @@
     <test name="oval.core.repository.web" enabled="true">
         <groups>
             <run>
-                <include name="CONTROL.oval.repository.findElementById"/>
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 
                 <!--
                 <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
+                <include name="CONTROL.oval.repository.findElementById"/>
                 -->
             </run>
         </groups>
