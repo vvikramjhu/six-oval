@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.repository.web;
 
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
