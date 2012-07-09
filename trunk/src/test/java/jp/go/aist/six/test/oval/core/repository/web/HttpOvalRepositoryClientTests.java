@@ -8,6 +8,7 @@ import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
@@ -231,6 +232,54 @@ public class HttpOvalRepositoryClientTests
             String  p_digest = p_oval_defs.getDefinitionsDigest();
             Assert.assertEquals( digest, p_digest );
         }
+    }
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  oval-res:oval_results
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.res.oval_results",
+                                    "PACKAGE.oval.core.repository.web",
+                                    "CONTROL.oval.repository.findOvalResults",
+                                    "CONTROL.oval.repository.findOvalResultsId",
+                                    "CONTROL.oval.repository.countOvalResults"
+                                    }
+//                    ,dependsOnGroups={ "CONTROL.oval.repository.findDefinition" }
+                    ,alwaysRun=true
+                    )
+    public void testFindOvalResults()
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        Reporter.log( ">>> findOvalResults()...", true );
+        QueryResults<OvalResults>  res_results = _repository_client.findOvalResults();
+        Reporter.log( "<<< ...findOvalResults()", true );
+        Reporter.log( "  @ response: " + res_results, true );
+        Assert.assertNotNull( res_results );
+
+        Reporter.log( ">>> findOvalResultsId()...", true );
+        QueryResults<String>  id_results = _repository_client.findOvalResultsId();
+        Reporter.log( "<<< ...findOvalResultsId()", true );
+        Reporter.log( "  @ response: " + id_results, true );
+        Assert.assertNotNull( id_results );
+
+        Reporter.log( ">>> countOvalResults()...", true );
+        long  count_results = _repository_client.countOvalResults();
+        Reporter.log( "<<< ...countOvalResults()", true );
+        Reporter.log( "  @ response: " + count_results, true );
+
+
+        Assert.assertEquals( res_results.size(), count_results );
+        Assert.assertEquals(  id_results.size(), count_results );
     }
 
 
