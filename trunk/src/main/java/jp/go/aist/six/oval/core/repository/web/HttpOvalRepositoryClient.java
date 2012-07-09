@@ -26,10 +26,13 @@ import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.oval.repository.View;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -216,25 +219,54 @@ public class HttpOvalRepositoryClient
 
 
 
-    private static final String  _URL_DEFINITON_ID_ =
-                    "/definitions/id";
-
+//    private static final String  _URL_DEFINITON_ID_ =
+//                    "/definitions/id";
+//
+//
+//    @Override
+//    public QueryResults<String> findDefinitionId(
+//                    final QueryParams params
+//                    )
+//    {
+//        String  query_part = _toUriQueryStrings( params );
+//
+//        @SuppressWarnings( "unchecked" )
+//        QueryResults<String>  query_results = _httpGet(
+//                        _URL_DEFINITON_ID_ + query_part, QueryResults.class );
+//
+//        return query_results;
+//    }
 
     @Override
     public QueryResults<String> findDefinitionId(
                     final QueryParams params
                     )
     {
-        String  query_part = _toUriQueryStrings( params );
+        QueryParams  ps = null;
+        if (params == null) {
+            ps = new DefinitionQueryParams();
+        } else {
+            try {
+                ps = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                //never thrown
+            }
+        }
+        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
+
+        String  query_part = _toUriQueryStrings( ps );
 
         @SuppressWarnings( "unchecked" )
         QueryResults<String>  query_results = _httpGet(
-                        _URL_DEFINITON_ID_ + query_part, QueryResults.class );
+                        _URL_DEFINITON_ + query_part, QueryResults.class );
 
         return query_results;
     }
 
 
+
+//    private static final String  _URL_DEFINITON_COUNT_ =
+//                    "/definitions/count";
 
 
     @Override
@@ -246,11 +278,46 @@ public class HttpOvalRepositoryClient
 
 
     @Override
-    public long countDefinition( final QueryParams params )
+    public long countDefinition(
+                    final QueryParams params
+                    )
     {
-        QueryResults<String>  query_results = findDefinitionId( params );
-        return query_results.size();
+        QueryParams  ps = null;
+        if (params == null) {
+            ps = new DefinitionQueryParams();
+        } else {
+            try {
+                ps = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                //never thrown
+            }
+        }
+        ps.set( CommonQueryParams.Key.VIEW, View.count.name() );
+
+        String  query_part = _toUriQueryStrings( ps );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<Long>  query_results = _httpGet(
+                        _URL_DEFINITON_ + query_part, QueryResults.class );
+
+        return query_results.getElements().get( 0 );
     }
+
+//BACKUP
+//    @Override
+//    public long countDefinition(
+//                    final QueryParams params
+//                    )
+//    {
+//        String  query_part = _toUriQueryStrings( params );
+//
+//        @SuppressWarnings( "unchecked" )
+//        QueryResults<Long>  query_results = _httpGet(
+//                        _URL_DEFINITON_COUNT_ + query_part, QueryResults.class );
+//
+//        return query_results.getElements().get( 0 );
+//    }
+
 
 
 
