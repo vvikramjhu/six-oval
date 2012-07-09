@@ -164,14 +164,14 @@ public interface OvalResultRepository
     /**
      * Saves the OVAL System Characteristics document.
      *
-     * @param   oval_sc
+     * @param   oval_scs
      *  the OVAL System Characteristics document.
      * @return
      *  the ID of the document.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
-    public String saveOvalSystemCharacteristics( OvalSystemCharacteristics oval_sc );
+    public String saveOvalSystemCharacteristics( OvalSystemCharacteristics oval_scs );
 
 }
 //

@@ -490,7 +490,6 @@ public class HttpOvalRepositoryClient
                     final OvalDefinitions oval_defs
                     )
     {
-
         String  id = _httpPost( _URL_OVAL_DEFINITONS_, oval_defs, OvalDefinitions.class );
 
         return id;
@@ -502,10 +501,21 @@ public class HttpOvalRepositoryClient
     //  implements OvalResultRepository
     //*********************************************************************
 
+    private static final String  _URL_OVAL_RESULTS_ =
+                    "/oval_results";
+
+    private static final String  _URL_OVAL_RESULTS_BY_ID_ =
+                    "/oval_results/{id}";
+
+
     @Override
-    public OvalResults findOvalResultsById( final String id )
+    public OvalResults findOvalResultsById(
+                    final String id
+                    )
     {
-        throw new UnsupportedOperationException();
+        OvalResults  oval_results = _httpGet(
+                        _URL_OVAL_RESULTS_BY_ID_, OvalResults.class, id );
+        return oval_results;
     }
 
 
@@ -513,15 +523,27 @@ public class HttpOvalRepositoryClient
     @Override
     public QueryResults<OvalResults> findOvalResults()
     {
-        throw new UnsupportedOperationException();
+        @SuppressWarnings( "unchecked" )
+        QueryResults<OvalResults>  query_results = _httpGet(
+                        _URL_OVAL_RESULTS_, QueryResults.class );
+
+        return query_results;
     }
 
 
 
     @Override
-    public QueryResults<OvalResults> findOvalResults( final QueryParams params )
+    public QueryResults<OvalResults> findOvalResults(
+                    final QueryParams params
+                    )
     {
-        throw new UnsupportedOperationException();
+        String  query_part = _toUriQueryStrings( params );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<OvalResults>  query_results = _httpGet(
+                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
+
+        return query_results;
     }
 
 
@@ -530,14 +552,46 @@ public class HttpOvalRepositoryClient
     public QueryResults<String> findOvalResultsId()
     {
         throw new UnsupportedOperationException();
+//        QueryParams  ps = new DefinitionQueryParams();
+//        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
+//        String  query_part = _toUriQueryStrings( ps );
+//
+//        @SuppressWarnings( "unchecked" )
+//        QueryResults<String>  query_results = _httpGet(
+//                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
+//
+//        return query_results;
     }
 
 
 
     @Override
-    public QueryResults<String> findOvalResultsId( final QueryParams params )
+    public QueryResults<String> findOvalResultsId(
+                    final QueryParams params
+                    )
     {
         throw new UnsupportedOperationException();
+//        QueryParams  ps = null;
+//        if (params == null) {
+//            ps = new DefinitionQueryParams();
+//        } else {
+//            try {
+//                ps = QueryParams.class.cast( params.clone() );
+//            } catch (CloneNotSupportedException ex) {
+//                //never thrown
+//            }
+//        }
+//        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
+//
+//        String  query_part = _toUriQueryStrings( ps );
+//
+//        @SuppressWarnings( "unchecked" )
+//        QueryResults<OvalId>  oval_id_results = _httpGet(
+//                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
+//
+//        QueryResults<String>  query_results = _toStringIdResults( oval_id_results );
+//
+//        return query_results;
     }
 
 
@@ -545,39 +599,75 @@ public class HttpOvalRepositoryClient
     @Override
     public long countOvalResults()
     {
-        throw new UnsupportedOperationException();
+        QueryParams  ps = new DefinitionQueryParams();
+        ps.set( CommonQueryParams.Key.VIEW, View.count.name() );
+
+        String  query_part = _toUriQueryStrings( ps );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<Void>  query_results = _httpGet(
+                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
+
+        return query_results.getTotalResults();
     }
 
 
 
     @Override
-    public String saveOvalResults( final OvalResults oval_results )
+    public String saveOvalResults(
+                    final OvalResults oval_results
+                    )
     {
-        throw new UnsupportedOperationException();
+        String  id = _httpPost( _URL_OVAL_RESULTS_, oval_results, OvalResults.class );
+
+        return id;
+    }
+
+
+
+    private static final String  _URL_OVAL_SCS_ =
+                    "/oval_scs";
+
+    private static final String  _URL_OVAL_SCS_BY_ID_ =
+                    "/oval_scs/{id}";
+
+
+    @Override
+    public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
+                    final String id
+                    )
+    {
+        OvalSystemCharacteristics  oval_scs = _httpGet(
+                        _URL_OVAL_SCS_BY_ID_, OvalSystemCharacteristics.class, id );
+        return oval_scs;
     }
 
 
 
     @Override
-    public OvalSystemCharacteristics findOvalSystemCharacteristicsById( final String id )
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
+                    final QueryParams params
+                    )
     {
-        throw new UnsupportedOperationException();
+        String  query_part = _toUriQueryStrings( params );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<OvalSystemCharacteristics>  query_results = _httpGet(
+                        _URL_OVAL_SCS_ + query_part, QueryResults.class );
+
+        return query_results;
     }
 
 
 
     @Override
-    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics( final QueryParams params )
+    public String saveOvalSystemCharacteristics(
+                    final OvalSystemCharacteristics oval_scs
+                    )
     {
-        throw new UnsupportedOperationException();
-    }
+        String  id = _httpPost( _URL_OVAL_SCS_, oval_scs, OvalSystemCharacteristics.class );
 
-
-
-    @Override
-    public String saveOvalSystemCharacteristics( final OvalSystemCharacteristics oval_sc )
-    {
-        throw new UnsupportedOperationException();
+        return id;
     }
 
 }
