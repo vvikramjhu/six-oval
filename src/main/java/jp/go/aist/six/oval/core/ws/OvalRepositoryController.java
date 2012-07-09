@@ -23,9 +23,11 @@ import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.oval.repository.View;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -163,12 +165,32 @@ public class OvalRepositoryController
                     ,value="/repository/oval_results"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody QueryResults<OvalResults> findOvalResults(
+    public @ResponseBody QueryResults<?> findOvalResults(
                     final OvalResultsQueryParams params
                     )
     {
-        return _findResource( OvalResults.class, params );
+        QueryResults<?>  results = null;
+
+        String  view_value = (params == null ? null : params.get( CommonQueryParams.Key.VIEW ));
+        View  view = (view_value == null ? View.complete : View.valueOf( view_value ));
+        params.remove( CommonQueryParams.Key.VIEW );
+        if (view == View.id) {
+            results = _findDocumentResourceId( OvalResults.class, params );
+        } else if (view == View.count) {
+            results = _findResourceCount( OvalResults.class, params );
+        } else {
+            results = _findResource( OvalResults.class, params );
+        }
+
+        return results;
     }
+//BACKUP
+//    public @ResponseBody QueryResults<OvalResults> findOvalResults(
+//                    final OvalResultsQueryParams params
+//                    )
+//    {
+//        return _findResource( OvalResults.class, params );
+//    }
 
 
 
