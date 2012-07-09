@@ -17,58 +17,55 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.definitions;
-
-import jp.go.aist.six.oval.model.OvalObject;
-
+package jp.go.aist.six.oval.model;
 
 
 
 /**
- * A note.
+ * A document ID container.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Note
+public class DocumentId
     implements OvalObject
 {
 
-    private String  content;
+    private String  _value;
 
 
 
     /**
      * Constructor.
      */
-    public Note()
+    public DocumentId()
     {
     }
 
 
-    public Note(
+    public DocumentId(
                     final String content
                     )
     {
-        setContent( content );
+        setValue( content );
     }
 
 
 
     /**
      */
-    public void setContent(
-                    final String content
+    public void setValue(
+                    final String value
                     )
     {
-        this.content = content;
+        _value = value;
     }
 
 
-    public String getContent()
+    public String getValue()
     {
-        return content;
+        return _value;
     }
 
 
@@ -80,8 +77,8 @@ public class Note
     @Override
     public String toString()
     {
-        return "note[" + getContent() + "]";
+        return "DocumentId[" + getValue() + "]";
     }
 
 }
-// Note
+//
