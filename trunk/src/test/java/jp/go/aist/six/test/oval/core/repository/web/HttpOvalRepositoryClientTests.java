@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
@@ -142,6 +143,41 @@ public class HttpOvalRepositoryClientTests
 
         Assert.assertEquals( def_results.size(), count_results );
         Assert.assertEquals(  id_results.size(), count_results );
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.def.element",
+                                    "PACKAGE.oval.core.repository.web",
+                                    "CONTROL.oval.repository.findElementById"
+                                    }
+//                    ,dependsOnGroups={ "CONTROL.oval.repository.findDefinition" }
+                    ,alwaysRun=true
+                    )
+    public void testFindElementById()
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        String[]  ids = new String[] {
+                        "oval:org.mitre.oval.test:tst:906",
+                        "oval:org.mitre.oval.test:obj:427",
+                        "oval:org.mitre.oval.test:ste:429",
+                        "oval:org.mitre.oval.test:var:184"
+        };
+
+        for (String  id : ids) {
+            Reporter.log( ">>> findElementById(oval_id)...", true );
+            DefinitionsElement  element = _repository_client.findElementById( id );
+            Reporter.log( "<<< ...findElementById(oval_id)", true );
+            Reporter.log( "  @ response: " + element, true );
+        }
+
     }
 
 
