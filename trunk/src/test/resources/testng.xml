@@ -102,7 +102,7 @@
     <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
             <run>
-                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
+                <include name="CONTROL.oval.repository.saveOvalResults"/>
             </run>
         </groups>
         <!--
@@ -116,7 +116,7 @@
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 -->
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
             <!--
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>

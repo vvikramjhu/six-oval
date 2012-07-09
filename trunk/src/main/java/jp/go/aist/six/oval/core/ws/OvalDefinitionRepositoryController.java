@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabase;
 import jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator;
+import jp.go.aist.six.oval.model.Document;
+import jp.go.aist.six.oval.model.DocumentId;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -215,6 +217,7 @@ public class OvalDefinitionRepositoryController
         return _buildQueryResults( params, list );
     }
 
+
     protected <T extends DefinitionsElement>
     QueryResults<OvalId> _findResourceOvalId(
                     final Class<T> type,
@@ -231,6 +234,26 @@ public class OvalDefinitionRepositoryController
 
         return _buildQueryResults( params, id_list );
     }
+
+
+    protected <T extends Document>
+    QueryResults<DocumentId> _findDocumentResourceId(
+                    final Class<T> type,
+                    final QueryParams params
+                    )
+    {
+        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
+
+        List<String>  list = _getDatabase().findId( type, params );
+        List<DocumentId>  id_list = new ArrayList<DocumentId>();
+        for (String  id : list) {
+            id_list.add( new DocumentId( id ) );
+        }
+
+        return _buildQueryResults( params, id_list );
+    }
+
+
 
 
 

@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
+import jp.go.aist.six.oval.model.DocumentId;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -36,6 +37,7 @@ import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.oval.repository.View;
@@ -225,7 +227,7 @@ public class HttpOvalRepositoryClient
 
     /**
      */
-    private QueryResults<String> _toStringIdResults(
+    private QueryResults<String> _toStringOvalIdResults(
                     final QueryResults<OvalId>  oval_id_results
                     )
     {
@@ -238,6 +240,24 @@ public class HttpOvalRepositoryClient
         query_results.setTimestamp( oval_id_results.getTimestamp() );
         query_results.setTotalResults( oval_id_results.getTotalResults() );
         query_results.setItemsPerPage( oval_id_results.getItemsPerPage() );
+
+        return query_results;
+    }
+
+
+    private QueryResults<String> _toStringDocumentIdResults(
+                    final QueryResults<DocumentId>  doc_id_results
+                    )
+    {
+        List<String>  id_list = new ArrayList<String>();
+        for (DocumentId  doc_id : doc_id_results.getElements()) {
+            id_list.add( doc_id.toString() );
+        }
+
+        QueryResults<String>  query_results = new QueryResults<String>( id_list );
+        query_results.setTimestamp( doc_id_results.getTimestamp() );
+        query_results.setTotalResults( doc_id_results.getTotalResults() );
+        query_results.setItemsPerPage( doc_id_results.getItemsPerPage() );
 
         return query_results;
     }
@@ -341,7 +361,7 @@ public class HttpOvalRepositoryClient
         QueryResults<OvalId>  oval_id_results = _httpGet(
                         _URL_DEFINITON_ + query_part, QueryResults.class );
 
-        QueryResults<String>  query_results = _toStringIdResults( oval_id_results );
+        QueryResults<String>  query_results = _toStringOvalIdResults( oval_id_results );
 
 //        List<String>  id_list = new ArrayList<String>();
 //        for (OvalId  oval_id : oval_id_results.getElements()) {
@@ -551,16 +571,7 @@ public class HttpOvalRepositoryClient
     @Override
     public QueryResults<String> findOvalResultsId()
     {
-        throw new UnsupportedOperationException();
-//        QueryParams  ps = new DefinitionQueryParams();
-//        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
-//        String  query_part = _toUriQueryStrings( ps );
-//
-//        @SuppressWarnings( "unchecked" )
-//        QueryResults<String>  query_results = _httpGet(
-//                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
-//
-//        return query_results;
+        return findOvalResultsId( null );
     }
 
 
@@ -570,28 +581,27 @@ public class HttpOvalRepositoryClient
                     final QueryParams params
                     )
     {
-        throw new UnsupportedOperationException();
-//        QueryParams  ps = null;
-//        if (params == null) {
-//            ps = new DefinitionQueryParams();
-//        } else {
-//            try {
-//                ps = QueryParams.class.cast( params.clone() );
-//            } catch (CloneNotSupportedException ex) {
-//                //never thrown
-//            }
-//        }
-//        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
-//
-//        String  query_part = _toUriQueryStrings( ps );
-//
-//        @SuppressWarnings( "unchecked" )
-//        QueryResults<OvalId>  oval_id_results = _httpGet(
-//                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
-//
-//        QueryResults<String>  query_results = _toStringIdResults( oval_id_results );
-//
-//        return query_results;
+        QueryParams  ps = null;
+        if (params == null) {
+            ps = new OvalResultsQueryParams();
+        } else {
+            try {
+                ps = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                //never thrown
+            }
+        }
+        ps.set( CommonQueryParams.Key.VIEW, View.id.name() );
+
+        String  query_part = _toUriQueryStrings( ps );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<DocumentId>  doc_id_results = _httpGet(
+                        _URL_OVAL_RESULTS_ + query_part, QueryResults.class );
+
+        QueryResults<String>  query_results = _toStringDocumentIdResults( doc_id_results );
+
+        return query_results;
     }
 
 
