@@ -196,15 +196,15 @@ public class MongoOvalDatabase
                     final Class<T> type
                     )
     {
-        _LOG_.info( "findIds: type=" + type );
+        _LOG_.info( "findId: type=" + type );
         long ts_start = System.currentTimeMillis();
 
         DAO<T, K> dao = getDAO( type );
         List<Key<T>> list = dao.find().asKeyList();
 
-        _LOG_.info( "findIds: elapsed time (ms)="
+        _LOG_.info( "findId: elapsed time (ms)="
                         + (System.currentTimeMillis() - ts_start) );
-        _LOG_.debug( "findIds: #IDs=: " + (list == null ? 0 : list.size()) );
+        _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
         return MorphiaHelper.keys2Ids( list );
     }
 
@@ -217,7 +217,7 @@ public class MongoOvalDatabase
                     final QueryParams params
                     )
     {
-        _LOG_.debug( "findIds: type=" + type + ", params=" + params );
+        _LOG_.debug( "findId: type=" + type + ", params=" + params );
         long ts_start = System.currentTimeMillis();
 
         DAO<T, K> dao = getDAO( type );
@@ -232,9 +232,9 @@ public class MongoOvalDatabase
             list = dao.find( query ).asKeyList();
         }
 
-        _LOG_.info( "findIds: elapsed time (ms)="
+        _LOG_.info( "findId: elapsed time (ms)="
                         + (System.currentTimeMillis() - ts_start) );
-        _LOG_.debug( "findIds: #IDs=: " + (list == null ? 0 : list.size()) );
+        _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
         return MorphiaHelper.keys2Ids( list );
     }
 

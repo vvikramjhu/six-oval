@@ -83,6 +83,18 @@ public interface OvalDefinitionRepository
 
 
     /**
+     * Returns all the Definition IDs.
+     *
+     * @return
+     *  the found Definition IDs.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findDefinitionId();
+
+
+
+    /**
      * Searches for the Definition IDs that match the specified query parameters.
      *
      * @param   params
@@ -158,18 +170,6 @@ public interface OvalDefinitionRepository
 
 
 
-//    /**
-//     * Returns all the entities.
-//     *
-//     * @return
-//     *  all the entities in the repository.
-//    * @throws  OvalRepositoryException
-//    *  when an exceptional condition occurred during the OVAL repository processing.
-//     */
-//    public List<OvalEntity> findEntity();
-
-
-
     /**
      * Searches for the elements that match the specified query parameters.
      *
@@ -182,6 +182,20 @@ public interface OvalDefinitionRepository
      */
     public QueryResults<DefinitionsElement> findElement( QueryParams params );
 //    public List<DefinitionsElement> findElement( QueryParams params );
+
+
+
+    /**
+     * Searches for the element IDs that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the found element IDs.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findElementId( QueryParams params );
 
 
 
@@ -250,7 +264,7 @@ public interface OvalDefinitionRepository
     //==============================================================
 
     /**
-     * Returns the OVAL Definition Document of the specified ID.
+     * Returns the OVAL Definitions Document of the specified ID.
      * If no such object exists, this method returns null.
      *
      * @param   id
@@ -261,6 +275,58 @@ public interface OvalDefinitionRepository
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
     public OvalDefinitions findOvalDefinitionsById( String id );
+
+
+
+    /**
+     * Returns all the OVAL Definitions Document IDs.
+     *
+     * @return
+     *  the found IDs.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findOvalDefinitionsId();
+
+
+
+    /**
+     * Searches for the OVAL Definitions Document IDs that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the found Definition IDs.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findOvalDefinitionsId( QueryParams params );
+
+
+
+    /**
+     * Returns the number of OVAL Definitions Documents in the repository.
+     *
+     * @return
+     *  the number of Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public long countOvalDefinitions();
+
+
+
+    /**
+     * Returns the number of OVAL Definitions Documents that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the number of Definitions.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public long countOvalDefinitions( QueryParams params );
 
 
 
