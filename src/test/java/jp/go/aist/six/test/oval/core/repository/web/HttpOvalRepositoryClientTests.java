@@ -45,7 +45,7 @@ public class HttpOvalRepositoryClientTests
         _repository_client = OvalContext.getBean( HttpOvalRepositoryClient.class );
 //        _repository_client = new HttpOvalRepositoryClient();
 
-        Reporter.log( "  * base URL: " + _repository_client.getRepositoryBaseUrl(), true );
+        Reporter.log( "  * base URL: " + _repository_client._getRepositoryBaseUrl(), true );
 	}
 
 
