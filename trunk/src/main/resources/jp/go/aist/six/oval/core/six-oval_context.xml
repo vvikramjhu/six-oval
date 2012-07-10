@@ -99,4 +99,9 @@
         </property>
     </bean>
 
+    <bean id="http-repository-client" 
+        class="jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient"> 
+        <property name="repositoryBaseUrl" value="${six.oval.repository.web.base-url}"/> 
+    </bean> 
+
 </beans>

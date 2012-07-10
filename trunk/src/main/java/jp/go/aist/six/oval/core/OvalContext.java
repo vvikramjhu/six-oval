@@ -257,6 +257,20 @@ public class OvalContext
     }
 
 
+//
+//    public static OvalRepository getHttpRepositoryClient()
+//    {
+//        OvalRepository  repository = null;
+//        try {
+//            repository = _getRepositoryContext().getBean( HttpOvalRepositoryClient.class );
+//        } catch (Exception ex) {
+//            throw new OvalConfigurationException( ex );
+//        }
+//
+//        return repository;
+//    }
+
+
 
     ///////////////////////////////////////////////////////////////////////
     //  XML context
