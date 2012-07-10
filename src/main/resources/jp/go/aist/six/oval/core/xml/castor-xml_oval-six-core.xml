@@ -64,7 +64,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.core.ws.AtomLink">
+    <class name="jp.go.aist.six.oval.core.web.AtomLink">
         <map-to xml="link"
             ns-uri="http://www.w3.org/2005/Atom"
             ns-prefix="atom"/>

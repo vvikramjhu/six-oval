@@ -80,19 +80,45 @@ public class HttpOvalRepositoryClient
      */
     public HttpOvalRepositoryClient()
     {
-        _init();
+//        _init();
     }
 
 
 
-    private void _init()
+//    private void _init()
+//    {
+//        _LOG_.debug( "initializing..." );
+//
+//        _repositoryBaseUrl = OvalContext.getProperty( "six.oval.repository.web.base-url" );
+//        _LOG_.info( "repository base URL: " + _repositoryBaseUrl );
+//
+//        _LOG_.debug( "...initialized" );
+//    }
+
+
+
+    /**
+     */
+    public void setRepositoryBaseUrl(
+                    final String url
+                    )
     {
-        _LOG_.debug( "initializing..." );
+        _repositoryBaseUrl = url;
+    }
 
-        _repositoryBaseUrl = OvalContext.getProperty( "six.oval.repository.web.base-url" );
-        _LOG_.info( "repository base URL: " + _repositoryBaseUrl );
 
-        _LOG_.debug( "...initialized" );
+    public String getRepositoryBaseUrl()
+    {
+        if (_repositoryBaseUrl == null) {
+            _repositoryBaseUrl = OvalContext.getProperty( "six.oval.repository.web.base-url" );
+            _LOG_.info( "repository base URL: " + _repositoryBaseUrl );
+
+            if (_repositoryBaseUrl == null) {
+                throw new OvalRepositoryException( "repository base URL not configured" );
+            }
+        }
+
+        return _repositoryBaseUrl;
     }
 
 
@@ -128,7 +154,7 @@ public class HttpOvalRepositoryClient
         HttpEntity<T>  response = null;
         try {
             response = _newRestTemplate().exchange(
-                            _repositoryBaseUrl + url_path, HttpMethod.GET,
+                            getRepositoryBaseUrl() + url_path, HttpMethod.GET,
                             request_entity, response_type, uri_variables );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -163,7 +189,7 @@ public class HttpOvalRepositoryClient
         URI  location = null;
         try {
             location= _newRestTemplate().postForLocation(
-                            _repositoryBaseUrl + url_path, request_entity );
+                            getRepositoryBaseUrl() + url_path, request_entity );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }

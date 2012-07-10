@@ -77,7 +77,7 @@
 
     <test name="oval.core.ws" enabled="false">
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.ws.AtomTest"/>
+            <class name="jp.go.aist.six.test.oval.core.web.AtomTest"/>
             <!--
             -->
         </classes>
