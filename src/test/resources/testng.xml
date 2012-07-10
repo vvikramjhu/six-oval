@@ -50,27 +50,6 @@
 
 
 
-    <!-- ******************************************************* -->
-    <!-- *  ws                                                 * -->
-    <!-- ******************************************************* -->
-
-    <test name="oval.core.ws" enabled="false">
-<!--
-        <groups>
-            <run>
-                <include name="oval.core.ws.query"/>
-            </run>
-        </groups>
--->
-
-        <classes>
-            <class name="jp.go.aist.six.test.oval.core.ws.AtomTest"/>
-            <!--
-            -->
-        </classes>
-    </test>
-
-
 
     <!-- ************************************************************** -->
     <!-- *  oval.core.repository.web                                  * -->
@@ -91,6 +70,16 @@
 
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.web.HttpOvalRepositoryClientTests"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core.ws" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.ws.AtomTest"/>
+            <!--
+            -->
         </classes>
     </test>
 

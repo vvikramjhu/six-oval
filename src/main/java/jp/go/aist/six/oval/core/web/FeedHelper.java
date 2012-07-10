@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.web;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import jp.go.aist.six.oval.OvalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriTemplate;
@@ -74,7 +73,6 @@ public class FeedHelper
 
 
     /**
-     * @throws  OvalException
      */
     public static <T> Feed buildAtomFeed(
                     final String title,
@@ -110,7 +108,6 @@ public class FeedHelper
 
 
     /**
-     * @throws  OvalException
      */
     public static Feed buildAtomFeed(
                     final String title,
@@ -146,7 +143,6 @@ public class FeedHelper
 
 
     /**
-     * @throws  OvalException
      */
     public static Link buildLink(
                     final String baseUri,
@@ -155,7 +151,7 @@ public class FeedHelper
                     )
     {
         if (id == null) {
-            throw new OvalException( new IllegalArgumentException( "null id for Atom Link") );
+            throw new IllegalArgumentException( "null id for Atom Link" );
         }
 
         URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id );
