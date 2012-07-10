@@ -66,8 +66,6 @@ public class MongoOvalRepository
                     final String id
                     )
     {
-//        long  ts_start = System.currentTimeMillis();
-
         OvalResults  p_object = null;
         try {
             p_object = getDatabase().findById( OvalResults.class, id );
@@ -75,7 +73,6 @@ public class MongoOvalRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_object;
     }
 
@@ -84,8 +81,6 @@ public class MongoOvalRepository
     @Override
     public QueryResults<OvalResults> findOvalResults()
     {
-//        long  ts_start = System.currentTimeMillis();
-
         List<OvalResults>  p_list = null;
         try {
             p_list = getDatabase().find( OvalResults.class );
@@ -93,7 +88,6 @@ public class MongoOvalRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return new QueryResults<OvalResults>( p_list );
     }
 
@@ -104,8 +98,6 @@ public class MongoOvalRepository
                     final QueryParams params
                     )
     {
-//        long  ts_start = System.currentTimeMillis();
-
         List<OvalResults>  p_list = null;
         try {
             p_list = getDatabase().find( OvalResults.class, params );
@@ -113,7 +105,6 @@ public class MongoOvalRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return new QueryResults<OvalResults>( p_list );
     }
 
@@ -155,8 +146,6 @@ public class MongoOvalRepository
     @Override
     public long countOvalResults()
     {
-//        long  ts_start = System.currentTimeMillis();
-
         long  count = 0L;
         try {
             count = getDatabase().count( OvalResults.class );
@@ -164,7 +153,23 @@ public class MongoOvalRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return count;
+    }
+
+
+
+    @Override
+    public long countOvalResults(
+                    final QueryParams params
+                    )
+    {
+        long  count = 0L;
+        try {
+            count = getDatabase().count( OvalResults.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
         return count;
     }
 
@@ -187,6 +192,10 @@ public class MongoOvalRepository
 
 
 
+    //=====================================================================
+    // OvalSystemCharacteristics
+    //=====================================================================
+
     @Override
     public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     final String id
@@ -205,6 +214,21 @@ public class MongoOvalRepository
 
 
     @Override
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics()
+    {
+        List<OvalSystemCharacteristics>  p_list = null;
+        try {
+            p_list = getDatabase().find( OvalSystemCharacteristics.class );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return new QueryResults<OvalSystemCharacteristics>( p_list );
+    }
+
+
+
+    @Override
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
@@ -217,6 +241,70 @@ public class MongoOvalRepository
         }
 
         return new QueryResults<OvalSystemCharacteristics>( p_list );
+    }
+
+
+
+    @Override
+    public QueryResults<String> findOvalSystemCharacteristicsId()
+    {
+        List<String>  list = null;
+        try {
+            list = getDatabase().findId( OvalSystemCharacteristics.class );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return new QueryResults<String>( list );
+    }
+
+
+
+    @Override
+    public QueryResults<String> findOvalSystemCharacteristicsId(
+                    final QueryParams params
+                    )
+    {
+        List<String>  p_list = null;
+        try {
+            p_list = getDatabase().findId( OvalSystemCharacteristics.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return new QueryResults<String>( p_list );
+    }
+
+
+
+    @Override
+    public long countOvalSystemCharacteristics()
+    {
+        long  count = 0L;
+        try {
+            count = getDatabase().count( OvalSystemCharacteristics.class );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return count;
+    }
+
+
+
+    @Override
+    public long countOvalSystemCharacteristics(
+                    final QueryParams params
+                    )
+    {
+        long  count = 0L;
+        try {
+            count = getDatabase().count( OvalSystemCharacteristics.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return count;
     }
 
 

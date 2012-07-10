@@ -135,25 +135,23 @@ public interface OvalDefinitionRepository
 
 
 
-//    /**
-//     * Saves the Definition, either inserting or updating the existing one.
-//     *
-//     * @param   def
-//     *  the Definition to save.
-//     * @return
-//     *  the ID of the Definition.
-//    * @throws  OvalRepositoryException
-//    *  when an exceptional condition occurred during the OVAL repository processing.
-//     */
-//    public String saveDefinition(
-//                    final DefinitionType def
-//                    );
+    /**
+     * Saves the Definition, either inserting or updating the existing one.
+     *
+     * @param   def
+     *  the Definition to save.
+     * @return
+     *  the ID of the Definition.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public String saveDefinition( DefinitionType def );
 
 
 
-    //==============================================================
+    //=====================================================================
     // definitions element (Definition, Test, Object, State, Variable)
-    //==============================================================
+    //=====================================================================
 
     /**
      * Returns the element of the specified OVAL-ID.
@@ -259,9 +257,9 @@ public interface OvalDefinitionRepository
 
 
 
-    //==============================================================
+    //=====================================================================
     // OvalDefinitions
-    //==============================================================
+    //=====================================================================
 
     /**
      * Returns the OVAL Definitions Document of the specified ID.
@@ -279,7 +277,7 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns all the OVAL Definitions Document IDs.
+     * Returns the IDs of all the OVAL Definitions Documents.
      *
      * @return
      *  the found IDs.
@@ -291,7 +289,8 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Searches for the OVAL Definitions Document IDs that match the specified query parameters.
+     * Searches for the OVAL Definitions Documents that match the specified query parameters
+     * and returns their IDs.
      *
      * @param   params
      *  the query parameters.

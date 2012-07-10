@@ -33,14 +33,18 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 public interface OvalResultRepository
 {
 
+    //=====================================================================
+    // OvalResults
+    //=====================================================================
+
     /**
-     * Returns the OVAL Results of the specified ID.
+     * Returns the OVAL Results Document of the specified ID.
      * If no such object exists, this method returns null.
      *
      * @param   id
      *  the ID.
      * @return
-     *  the OVAL Results object if exists, null otherwise.
+     *  the OVAL Results Document if exists, null otherwise.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -49,10 +53,10 @@ public interface OvalResultRepository
 
 
     /**
-     * Returns all the OVAL Results.
+     * Returns all the OVAL Results Documents in the repository.
      *
      * @return
-     *  all the OVAL Results in the repository.
+     *  all the OVAL Results Documents .
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -62,7 +66,7 @@ public interface OvalResultRepository
 
 
     /**
-     * Searches for the OVAL Results that match the specified query parameters.
+     * Searches for the OVAL Results Documents that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
@@ -77,10 +81,10 @@ public interface OvalResultRepository
 
 
     /**
-     * Returns all the OVAL Results IDs.
+     * Returns the IDs of all the OVAL Results Documents in the repository.
      *
      * @return
-     *  the IDs of all the OVAL Results in the repository.
+     *  the IDs of all the OVAL Results Documents.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -90,13 +94,13 @@ public interface OvalResultRepository
 
 
     /**
-     * Searches for the OVAL Results that match the specified query parameters
+     * Searches for the OVAL Results Documents that match the specified query parameters
      * and returns their IDs.
      *
      * @param   params
      *  the query parameters.
      * @return
-     *  the IDs of OVAL Results.
+     *  the IDs of OVAL Results Documents.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -106,10 +110,10 @@ public interface OvalResultRepository
 
 
     /**
-     * Returns The number of OVAL Definitions in the repository.
+     * Returns the number of OVAL Results Documents in the repository.
      *
      * @return
-     *  the number of Definitions in the repository.
+     *  the number of OVAL Results Documents.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -118,10 +122,24 @@ public interface OvalResultRepository
 
 
     /**
-     * Saves the OVAL Results document.
+     * Returns the number of OVAL Results Documents that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the number of OVAL Results Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public long countOvalResults( QueryParams params );
+
+
+
+    /**
+     * Saves the OVAL Results Document.
      *
      * @param   oval_results
-     *  the OVAL Results document.
+     *  the OVAL Results Document.
      * @return
      *  the ID of the document.
      * @throws  OvalRepositoryException
@@ -131,14 +149,18 @@ public interface OvalResultRepository
 
 
 
+    //=====================================================================
+    // OvalSystemCharacteristics
+    //=====================================================================
+
     /**
-     * Returns the OVAL System Characteristics of the specified ID.
+     * Returns the OVAL System Characteristics Document of the specified ID.
      * If no such object exists, this method returns null.
      *
      * @param   id
      *  the ID.
      * @return
-     *  the OVAL System Characteristics object if exists, null otherwise.
+     *  the OVAL System Characteristics Document if exists, null otherwise.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -147,12 +169,24 @@ public interface OvalResultRepository
 
 
     /**
-     * Searches for the OVAL System Characteristics that match the specified query parameters.
+     * Returns all the OVAL System Characteristics Documents in the repository.
+     *
+     * @return
+     *  the OVAL System Characteristics Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics();
+
+
+
+    /**
+     * Searches for the OVAL System Characteristics Documents that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
      * @return
-     *  the OVAL System Characteristics objects.
+     *  the OVAL System Characteristics Documents.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
@@ -162,12 +196,65 @@ public interface OvalResultRepository
 
 
     /**
-     * Saves the OVAL System Characteristics document.
+     * Returns the IDs of all the OVAL System Characteristics Documents.
+     *
+     * @return
+     *  the IDs of all the OVAL System Characteristics Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findOvalSystemCharacteristicsId();
+
+
+
+    /**
+     * Searches for the OVAL System Characteristics Documents that match the specified query parameters
+     * and returns their IDs.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the IDs of OVAL System Characteristics Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public QueryResults<String> findOvalSystemCharacteristicsId( QueryParams params );
+
+
+
+    /**
+     * Returns the number of OVAL System Characteristics Documents in the repository.
+     *
+     * @return
+     *  the number of OVAL System Characteristics Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public long countOvalSystemCharacteristics();
+
+
+
+    /**
+     * Returns the number of OVAL System Characteristics Documents that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the number of OVAL System Characteristics Documents.
+     * @throws  OvalRepositoryException
+     *  when an exceptional condition occurred during the OVAL repository processing.
+     */
+    public long countOvalSystemCharacteristics( QueryParams params );
+
+
+
+    /**
+     * Saves the OVAL System Characteristics Document.
      *
      * @param   oval_scs
-     *  the OVAL System Characteristics document.
+     *  the OVAL System Characteristics Document.
      * @return
-     *  the ID of the document.
+     *  the ID of the OVAL System Characteristics Document.
      * @throws  OvalRepositoryException
      *  when an exceptional condition occurred during the OVAL repository processing.
      */
