@@ -1,4 +1,4 @@
-package jp.go.aist.six.test.oval.core.ws;
+package jp.go.aist.six.test.oval.core.web;
 
 import java.util.Arrays;
 import java.util.Date;

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.web;
 
 import java.io.Serializable;
 
