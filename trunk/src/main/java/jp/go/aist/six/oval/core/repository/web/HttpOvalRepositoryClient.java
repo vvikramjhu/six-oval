@@ -23,7 +23,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import jp.go.aist.six.oval.model.DocumentId;
 import jp.go.aist.six.oval.model.ElementType;
@@ -48,6 +47,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -72,6 +72,7 @@ public class HttpOvalRepositoryClient
 
 
     private String  _repositoryBaseUrl;
+    private List<HttpMessageConverter<?>>  _messageConverters;
 
 
 
@@ -83,6 +84,13 @@ public class HttpOvalRepositoryClient
 //        _init();
     }
 
+
+    public HttpOvalRepositoryClient(
+                    final String base_url
+                    )
+    {
+        setRepositoryBaseUrl( base_url );
+    }
 
 
 //    private void _init()
@@ -107,15 +115,10 @@ public class HttpOvalRepositoryClient
     }
 
 
-    public String getRepositoryBaseUrl()
+    protected String _getRepositoryBaseUrl()
     {
         if (_repositoryBaseUrl == null) {
-            _repositoryBaseUrl = OvalContext.getProperty( "six.oval.repository.web.base-url" );
-            _LOG_.info( "repository base URL: " + _repositoryBaseUrl );
-
-            if (_repositoryBaseUrl == null) {
-                throw new OvalRepositoryException( "repository base URL not configured" );
-            }
+            throw new OvalRepositoryException( "repository base URL not configured" );
         }
 
         return _repositoryBaseUrl;
@@ -125,9 +128,35 @@ public class HttpOvalRepositoryClient
 
     /**
      */
+    public void setMessageConverters(
+                    final List<HttpMessageConverter<?>> messageConverters
+                    )
+    {
+        _messageConverters = messageConverters;
+    }
+
+
+    protected List<HttpMessageConverter<?>> _getMessageConverters()
+    {
+        return _messageConverters;
+    }
+
+
+
+    /**
+     * scope="prototype";
+     * i.e. each time this method is called, a new instance is created.
+     */
     private RestTemplate _newRestTemplate()
     {
-        return OvalContext.getBean( RestTemplate.class );
+        RestTemplate  template = new RestTemplate();
+
+        List<HttpMessageConverter<?>>  converters = _getMessageConverters();
+        if (converters != null) {
+            template.setMessageConverters( _getMessageConverters() );
+        }
+
+        return template;
     }
 
 
@@ -154,7 +183,7 @@ public class HttpOvalRepositoryClient
         HttpEntity<T>  response = null;
         try {
             response = _newRestTemplate().exchange(
-                            getRepositoryBaseUrl() + url_path, HttpMethod.GET,
+                            _getRepositoryBaseUrl() + url_path, HttpMethod.GET,
                             request_entity, response_type, uri_variables );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -189,7 +218,7 @@ public class HttpOvalRepositoryClient
         URI  location = null;
         try {
             location= _newRestTemplate().postForLocation(
-                            getRepositoryBaseUrl() + url_path, request_entity );
+                            _getRepositoryBaseUrl() + url_path, request_entity );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
