@@ -3,7 +3,7 @@
 <!-- /////////////////////////////////////////////////////////// -->
 <!-- // Project SIX: OVAL                                     // -->
 <!-- //                                                       // -->
-<!-- // Spring Application Context                            // -->
+<!-- // Spring Application Context: remote                    // -->
 <!-- /////////////////////////////////////////////////////////// -->
 
 <!--
@@ -28,7 +28,6 @@
 
 
     <import resource="six-oval_context-base.xml"/>
-
 
 
 
