@@ -78,7 +78,7 @@ public abstract class OvalContext2
      * Returns an XmlMapper instance which is dedicated to the OVAL Domain Model.
      *
      * @throws  OvalConfigurationException
-     *  when it is NOT possible to create an XmlMapper instance.
+     *  when it is NOT possible to create an instance.
      */
     public XmlMapper getXmlMapper()
     {
@@ -92,6 +92,17 @@ public abstract class OvalContext2
 
         return mapper;
     }
+
+
+
+    /**
+     * Returns an OvalRepository instance.
+     *
+     * @throws  OvalConfigurationException
+     *  when it is NOT possible to create an instance.
+     */
+    public abstract OvalRepository getRepository();
+
 
 
 
@@ -116,21 +127,6 @@ public abstract class OvalContext2
 
 
 
-        public OvalRepository getRepository()
-        {
-            OvalRepository  repository = null;
-            try {
-                repository = getBean( MongoOvalRepository.class );
-                //throws ConfigurationException/runtime
-            } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-            }
-
-            return repository;
-        }
-
-
-
         /**
          * Returns an OvalDatastore instance.
          *
@@ -149,8 +145,25 @@ public abstract class OvalContext2
 
             return database;
         }
+
+
+
+        @Override
+        public OvalRepository getRepository()
+        {
+            OvalRepository  repository = null;
+            try {
+                repository = getBean( MongoOvalRepository.class );
+                //throws ConfigurationException/runtime
+            } catch (Exception ex) {
+                throw new OvalConfigurationException( ex );
+            }
+
+            return repository;
+        }
+
     }
-    //OvalServerContext
+    //
 
 
 
@@ -169,6 +182,7 @@ public abstract class OvalContext2
         }
 
 
+        @Override
         public OvalRepository getRepository()
         {
             OvalRepository  repository = null;
