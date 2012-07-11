@@ -328,7 +328,7 @@ Here, a Definition is retrieved using its OVAL ID;
 "oval:org.mitre.oval.test:def:165".
 
 
-  <b>Figure 1</b>: RESTful Web Services invocation using curl.
+  <b>Figure 1</b>: Web Services invocation using curl.
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/version-0_7_0/six-oval-070_ws-get-definition.png]
 
 
@@ -338,7 +338,7 @@ The details of the service invocations are hidden
 from programmers.
 
 {{{
-// Listing 9: OVAL Repository Services API.
+// Listing 9: Web Services invocation from Java.
 
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.repository.OvalRepository;
