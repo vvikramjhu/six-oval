@@ -251,14 +251,13 @@ for (DefinitionQueryParams  params : params_list) {
 
 
 == <font color="#0044CC">High-Level Interface</font> ==
-T.B.D.
 
-OvalDefinitionRepository and OvalResultRepository 
+!OvalDefinitionRepository and !OvalResultRepository 
 define higher level interfaces.
 The methods does NOT have arguments to specify Java types.
 Instead, the types of objects are indicated by method names.
 For example, Listing 8 shows a comparison of
-OvalDefinitionRepository and OvalDatabase, 
+!OvalDefinitionRepository and !OvalDatabase, 
 a low-level interface.
 
 
@@ -356,7 +355,7 @@ System.out.println( "*** found Definition: " + def );
 
 
 {{{
-// Listing 10: Web Services properties.
+// Listing 10: Web Services properties ("six-oval.properties" file in the classpath.
 
 six.oval.repository.web.base-url = https://localhost:8080/six-oval/repository
 }}}
