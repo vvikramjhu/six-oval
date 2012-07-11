@@ -1,11 +1,39 @@
-#summary Web Services specification, version 1.0.0.
+#summary Web Services API, version 1.0.0.
 #labels Phase-Implementation
 
 = Introduction =
 
+In this document, we show the details
+of SIX OVAL Web services.
+In the latest version,
+we provide only the _repository services_.
+
+
+
+= REST API =
 T.B.D.
 
+The resources in the OVAL domain are well-defined in 
+[http://oval.mitre.org/language/ the OVAL Language specification].
+Currently, XML is one and only 
+standardized resource representation format.
+Therefore, we adopt these resource model and representation.
 
+Below, we describe the resource identifier design with URIs
+and interaction design with HTTP requests and responses. 
+
+
+= Repository Services =
+
+Suppose that the base URI of the service is
+denoted as `$REPO_BASE`;
+e.g. `http://foo.org/six-oval/repository`.
+
+
+== Definition Resource =
+
+|| *Operation* || *HTTP Method* || *URI Path* || *Request* || *Response* ||
+|| Fetch by ID || GET || /definition/{id} || Accept: application/xml || 200 OK<br>Content-Type: application/xml ||
 
 
 --------
