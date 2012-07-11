@@ -1,5 +1,0 @@
-#summary Web Services specification, version 1.0.0.
-
-= Introduction =
-
-T.B.D.
