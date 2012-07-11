@@ -284,7 +284,6 @@ public interface OvalDatabase
 
 ----
 = <font color="#0044CC">RESTful Web Services</font> =
-T.B.D.
 
 This feature supports Web-based OVAL repository services.
 That is, it is possible to access remote OVAL repository
