@@ -354,10 +354,14 @@ System.out.println( "*** found Definition: " + def );
 }}}
 
 
-{{{
-// Listing 10: Web Services properties ("six-oval.properties" file in the classpath.
+Listing 10 shows the Java configuration properties.
 
-six.oval.repository.web.base-url = https://localhost:8080/six-oval/repository
+{{{
+// Listing 10: Web Services properties ("six-oval.properties" file in the classpath).
+
+six.oval.repository.web.base-url = https://foo.bar.org:8080/six-oval/repository
+#six.oval.repository.web.base-url = http://localhost:8080/six-oval/repository  #default
+
 }}}
 
 
@@ -365,3 +369,6 @@ six.oval.repository.web.base-url = https://localhost:8080/six-oval/repository
 
 = <font color="#0044CC">Interpreter Driving</font> =
 T.B.D.
+
+
+--------
