@@ -320,7 +320,7 @@ in case of Tomcat.
 
 Here, we show some examples.
 Please refer to the 
-[WebServicesApi_1_0_0 RESTful Web Services API specifications]
+[WebServices_1_0_0 RESTful Web Services API specifications]
 for details.
 
 
