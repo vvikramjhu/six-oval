@@ -273,7 +273,7 @@ public interface OvalDefinitionRepository
     public QueryResults<DefinitionType> findDefinition( QueryParams params );
 }
 
-    /* Low-Level */
+    /* Low-Level (just for comparison) */
 public interface OvalDatabase
 {
     public <K, T extends Persistable<K> & OvalObject> T findById( Class<T> type, K id );
@@ -336,11 +336,22 @@ Here, a Definition is retrieved using its OVAL ID;
 
 Listing 9 shows the same service invocation 
 from Java code.
+The details of the service invocations are hidden 
+from programmers.
 
 {{{
 // Listing 9: OVAL Repository Services API.
 
+import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.repository.OvalRepository;
+.....
 
+    /* Find Definition by ID */
+String  def_id = "oval:org.mitre.oval.test:def:165";
+System.out.println( "*** finding Definition: " + def_id );
+OvalRepository  repository = OvalContext.REMOTE.getRepository();
+DefinitionType  def = repository.findDefinitionById( def_id );
+System.out.println( "*** found Definition: " + def );
 }}}
 
 
