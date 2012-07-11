@@ -34,7 +34,7 @@ import jp.go.aist.six.util.xml.XmlMapper;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalContext2
+public abstract class OvalContext
     extends Context
 {
 
@@ -60,12 +60,12 @@ public abstract class OvalContext2
     /**
      * Constructor.
      */
-    protected OvalContext2()
+    protected OvalContext()
     {
     }
 
 
-    protected OvalContext2(
+    protected OvalContext(
                     final String config_location
                     )
     {
@@ -114,7 +114,7 @@ public abstract class OvalContext2
     /**
      */
     public static class OvalLocalContext
-    extends OvalContext2
+    extends OvalContext
     {
         public static final String  CONTEXT_PATH
         = "jp/go/aist/six/oval/core/six-oval_context-local.xml";
@@ -170,7 +170,7 @@ public abstract class OvalContext2
     /**
      */
     public static class OvalRemoteContext
-    extends OvalContext2
+    extends OvalContext
     {
         public static final String  CONTEXT_PATH
         = "jp/go/aist/six/oval/core/six-oval_context-remote.xml";
