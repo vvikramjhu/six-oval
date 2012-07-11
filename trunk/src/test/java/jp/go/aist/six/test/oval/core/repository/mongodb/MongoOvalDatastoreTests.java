@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
@@ -50,7 +50,7 @@ public class MongoOvalDatastoreTests
 	{
         super.setUp();
 
-        _datastore = OvalContext.getDatabase();
+        _datastore = DeprecatedOvalContext.getDatabase();
 	}
 
 

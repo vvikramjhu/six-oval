@@ -3,7 +3,7 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
@@ -54,7 +54,7 @@ extends OvalCoreTestBase
 	{
         super.setUp();
 
-        _oval_def_repository = OvalContext.getBean( MongoOvalDefinitionRepository.class );
+        _oval_def_repository = DeprecatedOvalContext.getBean( MongoOvalDefinitionRepository.class );
 	}
 
 

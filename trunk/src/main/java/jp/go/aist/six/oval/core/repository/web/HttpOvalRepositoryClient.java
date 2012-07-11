@@ -115,7 +115,7 @@ public class HttpOvalRepositoryClient
     }
 
 
-    protected String _getRepositoryBaseUrl()
+    public String getRepositoryBaseUrl()
     {
         if (_repositoryBaseUrl == null) {
             throw new OvalRepositoryException( "repository base URL not configured" );
@@ -183,7 +183,7 @@ public class HttpOvalRepositoryClient
         HttpEntity<T>  response = null;
         try {
             response = _newRestTemplate().exchange(
-                            _getRepositoryBaseUrl() + url_path, HttpMethod.GET,
+                            getRepositoryBaseUrl() + url_path, HttpMethod.GET,
                             request_entity, response_type, uri_variables );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -218,7 +218,7 @@ public class HttpOvalRepositoryClient
         URI  location = null;
         try {
             location= _newRestTemplate().postForLocation(
-                            _getRepositoryBaseUrl() + url_path, request_entity );
+                            getRepositoryBaseUrl() + url_path, request_entity );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }

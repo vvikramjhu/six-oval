@@ -27,7 +27,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.util.xml.OxmException;
 import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
@@ -86,7 +86,7 @@ public class OvalXmlTool
      */
     public OvalXmlTool()
     {
-        _mapper = OvalContext.getXmlMapper();
+        _mapper = DeprecatedOvalContext.getXmlMapper();
     }
 
 
