@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.example;
 
-import jp.go.aist.six.oval.core.OvalContext2;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
@@ -17,7 +17,7 @@ public class OvalRepositoryFindByIdExample
         // Find Definition by ID
         String  def_id = "oval:org.mitre.oval.test:def:165";
         System.out.println( "*** finding Definition: " + def_id );
-        OvalRepository  repository = OvalContext2.REMOTE.getRepository();
+        OvalRepository  repository = OvalContext.REMOTE.getRepository();
         DefinitionType  def = repository.findDefinitionById( def_id );
         System.out.println( "*** found Definition: " + def );
 
