@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabase;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
@@ -44,9 +44,9 @@ public abstract class MongoTests
 	{
         super.setUp();
 
-        _datastore = OvalContext.getBean( MongoOvalDatabase.class );
+        _datastore = DeprecatedOvalContext.getBean( MongoOvalDatabase.class );
 
-        Morphia  morphia = OvalContext.getBean( "morphia", Morphia.class );
+        Morphia  morphia = DeprecatedOvalContext.getBean( "morphia", Morphia.class );
         for (MappedClass  clazz : morphia.getMapper().getMappedClasses()) {
             Reporter.log( "% Morphia mapped MongoDB collection: " + clazz.getCollectionName(), true );
         }

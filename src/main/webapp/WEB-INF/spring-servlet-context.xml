@@ -31,7 +31,7 @@
         <property name="messageConverters"> 
             <list> 
                 <ref bean="marshalling-converter" /> 
-                <ref bean="atom-converter" /> 
+                <!-- ref bean="atom-converter" / --> 
 
                 <!-- the default set of converters registered automatically, e.g. --> 
                 <!-- ref bean="stringConverter" / -->

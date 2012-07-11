@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreter;
@@ -332,7 +332,7 @@ public class OvaldiProxy
     {
         String  value = _config.get( property );
         if (value == null) {
-            value = OvalContext.getProperty( property.name );
+            value = DeprecatedOvalContext.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);

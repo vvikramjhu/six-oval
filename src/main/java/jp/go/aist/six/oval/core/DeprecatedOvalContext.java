@@ -34,13 +34,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalContext
+public class DeprecatedOvalContext
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( DeprecatedOvalContext.class );
 
 
 
@@ -51,7 +51,7 @@ public class OvalContext
     /**
      * Constructor.
      */
-    protected OvalContext()
+    protected DeprecatedOvalContext()
     {
 //        _initResourceBundle();
     }

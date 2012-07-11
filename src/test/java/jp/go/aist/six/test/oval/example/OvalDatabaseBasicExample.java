@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.example;
 
 import java.net.URL;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.DeprecatedOvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.OvalDatabase;
@@ -16,7 +16,7 @@ public class OvalDatabaseBasicExample
     throws Exception
     {
         // Unmarshal XML document
-        XmlMapper  xml_mapper = OvalContext.getXmlMapper();
+        XmlMapper  xml_mapper = DeprecatedOvalContext.getXmlMapper();
         String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
         URL  src_url = new URL( network_src );
         OvalDefinitions  oval_defs = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
@@ -26,7 +26,7 @@ public class OvalDatabaseBasicExample
 //        OvalDefinitions  oval_defs = (OvalDefinitions)xml_mapper.unmarshal( new FileInputStream( src_file ) );
 
         // Save OVAL Definition document
-        OvalDatabase  db = OvalContext.getDatabase();
+        OvalDatabase  db = DeprecatedOvalContext.getDatabase();
         String  id = db.save( OvalDefinitions.class, oval_defs );
         System.out.println( "whole OVAL Definitions document is saved: id=" + id );
 
