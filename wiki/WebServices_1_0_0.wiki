@@ -5,25 +5,40 @@
 
 In this document, we show the details
 of SIX OVAL Web services.
-In the latest version,
+In this version, 1.0.0,
 we provide only the _repository services_.
 
 
 
-= <font color="#0044CC">REST API</font> =
-T.B.D.
+== <font color="#0044CC">REST API</font> ==
+The main parts of REST-style Web services are
+resource models, identifiers of the resources, 
+representation of the resources, and 
+interaction models.
 
-The resources in the OVAL domain are well-defined in 
+The OVAL resource model is well-defined in 
 [http://oval.mitre.org/language/ the OVAL Language specification].
 Currently, XML is one and only 
-standardized resource representation format.
-Therefore, we adopt these resource model and representation.
+standardized resource representation format
+of the OVAL resources.
+Therefore, it is natural 
+that we adopt these model and representation format.
 
 Below, we describe the resource identifier design with URIs
 and interaction design with HTTP requests and responses. 
+Please note that only distinctive HTTP headers
+are listed.
 
 
+
+--------
 = <font color="#0044CC">Repository Services</font> =
+
+The OVAL repository is a persistent storage 
+which contains the OVAL resources.
+The repository services provide REST APIs
+to access the repository with HTTP.
+
 
 Suppose that the base URI of the service is
 denoted as `$REPO_BASE`;
