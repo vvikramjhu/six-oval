@@ -45,8 +45,31 @@ public abstract class OvalContext
 
 
 
-    public static final OvalLocalContext  LOCAL = new OvalLocalContext();
-    public static final OvalRemoteContext  REMOTE = new OvalRemoteContext();
+    public static final OvalBasicContext  BASIC = new OvalBasicContext();
+    public static final OvalServerContext  SERVER = new OvalServerContext();
+
+
+
+    /**
+     * Returns the default context.
+     *
+     * @return
+     */
+    public static OvalBasicContext getInstance()
+    {
+        return BASIC;
+    }
+
+
+    /**
+     * Returns the default context.
+     *
+     * @return
+     */
+    public static OvalServerContext getServerInstance()
+    {
+        return SERVER;
+    }
 
 
 
@@ -110,17 +133,49 @@ public abstract class OvalContext
     //  nested classes
     ///////////////////////////////////////////////////////////////////////
 
-
     /**
      */
-    public static class OvalLocalContext
+    public static class OvalBasicContext
     extends OvalContext
     {
         public static final String  CONTEXT_PATH
-        = "jp/go/aist/six/oval/core/six-oval_context-local.xml";
+        = "jp/go/aist/six/oval/core/six-oval_context-basic.xml";
 
 
-        public OvalLocalContext()
+        public OvalBasicContext()
+        {
+            super( CONTEXT_PATH );
+        }
+
+
+        @Override
+        public OvalRepository getRepository()
+        {
+            OvalRepository  repository = null;
+            try {
+                repository = getBean( HttpOvalRepositoryClient.class );
+                //throws ConfigurationException/runtime
+            } catch (Exception ex) {
+                throw new OvalConfigurationException( ex );
+            }
+
+            return repository;
+        }
+    }
+    //
+
+
+
+    /**
+     */
+    public static class OvalServerContext
+    extends OvalContext
+    {
+        public static final String  CONTEXT_PATH
+        = "jp/go/aist/six/oval/core/six-oval_context-server.xml";
+
+
+        public OvalServerContext()
         {
             super( CONTEXT_PATH );
         }
@@ -162,39 +217,6 @@ public abstract class OvalContext
             return repository;
         }
 
-    }
-    //
-
-
-
-    /**
-     */
-    public static class OvalRemoteContext
-    extends OvalContext
-    {
-        public static final String  CONTEXT_PATH
-        = "jp/go/aist/six/oval/core/six-oval_context-remote.xml";
-
-
-        public OvalRemoteContext()
-        {
-            super( CONTEXT_PATH );
-        }
-
-
-        @Override
-        public OvalRepository getRepository()
-        {
-            OvalRepository  repository = null;
-            try {
-                repository = getBean( HttpOvalRepositoryClient.class );
-                //throws ConfigurationException/runtime
-            } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-            }
-
-            return repository;
-        }
     }
     //
 
