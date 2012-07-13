@@ -10,7 +10,7 @@ This document will assist you in installing and using the SIX OVAL features.
 
 Put the SIX OVAL JAR and dependent JAR files
 in the Java classpath.
-Please consult the [ReleaseNotes release note] 
+Consult the [ReleaseNotes release note] 
 for finding the dependent components.
 
 
@@ -112,7 +112,7 @@ The reasons why we abandoned relational databases are:
 
 Before using the object persistence feature, 
 you must install the MongoDB and set up the database.
-Please refer to our [MongoDB step-by-step guide]
+Refer to our [MongoDB step-by-step guide]
 and the original 
 [http://www.mongodb.org/display/DOCS/Quickstart MongoDB  Installation Guides].
 
@@ -123,7 +123,7 @@ is enabled with "--auth" option and
 applications need the user name and password
 to access the database.
 For further details on security settings, 
-please read the above step-by-step guide and the original
+read the above step-by-step guide and the original
 [http://www.mongodb.org/display/DOCS/Security+and+Authentication Security and Authentication] document.
 
 
@@ -201,7 +201,8 @@ for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
 == <font color="#0044CC">Queries</font> ==
 
 Listing 7 shows example queries for the OVAL Database.
-Please refer to the [QueryParams070 query parameter specifications] for details.
+Refer to the 
+[QueryParams070 query parameter specifications] for details.
 
 {{{
 // Listing 7: Queries
@@ -307,7 +308,7 @@ copy the WAR file to "$CATALINA_BASE/webapps".
 
 If you need to configure the Java properties
 to access the database,
-please edit the properties file, 
+configure the properties file, 
 "six-oval.properties" as shown above,
 in the application's context; 
 e.g. "$CATALINA_BASE/webapps/six-oval/WEB-INF"
@@ -317,7 +318,7 @@ in case of Tomcat.
 == <font color="#0044CC">API</font> ==
 
 Here, we show some examples.
-Please refer to the 
+Refer to the 
 [WebServices_1_0_0 RESTful Web Services API specifications]
 for details.
 
