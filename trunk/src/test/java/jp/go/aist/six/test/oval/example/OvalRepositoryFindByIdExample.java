@@ -14,10 +14,11 @@ public class OvalRepositoryFindByIdExample
     public static void main( final String[] args )
     throws Exception
     {
+        OvalRepository  repository = OvalContext.getInstance().getRepository();
+
         // Find Definition by ID
         String  def_id = "oval:org.mitre.oval.test:def:165";
         System.out.println( "*** finding Definition: " + def_id );
-        OvalRepository  repository = OvalContext.REMOTE.getRepository();
         DefinitionType  def = repository.findDefinitionById( def_id );
         System.out.println( "*** found Definition: " + def );
 

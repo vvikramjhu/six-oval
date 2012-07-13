@@ -171,4 +171,21 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
 -->
                 <!-- ref bean="atom-converter" / --> 
 
+
+
+    <!-- ************************************************************** -->
+    <!-- *  Repository                                                * -->
+    <!-- ************************************************************** -->
+
+    <bean id="http-oval-repository-client" 
+        class="jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient"> 
+        <property name="repositoryBaseUrl" value="${six.oval.repository.web.base-url}"/> 
+        <property name="messageConverters"> 
+            <list> 
+                <ref bean="marshalling-converter" /> 
+                <!-- ref bean="atom-converter" / --> 
+            </list> 
+        </property>
+    </bean> 
+
 </beans>

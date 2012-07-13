@@ -133,7 +133,7 @@ public class OvalRepositoryController
 
 
     //********************************************************************
-    // oval-sc:oval_results
+    // oval-res:oval_results
     //********************************************************************
 
     // GET: fetch one by ID
