@@ -494,7 +494,7 @@
             <fileset dir="${java.src.dir}">
                 <patternset refid="java.resource.files" />
             </fileset>
-            
+<!--
             <filterset>
                 <filter token="six.db.engine"   value="${six.db.engine}"/>
                 <filter token="six.db.driver"   value="${six.db.driver}"/>
@@ -503,6 +503,7 @@
                 <filter token="six.db.username" value="${six.db.username}"/>
                 <filter token="six.db.password" value="${six.db.password}"/>
             </filterset>
+-->
         </copy>
     </target>
 

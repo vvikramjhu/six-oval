@@ -51,9 +51,10 @@ public abstract class OvalContext
 
 
     /**
-     * Returns the default context.
+     * Returns the default context for client applications.
      *
      * @return
+     *  the default context.
      */
     public static OvalBasicContext getInstance()
     {
@@ -62,9 +63,11 @@ public abstract class OvalContext
 
 
     /**
-     * Returns the default context.
+     * Returns the server context which is configured for server applications.
+     * This context contains OVAL database, repository, and XML mapper.
      *
      * @return
+     *  the server context.
      */
     public static OvalServerContext getServerInstance()
     {
