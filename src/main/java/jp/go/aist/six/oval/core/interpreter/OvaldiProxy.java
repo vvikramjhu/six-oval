@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreter;
@@ -136,7 +136,7 @@ public class OvaldiProxy
     private Options  _options;
 
 
-//    private OvalContext  _context;
+    private OvalContext  _context;
 
 
 
@@ -165,6 +165,10 @@ public class OvaldiProxy
     @Override
     public int execute()
     {
+        if (_context == null) {
+            _context = OvalContext.getInstance();
+        }
+
         final ProcessBuilder  builder = _createProcessBuilder();
         Process  process = null;
         int  exitValue = 0;
@@ -332,7 +336,7 @@ public class OvaldiProxy
     {
         String  value = _config.get( property );
         if (value == null) {
-            value = DeprecatedOvalContext.getProperty( property.name );
+            value = _context.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);

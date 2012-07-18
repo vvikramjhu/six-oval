@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core.repository.web;
 
 import java.io.File;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
@@ -42,7 +42,7 @@ public class HttpOvalRepositoryClientTests
 	{
         super.setUp();
 
-        _repository_client = DeprecatedOvalContext.getBean( HttpOvalRepositoryClient.class );
+        _repository_client = OvalContext.getInstance().getBean( HttpOvalRepositoryClient.class );
 //        _repository_client = new HttpOvalRepositoryClient();
 
         Reporter.log( "  * base URL: " + _repository_client.getRepositoryBaseUrl(), true );
