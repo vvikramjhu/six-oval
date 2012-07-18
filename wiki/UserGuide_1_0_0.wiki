@@ -318,7 +318,7 @@ e.g. "$CATALINA_BASE/webapps/six-oval/WEB-INF"
 in case of Tomcat.
 
 
-== <font color="#0044CC">API</font> ==
+== <font color="#0044CC">REST API</font> ==
 
 Here, we show some examples.
 Refer to the 
