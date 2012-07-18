@@ -321,8 +321,8 @@ in case of Tomcat.
 == <font color="#0044CC">REST API</font> ==
 
 Here, we show some examples.
-Refer to the 
-[WebServices_1_0_0 RESTful Web Services API specifications]
+Please refer to the 
+[WebServices_1_0_0 API specifications page]
 for details.
 
 
