@@ -447,9 +447,9 @@
             target          ="${java.compile.target}"
             debug           ="${java.compile.debug}"
             debuglevel      ="${java.compile.debuglevel}"
-            deprecation     ="${java.compile.deprecation}"
             includeantruntime="false"
             >
+            <!-- deprecation     ="${java.compile.deprecation}" -->
         </javac>
 
         <!-- copies resource files -->
@@ -482,9 +482,9 @@
             target          ="${java.compile.target}"
             debug           ="${java.compile.debug}"
             debuglevel      ="${java.compile.debuglevel}"
-    	    deprecation     ="${java.compile.deprecation}"
             includeantruntime="false"
             >
+            <!-- deprecation     ="${java.compile.deprecation}" -->
             <!-- shows unchecked conversion warnings -->
             <!-- <compilerarg line="-Xlint:unchecked"/> -->
         </javac>

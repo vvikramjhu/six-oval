@@ -8,7 +8,7 @@ import jp.go.aist.six.oval.repository.OvalRepository;
 
 
 
-public class OvalRepositoryFindByIdExample
+public class OvalRepositoryClientFindByIdExample
 {
 
     public static void main( final String[] args )
