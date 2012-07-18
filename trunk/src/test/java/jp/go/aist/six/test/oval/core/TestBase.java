@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
@@ -43,7 +43,7 @@ public abstract class TestBase
     throws Exception
     {
 //        _context = OvalContext.INSTANCE;
-        _xmlMapper = DeprecatedOvalContext.getXmlMapper();
+        _xmlMapper = OvalContext.getInstance().getXmlMapper();
     }
 
 

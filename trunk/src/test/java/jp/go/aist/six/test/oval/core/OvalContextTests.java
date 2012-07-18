@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import java.util.Properties;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -82,7 +82,7 @@ public class OvalContextTests
         Reporter.log( "\n//////////////////////////////////////////////////////////", true );
 
         Reporter.log( "  * property key: " + prop_key, true );
-        String  prop_value = DeprecatedOvalContext.getProperty( prop_key );
+        String  prop_value = OvalContext.getInstance().getProperty( prop_key );
         Reporter.log( "  * property value: " + prop_value, true );
     }
 
@@ -103,14 +103,14 @@ public class OvalContextTests
         Reporter.log( "\n//////////////////////////////////////////////////////////", true );
 
         Reporter.log( "default properties:::", true );
-        Properties  props = DeprecatedOvalContext.getBean( "six-oval-default-properties", Properties.class );
+        Properties  props = OvalContext.getInstance().getBean( "six-oval-default-properties", Properties.class );
         for (String  key : props.stringPropertyNames()) {
             String  value = props.getProperty( key );
             Reporter.log( "  * property: key=" + key + ", value=" + value, true );
         }
 
         Reporter.log( "user properties:::", true );
-        props = DeprecatedOvalContext.getBean( "six-oval-properties", Properties.class );
+        props = OvalContext.getInstance().getBean( "six-oval-properties", Properties.class );
         for (String  key : props.stringPropertyNames()) {
             String  value = props.getProperty( key );
             Reporter.log( "  * property: key=" + key + ", value=" + value, true );

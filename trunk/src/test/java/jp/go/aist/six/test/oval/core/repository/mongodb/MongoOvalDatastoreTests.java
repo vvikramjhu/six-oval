@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
@@ -37,7 +37,7 @@ public class MongoOvalDatastoreTests
     extends TestBase
 {
 
-    private OvalDatabase  _datastore;
+    private OvalDatabase  _database;
 
 
 
@@ -50,14 +50,14 @@ public class MongoOvalDatastoreTests
 	{
         super.setUp();
 
-        _datastore = DeprecatedOvalContext.getDatabase();
+        _database = OvalContext.getServerInstance().getDatabase();
 	}
 
 
     protected OvalDatabase _getDatastore()
     throws Exception
     {
-        return _datastore;
+        return _database;
     }
 
 
@@ -91,7 +91,7 @@ public class MongoOvalDatastoreTests
             Reporter.log( "  * object: " + object, true );
         }
 
-        K  pid = _datastore.save( object_type, object );
+        K  pid = _database.save( object_type, object );
         if (to_log) {
             Reporter.log( "  >>> object saved: PID=" + pid, true );
         }
@@ -100,7 +100,7 @@ public class MongoOvalDatastoreTests
             if (to_log) {
                 Reporter.log( "load object by PID...", true );
             }
-            T  p_object = _datastore.findById( object_type, pid );
+            T  p_object = _database.findById( object_type, pid );
             if (to_log) {
                 Reporter.log( "  @ object: " + p_object, true );
             }
@@ -148,7 +148,7 @@ public class MongoOvalDatastoreTests
             Reporter.log( "  * ID: " + id, true );
         }
 
-        T  object = _datastore.findById( object_type, id );
+        T  object = _database.findById( object_type, id );
         if (to_log) {
             Reporter.log( "  >>> object found: " + object, true );
         }
@@ -172,7 +172,7 @@ public class MongoOvalDatastoreTests
             Reporter.log( "  * query params: " + params, true );
         }
 
-        List<T>  objects = _datastore.find( object_type, params );
+        List<T>  objects = _database.find( object_type, params );
         if (to_log) {
             Reporter.log( "  >>> objects found: $objects=" + objects.size(), true );
         }

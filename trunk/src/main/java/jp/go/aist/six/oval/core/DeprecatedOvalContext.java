@@ -34,6 +34,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
+@Deprecated
 public class DeprecatedOvalContext
 {
 

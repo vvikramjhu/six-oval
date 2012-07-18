@@ -447,6 +447,7 @@
             target          ="${java.compile.target}"
             debug           ="${java.compile.debug}"
             debuglevel      ="${java.compile.debuglevel}"
+            deprecation     ="${java.compile.deprecation}"
             includeantruntime="false"
             >
         </javac>
@@ -481,6 +482,7 @@
             target          ="${java.compile.target}"
             debug           ="${java.compile.debug}"
             debuglevel      ="${java.compile.debuglevel}"
+    	    deprecation     ="${java.compile.deprecation}"
             includeantruntime="false"
             >
             <!-- shows unchecked conversion warnings -->

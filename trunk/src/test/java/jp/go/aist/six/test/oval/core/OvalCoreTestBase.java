@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Element;
@@ -71,7 +71,7 @@ public abstract class OvalCoreTestBase
     throws Exception
     {
         if (_xmlMapper == null) {
-            _xmlMapper = DeprecatedOvalContext.getXmlMapper();
+            _xmlMapper = OvalContext.getInstance().getXmlMapper();
         }
 
         return _xmlMapper;

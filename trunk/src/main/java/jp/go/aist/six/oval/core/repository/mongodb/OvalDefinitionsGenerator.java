@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -88,7 +88,7 @@ public class OvalDefinitionsGenerator
     private static OvalDatabase _getDatastore()
     {
         if (_DATASTORE_ == null) {
-            _DATASTORE_ = DeprecatedOvalContext.getDatabase();
+            _DATASTORE_ = OvalContext.getServerInstance().getDatabase();
         }
 
         return _DATASTORE_;

@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.example;
 
 import java.util.List;
-import jp.go.aist.six.oval.core.DeprecatedOvalContext;
+import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalDatabase;
@@ -39,7 +39,7 @@ public class OvalDatabaseQueryExample
         };
 
         // Execute Queries
-        OvalDatabase  db = DeprecatedOvalContext.getDatabase();
+        OvalDatabase  db = OvalContext.getServerInstance().getDatabase();
         for (DefinitionQueryParams  params : params_list) {
             System.out.println( "searches Definitions: query params=" + params );
             List<DefinitionType>  p_def_list = db.find( DefinitionType.class, params );
