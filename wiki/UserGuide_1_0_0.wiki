@@ -298,21 +298,21 @@ from Java applications.
 == <font color="#0044CC">Web Application Setup</font> ==
 
 Before using this Web services feature, 
-you must set up a servlet container like Tomcat. 
+you must set up a servlet container like 
+[http://tomcat.apache.org/ Tomcat].
 Here, we don't describe how to install it.
 
 Deployment of our Web application is easy;
-just put the WAR file on the appropriate path 
+just put the _WAR file_ on the appropriate path 
 indicated by the container.
-For example, if you use 
-[http://tomcat.apache.org/ Tomcat], 
+For example, if you use Tomcat, 
 copy the WAR file to "$CATALINA_BASE/webapps".
 
 
 If you need to configure the Java properties
 to access the database,
 configure the properties file, 
-"six-oval.properties" as shown above,
+"six-oval.properties" as described above,
 in the application's context; 
 e.g. "$CATALINA_BASE/webapps/six-oval/WEB-INF"
 in case of Tomcat.
