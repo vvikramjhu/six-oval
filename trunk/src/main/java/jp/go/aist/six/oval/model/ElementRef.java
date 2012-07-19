@@ -22,9 +22,8 @@ package jp.go.aist.six.oval.model;
 
 
 
-
 /**
- * A reference to an OVAL element, independent of its version.
+ * A reference to an element, independent of its version.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
