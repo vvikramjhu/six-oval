@@ -1,0 +1,104 @@
+#summary Repository Query Parameters, version 1.0.
+#labels Phase-Implementation
+
+= <font color="#0044CC">Introduction</font> =
+
+T.B.D.
+
+In this version, 1.0.0, the least query means are provided.
+
+  * Parameter as a key-value pair.
+  * Logical "AND" concatenation of parameters.
+  * Comma ',' as a list delimiter. Logical "OR" concatenation of list values.
+
+
+
+== <font color="#0044CC">Queries in Java Applications</font> ==
+
+== <font color="#0044CC">Queries in Web Services</font> ==
+
+
+
+
+----
+= <font color="#0044CC">Parameter Definitions</font> =
+
+Here,
+we show the query parameters for the OVAL object types.
+In the tables, each column means that:
+  * *Parameter Name*: name of the parameter.
+  * *Java Type*: type of the parameter value.
+  * *OVAL XPath*: relative xpath of the target node in OVAL XML documents.
+  * *List?*: whether the value can be a list or not.
+  * *Wildcard?*: whether the value can contain wildcard(s); `'*'`.
+  * *Examples*: key-value examples, as string representations.
+  * *Notes*: additional notes.
+
+
+
+== <font color="#0044CC">Common</font> ==
+
+The common parameters can be used for any type of objects.
+
+|| *Parameter Name* || *Java Type* || *Examples* || *Notes* ||
+|| searchTerms || String || `searchTerms=buffer` || - ||
+|| count || int || `count=10` || - ||
+|| startIndex || int || `startIndex=50` || - ||
+|| order || String || `order=id,version` || - ||
+
+
+
+== <font color="#0044CC">Definition</font> ==
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| id || String || `./@id` || Yes || Yes || `id=oval:org.foo:def:100`<br>`id=oval:org.foo:def:*`<br>`id=oval:org.foo:def:100,oval:org.foo:def:101`<br>`id=oval:org.foo:def:*,oval:org.bar:def:*,oval:org.baz:def:*` || - ||
+|| version || int || `./@version` || No || No || `version=2` || - ||
+|| definitionClass || !ClassEnumeration or String || `./@class` || Yes || No || `definitionsClass=vulnerability,patch` || The word "class" is a Java reserved word. ||
+|| family || Family or String || `./metadata/affected/@family` || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
+|| platform || String || `./metadata/affected/platform` || Yes || Yes || `platform=Windows*`<br>`platform=Windows*,Solaris*` || - ||
+|| product || String || `./metadata/affected/product` || Yes || Yes || `product=Acrobat*`<br>`product=Internet Explorer*,Google Chrome*,Mozilla Firefox*` || - ||
+|| refSource || String || `./metadata/reference/@source` || Yes || No || `refSource=CVE`<br>`refSource=CVE,CPE` || - ||
+|| refId || String || `./metadata/reference/@ref_id` || Yes || Yes || `refId=CVE-2010-0176`<br>`refId=CVE-2012-*`<br>`refId=cpe:/a:adobe:acrobat:*,cpe:/a:adobe:flash:*` || - ||
+|| cve || String || `./metadata/reference/@ref_id` || Yes || Yes || `cve=CVE-2010-0176`<br>`cve=CVE-2012-*`<br>`cve=CVE-2010-0176,CVE-2010-0177` || a shortcut to refId ||
+|| searchTerms || String || `./metadata/(title|description)` || Yes || No || `searchTerms=buffer` || - ||
+
+
+
+== <font color="#0044CC">Test, Object, State, Variable</font> ==
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| id || String || `./@id` || Yes || Yes || `id=oval:org.foo:def:100`<br>`id=oval:org.foo:def:*`<br>`id=oval:org.foo:def:100,oval:org.foo:def:101`<br>`id=oval:org.foo:def:*,oval:org.bar:def:*,oval:org.baz:def:*` || - ||
+|| version || int || `./@version` || No || No || `version=2` || - ||
+|| type || !ElementType or String || - || No || No || `type=test` || - ||
+|| family || Family or String || - || Yes || No || `family=windows`<br>`family=windows,unix` || - ||
+|| component || !ComponentType or String || - || Yes || No || `component=file`<br>`component=file,registry` || - ||
+|| searchTerms || String || `./@comment` || Yes || No || `searchTerms=buffer` || - ||
+
+
+
+== <font color="#0044CC">OVAL System Characteristics</font> ==
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| host || String || `./system_info/primary_host_name` || Yes || Yes || `host=mailserver`<br>`host=mailserver,webserver`<br>`host=*.foo.org`<br>`host=*.a.foo.org,*.b.foo.org` || - ||
+|| os || String || `./system_info/os_name` || Yes || No || `os=Windows*`<br>`os=Windows*,Solaris*`<br>`os=*Linux*` || - ||
+|| osVersion || String || `./system_info/os_version` || Yes || Yes || `osVersion=6.1.7601`<br>`osVersion=>5`<br>`osVersion=5.1.*,5.2.*` || '>' and '<' means 'greater than' and 'less than', respectively. ||
+|| ip || String || `./system_info/interfaces/interface/ip_address` || Yes || Yes || `ip=192.168.1.2`<br>`ip=192.168.1.*`<br>`ip=192.168.1.*,192.168.2.*` || - ||
+
+
+
+== <font color="#0044CC">OVAL Results</font> ==
+
+The query parameters for OVAL Results include
+the ones for OVAL System Characteristics,
+where each XPath is shifted to under '`./results/system/oval_system_characteristics`'.
+
+|| *Parameter Name* || *Java Type* || *OVAL XPath* || *List?* || *Wildcard?* || *Examples* || *Notes* ||
+|| definition || String || `./results/system/definitions/definition/@definition_id` || Yes || No || `definition=oval:org.foo:def:100`<br>`definition=oval:org.foo:def:100,oval:org.foo:def:101` || - ||
+|| definitionTrue || String || `./results/system/definitions/definition[@result='true']/@definition_id` || Yes || No || `definition=oval:org.foo:def:100`<br>`definition=oval:org.foo:def:100,oval:org.foo:def:101` || - ||
+|| host || String || `./results/system/oval_system_characteristics/system_info/primary_host_name` || Yes || Yes || `host=mailserver`<br>`host=mailserver,webserver`<br>`host=*.foo.org`<br>`host=*.a.foo.org,*.b.foo.org` || - ||
+|| os || String || `./results/system/oval_system_characteristics/system_info/os_name` || Yes || No || `os=Windows*`<br>`os=Windows*,Solaris*`<br>`os=*Linux*` || - ||
+|| osVersion || String || `./results/system/oval_system_characteristics/system_info/os_version` || Yes || Yes || `osVersion=6.1.7601`<br>`osVersion=>5`<br>`osVersion=5.1.*,5.2.*` || '>' and '<' means 'greater than' and 'less than', respectively. ||
+|| ip || String || `./results/system/oval_system_characteristics/system_info/interfaces/interface/ip_address` || Yes || Yes || `ip=192.168.1.2`<br>`ip=192.168.1.*`<br>`ip=192.168.1.*,192.168.2.*` || - ||
+
+
+--------
