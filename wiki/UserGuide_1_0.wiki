@@ -215,7 +215,7 @@ for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
 
 Listing 7 shows example queries for the OVAL Database.
 Refer to the 
-[QueryParams_1_0_0 query parameter specifications] 
+[RepositoryQueryParameters_1_0 query parameters document] 
 for details.
 
 {{{
