@@ -67,7 +67,7 @@ OvalDefinitions  oval_defs2 = xml_mapper.unmarshal( src_url.openStream(), OvalDe
 
 Several variant unmarshal and marshal methods 
 are defined in !XmlMapper.
-Listing 3 shows the signatures.
+Listing 3 shows the method signatures.
 
 {{{
 // Listing 3: XmlMapper interface
