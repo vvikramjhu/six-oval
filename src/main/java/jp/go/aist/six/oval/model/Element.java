@@ -25,6 +25,7 @@ import com.google.code.morphia.annotations.Transient;
 
 /**
  * An OVAL element.
+ * Every element has an OVAL ID and version attributes.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -143,22 +144,21 @@ public abstract class Element
             throw new IllegalArgumentException( "null element" );
         }
 
-        Integer  version = e.getOvalVersion();
-        if (version == null) {
-            throw new IllegalArgumentException( "null version" );
-        }
-
-        return globalRefOf( e.getOvalId(), version.intValue() );
+        return globalRefOf( e.getOvalId(), e.getOvalVersion() );
     }
 
 
     public static final String globalRefOf(
                     final String id,
-                    final int version
+                    final Integer version
                     )
     {
         if (id == null || id.length() == 0) {
-            throw new IllegalArgumentException( "null or empty ovalID" );
+            throw new IllegalArgumentException( "null or empty OVAL ID" );
+        }
+
+        if (version == null) {
+            throw new IllegalArgumentException( "null version" );
         }
 
         return id + ":" + version;
@@ -197,6 +197,9 @@ public abstract class Element
 
     /**
      * Returns the type of this element.
+     *
+     * @return
+     *  the type.
      */
     public abstract ElementType ovalGetType();
 
@@ -211,16 +214,16 @@ public abstract class Element
                     final Element o
                     )
     {
-        String  id1 = getOvalId();
-        String  id2 = o.getOvalId();
-        int  order = id1.compareTo( id2 );
+        String   this_id =   getOvalId();
+        String  other_id = o.getOvalId();
+        int  order = this_id.compareTo( other_id );
         if (order != 0) {
             return order;
         }
 
-        int  version1 = getOvalVersion();
-        int  version2 = o.getOvalVersion();
-        return (version1 - version2);
+        int   this_version =   getOvalVersion();
+        int  other_version = o.getOvalVersion();
+        return (this_version - other_version);
     }
 
 
@@ -238,7 +241,8 @@ public abstract class Element
         String  id = getOvalId();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
-        result = prime * result + getOvalVersion();
+        Integer  version = getOvalVersion();
+        result = prime * result + ((version == null) ? 0 : version.intValue());
 
         return result;
     }
@@ -263,7 +267,10 @@ public abstract class Element
         String   this_id =  this.getOvalId();
         if (this_id == other_id
                         ||  (this_id != null  &&  this_id.equals( other_id ))) {
-            if (this.getOvalVersion() == other.getOvalVersion()) {
+            Integer   this_version =  this.getOvalVersion();
+            Integer  other_version = other.getOvalVersion();
+            if (this_version == other_version
+                            ||  (this_version != null  &&  this_version.equals( other_version ))) {
                 return true;
             }
         }

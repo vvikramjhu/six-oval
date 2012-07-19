@@ -106,6 +106,12 @@ public abstract class Container<E>
 
     ///////////////////////////////////////////////////////////////////////
 
+    /**
+     * Returns the internal collection object to hold the elements.
+     *
+     * @return
+     *  the internal collection object.
+     */
     protected abstract Collection<E> _getCollection();
 
 
@@ -314,4 +320,4 @@ public abstract class Container<E>
     }
 
 }
-//Container
+//

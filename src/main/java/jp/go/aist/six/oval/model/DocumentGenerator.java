@@ -31,7 +31,7 @@ package jp.go.aist.six.oval.model;
  *
  *<p>
  * This type is extracted from GeneratorType defined in the OVAL Common schema
- * to refer from the OVAL Definitions elements: Definition, Test, systemObject, and State.
+ * to refer from the OVAL Definitions elements: Definition, Test, Object, State, and Variable.
  * </p>
  *
  * @author	Akihito Nakamura, AIST
@@ -161,8 +161,6 @@ public class DocumentGenerator
 
 
 
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -242,4 +240,4 @@ public class DocumentGenerator
     }
 
 }
-//DocumentGenerator
+//

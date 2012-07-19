@@ -27,12 +27,6 @@ import com.google.code.morphia.annotations.Id;
 /**
  * The abstract superclass of the OVAL documents.
  *
- * <p>
- * IMPLEMENTATION NOTE:
- * This implementation of the schemaLocation property is a dirty hack.
- * Because the Spring OXM support for Castor does NOT provide the property.
- * </p>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
@@ -59,6 +53,12 @@ public abstract class Document
 
 
 
+    /*
+     * IMPLEMENTATION NOTE:
+     * This implementation of the schemaLocation property is a dirty hack.
+     * Because the Spring OXM support for Castor does NOT provide the property.
+     */
+
     /**
      */
     public void setSchemaLocation(
@@ -72,7 +72,6 @@ public abstract class Document
     public String getSchemaLocation()
     {
         return schemaLocation;
-//        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
     }
 
 
@@ -94,9 +93,9 @@ public abstract class Document
 
 
 
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
+    //*********************************************************************
+    //  implements Persistable
+    //*********************************************************************
 
 //    @Override
 //    public synchronized String getPersistentID()
@@ -127,4 +126,4 @@ public abstract class Document
     }
 
 }
-//Document
+//
