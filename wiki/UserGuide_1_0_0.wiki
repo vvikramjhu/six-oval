@@ -70,7 +70,7 @@ are defined in !XmlMapper.
 Listing 3 shows the method signatures.
 
 {{{
-// Listing 3: XmlMapper interface
+// Listing 3: XmlMapper Interface
 
 Object unmarshal(java.xml.transform.Source source)
 Object unmarshal(java.io.Reader reader)
