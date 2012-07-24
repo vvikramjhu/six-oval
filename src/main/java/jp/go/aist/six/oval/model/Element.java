@@ -44,7 +44,7 @@ public abstract class Element
 
 
     /**
-     * Constructor.
+     * Constructs an element.
      */
     public Element()
     {
@@ -52,7 +52,7 @@ public abstract class Element
 
 
     /**
-     * Constructor.
+     * Constructs an element.
      *
      * @param   id
      *  the OVAL-ID of the entity.

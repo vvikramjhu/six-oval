@@ -50,7 +50,7 @@ public abstract class Container<E>
      */
 
     /**
-     * Constructor.
+     * Constructs a container.
      */
     public Container()
     {
@@ -74,47 +74,24 @@ public abstract class Container<E>
 
 
 
-//    /**
-//     */
-//    protected void _setElement(
-//                    final Collection<? extends E> element_list
-//                    )
-//    {
-//        if (_getCollection() != element_list) {
-//            _getCollection().clear();
-//            if (element_list != null  &&  element_list.size() > 0) {
-//                for (E  e : element_list) {
-//                    add( e );
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    protected void _setElement(
-//                    final E[] element_list
-//                    )
-//    {
-//        _getCollection().clear();
-//        if (element_list != null  &&  element_list.length > 0) {
-//            for (E  e : element_list) {
-//                add( e );
-//            }
-//        }
-//    }
-
-
     ///////////////////////////////////////////////////////////////////////
 
     /**
      * Returns the internal collection object to hold the elements.
      *
      * @return
-     *  the internal collection object.
+     *  internal collection object.
      */
     protected abstract Collection<E> _getCollection();
 
 
+    /**
+     * Reset this container with the specified elements.
+     * That is, removes all of the existing elements and add all the specified elements.
+     *
+     * @param element_list
+     *  collection containing the elements to be reset.
+     */
     public void reset(
                     final Collection<? extends E> element_list
                     )
@@ -130,6 +107,13 @@ public abstract class Container<E>
     }
 
 
+    /**
+     * Reset this container with the specified elements.
+     * That is, removes all of the existing elements and add all the specified elements.
+     *
+     * @param element_list
+     *  collection containing the elements to be reset.
+     */
     public void reset(
                     final E[] element_list
                     )
@@ -143,6 +127,16 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Appends the specified element to this container, if it is not contained.
+     *
+     * @param e
+     *  element whose presence in this container is to be ensured.
+     * @return
+     *  true if this container changed as a result of operation.
+     * @throws  NullPointerException
+     *  if the specified element is null.
+     */
     public boolean add(
                     final E e
                     )
@@ -155,6 +149,18 @@ public abstract class Container<E>
     }
 
 
+
+    /**
+     * Appends all of the elements in the specified collection to this container.
+     *
+     * @param c
+     *  collection containing elements to be added to this container.
+     * @return
+     *  true if this collection changed as a result of the operation.
+     * @throws  NullPointerException
+     *  if the specified collection contains a null element,
+     *  or if the specified collection is null.
+     */
     public boolean addAll(
                     final Collection<? extends E> c
                     )
@@ -175,19 +181,33 @@ public abstract class Container<E>
     }
 
 
+    /**
+     * Appends all of the elements in the specified array to this container.
+     *
+     * @param a
+     *  array containing elements to be added to this container.
+     * @return
+     *  true if this collection changed as a result of the operation.
+     * @throws  NullPointerException
+     *  if the specified array contains a null element,
+     *  or if the specified array is null.
+     */
     public boolean addAll(
-                    final E[] c
+                    final E[] a
                     )
     {
-        if (c == null) {
+        if (a == null) {
             throw new NullPointerException( "adding null array" );
         }
 
-        return addAll( Arrays.asList( c ) );
+        return addAll( Arrays.asList( a ) );
     }
 
 
 
+    /**
+     * Removes all of the elements from this container.
+     */
     public void clear()
     {
         _getCollection().clear();
@@ -195,6 +215,16 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Removes a single instance of the specified element from this collection, if it is present.
+     *
+     * @param e
+     *  element to be removed from this container.
+     * @return
+     *  true if an element is removed.
+     * @throws  NullPointerException
+     *  if the specified element is null.
+     */
     public boolean remove(
                     final E e
                     )
@@ -208,6 +238,12 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Returns an iterator over the elements in this container.
+     *
+     * @return
+     *  an Iterator over the elements in this container.
+     */
     public Iterator<E> iterator()
     {
         return _getCollection().iterator();
@@ -215,6 +251,14 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Returns true if this container contains the specified element.
+     *
+     * @param e
+     *  element whose presence in this container is to be tested.
+     * @return
+     *  true if this container contains the specified element.
+     */
     public boolean contains(
                     final E e
                     )
@@ -228,12 +272,25 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Returns the number of elements in this container.
+     *
+     * @return
+     *  the number of elements in this container.
+     */
     public int size()
     {
         return _getCollection().size();
     }
 
 
+
+    /**
+     * Returns true if this container contains no elements.
+     *
+     * @return
+     *  true if this container contains no elements.
+     */
     public boolean isEmpty()
     {
         return (size() == 0);
@@ -241,12 +298,29 @@ public abstract class Container<E>
 
 
 
+    /**
+     * Returns an array containing all of the elements in this container.
+     *
+     * @return
+     *  an array containing all of the elements in this container.
+     */
     public Object[] toArray()
     {
         return _getCollection().toArray();
     }
 
 
+    /**
+     * Returns an array containing all of the elements in this container;
+     * the runtime type of the returned array is that of the specified array.
+     *
+     * @param a
+     *  the array into which the elements of this collection are to be stored,
+     *  if it is big enough;
+     *  otherwise, a new array of the same runtime type is allocated for this purpose.
+     * @return
+     *  an array containing all of the elements in this container.
+     */
     public <T> T[] toArray(
                     final T[] a
                     )

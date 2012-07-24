@@ -67,13 +67,22 @@ public abstract class ElementContainer<E extends Element>
 
 
     /**
+     * Searches this container for the element which has the specified OVAL ID.
+     *
+     * @param   oval_id
+     *  the OVAL ID to be searched for.
+     * @return
+     *  the element of the specified OVAL ID, if it is contained in this container;
+     *  otherwise, null.
+     * @throws  NullPointerException
+     *  if the specified OVAL ID is null.
      */
     public E findByOvalId(
                     final String oval_id
                     )
     {
         if (oval_id == null) {
-            throw new IllegalArgumentException( "null OVAL ID" );
+            throw new NullPointerException( "searching null OVAL ID" );
         }
 
         Iterator<E>  itr = iterator();
@@ -90,6 +99,14 @@ public abstract class ElementContainer<E extends Element>
 
 
     /**
+     * Returns true if this container contains an element with the specified OVAL ID.
+     *
+     * @param   oval_id
+     *  the OVAL ID to be searched for.
+     * @return
+     *  true if this container contains an element with the specified OVAL ID.
+     * @throws  NullPointerException
+     *  if the specified OVAL ID is null.
      */
     public boolean containsOvalId(
                     final String oval_id
@@ -101,18 +118,22 @@ public abstract class ElementContainer<E extends Element>
 
 
     /**
+     * Returns a Set view of the OVAL IDs contained in this container.
+     *
+     * @return
+     *  a set view of the OVAL IDs contained in this container.
      */
     public Set<String> ovalIdSet()
     {
-        Set<String>  oval_id_list = new HashSet<String>();
+        Set<String>  oval_id_set = new HashSet<String>();
 
         Iterator<E>  itr = iterator();
         while (itr.hasNext()) {
             E  e = itr.next();
-            oval_id_list.add( e.getOvalId() );
+            oval_id_set.add( e.getOvalId() );
         }
 
-        return oval_id_list;
+        return oval_id_set;
     }
 
 
@@ -144,6 +165,17 @@ public abstract class ElementContainer<E extends Element>
     }
 
 
+    /**
+     * Returns the hash value of the elements in this container.
+     * The hash value is computed using a message digest algorithm; MD5.
+     * Pairs of OVAL ID and version of all of the elements are used
+     * for the hash computation.
+     * That is, for two elements, if they have the same OVAL ID but the different versions,
+     * the result hash values are different.
+     *
+     * @return
+     *  a hex string representation of the hash value.
+     */
     public String getDigest()
     {
         int  thisHash = hashCode();
@@ -256,4 +288,4 @@ public abstract class ElementContainer<E extends Element>
     }
 
 }
-//ElementContainer
+//
