@@ -38,7 +38,7 @@ public abstract class Name
 
 
     /**
-     * Constructor.
+     * Constructs an instance.
      */
     public Name()
     {
@@ -140,4 +140,4 @@ public abstract class Name
     }
 
 }
-//Name
+//

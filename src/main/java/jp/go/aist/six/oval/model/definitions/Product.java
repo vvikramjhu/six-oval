@@ -42,13 +42,16 @@ public class Product
 
 
     /**
-     * Constructor.
+     * Constructs an instance.
      */
     public Product()
     {
     }
 
 
+    /**
+     * Constructs an instance with the spaceified name.
+     */
     public Product(
                     final String name
                     )
@@ -97,4 +100,4 @@ public class Product
     }
 
 }
-// Product
+//
