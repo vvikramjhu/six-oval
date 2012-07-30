@@ -6,4 +6,11 @@
 This document describes the OVAL Domain Model.
 
 
+= Top-Level Abstract Model =
+
+
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_abstract.png]
+
+
+
 --------
