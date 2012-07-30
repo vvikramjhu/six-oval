@@ -41,13 +41,16 @@ public class Platform
 
 
     /**
-     * Constructor.
+     * Constructs an instance.
      */
     public Platform()
     {
     }
 
 
+    /**
+     * Constructs an instance with the spaceified name.
+     */
     public Platform(
                     final String name
                     )
