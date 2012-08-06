@@ -6,10 +6,15 @@
 This document describes the OVAL Domain Model.
 
 
-= Top-Level Abstract Model =
+= Base Abstract Model =
 
 
+  <b>Figure 1</b>: Base Abstract Model
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_abstract.png]
+
+
+  <b>Figure 2</b>: Supported Families and Components
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_component.png]
 
 
 
