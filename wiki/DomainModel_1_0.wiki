@@ -1,12 +1,12 @@
 #summary OVAL Domain Model, version 1.0.
 #labels Phase-Implementation
 
-= Introduction =
+= <font color="#0044CC">Introduction</font> =
 
 This document describes the OVAL Domain Model.
 
 
-= Base Abstract Model =
+= <font color="#0044CC">Base Abstract Model</font> =
 
 
   <b>Figure 1</b>: Base Abstract Model
@@ -15,6 +15,18 @@ This document describes the OVAL Domain Model.
 
   <b>Figure 2</b>: Supported Families and Components
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_component.png]
+
+
+
+--------------------------------
+= <font color="#0044CC">OVAL Common Model</font> =
+
+  <b>Figure X</b>: OVAL Common Model - OVAL ID and Enumerations
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common.png]
+
+
+  <b>Figure X</b>: OVAL Common Model - Document Generator
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common_document.png]
 
 
 
