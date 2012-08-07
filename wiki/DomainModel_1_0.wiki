@@ -3,7 +3,12 @@
 
 = <font color="#0044CC">Introduction</font> =
 
-This document describes the OVAL Domain Model.
+T.B.D.
+
+This document describes the OVAL Domain Model
+in Java language.
+Most of Java classes are directly derived from 
+OVAL schema definition.
 
 
 = <font color="#0044CC">Base Abstract Model</font> =
@@ -19,7 +24,11 @@ This document describes the OVAL Domain Model.
 
 
 --------------------------------
-= <font color="#0044CC">OVAL Common Model</font> =
+= <font color="#0044CC">OVAL Core Common Model</font> =
+
+The OVAL Common Core schema defines the common types 
+that are shared across the different schemas within OVAL.
+Here, 
 
   <b>Figure X</b>: OVAL Common Model - OVAL ID and Enumerations
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common.png]
@@ -28,6 +37,12 @@ This document describes the OVAL Domain Model.
   <b>Figure X</b>: OVAL Common Model - Document Generator
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common_document.png]
 
+
+
+--------------------------------
+= <font color="#0044CC">OVAL Core Definition Model</font> =
+
+T.B.D.
 
 
 --------
