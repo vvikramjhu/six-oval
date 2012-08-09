@@ -11,12 +11,36 @@ Most of Java classes are directly derived from
 OVAL schema definition.
 
 
-= <font color="#0044CC">Base Abstract Model</font> =
+|| *OVAL Schema*   || *XML Namespace* || *Java Package* ||
+||-               ||- ||jp.go.aist.six.oval.model ||
+||Core Common     ||- ||jp.go.aist.six.oval.model.common ||
+||Core Definition ||- ||jp.go.aist.six.oval.model.definitions ||
+||Core Directives ||- ||jp.go.aist.six.oval.model.directives ||
+||Core Results ||- ||jp.go.aist.six.oval.model.results ||
+||Core System Characteristics ||- ||jp.go.aist.six.oval.model.sc ||
+||Core Variable ||- ||jp.go.aist.six.oval.model.variables ||
+||Independent Definition<br>Independent System Characteristics ||- ||jp.go.aist.six.oval.model.independent ||
+||Linux Definition<br>Linux System Characteristics ||- ||jp.go.aist.six.oval.model.linux ||
+||Unix Definition<br>Unix System Characteristics ||- ||jp.go.aist.six.oval.model.unix ||
+||Windows Definition<br>Windows System Characteristics ||- ||jp.go.aist.six.oval.model.windows ||
 
 
-  <b>Figure 1</b>: Base Abstract Model
+--------------------------------
+= <font color="#0044CC">Base Package</font> =
+
+The classes in this package are 
+not inherent in the OVAL schema,
+but are abstracted from the main part of it.
+Figure 1 shows the abstracted classes in our modelling.
+
+  <b>Figure 1</b>: Base Abstract Classes
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_abstract.png]
 
+
+In addition to the abstracted classes, 
+this package contains enumeration of 
+supported OS families and their components.
+Figure 2 shows these enumeration classes.
 
   <b>Figure 2</b>: Supported Families and Components
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_component.png]
@@ -24,23 +48,22 @@ OVAL schema definition.
 
 
 --------------------------------
-= <font color="#0044CC">OVAL Core Common Model</font> =
+= <font color="#0044CC">Core Common Model</font> =
 
 The OVAL Common Core schema defines the common types 
 that are shared across the different schemas within OVAL.
-Here, 
 
-  <b>Figure X</b>: OVAL Common Model - OVAL ID and Enumerations
+  <b>Figure 3</b>: OVAL Common Model - OVAL ID and Enumerations
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common.png]
 
 
-  <b>Figure X</b>: OVAL Common Model - Document Generator
+  <b>Figure 4</b>: OVAL Common Model - Document Generator
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common_document.png]
 
 
 
 --------------------------------
-= <font color="#0044CC">OVAL Core Definition Model</font> =
+= <font color="#0044CC">Core Definition Model</font> =
 
 T.B.D.
 
