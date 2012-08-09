@@ -80,5 +80,9 @@ because the word "Object" has special meaning in Java world.
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_def.png]
 
 
+  <b>Figure X</b>: OVAL Definition Model - Criteria
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_criteria.png]
+
+
 
 --------
