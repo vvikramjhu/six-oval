@@ -75,10 +75,6 @@ public class VariableType
         private String  value = null;
 
 
-
-        /**
-         * Constructor.
-         */
         Type()
         {
             value = name().toLowerCase();
@@ -227,4 +223,4 @@ public class VariableType
     }
 
 }
-// VariableType
+//

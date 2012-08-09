@@ -31,9 +31,9 @@ import com.google.code.morphia.annotations.PrePersist;
 
 
 /**
- * An OVAL entity.
+ * An OVAL definitions element.
  * The kinds are definition, test, state, object, and variable.
- * Every OVAL entity is identified by a pair of its identifier and version.
+ * Every definitions element is identified by a pair of its identifier and version.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -239,100 +239,6 @@ public abstract class DefinitionsElement
 
         return super.equals( obj );
     }
-
-//  public enum Type
-//  implements OvalEnumeration
-//  {
-//      DEFINITION( OvalId.Type.def ),
-//      TEST(       OvalId.Type.tst ),
-//      OBJECT(     OvalId.Type.obj ),
-//      STATE(      OvalId.Type.ste ),
-//      VARIABLE(   OvalId.Type.var );
-//
-//
-//      ////////////////////////////////////////////////////////////
-//
-//      /**
-//       * A factory method.
-//       */
-//      public static Type fromValue(
-//                      final String value
-//                      )
-//      {
-//          for (Type  e : Type.values()) {
-//              if (e.value.equals( value )) {
-//                  return e;
-//              }
-//          }
-//
-//          throw new IllegalArgumentException( value );
-//      }
-//
-//
-//      public static Type fromOvalIdType(
-//                      final OvalId.Type id_type
-//                      )
-//      {
-//          for (Type  e : Type.values()) {
-//              if (e.getOvalIdType() == id_type) {
-//                  return e;
-//              }
-//          }
-//
-//          throw new IllegalArgumentException( String.valueOf( id_type ) );
-//      }
-//
-//
-//      public static Type fromOvalId(
-//                      final String oval_id
-//                      )
-//      {
-//          return fromOvalIdType( OvalId.typeOf( oval_id ) );
-//      }
-//
-//
-//      private String  value;
-//      private OvalId.Type  id_type = null;
-//
-//
-//      Type(
-//                      final OvalId.Type type
-//                      )
-//      {
-//          value = name().toLowerCase();
-//          id_type = type;
-//      }
-//
-//
-//
-//      /**
-//       * The type indicator in the OVAL-ID.
-//       */
-//      public OvalId.Type getOvalIdType()
-//      {
-//          return id_type;
-//      }
-//
-//
-//
-//      //OvalEnumeration
-//      @Override
-//      public String value()
-//      {
-//          return value;
-//      }
-//
-//
-//      // java.lang.String
-//      @Override
-//      public String toString()
-//      {
-//          return value;
-//      }
-//  }
-//  //Type
-
-
 
 }
 //
