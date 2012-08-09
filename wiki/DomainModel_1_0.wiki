@@ -67,8 +67,9 @@ that are shared across the different schemas within OVAL.
 
 T.B.D.
 
-Please note that *ObjectType* in the OVAL schema is
-mapped to *SystemObjectType* in Java,
+Please note that
+*!ObjectType* in the OVAL schema is
+mapped to *!SystemObjectType* in Java,
 because the word "Object" has special meaning in Java world.
 
   <b>Figure X</b>: OVAL Definition Model - Elements
