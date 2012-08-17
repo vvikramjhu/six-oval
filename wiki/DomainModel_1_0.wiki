@@ -113,6 +113,22 @@ T.B.D.
 
 T.B.D.
 
+  <b>Figure X</b>: Core Results Model
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results.png]
+
+
+  <b>Figure X</b>: Core Results Model - System
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_system.png]
+
+
+  <b>Figure X</b>: Core Results Model - Definition
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_def.png]
+
+
+  <b>Figure X</b>: Core Results Model - Test
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_test.png]
+
+
  
 
 --------------------------------
