@@ -11,13 +11,13 @@ Most of Java classes are directly derived from
 OVAL schema definition.
 
 
-|| *OVAL Schema*   || *XML Namespace* || *Java Package* ||
-||-               ||- ||jp.go.aist.six.oval.model ||
+|| *OVAL Schema*  || *XML Namespace* || *Java Package* ||
+||SIX Base        ||- ||jp.go.aist.six.oval.model ||
 ||Core Common     ||- ||jp.go.aist.six.oval.model.common ||
 ||Core Definition ||- ||jp.go.aist.six.oval.model.definitions ||
-||Core Directives ||- ||jp.go.aist.six.oval.model.directives ||
-||Core Results ||- ||jp.go.aist.six.oval.model.results ||
 ||Core System Characteristics ||- ||jp.go.aist.six.oval.model.sc ||
+||Core Results ||- ||jp.go.aist.six.oval.model.results ||
+||Core Directives ||- ||jp.go.aist.six.oval.model.directives ||
 ||Core Variable ||- ||jp.go.aist.six.oval.model.variables ||
 ||Independent Definition<br>Independent System Characteristics ||- ||jp.go.aist.six.oval.model.independent ||
 ||Linux Definition<br>Linux System Characteristics ||- ||jp.go.aist.six.oval.model.linux ||
@@ -26,7 +26,7 @@ OVAL schema definition.
 
 
 --------------------------------
-= <font color="#0044CC">Base Package</font> =
+= <font color="#0044CC">SIX Base</font> =
 
 The classes in this package are 
 not inherent in the OVAL schema,
@@ -48,7 +48,7 @@ Figure 2 shows these enumeration classes.
 
 
 --------------------------------
-= <font color="#0044CC">Core Common Model</font> =
+= <font color="#0044CC">Core Common</font> =
 
 The OVAL Common Core schema defines the common types 
 that are shared across the different schemas within OVAL.
@@ -63,7 +63,7 @@ that are shared across the different schemas within OVAL.
 
 
 --------------------------------
-= <font color="#0044CC">Core Definition Model</font> =
+= <font color="#0044CC">Core Definition</font> =
 
 T.B.D.
 
@@ -83,6 +83,46 @@ because the word "Object" has special meaning in Java world.
   <b>Figure X</b>: OVAL Definition Model - Criteria
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_criteria.png]
 
+
+
+--------------------------------
+= <font color="#0044CC">Core System Characteristics</font> =
+
+T.B.D.
+
+ 
+--------------------------------
+= <font color="#0044CC">Core Results</font> =
+
+T.B.D.
+
+ 
+
+--------------------------------
+= <font color="#0044CC">Independent Definition and System Characteristics</font> =
+
+T.B.D.
+
+ 
+--------------------------------
+= <font color="#0044CC">Linux Definition and System Characteristics</font> =
+
+T.B.D.
+
+ 
+
+--------------------------------
+= <font color="#0044CC">UNIX Definition and System Characteristics</font> =
+
+T.B.D.
+
+ 
+--------------------------------
+= <font color="#0044CC">Windows Definition and System Characteristics</font> =
+
+T.B.D.
+
+ 
 
 
 --------
