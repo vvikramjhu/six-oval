@@ -72,16 +72,21 @@ Please note that
 mapped to *!SystemObjectType* in Java,
 because the word "Object" has special meaning in Java world.
 
-  <b>Figure X</b>: OVAL Definition Model - Elements
+
+  <b>Figure X</b>: Core Definition Model - Elements
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_elements.png]
 
 
-  <b>Figure X</b>: OVAL Definition Model - Definition
+  <b>Figure X</b>: Core Definition Model - Definition
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_def.png]
 
 
-  <b>Figure X</b>: OVAL Definition Model - Criteria
+  <b>Figure X</b>: Core Definition Model - Criteria
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_criteria.png]
+
+
+  <b>Figure X</b>: Core Definition Model - Definitions Document
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions.png]
 
 
 
