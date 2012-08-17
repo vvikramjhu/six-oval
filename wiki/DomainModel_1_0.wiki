@@ -90,6 +90,18 @@ because the word "Object" has special meaning in Java world.
 
 T.B.D.
 
+  <b>Figure X</b>: Core System Characteristics Model
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc.png]
+
+
+  <b>Figure X</b>: Core System Characteristics Model - Object
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc_object.png]
+
+
+  <b>Figure X</b>: Core System Characteristics Model - Item
+[http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc_item.png]
+
+
  
 --------------------------------
 = <font color="#0044CC">Core Results</font> =
