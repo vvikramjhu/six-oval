@@ -25,7 +25,7 @@ Extract the archive file into the appropriate location.
 Rename the directory if necessary.
 
 
-== <font color="#0044CC">2 Create the Data Directory</font> ==
+== <font color="#0044CC">2 Create a Data Directory</font> ==
 
 MongoDB requires a directory to store 
 its database files.
