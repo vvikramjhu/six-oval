@@ -8,7 +8,7 @@ T.B.D.
 This document describes the OVAL Domain Model
 in Java language.
 Most of Java classes are directly derived from 
-OVAL schema definition.
+OVAL schemas.
 
 
 || *OVAL Schema*  || *XML Namespace* || *Java Package* ||
@@ -19,18 +19,18 @@ OVAL schema definition.
 ||Core Results ||- ||jp.go.aist.six.oval.model.results ||
 ||Core Directives ||- ||jp.go.aist.six.oval.model.directives ||
 ||Core Variable ||- ||jp.go.aist.six.oval.model.variables ||
-||Independent Definition<br>Independent System Characteristics ||- ||jp.go.aist.six.oval.model.independent ||
-||Linux Definition<br>Linux System Characteristics ||- ||jp.go.aist.six.oval.model.linux ||
-||Unix Definition<br>Unix System Characteristics ||- ||jp.go.aist.six.oval.model.unix ||
-||Windows Definition<br>Windows System Characteristics ||- ||jp.go.aist.six.oval.model.windows ||
+||Independent Components ||- ||jp.go.aist.six.oval.model.independent ||
+||Linux Components ||- ||jp.go.aist.six.oval.model.linux ||
+||Unix Components ||- ||jp.go.aist.six.oval.model.unix ||
+||Windows Components ||- ||jp.go.aist.six.oval.model.windows ||
 
 
 --------------------------------
 = <font color="#0044CC">SIX Base</font> =
 
 The classes in this package are 
-not inherent in the OVAL schema,
-but are abstracted from the main part of it.
+not inherent in the OVAL schemas,
+but are abstracted from the main part of them.
 Figure 1 shows the abstracted classes in our modelling.
 
   <b>Figure 1</b>: Base Abstract Classes
@@ -132,26 +132,26 @@ T.B.D.
  
 
 --------------------------------
-= <font color="#0044CC">Independent Definition and System Characteristics</font> =
+= <font color="#0044CC">Independent Components</font> =
 
 T.B.D.
 
  
 --------------------------------
-= <font color="#0044CC">Linux Definition and System Characteristics</font> =
+= <font color="#0044CC">Linux Components</font> =
 
 T.B.D.
 
  
 
 --------------------------------
-= <font color="#0044CC">UNIX Definition and System Characteristics</font> =
+= <font color="#0044CC">UNIX Components</font> =
 
 T.B.D.
 
  
 --------------------------------
-= <font color="#0044CC">Windows Definition and System Characteristics</font> =
+= <font color="#0044CC">Windows Components</font> =
 
 T.B.D.
 
