@@ -11,7 +11,7 @@ on various kinds of platforms.
 
 
 
-= <font color="#0044CC">Installation and Configuration Process</font> =
+= <font color="#0044CC">MongoDB Installation and Configuration Process</font> =
 
 
 == <font color="#0044CC">1 Download the Distribution Archive and Extract</font> ==
