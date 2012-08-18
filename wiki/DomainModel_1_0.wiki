@@ -58,11 +58,11 @@ Figure 2 shows these enumeration classes.
 The OVAL Common Core schema defines the common types 
 that are shared across the different schemas within OVAL.
 
-  <b>Figure 3</b>: OVAL Common Model - OVAL ID and Enumerations
+  <b>Figure 3</b>: Core Common Model - OVAL ID and Enumerations
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common.png]
 
 
-  <b>Figure 4</b>: OVAL Common Model - Document Generator
+  <b>Figure 4</b>: Core Common Model - Document Generator
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.common_document.png]
 
 
