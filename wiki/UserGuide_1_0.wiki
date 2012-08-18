@@ -3,7 +3,8 @@
 
 = <font color="#0044CC">Introduction</font> =
 
-This document will assist you in installing and using the SIX OVAL features.
+This document will assist you in installing and using 
+the SIX OVAL features.
 
 
 == <font color="#0044CC">Installation</font> ==
@@ -16,10 +17,9 @@ for finding the dependent components.
 
 --------
 = <font color="#0044CC">Domain Model</font> =
-T.B.D.
 
 See
-[DomainModel_1_0 OVAL Domain Model document] 
+[DomainModel_1_0 Domain Model document] 
 for details.
 
 
