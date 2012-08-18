@@ -8,14 +8,15 @@ T.B.D.
 This document describes the OVAL Domain Model
 using UML class diagrams.
 Most of classes are directly derived from 
-OVAL schemas.
-There are some exceptions to names,
-since the ones in the OVAL schemas are Java reserved keywords.
+the OVAL schemas.
+However, there are some exceptions to names,
+because those ones in the OVAL schemas are 
+the Java reserved keywords.
 
 
-
+  <b>Table</b>: Relations between the OVAL Schemas and the SIX OVAL Java Packages
 || *OVAL Schema*  || *XML Namespace* || *Java Package* ||
-||SIX Base        ||- ||jp.go.aist.six.oval.model ||
+||-        ||- ||jp.go.aist.six.oval.model ||
 ||Core Common     ||- ||jp.go.aist.six.oval.model.common ||
 ||Core Definition ||- ||jp.go.aist.six.oval.model.definitions ||
 ||Core System Characteristics ||- ||jp.go.aist.six.oval.model.sc ||
@@ -29,12 +30,13 @@ since the ones in the OVAL schemas are Java reserved keywords.
 
 
 --------------------------------
-= <font color="#0044CC">SIX Base</font> =
+= <font color="#0044CC">Base Abstract Model</font> =
 
-The classes in this package are 
+The classes in the root "model" package are 
 not inherent in the OVAL schemas,
 but are abstracted from the main part of them.
-Figure 1 shows the abstracted classes in our modelling.
+Figure 1 shows the abstracted classes in our model.
+
 
   <b>Figure 1</b>: Base Abstract Classes
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model_abstract.png]
