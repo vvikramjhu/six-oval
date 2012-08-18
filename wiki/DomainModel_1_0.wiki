@@ -74,23 +74,29 @@ T.B.D.
 
 Please note that
 *!ObjectType* in the OVAL schema is
-mapped to *!SystemObjectType* in Java,
+renamed to *!SystemObjectType* in Java,
 because the word "Object" has special meaning in Java world.
 
 
-  <b>Figure X</b>: Core Definition Model - Elements
+  <b>Figure 5</b>: Core Definition Model - Elements
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_elements.png]
 
 
-  <b>Figure X</b>: Core Definition Model - Definition
+  <b>Figure 6</b>: Core Definition Model - Definition
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_def.png]
 
 
-  <b>Figure X</b>: Core Definition Model - Criteria
+  <b>Figure 7</b>: Core Definition Model - Criteria
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions_criteria.png]
 
+The !CriteriaElement class is
+not inherent in the OVAL schema,
+but are abstracted from the criteria elements.
+This structure forms a composite pattern.
 
-  <b>Figure X</b>: Core Definition Model - Definitions Document
+
+
+  <b>Figure 8</b>: Core Definition Model - Definitions Document
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.definitions.png]
 
 
@@ -100,15 +106,15 @@ because the word "Object" has special meaning in Java world.
 
 T.B.D.
 
-  <b>Figure X</b>: Core System Characteristics Model
+  <b>Figure 9</b>: Core System Characteristics Model
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc.png]
 
 
-  <b>Figure X</b>: Core System Characteristics Model - Object
+  <b>Figure 10</b>: Core System Characteristics Model - Object
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc_object.png]
 
 
-  <b>Figure X</b>: Core System Characteristics Model - Item
+  <b>Figure 11</b>: Core System Characteristics Model - Item
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.sc_item.png]
 
 
@@ -118,19 +124,19 @@ T.B.D.
 
 T.B.D.
 
-  <b>Figure X</b>: Core Results Model
+  <b>Figure 12</b>: Core Results Model
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results.png]
 
 
-  <b>Figure X</b>: Core Results Model - System
+  <b>Figure 13</b>: Core Results Model - System
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_system.png]
 
 
-  <b>Figure X</b>: Core Results Model - Definition
+  <b>Figure 14</b>: Core Results Model - Definition
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_def.png]
 
 
-  <b>Figure X</b>: Core Results Model - Test
+  <b>Figure 15</b>: Core Results Model - Test
 [http://staff.aist.go.jp/nakamura-akihito/six/oval/six-oval-1_0/oval.model.results_test.png]
 
 
