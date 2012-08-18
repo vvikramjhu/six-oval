@@ -6,9 +6,12 @@
 T.B.D.
 
 This document describes the OVAL Domain Model
-in Java language.
-Most of Java classes are directly derived from 
+using UML class diagrams.
+Most of classes are directly derived from 
 OVAL schemas.
+There are some exceptions to names,
+since the ones in the OVAL schemas are Java reserved keywords.
+
 
 
 || *OVAL Schema*  || *XML Namespace* || *Java Package* ||
