@@ -19,8 +19,9 @@ for finding the dependent components.
 = <font color="#0044CC">Domain Model</font> =
 
 See
-[DomainModel_1_0 Domain Model document] 
-for details.
+[DomainModel_1_0 Domain Model document].
+Also, for the families and components supported,
+refer to the [ReleaseNotes release note].
 
 
 
@@ -99,7 +100,7 @@ String marshalToString(Object obj)
 
 
 ----
-= <font color="#0044CC">Repository</font> =
+= <font color="#0044CC">Object Repository</font> =
 
 This feature supports persistent storage 
 for the OVAL domain model. 
