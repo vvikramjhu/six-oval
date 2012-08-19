@@ -52,11 +52,11 @@ public class OvaldiOptions
      * @throws  OvalInterpreterException
      */
     public static Options fromCommandLine(
-                    final List<String> strings
+                    final List<String> args
                     )
     {
         Options  options = new OvaldiOptions();
-        if (strings == null  ||  strings.size() == 0) {
+        if (args == null  ||  args.size() == 0) {
             return options;
         }
 
@@ -65,9 +65,9 @@ public class OvaldiOptions
             map.put( option.command, option );
         }
 
-        int  num_strings = strings.size();
+        int  num_strings = args.size();
         for (int  i = 0; i < num_strings; i++) {
-            String  string = strings.get( i );
+            String  string = args.get( i );
             Option  option = map.get( string );
 
             if (option == null) {
@@ -82,13 +82,13 @@ public class OvaldiOptions
             } else {
                 if (option.hasArgument) {
                     if ((i + 1) < num_strings) {
-                        String  arg_value = strings.get( i + 1 );
+                        String  arg_value = args.get( i + 1 );
                         i++;
                         options.set( option, arg_value );
                     } else {
                         throw new OvalInterpreterException(
                                         "invalid command line: "
-                                        + String.valueOf( strings )
+                                        + String.valueOf( args )
                                         + ", error around: " + string );
                     }
                 } else {

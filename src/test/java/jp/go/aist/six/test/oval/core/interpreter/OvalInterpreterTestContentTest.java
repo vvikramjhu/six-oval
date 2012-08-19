@@ -44,7 +44,7 @@ public class OvalInterpreterTestContentTest
         Reporter.log( "* executable: " + executable, true );
         OvaldiProxy  ovaldi = new OvaldiProxy();
         if (executable != null) {
-            ovaldi.setExecutable( executable );
+            ovaldi.setExecutablePath( executable );
         }
 
         return ovaldi;

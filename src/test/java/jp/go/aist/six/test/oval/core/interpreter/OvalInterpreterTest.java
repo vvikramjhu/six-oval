@@ -84,7 +84,7 @@ public class OvalInterpreterTest
         OvaldiProxy  ovaldi = new OvaldiProxy();
         Reporter.log( "* executable: " + executable, true );
         if (executable != null) {
-            ovaldi.setExecutable( executable );
+            ovaldi.setExecutablePath( executable );
         }
 
         _executeOvalInterpreter( ovaldi, options );
@@ -181,7 +181,7 @@ public class OvalInterpreterTest
         NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
         Reporter.log( "* executable: " + executable, true );
         if (executable != null) {
-            ovaldi.setExecutable( executable );
+            ovaldi.setExecutablePath( executable );
         }
 
         _executeOvalInterpreter( ovaldi, options );
