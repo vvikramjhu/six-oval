@@ -20,10 +20,12 @@
 package jp.go.aist.six.oval.core.interpreter;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.core.OvalContext;
@@ -61,23 +63,41 @@ public class OvaldiProxy
                     )
     throws Exception
     {
-        if (args.length < 1) {
-            System.err.println( "no program and arguments specified" );
-            System.exit( 1 );
-        }
+//        if (args.length < 1) {
+//            System.err.println( "no program and arguments specified" );
+//            System.exit( 1 );
+//        }
 
         List<String>  strings = Arrays.asList( args );
-        String  executable = strings.remove( 0 );
+//        String  executable = strings.remove( 0 );
         Options  options = OvaldiOptions.fromCommandLine( strings );
 
         final OvaldiProxy  ovaldi = new OvaldiProxy();
-        ovaldi.setExecutable( executable );
+//        ovaldi.setExecutablePath( executable );
         ovaldi.setOptions( options );
 
         final int  exit_value = ovaldi.execute();
         System.exit( exit_value );
     }
 
+
+
+    protected static class Config
+    {
+        public static final String  DEFAULT_OVALDI_PATH = "ovaldi";
+
+        public static final String  OVALDI_PATH     = "ovaldi.path";
+        public static final String  OVALDI_WORKDIR  = "ovaldi.workdir";
+
+
+//        {
+//            _executable = context.getProperty( _PROP_EXECUTABLE_, _DEFAULT_EXECUTABLE_ );
+//            _workdir = context.getProperty( _PROP_WORKDIR_ );
+//            _tmpdir = context.getProperty( "java.io.tmpdir" );
+//        }
+
+    }
+    //Config
 
 
     /**
@@ -132,6 +152,8 @@ public class OvaldiProxy
     private final Map<Property, String>  _config =
         new EnumMap<Property, String>( Property.class );
 
+    private final Map<String, String>  _config2 = new HashMap<String, String>();
+
 
     private Options  _options;
 
@@ -165,11 +187,13 @@ public class OvaldiProxy
     @Override
     public int execute()
     {
-        if (_context == null) {
-            _context = OvalContext.getInstance();
-        }
+//        if (_context == null) {
+//            _context = OvalContext.getInstance();
+//        }
 
-        final ProcessBuilder  builder = _createProcessBuilder();
+        OvalContext  context = OvalContext.BASIC;
+
+        final ProcessBuilder  builder = _createProcessBuilder( context );
         Process  process = null;
         int  exitValue = 0;
         try {
@@ -183,6 +207,25 @@ public class OvaldiProxy
 
         return exitValue;
     }
+//    {
+//        if (_context == null) {
+//            _context = OvalContext.getInstance();
+//        }
+//
+//        final ProcessBuilder  builder = _createProcessBuilder();
+//        Process  process = null;
+//        int  exitValue = 0;
+//        try {
+//            process = builder.start();
+//                           //throws IOException, SecurityException
+//        } catch (final Exception ex) {
+//            throw new OvalInterpreterException( ex );
+//        }
+//
+//        exitValue = _waitFor( process );
+//
+//        return exitValue;
+//    }
 
 
 
@@ -246,6 +289,38 @@ public class OvaldiProxy
      * The standard error and standard output are merged,
      * so that both can be read using the Process.getInputStream() method.
      */
+    private ProcessBuilder _createProcessBuilder(
+                    final OvalContext context
+                    )
+    {
+        final List<String>  command = _createCommand( context );
+        String  workdir = getWorkingDir();
+        if (workdir == null) {
+            workdir = context.getProperty( Config.OVALDI_WORKDIR );
+        }
+
+
+        final ProcessBuilder  builder = new ProcessBuilder( command );
+
+        if (workdir != null) {
+            File  dir = new File( workdir );
+            if (dir.exists()  &&  dir.isDirectory()) {
+                _LOG_.debug( "ovaldi working dir=" + workdir );
+                builder.directory( dir );
+            } else {
+                throw new OvalInterpreterException(
+                                "wrong working directory: " + workdir );
+            }
+        }
+
+
+        /* Merging standard error and standard output!!!
+         */
+        builder.redirectErrorStream( true );
+
+        return builder;
+    }
+
     private ProcessBuilder _createProcessBuilder()
     {
         final List<String>  command = _createCommand();
@@ -267,17 +342,44 @@ public class OvaldiProxy
 
 
 
+
+
     /**
      * Creates a command line: the program and its arguments.
      * E.g. ovaldi -m -o definitions.xml
      *
      * @throws  OvalInterpreterException
      */
+    private List<String> _createCommand(
+                    final OvalContext context
+                    )
+    {
+        final List<String>  command = new ArrayList<String>();
+
+        String  ovaldi_path = getExecutablePath();
+        if (ovaldi_path == null) {
+            ovaldi_path = context.getProperty( Config.OVALDI_PATH, Config.DEFAULT_OVALDI_PATH );
+        }
+        _LOG_.debug( "ovaldi path: " + ovaldi_path );
+        command.add( ovaldi_path );
+
+        Options  options = getOptions();
+        if (options == null) {
+            options = new OvaldiOptions();
+        }
+//        _LOG_.debug( "ovaldi options: " + options );
+        command.addAll( options.toCommandLine() );
+
+        _LOG_.debug( "ovaldi command: " + String.valueOf( command ) );
+        return command;
+    }
+
+
     private List<String> _createCommand()
     {
         final List<String>  command = new ArrayList<String>();
 
-        command.add( getExecutable() );
+        command.add( getExecutablePath() );
 
         Options  options = _adjustDefaultOptions( getOptions() );
         if (options == null) {
@@ -289,6 +391,7 @@ public class OvaldiProxy
         _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
     }
+
 
 
 
@@ -353,36 +456,71 @@ public class OvaldiProxy
 
 
 
+    //*********************************************************************
+    //  config
+    //*********************************************************************
+
     /**
      */
-    public void setExecutable(
+    public void setExecutablePath(
                     final String filepath
                     )
     {
         _setConfigProperty( Property.EXECUTABLE, filepath );
+
+        _config2.put( Config.OVALDI_PATH, filepath );
     }
 
 
-    public String getExecutable()
+    public String getExecutablePath()
     {
-        return _getConfigProperty( Property.EXECUTABLE );
+        return _config2.get( Config.OVALDI_PATH );
+//        return _getConfigProperty( Property.EXECUTABLE );
+    }
+
+
+
+    /**
+     */
+    public void setWorkingDir(
+                    final String dirpath
+                    )
+    {
+        _config2.put( Config.OVALDI_WORKDIR, dirpath );
+    }
+
+
+    public String getWorkingDir()
+    {
+        return _config2.get( Config.OVALDI_WORKDIR );
     }
 
 
 
 
-    //**************************************************************
-    //  OvalDefinitionsInterpreter
-    //**************************************************************
+    //*********************************************************************
+    //  OvalInterpreter
+    //*********************************************************************
 
-//    public OvalDefinitionInterpreter setOptions(
+    /**
+     *
+     * @param options
+     */
+    public void setOptions(
+                    final List<String> options
+                    )
+    {
+        _options = OvaldiOptions.fromCommandLine( options );
+    }
+
+
+
     @Override
     public void setOptions(
                     final Options options
                     )
     {
         _options = options;
-//        return this;
     }
 
 
@@ -395,23 +533,6 @@ public class OvaldiProxy
 
 //    /**
 //     */
-//    public void setWorkingDir(
-//                    final String dirpath
-//                    )
-//    {
-//        _setConfigValue( Property.WORKING_DIR, dirpath );
-//    }
-//
-//
-//    public String getWorkingDir()
-//    {
-//        return _getConfigValue( Property.WORKING_DIR );
-//    }
-//
-//
-//
-//    /**
-//     */
 //    public String getTmpDir()
 //    {
 //        String  tmpdir = _getConfigValue( Property.TMP_DIR );
@@ -421,6 +542,7 @@ public class OvaldiProxy
 //
 //        return tmpdir;
 //    }
+
 
 }
 //

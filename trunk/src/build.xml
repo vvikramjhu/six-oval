@@ -98,6 +98,20 @@ CONTENTS:
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
+    <!-- interpreter -->
+    <target name="oval.interpreter" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o C:\\app\\ovaldi-5.10.1.2-x64\\def-family.xml -m"/>
+        </java>
+    </target>
+
+
+
     <target name="oval.example.repository-client-findbyid" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalRepositoryClientFindByIdExample"

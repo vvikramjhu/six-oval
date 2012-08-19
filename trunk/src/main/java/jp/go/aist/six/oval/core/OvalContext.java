@@ -76,10 +76,10 @@ public abstract class OvalContext
 
 
 
-    private static final String[]  _PROPERTY_BEANS_ = new String[] {
-        "six-oval-default-properties",
-        "six-oval-properties"
-    };
+//    private static final String[]  _PROPERTY_BEANS_ = new String[] {
+//        "six-oval-default-properties",
+//        "six-oval-properties"
+//    };
 
 
 
@@ -95,7 +95,11 @@ public abstract class OvalContext
                     final String config_location
                     )
     {
-        super( config_location, _PROPERTY_BEANS_ );
+        super( config_location, new String[] {
+                        "six-oval-default-properties",
+                        "six-oval-properties"
+                    } );
+//        super( config_location, _PROPERTY_BEANS_ );
     }
 
 

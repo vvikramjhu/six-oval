@@ -76,7 +76,7 @@ public class NetworkingOvaldiProxy
         Options  options = OvaldiOptions.fromCommandLine( strings );
 
         NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
-        ovaldi.setExecutable( args[0] );
+        ovaldi.setExecutablePath( args[0] );
         ovaldi.setOptions( options );
 
         int  exit_value = ovaldi.execute();
@@ -470,7 +470,7 @@ public class NetworkingOvaldiProxy
         _preProcess( localizedOptions );
 
         OvaldiProxy  ovaldi = new OvaldiProxy( localizedOptions );
-        ovaldi.setExecutable( getExecutable() );
+        ovaldi.setExecutablePath( getExecutablePath() );
         int  exitValue = ovaldi.execute();
 
         if (exitValue == 0) {
