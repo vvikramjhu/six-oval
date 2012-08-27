@@ -66,18 +66,13 @@ public class NetworkingOvaldiProxy
                     )
     throws Exception
     {
-        if (args.length < 1) {
-            System.err.println( "no program and arguments specified" );
-            System.exit( 1 );
-        }
+//        if (args.length < 1) {
+//            System.err.println( "no argument specified" );
+//            System.exit( 1 );
+//        }
 
-        List<String>  strings = Arrays.asList( args );
-        strings.remove( 0 );
-        Options  options = OvaldiOptions.fromCommandLine( strings );
-
-        NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
-        ovaldi.setExecutablePath( args[0] );
-        ovaldi.setOptions( options );
+        List<String>  options = Arrays.asList( args );
+        NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
 
         int  exit_value = ovaldi.execute();
         System.exit( exit_value );
@@ -86,43 +81,41 @@ public class NetworkingOvaldiProxy
 
 
 
-//    private static class NetOption
-//    extends Option
-//    {
-//        public static final NetOption WORK_DIR = new NetOption(
-//                        "-workdir", true, "dir name", null,
-//                        null,
-//                        "path to the directory in which the temporary file resources are stored\n"
-//                        + "(default is the Java temporary directory specified by 'java.io.tmpdir' system property)"
-//        );
-//
-//
-//        /**
-//         * Constructor.
-//         */
-//        protected NetOption(
-//                        final String name,
-//                        final boolean hasArgument,
-//                        final String argumentName,
-//                        final String defaultArgument,
-//                        final String contentType,
-//                        final String description
-//                        )
-//        {
-//            super( name, hasArgument, argumentName, defaultArgument, contentType, description );
-//        }
-//
-//    }
-//    // NetOption
-
-
-
-
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( NetworkingOvaldiProxy.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( NetworkingOvaldiProxy.class );
+
+
+
+    private static enum NetworkOperation
+    {
+        INPUT,
+        OUTPUT;
+    }
+
+
+    private static enum NetworkResource
+    {
+        OVAL_DEFINITIONS ( OvaldiOption.OVAL_DEFINITIONS,   NetworkOperation.INPUT  ),
+        OVAL_RESULTS     ( OvaldiOption.OVAL_RESULTS,       NetworkOperation.OUTPUT );
+
+
+        public final OvaldiOption  option;
+        public final NetworkOperation  operation;
+
+        /**
+         * Constructor.
+         */
+        NetworkResource(
+                        final OvaldiOption option,
+                        final NetworkOperation type
+                        )
+        {
+            this.option = option;
+            operation = type;
+        }
+    }
 
 
 
@@ -142,8 +135,8 @@ public class NetworkingOvaldiProxy
 
 
 
-    private String  _workingFilePrefix;
-    private File  _workingDir;
+    private String  _tmpFilePrefix;
+    private File  _tmpDir;
 
 
 
@@ -164,31 +157,45 @@ public class NetworkingOvaldiProxy
     }
 
 
+    public NetworkingOvaldiProxy(
+                    final List<String> options
+                    )
+    {
+        super( options );
+    }
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  process control
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      *
      */
     private void _init()
     {
-        _workingFilePrefix = _createWorkingFilePrefix();
-        _workingDir = _getWorkingDir();
+        _tmpFilePrefix = _createTmpFilePrefix();
+        _tmpDir = _getTmpDir();
 
-        _LOG_.debug( "working file prefix: " + _workingFilePrefix );
-        _LOG_.debug( "working dir: " + _workingDir );
+        _LOG_.debug( "tmp file prefix: " + _tmpFilePrefix );
+        _LOG_.debug( "tmp dir: " + _tmpDir );
     }
 
 
 
     /**
-     *
      * @throws  OvalInterpreterException
      */
    private void _preProcess(
                    final Options localOptions
                    )
    {
-       _prepareInputFiles( localOptions );
-       _prepareOutputFiles( localOptions );
+       _prepareNetworkResources( localOptions );
+
+//       _prepareInputFiles( localOptions );
+//       _prepareOutputFiles( localOptions );
    }
 
 
@@ -232,13 +239,21 @@ public class NetworkingOvaldiProxy
 
 
 
+
+    ///////////////////////////////////////////////////////////////////////
+    //  files & dirs
+    ///////////////////////////////////////////////////////////////////////
+
+    private static final SimpleDateFormat  _FORMATTER_ =
+                    new SimpleDateFormat( "yyyyMMdd'T'HHmmss.SSS" );
+
+
     /**
      * A prefix string like "yyyyMMdd'T'HHmmss'_oval_'".
      */
-    private String _createWorkingFilePrefix()
+    private String _createTmpFilePrefix()
     {
-        SimpleDateFormat  formatter = new SimpleDateFormat( "yyyyMMdd'T'HHmmss" );
-        String  prefix = formatter.format( new Date() );
+        String  prefix = _FORMATTER_.format( new Date() );
         prefix = prefix + "_oval_";
 
         return prefix;
@@ -247,10 +262,10 @@ public class NetworkingOvaldiProxy
 
 
     /**
-     * Obtains the directory for work.
-     * We use the Java tmp directory.
+     * Obtains the directory for tmp files.
+     * It is obtained from the Java system property.
      */
-    private File _getWorkingDir()
+    private File _getTmpDir()
     {
         String  dirpath = System.getProperty( "java.io.tmpdir" );
         File  dir = new File( dirpath );
@@ -258,7 +273,7 @@ public class NetworkingOvaldiProxy
             //OK!!!
         } else {
             throw new IllegalStateException(
-                            "Java tmp directory as the working directory not found or not ready: path=" + dirpath );
+                            "tmp directory not found or not ready: path=" + dirpath );
         }
 
         return dir;
@@ -267,23 +282,61 @@ public class NetworkingOvaldiProxy
 
 
     /**
-     * Creates a tmp working file in the specified directory.
-     * The filename is generated using the specified prefix
-     * and the option's default value.
+     * Creates a tmp file.
      */
-    private File _createWorkingFile(
+    private File _createTmpFile(
                     final String postfix
                     )
     {
-        _LOG_.debug( "creating working file: dir=" + _workingDir
-                        + ", prefix=" + _workingFilePrefix
+        _LOG_.debug( "creating tmp file: dir=" + _tmpDir
+                        + ", prefix=" + _tmpFilePrefix
                         + ", postfix=" + postfix );
 
-        String  filename = _workingFilePrefix + postfix;
-        File  file = new File( _workingDir, filename );
+        String  filename = _tmpFilePrefix + postfix;
+        File  file = new File( _tmpDir, filename );
 
-        _LOG_.debug( "working file created: file=" + file );
+        _LOG_.debug( "tmp file created: " + file );
         return file;
+    }
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  network resources
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     * For each input or output file, if its location is given as an URL,
+     * it is replaced by a local tmp file for the following ovaldi execution.
+     * In addition, if it is an input file, the content is read from the URL
+     * and saved into the local tmp file.
+     */
+    protected void _prepareNetworkResources(
+                    final Options localizedOptions
+                    )
+    {
+        for (NetworkResource  res : NetworkResource.values()) {
+            _validateNetworkResourceOption( res.option );
+
+            String  file_location = localizedOptions.get( res.option );
+            if (file_location != null) {
+                URL  url = _toURL( file_location );
+                if (url == null) {
+                    // local filepath as it is
+                } else {
+                    //This option argument is an URL.
+                    File  file = _createTmpFile( res.option.defaultArgument );
+                    if (res.operation == NetworkOperation.INPUT) {
+                        //If input, download the resource and save it to a local file.
+                        _httpGet( url, file, res.option.contentType );
+                    }
+
+                    //Replace the ovaldi command option for local execution.
+                    localizedOptions.set( res.option, file.getAbsolutePath() );
+                }
+            }
+        }
     }
 
 
@@ -313,14 +366,14 @@ public class NetworkingOvaldiProxy
 
     /**
      */
-    private void _validateNetworkingFileOption(
+    private void _validateNetworkResourceOption(
                     final Option option
                     )
     {
         if (option.hasArgument
                         &&  option.defaultArgument != null
                         &&  option.contentType != null) {
-            //valid option
+            //valid option!!!
         } else {
             throw new IllegalStateException(
                             "INTERNAL ERROR: option not configured for networking resource: "
@@ -330,66 +383,67 @@ public class NetworkingOvaldiProxy
 
 
 
-    /**
-     * For each input resources, if its location is given as an URL,
-     * it is read and saved into a local temporary file.
-     * And, the option values are adjusted to use those local files.
-     */
-    protected void _prepareInputFiles(
-                    final Options localizedOptions
-                    )
-    {
-        for (Option  option : _NETWORK_INPUT_OPTIONS_) {
-            _validateNetworkingFileOption( option );
-
-            String  file_location = localizedOptions.get( option );
-            if (file_location != null) {
-                URL  url = _toURL( file_location );
-                if (url == null) {
-                    // local filepath as it is
-                } else {
-                    /** This option argument is an URL.
-                     * Download the resource and save it to a local file.
-                     * Then, replace the argument for local execution.
-                     */
-                    File  file = _createWorkingFile( option.defaultArgument );
-                    _httpGet( url, file, option.contentType );
-
-                    localizedOptions.set( option, file.getAbsolutePath() );
-                }
-            }
-        }
-    }
-
-
-
-    /**
-     * If an output file location is an URL,
-     * the output from the interpreter is written to a local working file.
-     */
-    private void _prepareOutputFiles(
-                    final Options localizedOptions
-                    )
-    {
-        for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
-            _validateNetworkingFileOption( option );
-
-            String  file_location = localizedOptions.get( option );
-            if (file_location != null) {
-                URL  url = _toURL( file_location );
-                if (url == null) {
-                    // local filepath
-                } else {
-                    /** This option argument is an URL.
-                     * Decide the local filename, and
-                     * replace the argument for local execution.
-                     */
-                    File  file = _createWorkingFile( option.defaultArgument );
-                    localizedOptions.set( option, file.getAbsolutePath() );
-                }
-            }
-        }
-    }
+//    /**
+//     * For each input file, if its location is given as an URL,
+//     * it is read and saved into a local tmp file.
+//     * At the same time, the option values are adjusted to use those local files.
+//     */
+//    protected void _prepareInputFiles(
+//                    final Options localizedOptions
+//                    )
+//    {
+//        for (Option  option : _NETWORK_INPUT_OPTIONS_) {
+//            _validateNetworkResourceOption( option );
+//
+//            String  file_location = localizedOptions.get( option );
+//            if (file_location != null) {
+//                URL  url = _toURL( file_location );
+//                if (url == null) {
+//                    // local filepath as it is
+//                } else {
+//                    /** This option argument is an URL.
+//                     * Download the resource and save it to a local file.
+//                     * Then, replace the argument for local execution.
+//                     */
+//                    File  file = _createTmpFile( option.defaultArgument );
+//                    _httpGet( url, file, option.contentType );
+//
+//                    localizedOptions.set( option, file.getAbsolutePath() );
+//                }
+//            }
+//        }
+//    }
+//
+//
+//
+//    /**
+//     * If an output file location is an URL,
+//     * the output from the interpreter is written to a local tmp file.
+//     * In the post-process, such a file must be send to the specified location.
+//     */
+//    private void _prepareOutputFiles(
+//                    final Options localizedOptions
+//                    )
+//    {
+//        for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
+//            _validateNetworkResourceOption( option );
+//
+//            String  file_location = localizedOptions.get( option );
+//            if (file_location != null) {
+//                URL  url = _toURL( file_location );
+//                if (url == null) {
+//                    // local filepath
+//                } else {
+//                    /** This option argument is an URL.
+//                     * Decide the local filename, and
+//                     * replace the argument for local execution.
+//                     */
+//                    File  file = _createTmpFile( option.defaultArgument );
+//                    localizedOptions.set( option, file.getAbsolutePath() );
+//                }
+//            }
+//        }
+//    }
 
 
 
@@ -465,12 +519,12 @@ public class NetworkingOvaldiProxy
          * The backup is used in the post process to send the results
          * to the given locations, if required.
          */
-        Options  localizedOptions = new OvaldiOptions();
-        localizedOptions.set( getOptions() );
+        Options  localizedOptions = new OvaldiOptions( getOptions() );
         _preProcess( localizedOptions );
 
         OvaldiProxy  ovaldi = new OvaldiProxy( localizedOptions );
         ovaldi.setExecutablePath( getExecutablePath() );
+        ovaldi.setWorkingDir( getWorkingDir() );
         int  exitValue = ovaldi.execute();
 
         if (exitValue == 0) {

@@ -99,6 +99,17 @@ CONTENTS:
     <!-- ************************************************************** -->
 
     <!-- interpreter -->
+    <target name="oval.interpreter.net" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541 -m"/>
+        </java>
+    </target>
+
     <target name="oval.interpreter" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
@@ -109,6 +120,7 @@ CONTENTS:
             <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o C:\\app\\ovaldi-5.10.1.2-x64\\def-family.xml -m"/>
         </java>
     </target>
+
 
 
 

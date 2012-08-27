@@ -28,7 +28,7 @@ public class OvalXmlMappingExample
         xml_mapper.marshal( obj1, System.out );
 
         //URL
-        String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
+        String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541";
         URL  src_url = new URL( network_src );
         OvalDefinitions  obj2 = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
 //        Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
