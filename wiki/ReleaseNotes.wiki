@@ -18,7 +18,7 @@ _coming soon_
 
 == <font color="#0044CC">OVAL Support</font> ==
   * OVAL Schema Version: 5.10.1
-  * Platforms and Components:
+  * Platforms and Components: see the following table.
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, inetlisteningservers, partition, rpminfo, rpmverify, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
