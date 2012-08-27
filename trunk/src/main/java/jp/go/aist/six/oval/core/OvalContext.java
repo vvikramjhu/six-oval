@@ -41,12 +41,12 @@ public abstract class OvalContext
 //    /**
 //     * Logger.
 //     */
-//    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext2.class );
+//    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext.class );
 
 
 
-    public static final OvalBasicContext  BASIC = new OvalBasicContext();
-    public static final OvalServerContext  SERVER = new OvalServerContext();
+    private static OvalBasicContext  _BASIC_;
+    private static OvalServerContext  _SERVER_;
 
 
 
@@ -56,9 +56,13 @@ public abstract class OvalContext
      * @return
      *  the default context.
      */
-    public static OvalBasicContext getInstance()
+    public static synchronized OvalContext getInstance()
     {
-        return BASIC;
+        if (_BASIC_ == null) {
+            _BASIC_ = new OvalBasicContext();
+        }
+
+        return _BASIC_;
     }
 
 
@@ -69,9 +73,13 @@ public abstract class OvalContext
      * @return
      *  the server context.
      */
-    public static OvalServerContext getServerInstance()
+    public static synchronized OvalServerContext getServerInstance()
     {
-        return SERVER;
+        if (_SERVER_ == null) {
+            _SERVER_ = new OvalServerContext();
+        }
+
+        return _SERVER_;
     }
 
 
@@ -99,6 +107,9 @@ public abstract class OvalContext
                         "six-oval-default-properties",
                         "six-oval-properties"
                     } );
+
+        //The following code does not work.
+        //The second parameter is passed to the super class as a null.
 //        super( config_location, _PROPERTY_BEANS_ );
     }
 
