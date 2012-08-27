@@ -47,6 +47,31 @@ public class OvaldiOptions
 
 
     /**
+     * Constructor.
+     */
+    public OvaldiOptions()
+    {
+    }
+
+
+    public OvaldiOptions(
+                    final Map<Option, String> options
+                    )
+    {
+        super( options );
+    }
+
+
+    public OvaldiOptions(
+                    final Options options
+                    )
+    {
+        super( options );
+    }
+
+
+
+    /**
      * A factory method.
      *
      * @throws  OvalInterpreterException

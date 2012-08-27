@@ -66,11 +66,8 @@ public class OvaldiProxy
 //            System.exit( 1 );
 //        }
 
-        List<String>  strings = Arrays.asList( args );
-        Options  options = OvaldiOptions.fromCommandLine( strings );
-
-        final OvaldiProxy  ovaldi = new OvaldiProxy();
-        ovaldi.setOptions( options );
+        List<String>  options = Arrays.asList( args );
+        final OvaldiProxy  ovaldi = new OvaldiProxy( options );
 
         final int  exit_value = ovaldi.execute();
         System.exit( exit_value );
@@ -123,17 +120,25 @@ public class OvaldiProxy
     }
 
 
-
-    /**
-     *
-     * @param options
-     */
-    public void setOptions(
+    public OvaldiProxy(
                     final List<String> options
                     )
     {
         setOptions( OvaldiOptions.fromCommandLine( options ) );
     }
+
+
+
+//    /**
+//     *
+//     * @param options
+//     */
+//    public void setOptions(
+//                    final List<String> options
+//                    )
+//    {
+//        setOptions( OvaldiOptions.fromCommandLine( options ) );
+//    }
 
 
 

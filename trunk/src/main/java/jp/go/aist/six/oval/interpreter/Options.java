@@ -77,6 +77,14 @@ public class Options
     }
 
 
+    public Options(
+                    final Options options
+                    )
+    {
+        set( options );
+    }
+
+
 
     /**
      *
@@ -133,8 +141,10 @@ public class Options
             throw new IllegalArgumentException( "no option specified" );
         }
 
-        for (Option  option : options.keySet()) {
-            set( option, options.get( option ) );
+        if (options != _options) {
+            for (Option  option : options.keySet()) {
+                set( option, options.get( option ) );
+            }
         }
 
         return this;
