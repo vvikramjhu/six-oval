@@ -67,7 +67,7 @@ from a network resource, i.e. URL.
 // Listing 2: Unmarshalling (Network Resource)
 
 String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?"
-                     + "id=oval%3aorg.mitre.oval%3adef%3a12541&type=save";
+                     + "id=oval%3aorg.mitre.oval%3adef%3a12541";
 URL  src_url = new URL( network_src );
 Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
 System.out.println( obj2 );
