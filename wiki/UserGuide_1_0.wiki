@@ -37,7 +37,7 @@ in a few steps.
 
 
 Listing 1 shows how to build domain model objects 
-from an XML input document 
+from an XML input document
 and to generate an XML output document from objects.
 
 {{{
