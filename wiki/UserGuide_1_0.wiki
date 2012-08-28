@@ -184,6 +184,7 @@ an OVAL Definitions document and the element Definitions.
 // Listing 6: Save and Load Operations
 
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.OvalServerContext;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.util.xml.XmlMapper;
 .....
