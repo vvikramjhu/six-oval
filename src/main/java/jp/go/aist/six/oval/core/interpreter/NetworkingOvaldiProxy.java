@@ -524,7 +524,7 @@ public class NetworkingOvaldiProxy
      *
      * @throws  OvalInterpreterException
      */
-    protected void _httpPost(
+    protected String _httpPost(
                     final URL to_url,
                     final File from_file,
                     final String content_type
@@ -534,13 +534,18 @@ public class NetworkingOvaldiProxy
                         + ", from file=" + from_file
                         + ", content-type=" + content_type );
 
+        String  location = null;
         try {
             MediaType  media_type = MediaType.valueOf( content_type );
-            Http.postFrom( to_url, new FileInputStream( from_file ), media_type );
+            location = Http.postFrom( to_url, new FileInputStream( from_file ), media_type );
         } catch (Exception ex) {
             _LOG_.error( "HTTP POST error: " + ex );
             throw new OvalInterpreterException( ex );
         }
+
+        _LOG_.debug( "HTTP POST: new resource URI=" + location );
+
+        return location;
     }
 
 
