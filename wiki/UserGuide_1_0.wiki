@@ -389,5 +389,46 @@ six.oval.repository.web.base-url = https://foo.bar.org:8080/six-oval/repository
 = <font color="#0044CC">Interpreter Driving</font> =
 T.B.D.
 
+We don't intend to develop an OVAL Interpreter.
+Instead, we use existing one, ovaldi, and 
+provide a simple _proxy_ class in Java.
+
+
+
+== <font color="#0044CC">Configuration</font> ==
+
+Listing XX shows the Java configuration properties
+for ovaldi.
+There are two properties; "ovaldi.path" and "ovaldi.workdir".
+The former specifies the path to the ovaldi executable file
+and the latter gives the working directory 
+of the ovaldi process.
+The default value for the working directory is null, 
+which means to use the working directory 
+of the current Java process
+
+{{{
+// Listing XX: Default ovaldi configuration properties.
+
+ovaldi.path     = ovaldi
+#ovaldi.workdir = 
+}}}
+
+
+Listing XX shows an example overriding configuration properties.
+In this case, the platform is Windows and 
+"ovaldi.exe" binary is located in "C:" drive.
+
+{{{
+// Listing XX: Overriding ovaldi configuration properties (six-oval.properties in CLASSPATH).
+
+ovaldi.path = C:\\app\\ovaldi-5.10.1.2-x64\\ovaldi.exe
+}}}
+
+
+
+
+
+
 
 --------
