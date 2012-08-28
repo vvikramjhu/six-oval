@@ -62,6 +62,7 @@ OvalDefinitions  oval_defs1 = xml_mapper.unmarshal( new FileInputStream( src_fil
 
 Listing 2 shows how to read an XML document 
 from a network resource, i.e. URL.
+Then, the object is serialized to a file.
 
 {{{
 // Listing 2: Unmarshalling (Network Resource)
@@ -71,6 +72,8 @@ String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?
 URL  src_url = new URL( network_src );
 Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
 System.out.println( obj2 );
+File  dst_file = new File( "oval-def-example.xml" );
+xml_mapper.marshal( obj2, new FileOutputStream( dst_file ) );
 
     /* type-safe method, may throw ClassCastException */
 OvalDefinitions  oval_defs2 = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
@@ -148,7 +151,7 @@ the database settings.
 This is done with the Java properties file 
 named "six-oval.properties".
 This file name can't be changed but located in 
-any directory in the Java classpath. 
+any directory in the Java CLASSPATH. 
 Listing 5 shows example overriding values.
 
 
@@ -163,7 +166,7 @@ six.oval.repository.database.password  =six
 }}}
 
 {{{
-# Listing 5: Overriding Java properties (six-oval.properties)
+# Listing 5: Overriding Java properties (six-oval.properties in CLASSPATH)
 
 six.oval.repository.database.name      =ovalrepo
 six.oval.repository.database.username  =foo
