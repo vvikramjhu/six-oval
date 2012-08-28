@@ -391,7 +391,8 @@ T.B.D.
 
 We don't intend to develop an OVAL Interpreter.
 Instead, we use existing one, ovaldi, and 
-provide a simple _proxy_ class in Java.
+provide a simple _proxy_ class in Java
+to drive it.
 
 
 
