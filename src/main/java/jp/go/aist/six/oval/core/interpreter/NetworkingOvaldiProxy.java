@@ -119,19 +119,14 @@ public class NetworkingOvaldiProxy
 
 
 
-//    private static final List<MediaType>  _OVAL_FILE_MEDIA_TYPES_ =
-//        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
-
-
-
-    private static final Option[]  _NETWORK_INPUT_OPTIONS_ = new Option[] {
-        OvaldiOption.OVAL_DEFINITIONS
-    };
-
-
-    private static final Option[]  _NETWORK_OUTPUT_OPTIONS_ = new Option[] {
-        OvaldiOption.OVAL_RESULTS
-    };
+//    private static final Option[]  _NETWORK_INPUT_OPTIONS_ = new Option[] {
+//        OvaldiOption.OVAL_DEFINITIONS
+//    };
+//
+//
+//    private static final Option[]  _NETWORK_OUTPUT_OPTIONS_ = new Option[] {
+//        OvaldiOption.OVAL_RESULTS
+//    };
 
 
 
@@ -189,13 +184,37 @@ public class NetworkingOvaldiProxy
      * @throws  OvalInterpreterException
      */
    private void _preProcess(
-                   final Options localOptions
+                   final Options localizedOptions
                    )
    {
-       _prepareNetworkResources( localOptions );
+       /* OLD */
+//     _prepareInputFiles( localOptions );
+//     _prepareOutputFiles( localOptions );
 
-//       _prepareInputFiles( localOptions );
-//       _prepareOutputFiles( localOptions );
+       /* NEW */
+//       _prepareNetworkResources( localOptions );
+       for (NetworkResource  res : NetworkResource.values()) {
+           _validateNetworkResourceOption( res.option );
+
+           String  file_location = localizedOptions.get( res.option );
+           if (file_location != null) {
+               URL  url = _toURL( file_location );
+               if (url == null) {
+                   // local filepath as it is
+               } else {
+                   //This option argument is an URL.
+                   File  file = _createTmpFile( res.option.defaultArgument );
+                   if (res.operation == NetworkOperation.INPUT) {
+                       //If input, download the resource and save it to a local file.
+                       _httpGet( url, file, res.option.contentType );
+                   }
+
+                   //Replace the ovaldi command option for local execution.
+                   localizedOptions.set( res.option, file.getAbsolutePath() );
+               }
+           }
+       }
+
    }
 
 
@@ -208,24 +227,46 @@ public class NetworkingOvaldiProxy
                     final Options localizedOptions
                     )
     {
-        Options originalOptions = getOptions();
-        for (Option option : _NETWORK_OUTPUT_OPTIONS_) {
-            String original_file_location = originalOptions.get( option );
-            if (original_file_location != null) {
-                URL url = _toURL( original_file_location );
-                if (url == null) {
-                    // local filepath
-                } else {
-                    /**
-                     * This option argument is an URL. Obtain the local
-                     * filepath, and send the file to the remote execution.
-                     */
-                    String filepath = localizedOptions.get( option );
-                    _httpPost( url, new File( filepath ), option.contentType );
+        Options  originalOptions = getOptions();
+
+        for (NetworkResource  res : NetworkResource.values()) {
+            if (res.operation == NetworkOperation.OUTPUT) {
+                String  original_file_location = originalOptions.get( res.option );
+                if (original_file_location != null) {
+                    URL  url = _toURL( original_file_location );
+                    if (url == null) {
+                        // local filepath
+                    } else {
+                        /**
+                         * This option argument is an URL.
+                         * Obtain the local filepath, and send the file to the remote execution.
+                         */
+                        String  filepath = localizedOptions.get( res.option );
+                        _httpPost( url, new File( filepath ), res.option.contentType );
+                    }
                 }
             }
         }
     }
+//    {
+//        Options originalOptions = getOptions();
+//        for (Option option : _NETWORK_OUTPUT_OPTIONS_) {
+//            String original_file_location = originalOptions.get( option );
+//            if (original_file_location != null) {
+//                URL url = _toURL( original_file_location );
+//                if (url == null) {
+//                    // local filepath
+//                } else {
+//                    /**
+//                     * This option argument is an URL. Obtain the local
+//                     * filepath, and send the file to the remote execution.
+//                     */
+//                    String filepath = localizedOptions.get( option );
+//                    _httpPost( url, new File( filepath ), option.contentType );
+//                }
+//            }
+//        }
+//    }
 
 
 
@@ -306,38 +347,38 @@ public class NetworkingOvaldiProxy
     //  network resources
     ///////////////////////////////////////////////////////////////////////
 
-    /**
-     * For each input or output file, if its location is given as an URL,
-     * it is replaced by a local tmp file for the following ovaldi execution.
-     * In addition, if it is an input file, the content is read from the URL
-     * and saved into the local tmp file.
-     */
-    protected void _prepareNetworkResources(
-                    final Options localizedOptions
-                    )
-    {
-        for (NetworkResource  res : NetworkResource.values()) {
-            _validateNetworkResourceOption( res.option );
-
-            String  file_location = localizedOptions.get( res.option );
-            if (file_location != null) {
-                URL  url = _toURL( file_location );
-                if (url == null) {
-                    // local filepath as it is
-                } else {
-                    //This option argument is an URL.
-                    File  file = _createTmpFile( res.option.defaultArgument );
-                    if (res.operation == NetworkOperation.INPUT) {
-                        //If input, download the resource and save it to a local file.
-                        _httpGet( url, file, res.option.contentType );
-                    }
-
-                    //Replace the ovaldi command option for local execution.
-                    localizedOptions.set( res.option, file.getAbsolutePath() );
-                }
-            }
-        }
-    }
+//    /**
+//     * For each input or output file, if its location is given as an URL,
+//     * it is replaced by a local tmp file for the following ovaldi execution.
+//     * In addition, if it is an input file, the content is read from the URL
+//     * and saved into the local tmp file.
+//     */
+//    private void _prepareNetworkResources(
+//                    final Options localizedOptions
+//                    )
+//    {
+//        for (NetworkResource  res : NetworkResource.values()) {
+//            _validateNetworkResourceOption( res.option );
+//
+//            String  file_location = localizedOptions.get( res.option );
+//            if (file_location != null) {
+//                URL  url = _toURL( file_location );
+//                if (url == null) {
+//                    // local filepath as it is
+//                } else {
+//                    //This option argument is an URL.
+//                    File  file = _createTmpFile( res.option.defaultArgument );
+//                    if (res.operation == NetworkOperation.INPUT) {
+//                        //If input, download the resource and save it to a local file.
+//                        _httpGet( url, file, res.option.contentType );
+//                    }
+//
+//                    //Replace the ovaldi command option for local execution.
+//                    localizedOptions.set( res.option, file.getAbsolutePath() );
+//                }
+//            }
+//        }
+//    }
 
 
 
@@ -447,9 +488,9 @@ public class NetworkingOvaldiProxy
 
 
 
-    //==============================================================
+    //=====================================================================
     // HTTP support
-    //==============================================================
+    //=====================================================================
 
     /**
      * HTTP GET to file
