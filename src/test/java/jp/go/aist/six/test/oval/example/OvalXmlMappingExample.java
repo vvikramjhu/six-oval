@@ -16,7 +16,6 @@ public class OvalXmlMappingExample
     public static void main( final String[] args )
     throws Exception
     {
-//        XmlMapper  xml_mapper = DeprecatedOvalContext.getXmlMapper();
         XmlMapper  xml_mapper = OvalContext.getInstance().getXmlMapper();
 
         //local file

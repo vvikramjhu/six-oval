@@ -99,7 +99,8 @@ CONTENTS:
     <!-- ************************************************************** -->
 
     <!-- interpreter -->
-    <target name="oval.interpreter.net" depends="compile,init">
+
+    <target name="example.oval.interpreter.net" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
             classpathref="java.run.classpath"
@@ -110,7 +111,7 @@ CONTENTS:
         </java>
     </target>
 
-    <target name="oval.interpreter" depends="compile,init">
+    <target name="example.oval.interpreter" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
             classpathref="java.run.classpath"
@@ -124,7 +125,7 @@ CONTENTS:
 
 
 
-    <target name="oval.example.repository-client-findbyid" depends="test.compile,init">
+    <target name="example.oval.repository-client-findbyid" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalRepositoryClientFindByIdExample"
             classpathref="java.run.classpath"
@@ -135,7 +136,7 @@ CONTENTS:
     </target>
 
 
-    <target name="oval.example.db-basic" depends="test.compile,init">
+    <target name="example.oval.db-basic" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalDatabaseBasicExample"
             classpathref="java.run.classpath"
@@ -146,7 +147,7 @@ CONTENTS:
     </target>
 
 
-    <target name="oval.example.db-query" depends="test.compile,init">
+    <target name="example.oval.db-query" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalDatabaseQueryExample"
             classpathref="java.run.classpath"
@@ -158,7 +159,7 @@ CONTENTS:
 
 
 
-    <target name="oval.example.xml-mapping" depends="test.compile,init">
+    <target name="example.oval.xml-mapping" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
             classpathref="java.run.classpath"
