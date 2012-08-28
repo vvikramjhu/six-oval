@@ -47,7 +47,7 @@ import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.XmlMapper;
 .....
 
-XmlMapper  xml_mapper = OvalContext().getInstance().getXmlMapper();
+XmlMapper  xml_mapper = OvalContext.getInstance().getXmlMapper();
 
 String  local_src = "definitions.xml";
 File  src_file = new File( local_src );
@@ -188,7 +188,7 @@ import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.util.xml.XmlMapper;
 .....
 
-OvalContext  context = OvalContext.getServerInstance();
+OvalServerContext  context = OvalContext.getServerInstance();
 
     /* Unmarshal XML document */
 XmlMapper  xml_mapper = context.getXmlMapper();
