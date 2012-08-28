@@ -376,7 +376,7 @@ System.out.println( "*** found Definition: " + def );
 Listing 10 shows the Java configuration properties.
 
 {{{
-// Listing 10: Web Services properties ("six-oval.properties" file in the classpath).
+// Listing 10: Web Services properties (six-oval.properties in CLASSPATH).
 
 six.oval.repository.web.base-url = https://foo.bar.org:8080/six-oval/repository
 #six.oval.repository.web.base-url = http://localhost:8080/six-oval/repository  #default
