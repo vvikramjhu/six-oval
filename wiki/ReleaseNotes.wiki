@@ -29,11 +29,11 @@ _coming soon_
 
 == <font color="#0044CC">Tested Environment</font> ==
 
-  * *OVAL Definition Interpreter*: ovaldi 5.10.1, build 2, x64
-  * *Database*: MongoDB 2.0.6, win32, x86_64
-  * *Servlet Container*: Tomcat 6.0.35
   * *Java 2 SE*: Oracle JDK 6 update 34, windows x64
   * *Java components*: See the following table. Note that there may be indirect dependencies; e.g. Apache Commons Logging and Log4j.
+  * *Database*: MongoDB 2.0.6, win32, x86_64
+  * *Servlet Container*: Tomcat 6.0.35
+  * *OVAL Definition Interpreter*: ovaldi 5.10.1, build 2, x64
 
 || *Product Name* || *Tested Version* || *Required JAR Files* || *License* ||
 || [http://commons.apache.org/lang/ Apache Commons Lang] || 2.6  (Note 1) || commons-lang-2.6.jar || Apache v2.0 ||
@@ -41,7 +41,7 @@ _coming soon_
 || [http://www.oracle.com/technetwork/java/index-jsp-135475.html Java Servlet API] || 2.5 || servlet-api.jar || Apache v2.0 ||
 || [http://www.mongodb.org/display/DOCS/Java+Language+Center MongoDB Java Driver] || 2.8.0 || mongo-2.8.0.jar || Apache v2.0 ||
 || [http://code.google.com/p/morphia/ Morphia] || 0.99.1 SNAPSHOT || morphia-0.99.1-SNAPSHOT.jar, <br>morphia-logging-slf4j-0.99.jar || Apache v2.0 ||
-|| [http://staff.aist.go.jp/nakamura-akihito/six/util/ SIX UTIL] || 3.0.0 || six-util-3.0.0.jar || Apache v2.0 ||
+|| [http://staff.aist.go.jp/nakamura-akihito/six/util/ SIX UTIL] || 3.2.0 || six-util-3.2.0.jar || Apache v2.0 ||
 || [http://www.slf4j.org/ SLF4J] || 1.6.6 || slf4j-api-1.6.6.jar || MIT ||
 || [http://www.springsource.org/spring-framework Spring Framework] || 3.0.7 || org.springframework.asm-3.0.7.RELEASE.jar, <br>org.springframework.beans-3.0.7.RELEASE.jar, <br>org.springframework.context-3.0.7.RELEASE.jar, <br>org.springframework.core-3.0.7.RELEASE.jar, <br>org.springframework.expression-3.0.7.RELEASE.jar, <br>org.springframework.oxm-3.0.7.RELEASE.jar, <br>org.springframework.web.servlet-3.0.7.RELEASE.jar, <br>org.springframework.web-3.0.7.RELEASE.jar || Apache v2.0 ||
 
