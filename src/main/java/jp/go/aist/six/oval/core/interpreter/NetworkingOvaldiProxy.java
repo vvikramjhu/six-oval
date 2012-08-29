@@ -119,20 +119,8 @@ public class NetworkingOvaldiProxy
 
 
 
-//    private static final Option[]  _NETWORK_INPUT_OPTIONS_ = new Option[] {
-//        OvaldiOption.OVAL_DEFINITIONS
-//    };
-//
-//
-//    private static final Option[]  _NETWORK_OUTPUT_OPTIONS_ = new Option[] {
-//        OvaldiOption.OVAL_RESULTS
-//    };
-
-
-
     private String  _tmpFilePrefix;
     private File  _tmpDir;
-
 
 
 
@@ -187,12 +175,6 @@ public class NetworkingOvaldiProxy
                    final Options localizedOptions
                    )
    {
-       /* OLD */
-//     _prepareInputFiles( localOptions );
-//     _prepareOutputFiles( localOptions );
-
-       /* NEW */
-//       _prepareNetworkResources( localOptions );
        for (NetworkResource  res : NetworkResource.values()) {
            _validateNetworkResourceOption( res.option );
 
@@ -347,41 +329,6 @@ public class NetworkingOvaldiProxy
     //  network resources
     ///////////////////////////////////////////////////////////////////////
 
-//    /**
-//     * For each input or output file, if its location is given as an URL,
-//     * it is replaced by a local tmp file for the following ovaldi execution.
-//     * In addition, if it is an input file, the content is read from the URL
-//     * and saved into the local tmp file.
-//     */
-//    private void _prepareNetworkResources(
-//                    final Options localizedOptions
-//                    )
-//    {
-//        for (NetworkResource  res : NetworkResource.values()) {
-//            _validateNetworkResourceOption( res.option );
-//
-//            String  file_location = localizedOptions.get( res.option );
-//            if (file_location != null) {
-//                URL  url = _toURL( file_location );
-//                if (url == null) {
-//                    // local filepath as it is
-//                } else {
-//                    //This option argument is an URL.
-//                    File  file = _createTmpFile( res.option.defaultArgument );
-//                    if (res.operation == NetworkOperation.INPUT) {
-//                        //If input, download the resource and save it to a local file.
-//                        _httpGet( url, file, res.option.contentType );
-//                    }
-//
-//                    //Replace the ovaldi command option for local execution.
-//                    localizedOptions.set( res.option, file.getAbsolutePath() );
-//                }
-//            }
-//        }
-//    }
-
-
-
     /**
      */
     private URL _toURL(
@@ -421,70 +368,6 @@ public class NetworkingOvaldiProxy
                                             + option );
         }
     }
-
-
-
-//    /**
-//     * For each input file, if its location is given as an URL,
-//     * it is read and saved into a local tmp file.
-//     * At the same time, the option values are adjusted to use those local files.
-//     */
-//    protected void _prepareInputFiles(
-//                    final Options localizedOptions
-//                    )
-//    {
-//        for (Option  option : _NETWORK_INPUT_OPTIONS_) {
-//            _validateNetworkResourceOption( option );
-//
-//            String  file_location = localizedOptions.get( option );
-//            if (file_location != null) {
-//                URL  url = _toURL( file_location );
-//                if (url == null) {
-//                    // local filepath as it is
-//                } else {
-//                    /** This option argument is an URL.
-//                     * Download the resource and save it to a local file.
-//                     * Then, replace the argument for local execution.
-//                     */
-//                    File  file = _createTmpFile( option.defaultArgument );
-//                    _httpGet( url, file, option.contentType );
-//
-//                    localizedOptions.set( option, file.getAbsolutePath() );
-//                }
-//            }
-//        }
-//    }
-//
-//
-//
-//    /**
-//     * If an output file location is an URL,
-//     * the output from the interpreter is written to a local tmp file.
-//     * In the post-process, such a file must be send to the specified location.
-//     */
-//    private void _prepareOutputFiles(
-//                    final Options localizedOptions
-//                    )
-//    {
-//        for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
-//            _validateNetworkResourceOption( option );
-//
-//            String  file_location = localizedOptions.get( option );
-//            if (file_location != null) {
-//                URL  url = _toURL( file_location );
-//                if (url == null) {
-//                    // local filepath
-//                } else {
-//                    /** This option argument is an URL.
-//                     * Decide the local filename, and
-//                     * replace the argument for local execution.
-//                     */
-//                    File  file = _createTmpFile( option.defaultArgument );
-//                    localizedOptions.set( option, file.getAbsolutePath() );
-//                }
-//            }
-//        }
-//    }
 
 
 
