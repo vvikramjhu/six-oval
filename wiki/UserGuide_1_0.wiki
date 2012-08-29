@@ -391,14 +391,21 @@ T.B.D.
 
 We don't intend to develop an OVAL Interpreter.
 Instead, we use existing one, ovaldi, and 
-provide a simple _proxy_ class in Java
-to drive it.
+provide a simple _proxy_ class in Java to drive it.
+
+There two wrappers; simple and networking.
+The simple proxy is just an ovaldi launcher.
+The networking proxy extends the local file-based 
+input/output of ovaldi to URI-based ones.
+That is, it is possible to obtain the OVAL Definitions
+from a network location and submit the OVAL Results
+to a remote location.
 
 
 
 == <font color="#0044CC">Configuration</font> ==
 
-Listing XX shows the Java configuration properties
+Listing 11 shows the default Java configuration properties
 for ovaldi.
 There are two properties; "ovaldi.path" and "ovaldi.workdir".
 The former specifies the path to the ovaldi executable file
@@ -406,22 +413,23 @@ and the latter gives the working directory
 of the ovaldi process.
 The default value for the working directory is null, 
 which means to use the working directory 
-of the current Java process
+of the current Java process.
 
 {{{
-// Listing XX: Default ovaldi configuration properties.
+// Listing 11: Default ovaldi configuration properties.
 
 ovaldi.path     = ovaldi
 #ovaldi.workdir = 
 }}}
 
 
-Listing XX shows an example overriding configuration properties.
+Listing 12 shows an example overriding 
+configuration properties.
 In this case, the platform is Windows and 
 "ovaldi.exe" binary is located in "C:" drive.
 
 {{{
-// Listing XX: Overriding ovaldi configuration properties (six-oval.properties in CLASSPATH).
+// Listing 12: Overriding ovaldi configuration properties (six-oval.properties in CLASSPATH).
 
 ovaldi.path = C:\\app\\ovaldi-5.10.1.2-x64\\ovaldi.exe
 }}}
@@ -430,7 +438,7 @@ ovaldi.path = C:\\app\\ovaldi-5.10.1.2-x64\\ovaldi.exe
 
 == <font color="#0044CC">Simple Proxy</font> ==
 
-Listing XX shows how to lounch ovaldi from Java
+Listing 13 shows how to launch ovaldi from Java
 with command options.
 In this case, "definitions.xml" file in current working
 directory is used as the input OVAL Definition document,
@@ -440,7 +448,7 @@ by the properties file as described above.
 
 
 {{{
-// Listing XX: Simple ovaldi Proxy
+// Listing 13: Simple ovaldi Proxy
 
 import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
 import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
@@ -458,6 +466,10 @@ System.out.println( "ovaldi exit value: " + exit_value );
 
 
 
+== <font color="#0044CC">Networking Proxy</font> ==
+
+Listing 14 shows how to launch ovaldi from Java
+with command options.
 
 
 
