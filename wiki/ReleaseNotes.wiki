@@ -9,8 +9,7 @@
 
 
 ----
-= <font color="#0044CC">Version 1.0.0</font> =
-_coming soon_
+= <font color="#0044CC">Version 1.0.0 (2012-08-29)</font> =
 
 == <font color="#0044CC">Changes</font> ==
   * Now we use [http://www.mongodb.org/ MongoDB] for the  repository implementation.
