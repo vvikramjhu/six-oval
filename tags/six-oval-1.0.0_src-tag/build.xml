@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Ant buildfile                                         // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id$
+-->
+
+
+<!--
+CONTENTS:
+-->
+
+<!-- %*=+ -->
+<project name="six3-oval" default="default" basedir=".."
+    xmlns:six="http://aist.go.jp/six">
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  External Components                                % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <import file="ant-six.xml"/>
+
+    <property file="${java.res.dir}/six-oval.properties"/>
+
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Properties                                         % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- webapp -->
+    <property name="webapp.src.dir"     location="${src.dir}/main/webapp"/>
+    <property name="web.xml"            location="${webapp.src.dir}/WEB-INF/web.xml"/>
+    <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.oval.webapp.context}"/>
+
+    <property name="product.warname"    value="${six.oval.webapp.context}.war"/>
+    <property name="product.war"        location="${build.dir}/${product.warname}"/>
+
+
+    <!-- Castor code generation 
+    <property name="schema.src.dir"     location="${src.dir}/schema"/>
+    -->
+
+   
+    <!-- SQL scripts -->
+    <property name="sql.src.dir"        location="${src.dir}/sql/v5/${six.db.engine}"/>
+    <property name="build.sql.dir"      location="${build.dir}/sql"/>
+
+
+    
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Task Definitions                                   % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- TestNG -->
+    <taskdef name="testng"
+        classname="org.testng.TestNGAntTask"
+        classpathref="java.run.classpath"
+        />
+
+    
+
+    <!-- Castor Source Code Generator 
+    <taskdef name="castor-codegen" 
+        classname="org.castor.anttask.CastorCodeGenTask"
+        classpathref="java.run.classpath" />
+    -->
+
+    
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Targets                                            % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- pre-compile: e.g. code generation 
+    <target name="pre-compile" depends="codegen">
+    </target>
+    -->
+
+    <!-- ************************************************************** -->
+    <!-- *  Examples                                                  * -->
+    <!-- ************************************************************** -->
+
+    <!-- interpreter -->
+
+    <target name="oval.interpreter.net-output" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -m -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541 -r http://localhost:8080/six-oval/repository/oval_results"/>
+        </java>
+    </target>
+
+    <target name="oval.interpreter.net-input" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -m -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541"/>
+        </java>
+    </target>
+
+    <target name="oval.interpreter" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o C:\\app\\ovaldi-5.10.1.2-x64\\def-family.xml -m"/>
+        </java>
+    </target>
+
+	
+    <target name="example.oval.interpreter.net" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.NetworkingOvaldiProxyExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+    <target name="example.oval.interpreter" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvaldiProxyExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+
+
+
+    <target name="example.oval.repository-client-findbyid" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalRepositoryClientFindByIdExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="example.oval.db-basic" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseBasicExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="example.oval.db-query" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseQueryExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+
+    <target name="example.oval.xml-mapping" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+    
+
+    
+
+    <!-- ******************************************************* -->
+    <!-- *  Webapp                                             * -->
+    <!-- ******************************************************* -->
+
+    <target name="webapp" depends="jar,init" >
+        
+        <delete dir="${webapp.build.dir}"/>
+        <mkdir dir="${webapp.build.dir}"/>
+        <mkdir dir="${webapp.build.dir}/WEB-INF"/>
+        <mkdir dir="${webapp.build.dir}/WEB-INF/lib"/>
+
+        <copy file="${webapp.src.dir}/web.xml" todir="${webapp.build.dir}/WEB-INF"/>
+        <copy todir="${webapp.build.dir}/WEB-INF/lib">
+            <fileset dir="${lib.dir}" includes="**/*.jar" />
+        </copy>
+        <copy file="${product.jar}" todir="${webapp.build.dir}/WEB-INF/lib"/>
+
+    </target>
+
+
+
+    <!-- WAR -->
+    <target name="war" depends="jar">
+        <echo message="web.xml path: ${web.xml}"/>
+
+<!--
+        <mkdir dir="${build.dir}/WEB-INF/lib"/>
+        <copy todir="${build.dir}/WEB-INF/lib" flatten="true">
+            <fileset dir="${lib.dir}" includes="**/*.jar" />
+        </copy>
+-->
+        
+        <war destfile="${product.war}" webxml="${web.xml}">
+            <fileset dir="${webapp.src.dir}" 
+                excludes="**/web.xml,log4j.properties"/>
+            <classes dir="${webapp.src.dir}/WEB-INF/classes" includes="*.xml,*.properties"/>
+            <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
+            <classes dir="${java.res.dir}" 
+                includes="castor.properties,six-oval.properties,*.xml,*.xsl"
+                excludes="log4j.properties,logback.xml"/>
+            <lib dir="${build.dir}" includes="*.jar"/>
+            <lib dir="${lib.dir}" includes="**/*.jar" 
+                excludes="servlet-api.jar,testng-*.jar" />
+<!--
+            <lib dir="${build.dir}/WEB-INF/lib" includes="*.jar" />
+-->
+        </war>
+    </target>
+
+
+    
+    <!-- ******************************************************* -->
+    <!-- *  XML                                                * -->
+    <!-- ******************************************************* -->
+
+    <target name="oval.xml.dump" depends="compile">
+        <java
+            classname="jp.go.aist.six.oval.core.xml.OvalXmlTool"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-dump src/win-def_wmi57_object_test_results.xml"/>
+            <!-- arg line="src/test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml"/ -->
+        </java>
+    </target>
+
+
+    <target name="test.oval-store" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.core.OvalStoreTest"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+        </java>
+    </target>
+
+
+
+
+    <!-- CentOSOvalGenerator: invokes from command line -->
+    <target name="test.net-interpreter" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.NetOvalInterpreterCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="C:\\app\\oval\\ovaldi-5.6.4\\ovaldi.exe -a C:\\app\\oval\\ovaldi-5.6.4\\xml -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a1020 -m"/>
+        </java>
+    </target>
+
+
+    <!-- CentOSOvalGenerator: invokes from command line -->
+    <target name="test.oval-generator.centos" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.centos.CentOSOvalGeneratorCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-rho src/test/data/sample_oval-definitions_linux-redhat.xml -o oval-definitions_centos.xml"/>
+        </java>
+    </target>
+
+
+    <!-- DebianOvalGenerator: invokes from command line -->
+    <target name="test.oval-generator.debian" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.debian.DebianOvalGeneratorCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <sysproperty key="six.oval.debian.dsc" value="src/test/data/dsa"/> 
+            <arg line="-dsa src/test/data/dsa-1974.en.html -o oval-definitions_debian.xml"/>
+        </java>
+    </target>
+
+
+    <!-- test: @override 
+    <target name="test" depends="db.delete-sample-data,test.compile,init">
+    -->
+    <target name="test" depends="test.compile,init">
+        <mkdir dir="${build.test.dir}"/>
+
+        <testng
+            classpathref="java.run.classpath"
+            outputdir="${build.test.dir}"
+            haltonfailure="true"
+            >
+            <xmlfileset dir="${java.test.res.dir}" includes="testng.xml"/>
+            <!-- xmlfileset dir="${config.src.dir}" includes="testng.xml"/ -->
+            <jvmarg value="-Xms512m"/>
+            <jvmarg value="-Xmx512m"/>
+            <!-- sysproperty key="six.oval.debian.dsc" value="test/data/debian/dsc"/ -->
+        </testng>
+    </target>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- *  datastore / MongoDB                                * -->
+    <!-- ******************************************************* -->
+
+    <!-- datastore: Installs the OVAL objects to the datastore. -->
+    <target name="oval.database.install-definitions" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabaseTool"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+            <arg line="-install src/test/resources/OvalTestContent/5.10/20120301_v_microsoft.windows.7.xml"/>
+            <!-- arg line="-install src/test/resources/OvalTestContent/5.10.1/oval_def-8987-1_i.xml"/ --> 
+            <!-- arg line="-install src/test/resources/OvalTestContent/5.10/oval_def-7222_CVE-2010-0176.xml"/ -->
+            <!-- arg line="-install src/test/resources/OvalTestContent/5.10/2011-10-02_oval5.10_v.xml"/ -->
+        </java>
+    </target>
+
+	
+
+    <!-- datastore: Deletes all the data. -->
+    <target name="oval.database.delete-all" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabaseTool"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-delete-all"/>
+        </java>
+    </target>
+
+    <!-- datastore: Drops all the collections. -->
+    <target name="oval.database.drop-all-collections" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.mongodb.MongoDatabaseTool"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-drop-all-collections"/>
+        </java>
+    </target>
+
+    
+    
+
+
+    <!-- ******************************************************* -->
+    <!-- *  database                                           * -->
+    <!-- ******************************************************* -->
+
+    <!-- database: Deletes the records. -->
+    <target name="db.delete-records" depends="db.create-tables">
+        <six:execsql src="${build.sql.dir}/delete-records.sql">
+        </six:execsql>
+    </target>
+
+
+    <!-- database: Rebuilds the tables. -->
+    <target name="db.rebuild-tables" depends="db.prepare-sql-files">
+        <antcall target="db.drop-tables"/>
+        <antcall target="db.create-tables"/>
+    </target>
+
+
+    <!-- database: Drops the tables. -->
+    <target name="db.drop-tables" depends="db.prepare-sql-files">
+        <six:execsql src="${build.sql.dir}/drop-tables.sql">
+        </six:execsql>
+    </target>
+
+
+    <!-- database: Creates the tables. -->
+    <target name="db.create-tables" depends="db.prepare-sql-files">
+        <six:execsql src="${build.sql.dir}/create-tables.sql">
+        </six:execsql>
+    </target>
+
+
+
+    <!-- Prepares the SQL files.
+    The execution-ready SQL files are located in ${build.sql.dir}.
+    Some parameter tokens in the source SQL files are replaced with
+    the configured property values.  
+    -->
+    <target name="db.prepare-sql-files" depends="init">
+        <echo message="database engine=${six.db.engine}"/>
+        
+        <delete dir="${build.sql.dir}"/>
+        <mkdir  dir="${build.sql.dir}"/>
+
+        <copy todir="${build.sql.dir}">
+            <fileset dir="${sql.src.dir}" includes="**/*.sql"/>
+
+            <filterset>
+                <filter token="six.db.database" value="${six.db.database}"/>
+            </filterset>
+        </copy>
+    </target>
+
+
+    
+    <!-- ******************************************************* -->
+    <!-- *  Source Code Generation                             * -->
+    <!-- ******************************************************* -->
+
+    <!-- codegen:  
+    <target name="codegen" depends="is-codegen-required,init" 
+        if="codegen-required">
+        
+        <delete dir="${build.java.codegen.dir}"/>
+        <mkdir dir="${build.java.codegen.dir}"/>
+
+        <castor-codegen
+            file="${schema.src.dir}/linux-system-characteristics-schema.xsd"
+            todir="${build.java.codegen.dir}"
+            bindingfile="${schema.src.dir}/castor-mapping-binding.xml"
+            package="jp.go.aist.six.oval.model"
+            types="j2"
+            warnings="true"
+            properties="${config.src.dir}/castorbuilder.properties"
+            />
+    </target>
+    -->
+
+
+    <!-- codegen: Determines whether to generate the code or not.
+    The generation is required if 
+    (1) no generated code exists, or
+    (2) the object mapping schema is newer than the existing generated code.
+    -->
+    <target name="is-codegen-required" 
+        depends="model.is-codegen-required">
+        <condition property="codegen-required">
+            <or>
+                <not>
+                    <available file="${build.java.codegen.dir}"/>
+                </not>
+
+                <isset property="model.codegen-required"/>
+
+                <uptodate targetfile="${schema.src.dir}/castor-mapping-binding.xsd">
+                    <srcfiles dir="${java.codegen.dir}" includes="**/*.java">
+                    </srcfiles>
+                </uptodate>
+            </or>
+        </condition>
+        
+        <echo message="codegen-required=${codegen-required}"/>
+    </target>
+
+    <target name="model.is-codegen-required">
+        <condition property="model.codegen-required">
+            <or>
+                <not>
+                    <available file="${build.java.codegen.dir}"/>
+                </not>
+
+                <uptodate targetfile="${schema.src.dir}/linux-system-characteristics-schema.xsd">
+                    <srcfiles dir="${build.java.codegen.dir}" includes="**/*.java"/>
+                </uptodate>
+            </or>
+        </condition>
+        
+        <echo message="model.codegen-required=${model.codegen-required}"/>
+    </target>
+
+
+    
+    
+    <!-- ******************************************************* -->
+    <!-- *  Private Targets                                    * -->
+    <!-- ******************************************************* -->
+
+    <!-- ======================================================= -->
+    <!-- =  Generating Delivarables                            = -->
+    <!-- ======================================================= -->
+
+
+    <!-- ======================================================= -->
+    <!-- =  Java Compilation and API Documentation             = -->
+    <!-- ======================================================= -->
+
+
+    <!-- ======================================================= -->
+    <!-- =  Initialization                                     = -->
+    <!-- ======================================================= -->
+
+</project>
+
+<!-- vim:set tabstop=4:set expandtab:set shiftwidth=4: -->
+

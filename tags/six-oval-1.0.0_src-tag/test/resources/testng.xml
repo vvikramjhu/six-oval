@@ -1,0 +1,226 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // TestNG Test Suite                                     // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id$
+-->
+
+<suite name="six-oval" verbose="1" parallel="tests">
+
+    <!-- ******************************************************* -->
+    <!-- * oval.model                                          * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.model" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.model.ComponentTests"/>
+        </classes>
+    </test>
+
+
+    <!-- ******************************************************* -->
+    <!-- *  interpreter                                        * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.interpreter" enabled="false">
+        <groups>
+            <run>
+                <include name="oval.interpreter"/>
+                <include name="oval.interpreter.networking"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTest"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.interpreter" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTestContentTest"/>
+        </classes>
+    </test>
+
+
+
+
+    <!-- ************************************************************** -->
+    <!-- *  oval.core.repository.web                                  * -->
+    <!-- ************************************************************** -->
+
+    <test name="oval.core.repository.web" enabled="true">
+        <groups>
+            <run>
+                <include name="CONTROL.oval.repository.findOvalResults"/>
+                
+                <!--
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
+                <include name="CONTROL.oval.repository.findElementById"/>
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.web.HttpOvalRepositoryClientTests"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core.ws" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.web.AtomTest"/>
+            <!--
+            -->
+        </classes>
+    </test>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- *  repository                                         * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.core.repository.mongodb" enabled="false">
+        <groups>
+            <run>
+                <include name="CONTROL.oval.repository.saveOvalResults"/>
+            </run>
+        </groups>
+        <!--
+        -->
+                <!--
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+                <include name="MODEL.oval.res.oval_results"/>
+                <include name="MODEL.oval.sc.oval_system_characteristics"/>
+                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
+                <include name="CONTROL.oval.repository.saveOvalResults"/>
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+                -->
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
+            <!--
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
+            <class name="jp.go.aist.six.test.oval.core.DefinitionElementAssocTests"/>
+            <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalResultRepositoryTests"/>
+            -->
+        </classes>
+    </test>
+
+
+    <test name="oval.core.repository.mongodb" enabled="false">
+        <!--
+        <groups>
+            <run>
+                <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
+            </run>
+        </groups>
+        -->
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.OvalDefinitionsGeneratorTests"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core.repository.mongodb" enabled="false">
+        <groups>
+            <run>
+                <include name="oval.res"/>
+<!--
+                <include name="oval.sc"/>
+                <include name="oval.core.repository.mongodb"/>
+-->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
+        </classes>
+    </test>
+
+
+    <test name="oval.core.repository.mongodb.performance" enabled="false">
+        <groups>
+            <run>
+                <include name="oval.core.repository.mongodb.performance"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
+        </classes>
+    </test>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- *  XML                                                * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.core.xml" enabled="false">
+        <!--
+        <groups>
+            <run>
+                <include name="MODEL.oval.def.oval_definitions"/>
+            </run>
+        </groups>
+        -->
+                <!--
+                <include name="MODEL.oval.sc.oval_system_characteristics"/>
+                <include name="xmlns:oval-def.*"/>
+                <include name="oval.test-content"/>
+                <include name="oval.results.oval_results"/>
+                <include name="oval.definitions.oval_definitions"/>
+                <include name="oval.results.oval_results"/>
+                <include name="oval.core.xml.searchresult"/>
+                <include name="oval.core.service"/>
+                <include name="definitions.oval_definitions"/>
+                <include name="sc.oval_sc"/>
+                <include name="results.oval_results"/>
+                -->
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
+            <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalIdXmlMappingTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsXmlMappingTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTests"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XsiNilMappingTests"/>
+            -->
+        </classes>
+    </test>
+
+
+    <test name="oval.core.xml.transform" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTests"/>
+        </classes>
+    </test>
+
+
+
+    <!-- ************************************************************** -->
+    <!-- *  core package                                              * -->
+    <!-- ************************************************************** -->
+
+    <test name="oval.core" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.OvalContextTests"/>
+        </classes>
+    </test>
+
+</suite>
+
+
