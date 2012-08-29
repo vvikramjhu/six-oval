@@ -448,11 +448,11 @@ by the properties file as described above.
 
 
 {{{
-// Listing 13: Simple ovaldi Proxy
+// Listing 13: Simple Proxy
 
+import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
 import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
-import jp.go.aist.six.oval.interpreter.Options;
 .....
 
 Options  options = new Options();
@@ -468,8 +468,31 @@ System.out.println( "ovaldi exit value: " + exit_value );
 
 == <font color="#0044CC">Networking Proxy</font> ==
 
-Listing 14 shows how to launch ovaldi from Java
-with command options.
+Listing 14 shows how to configure the network 
+locations of input and output resources.
+If you have set up the above Web-Services,
+it is possible to store the OVAL Results 
+from various managed node 
+at the centralized result repository.
+
+{{{
+// Listing 14: Networking Proxy
+
+import jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy;
+.....
+
+Options  options = new Options();
+options.set( OvaldiOption.NO_VERIFY )
+       .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.2-x64\\xml" )
+       .set( OvaldiOption.OVAL_DEFINITIONS, 
+             "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541" );
+//     .set( OvaldiOption.OVAL_RESULTS, 
+//           "http://localhost:8080/six-oval/repository/oval_results" );
+
+NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
+int  exit_value = ovaldi.execute();
+
+}}}
 
 
 
