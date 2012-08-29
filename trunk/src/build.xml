@@ -100,7 +100,7 @@ CONTENTS:
 
     <!-- interpreter -->
 
-    <target name="example.oval.interpreter.net-output" depends="compile,init">
+    <target name="oval.interpreter.net-output" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
             classpathref="java.run.classpath"
@@ -111,7 +111,7 @@ CONTENTS:
         </java>
     </target>
 
-    <target name="example.oval.interpreter.net-input" depends="compile,init">
+    <target name="oval.interpreter.net-input" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
             classpathref="java.run.classpath"
@@ -130,6 +130,17 @@ CONTENTS:
             maxmemory="256m"
             >
             <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o C:\\app\\ovaldi-5.10.1.2-x64\\def-family.xml -m"/>
+        </java>
+    </target>
+
+	
+    <target name="example.oval.interpreter.net" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.example.NetworkingOvaldiProxyExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
         </java>
     </target>
 
