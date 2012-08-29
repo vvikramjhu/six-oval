@@ -28,7 +28,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.util.xml.OxmException;
 import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
@@ -113,9 +112,9 @@ public class OvalXmlTool
                 URL  url = new URL( source );
                 stream = url.openStream();
             } catch (MalformedURLException m_ex) {
-                throw new OxmException( m_ex );
+                throw new XmlException( m_ex );
             } catch (IOException io_ex) {
-                throw new OxmException( io_ex );
+                throw new XmlException( io_ex );
             }
 
         } else {
@@ -124,10 +123,10 @@ public class OvalXmlTool
                 try {
                     stream = new FileInputStream( file );
                 } catch (FileNotFoundException io_ex) {
-                    throw new OxmException( io_ex );
+                    throw new XmlException( io_ex );
                 }
             } else {
-                throw new OxmException( "no such file: " + source );
+                throw new XmlException( "no such file: " + source );
             }
         }
 
