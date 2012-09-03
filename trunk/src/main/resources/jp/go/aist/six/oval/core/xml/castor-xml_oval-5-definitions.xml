@@ -860,6 +860,31 @@
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.UniqueFunctionType">
+        <map-to xml="unique"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.CountFunctionType">
+        <map-to xml="count"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
 
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
@@ -910,6 +935,10 @@
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType"
         extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
