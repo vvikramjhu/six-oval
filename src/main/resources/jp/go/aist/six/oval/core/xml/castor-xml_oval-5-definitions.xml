@@ -944,6 +944,34 @@
         extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
     </class>
 
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectAnySimpleType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectBinaryType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectBoolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectFloatType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectStringtype"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectVersionType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
 
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType"
@@ -1008,15 +1036,6 @@
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
-
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
-        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
-    </class>
 
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateRecordType"

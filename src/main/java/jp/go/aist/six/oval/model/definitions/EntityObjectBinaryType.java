@@ -26,33 +26,32 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntityObjectString type is extended by the entities of
- * an individual OVAL Object.
- * This specific type describes simple string data.
+ * The EntityBinaryType type is extended by the entities of an individual OVAL Object.
+ * This specific type describes simple binary data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectStringType
+public class EntityObjectBinaryType
     extends EntitySimpleBaseType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+        DatatypeEnumeration.BINARY;
+    //{required, fixed="binary"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectStringType()
+    public EntityObjectBinaryType()
     {
     }
 
 
-    public EntityObjectStringType(
+    public EntityObjectBinaryType(
                     final String content
                     )
     {
@@ -60,7 +59,7 @@ public class EntityObjectStringType
     }
 
 
-    public EntityObjectStringType(
+    public EntityObjectBinaryType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
@@ -73,7 +72,7 @@ public class EntityObjectStringType
     }
 
 
-    public EntityObjectStringType(
+    public EntityObjectBinaryType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
@@ -126,20 +125,12 @@ public class EntityObjectStringType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectStringType)) {
+        if (!(obj instanceof EntityObjectBinaryType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityObjectStringType
+//

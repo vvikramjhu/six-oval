@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityInt type is extended by the entities of an individual OVAL Object.
+ * The EntityObjectIntType is extended by the entities of an individual OVAL Object.
  * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
