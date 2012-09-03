@@ -1037,6 +1037,45 @@
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectRecordType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType">
+<!--
+        <map-to xml="record"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+-->
+
+        <field name="field" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectFieldType"
+            collection="collection">
+            <bind-xml name="field" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+                />
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectFieldType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityAttributeGroup">
+        <map-to xml="field"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="name" type="string">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+
+        <field name="entityCheck"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <bind-xml name="entity_check" node="attribute"/>
+        </field>
+    </class>
+
+
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateRecordType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateComplexBaseType">

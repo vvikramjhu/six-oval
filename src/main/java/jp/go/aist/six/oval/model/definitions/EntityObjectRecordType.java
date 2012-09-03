@@ -19,6 +19,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
@@ -33,27 +37,25 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityStateComplexBaseType
+public abstract class EntityObjectRecordType
     extends EntityComplexBaseType
 {
 
-    public static final CheckEnumeration  DEFAULT_ENTITY_CHECK =
-        CheckEnumeration.ALL;
-
-    private CheckEnumeration  entity_check;
-    //{optional, default="all"}
-
+    private final Collection<EntityObjectFieldType>  field =
+            new ArrayList<EntityObjectFieldType>();
+    //{0..*}
+    
 
 
     /**
      * Constructor.
      */
-    public EntityStateComplexBaseType()
+    public EntityObjectRecordType()
     {
     }
 
 
-    public EntityStateComplexBaseType(
+    public EntityObjectRecordType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
@@ -65,7 +67,7 @@ public abstract class EntityStateComplexBaseType
     }
 
 
-    public EntityStateComplexBaseType(
+    public EntityObjectRecordType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
@@ -80,36 +82,43 @@ public abstract class EntityStateComplexBaseType
 
     /**
      */
-    public void setEntityCheck(
-                    final CheckEnumeration entity_check
+    public void setField(
+                    final Collection<? extends EntityObjectFieldType> fields
                     )
     {
-        this.entity_check = entity_check;
+        if (this.field != fields) {
+            this.field.clear();
+            if (fields != null  &&  fields.size() > 0) {
+                for (EntityObjectFieldType  p : fields) {
+                    addField( p );
+                }
+            }
+        }
     }
 
 
-    public CheckEnumeration getEntityCheck()
-    {
-        return entity_check;
-    }
-
-
-    public static final CheckEnumeration entityCheck(
-                    final EntityStateComplexBaseType escbt
+    public boolean addField(
+                    final EntityObjectFieldType field
                     )
     {
-        if (escbt == null) {
-            throw new IllegalArgumentException( "null EntityStateComplexBaseType" );
+        if (field == null) {
+            throw new IllegalArgumentException( "empty field" );
         }
 
-        CheckEnumeration  entity_check = escbt.getEntityCheck();
-        if (entity_check == null) {
-            entity_check = DEFAULT_ENTITY_CHECK;
-        }
-
-        return entity_check;
+        return this.field.add( field );
     }
 
+
+    public Collection<EntityObjectFieldType> getField()
+    {
+        return field;
+    }
+
+
+    public Iterator<EntityObjectFieldType> iterateField()
+    {
+        return getField().iterator();
+    }
 
 
 
@@ -123,7 +132,8 @@ public abstract class EntityStateComplexBaseType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + entityCheck( this ).hashCode();
+        Collection<EntityObjectFieldType>  field = getField();
+        result = prime * result + ((field == null) ? 0 : field.hashCode());
 
         return result;
     }
@@ -139,29 +149,22 @@ public abstract class EntityStateComplexBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityStateComplexBaseType)) {
+        if (!(obj instanceof EntityObjectRecordType)) {
             return false;
         }
 
-        if (super.equals( obj )) {
-            EntityStateComplexBaseType  other = (EntityStateComplexBaseType)obj;
-            if (entityCheck( this ) == entityCheck( other )) {
-                return true;
-            }
+        EntityObjectRecordType  other = (EntityObjectRecordType)obj;
+        Collection<EntityObjectFieldType>  other_field = other.getField();
+        Collection<EntityObjectFieldType>   this_field =  this.getField();
+        if (this_field == other_field
+                        ||  (this_field != null  &&  other_field != null
+                                        &&  this_field.size() == other_field.size()
+                                        &&  this_field.containsAll( other_field ))) {
+            return true;
         }
 
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", entity_check=" + getEntityCheck()
-                        ;
+        return super.equals( obj );
     }
 
 }
-//EntityStateComplexBaseType
+//

@@ -128,7 +128,7 @@ public class EntityStateRecordType
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = 17;
+        int  result = super.hashCode();
 
         Collection<EntityStateFieldType>  field = getField();
         result = prime * result + ((field == null) ? 0 : field.hashCode());
