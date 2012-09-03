@@ -24,38 +24,31 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemIPAddressType type is extended by the entities of an individual item.
+ * This specific type describes any IPv4/IPv6 address or address prefix.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemIPAddressStringType
+public class EntityItemIPAddressType
     extends EntityItemSimpleBaseType
 {
 
-    //{optional, default="string"}
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
-        DatatypeEnumeration.STRING;
-
-//  private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
-//  DatatypeEnumeration.IPV4_ADDRESS,
-//  DatatypeEnumeration.IPV6_ADDRESS,
-//  DEFAULT_DATATYPE
-//};
+	//datatype;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemIPAddressStringType()
+    public EntityItemIPAddressType()
     {
     }
 
 
-    public EntityItemIPAddressStringType(
+    public EntityItemIPAddressType(
                     final String content
                     )
     {
@@ -76,7 +69,6 @@ public class EntityItemIPAddressStringType
         if (datatype != null) {
             if (datatype == DatatypeEnumeration.IPV4_ADDRESS
                             ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
-                            ||  datatype == DatatypeEnumeration.STRING
                             ) {
                 // xsd:restriction satisfied.
             } else {
@@ -110,20 +102,12 @@ public class EntityItemIPAddressStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemIPAddressStringType)) {
+        if (!(obj instanceof EntityItemIPAddressType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-//EntityItemIPAddressStringType
+//

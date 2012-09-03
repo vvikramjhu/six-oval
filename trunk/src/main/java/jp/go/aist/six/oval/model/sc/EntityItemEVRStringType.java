@@ -24,10 +24,8 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemEVRString type is extended by the entities of
- * an individual item.
- * This type represents the epoch, version, and release fields
- * as a single version string.
+ * The EntityItemEVRString type is extended by the entities of an individual item.
+ * This type represents the epoch, version, and release fields as a single version string.
  * It has the form "EPOCH:VERSION-RELEASE".
  *
  * @author  Akihito Nakamura, AIST
@@ -38,8 +36,7 @@ public class EntityItemEVRStringType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.EVR_STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
     //{required, fixed="evr_string"}
 
 
@@ -135,4 +132,4 @@ public class EntityItemEVRStringType
     }
 
 }
-// EntityItemEVRStringType
+//

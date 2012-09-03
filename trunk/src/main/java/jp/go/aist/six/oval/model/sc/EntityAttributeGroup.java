@@ -25,8 +25,7 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemBase is an abstract type that serves as the base type
- * for all item entities.
+ * The EntityAttributeGroup is a collection of attributes that are common to all entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
