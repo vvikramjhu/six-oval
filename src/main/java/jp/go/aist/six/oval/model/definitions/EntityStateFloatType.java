@@ -24,26 +24,26 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityStateBoolType is extended by the entities of an individual OVAL State.
+ * The EntityStateFloatType is extended by the entities of an individual OVAL State.
+ * This specific type describes simple float data. 
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateBoolType
+public class EntityStateFloatType
     extends EntityStateSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.BOOLEAN;
-    //{required, fixed="boolean"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.FLOAT;
+    //{required, fixed="float"}
 
 
 
     /**
      * Constructor.
      */
-    public  EntityStateBoolType()
+    public  EntityStateFloatType()
     {
     }
 
@@ -75,7 +75,7 @@ public class EntityStateBoolType
 //    }
 
 
-    public EntityStateBoolType(
+    public EntityStateFloatType(
                     final int data
                     )
     {
@@ -130,20 +130,12 @@ public class EntityStateBoolType
             return true;
         }
 
-        if (!(obj instanceof EntityStateBoolType)) {
+        if (!(obj instanceof EntityStateFloatType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityStateBoolType
+//

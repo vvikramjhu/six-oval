@@ -980,63 +980,6 @@
     </class>
 
 
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType"
-        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType"
-        verify-constructable="false">
-
-        <field name="entityCheck"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
-            <bind-xml name="entity_check" node="attribute"/>
-        </field>
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateComplexBaseType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType"
-        verify-constructable="false">
-
-        <field name="entityCheck"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
-            <bind-xml name="entity_check" node="attribute"/>
-        </field>
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateBoolType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIntType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateStringType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definitions.EntityStateVersionType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
-    </class>
-
-
     <class name="jp.go.aist.six.oval.model.definitions.EntityObjectRecordType"
         extends="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType">
 <!--
@@ -1075,6 +1018,82 @@
         </field>
     </class>
 
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType"
+        verify-constructable="false">
+
+        <field name="entityCheck"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
+            <bind-xml name="entity_check" node="attribute"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateComplexBaseType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType"
+        verify-constructable="false">
+
+        <field name="entityCheck"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
+            <bind-xml name="entity_check" node="attribute"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateBinaryType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateBoolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateFloatType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIntType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateVersionType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateFileSetRevisionType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIOSVersionType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
 
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateRecordType"
