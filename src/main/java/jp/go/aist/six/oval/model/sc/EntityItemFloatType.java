@@ -24,32 +24,31 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemInt type is extended by the entities of an individual item.
- * This specific type describes simple integer data.
+ * The EntityItemFloatType type is extended by the entities of an individual item.
+ * This specific type describes simple float data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemIntType
+public class EntityItemFloatType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.INT;
-    //{required, fixed="int"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.FLOAT;
+    //{required, fixed="float"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemIntType()
+    public EntityItemFloatType()
     {
     }
 
 
-    public EntityItemIntType(
+    public EntityItemFloatType(
                     final String content
                     )
     {
@@ -57,7 +56,7 @@ public class EntityItemIntType
     }
 
 
-    public EntityItemIntType(
+    public EntityItemFloatType(
                     final long content
                     )
     {
@@ -83,11 +82,11 @@ public class EntityItemIntType
     }
 
 
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 
@@ -112,20 +111,12 @@ public class EntityItemIntType
             return true;
         }
 
-        if (!(obj instanceof EntityItemIntType)) {
+        if (!(obj instanceof EntityItemFloatType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityItemIntType
+//

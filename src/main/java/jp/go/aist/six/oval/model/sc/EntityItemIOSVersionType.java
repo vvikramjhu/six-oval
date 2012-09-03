@@ -24,32 +24,31 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemIOSVersionType type is extended by the entities of an individual item.
+ * This specific type represents the version string for IOS.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
+public class EntityItemIOSVersionType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.IOS_VERSION;
+    //{optional, fixed="ios_version"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemIOSVersionType()
     {
     }
 
 
-    public EntityItemStringType(
+    public EntityItemIOSVersionType(
                     final String content
                     )
     {
@@ -97,20 +96,12 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemIOSVersionType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityItemStringType
+//

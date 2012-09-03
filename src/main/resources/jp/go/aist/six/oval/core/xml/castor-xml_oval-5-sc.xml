@@ -302,7 +302,6 @@ TODO:
     </class>
 
 
-
     <class name="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType"
         extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup"
         verify-constructable="false">
@@ -313,64 +312,42 @@ TODO:
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemComplexBaseType"
+        extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup"
+        verify-constructable="false">
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemIPAddressType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
-
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemBinaryType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.sc.EntityItemBoolType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
-
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemFloatType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.sc.EntityItemIntType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.sc.EntityItemStringType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.sc.EntityItemVersionType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.sc.EntityItemEVRStringType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.sc.EntityItemFieldType"
-        extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup">
-
-        <field name="content" type="string">
-            <bind-xml node="text"/>
-        </field>
-
-        <field name="name" type="string">
-            <bind-xml name="name" node="attribute"/>
-        </field>
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.sc.EntityItemComplexBaseType"
-        extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup"
-        verify-constructable="false">
     </class>
 
 
@@ -395,6 +372,36 @@ TODO:
         </field>
     </class>
 
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemFieldType"
+        extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup">
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="name" type="string">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemVersionType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemFilesetRevisionType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemIOSVersionType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemEVRStringType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
 
 
 

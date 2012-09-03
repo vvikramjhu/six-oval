@@ -24,32 +24,31 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemFilesetRevisionType type is extended by the entities of an individual item.
+ * This specific type represents the version string related to filesets in HP-UX.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
+public class EntityItemFilesetRevisionType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.FILESET_REVISION;
+    //{optional, fixed="fileset_revision"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemFilesetRevisionType()
     {
     }
 
 
-    public EntityItemStringType(
+    public EntityItemFilesetRevisionType(
                     final String content
                     )
     {
@@ -97,20 +96,12 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemFilesetRevisionType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityItemStringType
+//
