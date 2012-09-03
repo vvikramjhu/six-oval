@@ -27,15 +27,14 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntityStateFieldType defines an element with simple content
- * that represents a named field in a record that may contain
- * any number of named fields.
+ * The EntityObjectFieldType defines an element with simple content that represents 
+ * a named field in a record that may contain any number of named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateFieldType
+public class EntityObjectFieldType
     extends EntityAttributeGroup
 {
 
@@ -59,12 +58,12 @@ public class EntityStateFieldType
     /**
      * Constructor.
      */
-    public EntityStateFieldType()
+    public EntityObjectFieldType()
     {
     }
 
 
-    public EntityStateFieldType(
+    public EntityObjectFieldType(
                     final String content
                     )
     {
@@ -72,7 +71,7 @@ public class EntityStateFieldType
     }
 
 
-    public EntityStateFieldType(
+    public EntityObjectFieldType(
                     final String name,
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
@@ -88,7 +87,7 @@ public class EntityStateFieldType
     }
 
 
-    public EntityStateFieldType(
+    public EntityObjectFieldType(
                     final String name,
                     final String datatype,
                     final String operation,
@@ -139,7 +138,7 @@ public class EntityStateFieldType
 
 
     public static final CheckEnumeration entityCheck(
-                    final EntityStateFieldType esft
+                    final EntityObjectFieldType esft
                     )
     {
         if (esft == null) {
@@ -203,11 +202,11 @@ public class EntityStateFieldType
             return true;
         }
 
-        if (!(obj instanceof EntityStateFieldType)) {
+        if (!(obj instanceof EntityObjectFieldType)) {
             return false;
         }
 
-        EntityStateFieldType  other = (EntityStateFieldType)obj;
+        EntityObjectFieldType  other = (EntityObjectFieldType)obj;
         if (super.equals( obj )) {
             final String  other_name = other.getName();
             final String   this_name =  this.getName();
@@ -239,4 +238,4 @@ public class EntityStateFieldType
     }
 
 }
-//EntityStateFieldType
+//
