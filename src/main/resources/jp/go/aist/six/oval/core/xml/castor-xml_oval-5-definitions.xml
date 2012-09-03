@@ -964,7 +964,7 @@
         extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectStringtype"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
         extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
     </class>
 
