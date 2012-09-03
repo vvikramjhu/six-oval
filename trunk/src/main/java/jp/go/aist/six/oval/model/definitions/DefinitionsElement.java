@@ -165,7 +165,7 @@ public abstract class DefinitionsElement
     //  MongoDB/Morphia Lifecycle
     //**************************************************************
 
-    @SuppressWarnings( "unused" )
+//    @SuppressWarnings( "unused" )
     @PrePersist
     private void _assignPersistentID()
     {
