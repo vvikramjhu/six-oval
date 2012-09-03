@@ -8,6 +8,31 @@
 
 
 
+
+----
+= <font color="#0044CC">Version 1.0.1 (2012-09-XX)</font> =
+
+== <font color="#0044CC">OVAL Support</font> ==
+  * OVAL Schema Version: 5.10.1
+  * Follwoing constructs are implemented: 
+    * `oval-def:UniqueFunctionType`
+    * `oval-def:CountFunctionType`
+    * `oval-def:EntityObjectIPAddressType`
+    * `oval-def:EntityObjectAnySimpleType`
+    * `oval-def:EntityObjectBinaryType`
+    * `oval-def:EntityObjectBoolType`
+    * `oval-def:EntityObjectFloatType`
+    * `oval-def:EntityObjectVersionType`
+    * `oval-def:EntityObjectRecordType`
+    * `oval-def:EntityObjectFieldType`
+    * `oval-def:EntityStateIPAddressType`
+    * `oval-def:EntityStateBinaryType`
+    * `oval-def:EntityStateFloatType`
+    * `oval-def:EntityStateFileSetRevisionType`
+    * `oval-def:EntityStateIOSVersionType`
+
+
+
 ----
 = <font color="#0044CC">Version 1.0.0 (2012-08-29)</font> =
 
