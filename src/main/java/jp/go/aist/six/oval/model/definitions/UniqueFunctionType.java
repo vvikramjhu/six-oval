@@ -26,31 +26,27 @@ import java.util.Iterator;
 
 
 /**
- * The arithmetic function takes two or more integer or float components
- * and performs a basic mathematical function on them.
+ * The unique function takes one or more components and removes any duplicate value 
+ * from the set of components. 
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ArithmeticFunctionType
+public class UniqueFunctionType
     extends FunctionGroup
 {
 
     private final Collection<ComponentGroup>  component =
         new ArrayList<ComponentGroup>();
-    //{2..*}
-
-
-    private ArithmeticEnumeration  arithmetic_operation;
-    //{required}
+    //{1..*}
 
 
 
     /**
      * Constructor.
      */
-    public ArithmeticFunctionType()
+    public UniqueFunctionType()
     {
     }
 
@@ -65,10 +61,7 @@ public class ArithmeticFunctionType
         if (components != component) {
             component.clear();
             if (components != null  &&  components.size() > 0) {
-                for (ComponentGroup  component : components) {
-                    addComponent( component );
-                }
-//                this.component.addAll( components );
+                this.component.addAll( components );
             }
         }
     }
@@ -99,24 +92,6 @@ public class ArithmeticFunctionType
 
 
 
-    /**
-     *
-     */
-    public void setArithmeticOperation(
-                    final ArithmeticEnumeration arithmetic_operation
-                    )
-    {
-        this.arithmetic_operation = arithmetic_operation;
-    }
-
-
-    public ArithmeticEnumeration getArithmeticOperation()
-    {
-        return arithmetic_operation;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -124,10 +99,8 @@ public class ArithmeticFunctionType
     @Override
     public String toString()
     {
-        return "arithmetic[" + getComponent()
-                        + ", arithmetic_operation=" + getArithmeticOperation()
-             + "]";
+        return "unique[" + getComponent() + "]";
     }
 
 }
-// ArithmeticFunctionType
+//
