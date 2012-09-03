@@ -30,6 +30,13 @@
     * `oval-def:EntityStateFloatType`
     * `oval-def:EntityStateFileSetRevisionType`
     * `oval-def:EntityStateIOSVersionType`
+    * `oval-sc: EntityItemIPAddressType`
+    * `oval-sc: EntityItemBinaryType`
+    * `oval-sc: EntityItemFloatType`
+    * `oval-sc: EntityItemFilesetRevisionType`
+    * `oval-sc: EntityItemIOSVersionType`
+
+
 
 
 
