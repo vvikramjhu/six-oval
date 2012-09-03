@@ -26,40 +26,31 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntityStateIPAddressStringType is extended by the entities
- * of an individual OVAL State.
- * This specific type describes any IPv4/IPv6 address, address prefix,
- * or its string representation.
+ * The EntityStateIPAddressType type is extended by the entities of an individual OVAL State.
+ * This specific type describes any IPv4/IPv6 address or address prefix.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateIPAddressStringType
+public class EntityStateIPAddressType
     extends EntityStateSimpleBaseType
 {
 
-    //{optional, default="string"}
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
-        DatatypeEnumeration.STRING;
-
-//    private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
-//        DatatypeEnumeration.IPV4_ADDRESS,
-//        DatatypeEnumeration.IPV6_ADDRESS,
-//        DEFAULT_DATATYPE
-//    };
+	//datatype
+    //{required, restriction="ipv4_address, ipv6_address"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateIPAddressStringType()
+    public EntityStateIPAddressType()
     {
     }
 
 
-    public EntityStateIPAddressStringType(
+    public EntityStateIPAddressType(
                     final String content
                     )
     {
@@ -67,7 +58,7 @@ public class EntityStateIPAddressStringType
     }
 
 
-    public EntityStateIPAddressStringType(
+    public EntityStateIPAddressType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
@@ -80,7 +71,7 @@ public class EntityStateIPAddressStringType
     }
 
 
-    public EntityStateIPAddressStringType(
+    public EntityStateIPAddressType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
@@ -106,7 +97,6 @@ public class EntityStateIPAddressStringType
         if (datatype != null) {
             if (datatype == DatatypeEnumeration.IPV4_ADDRESS
                             ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
-                            ||  datatype == DatatypeEnumeration.STRING
                             ) {
                 // xsd:restriction satisfied.
             } else {
@@ -140,20 +130,12 @@ public class EntityStateIPAddressStringType
             return true;
         }
 
-        if (!(obj instanceof EntityStateIPAddressStringType)) {
+        if (!(obj instanceof EntityStateIPAddressType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityStateIPAddressStringType
+//

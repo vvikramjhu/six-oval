@@ -24,28 +24,26 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityStateInt type is extended by the entities
- * of an individual OVAL State.
- * This specific type describes simple integer data.
+ * The EntityStateFileSetRevisionType is extended by the entities of an individual OVAL State.
+ * This specific type represents the version string related to filesets in HP-UX.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateIntType
+public class EntityStateFileSetRevisionType
     extends EntityStateSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.INT;
-    //{required, fixed="int"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.FILESET_REVISION;
+    //{required, fixed="fileset_revision"}
 
 
 
     /**
      * Constructor.
      */
-    public  EntityStateIntType()
+    public  EntityStateFileSetRevisionType()
     {
     }
 
@@ -77,7 +75,7 @@ public class EntityStateIntType
 //    }
 
 
-    public EntityStateIntType(
+    public EntityStateFileSetRevisionType(
                     final int data
                     )
     {
@@ -132,20 +130,12 @@ public class EntityStateIntType
             return true;
         }
 
-        if (!(obj instanceof EntityStateIntType)) {
+        if (!(obj instanceof EntityStateFileSetRevisionType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityStateIntType
+//
