@@ -24,30 +24,30 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityInt type is extended by the entities of an individual OVAL Object.
- * This specific type describes simple integer data.
+ * The EntityObjectVersionType is extended by the entities of an individual OVAL Object.
+ * This specific type describes simple version data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectIntType
+public class EntityObjectVersionType
     extends EntitySimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.VERSION;
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectIntType()
+    public EntityObjectVersionType()
     {
     }
 
 
-    public EntityObjectIntType(
+    public EntityObjectVersionType(
                     final String data
                     )
     {
@@ -130,20 +130,12 @@ public class EntityObjectIntType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectIntType)) {
+        if (!(obj instanceof EntityObjectVersionType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityObjectIntType
+//

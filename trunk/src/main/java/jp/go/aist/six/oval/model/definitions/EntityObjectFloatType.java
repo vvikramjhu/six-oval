@@ -24,30 +24,30 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityInt type is extended by the entities of an individual OVAL Object.
- * This specific type describes simple integer data.
+ * The EntityObjectFloatType type is extended by the entities of an individual OVAL Object.
+ * This specific type describes simple float data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectIntType
+public class EntityObjectFloatType
     extends EntitySimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.FLOAT;
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectIntType()
+    public EntityObjectFloatType()
     {
     }
 
 
-    public EntityObjectIntType(
+    public EntityObjectFloatType(
                     final String data
                     )
     {
@@ -130,20 +130,12 @@ public class EntityObjectIntType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectIntType)) {
+        if (!(obj instanceof EntityObjectFloatType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityObjectIntType
+//

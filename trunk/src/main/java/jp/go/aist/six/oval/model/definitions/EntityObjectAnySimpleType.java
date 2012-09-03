@@ -24,30 +24,30 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityInt type is extended by the entities of an individual OVAL Object.
- * This specific type describes simple integer data.
+ * The EntityObjectAnySimpleType is extended by the entities of an individual OVAL Object.
+ * This specific type describes any simple data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectIntType
+public class EntityObjectAnySimpleType
     extends EntitySimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectIntType()
+    public EntityObjectAnySimpleType()
     {
     }
 
 
-    public EntityObjectIntType(
+    public EntityObjectAnySimpleType(
                     final String data
                     )
     {
@@ -88,23 +88,16 @@ public class EntityObjectIntType
     //  EntityBase
     //**************************************************************
 
-    @Override
-    public void setDatatype(
-                    final DatatypeEnumeration datatype
-                    )
-    {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
-        }
-
-        super.setDatatype( datatype );
-    }
-
-
 //    @Override
-//    public DatatypeEnumeration getDatatype()
+//    public void setDatatype(
+//                    final DatatypeEnumeration datatype
+//                    )
 //    {
-//        return FIXED_DATATYPE;
+//        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+//            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+//        }
+//
+//        super.setDatatype( datatype );
 //    }
 
 
@@ -130,7 +123,7 @@ public class EntityObjectIntType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectIntType)) {
+        if (!(obj instanceof EntityObjectAnySimpleType)) {
             return false;
         }
 
@@ -146,4 +139,4 @@ public class EntityObjectIntType
 //    }
 
 }
-// EntityObjectIntType
+//
