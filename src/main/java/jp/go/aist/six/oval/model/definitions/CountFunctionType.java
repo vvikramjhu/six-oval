@@ -26,14 +26,14 @@ import java.util.Iterator;
 
 
 /**
- * The unique function takes one or more components and removes any duplicate value 
- * from the set of components. 
+ * The count function takes one or more components and returns the count of all of 
+ * the values represented by the components.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class UniqueFunctionType
+public class CountFunctionType
     extends FunctionGroup
 {
 
@@ -46,7 +46,7 @@ public class UniqueFunctionType
     /**
      * Constructor.
      */
-    public UniqueFunctionType()
+    public CountFunctionType()
     {
     }
 
@@ -99,7 +99,7 @@ public class UniqueFunctionType
     @Override
     public String toString()
     {
-        return "unique[" + getComponent() + "]";
+        return "count[" + getComponent() + "]";
     }
 
 }
