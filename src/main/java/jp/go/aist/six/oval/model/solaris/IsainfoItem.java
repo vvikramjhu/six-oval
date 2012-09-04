@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
@@ -31,43 +31,33 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The xinetd item holds information associated with different Internet services.
+ * Information about the instruction set architectures.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class XinetdItem
+public class IsainfoItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType           protocol;
-    private EntityItemStringType           service_name;
-    private EntityItemStringType           flags;
-    private EntityItemStringType           no_access;
-    private EntityItemIPAddressStringType  only_from;
-    private EntityItemIntType              port;
-    private EntityItemStringType           server;
-    private EntityItemStringType           server_arguments;
-    private EntityItemStringType           socket_type;
-    private EntityItemXinetdTypeStatusType type;
-    private EntityItemStringType           user;
-    private EntityItemBoolType             wait;
-    private EntityItemBoolType             disabled;
+    private EntityItemIntType              bits;
+    private EntityItemStringType           kernel_isa;
+    private EntityItemStringType           application_isa;
 
 
 
     /**
      * Constructor.
      */
-    public XinetdItem()
+    public IsainfoItem()
     {
         this( 0 );
     }
 
 
-    public XinetdItem(
+    public IsainfoItem(
                     final int id
                     )
     {
@@ -75,238 +65,66 @@ public class XinetdItem
     }
 
 
-    public XinetdItem(
+    public IsainfoItem(
                     final int id,
                     final StatusEnumeration status
                     )
     {
         super( id, status );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.xinetd;
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.XINETD;
+        _oval_family = Family.SOLARIS;
+        _oval_component = ComponentType.ISAINFO;
     }
 
 
 
     /**
      */
-    public void setProtocol(
-                    final EntityItemStringType protocol
+    public void setBits(
+                    final EntityItemIntType bits
                     )
     {
-        this.protocol = protocol;
+        this.bits = bits;
     }
 
 
-    public EntityItemStringType getProtocol()
+    public EntityItemIntType getBits()
     {
-        return protocol;
+        return bits;
     }
 
 
 
     /**
      */
-    public void setServiceName(
-                    final EntityItemStringType service_name
+    public void setKernelIsa(
+                    final EntityItemStringType kernel_isa
                     )
     {
-        this.service_name = service_name;
+        this.kernel_isa = kernel_isa;
     }
 
 
-    public EntityItemStringType getServiceName()
+    public EntityItemStringType getKernelIsa()
     {
-        return service_name;
+        return kernel_isa;
     }
 
 
 
     /**
      */
-    public void setFlags(
-                    final EntityItemStringType flags
+    public void setApplicationIsa(
+                    final EntityItemStringType application_isa
                     )
     {
-        this.flags = flags;
+        this.application_isa = application_isa;
     }
 
 
-    public EntityItemStringType getFlags()
+    public EntityItemStringType getApplicationIsa()
     {
-        return flags;
-    }
-
-
-
-    /**
-     */
-    public void setNoAccess(
-                    final EntityItemStringType no_access
-                    )
-    {
-        this.no_access = no_access;
-    }
-
-
-    public EntityItemStringType getNoAccess()
-    {
-        return no_access;
-    }
-
-
-
-    /**
-     */
-    public void setOnlyFrom(
-                    final EntityItemIPAddressStringType only_from
-                    )
-    {
-        this.only_from = only_from;
-    }
-
-
-    public EntityItemIPAddressStringType getOnlyFrom()
-    {
-        return only_from;
-    }
-
-
-
-    /**
-     */
-    public void setPort(
-                    final EntityItemIntType port
-                    )
-    {
-        this.port = port;
-    }
-
-
-    public EntityItemIntType getPort()
-    {
-        return port;
-    }
-
-
-
-    /**
-     */
-    public void setServer(
-                    final EntityItemStringType server
-                    )
-    {
-        this.server = server;
-    }
-
-
-    public EntityItemStringType getServer()
-    {
-        return server;
-    }
-
-
-
-    /**
-     */
-    public void setServerArguments(
-                    final EntityItemStringType server_arguments
-                    )
-    {
-        this.server_arguments = server_arguments;
-    }
-
-
-    public EntityItemStringType getServerArguments()
-    {
-        return server_arguments;
-    }
-
-
-
-    /**
-     */
-    public void setSocketType(
-                    final EntityItemStringType socket_type
-                    )
-    {
-        this.socket_type = socket_type;
-    }
-
-
-    public EntityItemStringType getSocketType()
-    {
-        return socket_type;
-    }
-
-
-
-    /**
-     */
-    public void setType(
-                    final EntityItemXinetdTypeStatusType type
-                    )
-    {
-        this.type = type;
-    }
-
-
-    public EntityItemXinetdTypeStatusType getType()
-    {
-        return type;
-    }
-
-
-
-    /**
-     */
-    public void setUser(
-                    final EntityItemStringType user
-                    )
-    {
-        this.user = user;
-    }
-
-
-    public EntityItemStringType getUser()
-    {
-        return user;
-    }
-
-
-
-    /**
-     */
-    public void setWait(
-                    final EntityItemBoolType wait
-                    )
-    {
-        this.wait = wait;
-    }
-
-
-    public EntityItemBoolType getWait()
-    {
-        return wait;
-    }
-
-
-
-    /**
-     */
-    public void setDisabled(
-                    final EntityItemBoolType disabled
-                    )
-    {
-        this.disabled = disabled;
-    }
-
-
-    public EntityItemBoolType getDisabled()
-    {
-        return disabled;
+        return application_isa;
     }
 
 
@@ -328,7 +146,7 @@ public class XinetdItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof XinetdItem)) {
+        if (!(obj instanceof IsainfoItem)) {
             return false;
         }
 
@@ -340,22 +158,12 @@ public class XinetdItem
     @Override
     public String toString()
     {
-        return "xinetd_item[" + super.toString()
-                        + ", protocol="         + getProtocol()
-                        + ", service_name="     + getServiceName()
-                        + ", flags="            + getFlags()
-                        + ", no_access="        + getNoAccess()
-                        + ", only_from="        + getOnlyFrom()
-                        + ", port="             + getPort()
-                        + ", server="           + getServer()
-                        + ", server_arguments=" + getServerArguments()
-                        + ", socket_type="      + getSocketType()
-                        + ", type="             + getType()
-                        + ", user="             + getUser()
-                        + ", wait="             + getWait()
-                        + ", disabled="         + getDisabled()
+        return "isainfo_item[" + super.toString()
+                        + ", bits="             + getBits()
+                        + ", kernel_isa="       + getKernelIsa()
+                        + ", application_isa="	+ getApplicationIsa()
              + "]";
     }
 
 }
-//XinetdItem
+//

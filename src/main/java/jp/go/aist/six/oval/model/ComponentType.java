@@ -57,6 +57,7 @@ public enum ComponentType
     INETD,                          // unix
     INETLISTENINGSERVERS,           // linux
     INTERFACE,                      // unix, windows
+    ISAINFO,						//solaris
 
     LDAP,                           // independent
     LOCKOUTPOLICY,                  // windows
@@ -208,6 +209,11 @@ public enum ComponentType
     };
 
 
+    public static final ComponentType[]  SOLARIS = new ComponentType[] {
+        ComponentType.ISAINFO
+    };
+    
+    
     public static final ComponentType[]  UNIX = new ComponentType[] {
         ComponentType.FILE,
         ComponentType.INETD,

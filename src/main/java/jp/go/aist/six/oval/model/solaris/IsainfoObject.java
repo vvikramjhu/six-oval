@@ -17,10 +17,11 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
@@ -33,53 +34,35 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The xinetd object is used by an xinetd test to define
- * the specific protocol-service to be evaluated.
+ * The isainfo_object element is used by an isainfo test to define those objects 
+ * to evaluated based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class XinetdObject
+public class IsainfoObject
     extends SystemObjectType
 {
-
-    //TODO: XSD model.
-
-    private Set  set;
-    //{1..1}
-
-    private EntityObjectStringType  protocol;
-    //{1..1}
-
-    private EntityObjectStringType  service_name;
-    //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
-
-
 
     /**
      * Constructor.
      */
-    public XinetdObject()
+    public IsainfoObject()
     {
         this( null, 0 );
     }
 
 
-    public XinetdObject(
+    public IsainfoObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.xinetd;
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.XINETD;
+        _oval_family = Family.SOLARIS;
+        _oval_component = ComponentType.ISAINFO;
     }
 
 
@@ -121,97 +104,6 @@ public class XinetdObject
 
 
 
-    /**
-     */
-    public void setSet(
-                    final Set set
-                    )
-    {
-        this.set = set;
-    }
-
-
-    public Set getSet()
-    {
-        return set;
-    }
-
-
-
-    /**
-     */
-    public void setProtocol(
-                    final EntityObjectStringType protocol
-                    )
-    {
-        this.protocol = protocol;
-    }
-
-
-    public EntityObjectStringType getProtocol()
-    {
-        return protocol;
-    }
-
-
-
-    /**
-     */
-    public void setServiceName(
-                    final EntityObjectStringType service_name
-                    )
-    {
-        this.service_name = service_name;
-    }
-
-
-    public EntityObjectStringType getServiceName()
-    {
-        return service_name;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (filter != filters) {
-            filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
-    }
-
-
-
     //*********************************************************************
     //  DefinitionsElement
     //*********************************************************************
@@ -219,12 +111,7 @@ public class XinetdObject
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getProtocol() );
-        ref_list.add( getServiceName() );
-        ref_list.addAll( getFilter() );
-
-        return ref_list;
+        return Collections.emptyList();
     }
 
 
@@ -245,7 +132,7 @@ public class XinetdObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof XinetdObject)) {
+        if (!(obj instanceof IsainfoObject)) {
             return false;
         }
 
@@ -257,13 +144,9 @@ public class XinetdObject
     @Override
     public String toString()
     {
-        return "xinetd_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", protocol="     + getProtocol()
-                        + ", service_name=" + getServiceName()
-                        + ", filter="       + getFilter()
+        return "isainfo_object[" + super.toString()
                         + "]";
     }
 
 }
-//XinetdObject
+//
