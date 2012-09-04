@@ -25,34 +25,35 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
- * The Message type defines the structure for which messages
- * are relayed from the data collection engine.
- * Each message is a text string that has an associated
- * level attribute identifying the type of message being sent.
+ * The ElementMapType is used to document the association between 
+ * OVAL test, object, state, and item entities.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class MessageType
+public class ElementMapType
     implements OvalObject
 {
 
-    private String  content;
+    private ElementMapItemType  test;
+    //{1..1}
 
+    private ElementMapItemType  object;
+    //{0..1}
 
-    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
-        MessageLevelEnumeration.INFO;
+    private ElementMapItemType  state;
+    //{0..1}
 
-    private MessageLevelEnumeration  level;
-    //{optional, default="info"}
+    private ElementMapItemType  item;
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public MessageType()
+    public ElementMapType()
     {
     }
 
@@ -60,34 +61,68 @@ public class MessageType
 
     /**
      */
-    public void setContent(
-                    final String content
+    public void setTest(
+                    final ElementMapItemType test
                     )
     {
-        this.content = content;
+        this.test = test;
     }
 
 
-    public String getContent()
+    public ElementMapItemType getTest()
     {
-        return content;
+        return test;
     }
 
 
 
     /**
      */
-    public void setLevel(
-                    final MessageLevelEnumeration level
+    public void setObject(
+                    final ElementMapItemType object
                     )
     {
-        this.level = level;
+        this.object = object;
     }
 
 
-    public MessageLevelEnumeration getLevel()
+    public ElementMapItemType getObject()
     {
-        return level;
+        return object;
+    }
+
+
+
+    /**
+     */
+    public void setState(
+                    final ElementMapItemType state
+                    )
+    {
+        this.state = state;
+    }
+
+
+    public ElementMapItemType getState()
+    {
+        return state;
+    }
+
+
+
+    /**
+     */
+    public void setItem(
+                    final ElementMapItemType item
+                    )
+    {
+        this.item = item;
+    }
+
+
+    public ElementMapItemType getItem()
+    {
+        return item;
     }
 
 
@@ -99,10 +134,12 @@ public class MessageType
     @Override
     public String toString()
     {
-        return "[level=" + getLevel()
-             + ", " + getContent()
+        return "[test=" 	+ getTest()
+             + ", object=" 	+ getObject()
+             + ", state=" 	+ getState()
+             + ", item=" 	+ getItem()
              + "]";
     }
 
 }
-// MessageType
+//

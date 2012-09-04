@@ -25,34 +25,28 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
- * The Message type defines the structure for which messages
- * are relayed from the data collection engine.
- * Each message is a text string that has an associated
- * level attribute identifying the type of message being sent.
+ * Defines a reference to an OVAL entity using the schema namespace and element name.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class MessageType
+public class ElementMapItemType
     implements OvalObject
 {
 
     private String  content;
 
 
-    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
-        MessageLevelEnumeration.INFO;
-
-    private MessageLevelEnumeration  level;
-    //{optional, default="info"}
+    private String  target_namespace;
+    //{optional, type="xsd:anyURI"}
 
 
 
     /**
      * Constructor.
      */
-    public MessageType()
+    public ElementMapItemType()
     {
     }
 
@@ -77,17 +71,17 @@ public class MessageType
 
     /**
      */
-    public void setLevel(
-                    final MessageLevelEnumeration level
+    public void setTargetNamespace(
+                    final String target_namespace
                     )
     {
-        this.level = level;
+        this.target_namespace = target_namespace;
     }
 
 
-    public MessageLevelEnumeration getLevel()
+    public String getTargetNamespace()
     {
-        return level;
+        return target_namespace;
     }
 
 
@@ -99,10 +93,10 @@ public class MessageType
     @Override
     public String toString()
     {
-        return "[level=" + getLevel()
+        return "[target_namespace=" + getTargetNamespace()
              + ", " + getContent()
              + "]";
     }
 
 }
-// MessageType
+//
