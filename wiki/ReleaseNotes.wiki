@@ -35,8 +35,9 @@
     * `oval-sc: EntityItemFloatType`
     * `oval-sc: EntityItemFilesetRevisionType`
     * `oval-sc: EntityItemIOSVersionType`
-
-
+    * `oval: ElementMapType`
+    * `oval: ElementMapItemType`
+    * `oval: DeprecatedInfoType`
 
 
 
