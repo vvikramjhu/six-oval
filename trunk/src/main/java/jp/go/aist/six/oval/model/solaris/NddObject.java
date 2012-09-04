@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,14 +33,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The xinetd object is used by an xinetd test to define
- * the specific protocol-service to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class XinetdObject
+public class NddObject
     extends SystemObjectType
 {
 
@@ -49,10 +47,10 @@ public class XinetdObject
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  protocol;
+    private EntityObjectStringType  device;
     //{1..1}
 
-    private EntityObjectStringType  service_name;
+    private EntityObjectStringType  parameter;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -63,23 +61,21 @@ public class XinetdObject
     /**
      * Constructor.
      */
-    public XinetdObject()
+    public NddObject()
     {
         this( null, 0 );
     }
 
 
-    public XinetdObject(
+    public NddObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.xinetd;
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.XINETD;
+        _oval_family = Family.SOLARIS;
+        _oval_component = ComponentType.NDD;
     }
 
 
@@ -140,34 +136,34 @@ public class XinetdObject
 
     /**
      */
-    public void setProtocol(
-                    final EntityObjectStringType protocol
+    public void setDevice(
+                    final EntityObjectStringType device
                     )
     {
-        this.protocol = protocol;
+        this.device = device;
     }
 
 
-    public EntityObjectStringType getProtocol()
+    public EntityObjectStringType getDevice()
     {
-        return protocol;
+        return device;
     }
 
 
 
     /**
      */
-    public void setServiceName(
-                    final EntityObjectStringType service_name
+    public void setParameter(
+                    final EntityObjectStringType parameter
                     )
     {
-        this.service_name = service_name;
+        this.parameter = parameter;
     }
 
 
-    public EntityObjectStringType getServiceName()
+    public EntityObjectStringType getParameter()
     {
-        return service_name;
+        return parameter;
     }
 
 
@@ -220,8 +216,8 @@ public class XinetdObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getProtocol() );
-        ref_list.add( getServiceName() );
+        ref_list.add( getDevice() );
+        ref_list.add( getParameter() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -245,7 +241,7 @@ public class XinetdObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof XinetdObject)) {
+        if (!(obj instanceof NddObject)) {
             return false;
         }
 
@@ -257,13 +253,13 @@ public class XinetdObject
     @Override
     public String toString()
     {
-        return "xinetd_object[" + super.toString()
+        return "ndd_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", protocol="     + getProtocol()
-                        + ", service_name=" + getServiceName()
+                        + ", device="     	+ getDevice()
+                        + ", parameter="	+ getParameter()
                         + ", filter="       + getFilter()
                         + "]";
     }
 
 }
-//XinetdObject
+//

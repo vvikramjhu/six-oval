@@ -21,8 +21,6 @@ package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
-import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;

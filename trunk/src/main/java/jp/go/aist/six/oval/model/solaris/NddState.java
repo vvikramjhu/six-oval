@@ -17,13 +17,14 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -33,44 +34,33 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The xinetd state defines the different information
- * associated with a specific Internet service.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class XinetdState
+public class NddState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType           protocol;
-    private EntityStateStringType           service_name;
-    private EntityStateStringType           flags;
-    private EntityStateStringType           no_access;
-    private EntityStateIPAddressStringType  only_from;
-    private EntityStateIntType              port;
-    private EntityStateStringType           server;
-    private EntityStateStringType           server_arguments;
-    private EntityStateStringType           socket_type;
-    private EntityStateXinetdTypeStatusType type;
-    private EntityStateStringType           user;
-    private EntityStateBoolType             wait;
-    private EntityStateBoolType             disabled;
+    private EntityStateStringType           device;
+    private EntityStateIntType              instance;
+    private EntityStateStringType           parameter;
+    private EntityStateAnySimpleType        value;
 
 
 
     /**
      * Constructor.
      */
-    public XinetdState()
+    public NddState()
     {
         this( null, 0 );
     }
 
 
-    public XinetdState(
+    public NddState(
                     final String id,
                     final int version
                     )
@@ -79,7 +69,7 @@ public class XinetdState
     }
 
 
-    public XinetdState(
+    public NddState(
                     final String id,
                     final int version,
                     final String comment
@@ -87,231 +77,76 @@ public class XinetdState
     {
         super( id, version, comment );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.xinetd;
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.XINETD;
+        _oval_family = Family.SOLARIS;
+        _oval_component = ComponentType.NDD;
     }
 
 
 
     /**
      */
-    public void setProtocol(
-                    final EntityStateStringType protocol
+    public void setDevice(
+                    final EntityStateStringType device
                     )
     {
-        this.protocol = protocol;
+        this.device = device;
     }
 
 
-    public EntityStateStringType getProtocol()
+    public EntityStateStringType getDevice()
     {
-        return protocol;
+        return device;
     }
 
 
 
     /**
      */
-    public void setServiceName(
-                    final EntityStateStringType service_name
+    public void setInstance(
+                    final EntityStateIntType instance
                     )
     {
-        this.service_name = service_name;
+        this.instance = instance;
     }
 
 
-    public EntityStateStringType getServiceName()
+    public EntityStateIntType getInstance()
     {
-        return service_name;
+        return instance;
     }
 
 
 
     /**
      */
-    public void setFlags(
-                    final EntityStateStringType flags
+    public void setParameter(
+                    final EntityStateStringType parameter
                     )
     {
-        this.flags = flags;
+        this.parameter = parameter;
     }
 
 
-    public EntityStateStringType getFlags()
+    public EntityStateStringType getParameter()
     {
-        return flags;
+        return parameter;
     }
 
 
 
     /**
      */
-    public void setNoAccess(
-                    final EntityStateStringType no_access
+    public void setValue(
+                    final EntityStateAnySimpleType value
                     )
     {
-        this.no_access = no_access;
+        this.value = value;
     }
 
 
-    public EntityStateStringType getNoAccess()
+    public EntityStateAnySimpleType getValue()
     {
-        return no_access;
-    }
-
-
-
-    /**
-     */
-    public void setOnlyFrom(
-                    final EntityStateIPAddressStringType only_from
-                    )
-    {
-        this.only_from = only_from;
-    }
-
-
-    public EntityStateIPAddressStringType getOnlyFrom()
-    {
-        return only_from;
-    }
-
-
-
-    /**
-     */
-    public void setPort(
-                    final EntityStateIntType port
-                    )
-    {
-        this.port = port;
-    }
-
-
-    public EntityStateIntType getPort()
-    {
-        return port;
-    }
-
-
-
-    /**
-     */
-    public void setServer(
-                    final EntityStateStringType server
-                    )
-    {
-        this.server = server;
-    }
-
-
-    public EntityStateStringType getServer()
-    {
-        return server;
-    }
-
-
-
-    /**
-     */
-    public void setServerArguments(
-                    final EntityStateStringType server_arguments
-                    )
-    {
-        this.server_arguments = server_arguments;
-    }
-
-
-    public EntityStateStringType getServerArguments()
-    {
-        return server_arguments;
-    }
-
-
-
-    /**
-     */
-    public void setSocketType(
-                    final EntityStateStringType socket_type
-                    )
-    {
-        this.socket_type = socket_type;
-    }
-
-
-    public EntityStateStringType getSocketType()
-    {
-        return socket_type;
-    }
-
-
-
-    /**
-     */
-    public void setType(
-                    final EntityStateXinetdTypeStatusType type
-                    )
-    {
-        this.type = type;
-    }
-
-
-    public EntityStateXinetdTypeStatusType getType()
-    {
-        return type;
-    }
-
-
-
-    /**
-     */
-    public void setUser(
-                    final EntityStateStringType user
-                    )
-    {
-        this.user = user;
-    }
-
-
-    public EntityStateStringType getUser()
-    {
-        return user;
-    }
-
-
-
-    /**
-     */
-    public void setWait(
-                    final EntityStateBoolType wait
-                    )
-    {
-        this.wait = wait;
-    }
-
-
-    public EntityStateBoolType getWait()
-    {
-        return wait;
-    }
-
-
-
-    /**
-     */
-    public void setDisabled(
-                    final EntityStateBoolType disabled
-                    )
-    {
-        this.disabled = disabled;
-    }
-
-
-    public EntityStateBoolType getDisabled()
-    {
-        return disabled;
+        return value;
     }
 
 
@@ -324,19 +159,10 @@ public class XinetdState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getProtocol() );
-        ref_list.add( getServiceName() );
-        ref_list.add( getFlags() );
-        ref_list.add( getNoAccess() );
-        ref_list.add( getOnlyFrom() );
-        ref_list.add( getPort() );
-        ref_list.add( getServer() );
-        ref_list.add( getServerArguments() );
-        ref_list.add( getSocketType() );
-        ref_list.add( getType() );
-        ref_list.add( getUser() );
-        ref_list.add( getWait() );
-        ref_list.add( getDisabled() );
+        ref_list.add( getDevice() );
+        ref_list.add( getInstance() );
+        ref_list.add( getParameter() );
+        ref_list.add( getValue() );
 
         return ref_list;
     }
@@ -360,7 +186,7 @@ public class XinetdState
                     final Object obj
                     )
     {
-        if (!(obj instanceof XinetdState)) {
+        if (!(obj instanceof NddState)) {
             return false;
         }
 
@@ -372,22 +198,13 @@ public class XinetdState
     @Override
     public String toString()
     {
-        return "xinetd_state[" + super.toString()
-                        + ", protocol="         + getProtocol()
-                        + ", service_name="     + getServiceName()
-                        + ", flags="            + getFlags()
-                        + ", no_access="        + getNoAccess()
-                        + ", only_from="        + getOnlyFrom()
-                        + ", port="             + getPort()
-                        + ", server="           + getServer()
-                        + ", server_arguments=" + getServerArguments()
-                        + ", socket_type="      + getSocketType()
-                        + ", type="             + getType()
-                        + ", user="             + getUser()
-                        + ", wait="             + getWait()
-                        + ", disabled="         + getDisabled()
+        return "ndd_state[" + super.toString()
+                        + ", protocol="         + getDevice()
+                        + ", port="             + getInstance()
+                        + ", server="           + getParameter()
+                        + ", user="             + getValue()
              + "]";
     }
 
 }
-//XinetdState
+//
