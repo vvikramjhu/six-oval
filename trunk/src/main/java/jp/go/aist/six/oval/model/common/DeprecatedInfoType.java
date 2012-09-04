@@ -25,34 +25,32 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
- * The Message type defines the structure for which messages
- * are relayed from the data collection engine.
- * Each message is a text string that has an associated
- * level attribute identifying the type of message being sent.
+ * The DeprecatedInfoType complex type defines a structure 
+ * that will be used to flag schema-defined constructs as deprecated. 
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class MessageType
+public class DeprecatedInfoType
     implements OvalObject
 {
 
-    private String  content;
-
-
-    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
-        MessageLevelEnumeration.INFO;
-
-    private MessageLevelEnumeration  level;
-    //{optional, default="info"}
-
+    private Integer  version;
+    //{1..1}
+    
+    private String  reason;
+    //{1..1}
+    
+    private String  comment;
+    //{0..1}
+    
 
 
     /**
      * Constructor.
      */
-    public MessageType()
+    public DeprecatedInfoType()
     {
     }
 
@@ -60,34 +58,51 @@ public class MessageType
 
     /**
      */
-    public void setContent(
-                    final String content
+    public void setVersion(
+                    final Integer version
                     )
     {
-        this.content = content;
+        this.version = version;
     }
 
 
-    public String getContent()
+    public Integer getVersion()
     {
-        return content;
+        return version;
     }
 
 
 
     /**
      */
-    public void setLevel(
-                    final MessageLevelEnumeration level
+    public void setReason(
+                    final String reason
                     )
     {
-        this.level = level;
+        this.reason = reason;
     }
 
 
-    public MessageLevelEnumeration getLevel()
+    public String getReason()
     {
-        return level;
+        return reason;
+    }
+
+
+
+    /**
+     */
+    public void setComment(
+                    final String comment
+                    )
+    {
+        this.comment = comment;
+    }
+
+
+    public String getComment()
+    {
+        return comment;
     }
 
 
@@ -99,10 +114,11 @@ public class MessageType
     @Override
     public String toString()
     {
-        return "[level=" + getLevel()
-             + ", " + getContent()
+        return "[version=" 	+ getVersion()
+             + ", reason" 	+ getReason()
+             + ", comment" 	+ getComment()
              + "]";
     }
 
 }
-// MessageType
+//

@@ -138,6 +138,24 @@ Constructor arguments only valid for attribute mapped fields!!!
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.common.DeprecatedInfoType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
+            ns-prefix=""/>
+
+        <field name="version" type="integer">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="reason" type="string">
+            <bind-xml name="reason" node="element"/>
+        </field>
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="element"/>
+        </field>
+    </class>
+
 
     <class name="jp.go.aist.six.oval.model.common.GeneratorType">
         <map-to 
