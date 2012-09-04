@@ -21,6 +21,7 @@ package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -29,33 +30,34 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * Information about the instruction set architectures.
+ * This item represents data collected by the ndd command.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IsainfoItem
+public class NddItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemIntType              bits;
-    private EntityItemStringType           kernel_isa;
-    private EntityItemStringType           application_isa;
+    private EntityItemStringType        device;
+    private EntityItemIntType           instance;
+    private EntityItemStringType        parameter;
+    private EntityItemAnySimpleType		value;
 
 
 
     /**
      * Constructor.
      */
-    public IsainfoItem()
+    public NddItem()
     {
         this( 0 );
     }
 
 
-    public IsainfoItem(
+    public NddItem(
                     final int id
                     )
     {
@@ -63,7 +65,7 @@ public class IsainfoItem
     }
 
 
-    public IsainfoItem(
+    public NddItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -71,58 +73,75 @@ public class IsainfoItem
         super( id, status );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.ISAINFO;
+        _oval_component = ComponentType.NDD;
     }
 
 
 
     /**
      */
-    public void setBits(
-                    final EntityItemIntType bits
+    public void setDevice(
+                    final EntityItemStringType device
                     )
     {
-        this.bits = bits;
+        this.device = device;
     }
 
 
-    public EntityItemIntType getBits()
+    public EntityItemStringType getDevice()
     {
-        return bits;
+        return device;
     }
 
 
 
     /**
      */
-    public void setKernelIsa(
-                    final EntityItemStringType kernel_isa
+    public void setInstance(
+                    final EntityItemIntType instance
                     )
     {
-        this.kernel_isa = kernel_isa;
+        this.instance = instance;
     }
 
 
-    public EntityItemStringType getKernelIsa()
+    public EntityItemIntType getInstance()
     {
-        return kernel_isa;
+        return instance;
     }
 
 
 
     /**
      */
-    public void setApplicationIsa(
-                    final EntityItemStringType application_isa
+    public void setParameter(
+                    final EntityItemStringType parameter
                     )
     {
-        this.application_isa = application_isa;
+        this.parameter = parameter;
     }
 
 
-    public EntityItemStringType getApplicationIsa()
+    public EntityItemStringType getParameter()
     {
-        return application_isa;
+        return parameter;
+    }
+
+
+
+    /**
+     */
+    public void setValue(
+                    final EntityItemAnySimpleType value
+                    )
+    {
+        this.value = value;
+    }
+
+
+    public EntityItemAnySimpleType getValue()
+    {
+        return value;
     }
 
 
@@ -144,7 +163,7 @@ public class IsainfoItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof IsainfoItem)) {
+        if (!(obj instanceof NddItem)) {
             return false;
         }
 
@@ -156,10 +175,11 @@ public class IsainfoItem
     @Override
     public String toString()
     {
-        return "isainfo_item[" + super.toString()
-                        + ", bits="             + getBits()
-                        + ", kernel_isa="       + getKernelIsa()
-                        + ", application_isa="	+ getApplicationIsa()
+        return "ndd_item[" + super.toString()
+                		+ ", device="       + getDevice()
+                        + ", instance="     + getInstance()
+                        + ", parameter="    + getParameter()
+                        + ", value="        + getValue()
              + "]";
     }
 

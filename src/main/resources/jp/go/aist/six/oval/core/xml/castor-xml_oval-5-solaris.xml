@@ -99,5 +99,115 @@
     </class>
 
 
+
+    <!-- ******************************************************* -->
+    <!-- ndd                                                     -->
+    <!-- ******************************************************* -->
+    
+    <class name="jp.go.aist.six.oval.model.solaris.NddTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="ndd_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.solaris.NddObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="ndd_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="device" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="device" node="element"/>
+        </field>
+
+        <field name="parameter" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="parameter" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.solaris.NddState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="ndd_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
+            ns-prefix=""/>
+
+        <field name="device" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="device" node="element"/>
+        </field>
+
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="instance" node="element"/>
+        </field>
+
+        <field name="parameter" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="parameter" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+    <class name ="jp.go.aist.six.oval.model.solaris.NddItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="ndd_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#solaris"
+            ns-prefix=""/>
+
+        <field name="device" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="device" node="element"/>
+        </field>
+
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="instance" node="element"/>
+        </field>
+
+        <field name="parameter" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="parameter" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
 </mapping>
 
