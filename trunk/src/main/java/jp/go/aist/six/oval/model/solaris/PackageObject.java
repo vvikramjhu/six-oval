@@ -33,12 +33,13 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The package_object element is used by a package test to define the packages to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NddObject
+public class PackageObject
     extends SystemObjectType
 {
 
@@ -47,10 +48,7 @@ public class NddObject
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  device;
-    //{1..1}
-
-    private EntityObjectStringType  parameter;
+    private EntityObjectStringType  pkginst;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -61,13 +59,13 @@ public class NddObject
     /**
      * Constructor.
      */
-    public NddObject()
+    public PackageObject()
     {
         this( null, 0 );
     }
 
 
-    public NddObject(
+    public PackageObject(
                     final String id,
                     final int version
                     )
@@ -75,7 +73,7 @@ public class NddObject
         super( id, version );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.NDD;
+        _oval_component = ComponentType.PACKAGE;
     }
 
 
@@ -136,34 +134,17 @@ public class NddObject
 
     /**
      */
-    public void setDevice(
-                    final EntityObjectStringType device
+    public void setPkginst(
+                    final EntityObjectStringType pkginst
                     )
     {
-        this.device = device;
+        this.pkginst = pkginst;
     }
 
 
-    public EntityObjectStringType getDevice()
+    public EntityObjectStringType getPkginst()
     {
-        return device;
-    }
-
-
-
-    /**
-     */
-    public void setParameter(
-                    final EntityObjectStringType parameter
-                    )
-    {
-        this.parameter = parameter;
-    }
-
-
-    public EntityObjectStringType getParameter()
-    {
-        return parameter;
+        return pkginst;
     }
 
 
@@ -216,8 +197,7 @@ public class NddObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getDevice() );
-        ref_list.add( getParameter() );
+        ref_list.add( getPkginst() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -241,7 +221,7 @@ public class NddObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof NddObject)) {
+        if (!(obj instanceof PackageObject)) {
             return false;
         }
 
@@ -253,10 +233,9 @@ public class NddObject
     @Override
     public String toString()
     {
-        return "ndd_object[" + super.toString()
+        return "package_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", device="     	+ getDevice()
-                        + ", parameter="	+ getParameter()
+                        + ", pkginst="     	+ getPkginst()
                         + ", filter="       + getFilter()
                         + "]";
     }
