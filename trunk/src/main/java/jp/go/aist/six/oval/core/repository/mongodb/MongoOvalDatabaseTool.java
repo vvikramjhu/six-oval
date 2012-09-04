@@ -205,21 +205,34 @@ public class MongoOvalDatabaseTool
                     final String xml_location
                     )
     {
+        Class<OvalDefinitions>  type = OvalDefinitions.class;
+
+        String  pid = null;
         InputStream  in_stream = null;
         try {
             URL  url = _toURL( xml_location );
             if (url == null) {
                 in_stream = new FileInputStream( xml_location );
+                            //throws FileNotFoundException, SecurityException
             } else {
                 in_stream = url.openStream();
+                                //throws IOException
             }
+            OvalDefinitions  object = _unmarshalObject( type, in_stream );
+            pid = _getDatabase().save( type, object );
         } catch (IOException ex) {
             throw new OvalException( ex );
+        } catch (SecurityException ex) {
+            throw new OvalException( ex );
+        } finally {
+        	if (in_stream != null) {
+        		try {
+        			in_stream.close();
+        		} catch (IOException ex) {
+        			//ignorable!!!
+        		}
+        	}
         }
-
-        Class<OvalDefinitions>  type = OvalDefinitions.class;
-        OvalDefinitions  object = _unmarshalObject( type, in_stream );
-        String  pid = _getDatabase().save( type, object );
 
         return pid;
     }
