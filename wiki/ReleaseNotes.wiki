@@ -10,7 +10,7 @@
 
 
 ----
-= <font color="#0044CC">Version 1.0.1 (2012-09-XX)</font> =
+= <font color="#0044CC">Version 1.0.1 (2012-09-04)</font> =
 
 == <font color="#0044CC">OVAL Support</font> ==
   * OVAL Schema Version: 5.10.1
