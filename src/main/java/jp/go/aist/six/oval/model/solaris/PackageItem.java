@@ -21,8 +21,6 @@ package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -30,34 +28,36 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * This item represents data collected by the ndd command.
+ * Output of /usr/bin/pkginfo.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NddItem
+public class PackageItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType        device;
-    private EntityItemIntType           instance;
-    private EntityItemStringType        parameter;
-    private EntityItemAnySimpleType		value;
+    private EntityItemStringType    pkginst;
+    private EntityItemStringType    name;
+    private EntityItemStringType    category;
+    private EntityItemStringType	version;
+    private EntityItemStringType    vendor;
+    private EntityItemStringType    description;
 
 
 
     /**
      * Constructor.
      */
-    public NddItem()
+    public PackageItem()
     {
         this( 0 );
     }
 
 
-    public NddItem(
+    public PackageItem(
                     final int id
                     )
     {
@@ -65,7 +65,7 @@ public class NddItem
     }
 
 
-    public NddItem(
+    public PackageItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -73,75 +73,109 @@ public class NddItem
         super( id, status );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.NDD;
+        _oval_component = ComponentType.PACKAGE;
     }
 
 
 
     /**
      */
-    public void setDevice(
-                    final EntityItemStringType device
+    public void setPkginst(
+                    final EntityItemStringType pkginst
                     )
     {
-        this.device = device;
+        this.pkginst = pkginst;
     }
 
 
-    public EntityItemStringType getDevice()
+    public EntityItemStringType getPkginst()
     {
-        return device;
+        return pkginst;
     }
 
 
 
     /**
      */
-    public void setInstance(
-                    final EntityItemIntType instance
+    public void setName(
+                    final EntityItemStringType name
                     )
     {
-        this.instance = instance;
+        this.name = name;
     }
 
 
-    public EntityItemIntType getInstance()
+    public EntityItemStringType getName()
     {
-        return instance;
+        return name;
     }
 
 
 
     /**
      */
-    public void setParameter(
-                    final EntityItemStringType parameter
+    public void setCategory(
+                    final EntityItemStringType category
                     )
     {
-        this.parameter = parameter;
+        this.category = category;
     }
 
 
-    public EntityItemStringType getParameter()
+    public EntityItemStringType getCategory()
     {
-        return parameter;
+        return category;
     }
 
 
 
     /**
      */
-    public void setValue(
-                    final EntityItemAnySimpleType value
+    public void setVersion(
+                    final EntityItemStringType version
                     )
     {
-        this.value = value;
+        this.version = version;
     }
 
 
-    public EntityItemAnySimpleType getValue()
+    public EntityItemStringType getVersion()
     {
-        return value;
+        return version;
+    }
+
+
+
+    /**
+     */
+    public void setVendor(
+                    final EntityItemStringType vendor
+                    )
+    {
+        this.vendor = vendor;
+    }
+
+
+    public EntityItemStringType getVendor()
+    {
+        return vendor;
+    }
+
+
+
+    /**
+     */
+    public void setDescription(
+                    final EntityItemStringType description
+                    )
+    {
+        this.description = description;
+    }
+
+
+    public EntityItemStringType getDescription()
+    {
+        return description;
     }
 
 
@@ -163,7 +197,7 @@ public class NddItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof NddItem)) {
+        if (!(obj instanceof PackageItem)) {
             return false;
         }
 
@@ -175,11 +209,13 @@ public class NddItem
     @Override
     public String toString()
     {
-        return "ndd_item[" + super.toString()
-                		+ ", device="       + getDevice()
-                        + ", instance="     + getInstance()
-                        + ", parameter="    + getParameter()
-                        + ", value="        + getValue()
+        return "package_item[" + super.toString()
+                		+ ", pkginst="      + getPkginst()
+                        + ", name="         + getName()
+                        + ", category="     + getCategory()
+                        + ", version="      + getVersion()
+                        + ", vendor="       + getVendor()
+                        + ", description="  + getDescription()
              + "]";
     }
 

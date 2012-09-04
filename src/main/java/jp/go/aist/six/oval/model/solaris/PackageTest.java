@@ -27,26 +27,27 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * From /usr/bin/ndd.
+ * The package test is used to check information associated with different packages 
+ * installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NddTest
+public class PackageTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public NddTest()
+    public PackageTest()
     {
         this( null, 0 );
     }
 
 
-    public NddTest(
+    public PackageTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +56,7 @@ public class NddTest
     }
 
 
-    public NddTest(
+    public PackageTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -65,7 +66,7 @@ public class NddTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.NDD;
+        _oval_component = ComponentType.PACKAGE;
     }
 
 
@@ -100,7 +101,7 @@ public class NddTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof NddTest)) {
+        if (!(obj instanceof PackageTest)) {
             return false;
         }
 
@@ -112,7 +113,7 @@ public class NddTest
     @Override
     public String toString()
     {
-        return "ndd_test[" + super.toString() + "]";
+        return "package_test[" + super.toString() + "]";
     }
 
 }

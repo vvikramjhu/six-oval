@@ -24,43 +24,43 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
+ * The package_state element defines the different information associated with packages
+ * installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NddState
+public class PackageState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType           device;
-    private EntityStateIntType              instance;
-    private EntityStateStringType           parameter;
-    private EntityStateAnySimpleType        value;
+    private EntityStateStringType   pkginst;
+    private EntityStateStringType   name;
+    private EntityStateStringType   category;
+    private EntityStateStringType   version;
+    private EntityStateStringType   vendor;
+    private EntityStateStringType   description;
 
 
 
     /**
      * Constructor.
      */
-    public NddState()
+    public PackageState()
     {
         this( null, 0 );
     }
 
 
-    public NddState(
+    public PackageState(
                     final String id,
                     final int version
                     )
@@ -69,7 +69,7 @@ public class NddState
     }
 
 
-    public NddState(
+    public PackageState(
                     final String id,
                     final int version,
                     final String comment
@@ -78,75 +78,109 @@ public class NddState
         super( id, version, comment );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.NDD;
+        _oval_component = ComponentType.PACKAGE;
     }
 
 
 
     /**
      */
-    public void setDevice(
-                    final EntityStateStringType device
+    public void setPkginst(
+                    final EntityStateStringType pkginst
                     )
     {
-        this.device = device;
+        this.pkginst = pkginst;
     }
 
 
-    public EntityStateStringType getDevice()
+    public EntityStateStringType getPkginst()
     {
-        return device;
+        return pkginst;
     }
 
 
 
     /**
      */
-    public void setInstance(
-                    final EntityStateIntType instance
+    public void setName(
+                    final EntityStateStringType name
                     )
     {
-        this.instance = instance;
+        this.name = name;
     }
 
 
-    public EntityStateIntType getInstance()
+    public EntityStateStringType getName()
     {
-        return instance;
+        return name;
     }
 
 
 
     /**
      */
-    public void setParameter(
-                    final EntityStateStringType parameter
+    public void setCategory(
+                    final EntityStateStringType category
                     )
     {
-        this.parameter = parameter;
+        this.category = category;
     }
 
 
-    public EntityStateStringType getParameter()
+    public EntityStateStringType getCategory()
     {
-        return parameter;
+        return category;
     }
 
 
 
     /**
      */
-    public void setValue(
-                    final EntityStateAnySimpleType value
+    public void setVersion(
+                    final EntityStateStringType version
                     )
     {
-        this.value = value;
+        this.version = version;
     }
 
 
-    public EntityStateAnySimpleType getValue()
+    public EntityStateStringType getVersion()
     {
-        return value;
+        return version;
+    }
+
+
+
+    /**
+     */
+    public void setVendor(
+                    final EntityStateStringType vendor
+                    )
+    {
+        this.vendor = vendor;
+    }
+
+
+    public EntityStateStringType getVendor()
+    {
+        return vendor;
+    }
+
+
+
+    /**
+     */
+    public void setDescription(
+                    final EntityStateStringType description
+                    )
+    {
+        this.description = description;
+    }
+
+
+    public EntityStateStringType getDescription()
+    {
+        return description;
     }
 
 
@@ -159,10 +193,12 @@ public class NddState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getDevice() );
-        ref_list.add( getInstance() );
-        ref_list.add( getParameter() );
-        ref_list.add( getValue() );
+        ref_list.add( getPkginst() );
+        ref_list.add( getName() );
+        ref_list.add( getCategory() );
+        ref_list.add( getVersion() );
+        ref_list.add( getVendor() );
+        ref_list.add( getDescription() );
 
         return ref_list;
     }
@@ -186,7 +222,7 @@ public class NddState
                     final Object obj
                     )
     {
-        if (!(obj instanceof NddState)) {
+        if (!(obj instanceof PackageState)) {
             return false;
         }
 
@@ -198,11 +234,13 @@ public class NddState
     @Override
     public String toString()
     {
-        return "ndd_state[" + super.toString()
-                        + ", protocol="         + getDevice()
-                        + ", port="             + getInstance()
-                        + ", server="           + getParameter()
-                        + ", user="             + getValue()
+        return "package_state[" + super.toString()
+                        + ", pkginst="      + getPkginst()
+                        + ", name="         + getName()
+                        + ", category="     + getCategory()
+                        + ", version="      + getVersion()
+                        + ", vendor="       + getVendor()
+                        + ", description="  + getDescription()
              + "]";
     }
 

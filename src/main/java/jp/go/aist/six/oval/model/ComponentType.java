@@ -66,6 +66,7 @@ public enum ComponentType
 
     NDD,							//solaris
     
+    PACKAGE,                        //solaris
     PARTITION,                      // linux
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
@@ -213,7 +214,8 @@ public enum ComponentType
 
     public static final ComponentType[]  SOLARIS = new ComponentType[] {
         ComponentType.ISAINFO,
-        ComponentType.NDD
+        ComponentType.NDD,
+        ComponentType.PACKAGE
     };
     
     
