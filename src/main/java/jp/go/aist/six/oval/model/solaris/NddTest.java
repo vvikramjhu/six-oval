@@ -27,26 +27,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The isainfo test reveals information about the instruction set architectures.
+ * From /usr/bin/ndd.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IsainfoTest
+public class NddTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public IsainfoTest()
+    public NddTest()
     {
         this( null, 0 );
     }
 
 
-    public IsainfoTest(
+    public NddTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +55,7 @@ public class IsainfoTest
     }
 
 
-    public IsainfoTest(
+    public NddTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -65,7 +65,7 @@ public class IsainfoTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.ISAINFO;
+        _oval_component = ComponentType.NDD;
     }
 
 
@@ -100,7 +100,7 @@ public class IsainfoTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof IsainfoTest)) {
+        if (!(obj instanceof NddTest)) {
             return false;
         }
 
@@ -112,7 +112,7 @@ public class IsainfoTest
     @Override
     public String toString()
     {
-        return "isainfo_test[" + super.toString() + "]";
+        return "ndd_test[" + super.toString() + "]";
     }
 
 }
