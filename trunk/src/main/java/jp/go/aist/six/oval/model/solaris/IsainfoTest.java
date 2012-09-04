@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
@@ -27,26 +27,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The xinetd test is used to check information associated with different Internet services.
+ * The isainfo test reveals information about the instruction set architectures.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class XinetdTest
+public class IsainfoTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public XinetdTest()
+    public IsainfoTest()
     {
         this( null, 0 );
     }
 
 
-    public XinetdTest(
+    public IsainfoTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +55,7 @@ public class XinetdTest
     }
 
 
-    public XinetdTest(
+    public IsainfoTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -64,10 +64,8 @@ public class XinetdTest
     {
         super( id, version, comment, check );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.xinetd;
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.XINETD;
+        _oval_family = Family.SOLARIS;
+        _oval_component = ComponentType.ISAINFO;
     }
 
 
@@ -102,7 +100,7 @@ public class XinetdTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof XinetdTest)) {
+        if (!(obj instanceof IsainfoTest)) {
             return false;
         }
 
@@ -114,8 +112,8 @@ public class XinetdTest
     @Override
     public String toString()
     {
-        return "xinetd_test[" + super.toString() + "]";
+        return "isainfo_test[" + super.toString() + "]";
     }
 
 }
-//XinetdTest
+//

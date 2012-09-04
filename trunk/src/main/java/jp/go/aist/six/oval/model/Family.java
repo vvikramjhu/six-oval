@@ -48,7 +48,7 @@ public enum Family
 //        macos,
 //        pixos,
 //        sharepoint,
-//        solaris,
+    SOLARIS(         ComponentType.SOLARIS     ),
     UNIX(            ComponentType.UNIX        ),
     WINDOWS(         ComponentType.WINDOWS     );
 
