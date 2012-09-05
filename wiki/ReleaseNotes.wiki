@@ -4,7 +4,7 @@
 = <font color="#0044CC">Summary</font> =
 
 || *SIX OVAL version* || *OVAL Schema version* ||
-|| 1.0.x              || 5.10.1                ||
+|| 1.1.x, 1.0.x       || 5.10.1                ||
 
 
 ----------------
