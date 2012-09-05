@@ -30,37 +30,38 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The package_state element defines the different information associated with packages
- * installed on the system.
+ * The smf_state element defines the different information associated with
+ * a specific smf controlled service.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageState
+public class SmfState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType   pkginst;
-    private EntityStateStringType   name;
-    private EntityStateStringType   category;
-    private EntityStateStringType   version;
-    private EntityStateStringType   vendor;
-    private EntityStateStringType   description;
+    private EntityStateStringType           fmri;
+    private EntityStateStringType           service_name;
+    private EntityStateSmfServiceStateType  service_state;
+    private EntityStateSmfProtocolType      protocol;
+    private EntityStateStringType           server_executable;
+    private EntityStateStringType           server_arguements;
+    private EntityStateStringType           exec_as_user;
 
 
 
     /**
      * Constructor.
      */
-    public PackageState()
+    public SmfState()
     {
         this( null, 0 );
     }
 
 
-    public PackageState(
+    public SmfState(
                     final String id,
                     final int version
                     )
@@ -69,7 +70,7 @@ public class PackageState
     }
 
 
-    public PackageState(
+    public SmfState(
                     final String id,
                     final int version,
                     final String comment
@@ -78,109 +79,126 @@ public class PackageState
         super( id, version, comment );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.SMF;
     }
 
 
 
     /**
      */
-    public void setPkginst(
-                    final EntityStateStringType pkginst
+    public void setFmri(
+                    final EntityStateStringType fmri
                     )
     {
-        this.pkginst = pkginst;
+        this.fmri = fmri;
     }
 
 
-    public EntityStateStringType getPkginst()
+    public EntityStateStringType getFmri()
     {
-        return pkginst;
+        return fmri;
     }
 
 
 
     /**
      */
-    public void setName(
-                    final EntityStateStringType name
+    public void setServiceName(
+                    final EntityStateStringType service_name
                     )
     {
-        this.name = name;
+        this.service_name = service_name;
     }
 
 
-    public EntityStateStringType getName()
+    public EntityStateStringType getServiceName()
     {
-        return name;
+        return service_name;
     }
 
 
 
     /**
      */
-    public void setCategory(
-                    final EntityStateStringType category
+    public void setServiceState(
+                    final EntityStateSmfServiceStateType service_state
                     )
     {
-        this.category = category;
+        this.service_state = service_state;
     }
 
 
-    public EntityStateStringType getCategory()
+    public EntityStateSmfServiceStateType getServiceState()
     {
-        return category;
+        return service_state;
     }
 
 
 
     /**
      */
-    public void setVersion(
-                    final EntityStateStringType version
+    public void setProtocol(
+                    final EntityStateSmfProtocolType protocol
                     )
     {
-        this.version = version;
+        this.protocol = protocol;
     }
 
 
-    public EntityStateStringType getVersion()
+    public EntityStateSmfProtocolType getProtocol()
     {
-        return version;
+        return protocol;
     }
 
 
 
     /**
      */
-    public void setVendor(
-                    final EntityStateStringType vendor
+    public void setServerExecutable(
+                    final EntityStateStringType server_executable
                     )
     {
-        this.vendor = vendor;
+        this.server_executable = server_executable;
     }
 
 
-    public EntityStateStringType getVendor()
+    public EntityStateStringType getServerExecutable()
     {
-        return vendor;
+        return server_executable;
     }
 
 
 
     /**
      */
-    public void setDescription(
-                    final EntityStateStringType description
+    public void setServerArguements(
+                    final EntityStateStringType server_arguements
                     )
     {
-        this.description = description;
+        this.server_arguements = server_arguements;
     }
 
 
-    public EntityStateStringType getDescription()
+    public EntityStateStringType getServerArguements()
     {
-        return description;
+        return server_arguements;
+    }
+
+
+
+    /**
+     */
+    public void setExecAsUser(
+                    final EntityStateStringType exec_as_user
+                    )
+    {
+        this.exec_as_user = exec_as_user;
+    }
+
+
+    public EntityStateStringType getExecAsUser()
+    {
+        return exec_as_user;
     }
 
 
@@ -193,12 +211,13 @@ public class PackageState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPkginst() );
-        ref_list.add( getName() );
-        ref_list.add( getCategory() );
-        ref_list.add( getVersion() );
-        ref_list.add( getVendor() );
-        ref_list.add( getDescription() );
+        ref_list.add( getFmri() );
+        ref_list.add( getServiceName() );
+        ref_list.add( getServiceState() );
+        ref_list.add( getProtocol() );
+        ref_list.add( getServerExecutable() );
+        ref_list.add( getServerArguements() );
+        ref_list.add( getExecAsUser() );
 
         return ref_list;
     }
@@ -222,7 +241,7 @@ public class PackageState
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageState)) {
+        if (!(obj instanceof SmfState)) {
             return false;
         }
 
@@ -234,13 +253,14 @@ public class PackageState
     @Override
     public String toString()
     {
-        return "package_state[" + super.toString()
-                        + ", pkginst="      + getPkginst()
-                        + ", name="         + getName()
-                        + ", category="     + getCategory()
-                        + ", version="      + getVersion()
-                        + ", vendor="       + getVendor()
-                        + ", description="  + getDescription()
+        return "smf_state[" + super.toString()
+                        + ", fmri="                 + getFmri()
+                        + ", service_name="         + getServiceName()
+                        + ", service_state="        + getServiceState()
+                        + ", protocol="             + getProtocol()
+                        + ", server_executable="    + getServerExecutable()
+                        + ", server_arguements="    + getServerArguements()
+                        + ", exec_as_user="         + getExecAsUser()
              + "]";
     }
 

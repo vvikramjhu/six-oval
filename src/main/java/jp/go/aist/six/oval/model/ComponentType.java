@@ -95,6 +95,7 @@ public enum ComponentType
     SID,                            // windows
     SID_SID,                        // windows
     SLACKWAREPKGINFO,               // linux
+    SMF,                            // solaris
     SQL,                            // independent @deprecated
     SQL57,                          // independent
 
@@ -221,7 +222,8 @@ public enum ComponentType
         ComponentType.PACKAGE,
         ComponentType.PACKAGECHECK,
         ComponentType.PATCH,
-        ComponentType.PATCH54
+        ComponentType.PATCH54,
+        ComponentType.SMF
     };
 
 

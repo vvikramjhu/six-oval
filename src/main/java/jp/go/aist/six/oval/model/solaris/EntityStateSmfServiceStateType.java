@@ -19,43 +19,34 @@
 
 package jp.go.aist.six.oval.model.solaris;
 
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemPermissionCompareType complex type restricts a string value
- * to more, less, or same which specifies if an actual permission is different
- * than the expected permission (more or less restrictive) or if the permission is the same.
+ * The EntityStateSmfServiceStateType complex type defines the different values
+ * that are valid for the service_state entity of a smf_state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemPermissionCompareType
-    extends EntityItemStringType
+public class EntityStateSmfServiceStateType
+extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemPermissionCompareType()
+    public EntityStateSmfServiceStateType()
     {
     }
 
 
-    public EntityItemPermissionCompareType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
 
-
-
-    //**************************************************************
-    //  EntityItemBase
-    //**************************************************************
+    // **************************************************************
+    // EntitySimpleBaseType
+    // **************************************************************
 
     @Override
     public void setContent(
@@ -63,8 +54,7 @@ public class EntityItemPermissionCompareType
                     )
     {
         if (content != null) {
-            // validation
-            PermissionCompareEnumeration.fromValue( content );
+            SmfServiceStateEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -72,9 +62,9 @@ public class EntityItemPermissionCompareType
 
 
 
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
+    // **************************************************************
+    // java.lang.Object
+    // **************************************************************
 
     @Override
     public int hashCode()
@@ -85,15 +75,13 @@ public class EntityItemPermissionCompareType
 
 
     @Override
-    public boolean equals(
-                    final Object obj
-                    )
+    public boolean equals( final Object obj )
     {
         if (this == obj) {
             return true;
         }
 
-        if (!(obj instanceof EntityItemPermissionCompareType)) {
+        if (!(obj instanceof EntityStateSmfServiceStateType)) {
             return false;
         }
 

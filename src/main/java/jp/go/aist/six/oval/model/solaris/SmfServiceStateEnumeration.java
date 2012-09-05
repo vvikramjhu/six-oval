@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum SmfServiceEnumeration
+public enum SmfServiceStateEnumeration
     implements OvalEnumeration
 {
 
@@ -48,11 +48,11 @@ public enum SmfServiceEnumeration
     /**
      * A factory method.
      */
-    public static SmfServiceEnumeration fromValue(
+    public static SmfServiceStateEnumeration fromValue(
                     final String value
                     )
     {
-        for (SmfServiceEnumeration  e : SmfServiceEnumeration.values()) {
+        for (SmfServiceStateEnumeration  e : SmfServiceStateEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -70,13 +70,13 @@ public enum SmfServiceEnumeration
     /**
      * Constructor.
      */
-    SmfServiceEnumeration()
+    SmfServiceStateEnumeration()
     {
         value = name();
     }
 
 
-    SmfServiceEnumeration(
+    SmfServiceStateEnumeration(
                     final String value
                     )
     {

@@ -24,22 +24,21 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStatePermissionCompareType complex type restricts a string value
- * to more, less, or same which specifies if an actual permission is different
- * than the expected permission (more or less restrictive) or if the permission is the same.
+ * The EntityStateSmfProtocolType complex type defines the different values
+ * that are valid for the protocol entity of a smf_state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStatePermissionCompareType
+public class EntityStateSmfProtocolType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStatePermissionCompareType()
+    public EntityStateSmfProtocolType()
     {
     }
 
@@ -99,7 +98,7 @@ public class EntityStatePermissionCompareType
                     )
     {
         if (content != null) {
-            PermissionCompareEnumeration.fromValue( content );
+            SmfProtocolEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -128,7 +127,7 @@ public class EntityStatePermissionCompareType
             return true;
         }
 
-        if (!(obj instanceof EntityStatePermissionCompareType)) {
+        if (!(obj instanceof EntityStateSmfProtocolType)) {
             return false;
         }
 

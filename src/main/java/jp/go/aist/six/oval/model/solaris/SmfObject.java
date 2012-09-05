@@ -33,13 +33,14 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The package_object element is used by a package test to define the packages to be evaluated.
+ * The smf_object element is used by a smf_test to define
+ * the specific service instance to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageObject
+public class SmfObject
     extends SystemObjectType
 {
 
@@ -48,7 +49,11 @@ public class PackageObject
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  pkginst;
+    /**
+     * The FMRI (Fault Managed Resource Identifier) entity is used to identify system objects
+     * for which advanced fault and resource management capabilities are provided.
+     */
+    private EntityObjectStringType  fmri;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -59,13 +64,13 @@ public class PackageObject
     /**
      * Constructor.
      */
-    public PackageObject()
+    public SmfObject()
     {
         this( null, 0 );
     }
 
 
-    public PackageObject(
+    public SmfObject(
                     final String id,
                     final int version
                     )
@@ -73,7 +78,7 @@ public class PackageObject
         super( id, version );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.SMF;
     }
 
 
@@ -134,17 +139,17 @@ public class PackageObject
 
     /**
      */
-    public void setPkginst(
-                    final EntityObjectStringType pkginst
+    public void setFmri(
+                    final EntityObjectStringType fmri
                     )
     {
-        this.pkginst = pkginst;
+        this.fmri = fmri;
     }
 
 
-    public EntityObjectStringType getPkginst()
+    public EntityObjectStringType getFmri()
     {
-        return pkginst;
+        return fmri;
     }
 
 
@@ -197,7 +202,7 @@ public class PackageObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPkginst() );
+        ref_list.add( getFmri() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -221,7 +226,7 @@ public class PackageObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageObject)) {
+        if (!(obj instanceof SmfObject)) {
             return false;
         }
 
@@ -233,10 +238,10 @@ public class PackageObject
     @Override
     public String toString()
     {
-        return "package_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", pkginst="     	+ getPkginst()
-                        + ", filter="       + getFilter()
+        return "smf_object[" + super.toString()
+                        + ", set="      + getSet()
+                        + ", fmri="     + getFmri()
+                        + ", filter="   + getFilter()
                         + "]";
     }
 
