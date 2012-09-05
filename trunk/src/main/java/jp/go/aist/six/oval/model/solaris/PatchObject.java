@@ -21,26 +21,28 @@ package jp.go.aist.six.oval.model.solaris;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The packagecheck_object element is used by a packagecheck_test
- * to define the packages to be verified.
+ * The patch_object element is used by a patch test to define the specific patch
+ * to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the patch54 object and
+ *             will be removed in a future version of the language.
  */
-public class PackagecheckObject
+@Deprecated
+public class PatchObject
     extends SystemObjectType
 {
 
@@ -50,30 +52,21 @@ public class PackagecheckObject
     private Set  set;
     //{1..1}
 
-    private PackageCheckBehaviors  behaviors;
-    //{0..1}
-
-    private EntityObjectStringType  pkginst;
+    private EntityObjectIntType  base;
     //{1..1}
-
-    private EntityObjectStringType  filepath;
-    //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public PackagecheckObject()
+    public PatchObject()
     {
         this( null, 0 );
     }
 
 
-    public PackagecheckObject(
+    public PatchObject(
                     final String id,
                     final int version
                     )
@@ -81,7 +74,7 @@ public class PackagecheckObject
         super( id, version );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGECHECK;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -142,91 +135,17 @@ public class PackagecheckObject
 
     /**
      */
-    public void setBehaviors(
-                    final PackageCheckBehaviors behaviors
+    public void setBase(
+                    final EntityObjectIntType base
                     )
     {
-        this.behaviors = behaviors;
+        this.base = base;
     }
 
 
-    public PackageCheckBehaviors getBehaviors()
+    public EntityObjectIntType getBase()
     {
-        return behaviors;
-    }
-
-
-
-    /**
-     */
-    public void setPkginst(
-                    final EntityObjectStringType pkginst
-                    )
-    {
-        this.pkginst = pkginst;
-    }
-
-
-    public EntityObjectStringType getPkginst()
-    {
-        return pkginst;
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return filepath;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (filter != filters) {
-            filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
+        return base;
     }
 
 
@@ -239,9 +158,7 @@ public class PackagecheckObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPkginst() );
-        ref_list.add( getFilepath() );
-        ref_list.addAll( getFilter() );
+        ref_list.add( getBase() );
 
         return ref_list;
     }
@@ -264,7 +181,7 @@ public class PackagecheckObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckObject)) {
+        if (!(obj instanceof PatchObject)) {
             return false;
         }
 
@@ -276,12 +193,9 @@ public class PackagecheckObject
     @Override
     public String toString()
     {
-        return "packagecheck_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
-                        + ", pkginst="      + getPkginst()
-                        + ", filepath="     + getFilepath()
-                        + ", filter="       + getFilter()
+        return "patch_object[" + super.toString()
+                        + ", set="      + getSet()
+                        + ", base="     + getBase()
                         + "]";
     }
 

@@ -21,43 +21,40 @@ package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 
 /**
- * Output of /usr/bin/pkginfo.
+ * Patches are identified by unique alphanumeric strings, with the patch base code first,
+ * a hyphen, and a number that represents the patch revision number.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageItem
+public class PatchItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType    pkginst;
-    private EntityItemStringType    name;
-    private EntityItemStringType    category;
-    private EntityItemStringType	version;
-    private EntityItemStringType    vendor;
-    private EntityItemStringType    description;
+    private EntityItemIntType   base;
+    private EntityItemIntType   version;
 
 
 
     /**
      * Constructor.
      */
-    public PackageItem()
+    public PatchItem()
     {
         this( 0 );
     }
 
 
-    public PackageItem(
+    public PatchItem(
                     final int id
                     )
     {
@@ -65,7 +62,7 @@ public class PackageItem
     }
 
 
-    public PackageItem(
+    public PatchItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -73,58 +70,24 @@ public class PackageItem
         super( id, status );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.PATCH;
     }
 
 
 
     /**
      */
-    public void setPkginst(
-                    final EntityItemStringType pkginst
+    public void setBase(
+                    final EntityItemIntType base
                     )
     {
-        this.pkginst = pkginst;
+        this.base = base;
     }
 
 
-    public EntityItemStringType getPkginst()
+    public EntityItemIntType getBase()
     {
-        return pkginst;
-    }
-
-
-
-    /**
-     */
-    public void setName(
-                    final EntityItemStringType name
-                    )
-    {
-        this.name = name;
-    }
-
-
-    public EntityItemStringType getName()
-    {
-        return name;
-    }
-
-
-
-    /**
-     */
-    public void setCategory(
-                    final EntityItemStringType category
-                    )
-    {
-        this.category = category;
-    }
-
-
-    public EntityItemStringType getCategory()
-    {
-        return category;
+        return base;
     }
 
 
@@ -132,50 +95,16 @@ public class PackageItem
     /**
      */
     public void setVersion(
-                    final EntityItemStringType version
+                    final EntityItemIntType version
                     )
     {
         this.version = version;
     }
 
 
-    public EntityItemStringType getVersion()
+    public EntityItemIntType getVersion()
     {
         return version;
-    }
-
-
-
-    /**
-     */
-    public void setVendor(
-                    final EntityItemStringType vendor
-                    )
-    {
-        this.vendor = vendor;
-    }
-
-
-    public EntityItemStringType getVendor()
-    {
-        return vendor;
-    }
-
-
-
-    /**
-     */
-    public void setDescription(
-                    final EntityItemStringType description
-                    )
-    {
-        this.description = description;
-    }
-
-
-    public EntityItemStringType getDescription()
-    {
-        return description;
     }
 
 
@@ -197,7 +126,7 @@ public class PackageItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageItem)) {
+        if (!(obj instanceof PatchItem)) {
             return false;
         }
 
@@ -209,13 +138,9 @@ public class PackageItem
     @Override
     public String toString()
     {
-        return "package_item[" + super.toString()
-                		+ ", pkginst="      + getPkginst()
-                        + ", name="         + getName()
-                        + ", category="     + getCategory()
-                        + ", version="      + getVersion()
-                        + ", vendor="       + getVendor()
-                        + ", description="  + getDescription()
+        return "patch_item[" + super.toString()
+                		+ ", base="     + getBase()
+                        + ", version="  + getVersion()
              + "]";
     }
 
