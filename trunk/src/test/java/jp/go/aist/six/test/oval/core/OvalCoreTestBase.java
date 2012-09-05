@@ -335,6 +335,16 @@ public abstract class OvalCoreTestBase
                             null
                         }
 //                        ,
+//                        {
+//                            OvalContentCategory.OVAL_TEST_CONTENT,
+//                            "5.9",
+//                            OvalDefinitions.class,
+//                            Family.SOLARIS,
+//                            "test/resources/mitre_repository/oval-5.10/def",
+//                            "sun.solaris.10.xml",
+//                            null
+//                        }
+//                        ,
 //                        // Windows //
 //                        {
 //                            OvalContentCategory.OVAL_TEST_CONTENT,
