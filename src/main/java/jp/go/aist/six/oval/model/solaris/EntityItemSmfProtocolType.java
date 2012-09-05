@@ -24,27 +24,26 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 /**
- * The EntityItemPermissionCompareType complex type restricts a string value
- * to more, less, or same which specifies if an actual permission is different
- * than the expected permission (more or less restrictive) or if the permission is the same.
+ * The EntityItemSmfProtocolType defines the different values that are valid for
+ * the protocol entity of a smf_item.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemPermissionCompareType
+public class EntityItemSmfProtocolType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemPermissionCompareType()
+    public EntityItemSmfProtocolType()
     {
     }
 
 
-    public EntityItemPermissionCompareType(
+    public EntityItemSmfProtocolType(
                     final String content
                     )
     {
@@ -64,7 +63,7 @@ public class EntityItemPermissionCompareType
     {
         if (content != null) {
             // validation
-            PermissionCompareEnumeration.fromValue( content );
+            SmfProtocolEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -93,7 +92,7 @@ public class EntityItemPermissionCompareType
             return true;
         }
 
-        if (!(obj instanceof EntityItemPermissionCompareType)) {
+        if (!(obj instanceof EntityItemSmfProtocolType)) {
             return false;
         }
 

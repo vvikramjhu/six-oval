@@ -28,36 +28,38 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * Output of /usr/bin/pkginfo.
+ * The smf_item is used to hold information related to service management facility
+ * controlled services.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageItem
+public class SmfItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType    pkginst;
-    private EntityItemStringType    name;
-    private EntityItemStringType    category;
-    private EntityItemStringType	version;
-    private EntityItemStringType    vendor;
-    private EntityItemStringType    description;
+    private EntityItemStringType           fmri;
+    private EntityItemStringType           service_name;
+    private EntityItemSmfServiceStateType  service_state;
+    private EntityItemSmfProtocolType      protocol;
+    private EntityItemStringType           server_executable;
+    private EntityItemStringType           server_arguements;
+    private EntityItemStringType           exec_as_user;
 
 
 
     /**
      * Constructor.
      */
-    public PackageItem()
+    public SmfItem()
     {
         this( 0 );
     }
 
 
-    public PackageItem(
+    public SmfItem(
                     final int id
                     )
     {
@@ -65,7 +67,7 @@ public class PackageItem
     }
 
 
-    public PackageItem(
+    public SmfItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -73,109 +75,126 @@ public class PackageItem
         super( id, status );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.SMF;
     }
 
 
 
     /**
      */
-    public void setPkginst(
-                    final EntityItemStringType pkginst
+    public void setFmri(
+                    final EntityItemStringType fmri
                     )
     {
-        this.pkginst = pkginst;
+        this.fmri = fmri;
     }
 
 
-    public EntityItemStringType getPkginst()
+    public EntityItemStringType getFmri()
     {
-        return pkginst;
+        return fmri;
     }
 
 
 
     /**
      */
-    public void setName(
-                    final EntityItemStringType name
+    public void setServiceName(
+                    final EntityItemStringType service_name
                     )
     {
-        this.name = name;
+        this.service_name = service_name;
     }
 
 
-    public EntityItemStringType getName()
+    public EntityItemStringType getServiceName()
     {
-        return name;
+        return service_name;
     }
 
 
 
     /**
      */
-    public void setCategory(
-                    final EntityItemStringType category
+    public void setServiceState(
+                    final EntityItemSmfServiceStateType service_state
                     )
     {
-        this.category = category;
+        this.service_state = service_state;
     }
 
 
-    public EntityItemStringType getCategory()
+    public EntityItemSmfServiceStateType getServiceState()
     {
-        return category;
+        return service_state;
     }
 
 
 
     /**
      */
-    public void setVersion(
-                    final EntityItemStringType version
+    public void setProtocol(
+                    final EntityItemSmfProtocolType protocol
                     )
     {
-        this.version = version;
+        this.protocol = protocol;
     }
 
 
-    public EntityItemStringType getVersion()
+    public EntityItemSmfProtocolType getProtocol()
     {
-        return version;
+        return protocol;
     }
 
 
 
     /**
      */
-    public void setVendor(
-                    final EntityItemStringType vendor
+    public void setServerExecutable(
+                    final EntityItemStringType server_executable
                     )
     {
-        this.vendor = vendor;
+        this.server_executable = server_executable;
     }
 
 
-    public EntityItemStringType getVendor()
+    public EntityItemStringType getServerExecutable()
     {
-        return vendor;
+        return server_executable;
     }
 
 
 
     /**
      */
-    public void setDescription(
-                    final EntityItemStringType description
+    public void setServerArguements(
+                    final EntityItemStringType server_arguements
                     )
     {
-        this.description = description;
+        this.server_arguements = server_arguements;
     }
 
 
-    public EntityItemStringType getDescription()
+    public EntityItemStringType getServerArguements()
     {
-        return description;
+        return server_arguements;
+    }
+
+
+
+    /**
+     */
+    public void setExecAsUser(
+                    final EntityItemStringType exec_as_user
+                    )
+    {
+        this.exec_as_user = exec_as_user;
+    }
+
+
+    public EntityItemStringType getExecAsUser()
+    {
+        return exec_as_user;
     }
 
 
@@ -197,7 +216,7 @@ public class PackageItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageItem)) {
+        if (!(obj instanceof SmfItem)) {
             return false;
         }
 
@@ -209,13 +228,14 @@ public class PackageItem
     @Override
     public String toString()
     {
-        return "package_item[" + super.toString()
-                		+ ", pkginst="      + getPkginst()
-                        + ", name="         + getName()
-                        + ", category="     + getCategory()
-                        + ", version="      + getVersion()
-                        + ", vendor="       + getVendor()
-                        + ", description="  + getDescription()
+        return "smf_item[" + super.toString()
+                        + ", fmri="                 + getFmri()
+                        + ", service_name="         + getServiceName()
+                        + ", service_state="        + getServiceState()
+                        + ", protocol="             + getProtocol()
+                        + ", server_executable="    + getServerExecutable()
+                        + ", server_arguements="    + getServerArguements()
+                        + ", exec_as_user="         + getExecAsUser()
              + "]";
     }
 
