@@ -33,25 +33,21 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.4:
- *             Replaced by the patch54 test and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class PatchTest
+public class Patch54Test
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public PatchTest()
+    public Patch54Test()
     {
         this( null, 0 );
     }
 
 
-    public PatchTest(
+    public Patch54Test(
                     final String id,
                     final int version
                     )
@@ -60,7 +56,7 @@ public class PatchTest
     }
 
 
-    public PatchTest(
+    public Patch54Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -70,7 +66,7 @@ public class PatchTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PATCH;
+        _oval_component = ComponentType.PATCH54;
     }
 
 
@@ -105,7 +101,7 @@ public class PatchTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof PatchTest)) {
+        if (!(obj instanceof Patch54Test)) {
             return false;
         }
 
@@ -117,7 +113,7 @@ public class PatchTest
     @Override
     public String toString()
     {
-        return "patch_test[" + super.toString() + "]";
+        return "patch54_test[" + super.toString() + "]";
     }
 
 }
