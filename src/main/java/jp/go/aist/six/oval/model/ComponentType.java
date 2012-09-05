@@ -65,8 +65,9 @@ public enum ComponentType
     METABASE,                       // windows
 
     NDD,							//solaris
-    
+
     PACKAGE,                        //solaris
+    PACKAGECHECK,                   //solaris
     PARTITION,                      // linux
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
@@ -215,10 +216,11 @@ public enum ComponentType
     public static final ComponentType[]  SOLARIS = new ComponentType[] {
         ComponentType.ISAINFO,
         ComponentType.NDD,
-        ComponentType.PACKAGE
+        ComponentType.PACKAGE,
+        ComponentType.PACKAGECHECK
     };
-    
-    
+
+
     public static final ComponentType[]  UNIX = new ComponentType[] {
         ComponentType.FILE,
         ComponentType.INETD,

@@ -27,27 +27,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The package test is used to check information associated with different packages 
- * installed on the system.
+ * The packagecheck_test is used to verify the integrity of an installed Solaris package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageTest
+public class PackagecheckTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public PackageTest()
+    public PackagecheckTest()
     {
         this( null, 0 );
     }
 
 
-    public PackageTest(
+    public PackagecheckTest(
                     final String id,
                     final int version
                     )
@@ -56,7 +55,7 @@ public class PackageTest
     }
 
 
-    public PackageTest(
+    public PackagecheckTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -66,7 +65,7 @@ public class PackageTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.PACKAGECHECK;
     }
 
 
@@ -101,7 +100,7 @@ public class PackageTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageTest)) {
+        if (!(obj instanceof PackagecheckTest)) {
             return false;
         }
 
@@ -113,7 +112,7 @@ public class PackageTest
     @Override
     public String toString()
     {
-        return "package_test[" + super.toString() + "]";
+        return "packagecheck_test[" + super.toString() + "]";
     }
 
 }
