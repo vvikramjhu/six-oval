@@ -8,7 +8,7 @@
 
 
 ----------------
-= <font color="#0044CC">Version 1.1.0 (2012-09-XX)</font> =
+= <font color="#0044CC">Version 1.1.0 (2012-09-05)</font> =
 
 under development...
 
