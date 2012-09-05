@@ -24,31 +24,35 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * Relationship between an actual permission and the expected permission.
+ * Defines the different values that are valid for the service_state entity of a smf_state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum PermissionCompareEnumeration
+public enum SmfServiceEnumeration
     implements OvalEnumeration
 {
 
-    MORE        ( "more" ),
-    LESS        ( "less" ),
-    SAME        ( "same" ),
-    NONE        ( "" );
+    DEGRADED,
+    DISABLED,
+    MAINTENANCE,
+    LEGACY_RUN( "LEGACY-RUN" ),
+    OFFLINE,
+    ONLINE,
+    UNINITIALIZED,
+    NONE ( "" );
 
 
 
     /**
      * A factory method.
      */
-    public static PermissionCompareEnumeration fromValue(
+    public static SmfServiceEnumeration fromValue(
                     final String value
                     )
     {
-        for (PermissionCompareEnumeration  e : PermissionCompareEnumeration.values()) {
+        for (SmfServiceEnumeration  e : SmfServiceEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +70,13 @@ public enum PermissionCompareEnumeration
     /**
      * Constructor.
      */
-    PermissionCompareEnumeration(
+    SmfServiceEnumeration()
+    {
+        value = name();
+    }
+
+
+    SmfServiceEnumeration(
                     final String value
                     )
     {
