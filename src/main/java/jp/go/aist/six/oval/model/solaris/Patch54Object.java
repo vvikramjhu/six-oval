@@ -21,28 +21,26 @@ package jp.go.aist.six.oval.model.solaris;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The patch_object element is used by a patch test to define the specific patch
+ * The patch54_object element is used by a patch test to define the specific patch
  * to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.4:
- *             Replaced by the patch54 object and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class PatchObject
+public class Patch54Object
     extends SystemObjectType
 {
 
@@ -52,21 +50,30 @@ public class PatchObject
     private Set  set;
     //{1..1}
 
+    private PatchBehaviors  behaviors;
+    //{0..1}
+
     private EntityObjectIntType  base;
     //{1..1}
+
+    private EntityObjectIntType  version;
+    //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public PatchObject()
+    public Patch54Object()
     {
         this( null, 0 );
     }
 
 
-    public PatchObject(
+    public Patch54Object(
                     final String id,
                     final int version
                     )
@@ -74,7 +81,7 @@ public class PatchObject
         super( id, version );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PATCH;
+        _oval_component = ComponentType.PATCH54;
     }
 
 
@@ -135,6 +142,23 @@ public class PatchObject
 
     /**
      */
+    public void setBehaviors(
+                    final PatchBehaviors behaviors
+                    )
+    {
+        this.behaviors = behaviors;
+    }
+
+
+    public PatchBehaviors getBehaviors()
+    {
+        return behaviors;
+    }
+
+
+
+    /**
+     */
     public void setBase(
                     final EntityObjectIntType base
                     )
@@ -150,6 +174,63 @@ public class PatchObject
 
 
 
+    /**
+     */
+    public void setVersion(
+                    final EntityObjectIntType version
+                    )
+    {
+        this.version = version;
+    }
+
+
+    public EntityObjectIntType getVersion()
+    {
+        return version;
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (filter != filters) {
+            filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
+    }
+
+
+
     //*********************************************************************
     //  DefinitionsElement
     //*********************************************************************
@@ -159,6 +240,8 @@ public class PatchObject
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getBase() );
+        ref_list.add( getVersion() );
+        ref_list.addAll( getFilter() );
 
         return ref_list;
     }
@@ -181,7 +264,7 @@ public class PatchObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof PatchObject)) {
+        if (!(obj instanceof Patch54Object)) {
             return false;
         }
 
@@ -193,9 +276,12 @@ public class PatchObject
     @Override
     public String toString()
     {
-        return "patch_object[" + super.toString()
-                        + ", set="      + getSet()
-                        + ", base="     + getBase()
+        return "patch54_object[" + super.toString()
+                        + ", set="          + getSet()
+                        + ", behaviors="    + getBehaviors()
+                        + ", base="         + getBase()
+                        + ", version="      + getVersion()
+                        + ", filter="       + getFilter()
                         + "]";
     }
 

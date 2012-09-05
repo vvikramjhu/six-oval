@@ -72,6 +72,7 @@ public enum ComponentType
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
     PATCH,                          // solaris
+    PATCH54,                        // solaris
     PROCESS,                        // unix, windows
     PROCESS58,                      // unix, windows
     PORT,                           // windows
@@ -219,7 +220,8 @@ public enum ComponentType
         ComponentType.NDD,
         ComponentType.PACKAGE,
         ComponentType.PACKAGECHECK,
-        ComponentType.PATCH
+        ComponentType.PATCH,
+        ComponentType.PATCH54
     };
 
 
