@@ -396,7 +396,6 @@ six.oval.repository.web.base-url = https://foo.bar.org:8080/six-oval/repository
 
 --------
 = <font color="#0044CC">Interpreter Driving</font> =
-T.B.D.
 
 We don't intend to develop an OVAL Interpreter.
 Instead, we use existing one, ovaldi, and 
