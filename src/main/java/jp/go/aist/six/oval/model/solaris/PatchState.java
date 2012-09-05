@@ -24,53 +24,39 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The package_state element defines the different verification information
- * associated with packages installed on the system.
+ * The patch_state element defines the different information associated
+ * with a specific patch installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackagecheckState
+public class PatchState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType               pkginst;
-    private EntityStateStringType               filepath;
-    private EntityStateBoolType                 checksum_differs;
-    private EntityStateBoolType                 size_differs;
-    private EntityStateBoolType                 mtime_differs;
-
-    private EntityStatePermissionCompareType    uread;
-    private EntityStatePermissionCompareType    uwrite;
-    private EntityStatePermissionCompareType    uexec;
-    private EntityStatePermissionCompareType    gread;
-    private EntityStatePermissionCompareType    gwrite;
-    private EntityStatePermissionCompareType    gexec;
-    private EntityStatePermissionCompareType    oread;
-    private EntityStatePermissionCompareType    owrite;
-    private EntityStatePermissionCompareType    oexec;
+    private EntityStateIntType               base;
+    private EntityStateIntType               version;
 
 
 
     /**
      * Constructor.
      */
-    public PackagecheckState()
+    public PatchState()
     {
         this( null, 0 );
     }
 
 
-    public PackagecheckState(
+    public PatchState(
                     final String id,
                     final int version
                     )
@@ -79,7 +65,7 @@ public class PackagecheckState
     }
 
 
-    public PackagecheckState(
+    public PatchState(
                     final String id,
                     final int version,
                     final String comment
@@ -88,245 +74,41 @@ public class PackagecheckState
         super( id, version, comment );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGECHECK;
+        _oval_component = ComponentType.PATCH;
     }
 
 
 
     /**
      */
-    public void setPkginst(
-                    final EntityStateStringType pkginst
+    public void setBase(
+                    final EntityStateIntType pkginst
                     )
     {
-        this.pkginst = pkginst;
+        base = pkginst;
     }
 
 
-    public EntityStateStringType getPkginst()
+    public EntityStateIntType getBase()
     {
-        return pkginst;
+        return base;
     }
 
 
 
     /**
      */
-    public void setFilepath(
-                    final EntityStateStringType filepath
+    public void setVersion(
+                    final EntityStateIntType version
                     )
     {
-        this.filepath = filepath;
+        this.version = version;
     }
 
 
-    public EntityStateStringType getFilepath()
+    public EntityStateIntType getVersion()
     {
-        return filepath;
-    }
-
-
-
-    /**
-     */
-    public void setChecksumDiffers(
-                    final EntityStateBoolType checksum_differs
-                    )
-    {
-        this.checksum_differs = checksum_differs;
-    }
-
-
-    public EntityStateBoolType getChecksumDiffers()
-    {
-        return checksum_differs;
-    }
-
-
-
-    /**
-     */
-    public void setSizeDiffers(
-                    final EntityStateBoolType size_differs
-                    )
-    {
-        this.size_differs = size_differs;
-    }
-
-
-    public EntityStateBoolType getSizeDiffers()
-    {
-        return size_differs;
-    }
-
-
-
-    /**
-     */
-    public void setMtimeDiffers(
-                    final EntityStateBoolType mtime_differs
-                    )
-    {
-        this.mtime_differs = mtime_differs;
-    }
-
-
-    public EntityStateBoolType getMtimeDiffers()
-    {
-        return mtime_differs;
-    }
-
-
-
-    /**
-     */
-    public void setUread(
-                    final EntityStatePermissionCompareType uread
-                    )
-    {
-        this.uread = uread;
-    }
-
-
-    public EntityStatePermissionCompareType getUread()
-    {
-        return uread;
-    }
-
-
-
-    /**
-     */
-    public void setUwrite(
-                    final EntityStatePermissionCompareType uwrite
-                    )
-    {
-        this.uwrite = uwrite;
-    }
-
-
-    public EntityStatePermissionCompareType getUwrite()
-    {
-        return uwrite;
-    }
-
-
-
-    /**
-     */
-    public void setUexec(
-                    final EntityStatePermissionCompareType uexec
-                    )
-    {
-        this.uexec = uexec;
-    }
-
-
-    public EntityStatePermissionCompareType getUexec()
-    {
-        return uexec;
-    }
-
-
-
-    /**
-     */
-    public void setGread(
-                    final EntityStatePermissionCompareType gread
-                    )
-    {
-        this.gread = gread;
-    }
-
-
-    public EntityStatePermissionCompareType getGread()
-    {
-        return gread;
-    }
-
-
-
-    /**
-     */
-    public void setGwrite(
-                    final EntityStatePermissionCompareType gwrite
-                    )
-    {
-        this.gwrite = gwrite;
-    }
-
-
-    public EntityStatePermissionCompareType getGwrite()
-    {
-        return gwrite;
-    }
-
-
-
-    /**
-     */
-    public void setGexec(
-                    final EntityStatePermissionCompareType gexec
-                    )
-    {
-        this.gexec = gexec;
-    }
-
-
-    public EntityStatePermissionCompareType getGexec()
-    {
-        return gexec;
-    }
-
-
-
-    /**
-     */
-    public void setOread(
-                    final EntityStatePermissionCompareType oread
-                    )
-    {
-        this.oread = oread;
-    }
-
-
-    public EntityStatePermissionCompareType getOread()
-    {
-        return oread;
-    }
-
-
-
-    /**
-     */
-    public void setOwrite(
-                    final EntityStatePermissionCompareType owrite
-                    )
-    {
-        this.owrite = owrite;
-    }
-
-
-    public EntityStatePermissionCompareType getOwrite()
-    {
-        return owrite;
-    }
-
-
-
-    /**
-     */
-    public void setOexec(
-                    final EntityStatePermissionCompareType oexec
-                    )
-    {
-        this.oexec = oexec;
-    }
-
-
-    public EntityStatePermissionCompareType getOexec()
-    {
-        return oexec;
+        return version;
     }
 
 
@@ -339,20 +121,8 @@ public class PackagecheckState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPkginst() );
-        ref_list.add( getFilepath() );
-        ref_list.add( getChecksumDiffers() );
-        ref_list.add( getSizeDiffers() );
-        ref_list.add( getMtimeDiffers() );
-        ref_list.add( getUread() );
-        ref_list.add( getUwrite() );
-        ref_list.add( getUexec() );
-        ref_list.add( getGread() );
-        ref_list.add( getGwrite() );
-        ref_list.add( getGexec() );
-        ref_list.add( getOread() );
-        ref_list.add( getOwrite() );
-        ref_list.add( getOexec() );
+        ref_list.add( getBase() );
+        ref_list.add( getVersion() );
 
         return ref_list;
     }
@@ -376,7 +146,7 @@ public class PackagecheckState
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckState)) {
+        if (!(obj instanceof PatchState)) {
             return false;
         }
 
@@ -388,21 +158,9 @@ public class PackagecheckState
     @Override
     public String toString()
     {
-        return "packagecheck_state[" + super.toString()
-                        + ", pkginst="          + getPkginst()
-                        + ", filepath="         + getFilepath()
-                        + ", checksum_differs=" + getChecksumDiffers()
-                        + ", size_differs="     + getSizeDiffers()
-                        + ", mtime_differs="    + getMtimeDiffers()
-                        + ", uread="            + getUread()
-                        + ", uwrite="           + getUwrite()
-                        + ", uexec="            + getUexec()
-                        + ", gread="            + getGread()
-                        + ", gwrite="           + getGwrite()
-                        + ", gexec="            + getGexec()
-                        + ", oread="            + getOread()
-                        + ", owrite="           + getOwrite()
-                        + ", oexec="            + getOexec()
+        return "patch_state[" + super.toString()
+                        + ", base="         + getBase()
+                        + ", version="      + getVersion()
              + "]";
     }
 

@@ -57,20 +57,21 @@ public enum ComponentType
     INETD,                          // unix
     INETLISTENINGSERVERS,           // linux
     INTERFACE,                      // unix, windows
-    ISAINFO,						//solaris
+    ISAINFO,						// solaris
 
     LDAP,                           // independent
     LOCKOUTPOLICY,                  // windows
 
     METABASE,                       // windows
 
-    NDD,							//solaris
+    NDD,							// solaris
 
-    PACKAGE,                        //solaris
-    PACKAGECHECK,                   //solaris
+    PACKAGE,                        // solaris
+    PACKAGECHECK,                   // solaris
     PARTITION,                      // linux
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
+    PATCH,                          // solaris
     PROCESS,                        // unix, windows
     PROCESS58,                      // unix, windows
     PORT,                           // windows
@@ -217,7 +218,8 @@ public enum ComponentType
         ComponentType.ISAINFO,
         ComponentType.NDD,
         ComponentType.PACKAGE,
-        ComponentType.PACKAGECHECK
+        ComponentType.PACKAGECHECK,
+        ComponentType.PATCH
     };
 
 

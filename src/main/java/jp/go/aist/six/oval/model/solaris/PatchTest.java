@@ -27,26 +27,31 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The packagecheck_test is used to verify the integrity of an installed Solaris package.
+ * The patch test is used to check information associated with different patches
+ * installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the patch54 test and
+ *             will be removed in a future version of the language.
  */
-public class PackagecheckTest
+@Deprecated
+public class PatchTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public PackagecheckTest()
+    public PatchTest()
     {
         this( null, 0 );
     }
 
 
-    public PackagecheckTest(
+    public PatchTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +60,7 @@ public class PackagecheckTest
     }
 
 
-    public PackagecheckTest(
+    public PatchTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -65,7 +70,7 @@ public class PackagecheckTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGECHECK;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -100,7 +105,7 @@ public class PackagecheckTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckTest)) {
+        if (!(obj instanceof PatchTest)) {
             return false;
         }
 
@@ -112,7 +117,7 @@ public class PackagecheckTest
     @Override
     public String toString()
     {
-        return "packagecheck_test[" + super.toString() + "]";
+        return "patch_test[" + super.toString() + "]";
     }
 
 }
