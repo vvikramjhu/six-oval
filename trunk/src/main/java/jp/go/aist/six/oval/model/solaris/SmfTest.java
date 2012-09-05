@@ -27,27 +27,27 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The package test is used to check information associated with different packages 
- * installed on the system.
+ * The smf_test is used to check service management facility controlled services
+ * including traditional unix rc level start/kill scrips and inetd daemon services.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageTest
+public class SmfTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public PackageTest()
+    public SmfTest()
     {
         this( null, 0 );
     }
 
 
-    public PackageTest(
+    public SmfTest(
                     final String id,
                     final int version
                     )
@@ -56,7 +56,7 @@ public class PackageTest
     }
 
 
-    public PackageTest(
+    public SmfTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -66,7 +66,7 @@ public class PackageTest
         super( id, version, comment, check );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.SMF;
     }
 
 
@@ -101,7 +101,7 @@ public class PackageTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageTest)) {
+        if (!(obj instanceof SmfTest)) {
             return false;
         }
 
@@ -113,7 +113,7 @@ public class PackageTest
     @Override
     public String toString()
     {
-        return "package_test[" + super.toString() + "]";
+        return "smf_test[" + super.toString() + "]";
     }
 
 }

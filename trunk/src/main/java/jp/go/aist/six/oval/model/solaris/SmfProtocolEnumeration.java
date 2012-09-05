@@ -24,19 +24,22 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * Relationship between an actual permission and the expected permission.
+ * Defines the different values that are valid for the protocol entity of a smf_state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum PermissionCompareEnumeration
+public enum SmfProtocolEnumeration
     implements OvalEnumeration
 {
 
-    MORE        ( "more" ),
-    LESS        ( "less" ),
-    SAME        ( "same" ),
+    TCP         ( "tcp" ),
+    TCP6        ( "tcp6" ),
+    TCP6ONLY    ( "tcp6only" ),
+    UDP         ( "udp" ),
+    UDP6        ( "udp6" ),
+    UDP6ONLY    ( "udp6only" ),
     NONE        ( "" );
 
 
@@ -44,11 +47,11 @@ public enum PermissionCompareEnumeration
     /**
      * A factory method.
      */
-    public static PermissionCompareEnumeration fromValue(
+    public static SmfProtocolEnumeration fromValue(
                     final String value
                     )
     {
-        for (PermissionCompareEnumeration  e : PermissionCompareEnumeration.values()) {
+        for (SmfProtocolEnumeration  e : SmfProtocolEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +69,7 @@ public enum PermissionCompareEnumeration
     /**
      * Constructor.
      */
-    PermissionCompareEnumeration(
+    SmfProtocolEnumeration(
                     final String value
                     )
     {
