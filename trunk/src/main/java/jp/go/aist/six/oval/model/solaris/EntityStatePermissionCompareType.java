@@ -17,29 +17,29 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityStateEncryptMethodType restricts a string value to a set
- * that corresponds to the allowed encrypt methods
- * used for protected passwords in a shadow file.
+ * The EntityStatePermissionCompareType complex type restricts a string value
+ * to more, less, or same which specifies if an actual permission is different
+ * than the expected permission (more or less restrictive) or if the permission is the same.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateEncryptMethodType
+public class EntityStatePermissionCompareType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateEncryptMethodType()
+    public EntityStatePermissionCompareType()
     {
     }
 
@@ -99,7 +99,7 @@ public class EntityStateEncryptMethodType
                     )
     {
         if (content != null) {
-            EncryptMethodEnumeration.fromValue( content );
+            PermissionCompareEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -128,7 +128,7 @@ public class EntityStateEncryptMethodType
             return true;
         }
 
-        if (!(obj instanceof EntityStateEncryptMethodType)) {
+        if (!(obj instanceof EntityStatePermissionCompareType)) {
             return false;
         }
 
@@ -136,4 +136,4 @@ public class EntityStateEncryptMethodType
     }
 
 }
-//EntityStateEncryptMethodType
+//

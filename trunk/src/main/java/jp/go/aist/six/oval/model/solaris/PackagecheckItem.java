@@ -21,6 +21,7 @@ package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -28,36 +29,46 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * Output of /usr/bin/pkginfo.
+ * The packagecheck_item holds verification information about an individual file
+ * that is part of a installed package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageItem
+public class PackagecheckItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType    pkginst;
-    private EntityItemStringType    name;
-    private EntityItemStringType    category;
-    private EntityItemStringType	version;
-    private EntityItemStringType    vendor;
-    private EntityItemStringType    description;
+    private EntityItemStringType               pkginst;
+    private EntityItemStringType               filepath;
+    private EntityItemBoolType                 checksum_differs;
+    private EntityItemBoolType                 size_differs;
+    private EntityItemBoolType                 mtime_differs;
+
+    private EntityItemPermissionCompareType    uread;
+    private EntityItemPermissionCompareType    uwrite;
+    private EntityItemPermissionCompareType    uexec;
+    private EntityItemPermissionCompareType    gread;
+    private EntityItemPermissionCompareType    gwrite;
+    private EntityItemPermissionCompareType    gexec;
+    private EntityItemPermissionCompareType    oread;
+    private EntityItemPermissionCompareType    owrite;
+    private EntityItemPermissionCompareType    oexec;
 
 
 
     /**
      * Constructor.
      */
-    public PackageItem()
+    public PackagecheckItem()
     {
         this( 0 );
     }
 
 
-    public PackageItem(
+    public PackagecheckItem(
                     final int id
                     )
     {
@@ -65,7 +76,7 @@ public class PackageItem
     }
 
 
-    public PackageItem(
+    public PackagecheckItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -73,7 +84,7 @@ public class PackageItem
         super( id, status );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.PACKAGECHECK;
     }
 
 
@@ -97,85 +108,221 @@ public class PackageItem
 
     /**
      */
-    public void setName(
-                    final EntityItemStringType name
+    public void setFilepath(
+                    final EntityItemStringType filepath
                     )
     {
-        this.name = name;
+        this.filepath = filepath;
     }
 
 
-    public EntityItemStringType getName()
+    public EntityItemStringType getFilepath()
     {
-        return name;
+        return filepath;
     }
 
 
 
     /**
      */
-    public void setCategory(
-                    final EntityItemStringType category
+    public void setChecksumDiffers(
+                    final EntityItemBoolType checksum_differs
                     )
     {
-        this.category = category;
+        this.checksum_differs = checksum_differs;
     }
 
 
-    public EntityItemStringType getCategory()
+    public EntityItemBoolType getChecksumDiffers()
     {
-        return category;
+        return checksum_differs;
     }
 
 
 
     /**
      */
-    public void setVersion(
-                    final EntityItemStringType version
+    public void setSizeDiffers(
+                    final EntityItemBoolType size_differs
                     )
     {
-        this.version = version;
+        this.size_differs = size_differs;
     }
 
 
-    public EntityItemStringType getVersion()
+    public EntityItemBoolType getSizeDiffers()
     {
-        return version;
+        return size_differs;
     }
 
 
 
     /**
      */
-    public void setVendor(
-                    final EntityItemStringType vendor
+    public void setMtimeDiffers(
+                    final EntityItemBoolType mtime_differs
                     )
     {
-        this.vendor = vendor;
+        this.mtime_differs = mtime_differs;
     }
 
 
-    public EntityItemStringType getVendor()
+    public EntityItemBoolType getMtimeDiffers()
     {
-        return vendor;
+        return mtime_differs;
     }
 
 
 
     /**
      */
-    public void setDescription(
-                    final EntityItemStringType description
+    public void setUread(
+                    final EntityItemPermissionCompareType uread
                     )
     {
-        this.description = description;
+        this.uread = uread;
     }
 
 
-    public EntityItemStringType getDescription()
+    public EntityItemPermissionCompareType getUread()
     {
-        return description;
+        return uread;
+    }
+
+
+
+    /**
+     */
+    public void setUwrite(
+                    final EntityItemPermissionCompareType uwrite
+                    )
+    {
+        this.uwrite = uwrite;
+    }
+
+
+    public EntityItemPermissionCompareType getUwrite()
+    {
+        return uwrite;
+    }
+
+
+
+    /**
+     */
+    public void setUexec(
+                    final EntityItemPermissionCompareType uexec
+                    )
+    {
+        this.uexec = uexec;
+    }
+
+
+    public EntityItemPermissionCompareType getUexec()
+    {
+        return uexec;
+    }
+
+
+
+    /**
+     */
+    public void setGread(
+                    final EntityItemPermissionCompareType gread
+                    )
+    {
+        this.gread = gread;
+    }
+
+
+    public EntityItemPermissionCompareType getGread()
+    {
+        return gread;
+    }
+
+
+
+    /**
+     */
+    public void setGwrite(
+                    final EntityItemPermissionCompareType gwrite
+                    )
+    {
+        this.gwrite = gwrite;
+    }
+
+
+    public EntityItemPermissionCompareType getGwrite()
+    {
+        return gwrite;
+    }
+
+
+
+    /**
+     */
+    public void setGexec(
+                    final EntityItemPermissionCompareType gexec
+                    )
+    {
+        this.gexec = gexec;
+    }
+
+
+    public EntityItemPermissionCompareType getGexec()
+    {
+        return gexec;
+    }
+
+
+
+    /**
+     */
+    public void setOread(
+                    final EntityItemPermissionCompareType oread
+                    )
+    {
+        this.oread = oread;
+    }
+
+
+    public EntityItemPermissionCompareType getOread()
+    {
+        return oread;
+    }
+
+
+
+    /**
+     */
+    public void setOwrite(
+                    final EntityItemPermissionCompareType owrite
+                    )
+    {
+        this.owrite = owrite;
+    }
+
+
+    public EntityItemPermissionCompareType getOwrite()
+    {
+        return owrite;
+    }
+
+
+
+    /**
+     */
+    public void setOexec(
+                    final EntityItemPermissionCompareType oexec
+                    )
+    {
+        this.oexec = oexec;
+    }
+
+
+    public EntityItemPermissionCompareType getOexec()
+    {
+        return oexec;
     }
 
 
@@ -197,7 +344,7 @@ public class PackageItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageItem)) {
+        if (!(obj instanceof PackagecheckItem)) {
             return false;
         }
 
@@ -209,13 +356,21 @@ public class PackageItem
     @Override
     public String toString()
     {
-        return "package_item[" + super.toString()
-                		+ ", pkginst="      + getPkginst()
-                        + ", name="         + getName()
-                        + ", category="     + getCategory()
-                        + ", version="      + getVersion()
-                        + ", vendor="       + getVendor()
-                        + ", description="  + getDescription()
+        return "packagecheck_item[" + super.toString()
+                        + ", pkginst="          + getPkginst()
+                        + ", filepath="         + getFilepath()
+                        + ", checksum_differs=" + getChecksumDiffers()
+                        + ", size_differs="     + getSizeDiffers()
+                        + ", mtime_differs="    + getMtimeDiffers()
+                        + ", uread="            + getUread()
+                        + ", uwrite="           + getUwrite()
+                        + ", uexec="            + getUexec()
+                        + ", gread="            + getGread()
+                        + ", gwrite="           + getGwrite()
+                        + ", gexec="            + getGexec()
+                        + ", oread="            + getOread()
+                        + ", owrite="           + getOwrite()
+                        + ", oexec="            + getOexec()
              + "]";
     }
 
