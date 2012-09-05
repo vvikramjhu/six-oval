@@ -17,30 +17,26 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 /**
- * The set of encrypt methods used for protected passwords in a shadow file.
+ * Relationship between an actual permission and the expected permission.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum EncryptMethodEnumeration
+public enum PermissionCompareEnumeration
     implements OvalEnumeration
 {
 
-    DES         ( "DES" ),
-    BSDI        ( "BSDi" ),
-    MD5         ( "MD5" ),
-    BLOWFISH    ( "Blowfish" ),
-    SUN_MD5     ( "Sun MD5" ),
-    SHA_256     ( "SHA-256" ),
-    SHA_512     ( "SHA-512" ),
+    MORE        ( "more" ),
+    LESS        ( "less" ),
+    SAME        ( "same" ),
     NONE        ( "" );
 
 
@@ -48,11 +44,11 @@ public enum EncryptMethodEnumeration
     /**
      * A factory method.
      */
-    public static EncryptMethodEnumeration fromValue(
+    public static PermissionCompareEnumeration fromValue(
                     final String value
                     )
     {
-        for (EncryptMethodEnumeration  e : EncryptMethodEnumeration.values()) {
+        for (PermissionCompareEnumeration  e : PermissionCompareEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -70,7 +66,7 @@ public enum EncryptMethodEnumeration
     /**
      * Constructor.
      */
-    EncryptMethodEnumeration(
+    PermissionCompareEnumeration(
                     final String value
                     )
     {
@@ -98,4 +94,4 @@ public enum EncryptMethodEnumeration
     }
 
 }
-//EncryptMethodEnumeration
+//

@@ -33,22 +33,30 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The package_object element is used by a package test to define the packages to be evaluated.
+ * The packagecheck_object element is used by a packagecheck_test
+ * to define the packages to be verified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageObject
+public class PackagecheckObject
     extends SystemObjectType
 {
 
     //TODO: XSD model.
+    // choice( set | sequence () )
 
     private Set  set;
     //{1..1}
 
+    private PackageCheckBehaviors  behaviors;
+    //{0..1}
+
     private EntityObjectStringType  pkginst;
+    //{1..1}
+
+    private EntityObjectStringType  filepath;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -59,13 +67,13 @@ public class PackageObject
     /**
      * Constructor.
      */
-    public PackageObject()
+    public PackagecheckObject()
     {
         this( null, 0 );
     }
 
 
-    public PackageObject(
+    public PackagecheckObject(
                     final String id,
                     final int version
                     )
@@ -73,7 +81,7 @@ public class PackageObject
         super( id, version );
 
         _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.PACKAGE;
+        _oval_component = ComponentType.PACKAGECHECK;
     }
 
 
@@ -134,6 +142,23 @@ public class PackageObject
 
     /**
      */
+    public void setBehaviors(
+                    final PackageCheckBehaviors behaviors
+                    )
+    {
+        this.behaviors = behaviors;
+    }
+
+
+    public PackageCheckBehaviors getBehaviors()
+    {
+        return behaviors;
+    }
+
+
+
+    /**
+     */
     public void setPkginst(
                     final EntityObjectStringType pkginst
                     )
@@ -145,6 +170,23 @@ public class PackageObject
     public EntityObjectStringType getPkginst()
     {
         return pkginst;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityObjectStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityObjectStringType getFilepath()
+    {
+        return filepath;
     }
 
 
@@ -198,6 +240,7 @@ public class PackageObject
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getPkginst() );
+        ref_list.add( getFilepath() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -221,7 +264,7 @@ public class PackageObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageObject)) {
+        if (!(obj instanceof PackagecheckObject)) {
             return false;
         }
 
@@ -233,9 +276,11 @@ public class PackageObject
     @Override
     public String toString()
     {
-        return "package_object[" + super.toString()
+        return "packagecheck_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", pkginst="     	+ getPkginst()
+                        + ", behaviors="    + getBehaviors()
+                        + ", pkginst="      + getPkginst()
+                        + ", filepath="     + getFilepath()
                         + ", filter="       + getFilter()
                         + "]";
     }

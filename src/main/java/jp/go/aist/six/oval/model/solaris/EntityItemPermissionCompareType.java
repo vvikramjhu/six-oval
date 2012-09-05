@@ -17,34 +17,34 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.solaris;
 
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 
 /**
- * The EntityItemEncryptMethodType restricts a string value to a set
- * that corresponds to the allowed encrypt methods
- * used for protected passwords in a shadow file.
+ * The EntityItemPermissionCompareType complex type restricts a string value
+ * to more, less, or same which specifies if an actual permission is different
+ * than the expected permission (more or less restrictive) or if the permission is the same.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemEncryptMethodType
+public class EntityItemPermissionCompareType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemEncryptMethodType()
+    public EntityItemPermissionCompareType()
     {
     }
 
 
-    public EntityItemEncryptMethodType(
+    public EntityItemPermissionCompareType(
                     final String content
                     )
     {
@@ -64,7 +64,7 @@ public class EntityItemEncryptMethodType
     {
         if (content != null) {
             // validation
-            EncryptMethodEnumeration.fromValue( content );
+            PermissionCompareEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -93,7 +93,7 @@ public class EntityItemEncryptMethodType
             return true;
         }
 
-        if (!(obj instanceof EntityItemEncryptMethodType)) {
+        if (!(obj instanceof EntityItemPermissionCompareType)) {
             return false;
         }
 
@@ -101,4 +101,4 @@ public class EntityItemEncryptMethodType
     }
 
 }
-//EntityItemEncryptMethodType
+//

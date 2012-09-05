@@ -23,7 +23,6 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 
-
 /**
  * The PackageCheckBehaviors complex type defines a set of behaviors
  * that for controlling how installed packages are checked.
