@@ -55,7 +55,7 @@
     <!-- *  oval.core.repository.web                                  * -->
     <!-- ************************************************************** -->
 
-    <test name="oval.core.repository.web" enabled="true">
+    <test name="oval.core.repository.web" enabled="false">
         <groups>
             <run>
                 <include name="CONTROL.oval.repository.findOvalResults"/>
@@ -168,13 +168,13 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
-        <!--
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="MODEL.oval.def.oval_definitions"/>
             </run>
         </groups>
+        <!--
         -->
                 <!--
                 <include name="MODEL.oval.sc.oval_system_characteristics"/>
