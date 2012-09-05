@@ -25,6 +25,7 @@ the Java reserved keywords.
 ||Core Variable ||- ||jp.go.aist.six.oval.model.variables ||
 ||Independent Components ||- ||jp.go.aist.six.oval.model.independent ||
 ||Linux Components ||- ||jp.go.aist.six.oval.model.linux ||
+||Solaris Components ||- ||jp.go.aist.six.oval.model.solaris ||
 ||Unix Components ||- ||jp.go.aist.six.oval.model.unix ||
 ||Windows Components ||- ||jp.go.aist.six.oval.model.windows ||
 
@@ -141,32 +142,4 @@ T.B.D.
 
 
  
-
---------------------------------
-= <font color="#0044CC">Independent Components</font> =
-
-T.B.D.
-
- 
---------------------------------
-= <font color="#0044CC">Linux Components</font> =
-
-T.B.D.
-
- 
-
---------------------------------
-= <font color="#0044CC">UNIX Components</font> =
-
-T.B.D.
-
- 
---------------------------------
-= <font color="#0044CC">Windows Components</font> =
-
-T.B.D.
-
- 
-
-
 --------
