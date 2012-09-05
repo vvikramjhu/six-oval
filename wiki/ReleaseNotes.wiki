@@ -7,6 +7,7 @@
 || 1.0.x              || 5.10.1                ||
 
 
+----------------
 = <font color="#0044CC">Version 1.1.0 (2012-09-XX)</font> =
 
 under development...
@@ -17,7 +18,7 @@ under development...
 
 
 
-----
+----------------
 = <font color="#0044CC">Version 1.0.1 (2012-09-04)</font> =
 
 == <font color="#0044CC">OVAL Support</font> ==
