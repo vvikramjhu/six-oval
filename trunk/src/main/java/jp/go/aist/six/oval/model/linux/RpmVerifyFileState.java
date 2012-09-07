@@ -349,7 +349,7 @@ public class RpmVerifyFileState
 
     /**
      */
-    public void setCapabilitiesDiffers(
+    public void setCapabilitiesDiffer(
                     final EntityStateRpmVerifyResultType capabilities_differ
                     )
     {
@@ -357,7 +357,7 @@ public class RpmVerifyFileState
     }
 
 
-    public EntityStateRpmVerifyResultType getCapabilitiesDiffers()
+    public EntityStateRpmVerifyResultType getCapabilitiesDiffer()
     {
         return capabilities_differ;
     }
@@ -473,7 +473,7 @@ public class RpmVerifyFileState
         ref_list.add( getOwnershipDiffers() );
         ref_list.add( getGroupDiffers() );
         ref_list.add( getMtimeDiffers() );
-        ref_list.add( getCapabilitiesDiffers() );
+        ref_list.add( getCapabilitiesDiffer() );
 
         ref_list.add( getConfigurationFile() );
         ref_list.add( getDocumentationFile() );
@@ -531,13 +531,12 @@ public class RpmVerifyFileState
                         + ", ownership_differs="    + getOwnershipDiffers()
                         + ", group_differs="        + getGroupDiffers()
                         + ", mtime_differs="        + getMtimeDiffers()
-                        + ", capabilities_differ="  + getCapabilitiesDiffers()
+                        + ", capabilities_differ="  + getCapabilitiesDiffer()
                         + ", configuration_file="   + getConfigurationFile()
                         + ", documentation_file="   + getDocumentationFile()
                         + ", ghost_file="           + getGhostFile()
                         + ", license_file="         + getLicenseFile()
                         + ", readme_file="          + getReadmeFile()
-
                         + "]";
     }
 
