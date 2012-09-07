@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IfLlistenersObject
+public class IfListenersObject
     extends SystemObjectType
 {
 
@@ -66,13 +66,13 @@ public class IfLlistenersObject
     /**
      * Constructor.
      */
-    public IfLlistenersObject()
+    public IfListenersObject()
     {
         this( null, 0 );
     }
 
 
-    public IfLlistenersObject(
+    public IfListenersObject(
                     final String id,
                     final int version
                     )
@@ -228,7 +228,7 @@ public class IfLlistenersObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof IfLlistenersObject)) {
+        if (!(obj instanceof IfListenersObject)) {
             return false;
         }
 

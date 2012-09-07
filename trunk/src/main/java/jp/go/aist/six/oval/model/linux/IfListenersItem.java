@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
-import jp.go.aist.six.oval.model.windows.EntityItemProtocolType;
 
 
 
@@ -36,7 +35,7 @@ import jp.go.aist.six.oval.model.windows.EntityItemProtocolType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IfLlistenersItem
+public class IfListenersItem
     extends ItemType
 {
 
@@ -53,13 +52,13 @@ public class IfLlistenersItem
     /**
      * Constructor.
      */
-    public IfLlistenersItem()
+    public IfListenersItem()
     {
         this( 0 );
     }
 
 
-    public IfLlistenersItem(
+    public IfListenersItem(
                     final int id
                     )
     {
