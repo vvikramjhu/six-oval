@@ -36,20 +36,20 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IflistenersTest
+public class IfListenersTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public IflistenersTest()
+    public IfListenersTest()
     {
         this( null, 0 );
     }
 
 
-    public IflistenersTest(
+    public IfListenersTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +58,7 @@ public class IflistenersTest
     }
 
 
-    public IflistenersTest(
+    public IfListenersTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -69,7 +69,7 @@ public class IflistenersTest
     }
 
 
-    public IflistenersTest(
+    public IfListenersTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -103,7 +103,7 @@ public class IflistenersTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof IflistenersTest)) {
+        if (!(obj instanceof IfListenersTest)) {
             return false;
         }
 

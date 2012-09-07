@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IflistenersState
+public class IfLlistenersState
     extends StateType
 {
 
@@ -55,13 +55,13 @@ public class IflistenersState
     /**
      * Constructor.
      */
-    public IflistenersState()
+    public IfLlistenersState()
     {
         this( null, 0 );
     }
 
 
-    public IflistenersState(
+    public IfLlistenersState(
                     final String id,
                     final int version
                     )
@@ -70,7 +70,7 @@ public class IflistenersState
     }
 
 
-    public IflistenersState(
+    public IfLlistenersState(
                     final String id,
                     final int version,
                     final String comment
@@ -223,7 +223,7 @@ public class IflistenersState
                     final Object obj
                     )
     {
-        if (!(obj instanceof IflistenersState)) {
+        if (!(obj instanceof IfLlistenersState)) {
             return false;
         }
 
