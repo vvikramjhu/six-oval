@@ -32,14 +32,14 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The rpmverifyfile_state defines the different information that can be used to determine
- * if a set of files within a set of RPMs passed verification.
+ * The rpmverifypackage_state defines the different information that can be used to verify
+ * the integrity of installed RPMs.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmVerifyFileState
+public class RpmVerifyPackageState
     extends StateType
 {
 
@@ -49,37 +49,24 @@ public class RpmVerifyFileState
     private EntityStateAnySimpleType        version;
     private EntityStateAnySimpleType        release;
     private EntityStateStringType           arch;
-    private EntityStateStringType           filepath;
-    private EntityStateStringType           extended_name;
 
-    private EntityStateRpmVerifyResultType  size_differs;
-    private EntityStateRpmVerifyResultType  mode_differs;
-    private EntityStateRpmVerifyResultType  md5_differs;
-    private EntityStateRpmVerifyResultType  device_differs;
-    private EntityStateRpmVerifyResultType  link_mismatch;
-    private EntityStateRpmVerifyResultType  ownership_differs;
-    private EntityStateRpmVerifyResultType  group_differs;
-    private EntityStateRpmVerifyResultType  mtime_differs;
-    private EntityStateRpmVerifyResultType  capabilities_differ;
-
-    private EntityStateBoolType             configuration_file;
-    private EntityStateBoolType             documentation_file;
-    private EntityStateBoolType             ghost_file;
-    private EntityStateBoolType             license_file;
-    private EntityStateBoolType             readme_file;
+    private EntityStateBoolType             dependency_check_passed;
+    private EntityStateBoolType             digest_check_passed;
+    private EntityStateBoolType             verification_script_successful;
+    private EntityStateBoolType             signature_check_passed;
 
 
 
     /**
      * Constructor.
      */
-    public RpmVerifyFileState()
+    public RpmVerifyPackageState()
     {
         this( null, 0 );
     }
 
 
-    public RpmVerifyFileState(
+    public RpmVerifyPackageState(
                     final String id,
                     final int version
                     )
@@ -87,7 +74,7 @@ public class RpmVerifyFileState
         super( id, version );
 
         _oval_family = Family.LINUX;
-        _oval_component = ComponentType.RPMVERIFYFILE;
+        _oval_component = ComponentType.RPMVERIFYPACKAGE;
     }
 
 
@@ -179,272 +166,68 @@ public class RpmVerifyFileState
 
     /**
      */
-    public void setFilepath(
-                    final EntityStateStringType filepath
+    public void setDependencyCheckPassed(
+                    final EntityStateBoolType dependency_check_passed
                     )
     {
-        this.filepath = filepath;
+        this.dependency_check_passed = dependency_check_passed;
     }
 
 
-    public EntityStateStringType getFilepath()
+    public EntityStateBoolType getDependencyCheckPassed()
     {
-        return filepath;
+        return dependency_check_passed;
     }
 
 
 
     /**
      */
-    public void setExtendedName(
-                    final EntityStateStringType extended_name
+    public void setDigestCheckPassed(
+                    final EntityStateBoolType digest_check_passed
                     )
     {
-        this.extended_name = extended_name;
+        this.digest_check_passed = digest_check_passed;
     }
 
 
-    public EntityStateStringType getExtendedName()
+    public EntityStateBoolType getDigestCheckPassed()
     {
-        return extended_name;
+        return digest_check_passed;
     }
 
 
 
     /**
      */
-    public void setSizeDiffers(
-                    final EntityStateRpmVerifyResultType size_differs
+    public void setVerificationScriptSuccessful(
+                    final EntityStateBoolType verification_script_successful
                     )
     {
-        this.size_differs = size_differs;
+        this.verification_script_successful = verification_script_successful;
     }
 
 
-    public EntityStateRpmVerifyResultType getSizeDiffers()
+    public EntityStateBoolType getVerificationScriptSuccessful()
     {
-        return size_differs;
+        return verification_script_successful;
     }
 
 
 
     /**
      */
-    public void setModeDiffers(
-                    final EntityStateRpmVerifyResultType mode_differs
+    public void setSignatureCheckPassed(
+                    final EntityStateBoolType signature_check_passed
                     )
     {
-        this.mode_differs = mode_differs;
+        this.signature_check_passed = signature_check_passed;
     }
 
 
-    public EntityStateRpmVerifyResultType getModeDiffers()
+    public EntityStateBoolType getSignatureCheckPassed()
     {
-        return mode_differs;
-    }
-
-
-
-    /**
-     */
-    public void setMd5Differs(
-                    final EntityStateRpmVerifyResultType md5_differs
-                    )
-    {
-        this.md5_differs = md5_differs;
-    }
-
-
-    public EntityStateRpmVerifyResultType getMd5Differs()
-    {
-        return md5_differs;
-    }
-
-
-
-    /**
-     */
-    public void setDeviceDiffers(
-                    final EntityStateRpmVerifyResultType device_differs
-                    )
-    {
-        this.device_differs = device_differs;
-    }
-
-
-    public EntityStateRpmVerifyResultType getDeviceDiffers()
-    {
-        return device_differs;
-    }
-
-
-
-    /**
-     */
-    public void setLinkMismatch(
-                    final EntityStateRpmVerifyResultType link_mismatch
-                    )
-    {
-        this.link_mismatch = link_mismatch;
-    }
-
-
-    public EntityStateRpmVerifyResultType getLinkMismatch()
-    {
-        return link_mismatch;
-    }
-
-
-
-    /**
-     */
-    public void setOwnershipDiffers(
-                    final EntityStateRpmVerifyResultType ownership_differs
-                    )
-    {
-        this.ownership_differs = ownership_differs;
-    }
-
-
-    public EntityStateRpmVerifyResultType getOwnershipDiffers()
-    {
-        return ownership_differs;
-    }
-
-
-
-    /**
-     */
-    public void setGroupDiffers(
-                    final EntityStateRpmVerifyResultType group_differs
-                    )
-    {
-        this.group_differs = group_differs;
-    }
-
-
-    public EntityStateRpmVerifyResultType getGroupDiffers()
-    {
-        return group_differs;
-    }
-
-
-
-    /**
-     */
-    public void setMtimeDiffers(
-                    final EntityStateRpmVerifyResultType mtime_differs
-                    )
-    {
-        this.mtime_differs = mtime_differs;
-    }
-
-
-    public EntityStateRpmVerifyResultType getMtimeDiffers()
-    {
-        return mtime_differs;
-    }
-
-
-
-    /**
-     */
-    public void setCapabilitiesDiffers(
-                    final EntityStateRpmVerifyResultType capabilities_differ
-                    )
-    {
-        this.capabilities_differ = capabilities_differ;
-    }
-
-
-    public EntityStateRpmVerifyResultType getCapabilitiesDiffers()
-    {
-        return capabilities_differ;
-    }
-
-
-
-    /**
-     */
-    public void setConfigurationFile(
-                    final EntityStateBoolType configuration_file
-                    )
-    {
-        this.configuration_file = configuration_file;
-    }
-
-
-    public EntityStateBoolType getConfigurationFile()
-    {
-        return configuration_file;
-    }
-
-
-
-    /**
-     */
-    public void setDocumentationFile(
-                    final EntityStateBoolType documentation_file
-                    )
-    {
-        this.documentation_file = documentation_file;
-    }
-
-
-    public EntityStateBoolType getDocumentationFile()
-    {
-        return documentation_file;
-    }
-
-
-
-    /**
-     */
-    public void setGhostFile(
-                    final EntityStateBoolType ghost_file
-                    )
-    {
-        this.ghost_file = ghost_file;
-    }
-
-
-    public EntityStateBoolType getGhostFile()
-    {
-        return ghost_file;
-    }
-
-
-
-    /**
-     */
-    public void setLicenseFile(
-                    final EntityStateBoolType license_file
-                    )
-    {
-        this.license_file = license_file;
-    }
-
-
-    public EntityStateBoolType getLicenseFile()
-    {
-        return license_file;
-    }
-
-
-
-    /**
-     */
-    public void setReadmeFile(
-                    final EntityStateBoolType readme_file
-                    )
-    {
-        this.readme_file = readme_file;
-    }
-
-
-    public EntityStateBoolType getReadmeFile()
-    {
-        return readme_file;
+        return signature_check_passed;
     }
 
 
@@ -462,24 +245,11 @@ public class RpmVerifyFileState
         ref_list.add( getVersion() );
         ref_list.add( getRelease() );
         ref_list.add( getArch() );
-        ref_list.add( getFilepath() );
-        ref_list.add( getExtendedName() );
 
-        ref_list.add( getSizeDiffers() );
-        ref_list.add( getModeDiffers() );
-        ref_list.add( getMd5Differs() );
-        ref_list.add( getDeviceDiffers() );
-        ref_list.add( getLinkMismatch() );
-        ref_list.add( getOwnershipDiffers() );
-        ref_list.add( getGroupDiffers() );
-        ref_list.add( getMtimeDiffers() );
-        ref_list.add( getCapabilitiesDiffers() );
-
-        ref_list.add( getConfigurationFile() );
-        ref_list.add( getDocumentationFile() );
-        ref_list.add( getGhostFile() );
-        ref_list.add( getLicenseFile() );
-        ref_list.add( getReadmeFile() );
+        ref_list.add( getDependencyCheckPassed() );
+        ref_list.add( getDigestCheckPassed() );
+        ref_list.add( getVerificationScriptSuccessful() );
+        ref_list.add( getSignatureCheckPassed() );
 
         return ref_list;
     }
@@ -503,7 +273,7 @@ public class RpmVerifyFileState
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmVerifyFileState)) {
+        if (!(obj instanceof RpmVerifyPackageState)) {
             return false;
         }
 
@@ -515,28 +285,16 @@ public class RpmVerifyFileState
     @Override
     public String toString()
     {
-        return "rpmverifyfile_state[" + super.toString()
+        return "rpmverifypackage_state[" + super.toString()
                         + ", name="                 + getName()
                         + ", epoch="                + getEpoch()
                         + ", version="              + getVersion()
                         + ", release="              + getRelease()
                         + ", arch="                 + getArch()
-                        + ", filepath="             + getFilepath()
-                        + ", extended_name="        + getExtendedName()
-                        + ", size_differs="         + getSizeDiffers()
-                        + ", mode_differs="         + getModeDiffers()
-                        + ", md5_differs="          + getMd5Differs()
-                        + ", device_differs="       + getDeviceDiffers()
-                        + ", link_mismatch="        + getLinkMismatch()
-                        + ", ownership_differs="    + getOwnershipDiffers()
-                        + ", group_differs="        + getGroupDiffers()
-                        + ", mtime_differs="        + getMtimeDiffers()
-                        + ", capabilities_differ="  + getCapabilitiesDiffers()
-                        + ", configuration_file="   + getConfigurationFile()
-                        + ", documentation_file="   + getDocumentationFile()
-                        + ", ghost_file="           + getGhostFile()
-                        + ", license_file="         + getLicenseFile()
-                        + ", readme_file="          + getReadmeFile()
+                        + ", configuration_file="   + getDependencyCheckPassed()
+                        + ", documentation_file="   + getDigestCheckPassed()
+                        + ", ghost_file="           + getVerificationScriptSuccessful()
+                        + ", license_file="         + getSignatureCheckPassed()
 
                         + "]";
     }

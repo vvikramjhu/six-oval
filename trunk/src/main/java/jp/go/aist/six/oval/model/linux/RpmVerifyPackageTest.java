@@ -29,27 +29,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The rpmverifyfile_test is used to verify the integrity of the individual files
- * in installed RPMs.
+ * The rpmverifypackage_test is used to verify the integrity of installed RPMs.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmVerifyFileTest
+public class RpmVerifyPackageTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public RpmVerifyFileTest()
+    public RpmVerifyPackageTest()
     {
         this( null, 0 );
     }
 
 
-    public RpmVerifyFileTest(
+    public RpmVerifyPackageTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +57,7 @@ public class RpmVerifyFileTest
     }
 
 
-    public RpmVerifyFileTest(
+    public RpmVerifyPackageTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -69,7 +68,7 @@ public class RpmVerifyFileTest
     }
 
 
-    public RpmVerifyFileTest(
+    public RpmVerifyPackageTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -81,7 +80,7 @@ public class RpmVerifyFileTest
         super( id, version, comment, check, object, stateList );
 
         _oval_family = Family.LINUX;
-        _oval_component = ComponentType.RPMVERIFYFILE;
+        _oval_component = ComponentType.RPMVERIFYPACKAGE;
     }
 
 
@@ -103,7 +102,7 @@ public class RpmVerifyFileTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmVerifyFileTest)) {
+        if (!(obj instanceof RpmVerifyPackageTest)) {
             return false;
         }
 
@@ -115,7 +114,7 @@ public class RpmVerifyFileTest
     @Override
     public String toString()
     {
-        return "rpmverifyfile_test[" + super.toString() + "]";
+        return "rpmverifypackage_test[" + super.toString() + "]";
     }
 
 }
