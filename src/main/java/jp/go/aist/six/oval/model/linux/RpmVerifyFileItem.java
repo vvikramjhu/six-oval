@@ -23,7 +23,7 @@ import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -31,39 +31,54 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The rpminfo item stores rpm info.
+ * This item stores the verification results of the individual files in an RPM
+ * similar to what is produced by the rpm -V command.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoItem
+public class RpmVerifyFileItem
     extends ItemType
 {
 
     //{0..1}
     private EntityItemStringType        name;
-    private EntityItemStringType        arch;
     private EntityItemAnySimpleType     epoch;
-    private EntityItemAnySimpleType     release;
     private EntityItemAnySimpleType     version;
-    private EntityItemEVRStringType     evr;
-    private EntityItemStringType        signature_keyid;
-    private EntityItemStringType        extended_name;
+    private EntityItemAnySimpleType     release;
+    private EntityItemStringType        arch;
     private EntityItemStringType        filepath;
+    private EntityItemStringType        extended_name;
+
+    private EntityItemRpmVerifyResultType  size_differs;
+    private EntityItemRpmVerifyResultType  mode_differs;
+    private EntityItemRpmVerifyResultType  md5_differs;
+    private EntityItemRpmVerifyResultType  device_differs;
+    private EntityItemRpmVerifyResultType  link_mismatch;
+    private EntityItemRpmVerifyResultType  ownership_differs;
+    private EntityItemRpmVerifyResultType  group_differs;
+    private EntityItemRpmVerifyResultType  mtime_differs;
+    private EntityItemRpmVerifyResultType  capabilities_differ;
+
+    private EntityItemBoolType             configuration_file;
+    private EntityItemBoolType             documentation_file;
+    private EntityItemBoolType             ghost_file;
+    private EntityItemBoolType             license_file;
+    private EntityItemBoolType             readme_file;
 
 
 
     /**
      * Constructor.
      */
-    public RpmInfoItem()
+    public RpmVerifyFileItem()
     {
         this( 0 );
     }
 
 
-    public RpmInfoItem(
+    public RpmVerifyFileItem(
                     final int id
                     )
     {
@@ -71,17 +86,15 @@ public class RpmInfoItem
     }
 
 
-    public RpmInfoItem(
+    public RpmVerifyFileItem(
                     final int id,
                     final StatusEnumeration status
                     )
     {
         super( id, status );
 
-//        _oval_platform_type = OvalPlatformType.linux;
-//        _oval_component_type = OvalComponentType.rpminfo;
         _oval_family = Family.LINUX;
-        _oval_component = ComponentType.RPMINFO;
+        _oval_component = ComponentType.RPMVERIFYFILE;
     }
 
 //    public RpmInfoItem(
@@ -157,51 +170,6 @@ public class RpmInfoItem
     }
 
 
-    public RpmInfoItem name(
-                    final String name
-                    )
-    {
-        setName( new EntityItemStringType( name ) );
-        return this;
-    }
-
-
-    public RpmInfoItem name(
-                    final EntityItemStringType name
-                    )
-    {
-        setName( name );
-        return this;
-    }
-
-
-
-
-    /**
-     */
-    public void setArch(
-                    final EntityItemStringType arch
-                    )
-    {
-        this.arch = arch;
-    }
-
-
-    public EntityItemStringType getArch()
-    {
-        return arch;
-    }
-
-
-    public RpmInfoItem arch(
-                    final String arch
-                    )
-    {
-        setArch( new EntityItemStringType( arch ) );
-        return this;
-    }
-
-
 
     /**
      */
@@ -229,54 +197,6 @@ public class RpmInfoItem
     public EntityItemAnySimpleType getEpoch()
     {
         return epoch;
-    }
-
-
-    public RpmInfoItem epoch(
-                    final String epoch
-                    )
-    {
-        setEpoch( new EntityItemAnySimpleType( epoch ) );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setRelease(
-                    final EntityItemAnySimpleType release
-                    )
-    {
-        if (release != null) {
-            DatatypeEnumeration  datatype = release.getDatatype();
-            if (datatype != null) {
-                if (datatype == DatatypeEnumeration.STRING
-                                ||  datatype == DatatypeEnumeration.VERSION) {
-                    // xsd:restriction satisfied.
-                } else {
-                    throw new IllegalArgumentException(
-                                    "invalid release: datatype=" + datatype );
-                }
-            }
-        }
-
-        this.release = release;
-    }
-
-
-    public EntityItemAnySimpleType getRelease()
-    {
-        return release;
-    }
-
-
-    public RpmInfoItem release(
-                    final String release
-                    )
-    {
-        setRelease( new EntityItemAnySimpleType( release ) );
-        return this;
     }
 
 
@@ -310,64 +230,67 @@ public class RpmInfoItem
     }
 
 
-    public RpmInfoItem version(
-                    final String version
+
+    /**
+     */
+    public void setRelease(
+                    final EntityItemAnySimpleType release
                     )
     {
-        setVersion( new EntityItemAnySimpleType( version ) );
-        return this;
+        if (release != null) {
+            DatatypeEnumeration  datatype = release.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid release: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.release = release;
+    }
+
+
+    public EntityItemAnySimpleType getRelease()
+    {
+        return release;
     }
 
 
 
     /**
      */
-    public void setEvr(
-                    final EntityItemEVRStringType evr
+    public void setArch(
+                    final EntityItemStringType arch
                     )
     {
-        this.evr = evr;
+        this.arch = arch;
     }
 
 
-    public EntityItemEVRStringType getEvr()
+    public EntityItemStringType getArch()
     {
-        return evr;
-    }
-
-
-    public RpmInfoItem evr(
-                    final String evr
-                    )
-    {
-        setEvr( new EntityItemEVRStringType( evr ) );
-        return this;
+        return arch;
     }
 
 
 
     /**
      */
-    public void setSignatureKeyId(
-                    final EntityItemStringType signature_keyid
+    public void setFilepath(
+                    final EntityItemStringType filepath
                     )
     {
-        this.signature_keyid = signature_keyid;
+        this.filepath = filepath;
     }
 
 
-    public EntityItemStringType getSignatureKeyId()
+    public EntityItemStringType getFilepath()
     {
-        return signature_keyid;
-    }
-
-
-    public RpmInfoItem signatureKeyId(
-                    final String signature_keyid
-                    )
-    {
-        setSignatureKeyId( new EntityItemStringType( signature_keyid ) );
-        return this;
+        return filepath;
     }
 
 
@@ -391,17 +314,238 @@ public class RpmInfoItem
 
     /**
      */
-    public void setFilepath(
-                    final EntityItemStringType filepath
+    public void setSizeDiffers(
+                    final EntityItemRpmVerifyResultType size_differs
                     )
     {
-        this.filepath = filepath;
+        this.size_differs = size_differs;
     }
 
 
-    public EntityItemStringType getFilepath()
+    public EntityItemRpmVerifyResultType getSizeDiffers()
     {
-        return filepath;
+        return size_differs;
+    }
+
+
+
+    /**
+     */
+    public void setModeDiffers(
+                    final EntityItemRpmVerifyResultType mode_differs
+                    )
+    {
+        this.mode_differs = mode_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getModeDiffers()
+    {
+        return mode_differs;
+    }
+
+
+
+    /**
+     */
+    public void setMd5Differs(
+                    final EntityItemRpmVerifyResultType md5_differs
+                    )
+    {
+        this.md5_differs = md5_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getMd5Differs()
+    {
+        return md5_differs;
+    }
+
+
+
+    /**
+     */
+    public void setDeviceDiffers(
+                    final EntityItemRpmVerifyResultType device_differs
+                    )
+    {
+        this.device_differs = device_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getDeviceDiffers()
+    {
+        return device_differs;
+    }
+
+
+
+    /**
+     */
+    public void setLinkMismatch(
+                    final EntityItemRpmVerifyResultType link_mismatch
+                    )
+    {
+        this.link_mismatch = link_mismatch;
+    }
+
+
+    public EntityItemRpmVerifyResultType getLinkMismatch()
+    {
+        return link_mismatch;
+    }
+
+
+
+    /**
+     */
+    public void setOwnershipDiffers(
+                    final EntityItemRpmVerifyResultType ownership_differs
+                    )
+    {
+        this.ownership_differs = ownership_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getOwnershipDiffers()
+    {
+        return ownership_differs;
+    }
+
+
+
+    /**
+     */
+    public void setGroupDiffers(
+                    final EntityItemRpmVerifyResultType group_differs
+                    )
+    {
+        this.group_differs = group_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getGroupDiffers()
+    {
+        return group_differs;
+    }
+
+
+
+    /**
+     */
+    public void setMtimeDiffers(
+                    final EntityItemRpmVerifyResultType mtime_differs
+                    )
+    {
+        this.mtime_differs = mtime_differs;
+    }
+
+
+    public EntityItemRpmVerifyResultType getMtimeDiffers()
+    {
+        return mtime_differs;
+    }
+
+
+
+    /**
+     */
+    public void setCapabilitiesDiffer(
+                    final EntityItemRpmVerifyResultType capabilities_differ
+                    )
+    {
+        this.capabilities_differ = capabilities_differ;
+    }
+
+
+    public EntityItemRpmVerifyResultType getCapabilitiesDiffer()
+    {
+        return capabilities_differ;
+    }
+
+
+
+    /**
+     */
+    public void setConfigurationFile(
+                    final EntityItemBoolType configuration_file
+                    )
+    {
+        this.configuration_file = configuration_file;
+    }
+
+
+    public EntityItemBoolType getConfigurationFile()
+    {
+        return configuration_file;
+    }
+
+
+
+    /**
+     */
+    public void setDocumentationFile(
+                    final EntityItemBoolType documentation_file
+                    )
+    {
+        this.documentation_file = documentation_file;
+    }
+
+
+    public EntityItemBoolType getDocumentationFile()
+    {
+        return documentation_file;
+    }
+
+
+
+    /**
+     */
+    public void setGhostFile(
+                    final EntityItemBoolType ghost_file
+                    )
+    {
+        this.ghost_file = ghost_file;
+    }
+
+
+    public EntityItemBoolType getGhostFile()
+    {
+        return ghost_file;
+    }
+
+
+
+    /**
+     */
+    public void setLicenseFile(
+                    final EntityItemBoolType license_file
+                    )
+    {
+        this.license_file = license_file;
+    }
+
+
+    public EntityItemBoolType getLicenseFile()
+    {
+        return license_file;
+    }
+
+
+
+    /**
+     */
+    public void setReadmeFile(
+                    final EntityItemBoolType readme_file
+                    )
+    {
+        this.readme_file = readme_file;
+    }
+
+
+    public EntityItemBoolType getReadmeFile()
+    {
+        return readme_file;
     }
 
 
@@ -413,18 +557,30 @@ public class RpmInfoItem
     @Override
     public String toString()
     {
-        return "rpminfo_item[" + super.toString()
-                        + ", name="         + getName()
-                        + ", arch="         + getArch()
-                        + ", epoch="        + getEpoch()
-                        + ", release="      + getRelease()
-                        + ", version="      + getVersion()
-                        + ", evr="          + getEvr()
-                        + ", signature_keyid="  + getSignatureKeyId()
-                        + ", extended_name="    + getExtendedName()
-                        + ", filepath="     + getFilepath()
+        return "rpmverifyfile_item[" + super.toString()
+                        + ", name="                 + getName()
+                        + ", epoch="                + getEpoch()
+                        + ", version="              + getVersion()
+                        + ", release="              + getRelease()
+                        + ", arch="                 + getArch()
+                        + ", filepath="             + getFilepath()
+                        + ", extended_name="        + getExtendedName()
+                        + ", size_differs="         + getSizeDiffers()
+                        + ", mode_differs="         + getModeDiffers()
+                        + ", md5_differs="          + getMd5Differs()
+                        + ", device_differs="       + getDeviceDiffers()
+                        + ", link_mismatch="        + getLinkMismatch()
+                        + ", ownership_differs="    + getOwnershipDiffers()
+                        + ", group_differs="        + getGroupDiffers()
+                        + ", mtime_differs="        + getMtimeDiffers()
+                        + ", capabilities_differ="  + getCapabilitiesDiffer()
+                        + ", configuration_file="   + getConfigurationFile()
+                        + ", documentation_file="   + getDocumentationFile()
+                        + ", ghost_file="           + getGhostFile()
+                        + ", license_file="         + getLicenseFile()
+                        + ", readme_file="          + getReadmeFile()
              + "]";
     }
 
 }
-//RpmInfoItem
+//
