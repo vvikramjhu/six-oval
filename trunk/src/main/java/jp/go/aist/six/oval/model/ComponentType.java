@@ -54,6 +54,7 @@ public enum ComponentType
     GROUP,                          // windows
     GROUP_SID,                      // windows
 
+    IFLISTENERS,                    // linux
     INETD,                          // unix
     INETLISTENINGSERVERS,           // linux
     INTERFACE,                      // unix, windows
@@ -85,6 +86,7 @@ public enum ComponentType
     REGKEYEFFECTIVERIGHTS53,        // windows
     RPMINFO,                        // linux
     RPMVERIFY,                      // linux
+    RPMVERIFYFILE,                  // linux
     RUNLEVEL,                       // unix
 
     SELINUXBOOLEAN,                 // linux
@@ -206,10 +208,12 @@ public enum ComponentType
 
     public static final ComponentType[]  LINUX = new ComponentType[] {
         ComponentType.DPKGINFO,
+        ComponentType.IFLISTENERS,
         ComponentType.INETLISTENINGSERVERS,
         ComponentType.PARTITION,
         ComponentType.RPMINFO,
         ComponentType.RPMVERIFY,
+        ComponentType.RPMVERIFYFILE,
         ComponentType.SELINUXBOOLEAN,
         ComponentType.SELINUXSECURITYCONTEXT,
         ComponentType.SLACKWAREPKGINFO,

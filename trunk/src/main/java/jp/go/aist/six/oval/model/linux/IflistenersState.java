@@ -17,14 +17,13 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.solaris;
+package jp.go.aist.six.oval.model.linux;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -32,33 +31,37 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The iflisteners_state element defines the different information that can be
+ * used to evaluate the specified applications that are listening on interfaces on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NddState
+public class IflistenersState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType           device;
-    private EntityStateIntType              instance;
-    private EntityStateStringType           parameter;
-    private EntityStateAnySimpleType        value;
+    private EntityStateStringType       interface_name;
+    private EntityStateProtocolType     protocol;
+    private EntityStateStringType       hw_address;
+    private EntityStateStringType       program_name;
+    private EntityStateIntType          pid;
+    private EntityStateIntType          user_id;
 
 
 
     /**
      * Constructor.
      */
-    public NddState()
+    public IflistenersState()
     {
         this( null, 0 );
     }
 
 
-    public NddState(
+    public IflistenersState(
                     final String id,
                     final int version
                     )
@@ -67,7 +70,7 @@ public class NddState
     }
 
 
-    public NddState(
+    public IflistenersState(
                     final String id,
                     final int version,
                     final String comment
@@ -75,76 +78,110 @@ public class NddState
     {
         super( id, version, comment );
 
-        _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.NDD;
+        _oval_family = Family.LINUX;
+        _oval_component = ComponentType.IFLISTENERS;
     }
 
 
 
     /**
      */
-    public void setDevice(
-                    final EntityStateStringType device
+    public void setInterfaceName(
+                    final EntityStateStringType interface_name
                     )
     {
-        this.device = device;
+        this.interface_name = interface_name;
     }
 
 
-    public EntityStateStringType getDevice()
+    public EntityStateStringType getInterfaceName()
     {
-        return device;
+        return interface_name;
     }
 
 
 
     /**
      */
-    public void setInstance(
-                    final EntityStateIntType instance
+    public void setProtocol(
+                    final EntityStateProtocolType protocol
                     )
     {
-        this.instance = instance;
+        this.protocol = protocol;
     }
 
 
-    public EntityStateIntType getInstance()
+    public EntityStateProtocolType getProtocol()
     {
-        return instance;
+        return protocol;
     }
 
 
 
     /**
      */
-    public void setParameter(
-                    final EntityStateStringType parameter
+    public void setHwAddress(
+                    final EntityStateStringType hw_address
                     )
     {
-        this.parameter = parameter;
+        this.hw_address = hw_address;
     }
 
 
-    public EntityStateStringType getParameter()
+    public EntityStateStringType getHwAddress()
     {
-        return parameter;
+        return hw_address;
     }
 
 
 
     /**
      */
-    public void setValue(
-                    final EntityStateAnySimpleType value
+    public void setProgramName(
+                    final EntityStateStringType program_name
                     )
     {
-        this.value = value;
+        this.program_name = program_name;
     }
 
 
-    public EntityStateAnySimpleType getValue()
+    public EntityStateStringType getProgramName()
     {
-        return value;
+        return program_name;
+    }
+
+
+
+    /**
+     */
+    public void setPid(
+                    final EntityStateIntType pid
+                    )
+    {
+        this.pid = pid;
+    }
+
+
+    public EntityStateIntType getPid()
+    {
+        return pid;
+    }
+
+
+
+    /**
+     */
+    public void setUserId(
+                    final EntityStateIntType user_id
+                    )
+    {
+        this.user_id = user_id;
+    }
+
+
+    public EntityStateIntType getUserId()
+    {
+        return user_id;
     }
 
 
@@ -157,10 +194,12 @@ public class NddState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getDevice() );
-        ref_list.add( getInstance() );
-        ref_list.add( getParameter() );
-        ref_list.add( getValue() );
+        ref_list.add( getInterfaceName() );
+        ref_list.add( getProtocol() );
+        ref_list.add( getHwAddress() );
+        ref_list.add( getProgramName() );
+        ref_list.add( getPid() );
+        ref_list.add( getUserId() );
 
         return ref_list;
     }
@@ -184,7 +223,7 @@ public class NddState
                     final Object obj
                     )
     {
-        if (!(obj instanceof NddState)) {
+        if (!(obj instanceof IflistenersState)) {
             return false;
         }
 
@@ -196,13 +235,14 @@ public class NddState
     @Override
     public String toString()
     {
-        return "ndd_state[" + super.toString()
-                        + ", protocol="         + getDevice()
-                        + ", port="             + getInstance()
-                        + ", server="           + getParameter()
-                        + ", user="             + getValue()
+        return "iflisteners_state[" + super.toString()
+             + ", interface_name="  + getInterfaceName()
+             + ", protocol="        + getProtocol()
+             + ", hw_address="      + getHwAddress()
+             + ", program_name="    + getProgramName()
+             + ", pid="             + getPid()
+             + ", user_id="         + getUserId()
              + "]";
     }
-
 }
 //

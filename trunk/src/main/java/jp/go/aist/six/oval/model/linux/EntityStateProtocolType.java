@@ -24,22 +24,21 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateRpmVerifyResultType restricts a string value
- * to the set of possible outcomes of checking an attribute of a file
- * included in an RPM against the actual value of that attribute in the RPM database.
+ * The EntityStateProtocolType restricts a string value to the set of physical layer protocols
+ * used by AF_PACKET sockets.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateRpmVerifyResultType
+public class EntityStateProtocolType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRpmVerifyResultType()
+    public EntityStateProtocolType()
     {
     }
 
@@ -99,7 +98,7 @@ public class EntityStateRpmVerifyResultType
                     )
     {
         if (content != null) {
-            RpmVerifyResultEnumeration.fromValue( content );
+            ProtocolEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -128,7 +127,7 @@ public class EntityStateRpmVerifyResultType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRpmVerifyResultType)) {
+        if (!(obj instanceof EntityStateProtocolType)) {
             return false;
         }
 

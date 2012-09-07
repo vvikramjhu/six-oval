@@ -19,78 +19,41 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 
 /**
- * The EntityStateRpmVerifyResultType restricts a string value
- * to the set of possible outcomes of checking an attribute of a file
- * included in an RPM against the actual value of that attribute in the RPM database.
+ * The EntityStateProtocolType complex type restricts a string value to the set of
+ * physical layer protocols used by AF_PACKET sockets.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateRpmVerifyResultType
-    extends EntityStateStringType
+public class EntityItemProtocolType
+    extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRpmVerifyResultType()
+    public EntityItemProtocolType()
     {
     }
 
 
-//    public EntityStateRegistryTypeType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final String data,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        this( data, FIXED_DATATYPE, operation );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final String data,
-//                    final DatatypeEnumeration datatype,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        super( data, datatype, operation );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final RegistryTypeEnumeration data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final RegistryTypeEnumeration data,
-//                    final Operation operation
-//                    )
-//    {
-//        this( (data == null ? null : data.getName()), operation );
-//    }
+    public EntityItemProtocolType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
 
 
 
     //**************************************************************
-    //  EntitySimpleBaseType
+    //  EntityItemBase
     //**************************************************************
 
     @Override
@@ -99,7 +62,8 @@ public class EntityStateRpmVerifyResultType
                     )
     {
         if (content != null) {
-            RpmVerifyResultEnumeration.fromValue( content );
+            // validation
+            ProtocolEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -128,7 +92,7 @@ public class EntityStateRpmVerifyResultType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRpmVerifyResultType)) {
+        if (!(obj instanceof EntityItemProtocolType)) {
             return false;
         }
 
