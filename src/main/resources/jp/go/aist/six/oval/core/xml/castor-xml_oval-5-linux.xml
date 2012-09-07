@@ -231,9 +231,15 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
             ns-prefix=""/>
 
-        <field name="mountPoint" 
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="interfaceName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
-            <bind-xml name="mount_point" node="element"/>
+            <bind-xml name="interface_name" node="element"/>
         </field>
 
         <field name="filter" 
@@ -251,44 +257,34 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
             ns-prefix=""/>
 
-        <field name="mountPoint" 
+        <field name="interfaceName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-            <bind-xml name="mount_point" node="element"/>
+            <bind-xml name="interface_name" node="element"/>
         </field>
 
-        <field name="device" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-            <bind-xml name="device" node="element"/>
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateProtocolType">
+            <bind-xml name="protocol" node="element"/>
         </field>
 
-        <field name="uuid" 
+        <field name="hwAddress" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType" >
-            <bind-xml name="uuid" node="element"/>
+            <bind-xml name="hw_address" node="element"/>
         </field>
 
-        <field name="fsType" 
+        <field name="programName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-            <bind-xml name="fs_type" node="element"/>
+            <bind-xml name="program_name" node="element"/>
         </field>
 
-        <field name="mountOptions" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-            <bind-xml name="mount_options" node="element"/>
-        </field>
-
-        <field name="totalSpace" 
+        <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
-            <bind-xml name="total_space" node="element"/>
+            <bind-xml name="pid" node="element"/>
         </field>
 
-        <field name="spaceUsed" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
-            <bind-xml name="space_used" node="element"/>
-        </field>
-
-        <field name="spaceLeft" 
+        <field name="userId" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
-            <bind-xml name="space_left" node="element"/>
+            <bind-xml name="user_id" node="element"/>
         </field>
     </class>
 
@@ -300,44 +296,34 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
             ns-prefix=""/>
 
-        <field name="mountPoint" 
+        <field name="interfaceName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-            <bind-xml name="mount_point" node="element"/>
+            <bind-xml name="interface_name" node="element"/>
         </field>
 
-        <field name="device" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-            <bind-xml name="device" node="element"/>
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemProtocolType">
+            <bind-xml name="protocol" node="element"/>
         </field>
 
-        <field name="uuid" 
+        <field name="hwAddress" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType" >
-            <bind-xml name="uuid" node="element"/>
+            <bind-xml name="hw_address" node="element"/>
         </field>
 
-        <field name="fsType" 
+        <field name="programName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-            <bind-xml name="fs_type" node="element"/>
+            <bind-xml name="program_name" node="element"/>
         </field>
 
-        <field name="mountOptions" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-            <bind-xml name="mount_options" node="element"/>
-        </field>
-
-        <field name="totalSpace" 
+        <field name="pid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
-            <bind-xml name="total_space" node="element"/>
+            <bind-xml name="pid" node="element"/>
         </field>
 
-        <field name="spaceUsed" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
-            <bind-xml name="space_used" node="element"/>
-        </field>
-
-        <field name="spaceLeft" 
+        <field name="userId" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
-            <bind-xml name="space_left" node="element"/>
+            <bind-xml name="userId" node="element"/>
         </field>
     </class>
 
@@ -1512,7 +1498,17 @@
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
 
-<!-- volume -->
+<!-- protocol -->
+    <class name="jp.go.aist.six.oval.model.linux.EntityStateProtocolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.EntityItemProtocolType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+<!-- rpm verify result -->
     <class name="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
@@ -1520,7 +1516,6 @@
     <class name="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
-
 
 
 </mapping>
