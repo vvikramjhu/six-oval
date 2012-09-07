@@ -34,14 +34,14 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The rpmverifyfile_object is used by a rpmverifyfile_test to define a set of files
- * within a set of RPMs to verify.
+ * The rpmverifypackage_object is used by a rpmverity_test
+ * to define a set of RPMs to verify.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmVerifyFileObject
+public class RpmVerifyPackageObject
     extends SystemObjectType
 {
 
@@ -52,7 +52,7 @@ public class RpmVerifyFileObject
     private Set  set;
     //{1..1}
 
-    private RpmVerifyFileBehaviors  behaviors;
+    private RpmVerifyPackageBehaviors  behaviors;
     //{0..1}
 
     private EntityObjectStringType  name;
@@ -73,9 +73,6 @@ public class RpmVerifyFileObject
     private EntityObjectStringType  arch;
     //{0..1}
 
-    private EntityObjectStringType  filepath;
-    //{1..1}
-
     private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
@@ -85,13 +82,13 @@ public class RpmVerifyFileObject
     /**
      * Constructor.
      */
-    public RpmVerifyFileObject()
+    public RpmVerifyPackageObject()
     {
         this( null, 0 );
     }
 
 
-    public RpmVerifyFileObject(
+    public RpmVerifyPackageObject(
                     final String id,
                     final int version
                     )
@@ -100,7 +97,7 @@ public class RpmVerifyFileObject
     }
 
 
-    public RpmVerifyFileObject(
+    public RpmVerifyPackageObject(
                     final String id,
                     final int version,
                     final String comment
@@ -109,7 +106,7 @@ public class RpmVerifyFileObject
         super( id, version, comment );
 
         _oval_family = Family.LINUX;
-        _oval_component = ComponentType.RPMVERIFYFILE;
+        _oval_component = ComponentType.RPMVERIFYPACKAGE;
     }
 
 
@@ -134,14 +131,14 @@ public class RpmVerifyFileObject
     /**
      */
     public void setBehaviors(
-                    final RpmVerifyFileBehaviors behaviors
+                    final RpmVerifyPackageBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public RpmVerifyFileBehaviors getBehaviors()
+    public RpmVerifyPackageBehaviors getBehaviors()
     {
         return behaviors;
     }
@@ -235,23 +232,6 @@ public class RpmVerifyFileObject
 
     /**
      */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return filepath;
-    }
-
-
-
-    /**
-     */
     public void setFilter(
                     final Collection<? extends Filter> filters
                     )
@@ -303,7 +283,6 @@ public class RpmVerifyFileObject
         ref_list.add( getVersion() );
         ref_list.add( getRelease() );
         ref_list.add( getArch() );
-        ref_list.add( getFilepath() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -328,7 +307,7 @@ public class RpmVerifyFileObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmVerifyFileObject)) {
+        if (!(obj instanceof RpmVerifyPackageObject)) {
             return false;
         }
 
@@ -340,7 +319,7 @@ public class RpmVerifyFileObject
     @Override
     public String toString()
     {
-        return "rpmverifyfile_object[" + super.toString()
+        return "rpmverifypackage_object[" + super.toString()
                         + ", set="          + getSet()
                         + ", behaviors="    + getBehaviors()
                         + ", name="         + getName()
@@ -348,7 +327,6 @@ public class RpmVerifyFileObject
                         + ", version="      + getVersion()
                         + ", release="      + getRelease()
                         + ", arch="         + getArch()
-                        + ", filepath="     + getFilepath()
                         + ", filter="       + getFilter()
                         + "]";
     }

@@ -87,6 +87,7 @@ public enum ComponentType
     RPMINFO,                        // linux
     RPMVERIFY,                      // linux
     RPMVERIFYFILE,                  // linux
+    RPMVERIFYPACKAGE,               // linux
     RUNLEVEL,                       // unix
 
     SELINUXBOOLEAN,                 // linux
@@ -214,6 +215,7 @@ public enum ComponentType
         ComponentType.RPMINFO,
         ComponentType.RPMVERIFY,
         ComponentType.RPMVERIFYFILE,
+        ComponentType.RPMVERIFYPACKAGE,
         ComponentType.SELINUXBOOLEAN,
         ComponentType.SELINUXSECURITYCONTEXT,
         ComponentType.SLACKWAREPKGINFO,
