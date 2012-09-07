@@ -202,6 +202,148 @@
 
 
     <!-- ******************************************************* -->
+    <!-- iflisteners                                             -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.linux.IfListenersTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="iflisteners_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.IfListenersObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="iflisteners_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="mountPoint" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="mount_point" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.IfListenersState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="iflisteners_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="mountPoint" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="mount_point" node="element"/>
+        </field>
+
+        <field name="device" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="device" node="element"/>
+        </field>
+
+        <field name="uuid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType" >
+            <bind-xml name="uuid" node="element"/>
+        </field>
+
+        <field name="fsType" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="fs_type" node="element"/>
+        </field>
+
+        <field name="mountOptions" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="mount_options" node="element"/>
+        </field>
+
+        <field name="totalSpace" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="total_space" node="element"/>
+        </field>
+
+        <field name="spaceUsed" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="space_used" node="element"/>
+        </field>
+
+        <field name="spaceLeft" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="space_left" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.linux.IfListenersItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="iflisteners_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="mountPoint" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="mount_point" node="element"/>
+        </field>
+
+        <field name="device" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="device" node="element"/>
+        </field>
+
+        <field name="uuid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType" >
+            <bind-xml name="uuid" node="element"/>
+        </field>
+
+        <field name="fsType" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="fs_type" node="element"/>
+        </field>
+
+        <field name="mountOptions" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="mount_options" node="element"/>
+        </field>
+
+        <field name="totalSpace" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="total_space" node="element"/>
+        </field>
+
+        <field name="spaceUsed" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="space_used" node="element"/>
+        </field>
+
+        <field name="spaceLeft" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="space_left" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- inetlisteningserver                                     -->
     <!-- ******************************************************* -->
 

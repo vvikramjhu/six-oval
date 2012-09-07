@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.windows.EntityItemProtocolType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IflistenersItem
+public class IfLlistenersItem
     extends ItemType
 {
 
@@ -53,13 +53,13 @@ public class IflistenersItem
     /**
      * Constructor.
      */
-    public IflistenersItem()
+    public IfLlistenersItem()
     {
         this( 0 );
     }
 
 
-    public IflistenersItem(
+    public IfLlistenersItem(
                     final int id
                     )
     {
