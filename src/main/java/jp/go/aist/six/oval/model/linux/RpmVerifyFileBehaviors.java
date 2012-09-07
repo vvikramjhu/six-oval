@@ -17,39 +17,62 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.solaris;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalObject;
 
 
 
 /**
- * The PackageCheckBehaviors complex type defines a set of behaviors
- * that for controlling how installed packages are checked.
+ * The RpmVerifyFileBehaviors defines a set of behaviors
+ * that for controlling how the individual files in installed rpms are verified.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageCheckBehaviors
+public class RpmVerifyFileBehaviors
     implements OvalObject
 {
 
-    public static final Boolean  DEFAULT_FILEATTRIBUTES_ONLY = Boolean.FALSE;
-
-    private Boolean  fileattributes_only;
+    public static final Boolean  DEFAULT_NOLINKTO = Boolean.FALSE;
+    private Boolean  nolinkto;
     //{optional, default="false"}
 
-
-    public static final Boolean  DEFAULT_FILECONTENTS_ONLY = Boolean.FALSE;
-
-    private Boolean  filecontents_only;
+    public static final Boolean  DEFAULT_NOMD5 = Boolean.FALSE;
+    private Boolean  nomd5;
     //{optional, default="false"}
 
+    public static final Boolean  DEFAULT_NOSIZE = Boolean.FALSE;
+    private Boolean  nosize;
+    //{optional, default="false"}
 
-    public static final Boolean  DEFAULT_NO_VOLATILEEDITABLE = Boolean.FALSE;
+    public static final Boolean  DEFAULT_NOUSER = Boolean.FALSE;
+    private Boolean  nouser;
+    //{optional, default="false"}
 
-    private Boolean  no_volatileeditable;
+    public static final Boolean  DEFAULT_NOGROUP = Boolean.FALSE;
+    private Boolean  nogroup;
+    //{optional, default="false"}
+
+    public static final Boolean  DEFAULT_NOMTIME = Boolean.FALSE;
+    private Boolean  nomtime;
+    //{optional, default="false"}
+
+    public static final Boolean  DEFAULT_NOMODE = Boolean.FALSE;
+    private Boolean  nomode;
+    //{optional, default="false"}
+
+    public static final Boolean  DEFAULT_NORDEV = Boolean.FALSE;
+    private Boolean  nordev;
+    //{optional, default="false"}
+
+    public static final Boolean  DEFAULT_NOCONFIGFILES = Boolean.FALSE;
+    private Boolean  noconfigfiles;
+    //{optional, default="false"}
+
+    public static final Boolean  DEFAULT_NOGHOSTFILES = Boolean.FALSE;
+    private Boolean  noghostfiles;
     //{optional, default="false"}
 
 
@@ -57,7 +80,7 @@ public class PackageCheckBehaviors
     /**
      * Constructor.
      */
-    public PackageCheckBehaviors()
+    public RpmVerifyFileBehaviors()
     {
     }
 
@@ -65,72 +88,240 @@ public class PackageCheckBehaviors
 
     /**
      */
-    public void setFileattributesOnly(
-                    final Boolean fileattributes_only
+    public void setNoLinkto(
+                    final Boolean nolinkto
                     )
     {
-        this.fileattributes_only = fileattributes_only;
+        this.nolinkto = nolinkto;
     }
 
 
-    public Boolean isFileattributesOnly()
+    public Boolean isNoLinkto()
     {
-        return fileattributes_only;
+        return nolinkto;
     }
 
 
-    public boolean canonicalIsFileattributesOnly()
+    public boolean canonicalIsNoLinkto()
     {
-        Boolean  fileattributes_only = isFileattributesOnly();
-        return (fileattributes_only == null ? DEFAULT_FILEATTRIBUTES_ONLY : fileattributes_only);
+        final Boolean  nolinkto = isNoLinkto();
+        return (nolinkto == null ? DEFAULT_NOLINKTO : nolinkto);
     }
 
 
 
     /**
      */
-    public void setFilecontentsOnly(
-                    final Boolean filecontents_only
+    public void setNoMd5(
+                    final Boolean nomd5
                     )
     {
-        this.filecontents_only = filecontents_only;
+        this.nomd5 = nomd5;
     }
 
 
-    public Boolean isFilecontentsOnly()
+    public Boolean isNoMd5()
     {
-        return filecontents_only;
+        return nomd5;
     }
 
 
-    public boolean canonicalIsFilecontentsOnly()
+    public boolean canonicalIsNoMd5()
     {
-        Boolean  filecontents_only = isFilecontentsOnly();
-        return (filecontents_only == null ? DEFAULT_FILECONTENTS_ONLY : filecontents_only);
+        final Boolean  nomd5 = isNoMd5();
+        return (nomd5 == null ? DEFAULT_NOMD5 : nomd5);
     }
 
 
 
     /**
      */
-    public void setNoVolatileeditable(
-                    final boolean no_volatileeditable
+    public void setNoSize(
+                    final Boolean nosize
                     )
     {
-        this.no_volatileeditable = no_volatileeditable;
+        this.nosize = nosize;
     }
 
 
-    public Boolean isNoVolatileeditable()
+    public Boolean isNoSize()
     {
-        return no_volatileeditable;
+        return nosize;
     }
 
 
-    public boolean canonicalIsNoVolatileeditable()
+    public boolean canonicalIsNoSize()
     {
-        Boolean  no_volatileeditable = isNoVolatileeditable();
-        return (no_volatileeditable == null ? DEFAULT_NO_VOLATILEEDITABLE : no_volatileeditable);
+        final Boolean  nosize = isNoSize();
+        return (nosize == null ? DEFAULT_NOSIZE : nosize);
+    }
+
+
+
+    /**
+     */
+    public void setNoUser(
+                    final Boolean nouser
+                    )
+    {
+        this.nouser = nouser;
+    }
+
+
+    public Boolean isNoUser()
+    {
+        return nouser;
+    }
+
+
+    public boolean canonicalIsNoUser()
+    {
+        final Boolean  nouser = isNoUser();
+        return (nouser == null ? DEFAULT_NOUSER : nouser);
+    }
+
+
+
+    /**
+     */
+    public void setNoGroup(
+                    final Boolean nogroup
+                    )
+    {
+        this.nogroup = nogroup;
+    }
+
+
+    public Boolean isNoGroup()
+    {
+        return nogroup;
+    }
+
+
+    public boolean canonicalIsNoGroup()
+    {
+        final Boolean  nogroup = isNoGroup();
+        return (nogroup == null ? DEFAULT_NOGROUP : nogroup);
+    }
+
+
+
+    /**
+     */
+    public void setNoMtime(
+                    final Boolean nomtime
+                    )
+    {
+        this.nomtime = nomtime;
+    }
+
+
+    public Boolean isNoMtime()
+    {
+        return nomtime;
+    }
+
+
+    public boolean canonicalIsNoMtime()
+    {
+        final Boolean  nomtime = isNoSize();
+        return (nomtime == null ? DEFAULT_NOMTIME : nomtime);
+    }
+
+
+
+    /**
+     */
+    public void setNoMode(
+                    final Boolean nomode
+                    )
+    {
+        this.nomode = nomode;
+    }
+
+
+    public Boolean isNoMode()
+    {
+        return nomode;
+    }
+
+
+    public boolean canonicalIsNoMode()
+    {
+        final Boolean  nomode = isNoMode();
+        return (nomode == null ? DEFAULT_NOMODE : nomode);
+    }
+
+
+
+    /**
+     */
+    public void setNoRdev(
+                    final Boolean nordev
+                    )
+    {
+        this.nordev = nordev;
+    }
+
+
+    public Boolean isNoRdev()
+    {
+        return nordev;
+    }
+
+
+    public boolean canonicalIsNoRdev()
+    {
+        final Boolean  nordev = isNoRdev();
+        return (nordev == null ? DEFAULT_NORDEV : nordev);
+    }
+
+
+
+    /**
+     */
+    public void setNoConfigFiles(
+                    final Boolean noconfigfiles
+                    )
+    {
+        this.noconfigfiles = noconfigfiles;
+    }
+
+
+    public Boolean isNoConfigFiles()
+    {
+        return noconfigfiles;
+    }
+
+
+    public boolean canonicalIsNoConfigFiles()
+    {
+        final Boolean  noconfigfiles = isNoConfigFiles();
+        return (noconfigfiles == null ? DEFAULT_NOCONFIGFILES : noconfigfiles);
+    }
+
+
+
+    /**
+     */
+    public void setNoGhostFiles(
+                    final Boolean noghostfiles
+                    )
+    {
+        this.noghostfiles = noghostfiles;
+    }
+
+
+    public Boolean isNoGhostFiles()
+    {
+        return noghostfiles;
+    }
+
+
+    public boolean canonicalIsNoGhostFiles()
+    {
+        final Boolean  noghostfiles = isNoGhostFiles();
+        return (noghostfiles == null ? DEFAULT_NOGHOSTFILES : noghostfiles);
     }
 
 
@@ -145,9 +336,16 @@ public class PackageCheckBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsFileattributesOnly() ? 0 : 1);
-        result = prime * result + (canonicalIsFilecontentsOnly() ? 0 : 1);
-        result = prime * result + (canonicalIsNoVolatileeditable() ? 0 : 1);
+        result = prime * result + (canonicalIsNoLinkto() ? 0 : 1);
+        result = prime * result + (canonicalIsNoMd5() ? 0 : 1);
+        result = prime * result + (canonicalIsNoSize() ? 0 : 1);
+        result = prime * result + (canonicalIsNoUser() ? 0 : 1);
+        result = prime * result + (canonicalIsNoGroup() ? 0 : 1);
+        result = prime * result + (canonicalIsNoMtime() ? 0 : 1);
+        result = prime * result + (canonicalIsNoMode() ? 0 : 1);
+        result = prime * result + (canonicalIsNoRdev() ? 0 : 1);
+        result = prime * result + (canonicalIsNoConfigFiles() ? 0 : 1);
+        result = prime * result + (canonicalIsNoGhostFiles() ? 0 : 1);
 
         return result;
     }
@@ -163,17 +361,23 @@ public class PackageCheckBehaviors
             return true;
         }
 
-        if (!(obj instanceof PackageCheckBehaviors)) {
+        if (!(obj instanceof RpmVerifyFileBehaviors)) {
             return false;
         }
 
-        PackageCheckBehaviors  other = (PackageCheckBehaviors)obj;
-        if (this.canonicalIsFileattributesOnly() == other.canonicalIsFileattributesOnly()) {
-            if (this.canonicalIsFilecontentsOnly() == other.canonicalIsFilecontentsOnly()) {
-                if (this.canonicalIsNoVolatileeditable() == other.canonicalIsNoVolatileeditable()) {
-                    return true;
-                }
-            }
+        RpmVerifyFileBehaviors  other = (RpmVerifyFileBehaviors)obj;
+        if (this.canonicalIsNoLinkto() == other.canonicalIsNoLinkto()
+                        &&  (this.canonicalIsNoMd5() == other.canonicalIsNoMd5())
+                        &&  (this.canonicalIsNoSize() == other.canonicalIsNoSize())
+                        &&  (this.canonicalIsNoUser() == other.canonicalIsNoUser())
+                        &&  (this.canonicalIsNoGroup() == other.canonicalIsNoGroup())
+                        &&  (this.canonicalIsNoMtime() == other.canonicalIsNoMtime())
+                        &&  (this.canonicalIsNoMode() == other.canonicalIsNoMode())
+                        &&  (this.canonicalIsNoRdev() == other.canonicalIsNoRdev())
+                        &&  (this.canonicalIsNoConfigFiles() == other.canonicalIsNoConfigFiles())
+                        &&  (this.canonicalIsNoGhostFiles() == other.canonicalIsNoGhostFiles())
+                        ) {
+            return true;
         }
 
         return false;
@@ -184,9 +388,16 @@ public class PackageCheckBehaviors
     @Override
     public String toString()
     {
-        return "[fileattributes_only=" + isFileattributesOnly()
-                        + ", filecontents_only=" + isFilecontentsOnly()
-                        + ", no_volatileeditable=" + isNoVolatileeditable()
+        return "[nolinkto=" + isNoLinkto()
+                        + ", nomd5="            + isNoMd5()
+                        + ", nosize="           + isNoSize()
+                        + ", nouser="           + isNoUser()
+                        + ", nogroup="          + isNoGroup()
+                        + ", nomtime="          + isNoMtime()
+                        + ", nomode="           + isNoMode()
+                        + ", nordev="           + isNoRdev()
+                        + ", noconfigfiles="    + isNoConfigFiles()
+                        + ", noghostfiles="     + isNoGhostFiles()
                         + "]";
     }
 

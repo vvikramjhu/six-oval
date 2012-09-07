@@ -17,47 +17,70 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.solaris;
+package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The isainfo_object element is used by an isainfo test to define those objects
- * to evaluated based on a specified state.
+ * The iflisteners_object element is used by an iflisteners_test
+ * to define the specific interface to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class IsainfoObject
+public class IflistenersObject
     extends SystemObjectType
 {
+
+    //TODO: XSD model.
+	// choice(
+	//    set
+    //    sequence(
+    //           name
+    //           filter
+    //   ))
+
+    private Set  set;
+    //{1..1}
+
+    private EntityObjectStringType  interface_name;
+    //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
+
 
     /**
      * Constructor.
      */
-    public IsainfoObject()
+    public IflistenersObject()
     {
         this( null, 0 );
     }
 
 
-    public IsainfoObject(
+    public IflistenersObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-        _oval_family = Family.SOLARIS;
-        _oval_component = ComponentType.ISAINFO;
+        _oval_family = Family.LINUX;
+        _oval_component = ComponentType.IFLISTENERS;
     }
 
 
@@ -99,6 +122,80 @@ public class IsainfoObject
 
 
 
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return set;
+    }
+
+
+
+    /**
+     */
+    public void setInterfaceName(
+                    final EntityObjectStringType interface_name
+                    )
+    {
+        this.interface_name = interface_name;
+    }
+
+
+    public EntityObjectStringType getInterfaceName()
+    {
+        return interface_name;
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (filter != filters) {
+            filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
+    }
+
+
+
     //*********************************************************************
     //  DefinitionsElement
     //*********************************************************************
@@ -106,7 +203,11 @@ public class IsainfoObject
     @Override
     public Collection<ElementRef> ovalGetElementRef()
     {
-        return Collections.emptyList();
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getInterfaceName() );
+        ref_list.addAll( getFilter() );
+
+        return ref_list;
     }
 
 
@@ -127,7 +228,7 @@ public class IsainfoObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof IsainfoObject)) {
+        if (!(obj instanceof IflistenersObject)) {
             return false;
         }
 
@@ -139,7 +240,10 @@ public class IsainfoObject
     @Override
     public String toString()
     {
-        return "isainfo_object[" + super.toString()
+        return "iflisteners_object[" + super.toString()
+                        + ", set"       + getSet()
+                        + ", interface_name="     + getInterfaceName()
+                        + ", filter="   + getFilter()
                         + "]";
     }
 
