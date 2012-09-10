@@ -94,6 +94,7 @@ public enum ComponentType
     RPMVERIFYPACKAGE,               // linux
     RUNLEVEL,                       // unix
 
+    SCCS,                           // unix
     SELINUXBOOLEAN,                 // linux
     SELINUXSECURITYCONTEXT,         // linux
     SERVICEEFFECTIVERIGHTS,         // windows
@@ -249,6 +250,7 @@ public enum ComponentType
         ComponentType.PROCESS58,
         ComponentType.ROUTINGTABLE,
         ComponentType.RUNLEVEL,
+        ComponentType.SCCS,
         ComponentType.SHADOW,
         ComponentType.UNAME,
         ComponentType.XINETD
