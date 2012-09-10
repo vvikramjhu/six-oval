@@ -19,6 +19,9 @@
 
 package jp.go.aist.six.oval.model.unix;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
@@ -44,7 +47,10 @@ public class DnsCacheItem
     //{0..1}
     private EntityItemStringType            domain_name;
     private EntityItemIntType               ttl;
-    private EntityItemIPAddressStringType   ip_address;
+
+    private final Collection<EntityItemIPAddressStringType>  ip_address =
+                    new ArrayList<EntityItemIPAddressStringType>();
+    //{0..*}
 
 
 
@@ -97,7 +103,7 @@ public class DnsCacheItem
 
     /**
      */
-    public void setTTL(
+    public void setTtl(
                     final EntityItemIntType ttl
                     )
     {
@@ -105,7 +111,7 @@ public class DnsCacheItem
     }
 
 
-    public EntityItemIntType getTTL()
+    public EntityItemIntType getTtl()
     {
         return ttl;
     }
@@ -115,18 +121,40 @@ public class DnsCacheItem
     /**
      */
     public void setIPAddress(
-                    final EntityItemIPAddressStringType ip_address
+                    final Collection<? extends EntityItemIPAddressStringType> ip_addresses
                     )
     {
-        this.ip_address = ip_address;
+        if (ip_address != ip_addresses) {
+            ip_address.clear();
+            if (ip_addresses != null  &&  ip_addresses.size() > 0) {
+                ip_address.addAll( ip_addresses );
+            }
+        }
     }
 
 
-    public EntityItemIPAddressStringType getIPAddress()
+    public boolean addIPAddress(
+                    final EntityItemIPAddressStringType ip_address
+                    )
+    {
+        if (ip_address == null) {
+            return false;
+        }
+
+        return this.ip_address.add( ip_address );
+    }
+
+
+    public Collection<EntityItemIPAddressStringType> getIPAddress()
     {
         return ip_address;
     }
 
+
+    public Iterator<EntityItemIPAddressStringType> iterateIPAddress()
+    {
+        return ip_address.iterator();
+    }
 
 
     //**************************************************************
@@ -160,7 +188,7 @@ public class DnsCacheItem
     {
         return "dnscache_item[" + super.toString()
                         + ", domain_name="  + getDomainName()
-                        + ", ttl="          + getTTL()
+                        + ", ttl="          + getTtl()
                         + ", ip_address="   + getIPAddress()
              + "]";
     }

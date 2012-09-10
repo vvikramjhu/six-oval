@@ -22,6 +22,99 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ******************************************************* -->
+    <!-- dnscache                                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.DnsCacheTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="dnscache_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.DnsCacheObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="dnscache_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.DnsCacheState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="dnscache_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+
+        <field name="ttl" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ttl" node="element"/>
+        </field>
+
+        <field name="IPAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="ip_address" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.DnsCacheItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="dnscache_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+
+        <field name="ttl" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ttl" node="element"/>
+        </field>
+
+        <field name="IPAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressType"
+            collection="collection">
+            <bind-xml name="ip_address" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ******************************************************* -->
     <!-- file                                                    -->
     <!-- ******************************************************* -->
 
@@ -377,6 +470,284 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
+    <!-- ******************************************************* -->
+    <!-- fileextendedattribute                                   -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.FileExtendedAttributeTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="fileextendedattribute_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.FileExtendedAttributeObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="fileextendedattribute_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.unix.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="attributeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="attribute_name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.FileExtendedAttributeState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="fileextendedattribute_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="attributeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="attribute_name" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.FileExtendedAttributeItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="fileextendedattribute_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="attributeName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="attribute_name" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- gconf                                                   -->
+    <!-- ******************************************************* -->
+    
+    <class name="jp.go.aist.six.oval.model.unix.GconfTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="gconf_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.GconfObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="gconf_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="source" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="source" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.GconfState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="gconf_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="source" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="source" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.unix.EntityStateGconfTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="isWritable" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="is_writable" node="element"/>
+        </field>
+
+        <field name="modUser" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="mod_user" node="element"/>
+        </field>
+
+        <field name="modTime" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="mod_time" node="element"/>
+        </field>
+
+        <field name="isDefault" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="is_default" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.GconfItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="gconf_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="source" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="source" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.unix.EntityItemGconfTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="isWritable" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="is_writable" node="element"/>
+        </field>
+
+        <field name="modUser" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="mod_user" node="element"/>
+        </field>
+
+        <field name="modTime" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="mod_time" node="element"/>
+        </field>
+
+        <field name="isDefault" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="is_default" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
 
     <!-- ******************************************************* -->
     <!-- inetd                                                   -->
@@ -399,8 +770,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.InetdObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -430,8 +799,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.InetdState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -474,8 +841,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="wait_status" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.InetdItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -520,7 +885,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- interface                                               -->
     <!-- ******************************************************* -->
@@ -543,8 +907,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.InterfaceObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -569,8 +931,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.InterfaceState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -614,8 +974,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name ="jp.go.aist.six.oval.model.unix.InterfaceItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="unix_interface_item"
@@ -657,7 +1015,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="flag" node="element"/>
         </field>
     </class>
-
 
 
     <!-- ******************************************************* -->
@@ -1193,6 +1550,107 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
 
 
     <!-- ******************************************************* -->
+    <!-- routingtable                                            -->
+    <!-- ******************************************************* -->
+    
+    <class name="jp.go.aist.six.oval.model.unix.RoutingTableTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="routingtable_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.RoutingTableObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="routingtable_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="destination" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressType">
+            <bind-xml name="destination" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.RoutingTableState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="routingtable_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="destination" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="destination" node="element"/>
+        </field>
+
+        <field name="gateway" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="gateway" node="element"/>
+        </field>
+
+        <field name="flags" 
+            type="jp.go.aist.six.oval.model.unix.EntityStateRoutingTableFlagsType">
+            <bind-xml name="flags" node="element"/>
+        </field>
+
+        <field name="interfaceName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="interface_name" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.RoutingTableItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="routingtable_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="destination" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="destination" node="element"/>
+        </field>
+
+        <field name="gateway" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="gateway" node="element"/>
+        </field>
+
+        <field name="flags" 
+            type="jp.go.aist.six.oval.model.unix.EntityItemRoutingTableFlagsType">
+            <bind-xml name="flags" node="element"/>
+        </field>
+
+        <field name="interfaceName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="interface_name" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ******************************************************* -->
     <!-- runlevel                                                -->
     <!-- ******************************************************* -->
     
@@ -1306,6 +1764,184 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
 
 
     <!-- ******************************************************* -->
+    <!-- sccs                                                    -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.SccsTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sccs_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.SccsObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sccs_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.unix.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+        
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.SccsState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sccs_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="moduleName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="module_name" node="element"/>
+        </field>
+
+        <field name="moduleType" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="module_type" node="element"/>
+        </field>
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="level" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="level" node="element"/>
+        </field>
+
+        <field name="branch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="branch" node="element"/>
+        </field>
+
+        <field name="sequence" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="sequence" node="element"/>
+        </field>
+
+        <field name="whatString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="what_string" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.SccsItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sccs_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="moduleName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="module_name" node="element"/>
+        </field>
+
+        <field name="moduleType" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="module_type" node="element"/>
+        </field>
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="level" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="level" node="element"/>
+        </field>
+
+        <field name="branch" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="branch" node="element"/>
+        </field>
+
+        <field name="sequence" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="sequence" node="element"/>
+        </field>
+
+        <field name="whatString" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="what_string" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ******************************************************* -->
     <!-- shadow                                                  -->
     <!-- ******************************************************* -->
 
@@ -1327,8 +1963,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.ShadowObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1353,8 +1987,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.ShadowState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1412,8 +2044,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="encrypt_method" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.ShadowItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1473,6 +2103,87 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
+    <!-- ******************************************************* -->
+    <!-- sysctl                                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.SysctlTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sysctl_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.SysctlObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sysctl_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.SysctlState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sysctl_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.unix.SysctlItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sysctl_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
 
     <!-- ******************************************************* -->
     <!-- uname                                                   -->
@@ -1496,16 +2207,12 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.UnameObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="uname_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.UnameState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1543,8 +2250,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="processor_type" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.UnameItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1584,7 +2289,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- xinetd                                                  -->
     <!-- ******************************************************* -->
@@ -1606,8 +2310,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.XinetdObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1637,8 +2339,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.XinetdState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1711,8 +2411,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="disabled" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.XinetdItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1787,7 +2485,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
@@ -1801,8 +2498,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
-
-
 <!-- endpoint -->
     <class name="jp.go.aist.six.oval.model.unix.EntityStateEndpointType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
@@ -1812,7 +2507,14 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
+<!-- gconf type-->
+    <class name="jp.go.aist.six.oval.model.unix.EntityStateGconfTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
 
+    <class name="jp.go.aist.six.oval.model.unix.EntityItemGconfTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
 <!-- interface (network_interface) -->
     <class name="jp.go.aist.six.oval.model.unix.EntityStateInterfaceType"
@@ -1823,7 +2525,14 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
+<!-- routing table flags -->
+    <class name="jp.go.aist.six.oval.model.unix.EntityStateRoutingTableFlagsType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
 
+    <class name="jp.go.aist.six.oval.model.unix.EntityItemRoutingTableFlagsType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
 <!-- wait status -->
     <class name="jp.go.aist.six.oval.model.unix.EntityStateWaitStatusType"
@@ -1833,8 +2542,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     <class name="jp.go.aist.six.oval.model.unix.EntityItemWaitStatusType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
-
-
 
 </mapping>
 
