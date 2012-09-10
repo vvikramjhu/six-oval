@@ -52,6 +52,9 @@ import jp.go.aist.six.oval.model.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.solaris.PermissionCompareEnumeration;
+import jp.go.aist.six.oval.model.solaris.SmfProtocolEnumeration;
+import jp.go.aist.six.oval.model.solaris.SmfServiceStateEnumeration;
 import jp.go.aist.six.oval.model.unix.CapabilityEnumeration;
 import jp.go.aist.six.oval.model.unix.EncryptMethodEnumeration;
 import jp.go.aist.six.oval.model.unix.EndpointEnumeration;
@@ -96,14 +99,9 @@ public class OvalConverter
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         // six //
-        Family.class,
         ComponentType.class,
         ElementType.class,
-
-        RecurseDirectionEnumeration.class,
-        RecurseEnumeration.class,
-        RecurseFileSystemEnumeration.class,
-        WindowsViewEnumeration.class,
+        Family.class,
 
         // common //
         CheckEnumeration.class,
@@ -114,6 +112,10 @@ public class OvalConverter
         MessageLevelEnumeration.class,
         OperationEnumeration.class,
         OperatorEnumeration.class,
+        RecurseDirectionEnumeration.class,
+        RecurseEnumeration.class,
+        RecurseFileSystemEnumeration.class,
+        WindowsViewEnumeration.class,
 
         // definitions //
         ArithmeticEnumeration.class,
@@ -129,6 +131,7 @@ public class OvalConverter
         TextfileContent.class,
 
         // linux //
+        ProtocolEnumeration.class,
         RpmVerifyResultEnumeration.class,
 
         // mitre //
@@ -145,6 +148,11 @@ public class OvalConverter
         FlagEnumeration.class,
         StatusEnumeration.class,
 
+        // solaris //
+        PermissionCompareEnumeration.class,
+        SmfProtocolEnumeration.class,
+        SmfServiceStateEnumeration.class,
+
         // unix //
         CapabilityEnumeration.class,
         EncryptMethodEnumeration.class,
@@ -159,8 +167,8 @@ public class OvalConverter
         AuditEnumeration.class,
         DriveTypeEnumeration.class,
         FileTypeEnumeration.class,
-        NamingContextEnumeration.class,
         InterfaceTypeEnumeration.class,
+        NamingContextEnumeration.class,
         ProtocolEnumeration.class,
         RegistryHiveEnumeration.class,
         RegistryTypeEnumeration.class,

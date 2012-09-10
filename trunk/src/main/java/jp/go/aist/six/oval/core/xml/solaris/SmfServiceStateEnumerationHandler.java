@@ -17,17 +17,17 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.core.xml.independent;
+package jp.go.aist.six.oval.core.xml.solaris;
 
-import jp.go.aist.six.oval.model.common.WindowsViewEnumeration;
+import jp.go.aist.six.oval.model.solaris.SmfServiceStateEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class WindowsViewEnumerationHandler
+public class SmfServiceStateEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public WindowsViewEnumerationHandler()
+    public SmfServiceStateEnumerationHandler()
     {
         super();
     }
@@ -42,7 +42,7 @@ public class WindowsViewEnumerationHandler
         if (value == null) {
             return null;
         }
-        WindowsViewEnumeration  e = WindowsViewEnumeration.class.cast( value );
+        SmfServiceStateEnumeration  e = SmfServiceStateEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -56,15 +56,15 @@ public class WindowsViewEnumerationHandler
         if (value == null) {
             return null;
         }
-        return WindowsViewEnumeration.fromValue( value.toString() );
+        return SmfServiceStateEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<WindowsViewEnumeration> getFieldType()
+    public Class<SmfServiceStateEnumeration> getFieldType()
     {
-        return WindowsViewEnumeration.class;
+        return SmfServiceStateEnumeration.class;
     }
 
 
@@ -79,4 +79,4 @@ public class WindowsViewEnumerationHandler
 //    }
 
 }
-//WindowsViewEnumerationHandler
+//

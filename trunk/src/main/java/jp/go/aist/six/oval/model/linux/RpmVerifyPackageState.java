@@ -295,7 +295,6 @@ public class RpmVerifyPackageState
                         + ", documentation_file="   + getDigestCheckPassed()
                         + ", ghost_file="           + getVerificationScriptSuccessful()
                         + ", license_file="         + getSignatureCheckPassed()
-
                         + "]";
     }
 

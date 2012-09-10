@@ -43,8 +43,6 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoItem"
         extends="jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem"
         verify-constructable="false">
@@ -69,7 +67,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- DpkgInfo                                                -->
     <!-- ******************************************************* -->
@@ -91,8 +88,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -117,8 +112,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -156,8 +149,6 @@
             <bind-xml name="evr" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.DpkgInfoItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -200,7 +191,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- iflisteners                                             -->
     <!-- ******************************************************* -->
@@ -222,8 +212,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.IfListenersObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -248,8 +236,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.IfListenersState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -287,8 +273,6 @@
             <bind-xml name="user_id" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.IfListenersItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -328,7 +312,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- inetlisteningserver                                     -->
     <!-- ******************************************************* -->
@@ -350,8 +333,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.InetListeningServersObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -386,8 +367,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.InetListeningServersState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -445,8 +424,6 @@
             <bind-xml name="user_id" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.InetListeningServersItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -506,7 +483,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- partition                                               -->
     <!-- ******************************************************* -->
@@ -529,8 +505,6 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.linux.PartitionObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="partition_object"
@@ -548,8 +522,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.PartitionState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -597,8 +569,6 @@
             <bind-xml name="space_left" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.PartitionItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -648,7 +618,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- RpmInfo                                                 -->
     <!-- ******************************************************* -->
@@ -671,8 +640,6 @@
         </field>
     </class>
     
-
-
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="rpminfo_object"
@@ -690,8 +657,6 @@
             <bind-xml name="name" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -744,8 +709,6 @@
             <bind-xml name="filepath" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -801,8 +764,6 @@
             <bind-xml name="filepath" node="element"/>
         </field>
     </class>
-
-
     
     <!-- ******************************************************* -->
     <!-- rpmverify                                               -->
@@ -825,8 +786,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -860,8 +819,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -949,8 +906,6 @@
             <bind-xml name="readme_file" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.RpmVerifyItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1040,7 +995,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- rpmverifyfile                                           -->
     <!-- ******************************************************* -->
@@ -1062,8 +1016,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-    
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyFileObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1119,7 +1071,6 @@
         </field>
     </class>
 
-
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyFileBehaviors">
         <map-to xml="rpmverifyfile_behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
@@ -1165,8 +1116,6 @@
             <bind-xml name="noghostfiles" node="attribute"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyFileState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1280,8 +1229,6 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.linux.RpmVerifyFileItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="rpmverifyfile_item"
@@ -1394,6 +1341,208 @@
         </field>
     </class>
 
+    
+    <!-- ******************************************************* -->
+    <!-- rpmverifypackage                                        -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyPackageTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="rpmverifypackage_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyPackageObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="rpmverifypackage_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.linux.RpmVerifyPackageBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="epoch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectAnySimpleType">
+            <bind-xml name="epoch" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectAnySimpleType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectAnySimpleType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="arch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="arch" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyPackageBehaviors">
+        <map-to xml="rpmverifypackage_behaviors"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="noDeps" type="boolean">
+            <bind-xml name="nodeps" node="attribute"/>
+        </field>
+
+        <field name="noDigest" type="boolean">
+            <bind-xml name="nodigest" node="attribute"/>
+        </field>
+
+        <field name="noScripts" type="boolean">
+            <bind-xml name="noscripts" node="attribute"/>
+        </field>
+
+        <field name="noSignature" type="boolean">
+            <bind-xml name="nosignature" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyPackageState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="rpmverifypackage_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="epoch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="epoch" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="arch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="arch" node="element"/>
+        </field>
+
+        <field name="dependencyCheckPassed" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="dependency_check_passed" node="element"/>
+        </field>
+
+        <field name="digestCheckPassed" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="digest_check_passed" node="element"/>
+        </field>
+
+        <field name="verificationScriptSuccessful" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="verification_script_successful" node="element"/>
+        </field>
+
+        <field name="signatureCheckPassed" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="signature_check_passed" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyPackageItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="rpmverifypackage_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="epoch" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="epoch" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="arch" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="arch" node="element"/>
+        </field>
+
+        <field name="extendedName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="extended_name" node="element"/>
+        </field>
+
+        <field name="dependencyCheckPassed" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="dependency_check_passed" node="element"/>
+        </field>
+
+        <field name="digestCheckPassed" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="digest_check_passed" node="element"/>
+        </field>
+
+        <field name="verificationScriptSuccessful" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="verification_script_successful" node="element"/>
+        </field>
+
+        <field name="signatureCheckPassed" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="signature_check_passed" node="element"/>
+        </field>
+    </class>
 
     
     <!-- ******************************************************* -->
@@ -1417,8 +1566,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.SelinuxBooleanObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1444,8 +1591,6 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.linux.SelinuxBooleanState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="selinuxboolean_state"
@@ -1467,8 +1612,6 @@
             <bind-xml name="pending_status" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.SelinuxBooleanItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1493,7 +1636,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- selinuxsecuritycontext                                  -->
     <!-- ******************************************************* -->
@@ -1516,8 +1658,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1564,8 +1704,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1649,13 +1787,9 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.linux.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1740,7 +1874,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- slackwarepkginfo                                        -->
     <!-- ******************************************************* -->
@@ -1762,8 +1895,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.SlackwarePkgInfoObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1788,8 +1919,6 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.linux.SlackwarePkgInfoState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1817,8 +1946,6 @@
             <bind-xml name="revision" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.linux.SlackwarePkgInfoItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1848,7 +1975,6 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
@@ -1862,7 +1988,6 @@
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
-
 <!-- rpm verify result -->
     <class name="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
@@ -1871,6 +1996,5 @@
     <class name="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
-
 
 </mapping>
