@@ -106,6 +106,7 @@ public enum ComponentType
     SMF,                            // solaris
     SQL,                            // independent @deprecated
     SQL57,                          // independent
+    SYSCTL,                         // unix
 
     TEXTFILECONTENT,                // independent @deprecated
     TEXTFILECONTENT54,              // independent
@@ -252,6 +253,7 @@ public enum ComponentType
         ComponentType.RUNLEVEL,
         ComponentType.SCCS,
         ComponentType.SHADOW,
+        ComponentType.SYSCTL,
         ComponentType.UNAME,
         ComponentType.XINETD
     };
