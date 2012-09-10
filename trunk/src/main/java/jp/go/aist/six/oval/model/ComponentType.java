@@ -87,6 +87,7 @@ public enum ComponentType
     REGKEYAUDITEDPERMISSIONS53,     // windows
     REGKEYEFFECTIVERIGHTS,          // windows
     REGKEYEFFECTIVERIGHTS53,        // windows
+    ROUTINGTABLE,                   // unix
     RPMINFO,                        // linux
     RPMVERIFY,                      // linux
     RPMVERIFYFILE,                  // linux
@@ -246,6 +247,7 @@ public enum ComponentType
         ComponentType.PASSWORD,
         ComponentType.PROCESS,
         ComponentType.PROCESS58,
+        ComponentType.ROUTINGTABLE,
         ComponentType.RUNLEVEL,
         ComponentType.SHADOW,
         ComponentType.UNAME,
