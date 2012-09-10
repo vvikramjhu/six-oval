@@ -51,7 +51,9 @@ public enum ComponentType
     FILEEFFECTIVERIGHTS53,          // windows
     FILEHASH,                       // independent @deprecated
     FILEHASH58,                     // independent
+    FILEEXTENDEDATTRIBUTE,          // unix
 
+    GCONF,                          // unix
     GROUP,                          // windows
     GROUP_SID,                      // windows
 
@@ -237,6 +239,8 @@ public enum ComponentType
     public static final ComponentType[]  UNIX = new ComponentType[] {
         ComponentType.DNSCACHE,
         ComponentType.FILE,
+        ComponentType.FILEEXTENDEDATTRIBUTE,
+        ComponentType.GCONF,
         ComponentType.INETD,
         ComponentType.INTERFACE,
         ComponentType.PASSWORD,
