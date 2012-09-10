@@ -17,7 +17,7 @@ under development...
   * Linux family supported completely.
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
-|| linux || dpkginfo, *iflisteners*, inetlisteningservers, partition, rpminfo, rpmverify, *rpmverifyfile*, *rpmverifypackage*, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
+|| linux || dpkginfo, *_iflisteners_*, inetlisteningservers, partition, rpminfo, rpmverify, *_rpmverifyfile_*, *_rpmverifypackage_*, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
 || solaris || isainfo, ndd, package, packagecheck, patch, patch54, smf ||
 || unix || file, inetd, interface, password, process, process58, runlevel, shadow, uname, xinetd ||
 || windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
@@ -34,7 +34,7 @@ under development...
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, inetlisteningservers, partition, rpminfo, rpmverify, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
-|| *solaris* || *isainfo, ndd, package, packagecheck, patch, patch54, smf* ||
+|| *_solaris_* || *_isainfo, ndd, package, packagecheck, patch, patch54, smf_* ||
 || unix || file, inetd, interface, password, process, process58, runlevel, shadow, uname, xinetd ||
 || windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
 
