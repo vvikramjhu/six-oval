@@ -2,8 +2,6 @@ package jp.go.aist.six.test.oval.example;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.net.URL;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.util.xml.XmlMapper;
@@ -26,14 +24,14 @@ public class OvalXmlMappingExample
         System.out.println( obj1 );
         xml_mapper.marshal( obj1, System.out );
 
-        //URL
-        String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541";
-        URL  src_url = new URL( network_src );
-        OvalDefinitions  obj2 = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
-//        Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
-        System.out.println( obj2 );
-        File  dst_file = new File( "oval-def-example.xml" );
-        xml_mapper.marshal( obj2, new FileOutputStream( dst_file ) );
+//        //URL
+//        String  network_src = "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541";
+//        URL  src_url = new URL( network_src );
+//        OvalDefinitions  obj2 = xml_mapper.unmarshal( src_url.openStream(), OvalDefinitions.class );
+////        Object  obj2 = xml_mapper.unmarshal( src_url.openStream() );
+//        System.out.println( obj2 );
+//        File  dst_file = new File( "oval-def-example.xml" );
+//        xml_mapper.marshal( obj2, new FileOutputStream( dst_file ) );
     }
 
 }
