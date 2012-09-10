@@ -101,7 +101,7 @@ public class DnsCacheState
 
     /**
      */
-    public void setTTL(
+    public void setTtl(
                     final EntityStateIntType ttl
                     )
     {
@@ -109,7 +109,7 @@ public class DnsCacheState
     }
 
 
-    public EntityStateIntType getTTL()
+    public EntityStateIntType getTtl()
     {
         return ttl;
     }
@@ -142,7 +142,7 @@ public class DnsCacheState
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getDomainName() );
-        ref_list.add( getTTL() );
+        ref_list.add( getTtl() );
         ref_list.add( getIPAddress() );
 
         return ref_list;
@@ -181,7 +181,7 @@ public class DnsCacheState
     {
         return "dnscache_state[" + super.toString()
                         + ", domain_name="  + getDomainName()
-                        + ", ttl="          + getTTL()
+                        + ", ttl="          + getTtl()
                         + ", ip_address="   + getIPAddress()
              + "]";
     }

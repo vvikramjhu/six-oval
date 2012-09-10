@@ -21,7 +21,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
@@ -42,16 +42,16 @@ public class SccsItem
 {
 
     //{0..1}
-    private EntityStateStringType   filepath;
-    private EntityStateStringType   path;
-    private EntityStateStringType   filename;
-    private EntityStateStringType   module_name;
-    private EntityStateStringType   module_type;
-    private EntityStateStringType   release;
-    private EntityStateStringType   level;
-    private EntityStateStringType   branch;
-    private EntityStateStringType   sequence;
-    private EntityStateStringType   what_string;
+    private EntityItemStringType   filepath;
+    private EntityItemStringType   path;
+    private EntityItemStringType   filename;
+    private EntityItemStringType   module_name;
+    private EntityItemStringType   module_type;
+    private EntityItemStringType   release;
+    private EntityItemStringType   level;
+    private EntityItemStringType   branch;
+    private EntityItemStringType   sequence;
+    private EntityItemStringType   what_string;
 
 
 
@@ -88,14 +88,14 @@ public class SccsItem
     /**
      */
     public void setFilepath(
-                    final EntityStateStringType filepath
+                    final EntityItemStringType filepath
                     )
     {
         this.filepath = filepath;
     }
 
 
-    public EntityStateStringType getFilepath()
+    public EntityItemStringType getFilepath()
     {
         return filepath;
     }
@@ -105,14 +105,14 @@ public class SccsItem
     /**
      */
     public void setPath(
-                    final EntityStateStringType path
+                    final EntityItemStringType path
                     )
     {
         this.path = path;
     }
 
 
-    public EntityStateStringType getPath()
+    public EntityItemStringType getPath()
     {
         return path;
     }
@@ -122,14 +122,14 @@ public class SccsItem
     /**
      */
     public void setFilename(
-                    final EntityStateStringType filename
+                    final EntityItemStringType filename
                     )
     {
         this.filename = filename;
     }
 
 
-    public EntityStateStringType getFilename()
+    public EntityItemStringType getFilename()
     {
         return filename;
     }
@@ -139,14 +139,14 @@ public class SccsItem
     /**
      */
     public void setModuleName(
-                    final EntityStateStringType module_name
+                    final EntityItemStringType module_name
                     )
     {
         this.module_name = module_name;
     }
 
 
-    public EntityStateStringType getModuleName()
+    public EntityItemStringType getModuleName()
     {
         return module_name;
     }
@@ -156,14 +156,14 @@ public class SccsItem
     /**
      */
     public void setModuleType(
-                    final EntityStateStringType module_type
+                    final EntityItemStringType module_type
                     )
     {
         this.module_type = module_type;
     }
 
 
-    public EntityStateStringType getModuleType()
+    public EntityItemStringType getModuleType()
     {
         return module_type;
     }
@@ -173,14 +173,14 @@ public class SccsItem
     /**
      */
     public void setRelease(
-                    final EntityStateStringType release
+                    final EntityItemStringType release
                     )
     {
         this.release = release;
     }
 
 
-    public EntityStateStringType getRelease()
+    public EntityItemStringType getRelease()
     {
         return release;
     }
@@ -190,14 +190,14 @@ public class SccsItem
     /**
      */
     public void setLevel(
-                    final EntityStateStringType level
+                    final EntityItemStringType level
                     )
     {
         this.level = level;
     }
 
 
-    public EntityStateStringType getLevel()
+    public EntityItemStringType getLevel()
     {
         return level;
     }
@@ -207,14 +207,14 @@ public class SccsItem
     /**
      */
     public void setBranch(
-                    final EntityStateStringType branch
+                    final EntityItemStringType branch
                     )
     {
         this.branch = branch;
     }
 
 
-    public EntityStateStringType getBranch()
+    public EntityItemStringType getBranch()
     {
         return branch;
     }
@@ -224,14 +224,14 @@ public class SccsItem
     /**
      */
     public void setSequence(
-                    final EntityStateStringType sequence
+                    final EntityItemStringType sequence
                     )
     {
         this.sequence = sequence;
     }
 
 
-    public EntityStateStringType getSequence()
+    public EntityItemStringType getSequence()
     {
         return sequence;
     }
@@ -241,14 +241,14 @@ public class SccsItem
     /**
      */
     public void setWhatString(
-                    final EntityStateStringType what_string
+                    final EntityItemStringType what_string
                     )
     {
         this.what_string = what_string;
     }
 
 
-    public EntityStateStringType getWhatString()
+    public EntityItemStringType getWhatString()
     {
         return what_string;
     }
