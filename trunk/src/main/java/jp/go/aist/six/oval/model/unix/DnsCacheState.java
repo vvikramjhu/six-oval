@@ -24,44 +24,42 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The inetd state defines the different information
- * associated with a specific Internet service.
+ * The dnscache_state contains three entities that are used to check the domain name,
+ * time to live, and IP addresses associated with the DNS cache entry.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InetdState
+public class DnsCacheState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType       protocol;
-    private EntityStateStringType       service_name;
-    private EntityStateStringType       server_program;
-    private EntityStateStringType       server_arguments;
-    private EntityStateEndpointType     endpoint_type;
-    private EntityStateStringType       exec_as_user;
-    private EntityStateWaitStatusType   wait_status;
+    private EntityStateStringType           domain_name;
+    private EntityStateIntType              ttl;
+    private EntityStateIPAddressStringType  ip_address;
 
 
 
     /**
      * Constructor.
      */
-    public InetdState()
+    public DnsCacheState()
     {
         this( null, 0 );
     }
 
 
-    public InetdState(
+    public DnsCacheState(
                     final String id,
                     final int version
                     )
@@ -70,7 +68,7 @@ public class InetdState
     }
 
 
-    public InetdState(
+    public DnsCacheState(
                     final String id,
                     final int version,
                     final String comment
@@ -78,129 +76,59 @@ public class InetdState
     {
         super( id, version, comment );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.inetd;
         _oval_family = Family.UNIX;
-        _oval_component = ComponentType.INETD;
+        _oval_component = ComponentType.DNSCACHE;
     }
 
 
 
     /**
      */
-    public void setProtocol(
-                    final EntityStateStringType protocol
+    public void setDomainName(
+                    final EntityStateStringType domain_name
                     )
     {
-        this.protocol = protocol;
+        this.domain_name = domain_name;
     }
 
 
-    public EntityStateStringType getProtocol()
+    public EntityStateStringType getDomainName()
     {
-        return protocol;
+        return domain_name;
     }
 
 
 
     /**
      */
-    public void setServiceName(
-                    final EntityStateStringType service_name
+    public void setTTL(
+                    final EntityStateIntType ttl
                     )
     {
-        this.service_name = service_name;
+        this.ttl = ttl;
     }
 
 
-    public EntityStateStringType getServiceName()
+    public EntityStateIntType getTTL()
     {
-        return service_name;
+        return ttl;
     }
 
 
 
     /**
      */
-    public void setServerProgram(
-                    final EntityStateStringType server_program
+    public void setIPAddress(
+                    final EntityStateIPAddressStringType ip_address
                     )
     {
-        this.server_program = server_program;
+        this.ip_address = ip_address;
     }
 
 
-    public EntityStateStringType getServerProgram()
+    public EntityStateIPAddressStringType getIPAddress()
     {
-        return server_program;
-    }
-
-
-
-    /**
-     */
-    public void setServerArguments(
-                    final EntityStateStringType server_arguments
-                    )
-    {
-        this.server_arguments = server_arguments;
-    }
-
-
-    public EntityStateStringType getServerArguments()
-    {
-        return server_arguments;
-    }
-
-
-
-    /**
-     */
-    public void setEndpointType(
-                    final EntityStateEndpointType endpoint_type
-                    )
-    {
-        this.endpoint_type = endpoint_type;
-    }
-
-
-    public EntityStateEndpointType getEndpointType()
-    {
-        return endpoint_type;
-    }
-
-
-
-    /**
-     */
-    public void setExecAsUser(
-                    final EntityStateStringType exec_as_user
-                    )
-    {
-        this.exec_as_user = exec_as_user;
-    }
-
-
-    public EntityStateStringType getExecAsUser()
-    {
-        return exec_as_user;
-    }
-
-
-
-    /**
-     */
-    public void setWaitStatus(
-                    final EntityStateWaitStatusType wait_status
-                    )
-    {
-        this.wait_status = wait_status;
-    }
-
-
-    public EntityStateWaitStatusType getWaitStatus()
-    {
-        return wait_status;
+        return ip_address;
     }
 
 
@@ -213,13 +141,9 @@ public class InetdState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getProtocol() );
-        ref_list.add( getServiceName() );
-        ref_list.add( getServerProgram() );
-        ref_list.add( getServerArguments() );
-        ref_list.add( getEndpointType() );
-        ref_list.add( getExecAsUser() );
-        ref_list.add( getWaitStatus() );
+        ref_list.add( getDomainName() );
+        ref_list.add( getTTL() );
+        ref_list.add( getIPAddress() );
 
         return ref_list;
     }
@@ -243,7 +167,7 @@ public class InetdState
                     final Object obj
                     )
     {
-        if (!(obj instanceof InetdState)) {
+        if (!(obj instanceof DnsCacheState)) {
             return false;
         }
 
@@ -255,16 +179,12 @@ public class InetdState
     @Override
     public String toString()
     {
-        return "inetd_state[" + super.toString()
-                        + ", protocol="         + getProtocol()
-                        + ", service_name="     + getServiceName()
-                        + ", server_program="   + getServerProgram()
-                        + ", server_arguments=" + getServerArguments()
-                        + ", endpoint_type="    + getEndpointType()
-                        + ", exec_as_user="     + getExecAsUser()
-                        + ", wait_status="      + getWaitStatus()
+        return "dnscache_state[" + super.toString()
+                        + ", domain_name="  + getDomainName()
+                        + ", ttl="          + getTTL()
+                        + ", ip_address="   + getIPAddress()
              + "]";
     }
 
 }
-//InetdState
+//

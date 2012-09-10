@@ -21,6 +21,8 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -28,37 +30,34 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The file item holds information about the individual files found on a system.
+ * The dnscache_item stores information retrieved from the DNS cache about a domain name,
+ * its time to live, and its corresponding IP addresses.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InetdItem
+public class DnsCacheItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType       protocol;
-    private EntityItemStringType       service_name;
-    private EntityItemStringType       server_program;
-    private EntityItemStringType       server_arguments;
-    private EntityItemEndpointType     endpoint_type;
-    private EntityItemStringType       exec_as_user;
-    private EntityItemWaitStatusType   wait_status;
+    private EntityItemStringType            domain_name;
+    private EntityItemIntType               ttl;
+    private EntityItemIPAddressStringType   ip_address;
 
 
 
     /**
      * Constructor.
      */
-    public InetdItem()
+    public DnsCacheItem()
     {
         this( 0 );
     }
 
 
-    public InetdItem(
+    public DnsCacheItem(
                     final int id
                     )
     {
@@ -66,136 +65,66 @@ public class InetdItem
     }
 
 
-    public InetdItem(
+    public DnsCacheItem(
                     final int id,
                     final StatusEnumeration status
                     )
     {
         super( id, status );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.inetd;
         _oval_family = Family.UNIX;
-        _oval_component = ComponentType.INETD;
+        _oval_component = ComponentType.DNSCACHE;
     }
 
 
 
     /**
      */
-    public void setProtocol(
-                    final EntityItemStringType protocol
+    public void setDomainName(
+                    final EntityItemStringType domain_name
                     )
     {
-        this.protocol = protocol;
+        this.domain_name = domain_name;
     }
 
 
-    public EntityItemStringType getProtocol()
+    public EntityItemStringType getDomainName()
     {
-        return protocol;
+        return domain_name;
     }
 
 
 
     /**
      */
-    public void setServiceName(
-                    final EntityItemStringType service_name
+    public void setTTL(
+                    final EntityItemIntType ttl
                     )
     {
-        this.service_name = service_name;
+        this.ttl = ttl;
     }
 
 
-    public EntityItemStringType getServiceName()
+    public EntityItemIntType getTTL()
     {
-        return service_name;
+        return ttl;
     }
 
 
 
     /**
      */
-    public void setServerProgram(
-                    final EntityItemStringType server_program
+    public void setIPAddress(
+                    final EntityItemIPAddressStringType ip_address
                     )
     {
-        this.server_program = server_program;
+        this.ip_address = ip_address;
     }
 
 
-    public EntityItemStringType getServerProgram()
+    public EntityItemIPAddressStringType getIPAddress()
     {
-        return server_program;
-    }
-
-
-
-    /**
-     */
-    public void setServerArguments(
-                    final EntityItemStringType server_arguments
-                    )
-    {
-        this.server_arguments = server_arguments;
-    }
-
-
-    public EntityItemStringType getServerArguments()
-    {
-        return server_arguments;
-    }
-
-
-
-    /**
-     */
-    public void setEndpointType(
-                    final EntityItemEndpointType endpoint_type
-                    )
-    {
-        this.endpoint_type = endpoint_type;
-    }
-
-
-    public EntityItemEndpointType getEndpointType()
-    {
-        return endpoint_type;
-    }
-
-
-
-    /**
-     */
-    public void setExecAsUser(
-                    final EntityItemStringType exec_as_user
-                    )
-    {
-        this.exec_as_user = exec_as_user;
-    }
-
-
-    public EntityItemStringType getExecAsUser()
-    {
-        return exec_as_user;
-    }
-
-
-
-    /**
-     */
-    public void setWaitStatus(
-                    final EntityItemWaitStatusType wait_status
-                    )
-    {
-        this.wait_status = wait_status;
-    }
-
-
-    public EntityItemWaitStatusType getWaitStatus()
-    {
-        return wait_status;
+        return ip_address;
     }
 
 
@@ -217,7 +146,7 @@ public class InetdItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof InetdItem)) {
+        if (!(obj instanceof DnsCacheItem)) {
             return false;
         }
 
@@ -229,16 +158,12 @@ public class InetdItem
     @Override
     public String toString()
     {
-        return "inetd_item[" + super.toString()
-                        + ", protocol="         + getProtocol()
-                        + ", service_name="     + getServiceName()
-                        + ", server_program="   + getServerProgram()
-                        + ", server_arguments=" + getServerArguments()
-                        + ", endpoint_type="    + getEndpointType()
-                        + ", exec_as_user="     + getExecAsUser()
-                        + ", wait_status="      + getWaitStatus()
+        return "dnscache_item[" + super.toString()
+                        + ", domain_name="  + getDomainName()
+                        + ", ttl="          + getTTL()
+                        + ", ip_address="   + getIPAddress()
              + "]";
     }
 
 }
-//InetdItem
+//

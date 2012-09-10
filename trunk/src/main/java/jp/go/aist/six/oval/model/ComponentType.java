@@ -38,6 +38,7 @@ public enum ComponentType
     AUDITEVENTPOLICY,               // windows
     AUDITEVENTPOLICYSUBCATEGORIES,  // windows
 
+    DNSCACHE,                       // unix
     DPKGINFO,                       // linux
     ENVIRONMENTVARIABLE,            // independent @deprecated
     ENVIRONMENTVARIABLE58,          // independent
@@ -234,6 +235,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  UNIX = new ComponentType[] {
+        ComponentType.DNSCACHE,
         ComponentType.FILE,
         ComponentType.INETD,
         ComponentType.INTERFACE,

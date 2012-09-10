@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InetdObject
+public class DnsCacheObject
     extends SystemObjectType
 {
 
@@ -49,10 +49,7 @@ public class InetdObject
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  protocol;
-    //{1..1}
-
-    private EntityObjectStringType  service_name;
+    private EntityObjectStringType  domain_name;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -63,23 +60,21 @@ public class InetdObject
     /**
      * Constructor.
      */
-    public InetdObject()
+    public DnsCacheObject()
     {
         this( null, 0 );
     }
 
 
-    public InetdObject(
+    public DnsCacheObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.inetd;
         _oval_family = Family.UNIX;
-        _oval_component = ComponentType.INETD;
+        _oval_component = ComponentType.DNSCACHE;
     }
 
 
@@ -140,34 +135,17 @@ public class InetdObject
 
     /**
      */
-    public void setProtocol(
-                    final EntityObjectStringType protocol
+    public void setDomainName(
+                    final EntityObjectStringType domain_name
                     )
     {
-        this.protocol = protocol;
+        this.domain_name = domain_name;
     }
 
 
-    public EntityObjectStringType getProtocol()
+    public EntityObjectStringType getDomainName()
     {
-        return protocol;
-    }
-
-
-
-    /**
-     */
-    public void setServiceName(
-                    final EntityObjectStringType service_name
-                    )
-    {
-        this.service_name = service_name;
-    }
-
-
-    public EntityObjectStringType getServiceName()
-    {
-        return service_name;
+        return domain_name;
     }
 
 
@@ -220,8 +198,7 @@ public class InetdObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getProtocol() );
-        ref_list.add( getServiceName() );
+        ref_list.add( getDomainName() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -245,7 +222,7 @@ public class InetdObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof InetdObject)) {
+        if (!(obj instanceof DnsCacheObject)) {
             return false;
         }
 
@@ -257,13 +234,12 @@ public class InetdObject
     @Override
     public String toString()
     {
-        return "inetd_object[" + super.toString()
+        return "dnscache_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", protocol="     + getProtocol()
-                        + ", service_name=" + getServiceName()
+                        + ", domain_name="     + getDomainName()
                         + ", filter="       + getFilter()
                         + "]";
     }
 
 }
-//InetdObject
+//

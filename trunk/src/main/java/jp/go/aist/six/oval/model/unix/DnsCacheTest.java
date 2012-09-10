@@ -27,26 +27,27 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The inetd test is used to check information associated with different Internet services.
+ * The dnscache_test is used to check the time to live and IP addresses
+ * associated with a domain name.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InetdTest
+public class DnsCacheTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public InetdTest()
+    public DnsCacheTest()
     {
         this( null, 0 );
     }
 
 
-    public InetdTest(
+    public DnsCacheTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +56,7 @@ public class InetdTest
     }
 
 
-    public InetdTest(
+    public DnsCacheTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -64,10 +65,8 @@ public class InetdTest
     {
         super( id, version, comment, check );
 
-//        _oval_platform_type = OvalPlatformType.unix;
-//        _oval_component_type = OvalComponentType.inetd;
         _oval_family = Family.UNIX;
-        _oval_component = ComponentType.INETD;
+        _oval_component = ComponentType.DNSCACHE;
     }
 
 
@@ -102,7 +101,7 @@ public class InetdTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof InetdTest)) {
+        if (!(obj instanceof DnsCacheTest)) {
             return false;
         }
 
@@ -114,8 +113,8 @@ public class InetdTest
     @Override
     public String toString()
     {
-        return "inetd_test[" + super.toString() + "]";
+        return "dnscache_test[" + super.toString() + "]";
     }
 
 }
-//InetdTest
+//
