@@ -39,6 +39,8 @@ public enum ComponentType
     AUDITEVENTPOLICY,               // windows
     AUDITEVENTPOLICYSUBCATEGORIES,  // windows
 
+    CMDLET,                         // windows
+
     DNSCACHE,                       // unix
     DPKGINFO,                       // linux
     ENVIRONMENTVARIABLE,            // independent @deprecated
@@ -266,6 +268,7 @@ public enum ComponentType
         ComponentType.ACTIVEDIRECTORY57,
         ComponentType.AUDITEVENTPOLICY,
         ComponentType.AUDITEVENTPOLICYSUBCATEGORIES,
+        ComponentType.CMDLET,
         ComponentType.FILE,
         ComponentType.FILEAUDITEDPERMISSIONS,
         ComponentType.FILEAUDITEDPERMISSIONS53,

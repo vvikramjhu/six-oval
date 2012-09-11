@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * to evaluate the specified entries in active directory.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: ActiveDirectoryState.java 2625 2012-07-04 07:55:16Z nakamura5akihito@gmail.com $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ActiveDirectory57State
