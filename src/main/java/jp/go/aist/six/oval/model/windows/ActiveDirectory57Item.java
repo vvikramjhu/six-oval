@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * The activedirectory57_item holds information about specific entries in the Windows Active Directory.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: ActiveDirectoryItem.java 2625 2012-07-04 07:55:16Z nakamura5akihito@gmail.com $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ActiveDirectory57Item

@@ -25,7 +25,9 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.EntityObjectRecordType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.EntityObjectVersionType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -33,14 +35,14 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The activedirectory57_object is used by an active directory test to define those objects
- * to evaluated based on a specified state.
+ * The cmdlet_object is used by a cmdlet_test to identify the set of cmdlets to use and
+ * the parameters to provide to them for checking the state of a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ActiveDirectory57Object
+public class CmdletObject
     extends SystemObjectType
 {
 
@@ -49,13 +51,25 @@ public class ActiveDirectory57Object
     private Set  set;
 
 
-    private EntityObjectNamingContextType  naming_context;
-    //{1..1}
-
-    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
+    private EntityObjectStringType  module_name = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  attribute = new EntityObjectStringType();
+    private EntityObjectGUIDType  module_id = new EntityObjectGUIDType();
+    //{1..1, nillable="true"}
+
+    private EntityObjectVersionType  module_version = new EntityObjectVersionType();
+    //{1..1, nillable="true"}
+
+    private EntityObjectCmdletVerbType  verb;
+    //{1..1}
+
+    private EntityObjectStringType  noun;
+    //{1..1}
+
+    private EntityObjectRecordType  parameters = new EntityObjectRecordType();
+    //{1..1, nillable="true"}
+
+    private EntityObjectRecordType  select = new EntityObjectRecordType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -66,13 +80,13 @@ public class ActiveDirectory57Object
     /**
      * Constructor.
      */
-    public ActiveDirectory57Object()
+    public CmdletObject()
     {
         this( null, 0 );
     }
 
 
-    public ActiveDirectory57Object(
+    public CmdletObject(
                     final String id,
                     final int version
                     )
@@ -81,53 +95,16 @@ public class ActiveDirectory57Object
     }
 
 
-    public ActiveDirectory57Object(
+    public CmdletObject(
                     final String id,
                     final int version,
                     final String comment
                     )
     {
-        this( id, version, comment,
-                        (EntityObjectNamingContextType)null,
-                        (EntityObjectStringType)null,
-                        (EntityObjectStringType)null
-                        );
-    }
-
-
-    public ActiveDirectory57Object(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final NamingContextEnumeration naming_context,
-                    final String relative_dn,
-                    final String attribute
-                    )
-    {
-        this( id, version, comment,
-                        (naming_context == null ? null : (new EntityObjectNamingContextType( naming_context.value() ))),
-                        (relative_dn  == null ? null : (new EntityObjectStringType( relative_dn ))),
-                        (attribute == null ? null : (new EntityObjectStringType( attribute )))
-        );
-    }
-
-
-    public ActiveDirectory57Object(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final EntityObjectNamingContextType naming_context,
-                    final EntityObjectStringType relative_dn,
-                    final EntityObjectStringType attribute
-                    )
-    {
         super( id, version, comment );
-        setNamingContext( naming_context );
-        setRelativeDn( relative_dn );
-        setAttribute( attribute );
 
         _oval_family = Family.WINDOWS;
-        _oval_component = ComponentType.ACTIVEDIRECTORY57;
+        _oval_component = ComponentType.CMDLET;
     }
 
 
@@ -151,49 +128,119 @@ public class ActiveDirectory57Object
 
     /**
      */
-    public void setNamingContext(
-                    final EntityObjectNamingContextType naming_context
+    public void setModuleName(
+                    final EntityObjectStringType module_name
                     )
     {
-        this.naming_context = naming_context;
+        this.module_name = module_name;
     }
 
 
-    public EntityObjectNamingContextType getNamingContext()
+    public EntityObjectStringType getModuleName()
     {
-        return naming_context;
+        return module_name;
     }
 
 
 
-
-    public void setRelativeDn(
-                    final EntityObjectStringType relative_dn
+    /**
+     */
+    public void setModuleId(
+                    final EntityObjectGUIDType module_id
                     )
     {
-        this.relative_dn = relative_dn;
+        this.module_id = module_id;
     }
 
 
-    public EntityObjectStringType getRelativeDn()
+    public EntityObjectGUIDType getModuleId()
     {
-        return relative_dn;
+        return module_id;
     }
 
 
 
-    public void setAttribute(
-                    final EntityObjectStringType attribute
-                    // nillable ="true"
+    /**
+     */
+    public void setModuleVersion(
+                    final EntityObjectVersionType module_version
                     )
     {
-        this.attribute = attribute;
+        this.module_version = module_version;
     }
 
 
-    public EntityObjectStringType getAttribute()
+    public EntityObjectVersionType getModuleVersion()
     {
-        return attribute;
+        return module_version;
+    }
+
+
+
+    /**
+     */
+    public void setVerb(
+                    final EntityObjectCmdletVerbType verb
+                    )
+    {
+        this.verb = verb;
+    }
+
+
+    public EntityObjectCmdletVerbType getVerb()
+    {
+        return verb;
+    }
+
+
+
+    /**
+     */
+    public void setNoun(
+                    final EntityObjectStringType noun
+                    )
+    {
+        this.noun = noun;
+    }
+
+
+    public EntityObjectStringType getNoun()
+    {
+        return noun;
+    }
+
+
+
+    /**
+     */
+    public void setParameters(
+                    final EntityObjectRecordType parameters
+                    )
+    {
+        this.parameters = parameters;
+    }
+
+
+    public EntityObjectRecordType getParameters()
+    {
+        return parameters;
+    }
+
+
+
+    /**
+     */
+    public void setSelect(
+                    final EntityObjectRecordType select
+                    )
+    {
+        this.select = select;
+    }
+
+
+    public EntityObjectRecordType getSelect()
+    {
+        return select;
     }
 
 
@@ -247,9 +294,13 @@ public class ActiveDirectory57Object
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
 
-        ref_list.add( getNamingContext() );
-        ref_list.add( getRelativeDn() );
-        ref_list.add( getAttribute() );
+        ref_list.add( getModuleName() );
+        ref_list.add( getModuleId() );
+        ref_list.add( getModuleVersion() );
+        ref_list.add( getVerb() );
+        ref_list.add( getNoun() );
+        ref_list.add( getParameters() );
+        ref_list.add( getSelect() );
 
         return ref_list;
     }
@@ -273,7 +324,7 @@ public class ActiveDirectory57Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof ActiveDirectory57Object)) {
+        if (!(obj instanceof CmdletObject)) {
             return false;
         }
 
@@ -285,11 +336,16 @@ public class ActiveDirectory57Object
     @Override
     public String toString()
     {
-        return "activedirectory57_object[" + super.toString()
+        return "cmdlet_object[" + super.toString()
                         + ", set="              + getSet()
-                        + ", naming_context="   + getNamingContext()
-                        + ", relative_dn="      + getRelativeDn()
-                        + ", attribute="        + getAttribute()
+                        + ", module_name="      + getModuleName()
+                        + ", module_id="        + getModuleId()
+                        + ", module_version="   + getModuleVersion()
+                        + ", verb="             + getVerb()
+                        + ", noun="             + getNoun()
+                        + ", parameters="       + getParameters()
+                        + ", select="           + getSelect()
+                        + ", filter="           + getFilter()
                         + "]";
     }
 

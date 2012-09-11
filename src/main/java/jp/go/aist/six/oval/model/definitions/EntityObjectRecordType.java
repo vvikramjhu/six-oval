@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
@@ -37,14 +36,14 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityObjectRecordType
+public class EntityObjectRecordType
     extends EntityComplexBaseType
 {
 
     private final Collection<EntityObjectFieldType>  field =
             new ArrayList<EntityObjectFieldType>();
     //{0..*}
-    
+
 
 
     /**
@@ -86,8 +85,8 @@ public abstract class EntityObjectRecordType
                     final Collection<? extends EntityObjectFieldType> fields
                     )
     {
-        if (this.field != fields) {
-            this.field.clear();
+        if (field != fields) {
+            field.clear();
             if (fields != null  &&  fields.size() > 0) {
                 for (EntityObjectFieldType  p : fields) {
                     addField( p );

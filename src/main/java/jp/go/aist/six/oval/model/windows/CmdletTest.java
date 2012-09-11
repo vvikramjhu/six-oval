@@ -29,27 +29,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The active directory test is used to check information about specific entries
- * in active directory.
+ * The cmdlet_test is used to levarage a PowerShell cmdlet to check a Windows system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ActiveDirectory57Test
+public class CmdletTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public ActiveDirectory57Test()
+    public CmdletTest()
     {
         this( null, 0 );
     }
 
 
-    public ActiveDirectory57Test(
+    public CmdletTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +57,7 @@ public class ActiveDirectory57Test
     }
 
 
-    public ActiveDirectory57Test(
+    public CmdletTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -69,7 +68,7 @@ public class ActiveDirectory57Test
     }
 
 
-    public ActiveDirectory57Test(
+    public CmdletTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -81,7 +80,7 @@ public class ActiveDirectory57Test
         super( id, version, comment, check, object, stateList );
 
         _oval_family = Family.WINDOWS;
-        _oval_component = ComponentType.ACTIVEDIRECTORY57;
+        _oval_component = ComponentType.CMDLET;
     }
 
 
@@ -103,7 +102,7 @@ public class ActiveDirectory57Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof ActiveDirectory57Test)) {
+        if (!(obj instanceof CmdletTest)) {
             return false;
         }
 
@@ -115,7 +114,7 @@ public class ActiveDirectory57Test
     @Override
     public String toString()
     {
-        return "activedirectory57_test[" + super.toString() + "]";
+        return "cmdlet_test[" + super.toString() + "]";
     }
 
 }
