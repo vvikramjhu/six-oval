@@ -35,6 +35,7 @@ public enum ComponentType
 
     ACCESSTOKEN,                    // windows
     ACTIVEDIRECTORY,                // windows
+    ACTIVEDIRECTORY57,              // windows
     AUDITEVENTPOLICY,               // windows
     AUDITEVENTPOLICYSUBCATEGORIES,  // windows
 
@@ -262,6 +263,7 @@ public enum ComponentType
     public static final ComponentType[]  WINDOWS = new ComponentType[] {
         ComponentType.ACCESSTOKEN,
         ComponentType.ACTIVEDIRECTORY,
+        ComponentType.ACTIVEDIRECTORY57,
         ComponentType.AUDITEVENTPOLICY,
         ComponentType.AUDITEVENTPOLICYSUBCATEGORIES,
         ComponentType.FILE,
