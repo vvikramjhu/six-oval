@@ -14,7 +14,6 @@
 
 <mapping>
 
-
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  #unix                                              % -->
@@ -153,8 +152,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.FileObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="unix_file_object"
@@ -199,8 +196,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.FileState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -329,8 +324,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
     </class>
@@ -345,7 +338,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 -->
-
 
     <class name ="jp.go.aist.six.oval.model.unix.FileItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -600,7 +592,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="value" node="element"/>
         </field>
     </class>
-
 
 
     <!-- ******************************************************* -->
@@ -1040,8 +1031,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.PasswordObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="password_object"
@@ -1065,8 +1054,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.PasswordState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1114,8 +1101,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="last_login" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.PasswordItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1165,7 +1150,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- process, 58                                             -->
     <!-- ******************************************************* -->
@@ -1188,8 +1172,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.Process58Object"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
@@ -1219,8 +1201,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.Process58State"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1304,8 +1284,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name ="jp.go.aist.six.oval.model.unix.Process58Item"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="unix_process58_item"
@@ -1388,8 +1366,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.ProcessTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="unix_process_test"
@@ -1409,8 +1385,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.ProcessObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="unix_process_object"
@@ -1428,8 +1402,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="command" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.ProcessState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
@@ -1546,7 +1518,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="user_id" node="element"/>
         </field>
     </class>
-
 
 
     <!-- ******************************************************* -->
@@ -1672,8 +1643,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.RunlevelObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="runlevel_object"
@@ -1703,8 +1672,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.unix.RunlevelState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="runlevel_state"
@@ -1731,8 +1698,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="kill" node="element"/>
         </field>
     </class>
-
-
 
     <class name ="jp.go.aist.six.oval.model.unix.RunlevelItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
@@ -1762,7 +1727,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- sccs                                                    -->
     <!-- ******************************************************* -->
@@ -1784,8 +1748,6 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.unix.SccsObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
