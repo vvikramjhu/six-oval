@@ -58,7 +58,9 @@ import jp.go.aist.six.oval.model.solaris.SmfServiceStateEnumeration;
 import jp.go.aist.six.oval.model.unix.CapabilityEnumeration;
 import jp.go.aist.six.oval.model.unix.EncryptMethodEnumeration;
 import jp.go.aist.six.oval.model.unix.EndpointEnumeration;
+import jp.go.aist.six.oval.model.unix.GconfTypeEnumeration;
 import jp.go.aist.six.oval.model.unix.InterfaceEnumeration;
+import jp.go.aist.six.oval.model.unix.RoutingTableFlagsEnumeration;
 import jp.go.aist.six.oval.model.unix.WaitStatusEnumeration;
 import jp.go.aist.six.oval.model.unix.XinetdTypeStatusEnumeration;
 import jp.go.aist.six.oval.model.windows.AddrTypeEnumeration;
@@ -157,7 +159,9 @@ public class OvalConverter
         CapabilityEnumeration.class,
         EncryptMethodEnumeration.class,
         EndpointEnumeration.class,
+        GconfTypeEnumeration.class,
         InterfaceEnumeration.class,
+        RoutingTableFlagsEnumeration.class,
         WaitStatusEnumeration.class,
         XinetdTypeStatusEnumeration.class,
 
