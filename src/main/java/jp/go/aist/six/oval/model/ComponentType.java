@@ -41,7 +41,7 @@ public enum ComponentType
 
     CMDLET,                         // windows
 
-    DNSCACHE,                       // unix
+    DNSCACHE,                       // unix, windows
     DPKGINFO,                       // linux
     ENVIRONMENTVARIABLE,            // independent @deprecated
     ENVIRONMENTVARIABLE58,          // independent
@@ -80,6 +80,7 @@ public enum ComponentType
     PASSWORDPOLICY,                 // windows
     PATCH,                          // solaris
     PATCH54,                        // solaris
+    PEHEADER,                       // windows
     PROCESS,                        // unix, windows
     PROCESS58,                      // unix, windows
     PORT,                           // windows
@@ -269,6 +270,7 @@ public enum ComponentType
         ComponentType.AUDITEVENTPOLICY,
         ComponentType.AUDITEVENTPOLICYSUBCATEGORIES,
         ComponentType.CMDLET,
+        ComponentType.DNSCACHE,
         ComponentType.FILE,
         ComponentType.FILEAUDITEDPERMISSIONS,
         ComponentType.FILEAUDITEDPERMISSIONS53,
@@ -280,6 +282,7 @@ public enum ComponentType
         ComponentType.LOCKOUTPOLICY,
         ComponentType.METABASE,
         ComponentType.PASSWORDPOLICY,
+        ComponentType.PEHEADER,
         ComponentType.PORT,
         ComponentType.PRINTEREFFECTIVERIGHTS,
         ComponentType.PROCESS,
