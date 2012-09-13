@@ -101,6 +101,7 @@ public enum ComponentType
     SCCS,                           // unix
     SELINUXBOOLEAN,                 // linux
     SELINUXSECURITYCONTEXT,         // linux
+    SERVICE,                        // windows
     SERVICEEFFECTIVERIGHTS,         // windows
     SHADOW,                         // unix
     SHAREDRESOURCE,                 // windows
@@ -292,6 +293,7 @@ public enum ComponentType
         ComponentType.REGKEYAUDITEDPERMISSIONS53,
         ComponentType.REGKEYEFFECTIVERIGHTS,
         ComponentType.REGKEYEFFECTIVERIGHTS53,
+        ComponentType.SERVICE,
         ComponentType.SERVICEEFFECTIVERIGHTS,
         ComponentType.SHAREDRESOURCE,
         ComponentType.SID,
