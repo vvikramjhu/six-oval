@@ -106,6 +106,7 @@ public enum ComponentType
     SHADOW,                         // unix
     SHAREDRESOURCE,                 // windows
     SHAREDRESOURCEAUDITEDPERMISSIONS,   // windows
+    SHAREDRESOURCEEFFECTIVERIGHTS,  // windows
     SID,                            // windows
     SID_SID,                        // windows
     SLACKWAREPKGINFO,               // linux
@@ -298,6 +299,7 @@ public enum ComponentType
         ComponentType.SERVICEEFFECTIVERIGHTS,
         ComponentType.SHAREDRESOURCE,
         ComponentType.SHAREDRESOURCEAUDITEDPERMISSIONS,
+        ComponentType.SHAREDRESOURCEEFFECTIVERIGHTS,
         ComponentType.SID,
         ComponentType.SID_SID,
         ComponentType.UAC,
