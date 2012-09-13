@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.windows;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,14 +33,14 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The dnscache_object is used by the dnscache_test to specify the domain name(s)
- * that should be collected from the DNS cache on the local system.
+ * The peheader_object is used by a peheader_test to define the specific file(s)
+ * whose headers should be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DnsCacheObject
+public class PeHeaderObject
     extends SystemObjectType
 {
 
@@ -49,7 +49,17 @@ public class DnsCacheObject
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  domain_name;
+
+    private FileBehaviors  behaviors;
+    //{0..1}
+
+    private EntityObjectStringType  filepath;
+    //{1..1}
+
+    private EntityObjectStringType  path;
+    //{1..1}
+
+    private EntityObjectStringType  filename;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -60,21 +70,21 @@ public class DnsCacheObject
     /**
      * Constructor.
      */
-    public DnsCacheObject()
+    public PeHeaderObject()
     {
         this( null, 0 );
     }
 
 
-    public DnsCacheObject(
+    public PeHeaderObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-        _oval_family = Family.UNIX;
-        _oval_component = ComponentType.DNSCACHE;
+        _oval_family = Family.WINDOWS;
+        _oval_component = ComponentType.PEHEADER;
     }
 
 
@@ -135,17 +145,68 @@ public class DnsCacheObject
 
     /**
      */
-    public void setDomainName(
-                    final EntityObjectStringType domain_name
+    public void setBehaviors(
+                    final FileBehaviors behaviors
                     )
     {
-        this.domain_name = domain_name;
+        this.behaviors = behaviors;
     }
 
 
-    public EntityObjectStringType getDomainName()
+    public FileBehaviors getBehaviors()
     {
-        return domain_name;
+        return behaviors;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityObjectStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityObjectStringType getFilepath()
+    {
+        return filepath;
+    }
+
+
+
+    /**
+     */
+    public void setPath(
+                    final EntityObjectStringType path
+                    )
+    {
+        this.path = path;
+    }
+
+
+    public EntityObjectStringType getPath()
+    {
+        return path;
+    }
+
+
+
+    /**
+     */
+    public void setFilename(
+                    final EntityObjectStringType filename
+                    )
+    {
+        this.filename = filename;
+    }
+
+
+    public EntityObjectStringType getFilename()
+    {
+        return filename;
     }
 
 
@@ -153,13 +214,13 @@ public class DnsCacheObject
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filters
+                    final Collection<? extends Filter> filterList
                     )
     {
-        if (filter != filters) {
+        if (filter != filterList) {
             filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
+            if (filterList != null  &&  filterList.size() > 0) {
+                filter.addAll( filterList );
             }
         }
     }
@@ -198,7 +259,10 @@ public class DnsCacheObject
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getDomainName() );
+
+        ref_list.add( getFilepath() );
+        ref_list.add( getPath() );
+        ref_list.add( getFilename() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -222,7 +286,7 @@ public class DnsCacheObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof DnsCacheObject)) {
+        if (!(obj instanceof PeHeaderObject)) {
             return false;
         }
 
@@ -234,10 +298,13 @@ public class DnsCacheObject
     @Override
     public String toString()
     {
-        return "dnscache_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", domain_name="     + getDomainName()
-                        + ", filter="       + getFilter()
+        return "peheader_object[" + super.toString()
+                        + ", set=" 			+ getSet()
+                        + ", behaviors="	+ getBehaviors()
+                        + ", filepath="		+ getFilepath()
+                        + ", path=" 		+ getPath()
+                        + ", filename=" 	+ getFilename()
+                        + ", filter=" 		+ getFilter()
                         + "]";
     }
 

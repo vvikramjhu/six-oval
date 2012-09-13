@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.windows;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -73,7 +73,7 @@ public class DnsCacheObject
     {
         super( id, version );
 
-        _oval_family = Family.UNIX;
+        _oval_family = Family.WINDOWS;
         _oval_component = ComponentType.DNSCACHE;
     }
 
