@@ -19,6 +19,9 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemRecordType;
@@ -40,14 +43,21 @@ public class CmdletItem
     extends ItemType
 {
 
-    private EntityItemStringType      module_name;
-    private EntityItemGUIDType        module_id;
-    private EntityItemVersionType     module_version;
+    //{0..1, nillable="true"}
+    private EntityItemStringType      module_name = new EntityItemStringType();
+    private EntityItemGUIDType        module_id = new EntityItemGUIDType();
+    private EntityItemVersionType     module_version = new EntityItemVersionType();
+
+    //{0..1}
     private EntityItemCmdletVerbType  verb;
     private EntityItemStringType      noun;
-    private EntityItemRecordType      parameters;
-    private EntityItemRecordType      select;
-    private EntityItemRecordType      value;
+
+    //{0..1, nillable="true"}
+    private EntityItemRecordType      parameters = new EntityItemRecordType();
+    private EntityItemRecordType      select = new EntityItemRecordType();
+
+    //{0..*}
+    private final Collection<EntityItemRecordType>  value = new ArrayList<EntityItemRecordType>();
 
 
 
@@ -194,16 +204,39 @@ public class CmdletItem
     /**
      */
     public void setValue(
-                    final EntityItemRecordType value
+                    final Collection<? extends EntityItemRecordType> values
                     )
     {
-        this.value = value;
+        if (value != values) {
+            value.clear();
+            if (values != null  &&  values.size() > 0) {
+                value.addAll( values );
+            }
+        }
     }
 
 
-    public EntityItemRecordType getValue()
+    public boolean addValue(
+                    final EntityItemRecordType value
+                    )
+    {
+        if (value == null) {
+            return false;
+        }
+
+        return this.value.add( value );
+    }
+
+
+    public Collection<EntityItemRecordType> getValue()
     {
         return value;
+    }
+
+
+    public Iterator<EntityItemRecordType> iterateValue()
+    {
+        return value.iterator();
     }
 
 
