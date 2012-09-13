@@ -71,8 +71,6 @@ public class UserSidItem
     {
         super( id, status );
 
-//        _oval_platform_type = OvalPlatformType.windows;
-//        _oval_component_type = OvalComponentType.user_sid;
         _oval_family = Family.WINDOWS;
         _oval_component = ComponentType.USER_SID;
     }
@@ -166,4 +164,4 @@ public class UserSidItem
              + "]";
     }
 }
-//UserSidItem
+//
