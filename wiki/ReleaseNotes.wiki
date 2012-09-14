@@ -16,6 +16,7 @@ under development...
   * OVAL Schema Version: 5.10.1
   * Linux family support completed.
   * Unix family support completed.
+  * Windows family support completed.
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, *_iflisteners_*, inetlisteningservers, partition, rpminfo, rpmverify, *_rpmverifyfile_*, *_rpmverifypackage_*, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
