@@ -44,11 +44,11 @@ public class Ldap57Item
     private EntityItemStringType  suffix;
     //{0..1}
 
-    private EntityItemStringType  relative_dn;
-    //{0..1}
+    private EntityItemStringType  relative_dn = new EntityItemStringType();
+    //{0..1, nillable="true"}
 
-    private EntityItemStringType  attribute;
-    //{0..1}
+    private EntityItemStringType  attribute = new EntityItemStringType();
+    //{0..1, nillable="true"}
 
     private EntityItemStringType  object_class;
     //{0..1}
