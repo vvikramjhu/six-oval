@@ -67,6 +67,7 @@ public enum ComponentType
     ISAINFO,						// solaris
 
     LDAP,                           // independent
+    LDAP57,                         // independent
     LOCKOUTPOLICY,                  // windows
 
     METABASE,                       // windows
@@ -210,6 +211,7 @@ public enum ComponentType
         ComponentType.FILEHASH,
         ComponentType.FILEHASH58,
         ComponentType.LDAP,
+        ComponentType.LDAP57,
         ComponentType.SQL,
         ComponentType.SQL57,
         ComponentType.TEXTFILECONTENT,

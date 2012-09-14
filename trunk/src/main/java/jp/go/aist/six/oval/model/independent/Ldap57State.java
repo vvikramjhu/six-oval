@@ -24,50 +24,54 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Set;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.EntityStateRecordType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The ldap object is used by an LDAP test to define the objects
- * to be evaluated based on a specified state.
+ * The ldap57 state defines the different information that can be used
+ * to evaluate the specified entries in an LDAP directory.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LdapObject
-    extends SystemObjectType
+public class Ldap57State
+    extends StateType
 {
-    //TODO:  XSD model choice( ... )
 
-    private Set  set;
-
-    private LdapBehaviors  behaviors;
+    private EntityStateStringType  suffix;
     //{0..1}
 
-    private EntityObjectStringType  suffix;
+    private EntityStateStringType  relative_dn;
+    //{0..1}
 
-    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
-    //{nillable="true"}
+    private EntityStateStringType  attribute;
+    //{0..1}
 
-    private EntityObjectStringType  attribute = new EntityObjectStringType();
-    //{nillable="true"}
+    private EntityStateStringType  object_class;
+    //{0..1}
+
+    private EntityStateLdaptypeType  ldaptype;
+    //{0..1}
+
+    private EntityStateRecordType  value;
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public LdapObject()
+    public Ldap57State()
     {
         this( null, 0 );
     }
 
 
-    public LdapObject(
+    public Ldap57State(
                     final String id,
                     final int version
                     )
@@ -76,7 +80,7 @@ public class LdapObject
     }
 
 
-    public LdapObject(
+    public Ldap57State(
                     final String id,
                     final int version,
                     final String comment
@@ -85,41 +89,7 @@ public class LdapObject
         super( id, version, comment );
 
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.LDAP;
-    }
-
-
-
-    /**
-     */
-    public void setSet(
-                    final Set set
-                    )
-    {
-        this.set = set;
-    }
-
-
-    public Set getSet()
-    {
-        return set;
-    }
-
-
-
-    /**
-     */
-    public void setBehaviors(
-                    final LdapBehaviors behaviors
-                    )
-    {
-        this.behaviors = behaviors;
-    }
-
-
-    public LdapBehaviors getBehaviors()
-    {
-        return behaviors;
+        _oval_component = ComponentType.LDAP57;
     }
 
 
@@ -127,14 +97,14 @@ public class LdapObject
     /**
      */
     public void setSuffix(
-                    final EntityObjectStringType suffix
+                    final EntityStateStringType suffix
                     )
     {
         this.suffix = suffix;
     }
 
 
-    public EntityObjectStringType getSuffix()
+    public EntityStateStringType getSuffix()
     {
         return suffix;
     }
@@ -144,14 +114,14 @@ public class LdapObject
     /**
      */
     public void setRelativeDn(
-                    final EntityObjectStringType relative_dn
+                    final EntityStateStringType relative_dn
                     )
     {
         this.relative_dn = relative_dn;
     }
 
 
-    public EntityObjectStringType getRelativeDn()
+    public EntityStateStringType getRelativeDn()
     {
         return relative_dn;
     }
@@ -161,16 +131,67 @@ public class LdapObject
     /**
      */
     public void setAttribute(
-                    final EntityObjectStringType attribute
+                    final EntityStateStringType attribute
                     )
     {
         this.attribute = attribute;
     }
 
 
-    public EntityObjectStringType getAttribute()
+    public EntityStateStringType getAttribute()
     {
         return attribute;
+    }
+
+
+
+    /**
+     */
+    public void setObjectClass(
+                    final EntityStateStringType object_class
+                    )
+    {
+        this.object_class = object_class;
+    }
+
+
+    public EntityStateStringType getObjectClass()
+    {
+        return object_class;
+    }
+
+
+
+    /**
+     */
+    public void setLdaptype(
+                    final EntityStateLdaptypeType ldaptype
+                    )
+    {
+        this.ldaptype = ldaptype;
+    }
+
+
+    public EntityStateLdaptypeType getLdaptype()
+    {
+        return ldaptype;
+    }
+
+
+
+    /**
+     */
+    public void setValue(
+                    final EntityStateRecordType value
+                    )
+    {
+        this.value = value;
+    }
+
+
+    public EntityStateRecordType getValue()
+    {
+        return value;
     }
 
 
@@ -186,6 +207,9 @@ public class LdapObject
         ref_list.add( getSuffix() );
         ref_list.add( getRelativeDn() );
         ref_list.add( getAttribute() );
+        ref_list.add( getObjectClass() );
+        ref_list.add( getLdaptype() );
+        ref_list.add( getValue() );
 
         return ref_list;
     }
@@ -209,7 +233,7 @@ public class LdapObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapObject)) {
+        if (!(obj instanceof Ldap57State)) {
             return false;
         }
 
@@ -221,13 +245,14 @@ public class LdapObject
     @Override
     public String toString()
     {
-        return "ldap_object[" + super.toString()
-                        + ", set="       + getSet()
-                        + ", behaviors=" + getBehaviors()
-                        + ", suffix="    + getSuffix()
-                        + ", relative_dn=" + getRelativeDn()
-                        + ", attribute=" + getAttribute()
-                       + "]";
+        return "ldap57_state[" + super.toString()
+                        + ", suffix="       + getSuffix()
+                        + ", relative_dn="  + getRelativeDn()
+                        + ", attribute="    + getAttribute()
+                        + ", object_class=" + getObjectClass()
+                        + ", ldaptype="     + getLdaptype()
+                        + ", value="        + getValue()
+                        + "]";
     }
 
 }
