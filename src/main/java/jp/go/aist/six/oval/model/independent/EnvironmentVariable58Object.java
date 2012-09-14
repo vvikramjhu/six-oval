@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The environmentvariable58_object is used by an environmentvariable_test
+ * The environmentvariable58 object is used by an environmentvariable test
  * to define the specific environment variable(s) and process IDs to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -44,13 +44,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 public class EnvironmentVariable58Object
     extends SystemObjectType
 {
-    // XSD model:
-    // choice(
-    //         set
-    //         sequence(
-    //              .....
-    //          )
-    // )
+    //TODO: XSD model
 
     private Set  set;
     //{1..1}
@@ -59,10 +53,8 @@ public class EnvironmentVariable58Object
     private EntityObjectIntType  pid = new EntityObjectIntType();
     //{1..1, nillable="true"}
 
-
     private EntityObjectStringType  name;
     //{1..1}
-
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
@@ -95,8 +87,6 @@ public class EnvironmentVariable58Object
     {
         super( id, version, comment );
 
-//        _oval_platform_type = OvalPlatformType.independent;
-//        _oval_component_type = OvalComponentType.environmentvariable58;
         _oval_family = Family.INDEPENDENT;
         _oval_component = ComponentType.ENVIRONMENTVARIABLE58;
     }

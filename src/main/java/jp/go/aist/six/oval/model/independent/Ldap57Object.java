@@ -21,24 +21,26 @@ package jp.go.aist.six.oval.model.independent;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The ldap object is used by an LDAP test to define the objects
+ * The ldap57 object is used by an LDAP test to define the objects
  * to be evaluated based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LdapObject
+public class Ldap57Object
     extends SystemObjectType
 {
     //TODO:  XSD model choice( ... )
@@ -56,18 +58,21 @@ public class LdapObject
     private EntityObjectStringType  attribute = new EntityObjectStringType();
     //{nillable="true"}
 
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
 
 
     /**
      * Constructor.
      */
-    public LdapObject()
+    public Ldap57Object()
     {
         this( null, 0 );
     }
 
 
-    public LdapObject(
+    public Ldap57Object(
                     final String id,
                     final int version
                     )
@@ -76,7 +81,7 @@ public class LdapObject
     }
 
 
-    public LdapObject(
+    public Ldap57Object(
                     final String id,
                     final int version,
                     final String comment
@@ -85,7 +90,7 @@ public class LdapObject
         super( id, version, comment );
 
         _oval_family = Family.INDEPENDENT;
-        _oval_component = ComponentType.LDAP;
+        _oval_component = ComponentType.LDAP57;
     }
 
 
@@ -175,6 +180,46 @@ public class LdapObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filterList
+                    )
+    {
+        if (filter != filterList) {
+            filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                filter.addAll( filterList );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
+    }
+
+
+
     //*********************************************************************
     //  DefinitionsElement
     //*********************************************************************
@@ -186,6 +231,7 @@ public class LdapObject
         ref_list.add( getSuffix() );
         ref_list.add( getRelativeDn() );
         ref_list.add( getAttribute() );
+        ref_list.addAll( getFilter() );
 
         return ref_list;
     }
@@ -209,7 +255,7 @@ public class LdapObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapObject)) {
+        if (!(obj instanceof Ldap57Object)) {
             return false;
         }
 
@@ -221,12 +267,13 @@ public class LdapObject
     @Override
     public String toString()
     {
-        return "ldap_object[" + super.toString()
+        return "ldap57_object[" + super.toString()
                         + ", set="       + getSet()
                         + ", behaviors=" + getBehaviors()
                         + ", suffix="    + getSuffix()
                         + ", relative_dn=" + getRelativeDn()
                         + ", attribute=" + getAttribute()
+                        + ", filter="    + getFilter()
                        + "]";
     }
 
