@@ -21,7 +21,7 @@ under development...
 || linux || dpkginfo, *_iflisteners_*, inetlisteningservers, partition, rpminfo, rpmverify, *_rpmverifyfile_*, *_rpmverifypackage_*, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
 || solaris || isainfo, ndd, package, packagecheck, patch, patch54, smf ||
 || unix || *_dnscache_*, file, *_fileextendedattribute_*, *_gconf_*, inetd, interface, password, process, process58, *_routingtable_*, runlevel, *_sccs_*, shadow, *_sysctl_*, uname, xinetd ||
-|| windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
+|| windows || accesstoken, activedirectory, *_activedirectory57_*, auditeventpolicy, auditeventpolicysubcategories, *_cmdlet_*, *_dnscache_*, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, *_peheader_*, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, *_service_*, serviceeffectiverights, sharedresource, *_sharedresourceauditedpermissions_*, *_sharedresourceeffectiverights_*, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
 
 
 
@@ -37,7 +37,7 @@ under development...
 || linux || dpkginfo, inetlisteningservers, partition, rpminfo, rpmverify, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
 || *_solaris_* || *_isainfo, ndd, package, packagecheck, patch, patch54, smf_* ||
 || unix || file, inetd, interface, password, process, process58, runlevel, shadow, uname, xinetd ||
-|| windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
+|| windows || accesstoken, activedirectory, auditeventpolicy, auditeventpolicysubcategories, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, serviceeffectiverights, sharedresource, sid, sid_sid, uac, user,  user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
 
 
 
