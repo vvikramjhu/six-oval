@@ -66,13 +66,20 @@ import jp.go.aist.six.oval.model.unix.XinetdTypeStatusEnumeration;
 import jp.go.aist.six.oval.model.windows.AddrTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.AdstypeEnumeration;
 import jp.go.aist.six.oval.model.windows.AuditEnumeration;
+import jp.go.aist.six.oval.model.windows.CmdletVerbEnumeration;
 import jp.go.aist.six.oval.model.windows.DriveTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.InterfaceTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
+import jp.go.aist.six.oval.model.windows.PeSubsystemEnumeration;
+import jp.go.aist.six.oval.model.windows.PeTargetMachineEnumeration;
 import jp.go.aist.six.oval.model.windows.ProtocolEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.ServiceControlsAcceptedEnumeration;
+import jp.go.aist.six.oval.model.windows.ServiceCurrentStateEnumeration;
+import jp.go.aist.six.oval.model.windows.ServiceStartTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.ServiceTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.SharedResourceTypeEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -169,13 +176,20 @@ public class OvalConverter
         AddrTypeEnumeration.class,
         AdstypeEnumeration.class,
         AuditEnumeration.class,
+        CmdletVerbEnumeration.class,
         DriveTypeEnumeration.class,
         FileTypeEnumeration.class,
         InterfaceTypeEnumeration.class,
         NamingContextEnumeration.class,
+        PeSubsystemEnumeration.class,
+        PeTargetMachineEnumeration.class,
         ProtocolEnumeration.class,
         RegistryHiveEnumeration.class,
         RegistryTypeEnumeration.class,
+        ServiceControlsAcceptedEnumeration.class,
+        ServiceCurrentStateEnumeration.class,
+        ServiceStartTypeEnumeration.class,
+        ServiceTypeEnumeration.class,
         SharedResourceTypeEnumeration.class
 
 //        Platform.class,

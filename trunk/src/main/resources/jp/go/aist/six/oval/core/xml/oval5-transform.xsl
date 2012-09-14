@@ -53,12 +53,72 @@
 <!-- DUPLICATED components 
     @see OvalComponentType.java
 -->
-<!-- 
+<!--
+    dnscache:   unix, windows 
     file:       unix, windows
     interface:  unix, windows
     process:    unix, windows
     process58:  unix, windows
 -->
+
+
+<!-- *********************************************************** -->
+<!-- dnscache                                                    -->
+<!-- *********************************************************** -->
+
+<!-- dnscache (pre-unmarshalling)
+-->
+<xsl:template match="*[local-name() = 'dnscache_test'  or  local-name() = 'dnscache_object'  or  local-name() = 'dnscache_state'  or  local-name() = 'dnscache_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+<!--
+    <xsl:message>
+        <xsl:value-of select="$lvar_element"/>
+        <xsl:value-of select="$lvar_ns"/>
+    </xsl:message>
+-->
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+
+</xsl:template>
+
+
+<!-- dnscache (post-marshalling) -->
+<xsl:template match="*[local-name() = 'unix_dnscache_test'  or  local-name() = 'unix_dnscache_object'  or  local-name() = 'unix_dnscache_state'  or  local-name() = 'unix_dnscache_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
 
 
 <!-- *********************************************************** -->
@@ -301,6 +361,46 @@ TEMPLATE:  Copy idiom.
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix">
             <xsl:choose>
+                <!-- dnscache -->
+                <xsl:when test="$lvar_element = 'dnscache_test'">
+                    <unix_dnscache_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_dnscache_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'dnscache_object'">
+                    <unix_dnscache_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_dnscache_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'dnscache_state'">
+                    <unix_dnscache_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_dnscache_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_dnscache_test'">
+                    <dnscache_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </dnscache_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_dnscache_object'">
+                    <dnscache_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </dnscache_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_dnscache_state'">
+                    <dnscache_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </dnscache_state>
+                </xsl:when>
+
+
                 <!-- interface -->
                 <xsl:when test="$lvar_element = 'interface_test'">
                     <unix_interface_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
@@ -464,6 +564,22 @@ TEMPLATE:  Copy idiom.
 
         <xsl:when test="$lvar_ns = $var_ns-sc-5-unix">
             <xsl:choose>
+                <!-- dnscache -->
+                <xsl:when test="$lvar_element = 'dnscache_item'">
+                    <unix_dnscache_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_dnscache_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_dnscache_item'">
+                    <dnscache_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </dnscache_item>
+                </xsl:when>
+
+
                 <!-- interface -->
                 <xsl:when test="$lvar_element = 'interface_item'">
                     <unix_interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
