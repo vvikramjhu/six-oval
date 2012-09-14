@@ -271,7 +271,6 @@
     <!-- ******************************************************* -->
     <!-- accesstoken                                             -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.AccesstokenTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="accesstoken_test"
@@ -676,18 +675,15 @@
     <!-- ******************************************************* -->
     <!-- activedirectory                                         -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.ActiveDirectoryTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="activedirectory_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -700,24 +696,20 @@
         <map-to xml="activedirectory_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="namingContext" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectNamingContextType" >
             <bind-xml name="naming_context" node="element"/>
         </field>
-
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="relative_dn" node="element"/>
         </field>
-
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
@@ -730,32 +722,26 @@
         <map-to xml="activedirectory_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="namingContext" 
             type="jp.go.aist.six.oval.model.windows.EntityStateNamingContextType">
             <bind-xml name="naming_context" node="element"/>
         </field>
-
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="relative_dn" node="element"/>
         </field>
-
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="attribute" node="element"/>
         </field>
-
         <field name="objectClass" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="object_class" node="element"/>
         </field>
-
         <field name="adstype" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAdstypeType">
             <bind-xml name="adstype" node="element"/>
         </field>
-
         <field name="value" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="value" node="element"/>
@@ -767,32 +753,26 @@
         <map-to xml="activedirectory_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="namingContext"
             type="jp.go.aist.six.oval.model.windows.EntityItemNamingContextType">
             <bind-xml name="naming_context" node="element"/>
         </field>
-
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="relative_dn" node="element"/>
         </field>
-
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="attribute" node="element"/>
         </field>
-
         <field name="objectClass" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="object_class" node="element"/>
         </field>
-
         <field name="adstype" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAdstypeType">
             <bind-xml name="adstype" node="element"/>
         </field>
-
         <field name="value" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
             collection="collection">
@@ -804,18 +784,15 @@
     <!-- ******************************************************* -->
     <!-- auditeventpolicy                                        -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.AuditEventPolicyTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="auditeventpolicy_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -835,47 +812,38 @@
         <map-to xml="auditeventpolicy_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="accountLogon" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="account_logon" node="element"/>
         </field>
-
         <field name="accountManagement" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="account_management" node="element"/>
         </field>
-
         <field name="detailedTracking" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="detailed_tracking" node="element"/>
         </field>
-
         <field name="directoryServiceAccess" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="directory_service_access" node="element"/>
         </field>
-
         <field name="logon" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="logon" node="element"/>
         </field>
-
         <field name="objectAccess" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="object_access" node="element"/>
         </field>
-
         <field name="policyChange" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="policy_change" node="element"/>
         </field>
-
         <field name="privilegeUse" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="privilege_use" node="element"/>
         </field>
-
         <field name="system" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="system" node="element"/>
@@ -887,47 +855,38 @@
         <map-to xml="auditeventpolicy_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="accountLogon" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="account_logon" node="element"/>
         </field>
-
         <field name="accountManagement" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="account_management" node="element"/>
         </field>
-
         <field name="detailedTracking" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="detailed_tracking" node="element"/>
         </field>
-
         <field name="directoryServiceAccess" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="directory_service_access" node="element"/>
         </field>
-
         <field name="logon" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="logon" node="element"/>
         </field>
-
         <field name="objectAccess" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="object_access" node="element"/>
         </field>
-
         <field name="policyChange" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="policy_change" node="element"/>
         </field>
-
         <field name="privilegeUse" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="privilege_use" node="element"/>
         </field>
-
         <field name="system" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="system" node="element"/>
@@ -1698,6 +1657,87 @@
             type="jp.go.aist.six.oval.model.sc.EntityItemRecordType"
             collection="collection">
             <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ******************************************************* -->
+    <!-- dnscache                                               -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.windows.DnsCacheTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="dnscache_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.DnsCacheObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="dnscache_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.DnsCacheState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="dnscache_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+        <field name="ttl" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ttl" node="element"/>
+        </field>
+        <field name="IPAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="ip_address" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.windows.DnsCacheItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="dnscache_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+        <field name="domainName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="domain_name" node="element"/>
+        </field>
+        <field name="ttl" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ttl" node="element"/>
+        </field>
+        <field name="IPAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressType"
+            collection="collection">
+            <bind-xml name="ip_address" node="element"/>
         </field>
     </class>
 
