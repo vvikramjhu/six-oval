@@ -794,7 +794,7 @@ public class PeHeaderItem
 
     /**
      */
-    public void setMinorSubsystemVersion(
+    public void setMinorSusbsystemVersion(
                     final EntityItemIntType minor_susbsystem_version
                     )
     {
@@ -802,7 +802,7 @@ public class PeHeaderItem
     }
 
 
-    public EntityItemIntType getMinorSubsystemVersion()
+    public EntityItemIntType getMinorSusbsystemVersion()
     {
         return minor_susbsystem_version;
     }
@@ -1084,7 +1084,7 @@ public class PeHeaderItem
                         + ", major_image_version="  + getMajorImageVersion()
                         + ", minor_image_version="   + getMinorImageVersion()
                         + ", major_subsystem_version="   + getMajorSubsystemVersion()
-                        + ", minor_susbsystem_version="   + getMinorSubsystemVersion()
+                        + ", minor_susbsystem_version="   + getMinorSusbsystemVersion()
                         + ", size_of_image="   + getSizeOfImage()
                         + ", size_of_headers="   + getSizeOfHeaders()
                         + ", checksum="   + getChecksum()

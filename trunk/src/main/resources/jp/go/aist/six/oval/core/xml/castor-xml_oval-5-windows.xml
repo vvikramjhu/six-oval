@@ -3744,9 +3744,9 @@
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="major_subsystem_version" node="element"/>
         </field>
-        <field name="minorSubsystemVersion" 
+        <field name="minorSusbsystemVersion" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
-            <bind-xml name="minor_subsystem_version" node="element"/>
+            <bind-xml name="minor_susbsystem_version" node="element"/>
         </field>
         <field name="sizeOfImage" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
@@ -3959,9 +3959,9 @@
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="major_subsystem_version" node="element"/>
         </field>
-        <field name="minorSubsystemVersion" 
+        <field name="minorSusbsystemVersion" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
-            <bind-xml name="minor_subsystem_version" node="element"/>
+            <bind-xml name="minor_susbsystem_version" node="element"/>
         </field>
         <field name="sizeOfImage" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">

@@ -798,7 +798,7 @@ public class PeHeaderState
 
     /**
      */
-    public void setMinorSubsystemVersion(
+    public void setMinorSusbsystemVersion(
                     final EntityStateIntType minor_susbsystem_version
                     )
     {
@@ -806,7 +806,7 @@ public class PeHeaderState
     }
 
 
-    public EntityStateIntType getMinorSubsystemVersion()
+    public EntityStateIntType getMinorSusbsystemVersion()
     {
         return minor_susbsystem_version;
     }
@@ -1069,7 +1069,7 @@ public class PeHeaderState
         ref_list.add( getMajorImageVersion() );
         ref_list.add( getMinorImageVersion() );
         ref_list.add( getMajorSubsystemVersion() );
-        ref_list.add( getMinorSubsystemVersion() );
+        ref_list.add( getMinorSusbsystemVersion() );
         ref_list.add( getSizeOfImage() );
         ref_list.add( getSizeOfHeaders() );
         ref_list.add( getChecksum() );
@@ -1160,7 +1160,7 @@ public class PeHeaderState
              + ", major_image_version="  + getMajorImageVersion()
              + ", minor_image_version="   + getMinorImageVersion()
              + ", major_subsystem_version="   + getMajorSubsystemVersion()
-             + ", minor_susbsystem_version="   + getMinorSubsystemVersion()
+             + ", minor_susbsystem_version="   + getMinorSusbsystemVersion()
              + ", size_of_image="   + getSizeOfImage()
              + ", size_of_headers="   + getSizeOfHeaders()
              + ", checksum="   + getChecksum()
