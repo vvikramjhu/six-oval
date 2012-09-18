@@ -49,7 +49,7 @@ public class InterfaceItem
     private EntityItemIntType  index;
     //{0..1}
 
-    private EntityItemInterfaceType  type;
+    private EntityItemInterfaceTypeType  type;
     //{0..1}
 
     private EntityItemStringType  hardware_addr;
@@ -129,14 +129,14 @@ public class InterfaceItem
 
     /**
      */
-    public EntityItemInterfaceType getType()
+    public EntityItemInterfaceTypeType getType()
     {
         return type;
     }
 
 
     public void setType(
-                    final EntityItemInterfaceType name
+                    final EntityItemInterfaceTypeType name
                     )
     {
         type = name;

@@ -44,8 +44,10 @@ public class FileEffectiveRightsItem
     //{0..1}
     private EntityItemStringType   filepath;
     private EntityItemStringType   path;
-    private EntityItemStringType   filename;
+
     //{nillable="true"}
+    private EntityItemStringType   filename;
+
     private EntityItemStringType   trustee_sid;
     private EntityItemStringType   trustee_name;
     private EntityItemBoolType    standard_delete;
