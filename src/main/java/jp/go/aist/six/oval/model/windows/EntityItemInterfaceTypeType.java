@@ -31,19 +31,19 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemInterfaceType
+public class EntityItemInterfaceTypeType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemInterfaceType()
+    public EntityItemInterfaceTypeType()
     {
     }
 
 
-    public EntityItemInterfaceType(
+    public EntityItemInterfaceTypeType(
                     final String content
                     )
     {
@@ -92,7 +92,7 @@ public class EntityItemInterfaceType
             return true;
         }
 
-        if (!(obj instanceof EntityItemInterfaceType)) {
+        if (!(obj instanceof EntityItemInterfaceTypeType)) {
             return false;
         }
 
@@ -100,4 +100,4 @@ public class EntityItemInterfaceType
     }
 
 }
-//EntityItemInterfaceTypeType
+//
