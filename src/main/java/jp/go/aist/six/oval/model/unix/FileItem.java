@@ -43,7 +43,10 @@ public class FileItem
     //{0..1}
     private EntityItemStringType    filepath;
     private EntityItemStringType    path;
-    private EntityItemStringType    filename;
+
+    //{nillable="true"}
+    private EntityItemStringType    filename = new EntityItemStringType();
+
     private EntityItemStringType    type;
     private EntityItemIntType       group_id;
     private EntityItemIntType       user_id;
