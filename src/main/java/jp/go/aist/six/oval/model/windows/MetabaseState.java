@@ -83,8 +83,6 @@ public class MetabaseState
     {
         super( id, version );
 
-//        _oval_platform_type = OvalPlatformType.windows;
-//        _oval_component_type = OvalComponentType.metabase;
         _oval_family = Family.WINDOWS;
         _oval_component = ComponentType.METABASE;
     }
@@ -122,28 +120,25 @@ public class MetabaseState
 
     /**
      */
-    public void setId(
+    public void setObjectId(
                     final EntityStateIntType id
                     )
     {
         this.id = id;
-//        _properties.setProperty( MetabaseProperty.ID, id );
     }
 
 
-    public EntityStateIntType getId()
+    public EntityStateIntType getObjectId()
     {
         return id;
-//        return _properties.getProperty(
-//                        MetabaseProperty.ID, EntityStateIntType.class );
     }
 
 
-    public MetabaseState id(
+    public MetabaseState objectId(
                     final EntityStateIntType id
                     )
     {
-        setId( id );
+        setObjectId( id );
         return this;
     }
 
@@ -151,28 +146,25 @@ public class MetabaseState
 
     /**
      */
-    public void setName(
+    public void setObjectName(
                     final EntityStateStringType name
                     )
     {
         this.name = name;
-//        _properties.setProperty( MetabaseProperty.NAME, name );
     }
 
 
-    public EntityStateStringType getName()
+    public EntityStateStringType getObjectName()
     {
         return name;
-//        return _properties.getProperty(
-//                        MetabaseProperty.NAME, EntityStateStringType.class );
     }
 
 
-    public MetabaseState name(
+    public MetabaseState objectName(
                     final EntityStateStringType name
                     )
     {
-        setName( name );
+        setObjectName( name );
         return this;
     }
 
@@ -275,8 +267,8 @@ public class MetabaseState
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
 
         ref_list.add( getKey() );
-        ref_list.add( getId() );
-        ref_list.add( getName() );
+        ref_list.add( getObjectId() );
+        ref_list.add( getObjectName() );
         ref_list.add( getUserType() );
         ref_list.add( getDataType() );
         ref_list.add( getData() );
@@ -317,8 +309,8 @@ public class MetabaseState
     {
         return "metabase_state[" + super.toString()
                         + ", key="          + getKey()
-                        + ", ID="           + getId()
-                        + ", name="         + getName()
+                        + ", id="           + getObjectId()
+                        + ", name="         + getObjectName()
                         + ", user_type="    + getUserType()
                         + ", data_type="    + getDataType()
                         + ", data="         + getData()
@@ -326,4 +318,4 @@ public class MetabaseState
     }
 
 }
-//MetabaseState
+//

@@ -42,8 +42,10 @@ public class RegkeyEffectiveRightsItem
 
     //{0..1}
     private EntityItemRegistryHiveType  hive;
+
     private EntityItemStringType        key;
     //{nillable="true"}
+
     private EntityItemStringType        trustee_sid;
     private EntityItemBoolType         standard_delete;
     private EntityItemBoolType         standard_read_control;

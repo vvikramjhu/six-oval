@@ -127,10 +127,8 @@ public class MetabaseObject
     {
         super( id, version );
         setKey( mbKey );
-        setId( mbID );
+        setObjectId( mbID );
 
-//        _oval_platform_type = OvalPlatformType.windows;
-//        _oval_component_type = OvalComponentType.metabase;
         _oval_family = Family.WINDOWS;
         _oval_component = ComponentType.METABASE;
     }
@@ -185,28 +183,25 @@ public class MetabaseObject
 
     /**
      */
-    public void setId(
+    public void setObjectId(
                     final EntityObjectIntType id
                     )
     {
         this.id = id;
-//        _properties.setProperty( MetabaseProperty.ID, id );
     }
 
 
-    public EntityObjectIntType getId()
+    public EntityObjectIntType getObjectId()
     {
         return id;
-//        return _properties.getProperty(
-//                        MetabaseProperty.ID, EntityObjectIntType.class );
     }
 
 
-    public MetabaseObject id(
+    public MetabaseObject objectId(
                     final EntityObjectIntType id
                     )
     {
-        setId( id );
+        setObjectId( id );
         return this;
     }
 
@@ -271,7 +266,7 @@ public class MetabaseObject
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
 
         ref_list.add( getKey() );
-        ref_list.add( getId() );
+        ref_list.add( getObjectId() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -311,10 +306,10 @@ public class MetabaseObject
         return "metabase_object[" + super.toString()
                         + ", set=" + getSet()
                         + ", key=" + getKey()
-                        + ", id=" + getId()
+                        + ", id=" + getObjectId()
                         + ", filter=" + getFilter()
                         + "]";
     }
 
 }
-// MetabaseObject
+//
