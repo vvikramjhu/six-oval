@@ -33,7 +33,6 @@
     <class name="jp.go.aist.six.oval.model.linux.EntityStateProtocolType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
-
     <class name="jp.go.aist.six.oval.model.linux.EntityItemProtocolType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
@@ -42,7 +41,6 @@
     <class name="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
-
     <class name="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
@@ -54,17 +52,14 @@
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
             />
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="arch" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="arch" node="element"/>
         </field>
-
         <field name="version" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
             <bind-xml name="version" node="element"/>
@@ -77,17 +72,14 @@
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
             />
-
         <field name="release" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
             <bind-xml name="release" node="element"/>
         </field>
-
         <field name="epoch" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
             <bind-xml name="epoch" node="element"/>
         </field>
-
         <field name="evr" 
             type="jp.go.aist.six.oval.model.sc.EntityItemEVRStringType">
             <bind-xml name="evr" node="element"/>

@@ -16,12 +16,7 @@
 
     <class name ="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
-
     </class>
-
-
-
-
 
     <class name ="jp.go.aist.six.oval.model.Element"
         extends="jp.go.aist.six.oval.model.OvalObject"
@@ -38,11 +33,8 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.Document"
         verify-constructable="false">
-
         <field name="schemaLocation" type="string">
             <bind-xml name="xsi:schemaLocation" node="attribute"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
@@ -57,18 +49,13 @@
 -->
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.DocumentId">
         <map-to xml="document-id"
             ns-uri="http://aist.go.jp/six/oval"/>
-
         <field name="value" type="string">
             <bind-xml node="text"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.AffectedCpeList">
     <!--
@@ -82,8 +69,6 @@
             <bind-xml name="cpe" node="element"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.Cpe">
     <!--
