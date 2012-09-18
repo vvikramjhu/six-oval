@@ -41,8 +41,10 @@ public class RegkeyAuditedPermissionsItem
 
     //{0..1}
     private EntityItemRegistryHiveType  hive;
-    private EntityItemStringType        key;
+
     //{nillable="true"}
+    private EntityItemStringType        key;
+
     private EntityItemStringType        trustee_sid;
     private EntityItemAuditType         standard_delete;
     private EntityItemAuditType         standard_read_control;

@@ -87,8 +87,6 @@ public class MetabaseItem
     {
         super( id );
 
-//        _oval_platform_type = OvalPlatformType.windows;
-//        _oval_component_type = OvalComponentType.metabase;
         _oval_family = Family.WINDOWS;
         _oval_component = ComponentType.METABASE;
     }
@@ -123,14 +121,12 @@ public class MetabaseItem
                     )
     {
         this.id = id;
-//        _properties.put( MetabaseProperty.ID, id );
     }
 
 
     public EntityItemIntType getObjectId()
     {
         return id;
-//        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
     }
 
 
@@ -142,14 +138,12 @@ public class MetabaseItem
                     )
     {
         this.name = name;
-//        _properties.put( MetabaseProperty.NAME, name );
     }
 
 
     public EntityItemStringType getObjectName()
     {
         return name;
-//        return (EntityItemStringType)_properties.get( MetabaseProperty.NAME );
     }
 
 

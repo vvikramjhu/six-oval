@@ -169,6 +169,17 @@
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
+<!-- printereffectiverights -->
+    <class name="jp.go.aist.six.oval.model.windows.PrinterEffectiveRightsBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
 <!-- protocol -->
     <class name="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType"
         extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
@@ -181,6 +192,16 @@
     </class>
 
 <!-- registry -->
+    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
+        extends="jp.go.aist.six.oval.model.common.AbstractBehaviors">
+        <field name="windowsView"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.WindowsViewEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.WindowsViewEnumeration" -->
+            <bind-xml name="windows_view" node="attribute"/>
+        </field>
+    </class>
+
     <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
         extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
     </class>
@@ -196,6 +217,48 @@
     </class>
     <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryTypeType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+<!-- regkeyauditedpermissions -->
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissions53Behaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissionsBehaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+<!-- regkeyeffectiverights -->
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Behaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRightsBehaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
     </class>
 
 <!-- service -->
@@ -251,12 +314,43 @@
         </field>
     </class>
 
+<!-- sid -->
+    <class name="jp.go.aist.six.oval.model.windows.SidBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+<!-- sid_sid -->
+    <class name="jp.go.aist.six.oval.model.windows.SidSidBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
 <!-- windows_view -->
     <class name="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
     <class name="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+<!-- wuaupdatesearcher -->
+    <class name="jp.go.aist.six.oval.model.windows.WuaUpdateSearcherBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+
+        <field name="includeSupersededUpdates" type="boolean">
+            <bind-xml name="include_superseded_updates" node="attribute"/>
+        </field>
     </class>
 
 
@@ -2768,19 +2862,15 @@
     <!-- ******************************************************* -->
     <!-- group                                                   -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.GroupTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="group_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
-            <bind-xml name="object" node="element"
-            />
+            <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -2793,18 +2883,15 @@
         <map-to xml="group_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="group" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="group" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -2817,17 +2904,14 @@
         <map-to xml="group_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="group" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="group" node="element"/>
         </field>
-
         <field name="user" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="user" node="element"/>
         </field>
-
         <field name="subgroup" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="subgroup" node="element"/>
@@ -2839,18 +2923,15 @@
         <map-to xml="group_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="group" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="group" node="element"/>
         </field>
-
         <field name="user" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
             <bind-xml name="user" node="element"/>
         </field>
-
         <field name="subgroup" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
@@ -2862,19 +2943,16 @@
     <!-- ******************************************************* -->
     <!-- group_sid                                               -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.GroupSidTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="group_sid_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -2887,18 +2965,15 @@
         <map-to xml="group_sid_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="groupSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="group_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -2911,17 +2986,14 @@
         <map-to xml="group_sid_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="groupSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="group_sid" node="element"/>
         </field>
-
         <field name="userSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="user_sid" node="element"/>
         </field>
-
         <field name="subgroupSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="subgroup_sid" node="element"/>
@@ -2933,18 +3005,15 @@
         <map-to xml="group_sid_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="groupSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="group_sid" node="element"/>
         </field>
-
         <field name="userSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
             <bind-xml name="user_sid" node="element"/>
         </field>
-
         <field name="subgroupSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
@@ -2956,19 +3025,16 @@
     <!-- ******************************************************* -->
     <!-- interface                                               -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.InterfaceTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="interface_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -2981,18 +3047,15 @@
         <map-to xml="interface_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -3005,42 +3068,34 @@
         <map-to xml="interface_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="index" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="index" node="element"/>
         </field>
-
         <field name="type" 
             type="jp.go.aist.six.oval.model.windows.EntityStateInterfaceTypeType">
             <bind-xml name="type" node="element"/>
         </field>
-
         <field name="hardwareAddr" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="hardware_addr" node="element"/>
         </field>
-
         <field name="inetAddr" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
             <bind-xml name="inet_addr" node="element"/>
         </field>
-
         <field name="broadcastAddr" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
             <bind-xml name="broadcast_addr" node="element"/>
         </field>
-
         <field name="netmask" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
             <bind-xml name="netmask" node="element"/>
         </field>
-
         <field name="addrType" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType">
             <bind-xml name="addr_type" node="element"/>
@@ -3052,42 +3107,34 @@
         <map-to xml="interface_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="index" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="index" node="element"/>
         </field>
-
         <field name="type" 
             type="jp.go.aist.six.oval.model.windows.EntityItemInterfaceTypeType">
             <bind-xml name="type" node="element"/>
         </field>
-
         <field name="hardwareAddr" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="hardware_addr" node="element"/>
         </field>
-
         <field name="inetAddr" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
             <bind-xml name="inet_addr" node="element"/>
         </field>
-
         <field name="broadcastAddr" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
             <bind-xml name="broadcast_addr" node="element"/>
         </field>
-
         <field name="netmask" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
             <bind-xml name="netmask" node="element"/>
         </field>
-
         <field name="addrType" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAddrTypeType"
             collection="collection">
@@ -3099,18 +3146,15 @@
     <!-- ******************************************************* -->
     <!-- lockoutpolicy                                           -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.LockoutPolicyTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="lockoutpolicy_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -3130,22 +3174,18 @@
         <map-to xml="lockoutpolicy_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="forceLogoff" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="force_logoff" node="element"/>
         </field>
-
         <field name="lockoutDuration" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="lockout_duration" node="element"/>
         </field>
-
         <field name="lockoutObservationWindow" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="lockout_observation_window" node="element"/>
         </field>
-
         <field name="lockoutThreshold" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="lockout_threshold" node="element"/>
@@ -3157,22 +3197,18 @@
         <map-to xml="lockoutpolicy_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="forceLogoff" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="force_logoff" node="element"/>
         </field>
-
         <field name="lockoutDuration" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="lockout_duration" node="element"/>
         </field>
-
         <field name="lockoutObservationWindow" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="lockout_observation_window" node="element"/>
         </field>
-
         <field name="lockoutThreshold" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="lockout_threshold" node="element"/>
@@ -3183,18 +3219,15 @@
     <!-- ******************************************************* -->
     <!-- metabase                                                -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.MetabaseTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="metabase_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -3207,19 +3240,16 @@
         <map-to xml="metabase_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="key" node="element"/>
         </field>
-        
-        <field name="id" 
+        <field name="objectId" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
             nillable="true" required="true">
             <bind-xml name="id" node="element"/>
@@ -3231,32 +3261,26 @@
         <map-to xml="metabase_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
-        <field name="id" 
+        <field name="objectId" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="id" node="element"/>
         </field>
-
-        <field name="name" 
+        <field name="objectName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="userType" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="user_type" node="element"/>
         </field>
-
         <field name="dataType" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="data_type" node="element"/>
         </field>
-
         <field name="data" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="data" node="element"/>
@@ -3268,32 +3292,27 @@
         <map-to xml="metabase_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="objectId" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType"
+            nillable="true">
             <bind-xml name="id" node="element"/>
         </field>
-
         <field name="objectName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="userType"  
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="user_type" node="element"/>
         </field>
-
         <field name="dataType"  
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="data_type" node="element"/>
         </field>
-
         <field name="data" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
             collection="collection">
@@ -3305,18 +3324,15 @@
     <!-- ******************************************************* -->
     <!-- passwordpolicy                                          -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.PasswordPolicyTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="passwordpolicy_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -3336,32 +3352,26 @@
         <map-to xml="passwordpolicy_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="maxPasswdAge" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="max_passwd_age" node="element"/>
         </field>
-
         <field name="minPasswdAge" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="min_passwd_age" node="element"/>
         </field>
-
         <field name="minPasswdLen" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="min_passwd_len" node="element"/>
         </field>
-
         <field name="passwordHistLen" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="password_hist_len" node="element"/>
         </field>
-
         <field name="passwordComplexity" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="password_complexity" node="element"/>
         </field>
-
         <field name="reversibleEncryption" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="reversible_encryption" node="element"/>
@@ -3373,32 +3383,26 @@
         <map-to xml="passwordpolicy_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="maxPasswdAge" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="max_passwd_age" node="element"/>
         </field>
-
         <field name="minPasswdAge" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="min_passwd_age" node="element"/>
         </field>
-
         <field name="minPasswdLen" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="min_passwd_len" node="element"/>
         </field>
-
         <field name="passwordHistLen" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="password_hist_len" node="element"/>
         </field>
-
         <field name="passwordComplexity" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="password_complexity" node="element"/>
         </field>
-
         <field name="reversibleEncryption" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="reversible_encryption" node="element"/>
@@ -3902,7 +3906,6 @@
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -3915,28 +3918,23 @@
         <map-to xml="port_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="localAddress" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType">
             <bind-xml name="local_address" node="element"/>
         </field>
-        
         <field name="localPort" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType" >
             <bind-xml name="local_port" node="element"/>
         </field>
-
         <field name="protocol" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType">
             <bind-xml name="protocol" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -3949,32 +3947,26 @@
         <map-to xml="port_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="localAddress" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
             <bind-xml name="local_address" node="element"/>
         </field>
-
         <field name="localPort" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
             <bind-xml name="local_port" node="element"/>
         </field>
-
         <field name="protocol" 
             type="jp.go.aist.six.oval.model.windows.EntityStateProtocolType">
             <bind-xml name="protocol" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="foreignAddress" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
             <bind-xml name="foreign_address" node="element"/>
         </field>
-
         <field name="foreignPort" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
             <bind-xml name="foreign_port" node="element"/>
@@ -3986,32 +3978,26 @@
         <map-to xml="port_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="localAddress" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
             <bind-xml name="local_address" node="element"/>
         </field>
-
         <field name="localPort" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
             <bind-xml name="local_port" node="element"/>
         </field>
-
         <field name="protocol" 
             type="jp.go.aist.six.oval.model.windows.EntityItemProtocolType">
             <bind-xml name="protocol" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="foreignAddress" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
             <bind-xml name="foreign_address" node="element"/>
         </field>
-
         <field name="foreignPort" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
             <bind-xml name="foreign_port" node="element"/>
@@ -4022,19 +4008,16 @@
     <!-- ******************************************************* -->
     <!-- printereffectiverights                                  -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.PrinterEffectiveRightsTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="printereffectiverights_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -4047,18 +4030,15 @@
         <map-to xml="printereffectiverights_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.PrinterEffectiveRightsBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="printerName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="printer_name" node="element"/>
@@ -4067,23 +4047,10 @@
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.PrinterEffectiveRightsBehaviors"
-        extends="jp.go.aist.six.oval.model.OvalObject">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -4092,82 +4059,66 @@
         <map-to xml="printereffectiverights_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="printerName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="printer_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="printerAccessAdminister" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="printer_access_administer" node="element"/>
         </field>
-
         <field name="printerAccessUse" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="printer_access_use" node="element"/>
         </field>
-
         <field name="jobAccessAdminister" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="job_access_administer" node="element"/>
         </field>
-
         <field name="jobAccessRead" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="job_access_read" node="element"/>
@@ -4179,82 +4130,66 @@
         <map-to xml="printereffectiverights_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="printerName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="printer_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="printerAccessAdminister" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="printer_access_administer" node="element"/>
         </field>
-
         <field name="printerAccessUse" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="printer_access_use" node="element"/>
         </field>
-
         <field name="jobAccessAdminister" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="job_access_administer" node="element"/>
         </field>
-
         <field name="jobAccessRead" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="job_access_read" node="element"/>
@@ -4265,19 +4200,16 @@
     <!-- ******************************************************* -->
     <!-- process, 58                                             -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.Process58Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="process58_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -4290,23 +4222,19 @@
         <map-to xml="process58_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="commandLine" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="command_line" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -4319,47 +4247,38 @@
         <map-to xml="process58_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="commandLine" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="command_line" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="ppid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="ppid" node="element"/>
         </field>
-
         <field name="priority" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="priority" node="element"/>
         </field>
-
         <field name="imagePath" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="image_path" node="element"/>
         </field>
-
         <field name="currentDir" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="current_dir" node="element"/>
         </field>
-
         <field name="creationTime" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="creation_time" node="element"/>
         </field>
-
         <field name="depEnabled" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="dep_enabled" node="element"/>
         </field>
-
         <field name="primaryWindowText" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="primary_window_text" node="element"/>
@@ -4371,13 +4290,11 @@
         <map-to xml="process_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -4390,13 +4307,11 @@
         <map-to xml="process_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="commandLine" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="command_line" node="element"/>
@@ -4408,32 +4323,26 @@
         <map-to xml="process_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="commandLine" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="command_line" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="ppid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="ppid" node="element"/>
         </field>
-
         <field name="priority" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="priority" node="element"/>
         </field>
-
         <field name="imagePath" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="image_path" node="element"/>
         </field>
-
         <field name="currentDir" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="current_dir" node="element"/>
@@ -4445,47 +4354,38 @@
         <map-to xml="process_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="commandLine" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="command_line" node="element"/>
         </field>
-
         <field name="pid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="pid" node="element"/>
         </field>
-
         <field name="ppid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="ppid" node="element"/>
         </field>
-
         <field name="priority" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="priority" node="element"/>
         </field>
-
         <field name="imagePath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="image_path" node="element"/>
         </field>
-
         <field name="currentDir" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="current_dir" node="element"/>
         </field>
-
         <field name="creationTime" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="creation_time" node="element"/>
         </field>
-
         <field name="depEnabled" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="dep_enabled" node="element"/>
         </field>
-
         <field name="primaryWindowText" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="primary_window_text" node="element"/>
@@ -4647,19 +4547,16 @@
     <!-- ******************************************************* -->
     <!-- regkeyauditedpermissions, 53                            -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditedPermissions53Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="regkeyauditedpermissions53_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -4672,50 +4569,32 @@
         <map-to xml="regkeyauditedpermissions53_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissions53Behaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-        
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissions53Behaviors"
-        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -4724,117 +4603,94 @@
         <map-to xml="regkeyauditedpermissions53_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="keyWow6432key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -4846,13 +4702,11 @@
         <map-to xml="regkeyauditedpermissions_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -4865,43 +4719,26 @@
         <map-to xml="regkeyauditedpermissions_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissionsBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-        
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_name" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissionsBehaviors"
-        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -4910,117 +4747,94 @@
         <map-to xml="regkeyauditedpermissions_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="keyWow6432key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5032,117 +4846,95 @@
         <map-to xml="regkeyauditedpermissions_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="keyWow6432key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5150,23 +4942,19 @@
     </class>
 
 
-
     <!-- ******************************************************* -->
     <!-- regkeyeffectiverights, 53                               -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="regkeyeffectiverights53_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -5179,50 +4967,32 @@
         <map-to xml="regkeyeffectiverights53_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Behaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-        
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Behaviors"
-        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -5231,117 +5001,94 @@
         <map-to xml="regkeyeffectiverights53_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_32key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5353,13 +5100,11 @@
         <map-to xml="regkeyeffectiverights_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -5372,43 +5117,26 @@
         <map-to xml="regkeyeffectiverights_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRightsBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-        
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_name" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRightsBehaviors"
-        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -5417,117 +5145,94 @@
         <map-to xml="regkeyeffectiverights_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_32key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5539,117 +5244,95 @@
         <map-to xml="regkeyeffectiverights_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="genericAll" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_all" node="element"/>
         </field>
-
         <field name="keyQueryValue" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_query_value" node="element"/>
         </field>
-
         <field name="keySetValue" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_set_value" node="element"/>
         </field>
-
         <field name="keyCreateSubKey" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_create_sub_key" node="element"/>
         </field>
-
         <field name="keyEnumerateSubKeys" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_enumerate_sub_keys" node="element"/>
         </field>
-
         <field name="keyNotify" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_notify" node="element"/>
         </field>
-
         <field name="keyCreateLink" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_create_link" node="element"/>
         </field>
-
         <field name="keyWow6464key" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_wow64_64key" node="element"/>
         </field>
-
         <field name="keyWow6432key" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_wow64_32key" node="element"/>
         </field>
-
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5660,18 +5343,6 @@
     <!-- ******************************************************* -->
     <!-- registry                                                -->
     <!-- ******************************************************* -->
-
-    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.common.AbstractBehaviors">
-
-        <field name="windowsView"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.common.WindowsViewEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.WindowsViewEnumeration" -->
-            <bind-xml name="windows_view" node="attribute"/>
-        </field>
-    </class>
-
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="registry_test"
@@ -5695,35 +5366,29 @@
         <map-to xml="registry_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType" >
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
-        
         <field name="name" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -5736,37 +5401,30 @@
         <map-to xml="registry_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="lastWriteTime" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="last_write_time" node="element"/>
         </field>
-
         <field name="type" 
             type="jp.go.aist.six.oval.model.windows.EntityStateRegistryTypeType">
             <bind-xml name="type" node="element"/>
         </field>
-
         <field name="value" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="value" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5778,38 +5436,33 @@
         <map-to xml="registry_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="hive"
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType">
             <bind-xml name="hive" node="element"/>
         </field>
-
         <field name="key" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
             <bind-xml name="key" node="element"/>
         </field>
-
         <field name="name" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="lastWriteTime" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="last_write_time" node="element"/>
         </field>
-
         <field name="type" 
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryTypeType">
             <bind-xml name="type" node="element"/>
         </field>
-
         <field name="value" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
             collection="collection">
             <bind-xml name="value" node="element"/>
         </field>
-
         <field name="windowsView" 
             type="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType">
             <bind-xml name="windows_view" node="element"/>
@@ -5820,19 +5473,16 @@
     <!-- ******************************************************* -->
     <!-- serviceeffectiverights                                  -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.ServiceEffectiveRightsTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="serviceeffectiverights_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -5845,23 +5495,19 @@
         <map-to xml="serviceeffectiverights_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="serviceName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="service_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -5874,102 +5520,82 @@
         <map-to xml="serviceeffectiverights_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="serviceName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="service_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="serviceQueryConf" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_query_conf" node="element"/>
         </field>
-
         <field name="serviceChangeConf" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_change_conf" node="element"/>
         </field>
-
         <field name="serviceQueryStat" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_query_stat" node="element"/>
         </field>
-
         <field name="serviceEnumDependents" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_enum_dependents" node="element"/>
         </field>
-
         <field name="serviceStart" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_start" node="element"/>
         </field>
-
         <field name="serviceStop" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_stop" node="element"/>
         </field>
-
         <field name="servicePause" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_pause" node="element"/>
         </field>
-
         <field name="serviceInterrogate" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_interrogate" node="element"/>
         </field>
-
         <field name="serviceUserDefined" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="service_user_defined" node="element"/>
@@ -5981,102 +5607,82 @@
         <map-to xml="serviceeffectiverights_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="serviceName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="service_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="standardDelete" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_delete" node="element"/>
         </field>
-
         <field name="standardReadControl" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_read_control" node="element"/>
         </field>
-
         <field name="standardWriteDac" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_dac" node="element"/>
         </field>
-
         <field name="standardWriteOwner" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_write_owner" node="element"/>
         </field>
-
         <field name="standardSyncronize" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="standard_syncronize" node="element"/>
         </field>
-
         <field name="accessSystemSecurity" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_system_security" node="element"/>
         </field>
-
         <field name="genericRead" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_read" node="element"/>
         </field>
-
         <field name="genericWrite" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_write" node="element"/>
         </field>
-
         <field name="genericExecute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="generic_execute" node="element"/>
         </field>
-
         <field name="serviceQueryConf" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_query_conf" node="element"/>
         </field>
-
         <field name="serviceChangeConf" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_change_conf" node="element"/>
         </field>
-
         <field name="serviceQueryStat" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_query_stat" node="element"/>
         </field>
-
         <field name="serviceEnumDependents" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_enum_dependents" node="element"/>
         </field>
-
         <field name="serviceStart" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_start" node="element"/>
         </field>
-
         <field name="serviceStop" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_stop" node="element"/>
         </field>
-
         <field name="servicePause" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_pause" node="element"/>
         </field>
-
         <field name="serviceInterrogate" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_interrogate" node="element"/>
         </field>
-
         <field name="serviceUserDefined" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="service_user_defined" node="element"/>
@@ -6087,19 +5693,16 @@
     <!-- ******************************************************* -->
     <!-- sharedresource                                          -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.SharedResourceTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="sharedresource_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -6112,13 +5715,11 @@
         <map-to xml="sharedresource_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="netname" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="netname" node="element"/>
@@ -6135,67 +5736,54 @@
         <map-to xml="sharedresource_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="netname" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="netname" node="element"/>
         </field>
-
         <field name="sharedType" 
             type="jp.go.aist.six.oval.model.windows.EntityStateSharedResourceTypeType">
             <bind-xml name="shared_type" node="element"/>
         </field>
-
         <field name="maxUses" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="max_uses" node="element"/>
         </field>
-
         <field name="currentUses" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="current_uses" node="element"/>
         </field>
-
         <field name="localPath" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="local_path" node="element"/>
         </field>
-
         <field name="accessReadPermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_read_permission" node="element"/>
         </field>
-
         <field name="accessWritePermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_write_permission" node="element"/>
         </field>
-
         <field name="accessCreatePermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_create_permission" node="element"/>
         </field>
-
         <field name="accessExecPermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_exec_permission" node="element"/>
         </field>
-
         <field name="accessDeletePermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_delete_permission" node="element"/>
         </field>
-
         <field name="accessAtribPermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_atrib_permission" node="element"/>
         </field>
-
         <field name="accessPermPermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_perm_permission" node="element"/>
         </field>
-
         <field name="accessAllPermission" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="access_all_permission" node="element"/>
@@ -6207,67 +5795,54 @@
         <map-to xml="sharedresource_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="netname" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="netname" node="element"/>
         </field>
-
         <field name="sharedType" 
             type="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType">
             <bind-xml name="shared_type" node="element"/>
         </field>
-
         <field name="maxUses" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="max_uses" node="element"/>
         </field>
-
         <field name="currentUses" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="current_uses" node="element"/>
         </field>
-
         <field name="localPath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="local_path" node="element"/>
         </field>
-
         <field name="accessReadPermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_read_permission" node="element"/>
         </field>
-
         <field name="accessWritePermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_write_permission" node="element"/>
         </field>
-
         <field name="accessCreatePermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_create_permission" node="element"/>
         </field>
-
         <field name="accessExecPermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_exec_permission" node="element"/>
         </field>
-
         <field name="accessDeletePermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_delete_permission" node="element"/>
         </field>
-
         <field name="accessAtribPermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_atrib_permission" node="element"/>
         </field>
-
         <field name="accessPermPermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_perm_permission" node="element"/>
         </field>
-
         <field name="accessAllPermission" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="access_all_permission" node="element"/>
@@ -6278,7 +5853,6 @@
     <!-- ******************************************************* -->
     <!-- sharedresourceauditedpermissions                        -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.SharedResourceAuditedPermissionsTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="accesstoken_test"
@@ -6599,19 +6173,16 @@
     <!-- ******************************************************* -->
     <!-- sid                                                 -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.SidTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="sid_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -6624,39 +6195,23 @@
         <map-to xml="sid_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.SidBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.SidBehaviors"
-        extends="jp.go.aist.six.oval.model.OvalObject">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -6665,17 +6220,14 @@
         <map-to xml="sid_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="trusteeDomain" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_domain" node="element"/>
@@ -6687,17 +6239,14 @@
         <map-to xml="sid_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="trusteeDomain" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_domain" node="element"/>
@@ -6708,19 +6257,16 @@
     <!-- ******************************************************* -->
     <!-- sid_sid                                                 -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.SidSidTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="sid_sid_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -6733,39 +6279,23 @@
         <map-to xml="sid_sid_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.SidSidBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.SidSidBehaviors"
-        extends="jp.go.aist.six.oval.model.OvalObject">
-
-        <field name="includeGroup" type="boolean">
-            <bind-xml name="include_group" node="attribute"/>
-        </field>
-
-        <field name="resolveGroup" type="boolean">
-            <bind-xml name="resolve_group" node="attribute"/>
         </field>
     </class>
 
@@ -6774,17 +6304,14 @@
         <map-to xml="sid_sid_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="trusteeDomain" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="trustee_domain" node="element"/>
@@ -6796,17 +6323,14 @@
         <map-to xml="sid_sid_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="trusteeSid" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_sid" node="element"/>
         </field>
-
         <field name="trusteeName" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_name" node="element"/>
         </field>
-
         <field name="trusteeDomain" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="trustee_domain" node="element"/>
@@ -6817,19 +6341,16 @@
     <!-- ******************************************************* -->
     <!-- uac                                                     -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.UacTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="uac_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -6849,47 +6370,38 @@
         <map-to xml="uac_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="adminApprovalMode" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="admin_approval_mode" node="element"/>
         </field>
-
         <field name="elevationPromptAdmin" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="elevation_prompt_admin" node="element"/>
         </field>
-
         <field name="elevationPromptStandard" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="elevation_prompt_standard" node="element"/>
         </field>
-
         <field name="detectInstallations" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="detect_installations" node="element"/>
         </field>
-
         <field name="elevateSignedExecutables" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="elevate_signed_executables" node="element"/>
         </field>
-
         <field name="elevateUiaccess" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="elevate_uiaccess" node="element"/>
         </field>
-
         <field name="runAdminsAam" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="run_admins_aam" node="element"/>
         </field>
-
         <field name="secureDesktop" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="secure_desktop" node="element"/>
         </field>
-
         <field name="virtualizeWriteFailures" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="virtualize_write_failures" node="element"/>
@@ -6901,47 +6413,38 @@
         <map-to xml="serviceeffectiverights_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="adminApprovalMode" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="admin_approval_mode" node="element"/>
         </field>
-
         <field name="elevationPromptAdmin" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="elevation_prompt_admin" node="element"/>
         </field>
-
         <field name="elevationPromptStandard" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="elevation_prompt_standard" node="element"/>
         </field>
-
         <field name="detectInstallations" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="detect_installations" node="element"/>
         </field>
-
         <field name="elevateSignedExecutables" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="elevate_signed_executables" node="element"/>
         </field>
-
         <field name="elevateUiaccess" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="elevate_uiaccess" node="element"/>
         </field>
-
         <field name="runAdminsAam" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="run_admins_aam" node="element"/>
         </field>
-
         <field name="secureDesktop" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="secure_desktop" node="element"/>
         </field>
-
         <field name="virtualizeWriteFailures" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="virtualize_write_failures" node="element"/>
@@ -6952,19 +6455,16 @@
     <!-- ******************************************************* -->
     <!-- user                                                    -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.UserTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="user_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -6977,18 +6477,15 @@
         <map-to xml="user_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="user" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="user" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -7001,22 +6498,18 @@
         <map-to xml="user_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="user" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="user" node="element"/>
         </field>
-
         <field name="enabled" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="enabled" node="element"/>
         </field>
-
         <field name="group" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="group" node="element"/>
         </field>
-
         <field name="lastLogon" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="last_logon" node="element"/>
@@ -7028,23 +6521,19 @@
         <map-to xml="user_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="user" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="user" node="element"/>
         </field>
-
         <field name="enabled" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="enabled" node="element"/>
         </field>
-
         <field name="group" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
             <bind-xml name="group" node="element"/>
         </field>
-
         <field name="lastLogon" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="last_logon" node="element"/>
@@ -7192,13 +6681,11 @@
         <map-to xml="volume_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -7211,18 +6698,15 @@
         <map-to xml="volume_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="rootpath" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="rootpath" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -7235,102 +6719,82 @@
         <map-to xml="volume_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="rootpath" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="rootpath" node="element"/>
         </field>
-
         <field name="fileSystem" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="file_system" node="element"/>
         </field>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="driveType" 
             type="jp.go.aist.six.oval.model.windows.EntityStateDriveTypeType">
             <bind-xml name="drive_type" node="element"/>
         </field>
-
         <field name="volumeMaxComponentLength" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="volume_max_component_length" node="element"/>
         </field>
-
         <field name="serialNumber" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="serial_number" node="element"/>
         </field>
-
         <field name="fileCaseSensitiveSearch" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_case_sensitive_search" node="element"/>
         </field>
-
         <field name="fileCasePreservedNames" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_case_preserved_names" node="element"/>
         </field>
-
         <field name="fileUnicodeOnDisk" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_unicode_on_disk" node="element"/>
         </field>
-
         <field name="filePersistentAcls" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_persistent_acls" node="element"/>
         </field>
-
         <field name="fileFileCompression" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_file_compression" node="element"/>
         </field>
-
         <field name="fileVolumeQuotas" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_volume_quotas" node="element"/>
         </field>
-
         <field name="fileSupportsSparseFiles" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_supports_sparse_files" node="element"/>
         </field>
-
         <field name="fileSupportsReparsePoints" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_supports_reparse_points" node="element"/>
         </field>
-
         <field name="fileSupportsRemoteStorage" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_supports_remote_storage" node="element"/>
         </field>
-
         <field name="fileVolumeIsCompressed" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_volume_is_compressed" node="element"/>
         </field>
-
         <field name="fileSupportsObjectIds" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_supports_object_ids" node="element"/>
         </field>
-
         <field name="fileSupportsEncryption" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_supports_encryption" node="element"/>
         </field>
-
         <field name="fileNamedStreams" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_named_streams" node="element"/>
         </field>
-
         <field name="fileReadOnlyVolume" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
             <bind-xml name="file_read_only_volume" node="element"/>
@@ -7342,102 +6806,82 @@
         <map-to xml="volume_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="rootpath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="rootpath" node="element"/>
         </field>
-
         <field name="fileSystem" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="file_system" node="element"/>
         </field>
-
         <field name="name" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="name" node="element"/>
         </field>
-
         <field name="driveType" 
             type="jp.go.aist.six.oval.model.windows.EntityItemDriveTypeType">
             <bind-xml name="drive_type" node="element"/>
         </field>
-
         <field name="volumeMaxComponentLength" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="volume_max_component_length" node="element"/>
         </field>
-
         <field name="serialNumber" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="serial_number" node="element"/>
         </field>
-
         <field name="fileCaseSensitiveSearch" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_case_sensitive_search" node="element"/>
         </field>
-
         <field name="fileCasePreservedNames" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_case_preserved_names" node="element"/>
         </field>
-
         <field name="fileUnicodeOnDisk" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_unicode_on_disk" node="element"/>
         </field>
-
         <field name="filePersistentAcls" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_persistent_acls" node="element"/>
         </field>
-
         <field name="fileFileCompression" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_file_compression" node="element"/>
         </field>
-
         <field name="fileVolumeQuotas" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_volume_quotas" node="element"/>
         </field>
-
         <field name="fileSupportsSparseFiles" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_supports_sparse_files" node="element"/>
         </field>
-
         <field name="fileSupportsReparsePoints" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_supports_reparse_points" node="element"/>
         </field>
-
         <field name="fileSupportsRemoteStorage" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_supports_remote_storage" node="element"/>
         </field>
-
         <field name="fileVolumeIsCompressed" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_volume_is_compressed" node="element"/>
         </field>
-
         <field name="fileSupportsObjectIds" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_supports_object_ids" node="element"/>
         </field>
-
         <field name="fileSupportsEncryption" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_supports_encryption" node="element"/>
         </field>
-
         <field name="fileNamedStreams" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_named_streams" node="element"/>
         </field>
-
         <field name="fileReadOnlyVolume" 
             type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="file_read_only_volume" node="element"/>
@@ -7448,18 +6892,15 @@
     <!-- ******************************************************* -->
     <!-- wmi, 57                                                 -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.Wmi57Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="wmi57_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -7472,23 +6913,19 @@
         <map-to xml="wmi57_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="namespace" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-        
         <field name="wql" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="wql" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
@@ -7501,17 +6938,14 @@
         <map-to xml="wmi57_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="namespace" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-
         <field name="wql" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="wql" node="element"/>
         </field>
-
         <field name="result" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateRecordType">
             <bind-xml name="result" node="element"/>
@@ -7523,17 +6957,14 @@
         <map-to xml="wmi57_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="namespace"
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-
         <field name="wql" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="wql" node="element"/>
         </field>
-
         <field name="result" 
             type="jp.go.aist.six.oval.model.sc.EntityItemRecordType"
             collection="collection">
@@ -7546,12 +6977,10 @@
         <map-to xml="wmi_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -7564,18 +6993,15 @@
         <map-to xml="wmi_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="namespace" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-        
         <field name="wql" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="wql" node="element"/>
@@ -7587,17 +7013,14 @@
         <map-to xml="wmi_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="namespace" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-
         <field name="wql" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="wql" node="element"/>
         </field>
-
         <field name="result" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="result" node="element"/>
@@ -7609,17 +7032,14 @@
         <map-to xml="wmi_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="namespace"
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="namespace" node="element"/>
         </field>
-
         <field name="wql" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="wql" node="element"/>
         </field>
-
         <field name="result" 
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
             collection="collection">
@@ -7631,19 +7051,16 @@
     <!-- ******************************************************* -->
     <!-- wuaupdatesearcher                                       -->
     <!-- ******************************************************* -->
-
     <class name="jp.go.aist.six.oval.model.windows.WuaUpdateSearcherTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="wuaupdatesearcher_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"
             />
         </field>
-        
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -7656,35 +7073,23 @@
         <map-to xml="wuaupdatesearcher_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
             <bind-xml name="set" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
-
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.WuaUpdateSearcherBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
-        
         <field name="searchCriteria" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="search_criteria" node="element"/>
         </field>
-
         <field name="filter" 
             type="jp.go.aist.six.oval.model.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
-        </field>
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.WuaUpdateSearcherBehaviors"
-        extends="jp.go.aist.six.oval.model.OvalObject">
-
-        <field name="includeSupersededUpdates" type="boolean">
-            <bind-xml name="include_superseded_updates" node="attribute"/>
         </field>
     </class>
 
@@ -7693,12 +7098,10 @@
         <map-to xml="wuaupdatesearcher_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
-
         <field name="searchCriteria" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="search_criteria" node="element"/>
         </field>
-
         <field name="updateId" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="update_id" node="element"/>
@@ -7710,12 +7113,10 @@
         <map-to xml="wuaupdatesearcher_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""/>
-
         <field name="searchCriteria" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="search_criteria" node="element"/>
         </field>
-
         <field name="updateId" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
             collection="collection">
