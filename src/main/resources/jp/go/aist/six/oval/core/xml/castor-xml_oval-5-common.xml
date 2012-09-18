@@ -17,11 +17,9 @@
     <class name ="jp.go.aist.six.oval.model.common.OvalId"
         extends="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
-
         <map-to xml="oval-id"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
         <field name="value" type="string"
             get-method="value"
             set-method="%1">
@@ -34,13 +32,10 @@ Constructor arguments only valid for attribute mapped fields!!!
         </field>
     </class>
 
-
     <class name="jp.go.aist.six.oval.model.common.OvalIdContainer">
         <map-to xml="oval-id-list"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
-
         <field name="id" 
             type="jp.go.aist.six.oval.model.common.OvalId"
             collection="collection">
@@ -48,17 +43,11 @@ Constructor arguments only valid for attribute mapped fields!!!
         </field>
     </class>
 
-
-
-
-
     <class name="jp.go.aist.six.oval.model.common.AbstractBehaviors"
         verify-constructable="false">
-
         <field name="maxDepth" type="integer">
             <bind-xml name="max_depth" node="attribute"/>
         </field>
-
         <field name="recurseDirection" 
             type="string"
             handler="jp.go.aist.six.oval.core.xml.common.RecurseDirectionEnumerationHandler">
@@ -72,27 +61,21 @@ Constructor arguments only valid for attribute mapped fields!!!
 -->
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.common.AbstractFileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractBehaviors"
         verify-constructable="false">
-
         <field name="recurseFileSystem"
             type="jp.go.aist.six.oval.model.common.RecurseFileSystemEnumeration">
             <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
 
-
     <class name="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
-
         <field name="recurse" type="string">
             <bind-xml name="recurse" node="attribute"/>
         </field>
     </class>
-
 
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -105,19 +88,15 @@ Constructor arguments only valid for attribute mapped fields!!!
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
         <field name="test" type="jp.go.aist.six.oval.model.common.ElementMapItemType">
             <bind-xml name="test" node="element"/>
         </field>
-
         <field name="object" type="jp.go.aist.six.oval.model.common.ElementMapItemType">
             <bind-xml name="object" node="element"/>
         </field>
-
         <field name="state" type="jp.go.aist.six.oval.model.common.ElementMapItemType">
             <bind-xml name="state" node="element"/>
         </field>
-
         <field name="item" type="jp.go.aist.six.oval.model.common.ElementMapItemType">
             <bind-xml name="item" node="element"/>
         </field>
@@ -127,53 +106,42 @@ Constructor arguments only valid for attribute mapped fields!!!
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
         <field name="targetNamespace" type="string">
             <bind-xml name="target_namespace" node="attribute"/>
         </field>
-
         <field name="content" type="string">
             <bind-xml node="text"/>
         </field>
     </class>
 
-
     <class name="jp.go.aist.six.oval.model.common.DeprecatedInfoType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
         <field name="version" type="integer">
             <bind-xml name="version" node="element"/>
         </field>
-
         <field name="reason" type="string">
             <bind-xml name="reason" node="element"/>
         </field>
-
         <field name="comment" type="string">
             <bind-xml name="comment" node="element"/>
         </field>
     </class>
 
-
     <class name="jp.go.aist.six.oval.model.common.GeneratorType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
-
         <field name="productName" type="string">
             <bind-xml name="product_name" node="element"/>
         </field>
-
         <field name="productVersion" type="string">
             <bind-xml name="product_version" node="element"/>
         </field>
-
         <field name="schemaVersion" type="string">
             <bind-xml name="schema_version" node="element"/>
         </field>
-
         <field name="timestamp" type="string">
             <bind-xml name="timestamp" node="element"/>
         </field>
@@ -190,8 +158,6 @@ Constructor arguments only valid for attribute mapped fields!!!
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.common.MessageType">
 <!--
         <map-to 
@@ -202,7 +168,6 @@ Constructor arguments only valid for attribute mapped fields!!!
         <field name="content" type="string">
             <bind-xml node="text"/>
         </field>
-
         <field name="level"  
             type="string"
             handler="jp.go.aist.six.oval.core.xml.common.MessageLevelEnumerationHandler">
