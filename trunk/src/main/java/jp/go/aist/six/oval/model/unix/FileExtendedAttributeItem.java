@@ -43,7 +43,10 @@ public class FileExtendedAttributeItem
     //{0..1}
     private EntityItemStringType        filepath;
     private EntityItemStringType        path;
-    private EntityItemStringType        filename;
+
+    //{nillable="true"}
+    private EntityItemStringType        filename = new EntityItemStringType();
+
     private EntityItemStringType        attribute_name;
     private EntityItemAnySimpleType     value;
 
