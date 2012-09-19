@@ -98,7 +98,7 @@ CONTENTS:
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
-    <!-- interpreter -->
+<!-- interpreter -->
 
     <target name="oval.interpreter.net-output" depends="compile,init">
         <java
@@ -156,7 +156,7 @@ CONTENTS:
 
 
 
-
+<!-- repository WS -->
 
     <target name="example.oval.repository-client-findbyid" depends="test.compile,init">
         <java

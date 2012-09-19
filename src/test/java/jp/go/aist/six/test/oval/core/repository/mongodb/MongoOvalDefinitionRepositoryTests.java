@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
@@ -20,6 +19,7 @@ import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
+import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
@@ -41,7 +41,8 @@ public class MongoOvalDefinitionRepositoryTests
 extends OvalCoreTestBase
 {
 
-    private MongoOvalDefinitionRepository  _oval_def_repository;
+    private OvalDefinitionRepository  _oval_def_repository;
+//    private MongoOvalDefinitionRepository  _oval_def_repository;
 
 
 
@@ -54,12 +55,13 @@ extends OvalCoreTestBase
 	{
         super.setUp();
 
-        _oval_def_repository = OvalContext.getServerInstance().getBean( MongoOvalDefinitionRepository.class );
+        _oval_def_repository = OvalContext.getServerInstance().getRepository();
+//        _oval_def_repository = OvalContext.getServerInstance().getBean( MongoOvalDefinitionRepository.class );
 	}
 
 
 
-    protected MongoOvalDefinitionRepository _getDefinitionRepository()
+    protected OvalDefinitionRepository _getDefinitionRepository()
     {
         return _oval_def_repository;
     }
