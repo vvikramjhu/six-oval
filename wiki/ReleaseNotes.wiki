@@ -12,7 +12,7 @@
 
 == <font color="#0044CC">OVAL Support</font> ==
   * OVAL Schema Version: 5.10.1
-  * Independent, Linux, Unix, Windows family support completed. Bold italic components was added.
+  * Independent, Linux, Unix, Windows family support completed. *_Bold italic_* components were added.
 || *Family* || *Components* ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, *_ldap57_*, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
 || linux || dpkginfo, *_iflisteners_*, inetlisteningservers, partition, rpminfo, rpmverify, *_rpmverifyfile_*, *_rpmverifypackage_*, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
