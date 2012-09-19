@@ -22,7 +22,7 @@
 
 
 == <font color="#0044CC">Fixed</font> ==
-  * Issue #3: Invalid class name EntityItemInterfaceType in the windows model
+  * Issue #3: Invalid class name !EntityItemInterfaceType in the windows model
 
 
 ----------------
