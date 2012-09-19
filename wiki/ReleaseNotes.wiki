@@ -8,9 +8,7 @@
 
 
 ----------------
-= <font color="#0044CC">Version 1.1.1 (2012-09-XX)</font> =
-
-under development...
+= <font color="#0044CC">Version 1.1.1 (2012-09-19)</font> =
 
 == <font color="#0044CC">OVAL Support</font> ==
   * OVAL Schema Version: 5.10.1
@@ -23,6 +21,8 @@ under development...
 || windows || accesstoken, activedirectory, *_activedirectory57_*, auditeventpolicy, auditeventpolicysubcategories, *_cmdlet_*, *_dnscache_*, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, *_peheader_*, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, *_service_*, serviceeffectiverights, sharedresource, *_sharedresourceauditedpermissions_*, *_sharedresourceeffectiverights_*, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
 
 
+== <font color="#0044CC">Fixed</font> ==
+  * Issue #3: Invalid class name EntityItemInterfaceType in the windows model
 
 
 ----------------
