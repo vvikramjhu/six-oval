@@ -86,6 +86,7 @@ public enum ComponentType
     PATCH,                          // solaris
     PATCH54,                        // solaris
     PEHEADER,                       // windows
+    PLIST,                          // macos
     PROCESS,                        // unix, windows
     PROCESS58,                      // unix, windows
     PORT,                           // windows
@@ -246,7 +247,8 @@ public enum ComponentType
         ComponentType.DISKUTIL,
         ComponentType.INETLISTENINGSERVERS,
         ComponentType.INETLISTENINGSERVERS510,
-        ComponentType.NVRAM
+        ComponentType.NVRAM,
+        ComponentType.PLIST
     };
 
 
