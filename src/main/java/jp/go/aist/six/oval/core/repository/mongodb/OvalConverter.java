@@ -46,13 +46,13 @@ import jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration;
 import jp.go.aist.six.oval.model.independent.LdaptypeEnumeration;
 import jp.go.aist.six.oval.model.independent.TextfileContent;
 import jp.go.aist.six.oval.model.linux.RpmVerifyResultEnumeration;
+import jp.go.aist.six.oval.model.macos.PlistTypeEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
 import jp.go.aist.six.oval.model.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
-import jp.go.aist.six.oval.model.solaris.PermissionCompareEnumeration;
 import jp.go.aist.six.oval.model.solaris.SmfProtocolEnumeration;
 import jp.go.aist.six.oval.model.solaris.SmfServiceStateEnumeration;
 import jp.go.aist.six.oval.model.unix.CapabilityEnumeration;
@@ -143,6 +143,10 @@ public class OvalConverter
         ProtocolEnumeration.class,
         RpmVerifyResultEnumeration.class,
 
+        // macos //
+        jp.go.aist.six.oval.model.macos.PermissionCompareEnumeration.class,
+        PlistTypeEnumeration.class,
+
         // mitre //
         DefinitionStatusEnumeration.class,
 
@@ -158,7 +162,7 @@ public class OvalConverter
         StatusEnumeration.class,
 
         // solaris //
-        PermissionCompareEnumeration.class,
+        jp.go.aist.six.oval.model.solaris.PermissionCompareEnumeration.class,
         SmfProtocolEnumeration.class,
         SmfServiceStateEnumeration.class,
 
