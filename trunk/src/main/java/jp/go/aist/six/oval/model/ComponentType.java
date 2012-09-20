@@ -92,6 +92,8 @@ public enum ComponentType
     PROCESS58,                      // unix, windows
     PORT,                           // windows
     PRINTEREFFECTIVERIGHTS,         // windows
+    PWPOLICY,                       // macos
+    PWPOLICY59,                     // macos
 
     REGISTRY,                       // windows
     REGKEYAUDITEDPERMISSIONS,       // windows
@@ -250,7 +252,9 @@ public enum ComponentType
         ComponentType.INETLISTENINGSERVERS510,
         ComponentType.NVRAM,
         ComponentType.PLIST,
-        ComponentType.PLIST510
+        ComponentType.PLIST510,
+        ComponentType.PWPOLICY,
+        ComponentType.PWPOLICY59
     };
 
 
