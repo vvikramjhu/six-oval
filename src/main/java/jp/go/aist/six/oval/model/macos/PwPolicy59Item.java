@@ -43,9 +43,12 @@ public class PwPolicy59Item
 
     //{0..1}
     private EntityItemStringType   target_user;
+
+    //{nillable="true"}
     private EntityItemStringType   username;
     private EntityItemStringType   userpass;
     private EntityItemStringType   directory_node;
+
     private EntityItemIntType      maxChars;
     private EntityItemIntType      maxFailedLoginAttempts;
     private EntityItemIntType      minChars;
