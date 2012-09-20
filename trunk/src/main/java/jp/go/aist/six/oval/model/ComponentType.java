@@ -34,6 +34,7 @@ public enum ComponentType
     // independent, linux, unix, windows
 
     ACCESSTOKEN,                    // windows
+    ACCOUNTINFO,                    // macos
     ACTIVEDIRECTORY,                // windows
     ACTIVEDIRECTORY57,              // windows
     AUDITEVENTPOLICY,               // windows
@@ -41,6 +42,7 @@ public enum ComponentType
 
     CMDLET,                         // windows
 
+    DISKUTIL,                       // macos
     DNSCACHE,                       // unix, windows
     DPKGINFO,                       // linux
     ENVIRONMENTVARIABLE,            // independent @deprecated
@@ -62,7 +64,8 @@ public enum ComponentType
 
     IFLISTENERS,                    // linux
     INETD,                          // unix
-    INETLISTENINGSERVERS,           // linux
+    INETLISTENINGSERVERS,           // linux, macos
+    INETLISTENINGSERVERS510,        // macos
     INTERFACE,                      // unix, windows
     ISAINFO,						// solaris
 
@@ -234,6 +237,14 @@ public enum ComponentType
         ComponentType.SELINUXBOOLEAN,
         ComponentType.SELINUXSECURITYCONTEXT,
         ComponentType.SLACKWAREPKGINFO,
+    };
+
+
+    public static final ComponentType[]  MACOS = new ComponentType[] {
+        ComponentType.ACCOUNTINFO,
+        ComponentType.DISKUTIL,
+        ComponentType.INETLISTENINGSERVERS,
+        ComponentType.INETLISTENINGSERVERS510
     };
 
 

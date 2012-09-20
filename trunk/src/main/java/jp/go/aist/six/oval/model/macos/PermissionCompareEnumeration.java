@@ -17,53 +17,38 @@
  * limitations under the License.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.macos;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 /**
- * An operating system family.
+ * Relationship between an actual permission and the expected permission.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum Family
+public enum PermissionCompareEnumeration
     implements OvalEnumeration
 {
 
-//      aix,
-//      apache,
-//      catos,
-//      esx,
-//      freebsd,
-//      hpux,
-//      ios,
-    INDEPENDENT(    ComponentType.INDEPENDENT ),
-    LINUX(          ComponentType.LINUX       ),
-    MACOS(          ComponentType.MACOS        ),
-//        pixos,
-//        sharepoint,
-    SOLARIS(        ComponentType.SOLARIS     ),
-    UNIX(           ComponentType.UNIX        ),
-    WINDOWS(        ComponentType.WINDOWS     );
+    MORE        ( "more" ),
+    LESS        ( "less" ),
+    SAME        ( "same" ),
+    NONE        ( "" );
 
 
-
-    ////////////////////////////////////////////////////////////////
 
     /**
      * A factory method.
      */
-    public static Family fromValue(
+    public static PermissionCompareEnumeration fromValue(
                     final String value
                     )
     {
-        for (Family  e : Family.values()) {
+        for (PermissionCompareEnumeration  e : PermissionCompareEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -75,33 +60,35 @@ public enum Family
 
 
     private String  value = null;
-    private final Collection<ComponentType>  _components;
+
 
 
     /**
      * Constructor.
      */
-    Family(
-                    final ComponentType[] components
+    PermissionCompareEnumeration(
+                    final String value
                     )
     {
-        value = name().toLowerCase();
-        _components = Collections.unmodifiableCollection( Arrays.asList( components ) );
-    }
-
-
-
-    /**
-     */
-    public Collection<ComponentType> getComponents()
-    {
-        return _components;
+        this.value = value;
     }
 
 
 
     @Override
     public String value()
+    {
+        return value;
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
     {
         return value;
     }
