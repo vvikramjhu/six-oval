@@ -76,6 +76,7 @@ public enum ComponentType
     METABASE,                       // windows
 
     NDD,							// solaris
+    NVRAM,                          // macos
 
     PACKAGE,                        // solaris
     PACKAGECHECK,                   // solaris
@@ -244,7 +245,8 @@ public enum ComponentType
         ComponentType.ACCOUNTINFO,
         ComponentType.DISKUTIL,
         ComponentType.INETLISTENINGSERVERS,
-        ComponentType.INETLISTENINGSERVERS510
+        ComponentType.INETLISTENINGSERVERS510,
+        ComponentType.NVRAM
     };
 
 
