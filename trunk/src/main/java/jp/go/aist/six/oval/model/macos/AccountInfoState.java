@@ -49,7 +49,7 @@ public class AccountInfoState
     private EntityStateIntType      gid;
     private EntityStateStringType   realname;
     private EntityStateStringType   home_dir;
-    private EntityStateIntType      login_shell;
+    private EntityStateStringType   login_shell;
 
 
 
@@ -191,14 +191,14 @@ public class AccountInfoState
     /**
      */
     public void setLoginShell(
-                    final EntityStateIntType login_shell
+                    final EntityStateStringType login_shell
                     )
     {
         this.login_shell = login_shell;
     }
 
 
-    public EntityStateIntType getLoginShell()
+    public EntityStateStringType getLoginShell()
     {
         return login_shell;
     }
