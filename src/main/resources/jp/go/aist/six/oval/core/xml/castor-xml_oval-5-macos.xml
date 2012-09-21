@@ -300,7 +300,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- inetlisteningserver, 510                                -->
+    <!-- inetlisteningserver (XSLT), 510                         -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.macos.InetListeningServers510Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
@@ -444,7 +444,7 @@
 
     <class name="jp.go.aist.six.oval.model.macos.InetListeningServersTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="inetlisteningservers_test"
+        <map-to xml="macos_inetlisteningservers_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
             ns-prefix=""/>
         <field name="object" 
@@ -460,7 +460,7 @@
 
     <class name="jp.go.aist.six.oval.model.macos.InetListeningServersObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="inetlisteningservers_object"
+        <map-to xml="macos_inetlisteningservers_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
             ns-prefix=""/>
         <field name="set" 
@@ -481,7 +481,7 @@
 
     <class name="jp.go.aist.six.oval.model.macos.InetListeningServersState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="inetlisteningservers_state"
+        <map-to xml="macos_inetlisteningservers_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
             ns-prefix=""/>
         <field name="programName" 
@@ -528,7 +528,7 @@
 
     <class name ="jp.go.aist.six.oval.model.macos.InetListeningServersItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="inetlisteningservers_item"
+        <map-to xml="macos_inetlisteningservers_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos"
             ns-prefix=""/>
         <field name="programName" 
