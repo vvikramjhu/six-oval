@@ -646,8 +646,90 @@
 
 
     <!-- ******************************************************* -->
-    <!-- plist                                                   -->
+    <!-- plist, 510                                              -->
     <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.macos.Plist510Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="plist510_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.Plist510Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="plist510_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
+            <bind-xml name="key" node="element"/>
+        </field>
+        <field name="appId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="app_id" node="element"/>
+        </field>
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
+            <bind-xml name="instance" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.Plist510State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="plist510_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+        <field name="appId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="app_id" node="element"/>
+        </field>
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="instance" node="element"/>
+        </field>
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.macos.EntityStatePlistTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
     <class name="jp.go.aist.six.oval.model.macos.PlistTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="plist_test"
@@ -675,7 +757,8 @@
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
         <field name="appId" 
@@ -719,7 +802,7 @@
             <bind-xml name="type" node="element"/>
         </field>
         <field name="value" 
-            type="jp.go.aist.six.oval.model.sc.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="value" node="element"/>
         </field>
     </class>
@@ -730,7 +813,8 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos"
             ns-prefix=""/>
         <field name="key" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
             <bind-xml name="key" node="element"/>
         </field>
         <field name="appId" 
@@ -750,11 +834,414 @@
             <bind-xml name="type" node="element"/>
         </field>
         <field name="value" 
-            type="jp.go.aist.six.oval.model.sc.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
             <bind-xml name="value" node="element"/>
         </field>
     </class>
 
 
+    <!-- ******************************************************* -->
+    <!-- pwpolicy, 59                                           -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicy59Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="pwpolicy59_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicy59Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="pwpolicy59_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="targetUser" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="target_user" node="element"/>
+        </field>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true" required="true">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicy59State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="pwpolicy59_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="targetUser" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="target_user" node="element"/>
+        </field>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="maxChars" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxChars" node="element"/>
+        </field>
+        <field name="maxFailedLoginAttempts" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxFailedLoginAttempts" node="element"/>
+        </field>
+        <field name="minChars" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="minChars" node="element"/>
+        </field>
+        <field name="passwordCannotBeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="passwordCannotBeName" node="element"/>
+        </field>
+        <field name="requiresAlpha" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresAlpha" node="element"/>
+        </field>
+        <field name="requiresNumeric" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresNumeric" node="element"/>
+        </field>
+        <field name="maxMinutesUntilChangePassword" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxMinutesUntilChangePassword" node="element"/>
+        </field>
+        <field name="minMinutesUntilChangePassword" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="minMinutesUntilChangePassword" node="element"/>
+        </field>
+        <field name="requiresMixedCase" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresMixedCase" node="element"/>
+        </field>
+        <field name="requiresSymbol" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresSymbol" node="element"/>
+        </field>
+        <field name="minutesUntilFailedLoginReset" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="minutesUntilFailedLoginReset" node="element"/>
+        </field>
+        <field name="usingHistory" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="usingHistory" node="element"/>
+        </field>
+        <field name="canModifyPasswordforSelf" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="canModifyPasswordforSelf" node="element"/>
+        </field>
+        <field name="usingExpirationDate" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="usingExpirationDate" node="element"/>
+        </field>
+        <field name="usingHardExpirationDate" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="usingHardExpirationDate" node="element"/>
+        </field>
+        <field name="expirationDateGMT" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="expirationDateGMT" node="element"/>
+        </field>
+        <field name="hardExpireDateGMT" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="hardExpireDateGMT" node="element"/>
+        </field>
+        <field name="maxMinutesUntilDisabled" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxMinutesUntilDisabled" node="element"/>
+        </field>
+        <field name="maxMinutesOfNonUse" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxMinutesOfNonUse" node="element"/>
+        </field>
+        <field name="newPasswordRequired" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="newPasswordRequired" node="element"/>
+        </field>
+        <field name="notGuessablePattern" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="notGuessablePattern" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.macos.PwPolicy59Item"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="pwpolicy59_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos"
+            ns-prefix=""/>
+        <field name="targetUser" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="target_user" node="element"/>
+        </field>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            nillable="true">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="maxChars" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxChars" node="element"/>
+        </field>
+        <field name="maxFailedLoginAttempts" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxFailedLoginAttempts" node="element"/>
+        </field>
+        <field name="minChars" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="minChars" node="element"/>
+        </field>
+        <field name="passwordCannotBeName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="passwordCannotBeName" node="element"/>
+        </field>
+        <field name="requiresAlpha" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresAlpha" node="element"/>
+        </field>
+        <field name="requiresNumeric" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresNumeric" node="element"/>
+        </field>
+        <field name="maxMinutesUntilChangePassword" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxMinutesUntilChangePassword" node="element"/>
+        </field>
+        <field name="minMinutesUntilChangePassword" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="minMinutesUntilChangePassword" node="element"/>
+        </field>
+        <field name="requiresMixedCase" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresMixedCase" node="element"/>
+        </field>
+        <field name="requiresSymbol" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresSymbol" node="element"/>
+        </field>
+        <field name="minutesUntilFailedLoginReset" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="minutesUntilFailedLoginReset" node="element"/>
+        </field>
+        <field name="usingHistory" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="usingHistory" node="element"/>
+        </field>
+        <field name="canModifyPasswordforSelf" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="canModifyPasswordforSelf" node="element"/>
+        </field>
+        <field name="usingExpirationDate" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="usingExpirationDate" node="element"/>
+        </field>
+        <field name="usingHardExpirationDate" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="usingHardExpirationDate" node="element"/>
+        </field>
+        <field name="expirationDateGMT" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="expirationDateGMT" node="element"/>
+        </field>
+        <field name="hardExpireDateGMT" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="hardExpireDateGMT" node="element"/>
+        </field>
+        <field name="maxMinutesUntilDisabled" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxMinutesUntilDisabled" node="element"/>
+        </field>
+        <field name="maxMinutesOfNonUse" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxMinutesOfNonUse" node="element"/>
+        </field>
+        <field name="newPasswordRequired" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="newPasswordRequired" node="element"/>
+        </field>
+        <field name="notGuessablePattern" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="notGuessablePattern" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="pwpolicy_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="pwpolicy_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.macos.PwPolicyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="pwpolicy_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos"
+            ns-prefix=""/>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="maxChars" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxChars" node="element"/>
+        </field>
+        <field name="maxFailedLoginAttempts" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="maxFailedLoginAttempts" node="element"/>
+        </field>
+        <field name="minChars" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="minChars" node="element"/>
+        </field>
+        <field name="passwordCannotBeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="passwordCannotBeName" node="element"/>
+        </field>
+        <field name="requiresAlpha" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresAlpha" node="element"/>
+        </field>
+        <field name="requiresNumeric" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="requiresNumeric" node="element"/>
+        </field>
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.macos.PwPolicyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="pwpolicy_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos"
+            ns-prefix=""/>
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+        <field name="userpass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="userpass" node="element"/>
+        </field>
+        <field name="directoryNode" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="directory_node" node="element"/>
+        </field>
+        <field name="maxChars" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxChars" node="element"/>
+        </field>
+        <field name="maxFailedLoginAttempts" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="maxFailedLoginAttempts" node="element"/>
+        </field>
+        <field name="minChars" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="minChars" node="element"/>
+        </field>
+        <field name="passwordCannotBeName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="passwordCannotBeName" node="element"/>
+        </field>
+        <field name="requiresAlpha" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresAlpha" node="element"/>
+        </field>
+        <field name="requiresNumeric" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="requiresNumeric" node="element"/>
+        </field>
+    </class>
 
 </mapping>
