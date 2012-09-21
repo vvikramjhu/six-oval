@@ -90,9 +90,8 @@
 
 
     <!-- ******************************************************* -->
-    <!-- dnscache                                               -->
+    <!-- dnscache (XSLT)                                         -->
     <!-- ******************************************************* -->
-<!-- XSLT support -->
     <class name="jp.go.aist.six.oval.model.unix.DnsCacheTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="unix_dnscache_test"

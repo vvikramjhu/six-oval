@@ -35,6 +35,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <!-- namespaces -->
+<xsl:variable name="var_ns-def-5-macos"
+    select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#macos'"/>
+<xsl:variable name="var_ns-sc-5-macos"
+    select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos'"/>
+
 <xsl:variable name="var_ns-def-5-unix"
     select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#unix'"/>
 <xsl:variable name="var_ns-sc-5-unix"
@@ -54,11 +59,12 @@
     @see OvalComponentType.java
 -->
 <!--
-    dnscache:   unix, windows 
-    file:       unix, windows
-    interface:  unix, windows
-    process:    unix, windows
-    process58:  unix, windows
+    dnscache:               unix, windows 
+    file:                   unix, windows
+    inetlisteningservers:   linux, macos
+    interface:              unix, windows
+    process:                unix, windows
+    process58:              unix, windows
 -->
 
 
@@ -165,6 +171,65 @@
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
             <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+
+<!-- *********************************************************** -->
+<!-- inetlisteningservers                                        -->
+<!-- *********************************************************** -->
+
+<!-- inetlisteningservers (pre-unmarshalling)
+-->
+<xsl:template match="*[local-name() = 'inetlisteningservers_test'  or  local-name() = 'inetlisteningservers_object'  or  local-name() = 'inetlisteningservers_state'  or  local-name() = 'inetlisteningservers_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+<!--
+    <xsl:message>
+        <xsl:value-of select="$lvar_element"/>
+        <xsl:value-of select="$lvar_ns"/>
+    </xsl:message>
+-->
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-macos  or  $lvar_ns = $var_ns-sc-5-macos">
+            <xsl:call-template name="func_output-oval-5-macos-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+
+</xsl:template>
+
+
+<!-- inetlisteningservers (post-marshalling) -->
+<xsl:template match="*[local-name() = 'macos_inetlisteningservers_test'  or  local-name() = 'macos_inetlisteningservers_object'  or  local-name() = 'macos_inetlisteningservers_state'  or  local-name() = 'macos_inetlisteningservers_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-macos  or  $lvar_ns = $var_ns-sc-5-macos">
+            <xsl:call-template name="func_output-oval-5-macos-component">
                 <xsl:with-param name="lvar_element" select="$lvar_element"/>
                 <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
             </xsl:call-template>
@@ -354,6 +419,83 @@ TEMPLATE:  Copy idiom.
 <!-- NAMED TEMPLATE                                              -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+<!-- *********************************************************** -->
+<!-- #macos                                                      -->
+<!-- *********************************************************** -->
+<xsl:template name="func_output-oval-5-macos-component">
+    <xsl:param name="lvar_element"/>
+    <xsl:param name="lvar_ns"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-macos">
+            <xsl:choose>
+<!-- inetlisteningservers -->
+                <xsl:when test="$lvar_element = 'inetlisteningservers_test'">
+                    <macos_inetlisteningservers_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </macos_inetlisteningservers_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'inetlisteningservers_object'">
+                    <macos_inetlisteningservers_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </macos_inetlisteningservers_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'inetlisteningservers_state'">
+                    <macos_inetlisteningservers_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </macos_inetlisteningservers_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'macos_inetlisteningservers_test'">
+                    <inetlisteningservers_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </inetlisteningservers_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'macos_inetlisteningservers_object'">
+                    <inetlisteningservers_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </inetlisteningservers_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'macos_inetlisteningservers_state'">
+                    <inetlisteningservers_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </inetlisteningservers_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+
+        <xsl:when test="$lvar_ns = $var_ns-sc-5-macos">
+            <xsl:choose>
+<!-- inetlisteningservers -->
+                <xsl:when test="$lvar_element = 'inetlisteningservers_item'">
+                    <macos_inetlisteningservers_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </macos_inetlisteningservers_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'macos_inetlisteningservers_item'">
+                    <inetlisteningservers_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </inetlisteningservers_item>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
+
+</xsl:template>
+
+
+<!-- *********************************************************** -->
+<!-- #unix                                                       -->
+<!-- *********************************************************** -->
 <xsl:template name="func_output-oval-5-unix-component">
     <xsl:param name="lvar_element"/>
     <xsl:param name="lvar_ns"/>
@@ -647,5 +789,6 @@ TEMPLATE:  Copy idiom.
     </xsl:choose>
 
 </xsl:template>
+
 
 </xsl:stylesheet>
