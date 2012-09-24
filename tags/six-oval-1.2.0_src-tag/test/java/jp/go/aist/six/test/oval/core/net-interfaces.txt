@@ -1,0 +1,26 @@
+package jp.go.aist.six.test.oval.core;
+
+import jp.go.aist.six.oval.model.sc.NetInterface;
+
+
+
+public class NetInterfacesSample
+{
+
+    public static final NetInterface[]  NET_INTERFACES_1 =
+        new NetInterface[] {
+        new NetInterface( "Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - パケット スケジューラ ミニポート",
+                        "150.168.1.100",
+                        "00-AA-BB-CC-11-22"
+        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet1",
+                        "192.168.153.1",
+                        "00-50-56-C0-00-01"
+        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet8",
+                        "192.168.1.1",
+                        "00-50-56-C0-00-08"
+        )
+    };
+
+}

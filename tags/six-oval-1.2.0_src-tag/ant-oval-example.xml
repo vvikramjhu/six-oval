@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="oval-example" basedir="..">
+
+    <property name="lib.dir" location="${basedir}/lib"/>
+    <property name="example.classes.dir"  location="${lib.dir}/classes"/>
+
+    <path id="java.lib.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar,**/*.properties" />
+    </path>
+
+    <path id="java.compile.classpath">
+        <path refid="java.lib.classpath"/>
+    </path>
+
+    <path id="java.run.classpath">
+        <path refid="java.compile.classpath"/>
+        <pathelement location="${example.classes.dir}"/>
+    </path>
+
+
+    <!-- ************************************************************** -->
+    <!-- *  Examples                                                  * -->
+    <!-- ************************************************************** -->
+
+    <target name="oval.example.db-basic" depends="">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseBasicExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="oval.example.db-query" depends="">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalDatabaseQueryExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+
+    <target name="oval.example.xml-mapping" depends="">
+        <java
+            classname="jp.go.aist.six.test.oval.example.OvalXmlMappingExample"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+        </java>
+    </target>
+
+</project>
+
