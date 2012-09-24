@@ -17,6 +17,7 @@ public class OvalXmlMappingExample
         XmlMapper  xml_mapper = OvalContext.getInstance().getXmlMapper();
 
         //local file
+//        String  local_src = "src/test/resources/oval_test-content/oval-5.9/def/macos/macos-def_inetlisteningservers_test.xml";
         String  local_src = "src/test/resources/oval_test-content/oval-5.9/def/windows/ind-def_unknown_test.xml";
         File  src_file = new File( local_src );
         OvalDefinitions  obj1 = xml_mapper.unmarshal( new FileInputStream( src_file ), OvalDefinitions.class );
