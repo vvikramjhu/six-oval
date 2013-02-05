@@ -490,7 +490,7 @@ Project SIX: OVAL - Maven Project Object Model (POM)
                         <url>${project.url}</url>
                         <year>${project.inceptionYear}</year>
                         <organization>${project.organization.name}</organization>
-                        <reg-number>H18PRO-538</reg-number>
+                        <reg-number>H22PRO-1124</reg-number>
                     </properties>
                     <strictCheck>true</strictCheck>
                 </configuration>
