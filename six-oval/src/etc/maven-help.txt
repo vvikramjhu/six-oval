@@ -8,6 +8,10 @@ Project SIX: OVAL - Maven Goals
 * ant:ant
     Generate Ant build files. Customize build.xml, not maven-build.xml.
 
+* license:{format, remove} -Dxxx=yyy
+    Helps managing license headers in source files.
+    https://code.google.com/p/maven-license-plugin/
+
 *compile 
     Compiles the source code
 
