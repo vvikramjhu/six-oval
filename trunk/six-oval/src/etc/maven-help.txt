@@ -1,0 +1,18 @@
+///////////////////////////////////////////////////////////////////////////
+Project SIX: OVAL - Maven Goals
+///////////////////////////////////////////////////////////////////////////
+
+[for users]
+
+[for developers]
+* ant:ant
+    Generate Ant build files. Customize build.xml, not maven-build.xml.
+
+*compile 
+    Compiles the source code
+
+*javadoc:javadoc
+    Generates the test Javadoc files for the project.
+
+*test-compile
+    Compiles the test code
