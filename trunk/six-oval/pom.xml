@@ -293,6 +293,13 @@ Project SIX: OVAL - Maven Project Object Model (POM)
             <version>0.99.1-SNAPSHOT</version>
         </dependency>
 
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
     </dependencies>
 
 
