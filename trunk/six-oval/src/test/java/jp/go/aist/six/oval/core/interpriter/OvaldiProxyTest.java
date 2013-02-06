@@ -8,7 +8,7 @@ import org.junit.Test;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: VulnXmlMapperTest.java 347 2012-11-19 06:42:53Z nakamura5akihito@gmail.com $
+ * @version $Id$
  */
 public class OvaldiProxyTest
 {
