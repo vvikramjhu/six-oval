@@ -39,6 +39,7 @@ public class Option
     public final String   argumentName;
     public final String   defaultArgument;
     public final String   contentType;
+    public final String   systemProperty;
 
 
 
@@ -51,7 +52,8 @@ public class Option
                     final boolean hasArgument,
                     final String  argumentName,
                     final String  defaultArgument,
-                    final String  contentType
+                    final String  contentType,
+                    final String  systemProperty
                     )
     {
         this.description        = description;
@@ -60,6 +62,7 @@ public class Option
         this.argumentName       = argumentName;
         this.defaultArgument    = defaultArgument;
         this.contentType        = contentType;
+        this.systemProperty     = systemProperty;
     }
 
 

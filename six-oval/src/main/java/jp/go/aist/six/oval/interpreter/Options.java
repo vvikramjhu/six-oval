@@ -212,6 +212,19 @@ public class Options
     }
 
 
+    public String get(
+                    final Option option,
+                    final String defaultValue
+                    )
+    {
+        if (option == null) {
+            throw new IllegalArgumentException( "no option specified" );
+        }
+
+        return (contains( option ) ? get( option ) : defaultValue);
+    }
+
+
     public boolean contains(
                     final Option option
                     )
