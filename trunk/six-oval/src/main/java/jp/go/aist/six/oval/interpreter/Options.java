@@ -221,7 +221,9 @@ public class Options
             throw new IllegalArgumentException( "no option specified" );
         }
 
-        return (contains( option ) ? get( option ) : defaultValue);
+        final String  value = get( option );
+
+        return (contains( option ) ? value : defaultValue);
     }
 
 

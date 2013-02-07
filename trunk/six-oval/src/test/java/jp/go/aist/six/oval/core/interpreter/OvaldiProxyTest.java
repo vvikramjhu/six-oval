@@ -23,8 +23,8 @@ public class OvaldiProxyTest
     {
         Options  options = new Options();
         options.set( OvaldiOption.NO_VERIFY )
-               .set( OvaldiOption.OVAL_XML_DIR,
-                        "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
+//               .set( OvaldiOption.OVAL_XML_DIR,
+//                        "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
                .set( OvaldiOption.OVAL_DEFINITIONS,
                         "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml" );
 
