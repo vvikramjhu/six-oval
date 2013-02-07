@@ -1,24 +1,15 @@
-package jp.go.aist.six.oval.core.interpriter;
+package jp.go.aist.six.oval.core.interpreter;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import java.io.IOException;
-import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
-import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
 import jp.go.aist.six.oval.interpreter.Options;
 import org.junit.Before;
 import org.junit.Test;
 
 
-
-/**
- * @author  Akihito Nakamura, AIST
- * @version $Id$
- */
 public class OvaldiProxyTest
 {
-
-
 
     @Before
     public void setUp()
@@ -27,7 +18,7 @@ public class OvaldiProxyTest
 
 
     @Test
-    public void executeWithDefaultOptionsForLocalExecution()
+    public void testExecuteWithDefaultOptionsForLocalExecution()
                     throws IOException
     {
         Options  options = new Options();
@@ -41,5 +32,3 @@ public class OvaldiProxyTest
     }
 
 }
-//
-
