@@ -84,7 +84,10 @@ public enum ServiceCurrentStateEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

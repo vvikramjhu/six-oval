@@ -80,7 +80,6 @@ public enum ElementType
     //  OvalEnumeration
     //*********************************************************************
 
-    @Override
     public String value()
     {
         return value;

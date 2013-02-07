@@ -333,7 +333,6 @@ public class HttpOvalRepositoryClient
     private static final String  _URL_DEFINITON_        = "/definitions";
 
 
-    @Override
     public DefinitionType findDefinitionById(
                     final String oval_id
                     )
@@ -345,7 +344,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<DefinitionType> findDefinition()
     {
         @SuppressWarnings( "unchecked" )
@@ -357,7 +355,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<DefinitionType> findDefinition(
                     final QueryParams params
                     )
@@ -373,7 +370,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findDefinitionId()
     {
         QueryParams  ps = new DefinitionQueryParams();
@@ -392,7 +388,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findDefinitionId(
                     final QueryParams params
                     )
@@ -426,7 +421,6 @@ public class HttpOvalRepositoryClient
 //                    "/definitions/count";
 
 
-    @Override
     public long countDefinition()
     {
         return countDefinition( null );
@@ -434,7 +428,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countDefinition(
                     final QueryParams params
                     )
@@ -462,7 +455,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public String saveDefinition(
                     final DefinitionType def
                     )
@@ -480,7 +472,6 @@ public class HttpOvalRepositoryClient
 
     private static final String  _URL_ELEMENT_BY_ID_ = "/{type}s/{id}";
 
-    @Override
     public DefinitionsElement findElementById(
                     final String oval_id
                     )
@@ -493,7 +484,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<DefinitionsElement> findElement( final QueryParams params )
     {
         throw new UnsupportedOperationException();
@@ -501,7 +491,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findElementId(
                     final QueryParams params
                     )
@@ -511,7 +500,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countElement( final QueryParams params )
     {
         throw new UnsupportedOperationException();
@@ -519,7 +507,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public String saveElement( final DefinitionsElement element )
     {
         throw new UnsupportedOperationException();
@@ -537,7 +524,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public OvalDefinitions findOvalDefinitionsById(
                     final String id
                     )
@@ -549,7 +535,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalDefinitionsId()
     {
         throw new UnsupportedOperationException();
@@ -557,7 +542,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalDefinitionsId( final QueryParams params )
     {
         throw new UnsupportedOperationException();
@@ -565,7 +549,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalDefinitions()
     {
         throw new UnsupportedOperationException();
@@ -573,7 +556,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalDefinitions( final QueryParams params )
     {
         throw new UnsupportedOperationException();
@@ -581,7 +563,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public String saveOvalDefinitions(
                     final OvalDefinitions oval_defs
                     )
@@ -602,7 +583,6 @@ public class HttpOvalRepositoryClient
     private static final String  _URL_OVAL_RESULTS_BY_ID_   = "/oval_results/{id}";
 
 
-    @Override
     public OvalResults findOvalResultsById(
                     final String id
                     )
@@ -614,7 +594,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<OvalResults> findOvalResults()
     {
         @SuppressWarnings( "unchecked" )
@@ -626,7 +605,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<OvalResults> findOvalResults(
                     final QueryParams params
                     )
@@ -642,7 +620,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalResultsId()
     {
         return findOvalResultsId( null );
@@ -650,7 +627,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalResultsId(
                     final QueryParams params
                     )
@@ -680,7 +656,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalResults()
     {
         QueryParams  ps = new OvalResultsQueryParams();
@@ -697,7 +672,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalResults(
                     final QueryParams params
                     )
@@ -725,7 +699,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public String saveOvalResults(
                     final OvalResults oval_results
                     )
@@ -746,7 +719,6 @@ public class HttpOvalRepositoryClient
     private static final String  _URL_OVAL_SCS_BY_ID_   = "/oval_scs/{id}";
 
 
-    @Override
     public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     final String id
                     )
@@ -758,7 +730,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics()
     {
         @SuppressWarnings( "unchecked" )
@@ -770,7 +741,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
@@ -786,7 +756,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalSystemCharacteristicsId()
     {
         return findOvalSystemCharacteristicsId( null );
@@ -794,7 +763,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public QueryResults<String> findOvalSystemCharacteristicsId(
                     final QueryParams params
                     )
@@ -824,7 +792,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalSystemCharacteristics()
     {
         QueryParams  ps = new OvalSystemCharacteristicsQueryParams();
@@ -841,7 +808,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public long countOvalSystemCharacteristics(
                     final QueryParams params
                     )
@@ -869,7 +835,6 @@ public class HttpOvalRepositoryClient
 
 
 
-    @Override
     public String saveOvalSystemCharacteristics(
                     final OvalSystemCharacteristics oval_scs
                     )

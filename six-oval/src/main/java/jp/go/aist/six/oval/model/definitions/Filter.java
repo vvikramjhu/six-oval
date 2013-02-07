@@ -124,7 +124,6 @@ public class Filter
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         String  state_id = getContent();
@@ -134,7 +133,6 @@ public class Filter
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.STATE;

@@ -89,7 +89,6 @@ public class ExtendDefinitionType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getDefinitionRef();
@@ -97,7 +96,6 @@ public class ExtendDefinitionType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.DEFINITION;

@@ -77,7 +77,10 @@ public enum CheckEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;
@@ -96,4 +99,4 @@ public enum CheckEnumeration
     }
 
 }
-// CheckEnumeration
+//CheckEnumeration
