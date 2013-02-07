@@ -76,7 +76,10 @@ public enum AuditEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

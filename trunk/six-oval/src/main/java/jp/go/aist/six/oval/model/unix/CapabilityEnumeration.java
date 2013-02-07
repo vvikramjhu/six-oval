@@ -104,7 +104,10 @@ public enum CapabilityEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

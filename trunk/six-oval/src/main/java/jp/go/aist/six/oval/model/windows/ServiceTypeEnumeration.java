@@ -82,7 +82,10 @@ public enum ServiceTypeEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

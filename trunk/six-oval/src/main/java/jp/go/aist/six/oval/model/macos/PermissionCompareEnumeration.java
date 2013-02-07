@@ -74,7 +74,10 @@ public enum PermissionCompareEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

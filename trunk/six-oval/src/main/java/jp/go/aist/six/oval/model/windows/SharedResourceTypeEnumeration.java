@@ -89,7 +89,10 @@ public enum SharedResourceTypeEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

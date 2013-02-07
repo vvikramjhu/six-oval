@@ -198,7 +198,6 @@ public abstract class DefinitionsElement
 
 
 
-    @Override
     public void setPersistentID(
                     final String pid
                     )
@@ -207,7 +206,6 @@ public abstract class DefinitionsElement
     }
 
 
-    @Override
     public String getPersistentID()
     {
         return _id;

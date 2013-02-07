@@ -81,7 +81,10 @@ public class VariableType
 
 
 
-        @Override
+        //*****************************************************************
+        //  OvalEnumeration
+        //*****************************************************************
+
         public String value()
         {
             return value;

@@ -77,7 +77,10 @@ public enum XinetdTypeStatusEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;

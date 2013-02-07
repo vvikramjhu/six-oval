@@ -78,7 +78,6 @@ public enum HashTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

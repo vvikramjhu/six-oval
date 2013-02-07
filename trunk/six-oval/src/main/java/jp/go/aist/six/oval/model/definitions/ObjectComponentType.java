@@ -123,7 +123,6 @@ public class ObjectComponentType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getObjectRef();
@@ -131,7 +130,6 @@ public class ObjectComponentType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.OBJECT;

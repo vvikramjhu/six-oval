@@ -224,7 +224,11 @@ public class Options
     }
 
 
-    @Override
+
+    //*********************************************************************
+    //  java.lang.Iterable
+    //*********************************************************************
+
     public Iterator<Option> iterator()
     {
         return _options.keySet().iterator();

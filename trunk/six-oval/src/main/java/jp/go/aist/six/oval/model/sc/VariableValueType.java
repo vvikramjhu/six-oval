@@ -104,7 +104,6 @@ public class VariableValueType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getVariableId();
@@ -112,7 +111,6 @@ public class VariableValueType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.VARIABLE;

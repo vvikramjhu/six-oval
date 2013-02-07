@@ -60,7 +60,6 @@ public class MongoOvalRepository
     //  OvalResultsRepository
     //**************************************************************
 
-    @Override
     public OvalResults findOvalResultsById(
                     final String id
                     )
@@ -77,7 +76,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<OvalResults> findOvalResults()
     {
         List<OvalResults>  p_list = null;
@@ -92,7 +90,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<OvalResults> findOvalResults(
                     final QueryParams params
                     )
@@ -109,7 +106,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalResultsId()
     {
         List<String>  list = null;
@@ -125,7 +121,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalResultsId(
                     final QueryParams params
                     )
@@ -142,7 +137,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public long countOvalResults()
     {
         long  count = 0L;
@@ -157,7 +151,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public long countOvalResults(
                     final QueryParams params
                     )
@@ -174,7 +167,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public String saveOvalResults(
                     final OvalResults oval_results
                     )
@@ -195,7 +187,6 @@ public class MongoOvalRepository
     // OvalSystemCharacteristics
     //=====================================================================
 
-    @Override
     public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     final String id
                     )
@@ -212,7 +203,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics()
     {
         List<OvalSystemCharacteristics>  p_list = null;
@@ -227,7 +217,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
@@ -244,7 +233,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalSystemCharacteristicsId()
     {
         List<String>  list = null;
@@ -259,7 +247,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalSystemCharacteristicsId(
                     final QueryParams params
                     )
@@ -276,7 +263,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public long countOvalSystemCharacteristics()
     {
         long  count = 0L;
@@ -291,7 +277,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public long countOvalSystemCharacteristics(
                     final QueryParams params
                     )
@@ -308,7 +293,6 @@ public class MongoOvalRepository
 
 
 
-    @Override
     public String saveOvalSystemCharacteristics(
                     final OvalSystemCharacteristics oval_sc
                     )

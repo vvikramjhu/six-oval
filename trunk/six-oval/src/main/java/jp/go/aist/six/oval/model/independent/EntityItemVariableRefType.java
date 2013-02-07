@@ -77,7 +77,6 @@ public class EntityItemVariableRefType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         String  var_id = getContent();
@@ -87,7 +86,6 @@ public class EntityItemVariableRefType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.VARIABLE;

@@ -105,7 +105,10 @@ public enum RoutingTableFlagsEnumeration
 
 
 
-    @Override
+    //*********************************************************************
+    //  OvalEnumeration
+    //*********************************************************************
+
     public String value()
     {
         return value;
