@@ -360,7 +360,6 @@ public class OvaldiProxy
     //  OvalInterpreter
     //*********************************************************************
 
-    @Override
     public int execute()
     {
         OvalContext  context = OvalContext.getInstance();
@@ -382,7 +381,6 @@ public class OvaldiProxy
 
 
 
-    @Override
     public void setOptions(
                     final Options options
                     )
@@ -391,7 +389,6 @@ public class OvaldiProxy
     }
 
 
-    @Override
     public Options getOptions()
     {
         return _options;

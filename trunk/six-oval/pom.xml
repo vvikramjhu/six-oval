@@ -57,14 +57,14 @@ Project SIX: OVAL - Maven Project Object Model (POM)
         <maven-site-plugin.version>3.1</maven-site-plugin.version>
 
         <six-util.version>3.3.0</six-util.version>
-        <ch.qos.logback.version>1.0.7</ch.qos.logback.version>
-        <juint.version>4.10</juint.version>
+        <ch.qos.logback.version>1.0.9</ch.qos.logback.version>
+        <juint.version>4.11</juint.version>
         <castor.version>1.3.2</castor.version>
-        <springframework.version>3.1.3.RELEASE</springframework.version>
+        <springframework.version>3.1.4.RELEASE</springframework.version>
         <spring.mongodb.version>1.1.0.RELEASE</spring.mongodb.version>
-        <!-- spring.mongodb.version>1.0.4.RELEASE</spring.mongodb.version -->
-        <querydsl.version>2.8.2</querydsl.version>
-        <slf4j.version>1.7.1</slf4j.version>
+        <querydsl.version>2.9.0</querydsl.version>
+        <!-- querydsl.version>2.8.2</querydsl.version -->
+        <slf4j.version>1.7.2</slf4j.version>
     </properties>
 
 
