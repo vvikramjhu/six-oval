@@ -81,8 +81,9 @@ public class OvaldiProxy
     {
         public static final String  DEFAULT_OVALDI_PATH = "ovaldi";
 
-        public static final String  OVALDI_PATH     = "ovaldi.path";
-        public static final String  OVALDI_WORKDIR  = "ovaldi.workdir";
+        public static final String  OVALDI_EXECUTABLE   = "six.oval.ovaldi.executable";
+        public static final String  OVALDI_XMLDIR       = "six.oval.ovaldi.xml_dir";
+        public static final String  OVALDI_WORKDIR      = "six.oval.ovaldi.work_dir";
     }
     //Config
 
@@ -248,7 +249,7 @@ public class OvaldiProxy
 
         String  ovaldi_path = getExecutablePath();
         if (ovaldi_path == null) {
-            ovaldi_path = context.getProperty( Config.OVALDI_PATH, Config.DEFAULT_OVALDI_PATH );
+            ovaldi_path = context.getProperty( Config.OVALDI_EXECUTABLE, Config.DEFAULT_OVALDI_PATH );
         }
         _LOG_.debug( "ovaldi path: " + ovaldi_path );
         command.add( ovaldi_path );
@@ -327,13 +328,30 @@ public class OvaldiProxy
                     final String filepath
                     )
     {
-        _config.put( Config.OVALDI_PATH, filepath );
+        _config.put( Config.OVALDI_EXECUTABLE, filepath );
     }
 
 
     public String getExecutablePath()
     {
-        return _config.get( Config.OVALDI_PATH );
+        return _config.get( Config.OVALDI_EXECUTABLE );
+    }
+
+
+
+    /**
+     */
+    public void setXmlDir(
+                    final String dirpath
+                    )
+    {
+        _config.put( Config.OVALDI_XMLDIR, dirpath );
+    }
+
+
+    public String getXmlDir()
+    {
+        return _config.get( Config.OVALDI_XMLDIR );
     }
 
 
@@ -352,6 +370,7 @@ public class OvaldiProxy
     {
         return _config.get( Config.OVALDI_WORKDIR );
     }
+
 
 
 

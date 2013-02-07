@@ -43,26 +43,30 @@ public class OvaldiOption
     public static final OvaldiOption OVAL_DEFINITIONS = new OvaldiOption(
                     "path to the oval definitions XML file",
                     "-o", true, "filename", "definitions.xml",
-                    "application/xml"
+                    "application/xml",
+                    "six.oval.ovaldi.definitions"
     );
 
     public static final OvaldiOption EVALUATE_DEFINITIONS = new OvaldiOption(
                     "evaluate the specified list of definitions \n" +
                     "(supply definition IDs as a comma seperated list)",
                     "-e", true, "definition IDs", null,
-                    "text/plain"
+                    "text/plain",
+                    "six.oval.ovaldi.definition_ids"
     );
 
     public static final OvaldiOption OVAL_XML_DIR = new OvaldiOption(
                     "path to the directory that contains the OVAL schema and other xml resources",
                     "-a", true, "dir name", null,
-                    null
+                    null,
+                    "six.oval.ovaldi.xml_dir"
     );
 
     public static final OvaldiOption MD5_HASH = new OvaldiOption(
                     "MD5 checksum expected for the current OVAL Definitions document",
                     null, true, "MD5Hash", null,
-                    null
+                    null,
+                    "six.oval.ovaldi.md5hash"
     );
 
 
@@ -73,21 +77,24 @@ public class OvaldiOption
     public static final OvaldiOption OVAL_SC = new OvaldiOption(
                     "save system-characteristics data to the specified XML file",
                     "-d", true, "filename", "system-characteristics.xml",
-                    "application/xml"
+                    "application/xml",
+                    "six.oval.ovaldi.system_characteristics"
     );
 
 
     public static final OvaldiOption OVAL_RESULTS = new OvaldiOption(
                     "save oval-results to the specified XML file",
                     "-r", true, "filename", "results.xml",
-                    "application/xml"
+                    "application/xml",
+                    "six.oval.ovaldi.results"
     );
 
 
     public static final OvaldiOption OVAL_TRANSFORMED_RESULTS = new OvaldiOption(
                     "output xsl transform results to the specified file",
                     "-x", true, "filename", "results.html",
-                    "text/html"
+                    "text/html",
+                    "six.oval.ovaldi.transformed_results"
     );
 
 
@@ -98,14 +105,16 @@ public class OvaldiOption
     public static final OvaldiOption NO_VERIFY = new OvaldiOption(
                     "do not verify the oval-definitions file with an MD5 hash",
                     "-m", false, null, null,
-                    null
+                    null,
+                    "six.oval.ovaldi.no_verify"
     );
 
 
     public static final OvaldiOption PRINT_ALL_INFO = new OvaldiOption(
                     "print all information and error messages",
                     "-p", false, null, null,
-                    null
+                    null,
+                    "six.oval.ovaldi.print_all_info"
     );
 
 
@@ -113,7 +122,8 @@ public class OvaldiOption
                     "log messages at the specified level \n"
                     + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)",
                     "-l", true, "integer", "2",
-                    null
+                    null,
+                    "six.oval.ovaldi.log_level"
     );
 
 
@@ -148,10 +158,11 @@ public class OvaldiOption
                     final boolean hasArgument,
                     final String  argumentName,
                     final String  defaultArgument,
-                    final String  contentType
+                    final String  contentType,
+                    final String  systemProperty
                     )
     {
-        super( description, command, hasArgument, argumentName, defaultArgument, contentType );
+        super( description, command, hasArgument, argumentName, defaultArgument, contentType, systemProperty );
     }
 
 
