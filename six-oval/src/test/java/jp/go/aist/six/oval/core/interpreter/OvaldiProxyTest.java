@@ -30,7 +30,7 @@ public class OvaldiProxyTest
 
         OvaldiProxy  ovaldi = new OvaldiProxy( options );
         int  exitValue = ovaldi.execute();
-        assertThat( "normal termination", exitValue, is( 1 ) );
+        assertThat( "normal termination", exitValue, is( 0 ) );
     }
 
 }
