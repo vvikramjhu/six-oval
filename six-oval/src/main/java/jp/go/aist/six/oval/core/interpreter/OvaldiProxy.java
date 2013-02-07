@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreter;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
@@ -79,7 +80,7 @@ public class OvaldiProxy
      */
     protected static class Config
     {
-        public static final String  DEFAULT_OVALDI_PATH = "ovaldi";
+        public static final String  DEFAULT_OVALDI_EXECUTABLE = "ovaldi";
 
         public static final String  OVALDI_EXECUTABLE   = "six.oval.ovaldi.executable";
         public static final String  OVALDI_XMLDIR       = "six.oval.ovaldi.xml_dir";
@@ -206,7 +207,7 @@ public class OvaldiProxy
                     final OvalContext context
                     )
     {
-        final List<String>  command = _createCommand( context );
+        final List<String>  command = _createCommand1( context );
         String  workdir = getWorkingDir();
         if (workdir == null) {
             workdir = context.getProperty( Config.OVALDI_WORKDIR );
@@ -241,7 +242,7 @@ public class OvaldiProxy
      *
      * @throws  OvalInterpreterException
      */
-    private List<String> _createCommand(
+    private List<String> _createCommand1(
                     final OvalContext context
                     )
     {
@@ -249,7 +250,7 @@ public class OvaldiProxy
 
         String  ovaldi_path = getExecutablePath();
         if (ovaldi_path == null) {
-            ovaldi_path = context.getProperty( Config.OVALDI_EXECUTABLE, Config.DEFAULT_OVALDI_PATH );
+            ovaldi_path = context.getProperty( Config.OVALDI_EXECUTABLE, Config.DEFAULT_OVALDI_EXECUTABLE );
         }
         _LOG_.debug( "ovaldi path: " + ovaldi_path );
         command.add( ovaldi_path );
@@ -257,14 +258,60 @@ public class OvaldiProxy
         Options  options = getOptions();
         if (options == null) {
             options = new OvaldiOptions();
+        } else {
+            try {
+                options = options.clone();
+            } catch (Exception ex) {
+                throw new OvalInterpreterException( ex );
+            }
         }
 //        _LOG_.debug( "ovaldi options: " + options );
-        command.addAll( options.toCommandLine() );
 
+        for (Option opt : OvaldiOption.values()) {
+            if (options.contains( opt )) {
+                //nothing
+            } else {
+                String  sys_prop = context.getProperty( opt.systemProperty );
+                if (sys_prop != null) {
+                    if ("boolean".equals( opt.contentType )  &&  opt.hasArgument == false) {
+                        if (Boolean.valueOf( sys_prop ).booleanValue() == true) {
+                            options.set( opt );
+                        }
+                    } else {
+                        options.set( opt, sys_prop );
+                    }
+                }
+            }
+        }
+
+        command.addAll( options.toCommandLine() );
         _LOG_.debug( "ovaldi command: " + String.valueOf( command ) );
         return command;
     }
 
+//    private List<String> _createCommand0(
+//                    final OvalContext context
+//                    )
+//    {
+//        final List<String>  command = new ArrayList<String>();
+//
+//        String  ovaldi_path = getExecutablePath();
+//        if (ovaldi_path == null) {
+//            ovaldi_path = context.getProperty( Config.OVALDI_EXECUTABLE, Config.DEFAULT_OVALDI_EXECUTABLE );
+//        }
+//        _LOG_.debug( "ovaldi path: " + ovaldi_path );
+//        command.add( ovaldi_path );
+//
+//        Options  options = getOptions();
+//        if (options == null) {
+//            options = new OvaldiOptions();
+//        }
+////        _LOG_.debug( "ovaldi options: " + options );
+//        command.addAll( options.toCommandLine() );
+//
+//        _LOG_.debug( "ovaldi command: " + String.valueOf( command ) );
+//        return command;
+//    }
 
 //    private List<String> _createCommand()
 //    {
@@ -339,20 +386,20 @@ public class OvaldiProxy
 
 
 
-    /**
-     */
-    public void setXmlDir(
-                    final String dirpath
-                    )
-    {
-        _config.put( Config.OVALDI_XMLDIR, dirpath );
-    }
-
-
-    public String getXmlDir()
-    {
-        return _config.get( Config.OVALDI_XMLDIR );
-    }
+//    /**
+//     */
+//    public void setXmlDir(
+//                    final String dirpath
+//                    )
+//    {
+//        _config.put( Config.OVALDI_XMLDIR, dirpath );
+//    }
+//
+//
+//    public String getXmlDir()
+//    {
+//        return _config.get( Config.OVALDI_XMLDIR );
+//    }
 
 
 

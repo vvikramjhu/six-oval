@@ -105,7 +105,7 @@ public class OvaldiOption
     public static final OvaldiOption NO_VERIFY = new OvaldiOption(
                     "do not verify the oval-definitions file with an MD5 hash",
                     "-m", false, null, null,
-                    null,
+                    "boolean",
                     "six.oval.ovaldi.no_verify"
     );
 
@@ -113,7 +113,7 @@ public class OvaldiOption
     public static final OvaldiOption PRINT_ALL_INFO = new OvaldiOption(
                     "print all information and error messages",
                     "-p", false, null, null,
-                    null,
+                    "boolean",
                     "six.oval.ovaldi.print_all_info"
     );
 
@@ -122,7 +122,7 @@ public class OvaldiOption
                     "log messages at the specified level \n"
                     + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)",
                     "-l", true, "integer", "2",
-                    null,
+                    "int",
                     "six.oval.ovaldi.log_level"
     );
 
