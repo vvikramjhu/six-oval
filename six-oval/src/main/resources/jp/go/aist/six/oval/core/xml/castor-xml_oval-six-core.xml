@@ -49,6 +49,7 @@
         </field>
     </class>
 
+<!--
     <class name="jp.go.aist.six.oval.core.web.AtomLink">
         <map-to xml="link"
             ns-uri="http://www.w3.org/2005/Atom"
@@ -66,6 +67,7 @@
             <bind-xml name="title" node="attribute"/>
         </field>
     </class>
+-->
 
 </mapping>
 
