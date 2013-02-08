@@ -208,30 +208,48 @@ public class OvaldiProxy
                     )
     {
         final List<String>  command = _createCommand1( context );
-        String  workdir = getWorkingDir();
-        if (workdir == null) {
-            workdir = context.getProperty( Config.OVALDI_WORKDIR );
-        }
-
-
         final ProcessBuilder  builder = new ProcessBuilder( command );
-
-        if (workdir != null) {
-            File  dir = new File( workdir );
-            if (dir.exists()  &&  dir.isDirectory()) {
-                _LOG_.debug( "ovaldi working dir=" + workdir );
-                builder.directory( dir );
-            } else {
-                throw new OvalInterpreterException(
-                                "wrong working directory: " + workdir );
-            }
-        }
-
+        _configureWorkingDir( builder, context );
 
         // Merging standard error and standard output!!!
         builder.redirectErrorStream( true );
 
         return builder;
+    }
+
+
+
+    private void _configureWorkingDir(
+                    final ProcessBuilder builder,
+                    final OvalContext context
+                    )
+    {
+        String  workdir = getWorkingDir();
+        if (workdir == null) {
+            workdir = context.getProperty( Config.OVALDI_WORKDIR );
+        }
+
+        File  dir = null;
+        if (workdir != null) {
+            dir = new File( workdir );
+            if (dir.exists()) {
+                if (!dir.isDirectory()) {
+                    throw new OvalInterpreterException(
+                                    "specified working dir is NOT directory: " + workdir );
+                }
+            } else {
+                boolean  created = dir.mkdir();
+                if (!created) {
+                    throw new OvalInterpreterException(
+                                    "failed to create working dir: " + workdir );
+                }
+            }
+        }
+
+        _LOG_.debug( "ovaldi working dir=" + workdir );
+        if (dir != null) {
+            builder.directory( dir );
+        }
     }
 
 
