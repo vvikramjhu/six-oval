@@ -75,18 +75,18 @@ public class OvaldiProxy
 
 
 
-    /**
-     * Configuration properties.
-     */
-    protected static class Config
-    {
-        public static final String  DEFAULT_OVALDI_EXECUTABLE = "ovaldi";
-
-        public static final String  OVALDI_EXECUTABLE   = "six.oval.ovaldi.executable";
-        public static final String  OVALDI_OUTPUT_DIR   = "six.oval.ovaldi.output_dir";
-        public static final String  OVALDI_WORK_DIR     = "six.oval.ovaldi.work_dir";
-    }
-    //Config
+//    /**
+//     * Configuration properties.
+//     */
+//    protected static class Config
+//    {
+//        public static final String  DEFAULT_EXECUTABLE = "ovaldi";
+//
+//        public static final String  EXECUTABLE   = "six.oval.ovaldi.executable";
+//        public static final String  WORK_DIR     = "six.oval.ovaldi.work_dir";
+//        public static final String  OUTPUT_DIR   = "six.oval.ovaldi.output_dir";
+//    }
+//    //Config
 
 
 
@@ -226,7 +226,7 @@ public class OvaldiProxy
     {
         String  workdir = getWorkingDir();
         if (workdir == null) {
-            workdir = context.getProperty( Config.OVALDI_WORK_DIR );
+            workdir = context.getProperty( OvaldiConfig.WORK_DIR );
         }
 
         File  dir = null;
@@ -268,7 +268,7 @@ public class OvaldiProxy
 
         String  ovaldi_path = getExecutablePath();
         if (ovaldi_path == null) {
-            ovaldi_path = context.getProperty( Config.OVALDI_EXECUTABLE, Config.DEFAULT_OVALDI_EXECUTABLE );
+            ovaldi_path = context.getProperty( OvaldiConfig.EXECUTABLE, OvaldiConfig.DEFAULT_EXECUTABLE );
         }
         _LOG_.debug( "ovaldi path: " + ovaldi_path );
         command.add( ovaldi_path );
@@ -393,13 +393,13 @@ public class OvaldiProxy
                     final String filepath
                     )
     {
-        _config.put( Config.OVALDI_EXECUTABLE, filepath );
+        _config.put( OvaldiConfig.EXECUTABLE, filepath );
     }
 
 
     public String getExecutablePath()
     {
-        return _config.get( Config.OVALDI_EXECUTABLE );
+        return _config.get( OvaldiConfig.EXECUTABLE );
     }
 
 
@@ -410,13 +410,13 @@ public class OvaldiProxy
                     final String dirpath
                     )
     {
-        _config.put( Config.OVALDI_OUTPUT_DIR, dirpath );
+        _config.put( OvaldiConfig.OUTPUT_DIR, dirpath );
     }
 
 
     public String getOutputDir()
     {
-        return _config.get( Config.OVALDI_OUTPUT_DIR );
+        return _config.get( OvaldiConfig.OUTPUT_DIR );
     }
 
 
@@ -427,13 +427,13 @@ public class OvaldiProxy
                     final String dirpath
                     )
     {
-        _config.put( Config.OVALDI_WORK_DIR, dirpath );
+        _config.put( OvaldiConfig.WORK_DIR, dirpath );
     }
 
 
     public String getWorkingDir()
     {
-        return _config.get( Config.OVALDI_WORK_DIR );
+        return _config.get( OvaldiConfig.WORK_DIR );
     }
 
 
