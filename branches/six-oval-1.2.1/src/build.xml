@@ -90,42 +90,30 @@ CONTENTS:
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
-<!-- interpreter -->
+	<!-- interpreter -->
 
-    <target name="oval.interpreter.net-output" depends="compile,init">
+    <target name="example.oval.interpreter.net-output" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="256m"
             >
-            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -m -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541 -r http://localhost:8080/six-oval/repository/oval_results"/>
+            <arg line="-o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a15391 -r http://localhost:8080/six-oval/repository/oval_results"/>
         </java>
     </target>
 
-    <target name="oval.interpreter.net-input" depends="compile,init">
+    <target name="example.oval.interpreter.net-input" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="256m"
             >
-            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -m -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541"/>
+            <arg line="-o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a15391"/>
         </java>
     </target>
 
-    <target name="ex.oval.interpreter" depends="compile,init">
-        <java
-            classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
-            classpathref="java.run.classpath"
-            fork="true"
-            maxmemory="256m"
-            >
-            <arg line="-a C:\\app\\ovaldi-5.10.1.2-x64\\xml -o C:\\app\\ovaldi-5.10.1.2-x64\\def-family.xml -m"/>
-        </java>
-    </target>
-
-	
     <target name="example.oval.interpreter.net" depends="test.compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy"
@@ -150,6 +138,11 @@ CONTENTS:
 
 
 
+    <!-- ************************************************************** -->
+    <!-- *  Examples OLD                                              * -->
+    <!-- ************************************************************** -->
+
+	
 <!-- repository WS -->
 
     <target name="example.oval.repository-client-findbyid" depends="test.compile,init">
