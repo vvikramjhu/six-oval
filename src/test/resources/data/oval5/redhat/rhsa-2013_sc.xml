@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<oval_system_characteristics xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5" xmlns:linux-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux linux-system-characteristics-schema.xsd">
+
+  <generator>
+    <oval:product_name>cpe:/a:mitre:ovaldi:5.10.1.4</oval:product_name>
+    <oval:product_version>5.10.1 Build: 4</oval:product_version>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2013-02-12T19:46:16</oval:timestamp>
+    <vendor>The MITRE Corporation</vendor>
+  </generator>
+
+  <system_info>
+    <os_name>Linux</os_name>
+    <os_version>#1 SMP Wed Nov 28 21:25:39 EST 2012</os_version>
+    <architecture>i686</architecture>
+    <primary_host_name>rhel5</primary_host_name>
+    <interfaces>
+      <interface>
+        <interface_name>eth0</interface_name>
+        <ip_address>192.168.31.205</ip_address>
+        <mac_address>00-0C-29-76-61-F5</mac_address>
+      </interface>
+    </interfaces>
+  </system_info>
+
+  <collected_objects>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130120001" version="501">
+      <reference item_ref="1"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130120002" version="501">
+      <reference item_ref="2"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130121002" version="501">
+      <reference item_ref="3"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130121003" version="501">
+      <reference item_ref="4"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130121004" version="501">
+      <reference item_ref="5"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130121005" version="501">
+      <reference item_ref="6"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130121006" version="501">
+      <reference item_ref="7"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130122002" version="501">
+      <reference item_ref="8"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130122003" version="501">
+      <reference item_ref="9"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130122004" version="501">
+      <reference item_ref="10"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130123002" version="501">
+      <reference item_ref="11"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130123003" version="501">
+      <reference item_ref="12"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130123004" version="501">
+      <reference item_ref="13"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130123005" version="501">
+      <reference item_ref="14"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130123006" version="501">
+      <reference item_ref="15"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130123007" version="501">
+      <reference item_ref="16"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130123008" version="501">
+      <reference item_ref="17"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130124002" version="501">
+      <reference item_ref="18"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130124003" version="501">
+      <reference item_ref="19"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130124004" version="501">
+      <reference item_ref="20"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130124005" version="501">
+      <reference item_ref="21"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130124006" version="501">
+      <reference item_ref="22"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130125002" version="501">
+      <reference item_ref="23"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130125003" version="501">
+      <reference item_ref="24"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130126002" version="501">
+      <reference item_ref="25"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130127002" version="501">
+      <reference item_ref="26"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130127003" version="501">
+      <reference item_ref="27"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130127004" version="501">
+      <reference item_ref="28"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130128002" version="501">
+      <reference item_ref="29"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130128003" version="501">
+      <reference item_ref="30"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130128004" version="501">
+      <reference item_ref="31"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129002" version="501">
+      <reference item_ref="32"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129003" version="501">
+      <reference item_ref="33"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129004" version="501">
+      <reference item_ref="34"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129005" version="501">
+      <reference item_ref="35"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129006" version="501">
+      <reference item_ref="36"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129007" version="501">
+      <reference item_ref="37"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129008" version="501">
+      <reference item_ref="38"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129009" version="501">
+      <reference item_ref="39"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130129010" version="501">
+      <reference item_ref="40"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130130002" version="501">
+      <reference item_ref="41"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130130003" version="501">
+      <reference item_ref="42"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130130004" version="501">
+      <reference item_ref="43"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130130005" version="501">
+      <reference item_ref="44"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130131002" version="501">
+      <reference item_ref="45"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130131003" version="501">
+      <reference item_ref="46"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130131004" version="501">
+      <reference item_ref="47"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130132002" version="501">
+      <reference item_ref="48"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133002" version="501">
+      <reference item_ref="49"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133003" version="501">
+      <reference item_ref="50"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133004" version="501">
+      <reference item_ref="51"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133005" version="501">
+      <reference item_ref="52"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133006" version="501">
+      <reference item_ref="53"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130133007" version="501">
+      <reference item_ref="54"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134002" version="501">
+      <reference item_ref="55"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134003" version="501">
+      <reference item_ref="56"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134004" version="501">
+      <reference item_ref="57"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134005" version="501">
+      <reference item_ref="58"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134006" version="501">
+      <reference item_ref="59"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134007" version="501">
+      <reference item_ref="60"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134008" version="501">
+      <reference item_ref="61"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134009" version="501">
+      <reference item_ref="62"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130134010" version="501">
+      <reference item_ref="63"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130135002" version="501">
+      <reference item_ref="64"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130135003" version="501">
+      <reference item_ref="65"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130144001" version="501">
+      <reference item_ref="66"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130144002" version="501">
+      <reference item_ref="67"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130144003" version="501">
+      <reference item_ref="68"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130144004" version="501">
+      <reference item_ref="69"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130144005" version="501">
+      <reference item_ref="70"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130144006" version="501">
+      <reference item_ref="71"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130144007" version="501">
+      <reference item_ref="72"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130145005" version="501">
+      <reference item_ref="73"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130149005" version="501">
+      <reference item_ref="74"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130150005" version="501">
+      <reference item_ref="75"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130150006" version="501">
+      <reference item_ref="76"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156005" version="501">
+      <reference item_ref="77"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156006" version="501">
+      <reference item_ref="78"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156007" version="501">
+      <reference item_ref="79"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156008" version="501">
+      <reference item_ref="80"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156009" version="501">
+      <reference item_ref="81"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130156010" version="501">
+      <reference item_ref="82"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130165005" version="501">
+      <reference item_ref="83"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130165006" version="501">
+      <reference item_ref="84"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130165007" version="501">
+      <reference item_ref="85"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130165008" version="501">
+      <reference item_ref="86"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130165009" version="501">
+      <reference item_ref="87"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130168002" version="501">
+      <reference item_ref="88"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130168003" version="501">
+      <reference item_ref="89"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168004" version="501">
+      <reference item_ref="90"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168005" version="501">
+      <reference item_ref="91"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168006" version="501">
+      <reference item_ref="92"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168007" version="501">
+      <reference item_ref="93"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168008" version="501">
+      <reference item_ref="94"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168009" version="501">
+      <reference item_ref="95"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168010" version="501">
+      <reference item_ref="96"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168011" version="501">
+      <reference item_ref="97"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168012" version="501">
+      <reference item_ref="98"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130168013" version="501">
+      <reference item_ref="99"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130169005" version="501">
+      <reference item_ref="100"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188005" version="501">
+      <reference item_ref="101"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188006" version="501">
+      <reference item_ref="102"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188007" version="501">
+      <reference item_ref="103"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188008" version="501">
+      <reference item_ref="104"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188009" version="501">
+      <reference item_ref="105"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130188010" version="501">
+      <reference item_ref="106"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130199006" version="501">
+      <reference item_ref="107"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130199009" version="501">
+      <reference item_ref="108"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130213005" version="501">
+      <reference item_ref="109"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130213006" version="501">
+      <reference item_ref="110"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130213007" version="501">
+      <reference item_ref="111"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130213008" version="501">
+      <reference item_ref="112"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130213009" version="501">
+      <reference item_ref="113"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130213010" version="501">
+      <reference item_ref="114"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130213011" version="501">
+      <reference item_ref="115"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130213012" version="501">
+      <reference item_ref="116"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130213013" version="501">
+      <reference item_ref="117"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215005" version="503">
+      <reference item_ref="118"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215006" version="503">
+      <reference item_ref="119"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215007" version="503">
+      <reference item_ref="120"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215008" version="503">
+      <reference item_ref="121"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215009" version="503">
+      <reference item_ref="122"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215010" version="503">
+      <reference item_ref="123"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215011" version="503">
+      <reference item_ref="124"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215012" version="503">
+      <reference item_ref="125"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215013" version="503">
+      <reference item_ref="126"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215014" version="503">
+      <reference item_ref="127"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215015" version="503">
+      <reference item_ref="128"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215016" version="503">
+      <reference item_ref="129"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215017" version="503">
+      <reference item_ref="130"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215018" version="503">
+      <reference item_ref="131"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215019" version="503">
+      <reference item_ref="132"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215020" version="503">
+      <reference item_ref="133"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215021" version="503">
+      <reference item_ref="134"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215022" version="503">
+      <reference item_ref="135"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215023" version="503">
+      <reference item_ref="136"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215024" version="503">
+      <reference item_ref="137"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215025" version="503">
+      <reference item_ref="138"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215026" version="503">
+      <reference item_ref="139"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215027" version="503">
+      <reference item_ref="140"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130215028" version="503">
+      <reference item_ref="141"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130216005" version="502">
+      <reference item_ref="142"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130216006" version="502">
+      <reference item_ref="143"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130216007" version="502">
+      <reference item_ref="144"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130217005" version="501">
+      <reference item_ref="145"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130217006" version="501">
+      <reference item_ref="146"/>
+    </object>
+    <object flag="complete" id="oval:com.redhat.rhsa:obj:20130218005" version="501">
+      <reference item_ref="147"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130219006" version="502">
+      <reference item_ref="148"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130219010" version="502">
+      <reference item_ref="149"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130219011" version="502">
+      <reference item_ref="150"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130223007" version="501">
+      <reference item_ref="151"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130223009" version="501">
+      <reference item_ref="152"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130223010" version="501">
+      <reference item_ref="153"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130223016" version="501">
+      <reference item_ref="154"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236005" version="501">
+      <reference item_ref="155"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236006" version="501">
+      <reference item_ref="156"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236007" version="501">
+      <reference item_ref="157"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236008" version="501">
+      <reference item_ref="158"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236009" version="501">
+      <reference item_ref="159"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130236010" version="501">
+      <reference item_ref="160"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130241002" version="501">
+      <reference item_ref="161"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130241003" version="501">
+      <reference item_ref="162"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130241004" version="501">
+      <reference item_ref="163"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130245005" version="502">
+      <reference item_ref="164"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130245006" version="502">
+      <reference item_ref="165"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130245007" version="502">
+      <reference item_ref="166"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130245008" version="502">
+      <reference item_ref="167"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130245009" version="502">
+      <reference item_ref="168"/>
+    </object>
+    <object flag="does not exist" id="oval:com.redhat.rhsa:obj:20130250005" version="501">
+      <reference item_ref="169"/>
+    </object>
+  </collected_objects>
+
+  <system_data>
+    <rpminfo_item id="1" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>redhat-release</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>5.9.0.2</release>
+      <version>5Server</version>
+      <evr datatype="evr_string">0:5Server-5.9.0.2</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>redhat-release-0:5Server-5.9.0.2.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="2" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>quota</name>
+      <arch>i386</arch>
+      <epoch>1</epoch>
+      <release>8.el5</release>
+      <version>3.13</version>
+      <evr datatype="evr_string">1:3.13-8.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>quota-1:3.13-8.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="3" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql</name>
+    </rpminfo_item>
+    <rpminfo_item id="4" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="5" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-test</name>
+    </rpminfo_item>
+    <rpminfo_item id="6" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-server</name>
+    </rpminfo_item>
+    <rpminfo_item id="7" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-bench</name>
+    </rpminfo_item>
+    <rpminfo_item id="8" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>tcl</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>6.el5</release>
+      <version>8.4.13</version>
+      <evr datatype="evr_string">0:8.4.13-6.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>tcl-0:8.4.13-6.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="9" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">tcl-html</name>
+    </rpminfo_item>
+    <rpminfo_item id="10" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">tcl-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="11" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>OpenIPMI</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>16.el5</release>
+      <version>2.0.16</version>
+      <evr datatype="evr_string">0:2.0.16-16.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>OpenIPMI-0:2.0.16-16.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="12" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">OpenIPMI-perl</name>
+    </rpminfo_item>
+    <rpminfo_item id="13" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>OpenIPMI-tools</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>16.el5</release>
+      <version>2.0.16</version>
+      <evr datatype="evr_string">0:2.0.16-16.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>OpenIPMI-tools-0:2.0.16-16.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="14" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">OpenIPMI-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="15" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">OpenIPMI-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="16" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">OpenIPMI-gui</name>
+    </rpminfo_item>
+    <rpminfo_item id="17" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>OpenIPMI-libs</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>16.el5</release>
+      <version>2.0.16</version>
+      <evr datatype="evr_string">0:2.0.16-16.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>OpenIPMI-libs-0:2.0.16-16.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="18" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">net-snmp</name>
+    </rpminfo_item>
+    <rpminfo_item id="19" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>net-snmp-libs</name>
+      <arch>i386</arch>
+      <epoch>1</epoch>
+      <release>20.el5</release>
+      <version>5.3.2.2</version>
+      <evr datatype="evr_string">1:5.3.2.2-20.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>net-snmp-libs-1:5.3.2.2-20.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="20" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">net-snmp-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="21" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">net-snmp-utils</name>
+    </rpminfo_item>
+    <rpminfo_item id="22" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">net-snmp-perl</name>
+    </rpminfo_item>
+    <rpminfo_item id="23" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">wireshark</name>
+    </rpminfo_item>
+    <rpminfo_item id="24" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">wireshark-gnome</name>
+    </rpminfo_item>
+    <rpminfo_item id="25" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">squirrelmail</name>
+    </rpminfo_item>
+    <rpminfo_item id="26" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libvirt</name>
+    </rpminfo_item>
+    <rpminfo_item id="27" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libvirt-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="28" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libvirt-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="29" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">conga</name>
+    </rpminfo_item>
+    <rpminfo_item id="30" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">luci</name>
+    </rpminfo_item>
+    <rpminfo_item id="31" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ricci</name>
+    </rpminfo_item>
+    <rpminfo_item id="32" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby</name>
+    </rpminfo_item>
+    <rpminfo_item id="33" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-irb</name>
+    </rpminfo_item>
+    <rpminfo_item id="34" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="35" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-mode</name>
+    </rpminfo_item>
+    <rpminfo_item id="36" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-docs</name>
+    </rpminfo_item>
+    <rpminfo_item id="37" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-libs</name>
+    </rpminfo_item>
+    <rpminfo_item id="38" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-ri</name>
+    </rpminfo_item>
+    <rpminfo_item id="39" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-tcltk</name>
+    </rpminfo_item>
+    <rpminfo_item id="40" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ruby-rdoc</name>
+    </rpminfo_item>
+    <rpminfo_item id="41" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>httpd</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>74.el5</release>
+      <version>2.2.3</version>
+      <evr datatype="evr_string">0:2.2.3-74.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>httpd-0:2.2.3-74.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="42" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">httpd-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="43" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>mod_ssl</name>
+      <arch>i386</arch>
+      <epoch>1</epoch>
+      <release>74.el5</release>
+      <version>2.2.3</version>
+      <evr datatype="evr_string">1:2.2.3-74.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>mod_ssl-1:2.2.3-74.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="44" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>httpd-manual</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>74.el5</release>
+      <version>2.2.3</version>
+      <evr datatype="evr_string">0:2.2.3-74.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>httpd-manual-0:2.2.3-74.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="45" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>gnome-vfs2</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>10.el5</release>
+      <version>2.16.2</version>
+      <evr datatype="evr_string">0:2.16.2-10.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>gnome-vfs2-0:2.16.2-10.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="46" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>gnome-vfs2-smb</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>10.el5</release>
+      <version>2.16.2</version>
+      <evr datatype="evr_string">0:2.16.2-10.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>gnome-vfs2-smb-0:2.16.2-10.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="47" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>gnome-vfs2-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>10.el5</release>
+      <version>2.16.2</version>
+      <evr datatype="evr_string">0:2.16.2-10.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>gnome-vfs2-devel-0:2.16.2-10.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="48" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>autofs</name>
+      <arch>i386</arch>
+      <epoch>1</epoch>
+      <release>0.rc2.177.el5</release>
+      <version>5.0.1</version>
+      <evr datatype="evr_string">1:5.0.1-0.rc2.177.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>autofs-1:5.0.1-0.rc2.177.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="49" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">hplip3</name>
+    </rpminfo_item>
+    <rpminfo_item id="50" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libsane-hpaio3</name>
+    </rpminfo_item>
+    <rpminfo_item id="51" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">hplip3-common</name>
+    </rpminfo_item>
+    <rpminfo_item id="52" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">hplip3-libs</name>
+    </rpminfo_item>
+    <rpminfo_item id="53" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">hplip3-gui</name>
+    </rpminfo_item>
+    <rpminfo_item id="54" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">hpijs3</name>
+    </rpminfo_item>
+    <rpminfo_item id="55" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2</name>
+    </rpminfo_item>
+    <rpminfo_item id="56" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-ldap</name>
+    </rpminfo_item>
+    <rpminfo_item id="57" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-krb5</name>
+    </rpminfo_item>
+    <rpminfo_item id="58" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-unixODBC</name>
+    </rpminfo_item>
+    <rpminfo_item id="59" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-postgresql</name>
+    </rpminfo_item>
+    <rpminfo_item id="60" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="61" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-mysql</name>
+    </rpminfo_item>
+    <rpminfo_item id="62" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-perl</name>
+    </rpminfo_item>
+    <rpminfo_item id="63" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freeradius2-utils</name>
+    </rpminfo_item>
+    <rpminfo_item id="64" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>gtk2</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>29.el5</release>
+      <version>2.10.4</version>
+      <evr datatype="evr_string">0:2.10.4-29.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>gtk2-0:2.10.4-29.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="65" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>gtk2-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>29.el5</release>
+      <version>2.10.4</version>
+      <evr datatype="evr_string">0:2.10.4-29.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>gtk2-devel-0:2.10.4-29.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="66" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">redhat-release-server</name>
+    </rpminfo_item>
+    <rpminfo_item id="67" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">redhat-release-client</name>
+    </rpminfo_item>
+    <rpminfo_item id="68" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">redhat-release-workstation</name>
+    </rpminfo_item>
+    <rpminfo_item id="69" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">redhat-release-computenode</name>
+    </rpminfo_item>
+    <rpminfo_item id="70" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>xulrunner</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5_8</release>
+      <version>10.0.11</version>
+      <evr datatype="evr_string">0:10.0.11-1.el5_8</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>xulrunner-0:10.0.11-1.el5_8.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="71" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>xulrunner-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5_8</release>
+      <version>10.0.11</version>
+      <evr datatype="evr_string">0:10.0.11-1.el5_8</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>xulrunner-devel-0:10.0.11-1.el5_8.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="72" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>firefox</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5_8</release>
+      <version>10.0.11</version>
+      <evr datatype="evr_string">0:10.0.11-1.el5_8</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>firefox-0:10.0.11-1.el5_8.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="73" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">thunderbird</name>
+    </rpminfo_item>
+    <rpminfo_item id="74" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>flash-plugin</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5</release>
+      <version>11.2.202.251</version>
+      <evr datatype="evr_string">0:11.2.202.251-1.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>flash-plugin-0:11.2.202.251-1.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="75" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>acroread</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5</release>
+      <version>9.4.7</version>
+      <evr datatype="evr_string">0:9.4.7-1.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>acroread-0:9.4.7-1.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="76" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>acroread-plugin</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>1.el5</release>
+      <version>9.4.7</version>
+      <evr datatype="evr_string">0:9.4.7-1.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>acroread-plugin-0:9.4.7-1.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="77" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle</name>
+    </rpminfo_item>
+    <rpminfo_item id="78" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="79" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle-plugin</name>
+    </rpminfo_item>
+    <rpminfo_item id="80" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle-jdbc</name>
+    </rpminfo_item>
+    <rpminfo_item id="81" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle-src</name>
+    </rpminfo_item>
+    <rpminfo_item id="82" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-oracle-javafx</name>
+    </rpminfo_item>
+    <rpminfo_item id="83" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-openjdk</name>
+    </rpminfo_item>
+    <rpminfo_item id="84" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-openjdk-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="85" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-openjdk-javadoc</name>
+    </rpminfo_item>
+    <rpminfo_item id="86" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-openjdk-src</name>
+    </rpminfo_item>
+    <rpminfo_item id="87" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.7.0-openjdk-demo</name>
+    </rpminfo_item>
+    <rpminfo_item id="88" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>kernel</name>
+      <arch>i686</arch>
+      <epoch>(none)</epoch>
+      <release>348.el5</release>
+      <version>2.6.18</version>
+      <evr datatype="evr_string">0:2.6.18-348.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>kernel-0:2.6.18-348.el5.i686</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="89" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>kernel-headers</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>348.el5</release>
+      <version>2.6.18</version>
+      <evr datatype="evr_string">0:2.6.18-348.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>kernel-headers-0:2.6.18-348.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="90" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="91" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-xen</name>
+    </rpminfo_item>
+    <rpminfo_item id="92" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-debug-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="93" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-debug</name>
+    </rpminfo_item>
+    <rpminfo_item id="94" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-xen-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="95" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-kdump-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="96" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-kdump</name>
+    </rpminfo_item>
+    <rpminfo_item id="97" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-PAE-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="98" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-PAE</name>
+    </rpminfo_item>
+    <rpminfo_item id="99" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-doc</name>
+    </rpminfo_item>
+    <rpminfo_item id="100" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>vino</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>9.el5</release>
+      <version>2.13.5</version>
+      <evr datatype="evr_string">0:2.13.5-9.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>vino-0:2.13.5-9.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="101" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa</name>
+    </rpminfo_item>
+    <rpminfo_item id="102" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa-admintools</name>
+    </rpminfo_item>
+    <rpminfo_item id="103" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa-client</name>
+    </rpminfo_item>
+    <rpminfo_item id="104" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="105" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa-server-selinux</name>
+    </rpminfo_item>
+    <rpminfo_item id="106" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">ipa-server</name>
+    </rpminfo_item>
+    <rpminfo_item id="107" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libvirt-client</name>
+    </rpminfo_item>
+    <rpminfo_item id="108" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libvirt-lock-sanlock</name>
+    </rpminfo_item>
+    <rpminfo_item id="109" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">nss-util</name>
+    </rpminfo_item>
+    <rpminfo_item id="110" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">nss-util-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="111" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>nss</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>8.el5</release>
+      <version>3.13.5</version>
+      <evr datatype="evr_string">0:3.13.5-8.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>nss-0:3.13.5-8.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="112" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">nss-pkcs11-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="113" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">nss-sysinit</name>
+    </rpminfo_item>
+    <rpminfo_item id="114" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>nss-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>8.el5</release>
+      <version>3.13.5</version>
+      <evr datatype="evr_string">0:3.13.5-8.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>nss-devel-0:3.13.5-8.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="115" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>nss-tools</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>8.el5</release>
+      <version>3.13.5</version>
+      <evr datatype="evr_string">0:3.13.5-8.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>nss-tools-0:3.13.5-8.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="116" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>nspr</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>6.el5</release>
+      <version>4.9.1</version>
+      <evr datatype="evr_string">0:4.9.1-6.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>nspr-0:4.9.1-6.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="117" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>nspr-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>6.el5</release>
+      <version>4.9.1</version>
+      <evr datatype="evr_string">0:4.9.1-6.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>nspr-devel-0:4.9.1-6.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="118" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport</name>
+    </rpminfo_item>
+    <rpminfo_item id="119" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-gtk</name>
+    </rpminfo_item>
+    <rpminfo_item id="120" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-reportuploader</name>
+    </rpminfo_item>
+    <rpminfo_item id="121" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-cli</name>
+    </rpminfo_item>
+    <rpminfo_item id="122" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-mailx</name>
+    </rpminfo_item>
+    <rpminfo_item id="123" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-logger</name>
+    </rpminfo_item>
+    <rpminfo_item id="124" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-gtk-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="125" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="126" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-newt</name>
+    </rpminfo_item>
+    <rpminfo_item id="127" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-kerneloops</name>
+    </rpminfo_item>
+    <rpminfo_item id="128" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="129" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-bugzilla</name>
+    </rpminfo_item>
+    <rpminfo_item id="130" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">libreport-plugin-rhtsupport</name>
+    </rpminfo_item>
+    <rpminfo_item id="131" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt</name>
+    </rpminfo_item>
+    <rpminfo_item id="132" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-addon-kerneloops</name>
+    </rpminfo_item>
+    <rpminfo_item id="133" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-tui</name>
+    </rpminfo_item>
+    <rpminfo_item id="134" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-cli</name>
+    </rpminfo_item>
+    <rpminfo_item id="135" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-addon-ccpp</name>
+    </rpminfo_item>
+    <rpminfo_item id="136" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-addon-vmcore</name>
+    </rpminfo_item>
+    <rpminfo_item id="137" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-addon-python</name>
+    </rpminfo_item>
+    <rpminfo_item id="138" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="139" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-libs</name>
+    </rpminfo_item>
+    <rpminfo_item id="140" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-gui</name>
+    </rpminfo_item>
+    <rpminfo_item id="141" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">abrt-desktop</name>
+    </rpminfo_item>
+    <rpminfo_item id="142" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>freetype</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>31.el5_8.1</release>
+      <version>2.2.1</version>
+      <evr datatype="evr_string">0:2.2.1-31.el5_8.1</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>freetype-0:2.2.1-31.el5_8.1.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="143" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>freetype-devel</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>31.el5_8.1</release>
+      <version>2.2.1</version>
+      <evr datatype="evr_string">0:2.2.1-31.el5_8.1</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>freetype-devel-0:2.2.1-31.el5_8.1.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="144" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">freetype-demos</name>
+    </rpminfo_item>
+    <rpminfo_item id="145" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mingw32-libxml2</name>
+    </rpminfo_item>
+    <rpminfo_item id="146" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mingw32-libxml2-static</name>
+    </rpminfo_item>
+    <rpminfo_item id="147" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name>xorg-x11-drv-qxl</name>
+      <arch>i386</arch>
+      <epoch>(none)</epoch>
+      <release>2.el5</release>
+      <version>0.0.12</version>
+      <evr datatype="evr_string">0:0.0.12-2.el5</evr>
+      <signature_keyid>5326810137017186</signature_keyid>
+      <extended_name>xorg-x11-drv-qxl-0:0.0.12-2.el5.i386</extended_name>
+    </rpminfo_item>
+    <rpminfo_item id="148" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-embedded</name>
+    </rpminfo_item>
+    <rpminfo_item id="149" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-embedded-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="150" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">mysql-libs</name>
+    </rpminfo_item>
+    <rpminfo_item id="151" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-bootwrapper</name>
+    </rpminfo_item>
+    <rpminfo_item id="152" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">python-perf</name>
+    </rpminfo_item>
+    <rpminfo_item id="153" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">perf</name>
+    </rpminfo_item>
+    <rpminfo_item id="154" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">kernel-firmware</name>
+    </rpminfo_item>
+    <rpminfo_item id="155" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun</name>
+    </rpminfo_item>
+    <rpminfo_item id="156" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun-plugin</name>
+    </rpminfo_item>
+    <rpminfo_item id="157" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="158" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun-src</name>
+    </rpminfo_item>
+    <rpminfo_item id="159" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun-jdbc</name>
+    </rpminfo_item>
+    <rpminfo_item id="160" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-sun-demo</name>
+    </rpminfo_item>
+    <rpminfo_item id="161" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">xen</name>
+    </rpminfo_item>
+    <rpminfo_item id="162" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">xen-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="163" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">xen-libs</name>
+    </rpminfo_item>
+    <rpminfo_item id="164" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-openjdk</name>
+    </rpminfo_item>
+    <rpminfo_item id="165" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-openjdk-devel</name>
+    </rpminfo_item>
+    <rpminfo_item id="166" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-openjdk-src</name>
+    </rpminfo_item>
+    <rpminfo_item id="167" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-openjdk-javadoc</name>
+    </rpminfo_item>
+    <rpminfo_item id="168" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">java-1.6.0-openjdk-demo</name>
+    </rpminfo_item>
+    <rpminfo_item id="169" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+      <name status="does not exist">elinks</name>
+    </rpminfo_item>
+  </system_data>
+
+</oval_system_characteristics>
