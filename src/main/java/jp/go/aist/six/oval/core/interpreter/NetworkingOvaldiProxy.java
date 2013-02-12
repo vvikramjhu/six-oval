@@ -1,8 +1,8 @@
-/*
- *  @product.title@
- *  Copyright (C) @product.copyright-year@
- *    @product.vendor@
- *    Registration Number: @product.registration-number@
+/**
+ * SIX OVAL - http://code.google.com/p/six-oval/
+ * Copyright (C) 2010
+ *   National Institute of Advanced Industrial Science and Technology (AIST)
+ *   Registration Number: H22PRO-1124
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jp.go.aist.six.oval.core.interpreter;
 
 import java.io.File;
@@ -189,14 +188,25 @@ public class NetworkingOvaldiProxy
                    if (res.operation == NetworkOperation.INPUT) {
                        //If input, download the resource and save it to a local file.
                        _httpGet( url, file, res.option.contentType );
+//                       try {
+//                           Thread.sleep( 500 );
+//                       } catch (InterruptedException ex) {
+//                           //ignorable
+//                       }
                    }
 
                    //Replace the ovaldi command option for local execution.
                    localizedOptions.set( res.option, file.getAbsolutePath() );
+
                }
            }
        }
 
+//       try {
+//           Thread.sleep( 1000 );
+//       } catch (InterruptedException ex) {
+//           //ignorable
+//       }
    }
 
 
@@ -390,6 +400,7 @@ public class NetworkingOvaldiProxy
                         + ", to file=" + to_file
                         + ", content-type=" + content_type );
 
+        FileOutputStream  out_stream = null;
         try {
             MediaType  media_type = MediaType.valueOf( content_type );
             List<MediaType>  accept_media_types = Collections.singletonList( media_type );
@@ -397,6 +408,15 @@ public class NetworkingOvaldiProxy
         } catch (Exception ex) {
             _LOG_.error( "HTTP GET error: " + ex );
             throw new OvalInterpreterException( ex );
+        } finally {
+            if (out_stream != null) {
+                try {
+                    out_stream.flush();
+                    out_stream.close();
+                } catch (Exception ex) {
+                    //ignorable
+                }
+            }
         }
     }
 
