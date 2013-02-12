@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+		Color mapping
+		Result enumeration
+	Class       |t|f|u|e|na|ne|
+	compliance  |G|R|B|Y|- |- |
+	inventory   |-|-|B|Y|- |- |
+	misc        |-|-|B|Y|- |- |
+	patch       |R|G|B|Y|- |- |
+	vuln        |R|G|B|Y|- |- |
+	
+	R = red
+	G = green
+	B = blue
+	Y = yellow
+	- = grey
+--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>OVAL Results</title>
+<style type="text/css">
+            table { border: 1px solid #000000; width: 100%; border-spacing: 0px; margin: 2px 0px;}
+            .noborder {border: none;}
+            .nomargin {margin: 0px;}
+            td { padding: 0px 4px 1px 4px;}
+            .SmallLabel { font-family: Geneva, Arial, Helvetica, sans-serif; color: #000000; font-size: 9pt; font-weight: bold; white-space: nowrap;}
+            .SmallText { font-family: Geneva, Arial, Helvetica, sans-serif; color: #000000; font-size: 9pt;}
+            .Label { font-family: Geneva, Arial, Helvetica, sans-serif; color: #000000; font-size: 10pt; font-weight: bold; white-space: nowrap;}
+            .TitleLabel { font-family: Geneva, Arial, Helvetica, sans-serif; color: #ffffff; font-size: 10pt; font-weight: bold; white-space: nowrap;}            
+            .Text { font-family: Geneva, Arial, Helvetica, sans-serif; color: #000000; font-size: 10pt;}
+            .Title { color: #FFFFFF; background-color: #706c60; padding: 0px 4px 1px 4px; font-size: 10pt; border-bottom: 1px solid #000000;}
+            .Center { text-align: center;}
+            
+            a { color:#676c63;}
+            a.Hover:hover { color:#7b0e0e; text-decoration:underline;}
+            
+            .LightRow { background-color: #FFFFFF;}
+            .DarkRow { background-color: #DDDDD8;}
+            
+            .resultbadA{background-color: #FFBC8F;}
+            .resultbadB{background-color: #FFE0CC;}
+            .resultgoodA{background-color: #ACD685;}
+            .resultgoodB{background-color: #CBE6B3;}
+            .unknownA{background-color: #AEC8E0;}
+            .unknownB{background-color: #DAE6F1;}
+            .errorA{background-color: #FFDD75;}
+            .errorB{background-color: #FFECB3;}
+            .otherA{background-color: #EEEEEE;}
+            .otherB{background-color: #FFFFFF;}
+            
+            .Classcompliance{background-color: #93C572;}
+            .Classinventory{background-color: #AEC6CF;}
+            .Classmiscellaneous{background-color: #9966CC;}
+            .Classpatch{background-color: #FFDD75;}
+            .Classvulnerability{background-color: #FF9966;}
+            .ColorBox{width: 2px;}
+		</style>
+</head>
+<body>
+<table class="noborder nomargin">
+<tr>
+<td width="50%">
+<table border="1">
+<tr class="Title">
+<td class="TitleLabel" colspan="5">OVAL Results Generator Information</td>
+</tr>
+<tr class="DarkRow Center">
+<td class="SmallLabel">Schema Version</td>
+<td class="SmallLabel">Product Name</td>
+<td class="SmallLabel">Product Version</td>
+<td class="SmallLabel">Date</td>
+<td class="SmallLabel">Time</td>
+</tr>
+<tr class="LightRow">
+<td class="SmallText">5.10.1</td>
+<td class="SmallText">cpe:/a:mitre:ovaldi:5.10.1.4</td>
+<td class="SmallText">5.10.1 Build: 4</td>
+<td class="SmallText">2013-02-12</td>
+<td class="SmallText">19:46:52</td>
+</tr>
+<tr class="DarkRow Center">
+<td class="SmallLabel" style="width: 20%;" title="Non-Compliant/Vulnerable/Unpatched">#✕</td>
+<td class="SmallLabel" style="width: 20%;" title="Compliant/Non-Vulnerable/Patched">#✓</td>
+<td class="SmallLabel" style="width: 20%;" title="Error">#Error</td>
+<td class="SmallLabel" style="width: 20%;" title="Unknown">#Unknown</td>
+<td class="SmallLabel" style="width: 20%;" title="Inventory/Miscellaneous class, or Not Applicable/Not Evaluated result">#Other</td>
+</tr>
+<tr class="LightRow Center" style="height:auto;">
+<td class="SmallText resultbadB" title="Non-Compliant/Vulnerable/Unpatched" style="width:20%">4</td>
+<td class="SmallText resultgoodB" title="Compliant/Non-Vulnerable/Patched" style="width:20%">40</td>
+<td class="SmallText errorB" title="Error" style="width:20%">0</td>
+<td class="SmallText unknownB" title="Unknown" style="width:20%">0</td>
+<td class="SmallText otherB" title="Inventory/Miscellaneous class, or Not Applicable/Not Evaluated result" style="width:20%">0</td>
+</tr>
+</table>
+</td>
+<td width="50%">
+<table border="1">
+<tr class="Title">
+<td class="TitleLabel" colspan="5">OVAL Definition Generator Information</td>
+</tr>
+<tr class="DarkRow Center">
+<td class="SmallLabel">Schema Version</td>
+<td class="SmallLabel">Product Name</td>
+<td class="SmallLabel">Product Version</td>
+<td class="SmallLabel">Date</td>
+<td class="SmallLabel">Time</td>
+</tr>
+<tr class="LightRow">
+<td class="SmallText">5.3</td>
+<td class="SmallText">Red Hat OVAL Patch Definition Merger</td>
+<td class="SmallText">2</td>
+<td class="SmallText">2013-02-11</td>
+<td class="SmallText">13:13:26</td>
+</tr>
+<tr class="DarkRow Center">
+<td class="SmallLabel" style="width: 20%;">#Definitions</td>
+<td class="SmallLabel" style="width: 20%;">#Tests</td>
+<td class="SmallLabel" style="width: 20%;">#Objects</td>
+<td class="SmallLabel" style="width: 20%;">#States</td>
+<td class="SmallLabel" style="width: 20%;">#Variables</td>
+</tr>
+<tr class="LightRow Center">
+<td class="SmallText Center">44 Total<br />
+<table class="noborder">
+<tr class="Center">
+<td class="SmallText Classcompliance" title="compliance" style="width:20%">0</td>
+<td class="SmallText Classinventory" title="inventory" style="width:20%">0</td>
+<td class="SmallText Classmiscellaneous" title="miscellaneous" style="width:20%">0</td>
+<td class="SmallText Classpatch" title="patch" style="width:20%">44</td>
+<td class="SmallText Classvulnerability" title="vulnerability" style="width:20%">0</td>
+</tr>
+</table>
+</td>
+<td class="SmallText Center">437</td>
+<td class="SmallText Center">169</td>
+<td class="SmallText Center">58</td>
+<td class="SmallText Center">0</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<a class="Hover" name="a_1" id="a_1" style="text-decoration:none;" />
+<table border="1">
+<tr class="Title">
+<td class="TitleLabel" colspan="2">System Information</td>
+</tr>
+<tr class="DarkRow">
+<td class="Label" width="20%">Host Name</td>
+<td class="Text" width="80%">rhel5</td>
+</tr>
+<tr class="LightRow">
+<td class="Label" width="20%">Operating System</td>
+<td class="Text" width="80%">Linux</td>
+</tr>
+<tr class="DarkRow">
+<td class="Label" width="20%">Operating System Version</td>
+<td class="Text" width="80%">#1 SMP Wed Nov 28 21:25:39 EST 2012</td>
+</tr>
+<tr class="LightRow">
+<td class="Label" width="20%">Architecture</td>
+<td class="Text" width="80%">i686</td>
+</tr>
+<tr class="DarkRow">
+<td class="Label" width="20%">Interfaces</td>
+<td width="80%">
+<table border="1">
+<tr class="LightRow">
+<td class="Label" width="20%">Interface Name</td>
+<td class="Text" width="80%">eth0</td>
+</tr>
+<tr class="LightRow">
+<td class="Label" width="20%">IP Address</td>
+<td class="Text" width="80%">192.168.31.205</td>
+</tr>
+<tr class="LightRow">
+<td class="Label" width="20%">MAC Address</td>
+<td class="Text" width="80%">00-0C-29-76-61-F5</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table border="1">
+<tr class="Title">
+<td class="TitleLabel" colspan="5">OVAL System Characteristics Generator Information</td>
+</tr>
+<tr class="DarkRow Center">
+<td class="SmallLabel">Schema Version</td>
+<td class="SmallLabel">Product Name</td>
+<td class="SmallLabel">Product Version</td>
+<td class="SmallLabel">Date</td>
+<td class="SmallLabel">Time</td>
+</tr>
+<tr class="LightRow">
+<td class="SmallText">5.10.1</td>
+<td class="SmallText">cpe:/a:mitre:ovaldi:5.10.1.4</td>
+<td class="SmallText">5.10.1 Build: 4</td>
+<td class="SmallText">2013-02-12</td>
+<td class="SmallText">19:46:16</td>
+</tr>
+</table>
+<table border="1">
+<tr class="Title">
+<td class="TitleLabel" colspan="5">OVAL Definition Results</td>
+</tr>
+<tr class="DarkRow">
+<td colspan="5">
+<table class="noborder nomargin" style="width:auto;">
+<tr>
+<td>
+<table border="1">
+<tr class="LightRow">
+<td class="resultbadA ColorBox" />
+<td class="resultbadB ColorBox" />
+<td class="Text" title="Non-Compliant/Vulnerable/Unpatched">✕</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="1">
+<tr class="LightRow">
+<td class="resultgoodA ColorBox" />
+<td class="resultgoodB ColorBox" />
+<td class="Text" title="Compliant/Non-Vulnerable/Patched">✓</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="1">
+<tr class="LightRow">
+<td class="errorA ColorBox" />
+<td class="errorB ColorBox" />
+<td class="Text">Error</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="1">
+<tr class="LightRow">
+<td class="unknownA ColorBox" />
+<td class="unknownB ColorBox" />
+<td class="Text">Unknown</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="1">
+<tr class="LightRow">
+<td class="DarkRow ColorBox" />
+<td class="LightRow ColorBox" />
+<td class="Text" title="Inventory/Miscellaneous class, or Not Applicable/Not Evaluated result">Other</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="TitleLabel">
+<td class="Title" align="center">ID</td>
+<td class="Title" align="center">Result</td>
+<td class="Title" align="center">Class</td>
+<td class="Title" align="center">Reference ID</td>
+<td class="Title" align="center">Title</td>
+</tr>
+<tr class="resultbadA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130144</td>
+<td class="Text" align="center">true</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0144.html">RHSA-2013:0144-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0744.html">CVE-2013-0744</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0746.html">CVE-2013-0746</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0748.html">CVE-2013-0748</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0750.html">CVE-2013-0750</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0753.html">CVE-2013-0753</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0754.html">CVE-2013-0754</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0758.html">CVE-2013-0758</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0759.html">CVE-2013-0759</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0762.html">CVE-2013-0762</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0766.html">CVE-2013-0766</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0767.html">CVE-2013-0767</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0769.html">CVE-2013-0769</a>]</td>
+<td class="Text">RHSA-2013:0144: firefox security update (Critical)</td>
+</tr>
+<tr class="resultbadB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130168</td>
+<td class="Text" align="center">true</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0168.html">RHSA-2013:0168-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1568.html">CVE-2012-1568</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4444.html">CVE-2012-4444</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5515.html">CVE-2012-5515</a>]</td>
+<td class="Text">RHSA-2013:0168: kernel security and bug fix update (Moderate)</td>
+</tr>
+<tr class="resultbadA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130214</td>
+<td class="Text" align="center">true</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0214.html">RHSA-2013:0214-00</a>]</td>
+<td class="Text">RHSA-2013:0214: nss and nspr security, bug fix, and enhancement update (Important)</td>
+</tr>
+<tr class="resultbadB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130216</td>
+<td class="Text" align="center">true</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0216.html">RHSA-2013:0216-01</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5669.html">CVE-2012-5669</a>]</td>
+<td class="Text">RHSA-2013:0216: freetype security update (Important)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130120</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0120.html">RHSA-2013:0120-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3417.html">CVE-2012-3417</a>]</td>
+<td class="Text">RHSA-2013:0120: quota security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130121</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0121.html">RHSA-2013:0121-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4452.html">CVE-2012-4452</a>]</td>
+<td class="Text">RHSA-2013:0121: mysql security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130122</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0122.html">RHSA-2013:0122-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2007-4772.html">CVE-2007-4772</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2007-6067.html">CVE-2007-6067</a>]</td>
+<td class="Text">RHSA-2013:0122: tcl security and bug fix update (Moderate)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130123</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0123.html">RHSA-2013:0123-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-4339.html">CVE-2011-4339</a>]</td>
+<td class="Text">RHSA-2013:0123: OpenIPMI security, bug fix, and enhancement update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130124</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0124.html">RHSA-2013:0124-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2141.html">CVE-2012-2141</a>]</td>
+<td class="Text">RHSA-2013:0124: net-snmp security and bug fix update (Moderate)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130125</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0125.html">RHSA-2013:0125-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-1958.html">CVE-2011-1958</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-1959.html">CVE-2011-1959</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-2175.html">CVE-2011-2175</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-2698.html">CVE-2011-2698</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-4102.html">CVE-2011-4102</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0041.html">CVE-2012-0041</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0042.html">CVE-2012-0042</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0066.html">CVE-2012-0066</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0067.html">CVE-2012-0067</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4285.html">CVE-2012-4285</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4289.html">CVE-2012-4289</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4290.html">CVE-2012-4290</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4291.html">CVE-2012-4291</a>]</td>
+<td class="Text">RHSA-2013:0125: wireshark security, bug fix, and enhancement update (Moderate)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130126</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0126.html">RHSA-2013:0126-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2124.html">CVE-2012-2124</a>]</td>
+<td class="Text">RHSA-2013:0126: squirrelmail security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130127</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0127.html">RHSA-2013:0127-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2693.html">CVE-2012-2693</a>]</td>
+<td class="Text">RHSA-2013:0127: libvirt security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130128</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0128.html">RHSA-2013:0128-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3359.html">CVE-2012-3359</a>]</td>
+<td class="Text">RHSA-2013:0128: conga security, bug fix, and enhancement update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130129</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0129.html">RHSA-2013:0129-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4481.html">CVE-2012-4481</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4522.html">CVE-2012-4522</a>]</td>
+<td class="Text">RHSA-2013:0129: ruby security and bug fix update (Moderate)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130130</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0130.html">RHSA-2013:0130-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2008-0455.html">CVE-2008-0455</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2008-0456.html">CVE-2008-0456</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2687.html">CVE-2012-2687</a>]</td>
+<td class="Text">RHSA-2013:0130: httpd security, bug fix, and enhancement update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130131</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0131.html">RHSA-2013:0131-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2009-2473.html">CVE-2009-2473</a>]</td>
+<td class="Text">RHSA-2013:0131: gnome-vfs2 security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130132</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0132.html">RHSA-2013:0132-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2697.html">CVE-2012-2697</a>]</td>
+<td class="Text">RHSA-2013:0132: autofs security, bug fix, and enhancement update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130133</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0133.html">RHSA-2013:0133-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-2722.html">CVE-2011-2722</a>]</td>
+<td class="Text">RHSA-2013:0133: hplip3 security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130134</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0134.html">RHSA-2013:0134-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-4966.html">CVE-2011-4966</a>]</td>
+<td class="Text">RHSA-2013:0134: freeradius2 security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130135</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0135.html">RHSA-2013:0135-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2370.html">CVE-2012-2370</a>]</td>
+<td class="Text">RHSA-2013:0135: gtk2 security and bug fix update (Low)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130145</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0145.html">RHSA-2013:0145-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0744.html">CVE-2013-0744</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0746.html">CVE-2013-0746</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0748.html">CVE-2013-0748</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0750.html">CVE-2013-0750</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0753.html">CVE-2013-0753</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0754.html">CVE-2013-0754</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0758.html">CVE-2013-0758</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0759.html">CVE-2013-0759</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0762.html">CVE-2013-0762</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0766.html">CVE-2013-0766</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0767.html">CVE-2013-0767</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0769.html">CVE-2013-0769</a>]</td>
+<td class="Text">RHSA-2013:0145: thunderbird security update (Critical)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130149</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0149.html">RHSA-2013:0149-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0630.html">CVE-2013-0630</a>]</td>
+<td class="Text">RHSA-2013:0149: flash-plugin security update (Critical)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130150</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0150.html">RHSA-2013:0150-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1530.html">CVE-2012-1530</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0601.html">CVE-2013-0601</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0602.html">CVE-2013-0602</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0603.html">CVE-2013-0603</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0604.html">CVE-2013-0604</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0605.html">CVE-2013-0605</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0606.html">CVE-2013-0606</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0607.html">CVE-2013-0607</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0608.html">CVE-2013-0608</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0609.html">CVE-2013-0609</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0610.html">CVE-2013-0610</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0611.html">CVE-2013-0611</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0612.html">CVE-2013-0612</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0613.html">CVE-2013-0613</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0614.html">CVE-2013-0614</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0615.html">CVE-2013-0615</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0616.html">CVE-2013-0616</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0617.html">CVE-2013-0617</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0618.html">CVE-2013-0618</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0619.html">CVE-2013-0619</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0620.html">CVE-2013-0620</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0621.html">CVE-2013-0621</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0623.html">CVE-2013-0623</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0626.html">CVE-2013-0626</a>]</td>
+<td class="Text">RHSA-2013:0150: acroread security update (Critical)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130156</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0156.html">RHSA-2013:0156-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3174.html">CVE-2012-3174</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0422.html">CVE-2013-0422</a>]</td>
+<td class="Text">RHSA-2013:0156: java-1.7.0-oracle security update (Critical)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130165</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0165.html">RHSA-2013:0165-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3174.html">CVE-2012-3174</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0422.html">CVE-2013-0422</a>]</td>
+<td class="Text">RHSA-2013:0165: java-1.7.0-openjdk security update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130169</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0169.html">RHSA-2013:0169-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-0904.html">CVE-2011-0904</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-0905.html">CVE-2011-0905</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-1164.html">CVE-2011-1164</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-1165.html">CVE-2011-1165</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4429.html">CVE-2012-4429</a>]</td>
+<td class="Text">RHSA-2013:0169: vino security update (Moderate)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130180</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0180.html">RHSA-2013:0180-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-2749.html">CVE-2012-2749</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5611.html">CVE-2012-5611</a>]</td>
+<td class="Text">RHSA-2013:0180: mysql security update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130188</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0188.html">RHSA-2013:0188-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5484.html">CVE-2012-5484</a>]</td>
+<td class="Text">RHSA-2013:0188: ipa security update (Important)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130189</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0189.html">RHSA-2013:0189-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5484.html">CVE-2012-5484</a>]</td>
+<td class="Text">RHSA-2013:0189: ipa-client security update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130199</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0199.html">RHSA-2013:0199-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0170.html">CVE-2013-0170</a>]</td>
+<td class="Text">RHSA-2013:0199: libvirt security update (Important)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130213</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0213.html">RHSA-2013:0213-00</a>]</td>
+<td class="Text">RHSA-2013:0213: nss, nss-util, and nspr security, bug fix, and enhancement update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130215</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0215.html">RHSA-2013:0215-02</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5659.html">CVE-2012-5659</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5660.html">CVE-2012-5660</a>]</td>
+<td class="Text">RHSA-2013:0215: abrt and libreport security update (Important)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130217</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0217.html">RHSA-2013:0217-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2010-4008.html">CVE-2010-4008</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2010-4494.html">CVE-2010-4494</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-0216.html">CVE-2011-0216</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-1944.html">CVE-2011-1944</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-2821.html">CVE-2011-2821</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-2834.html">CVE-2011-2834</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-3102.html">CVE-2011-3102</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-3905.html">CVE-2011-3905</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2011-3919.html">CVE-2011-3919</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0841.html">CVE-2012-0841</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-5134.html">CVE-2012-5134</a>]</td>
+<td class="Text">RHSA-2013:0217: mingw32-libxml2 security update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130218</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0218.html">RHSA-2013:0218-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0241.html">CVE-2013-0241</a>]</td>
+<td class="Text">RHSA-2013:0218: xorg-x11-drv-qxl security update (Moderate)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130219</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0219.html">RHSA-2013:0219-01</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0572.html">CVE-2012-0572</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-0574.html">CVE-2012-0574</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1702.html">CVE-2012-1702</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1705.html">CVE-2012-1705</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0375.html">CVE-2013-0375</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0383.html">CVE-2013-0383</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0384.html">CVE-2013-0384</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0385.html">CVE-2013-0385</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0389.html">CVE-2013-0389</a>]</td>
+<td class="Text">RHSA-2013:0219: mysql security update (Moderate)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130223</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0223.html">RHSA-2013:0223-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4398.html">CVE-2012-4398</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4461.html">CVE-2012-4461</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4530.html">CVE-2012-4530</a>]</td>
+<td class="Text">RHSA-2013:0223: kernel security and bug fix update (Moderate)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130236</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0236.html">RHSA-2013:0236-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1541.html">CVE-2012-1541</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3213.html">CVE-2012-3213</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3342.html">CVE-2012-3342</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0351.html">CVE-2013-0351</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0409.html">CVE-2013-0409</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0419.html">CVE-2013-0419</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0423.html">CVE-2013-0423</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0424.html">CVE-2013-0424</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0425.html">CVE-2013-0425</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0426.html">CVE-2013-0426</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0427.html">CVE-2013-0427</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0428.html">CVE-2013-0428</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0429.html">CVE-2013-0429</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0430.html">CVE-2013-0430</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0432.html">CVE-2013-0432</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0433.html">CVE-2013-0433</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0434.html">CVE-2013-0434</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0435.html">CVE-2013-0435</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0438.html">CVE-2013-0438</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0440.html">CVE-2013-0440</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0441.html">CVE-2013-0441</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0442.html">CVE-2013-0442</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0443.html">CVE-2013-0443</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0445.html">CVE-2013-0445</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0446.html">CVE-2013-0446</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0450.html">CVE-2013-0450</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1473.html">CVE-2013-1473</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1475.html">CVE-2013-1475</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1476.html">CVE-2013-1476</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1478.html">CVE-2013-1478</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1480.html">CVE-2013-1480</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1481.html">CVE-2013-1481</a>]</td>
+<td class="Text">RHSA-2013:0236: java-1.6.0-sun security update (Critical)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130237</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0237.html">RHSA-2013:0237-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-1541.html">CVE-2012-1541</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3213.html">CVE-2012-3213</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-3342.html">CVE-2012-3342</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0351.html">CVE-2013-0351</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0409.html">CVE-2013-0409</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0419.html">CVE-2013-0419</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0423.html">CVE-2013-0423</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0424.html">CVE-2013-0424</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0425.html">CVE-2013-0425</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0426.html">CVE-2013-0426</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0427.html">CVE-2013-0427</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0428.html">CVE-2013-0428</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0429.html">CVE-2013-0429</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0430.html">CVE-2013-0430</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0431.html">CVE-2013-0431</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0432.html">CVE-2013-0432</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0433.html">CVE-2013-0433</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0434.html">CVE-2013-0434</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0435.html">CVE-2013-0435</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0437.html">CVE-2013-0437</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0438.html">CVE-2013-0438</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0440.html">CVE-2013-0440</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0441.html">CVE-2013-0441</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0442.html">CVE-2013-0442</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0443.html">CVE-2013-0443</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0444.html">CVE-2013-0444</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0445.html">CVE-2013-0445</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0446.html">CVE-2013-0446</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0448.html">CVE-2013-0448</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0449.html">CVE-2013-0449</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0450.html">CVE-2013-0450</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1473.html">CVE-2013-1473</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1475.html">CVE-2013-1475</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1476.html">CVE-2013-1476</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1478.html">CVE-2013-1478</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1479.html">CVE-2013-1479</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1480.html">CVE-2013-1480</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1489.html">CVE-2013-1489</a>]</td>
+<td class="Text">RHSA-2013:0237: java-1.7.0-oracle security update (Critical)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130241</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0241.html">RHSA-2013:0241-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4544.html">CVE-2012-4544</a>]</td>
+<td class="Text">RHSA-2013:0241: xen security update (Moderate)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130243</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0243.html">RHSA-2013:0243-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0633.html">CVE-2013-0633</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0634.html">CVE-2013-0634</a>]</td>
+<td class="Text">RHSA-2013:0243: flash-plugin security update (Critical)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130245</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0245.html">RHSA-2013:0245-01</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0424.html">CVE-2013-0424</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0425.html">CVE-2013-0425</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0426.html">CVE-2013-0426</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0427.html">CVE-2013-0427</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0428.html">CVE-2013-0428</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0429.html">CVE-2013-0429</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0432.html">CVE-2013-0432</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0433.html">CVE-2013-0433</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0434.html">CVE-2013-0434</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0435.html">CVE-2013-0435</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0440.html">CVE-2013-0440</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0441.html">CVE-2013-0441</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0442.html">CVE-2013-0442</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0443.html">CVE-2013-0443</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0445.html">CVE-2013-0445</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0450.html">CVE-2013-0450</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1475.html">CVE-2013-1475</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1476.html">CVE-2013-1476</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1478.html">CVE-2013-1478</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1480.html">CVE-2013-1480</a>]</td>
+<td class="Text">RHSA-2013:0245: java-1.6.0-openjdk security update (Critical)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130246</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0246.html">RHSA-2013:0246-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0424.html">CVE-2013-0424</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0425.html">CVE-2013-0425</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0426.html">CVE-2013-0426</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0427.html">CVE-2013-0427</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0428.html">CVE-2013-0428</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0429.html">CVE-2013-0429</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0432.html">CVE-2013-0432</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0433.html">CVE-2013-0433</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0434.html">CVE-2013-0434</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0435.html">CVE-2013-0435</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0440.html">CVE-2013-0440</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0441.html">CVE-2013-0441</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0442.html">CVE-2013-0442</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0443.html">CVE-2013-0443</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0445.html">CVE-2013-0445</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0450.html">CVE-2013-0450</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1475.html">CVE-2013-1475</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1476.html">CVE-2013-1476</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1478.html">CVE-2013-1478</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1480.html">CVE-2013-1480</a>]</td>
+<td class="Text">RHSA-2013:0246: java-1.6.0-openjdk security update (Important)</td>
+</tr>
+<tr class="resultgoodA">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130247</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0247.html">RHSA-2013:0247-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0424.html">CVE-2013-0424</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0425.html">CVE-2013-0425</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0426.html">CVE-2013-0426</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0427.html">CVE-2013-0427</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0428.html">CVE-2013-0428</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0429.html">CVE-2013-0429</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0431.html">CVE-2013-0431</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0432.html">CVE-2013-0432</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0433.html">CVE-2013-0433</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0434.html">CVE-2013-0434</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0435.html">CVE-2013-0435</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0440.html">CVE-2013-0440</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0441.html">CVE-2013-0441</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0442.html">CVE-2013-0442</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0443.html">CVE-2013-0443</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0444.html">CVE-2013-0444</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0445.html">CVE-2013-0445</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-0450.html">CVE-2013-0450</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1475.html">CVE-2013-1475</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1476.html">CVE-2013-1476</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1478.html">CVE-2013-1478</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2013-1480.html">CVE-2013-1480</a>]</td>
+<td class="Text">RHSA-2013:0247: java-1.7.0-openjdk security update (Important)</td>
+</tr>
+<tr class="resultgoodB">
+<td class="Text" align="center">oval:com.redhat.rhsa:def:20130250</td>
+<td class="Text" align="center">false</td>
+<td class="Text" align="center">patch</td>
+<td class="Text" align="center">[<a class="Hover" target="_blank" href="https://rhn.redhat.com/errata/RHSA-2013-0250.html">RHSA-2013:0250-00</a>], [<a class="Hover" target="_blank" href="https://www.redhat.com/security/data/cve/CVE-2012-4545.html">CVE-2012-4545</a>]</td>
+<td class="Text">RHSA-2013:0250: elinks security update (Moderate)</td>
+</tr>
+</table>
+</body>
+</html>
