@@ -202,6 +202,11 @@ public class NetworkingOvaldiProxy
            }
        }
 
+//       try {
+//           Thread.sleep( 1000 );
+//       } catch (InterruptedException ex) {
+//           //ignorable
+//       }
    }
 
 
