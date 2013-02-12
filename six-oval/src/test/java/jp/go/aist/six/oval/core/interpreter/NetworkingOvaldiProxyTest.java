@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith( Enclosed.class )
-public class OvaldiProxyTest
+public class NetworkingOvaldiProxyTest
 {
 
     @RunWith( Theories.class )
@@ -21,16 +21,17 @@ public class OvaldiProxyTest
 
         @DataPoints
         public static Options[]  OPTIONS = new Options[] {
-            new Options()
-            .set( OvaldiOption.NO_VERIFY )
-//          .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
-            .set( OvaldiOption.OVAL_DEFINITIONS, "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml" ),
-
-            /* for networking proxy */
 //            new Options()
 //            .set( OvaldiOption.NO_VERIFY )
-//            .set( OvaldiOption.OVAL_DEFINITIONS,
-//                            "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541&type=view" )
+////          .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
+//            .set( OvaldiOption.OVAL_DEFINITIONS, "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml" )
+//            ,
+//
+//            /* for networking proxy */
+            new Options()
+            .set( OvaldiOption.NO_VERIFY )
+            .set( OvaldiOption.OVAL_DEFINITIONS,
+                            "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12541&type=view" )
         };
 
 
@@ -40,7 +41,7 @@ public class OvaldiProxyTest
                         final Options options
                         )
         {
-            OvaldiProxy  ovaldi = new OvaldiProxy( options );
+            NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
             int  exitValue = ovaldi.execute();
             assertThat( "normal termination", exitValue, is( 0 ) );
         }
@@ -59,9 +60,19 @@ public class OvaldiProxyTest
             .set( OvaldiOption.NO_VERIFY )
 //          .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
             .set( OvaldiOption.OVAL_DEFINITIONS, "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml" )
-            .set( OvaldiOption.OVAL_SC, "T:\\temp\\system-characteristics_option.xml" )
-            .set( OvaldiOption.OVAL_RESULTS, "T:\\temp\\results_option.xml" )
-            .set( OvaldiOption.OVAL_TRANSFORMED_RESULTS, "T:\\temp\\results_option.html" )
+            .set( OvaldiOption.OVAL_SC, "T:\\temp\\system-characteristics_option-networking.xml" )
+            .set( OvaldiOption.OVAL_RESULTS, "T:\\temp\\results_option-networking.xml" )
+            .set( OvaldiOption.OVAL_TRANSFORMED_RESULTS, "T:\\temp\\results_option-networking.html" )
+//            ,
+
+//            new Options()
+//            .set( OvaldiOption.NO_VERIFY )
+////          .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
+//            .set( OvaldiOption.OVAL_DEFINITIONS,
+//                            "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a12627&type=view" )
+//            .set( OvaldiOption.OVAL_SC, "T:\\temp\\system-characteristics_option-networking2.xml" )
+//            .set( OvaldiOption.OVAL_RESULTS, "T:\\temp\\results_option-networking2.xml" )
+//            .set( OvaldiOption.OVAL_TRANSFORMED_RESULTS, "T:\\temp\\results_option-networking2.html" )
 
         };
 
@@ -74,7 +85,7 @@ public class OvaldiProxyTest
         {
             OvalContext  context = OvalContext.getInstance();
 
-            OvaldiProxy  ovaldi = new OvaldiProxy( options );
+            NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
             ovaldi.setExecutablePath( context.getProperty( OvaldiConfig.EXECUTABLE ) );
 
             int  exitValue = ovaldi.execute();

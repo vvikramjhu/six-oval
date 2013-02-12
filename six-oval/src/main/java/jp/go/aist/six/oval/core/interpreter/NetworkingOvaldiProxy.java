@@ -188,10 +188,16 @@ public class NetworkingOvaldiProxy
                    if (res.operation == NetworkOperation.INPUT) {
                        //If input, download the resource and save it to a local file.
                        _httpGet( url, file, res.option.contentType );
+//                       try {
+//                           Thread.sleep( 500 );
+//                       } catch (InterruptedException ex) {
+//                           //ignorable
+//                       }
                    }
 
                    //Replace the ovaldi command option for local execution.
                    localizedOptions.set( res.option, file.getAbsolutePath() );
+
                }
            }
        }
@@ -389,6 +395,7 @@ public class NetworkingOvaldiProxy
                         + ", to file=" + to_file
                         + ", content-type=" + content_type );
 
+        FileOutputStream  out_stream = null;
         try {
             MediaType  media_type = MediaType.valueOf( content_type );
             List<MediaType>  accept_media_types = Collections.singletonList( media_type );
@@ -396,6 +403,15 @@ public class NetworkingOvaldiProxy
         } catch (Exception ex) {
             _LOG_.error( "HTTP GET error: " + ex );
             throw new OvalInterpreterException( ex );
+        } finally {
+            if (out_stream != null) {
+                try {
+                    out_stream.flush();
+                    out_stream.close();
+                } catch (Exception ex) {
+                    //ignorable
+                }
+            }
         }
     }
 
