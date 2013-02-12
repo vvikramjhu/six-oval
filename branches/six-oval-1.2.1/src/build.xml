@@ -17,7 +17,7 @@ CONTENTS:
 -->
 
 <!-- %*=+ -->
-<project name="six3-oval" default="default" basedir=".."
+<project name="six-oval" default="default" basedir=".."
     xmlns:six="http://aist.go.jp/six">
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -58,6 +58,12 @@ CONTENTS:
     <property name="build.sql.dir"      location="${build.dir}/sql"/>
 
 
+    <!-- ovaldi -->
+    <property name="six.oval.ovaldi.executable" value="C:\\app\\ovaldi-5.10.1.4-x64\\ovaldi.exe"/>
+    <property name="six.oval.ovaldi.xml_dir" value="C:\\app\\ovaldi-5.10.1.4-x64\\xml"/>
+    <property name="six.oval.ovaldi.system_characteristics" value="T:\\temp\\system-characteristics.xml"/>
+    <property name="six.oval.ovaldi.results" value="T:\\temp\\results.xml"/>
+    <property name="six.oval.ovaldi.transformed_results" value="T:\\temp\\results.html"/>
     
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -108,7 +114,7 @@ CONTENTS:
         </java>
     </target>
 
-    <target name="oval.interpreter" depends="compile,init">
+    <target name="ex.oval.interpreter" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
             classpathref="java.run.classpath"
@@ -132,11 +138,12 @@ CONTENTS:
 
     <target name="example.oval.interpreter" depends="test.compile,init">
         <java
-            classname="jp.go.aist.six.test.oval.example.OvaldiProxyExample"
+            classname="jp.go.aist.six.oval.core.interpreter.OvaldiProxy"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="512m"
             >
+            <arg line="-o src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"/>
         </java>
     </target>
 

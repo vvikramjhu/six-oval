@@ -1,8 +1,8 @@
-/*
- *  @product.title@
- *  Copyright (C) @product.copyright-year@
- *    @product.vendor@
- *    Registration Number: @product.registration-number@
+/**
+ * SIX OVAL - http://code.google.com/p/six-oval/
+ * Copyright (C) 2010
+ *   National Institute of Advanced Industrial Science and Technology (AIST)
+ *   Registration Number: H22PRO-1124
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jp.go.aist.six.oval.interpreter;
 
 import java.io.Serializable;
@@ -40,6 +39,7 @@ public class Option
     public final String   argumentName;
     public final String   defaultArgument;
     public final String   contentType;
+    public final String   systemProperty;
 
 
 
@@ -52,7 +52,8 @@ public class Option
                     final boolean hasArgument,
                     final String  argumentName,
                     final String  defaultArgument,
-                    final String  contentType
+                    final String  contentType,
+                    final String  systemProperty
                     )
     {
         this.description        = description;
@@ -61,6 +62,7 @@ public class Option
         this.argumentName       = argumentName;
         this.defaultArgument    = defaultArgument;
         this.contentType        = contentType;
+        this.systemProperty     = systemProperty;
     }
 
 
