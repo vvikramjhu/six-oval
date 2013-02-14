@@ -90,6 +90,20 @@ CONTENTS:
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->
 
+    <!-- repository summary -->
+
+    <target name="oval.repository.summary" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.OvalRepositorySummary"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+        </java>
+    </target>
+
+
+
 	<!-- interpreter -->
 
     <target name="example.oval.interpreter.net-output" depends="compile,init">
@@ -260,58 +274,6 @@ CONTENTS:
         </java>
     </target>
 
-
-    <target name="test.oval-store" depends="test.compile,init">
-        <java
-            classname="jp.go.aist.six.test.oval.core.OvalStoreTest"
-            classpathref="java.run.classpath"
-            fork="true"
-            maxmemory="256m"
-            >
-        </java>
-    </target>
-
-
-
-
-    <!-- CentOSOvalGenerator: invokes from command line -->
-    <target name="test.net-interpreter" depends="compile,init">
-        <java
-            classname="jp.go.aist.six.oval.process.NetOvalInterpreterCli"
-            classpathref="java.run.classpath"
-            fork="true"
-            maxmemory="256m"
-            >
-            <arg line="C:\\app\\oval\\ovaldi-5.6.4\\ovaldi.exe -a C:\\app\\oval\\ovaldi-5.6.4\\xml -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a1020 -m"/>
-        </java>
-    </target>
-
-
-    <!-- CentOSOvalGenerator: invokes from command line -->
-    <target name="test.oval-generator.centos" depends="compile,init">
-        <java
-            classname="jp.go.aist.six.oval.process.centos.CentOSOvalGeneratorCli"
-            classpathref="java.run.classpath"
-            fork="true"
-            maxmemory="256m"
-            >
-            <arg line="-rho src/test/data/sample_oval-definitions_linux-redhat.xml -o oval-definitions_centos.xml"/>
-        </java>
-    </target>
-
-
-    <!-- DebianOvalGenerator: invokes from command line -->
-    <target name="test.oval-generator.debian" depends="compile,init">
-        <java
-            classname="jp.go.aist.six.oval.process.debian.DebianOvalGeneratorCli"
-            classpathref="java.run.classpath"
-            fork="true"
-            maxmemory="256m"
-            >
-            <sysproperty key="six.oval.debian.dsc" value="src/test/data/dsa"/> 
-            <arg line="-dsa src/test/data/dsa-1974.en.html -o oval-definitions_debian.xml"/>
-        </java>
-    </target>
 
 
     <!-- test: @override 
