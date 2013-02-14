@@ -6,12 +6,16 @@ import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.GeneratorType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.ReferenceType;
+import jp.go.aist.six.oval.model.results.DefinitionType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.InterfaceType;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
-import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.QueryResults;
 
 
@@ -84,6 +88,8 @@ public class OvalRepositorySummary
         /* [details] */
         System.out.println( "\n[details]" );
         for (OvalResults  res : oval_results_list) {
+            OvalDefinitions  oval_definitions = res.getOvalDefinitions();
+            DefinitionsType  definitions = (oval_definitions != null ? oval_definitions.getDefinitions() : null);
             System.out.println( "----------------------------------------------------------" );
             String  id = res.getPersistentID();
             GeneratorType  generator = res.getGenerator();
@@ -96,8 +102,52 @@ public class OvalRepositorySummary
                 for (InterfaceType  net : sys_info.getInterfaces().getInterface()) {
                     System.out.println( "IP/Mac addr: " + net.getIpAddress() + "/" + net.getMacAddress() );
                 }
+
+                System.out.println( "[vulnerability]" );
+                for (DefinitionType  def_result : sys.getDefinitions().getDefinition()) {
+                    jp.go.aist.six.oval.model.definitions.DefinitionType  def = null;
+                    String  cve = null;
+                    if (definitions == null) {
+                    } else {
+                        def = definitions.findByOvalId( def_result.getOvalId() );
+                        if (def != null) {
+                            if (def.getDefinitionClass() != ClassEnumeration.VULNERABILITY) {
+                                continue;
+                            }
+                            for (ReferenceType  ref : def.getMetadata().getReference()) {
+                                if ("CVE".equalsIgnoreCase( ref.getSource() )) {
+                                    cve = ref.getRefId();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (cve != null) {
+                        System.out.print( cve + ": ");
+                    }
+
+                    System.out.println( def_result.getOvalId() + ", " + def_result.getResult() );
+                }
+
+                System.out.println( "[inventory]" );
+                for (DefinitionType  def_result : sys.getDefinitions().getDefinition()) {
+                    jp.go.aist.six.oval.model.definitions.DefinitionType  def = null;
+                    String  title = null;
+                    if (definitions == null) {
+                    } else {
+                        def = definitions.findByOvalId( def_result.getOvalId() );
+                        if (def != null) {
+                            if (def.getDefinitionClass() != ClassEnumeration.INVENTORY) {
+                                continue;
+                            }
+                        }
+                        title = def.getMetadata().getTitle();
+                        System.out.println( title + ", " + def_result.getOvalId() + ", " + def_result.getResult() );
+                    }
+                }
+
             }
-            System.out.print( "\n" );
         }
     }
 
@@ -121,137 +171,6 @@ public class OvalRepositorySummary
         {
             return OvalResultsTimestampComparator.class.isInstance( obj );
         }
-    }
-
-
-    ////////////////////////////////////////////////////////////////
-    //  test data
-    ////////////////////////////////////////////////////////////////
-
-    public Object[][] provideRepositoryQueryParamsOvalResults()
-    {
-        // sc: host
-        OvalResultsQueryParams  params21 = new OvalResultsQueryParams();
-        params21.setHost( "host66.foo.com" );
-
-        // sc: host
-        OvalResultsQueryParams  params22 = new OvalResultsQueryParams();
-        params22.setHost( "*.bar.com" );
-
-        // sc: IP
-        OvalResultsQueryParams  params23 = new OvalResultsQueryParams();
-        params23.setIp( "192.168.10.*" );
-
-        // sc: MAC
-        OvalResultsQueryParams  params24 = new OvalResultsQueryParams();
-        params24.setMac( "00-50-56-C0-00-01" );
-
-        // sc: OS
-        OvalResultsQueryParams  params25 = new OvalResultsQueryParams();
-        params25.setOs( "Windows*" );
-
-        // sc: OS
-        OvalResultsQueryParams  params26 = new OvalResultsQueryParams();
-        params26.setOs( "Linux" );
-
-
-        // res: definition
-        OvalResultsQueryParams  params31 = new OvalResultsQueryParams();
-        params31.setDefinition( "oval:org.mitre.oval:def:6210" );
-
-        OvalResultsQueryParams  params32 = new OvalResultsQueryParams();
-        params32.setDefinition( "oval:org.mitre.oval:def:6210,oval:org.mitre.oval:def:12514" );
-
-
-        // res: definition true
-        OvalResultsQueryParams  params33 = new OvalResultsQueryParams();
-        params33.setDefinitionTrue( "oval:org.mitre.oval:def:6210" );
-
-        OvalResultsQueryParams  params34 = new OvalResultsQueryParams();
-        params34.setDefinitionTrue( "oval:org.mitre.oval:def:11985" );
-
-        OvalResultsQueryParams  params35 = new OvalResultsQueryParams();
-        params35.setDefinitionTrue( "oval:org.mitre.oval:def:11985,oval:org.mitre.oval:def:12514" );
-
-        OvalResultsQueryParams  params36 = new OvalResultsQueryParams();
-        params36.setOs( "Linux" );
-        params36.setDefinitionTrue( "oval:com.redhat.rhsa:def:20100332" );
-
-
-
-        return new Object[][] {
-                        {
-                            "21",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params21
-                        }
-                        ,
-                        {
-                            "22",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params22
-                        }
-                        ,
-                        {
-                            "23",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params23
-                        }
-                        ,
-                        {
-                            "24",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params24
-                        }
-                        ,
-                        {
-                            "25",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params25
-                        }
-                        ,
-                        {
-                            "26",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params26
-                        }
-                        ,
-                        {
-                            "31",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params31
-                        }
-                        ,
-                        {
-                            "32",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params32
-                        }
-                        ,
-                        {
-                            "33",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params33
-                        }
-                        ,
-                        {
-                            "34",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params34
-                        }
-                        ,
-                        {
-                            "35",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params35
-                        }
-                        ,
-                        {
-                            "36",
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            params36
-                        }
-        };
     }
 
 }
