@@ -1,22 +1,17 @@
 package jp.go.aist.six.oval.core.repository;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
-import jp.go.aist.six.oval.model.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.common.GeneratorType;
-import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.ReferenceType;
-import jp.go.aist.six.oval.model.results.DefinitionType;
 import jp.go.aist.six.oval.model.results.OvalResults;
-import jp.go.aist.six.oval.model.results.SystemType;
-import jp.go.aist.six.oval.model.sc.InterfaceType;
-import jp.go.aist.six.oval.model.sc.SystemInfoType;
-import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.util.xml.XmlMapper;
 
 
 
@@ -25,7 +20,7 @@ import jp.go.aist.six.oval.repository.QueryResults;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalRepositorySummary
+public class OvalDocumentInstaller
 {
 
     public static void main(
@@ -33,22 +28,27 @@ public class OvalRepositorySummary
                     )
     throws Exception
     {
-        final OvalRepositorySummary  ovaldi = new OvalRepositorySummary();
-        ovaldi.report();
+        final OvalDocumentInstaller  ovaldi = new OvalDocumentInstaller();
+        ovaldi.execute( args );
     }
 
 
 
+    private final PrintStream  _msg_stream = System.out;
+
     private final MongoOvalRepository  _oval_repository;
+    private final XmlMapper  _xml_mapper;
 
 
 
     /**
      */
-    public OvalRepositorySummary()
+    public OvalDocumentInstaller()
     throws Exception
     {
-        _oval_repository = OvalContext.getServerInstance().getBean( MongoOvalRepository.class );
+        OvalContext  context = OvalContext.getServerInstance();
+        _oval_repository = context.getBean( MongoOvalRepository.class );
+        _xml_mapper = context.getXmlMapper();
     }
 
 
@@ -57,121 +57,118 @@ public class OvalRepositorySummary
      *
      * @throws Exception
      */
-    public void report()
+    public void execute(
+                    final String[] documents
+                    )
     throws Exception
     {
-        System.out.println( "\n//////////////////////////////////////////////////////////" );
-        Date  datetime = new Date();
-        System.out.println( "Oval Results Report, " + datetime );
-
-        QueryResults<OvalResults>  query_results = _oval_repository.findOvalResults();
-        List<OvalResults>  oval_results_list = query_results.getElements();
-
-        /* [count] */
-        System.out.println( "\n[count]" );
-        long  count = oval_results_list.size();
-        System.out.println( count );
-
-        /* [history] in the date/time order */
-        Collections.sort( oval_results_list, new OvalResultsTimestampComparator() );
-        System.out.println( "\n[history]" );
-        for (OvalResults  res : oval_results_list) {
-            String  id = res.getPersistentID();
-            GeneratorType  generator = res.getGenerator();
-            System.out.print( id + ", " + generator.getTimestamp() + "," );
-            for (SystemType  sys : res.getResults().getSystem()) {
-                System.out.print( " " + sys.getOvalSystemCharacteristics().getSystemInfo().getPrimaryHostName() );
-            }
-            System.out.print( "\n" );
-        }
-
-        /* [details] */
-        System.out.println( "\n[details]" );
-        for (OvalResults  res : oval_results_list) {
-            OvalDefinitions  oval_definitions = res.getOvalDefinitions();
-            DefinitionsType  definitions = (oval_definitions != null ? oval_definitions.getDefinitions() : null);
-            System.out.println( "----------------------------------------------------------" );
-            String  id = res.getPersistentID();
-            GeneratorType  generator = res.getGenerator();
-            System.out.println( "ID: " + id );
-            System.out.println( "date/time: " + generator.getTimestamp() );
-            for (SystemType  sys : res.getResults().getSystem()) {
-                SystemInfoType  sys_info = sys.getOvalSystemCharacteristics().getSystemInfo();
-                System.out.println( "hostname: " + sys_info.getPrimaryHostName() );
-                System.out.println( "OS: " + sys_info.getOsName() + ", " + sys_info.getOsVersion() );
-                for (InterfaceType  net : sys_info.getInterfaces().getInterface()) {
-                    System.out.println( "IP/Mac addr: " + net.getIpAddress() + "/" + net.getMacAddress() );
-                }
-
-                System.out.println( "[vulnerability]" );
-                for (DefinitionType  def_result : sys.getDefinitions().getDefinition()) {
-                    jp.go.aist.six.oval.model.definitions.DefinitionType  def = null;
-                    String  cve = null;
-                    if (definitions == null) {
-                    } else {
-                        def = definitions.findByOvalId( def_result.getOvalId() );
-                        if (def != null) {
-                            if (def.getDefinitionClass() != ClassEnumeration.VULNERABILITY) {
-                                continue;
-                            }
-                            for (ReferenceType  ref : def.getMetadata().getReference()) {
-                                if ("CVE".equalsIgnoreCase( ref.getSource() )) {
-                                    cve = ref.getRefId();
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (cve != null) {
-                        System.out.print( cve + ": ");
-                    }
-
-                    System.out.println( def_result.getOvalId() + ", " + def_result.getResult() );
-                }
-
-                System.out.println( "[inventory]" );
-                for (DefinitionType  def_result : sys.getDefinitions().getDefinition()) {
-                    jp.go.aist.six.oval.model.definitions.DefinitionType  def = null;
-                    String  title = null;
-                    if (definitions == null) {
-                    } else {
-                        def = definitions.findByOvalId( def_result.getOvalId() );
-                        if (def != null) {
-                            if (def.getDefinitionClass() != ClassEnumeration.INVENTORY) {
-                                continue;
-                            }
-                        }
-                        title = def.getMetadata().getTitle();
-                        System.out.println( title + ", " + def_result.getOvalId() + ", " + def_result.getResult() );
-                    }
-                }
-
+        for (String  doc_path : documents) {
+            _printMessage( "*** install: " + doc_path );
+            try {
+                _install( doc_path );
+            } catch (Exception ex) {
+                _printMessage( "@@@ ERROR: " + doc_path
+                                + " - " + ex.getMessage() );
+                _printMessage( "...skip" );
             }
         }
     }
 
 
 
-    public static class OvalResultsTimestampComparator
-    implements Comparator<OvalResults>
+    private void _install(
+                    final String doc_path
+                    )
+    throws Exception
     {
-        @Override
-        public int compare( final OvalResults o1, final OvalResults o2 )
-        {
-            GeneratorType  generator1 = o1.getGenerator();
-            GeneratorType  generator2 = o2.getGenerator();
-
-            return String.CASE_INSENSITIVE_ORDER.compare( generator1.getTimestamp(), generator2.getTimestamp() );
+        URL  url = null;
+        try {
+            url = new URL( doc_path );
+        } catch (MalformedURLException ex) {
+            url = null;
         }
 
-
-        @Override
-        public boolean equals( final Object obj )
-        {
-            return OvalResultsTimestampComparator.class.isInstance( obj );
+        if (url == null) {
+            //local filepath
+            File  file = new File( doc_path );
+            _install( file );
+        } else {
+            _install( url );
         }
     }
+
+
+
+    private void _install(
+                    final File file
+                    )
+    throws Exception
+    {
+        _printMessage( "install OVAL document from file: " + file );
+        _install( file.getCanonicalPath(), new FileInputStream( file ) );
+    }
+
+
+
+    private void _install(
+                    final URL url
+                    )
+    throws Exception
+    {
+        _printMessage( "install OVAL document from URL: " + url );
+        _install( url.toString(), url.openStream() );
+    }
+
+
+
+    private void _install(
+                    final String source,
+                    final InputStream stream
+                    )
+    throws Exception
+    {
+        _printMessage( "unmarshalling OVAL document...: " + source );
+        Object  obj = _xml_mapper.unmarshal( stream );
+        _printMessage( "...unmarshalling DONE: " + source );
+
+        _printMessage( "document type=" +  obj.getClass() );
+        if (obj instanceof OvalDefinitions) {
+            _oval_repository.saveOvalDefinitions( OvalDefinitions.class.cast( obj ) );
+        } else if (obj instanceof OvalResults) {
+            _oval_repository.saveOvalResults( OvalResults.class.cast( obj ) );
+        } else if (obj instanceof OvalResults) {
+            _oval_repository.saveOvalSystemCharacteristics( OvalSystemCharacteristics.class.cast( obj ) );
+        }
+
+        _printMessage( "...installation of OVAL document COMPLETED: " + source );
+    }
+
+
+
+    /**
+     */
+    private void _printMessage(
+                    final String message
+                    )
+    {
+        _msg_stream.println( message );
+        _msg_stream.flush();
+    }
+
+
+
+    /**
+     */
+    private void _printMessage(
+                    final String[] lines
+                    )
+    {
+        for (String  line : lines) {
+            _printMessage( line);
+        }
+    }
+
+
 
 }
 //
