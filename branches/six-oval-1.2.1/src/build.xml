@@ -86,6 +86,24 @@ CONTENTS:
     </target>
     -->
 
+	
+    <!-- ************************************************************** -->
+    <!-- *  OVAL document installation                                * -->
+    <!-- ************************************************************** -->
+
+	<target name="oval.repository.install-docs" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.OvalDocumentInstaller"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"/>
+        </java>
+    </target>
+
+
+
     <!-- ************************************************************** -->
     <!-- *  Examples                                                  * -->
     <!-- ************************************************************** -->

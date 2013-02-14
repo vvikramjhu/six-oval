@@ -89,7 +89,8 @@ public class OvalRepositorySummary
         System.out.println( "\n[details]" );
         for (OvalResults  res : oval_results_list) {
             OvalDefinitions  oval_definitions = res.getOvalDefinitions();
-            DefinitionsType  definitions = (oval_definitions != null ? oval_definitions.getDefinitions() : null);
+            DefinitionsType  definitions = (oval_definitions == null ? null : oval_definitions.getDefinitions());
+
             System.out.println( "----------------------------------------------------------" );
             String  id = res.getPersistentID();
             GeneratorType  generator = res.getGenerator();
@@ -111,13 +112,18 @@ public class OvalRepositorySummary
                     } else {
                         def = definitions.findByOvalId( def_result.getOvalId() );
                         if (def != null) {
-                            if (def.getDefinitionClass() != ClassEnumeration.VULNERABILITY) {
+                            if (def.getDefinitionClass() == ClassEnumeration.VULNERABILITY
+                                            ||  def.getDefinitionClass() == ClassEnumeration.PATCH) {
+                            } else {
                                 continue;
                             }
                             for (ReferenceType  ref : def.getMetadata().getReference()) {
                                 if ("CVE".equalsIgnoreCase( ref.getSource() )) {
-                                    cve = ref.getRefId();
-                                    break;
+                                    if (cve == null) {
+                                        cve = ref.getRefId();
+                                    } else {
+                                        cve = cve + " " + ref.getRefId();
+                                    }
                                 }
                             }
                         }
@@ -125,9 +131,8 @@ public class OvalRepositorySummary
 
                     if (cve != null) {
                         System.out.print( cve + ": ");
+                        System.out.println( def_result.getOvalId() + ", " + def_result.getResult() );
                     }
-
-                    System.out.println( def_result.getOvalId() + ", " + def_result.getResult() );
                 }
 
                 System.out.println( "[inventory]" );
