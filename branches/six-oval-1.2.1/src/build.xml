@@ -39,6 +39,9 @@ CONTENTS:
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <property name="data.src.dir"        location="${src.dir}/test/resources/data"/>
+
+    	
     <!-- webapp -->
     <property name="webapp.src.dir"     location="${src.dir}/main/webapp"/>
     <property name="web.xml"            location="${webapp.src.dir}/WEB-INF/web.xml"/>
@@ -91,18 +94,50 @@ CONTENTS:
     <!-- *  OVAL document installation                                * -->
     <!-- ************************************************************** -->
 
-	<target name="oval.repository.install-docs" depends="compile,init">
+	<target name="oval.repository.generate-def-doc" depends="compile,init">
         <java
-            classname="jp.go.aist.six.oval.core.repository.OvalDocumentInstaller"
+            classname="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator"
             classpathref="java.run.classpath"
             fork="true"
-            maxmemory="256m"
+            maxmemory="512m"
             >
-            <arg line="src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"/>
+            <arg line="cve=CVE-2013-*&amp;family=windows defs-windows-2013.xml"/>
+
+        	<!--
+            <arg line="id=oval:com.redhat.rhsa:def:20130144 defs.xml"/>
+
+            <arg value="id=oval:com.redhat.rhsa:def:20130144 defs.xml"/>
+            <arg value="defs.xml"/>
+            -->
+
+        	<!--
+            <arg line="id=oval:com.redhat.rhsa:def:20130144"/>
+        	-->
         </java>
     </target>
 
 
+    <!-- ************************************************************** -->
+    <!-- *  OVAL document installation                                * -->
+    <!-- ************************************************************** -->
+
+    <target name="oval.repository.install-docs" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.core.repository.OvalDocumentInstaller"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="512m"
+            >
+            <arg file="${data.src.dir}/oval5/mitre/20130213_microsoft.windows.7.xml" />
+            <arg file="${data.src.dir}/oval5/mitre/20130213_microsoft.windows.xp.xml" />
+            <arg file="${data.src.dir}/oval5/mitre/20130213_red.hat.enterprise.linux.5.xml" />
+            <arg file="${data.src.dir}/oval5/mitre/20130213_red.hat.enterprise.linux.extras.5.xml" />
+            
+            <!--
+            <arg line="src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"/>
+            -->
+        </java>
+    </target>
 
     <!-- ************************************************************** -->
     <!-- *  Examples                                                  * -->
