@@ -199,7 +199,12 @@ CONTENTS:
             fork="true"
             maxmemory="512m"
             >
+            <arg line="-o src/test/resources/data/oval5/mitre/oval-5.10-last30days_v.xml"/>
+        	
+        	<!--
             <arg line="-o src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"/>
+            <arg line="-o src/test/resources/data/oval5/mitre/oval-5.10_v_CVE-2013-all.xml"/>
+            -->
         </java>
     </target>
 
