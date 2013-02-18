@@ -27,7 +27,10 @@ public class OvalXmlMapperTest
     @DataPoints
     public static String[]  FILE_PATHES = new String[] {
 
-        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
+        "src/test/resources/data/oval5/mitre/oval-5.10_12191-5_i_Microsoft-Publisher-2010.xml"
+
+        /* Apple Mac OS */
+//        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
 
 
 //        "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml",

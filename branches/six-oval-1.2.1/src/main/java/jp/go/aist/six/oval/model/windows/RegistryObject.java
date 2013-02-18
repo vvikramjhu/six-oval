@@ -59,10 +59,12 @@ public class RegistryObject
     private EntityObjectRegistryHiveType  hive;
     //{1..1}
 
-    private EntityObjectStringType  key = new EntityObjectStringType();
+    private EntityObjectStringType  key;
+//    private EntityObjectStringType  key = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  name = new EntityObjectStringType();
+    private EntityObjectStringType  name;
+//    private EntityObjectStringType  name = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
 

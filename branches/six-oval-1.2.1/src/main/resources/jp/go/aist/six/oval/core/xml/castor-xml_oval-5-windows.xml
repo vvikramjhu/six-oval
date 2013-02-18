@@ -5381,6 +5381,41 @@
         </field>
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true"> <!-- required="true" -->
+            <bind-xml name="key" node="element"/>
+        </field>
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+            nillable="true"> <!-- required="true" -->
+            <bind-xml name="name" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+<!-- BACKUP
+    <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="registry_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType" >
+            <bind-xml name="hive" node="element"/>
+        </field>
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
             nillable="true" required="true">
             <bind-xml name="key" node="element"/>
         </field>
@@ -5395,6 +5430,7 @@
             <bind-xml name="filter" node="element"/>
         </field>
     </class>
+-->
 
     <class name="jp.go.aist.six.oval.model.windows.RegistryState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
