@@ -2,7 +2,7 @@ package jp.go.aist.six.oval.core.xml;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.junit.Before;
@@ -26,12 +26,16 @@ public class OvalXmlMapperTest
 
     @DataPoints
     public static String[]  FILE_PATHES = new String[] {
-        "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml",
 
-        /* RedHat */
-        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",
-        "src/test/resources/data/oval5/redhat/rhsa-2013_sc.xml",
-        "src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"
+        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
+
+
+//        "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml",
+//
+//        /* RedHat */
+//        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",
+//        "src/test/resources/data/oval5/redhat/rhsa-2013_sc.xml",
+//        "src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"
     };
 
 
@@ -62,11 +66,16 @@ public class OvalXmlMapperTest
     public void testUnmarshal(
                     final String filepath
                     )
-    throws FileNotFoundException
+    throws Exception
     {
-        File  file = new File( filepath );
+        File  in_file = new File( filepath );
 //        long  time = System.currentTimeMillis();
-        _xml_mapper.unmarshal( new FileInputStream( file ) );
+        Object  obj = _xml_mapper.unmarshal( new FileInputStream( in_file ) );
+
+        File  out_file = new File( _tmp_dir, "unmarshalled_" + in_file.getName() );
+        _xml_mapper.marshal( obj, new FileWriter( out_file ) );
+
+        obj = _xml_mapper.unmarshal( new FileInputStream( out_file ) );
     }
 
 

@@ -36,6 +36,10 @@ public class CriteriaElement
 //    implements Dependent<DefinitionType>
 {
 
+    private Boolean  applicability_check;
+    //{optional, xsd:boolean}
+
+
     public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
     private Boolean  negate;
     //{optional, xsd:boolean, default="false"}
@@ -67,6 +71,23 @@ public class CriteriaElement
 
     /**
      */
+    public Boolean getApplicabilityCheck()
+    {
+        return applicability_check;
+    }
+
+
+    public void setApplicabilityCheck(
+                    final Boolean applicability_check
+                    )
+    {
+        this.applicability_check = applicability_check;
+    }
+
+
+
+    /**
+     */
     public void setNegate(
                     final Boolean negate
                     )
@@ -78,6 +99,20 @@ public class CriteriaElement
     public Boolean getNegate()
     {
         return negate;
+    }
+
+
+    public static final Boolean negate(
+                    final CriteriaElement ce
+                    )
+    {
+        if (ce == null) {
+            throw new IllegalArgumentException( "null CriteriaElement" );
+        }
+
+        Boolean  negate = ce.getNegate();
+
+        return (negate == null ? DEFAULT_NEGATE : negate);
     }
 
 
@@ -134,6 +169,9 @@ public class CriteriaElement
         final int  prime = 37;
         int  result = 17;
 
+        Boolean  applicability_check = getApplicabilityCheck();
+        result = prime * result + (applicability_check == null ? 0 : applicability_check.hashCode());
+
         Boolean  negate = getNegate();
         if (negate == null) {
             negate = DEFAULT_NEGATE;
@@ -159,16 +197,23 @@ public class CriteriaElement
         }
 
         CriteriaElement  other = (CriteriaElement)obj;
-        Boolean  otherNegate = other.getNegate();
-        if (otherNegate == null) {
-            otherNegate = DEFAULT_NEGATE;
-        }
-        Boolean  thisNegate = this.getNegate();
-        if (thisNegate == null) {
-            thisNegate = DEFAULT_NEGATE;
-        }
-        if (thisNegate.booleanValue() == otherNegate.booleanValue()) {
-            return true;
+
+        Boolean   this_applicability_check =  this.getApplicabilityCheck();
+        Boolean  other_applicability_check = other.getApplicabilityCheck();
+        if (this_applicability_check == other_applicability_check
+                        ||  (this_applicability_check != null  &&  this_applicability_check.equals( other_applicability_check ))) {
+
+            Boolean  otherNegate = other.getNegate();
+            if (otherNegate == null) {
+                otherNegate = DEFAULT_NEGATE;
+            }
+            Boolean  thisNegate = this.getNegate();
+            if (thisNegate == null) {
+                thisNegate = DEFAULT_NEGATE;
+            }
+            if (thisNegate.booleanValue() == otherNegate.booleanValue()) {
+                return true;
+            }
         }
 
         return false;
