@@ -91,7 +91,7 @@ CONTENTS:
 
 	
     <!-- ************************************************************** -->
-    <!-- *  OVAL document installation                                * -->
+    <!-- *  OVAL document generation                                  * -->
     <!-- ************************************************************** -->
 
 	<target name="oval.repository.generate-def-doc" depends="compile,init">
@@ -101,9 +101,11 @@ CONTENTS:
             fork="true"
             maxmemory="512m"
             >
-            <arg line="cve=CVE-2013-*&amp;family=windows defs-windows-2013.xml"/>
+            <arg line="cve=CVE-2013-*&amp;family=macos defs-macos-2013.xml"/>
 
         	<!--
+            <arg line="cve=CVE-2013-*&amp;family=windows defs-windows-2013.xml"/>
+
             <arg line="id=oval:com.redhat.rhsa:def:20130144 defs.xml"/>
 
             <arg value="id=oval:com.redhat.rhsa:def:20130144 defs.xml"/>
@@ -128,12 +130,16 @@ CONTENTS:
             fork="true"
             maxmemory="512m"
             >
+            <arg file="${data.src.dir}/oval5/mitre/RHEL5_after-update/rhsa-2013_results.xml" />
+            
+            <!--
+            <arg file="${data.src.dir}/oval5/mitre/Win7/oval-5.10-last30days_v_results.xml" />
+
             <arg file="${data.src.dir}/oval5/mitre/20130213_microsoft.windows.7.xml" />
             <arg file="${data.src.dir}/oval5/mitre/20130213_microsoft.windows.xp.xml" />
             <arg file="${data.src.dir}/oval5/mitre/20130213_red.hat.enterprise.linux.5.xml" />
             <arg file="${data.src.dir}/oval5/mitre/20130213_red.hat.enterprise.linux.extras.5.xml" />
-            
-            <!--
+
             <arg line="src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"/>
             -->
         </java>
