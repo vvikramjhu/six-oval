@@ -49,6 +49,7 @@
         </field>
     </class>
 
+
 <!--
     <class name="jp.go.aist.six.oval.core.web.AtomLink">
         <map-to xml="link"

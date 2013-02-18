@@ -1,8 +1,8 @@
-/**
- * SIX OVAL - http://code.google.com/p/six-oval/
- * Copyright (C) 2010
- *   National Institute of Advanced Industrial Science and Technology (AIST)
- *   Registration Number: H22PRO-1124
+/*
+ *  @product.title@
+ *  Copyright (C) @product.copyright-year@
+ *    @product.vendor@
+ *    Registration Number: @product.registration-number@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.ArrayList;
@@ -132,6 +133,7 @@ public class MongoOvalDefinitionRepository
     // Definition
     //=====================================================================
 
+    @Override
     public DefinitionType findDefinitionById(
                     final String oval_id
                     )
@@ -151,6 +153,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<DefinitionType> findDefinition()
     {
         List<DefinitionType>  p_list = null;
@@ -166,6 +169,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<DefinitionType> findDefinition(
                     final QueryParams params
                     )
@@ -182,6 +186,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<String> findDefinitionId()
     {
         List<String>  p_list = null;
@@ -196,6 +201,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<String> findDefinitionId(
                     final QueryParams params
                     )
@@ -212,6 +218,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public long countDefinition()
     {
         long  count = 0L;
@@ -226,6 +233,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public long countDefinition(
                     final QueryParams params
                     )
@@ -242,6 +250,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public String saveDefinition(
                     final DefinitionType def
                     )
@@ -262,6 +271,7 @@ public class MongoOvalDefinitionRepository
     // definitions element (Definition, Test, Object, State, Variable)
     //=====================================================================
 
+    @Override
     public DefinitionsElement findElementById(
                     final String oval_id
                     )
@@ -281,6 +291,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<DefinitionsElement> findElement(
                     final QueryParams params
                     )
@@ -340,6 +351,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<String> findElementId(
                     final QueryParams params
                     )
@@ -388,6 +400,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public long countElement(
                     final QueryParams params
                     )
@@ -437,6 +450,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public String saveElement(
                     final DefinitionsElement element
                     )
@@ -468,6 +482,7 @@ public class MongoOvalDefinitionRepository
     // OvalDefinitions
     //=====================================================================
 
+    @Override
     public OvalDefinitions findOvalDefinitionsById(
                     final String id
                     )
@@ -484,6 +499,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<String> findOvalDefinitionsId()
     {
         List<String>  p_list = null;
@@ -498,6 +514,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public QueryResults<String> findOvalDefinitionsId(
                     final QueryParams params
                     )
@@ -514,6 +531,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public long countOvalDefinitions()
     {
         long  count = 0L;
@@ -528,6 +546,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public long countOvalDefinitions(
                     final QueryParams params
                     )
@@ -544,6 +563,7 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
     public String saveOvalDefinitions(
                     final OvalDefinitions oval_defs
                     )

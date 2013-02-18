@@ -1,8 +1,8 @@
-/**
- * SIX OVAL - http://code.google.com/p/six-oval/
- * Copyright (C) 2010
- *   National Institute of Advanced Industrial Science and Technology (AIST)
- *   Registration Number: H22PRO-1124
+/*
+ *  @product.title@
+ *  Copyright (C) @product.copyright-year@
+ *    @product.vendor@
+ *    Registration Number: @product.registration-number@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.OvalEnumeration;
@@ -95,6 +96,14 @@ public enum DatatypeEnumeration
 
 
 
+    @Override
+    public String value()
+    {
+        return value;
+    }
+
+
+
     /**
      */
     public boolean isComplex()
@@ -104,20 +113,9 @@ public enum DatatypeEnumeration
 
 
 
-    //*********************************************************************
-    //  OvalEnumeration
-    //*********************************************************************
-
-    public String value()
-    {
-        return value;
-    }
-
-
-
-    //*********************************************************************
+    //**************************************************************
     //  java.lang.Object
-    //*********************************************************************
+    //**************************************************************
 
     @Override
     public String toString()

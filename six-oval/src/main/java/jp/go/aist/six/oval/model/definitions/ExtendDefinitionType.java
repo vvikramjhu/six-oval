@@ -1,8 +1,8 @@
-/**
- * SIX OVAL - http://code.google.com/p/six-oval/
- * Copyright (C) 2010
- *   National Institute of Advanced Industrial Science and Technology (AIST)
- *   Registration Number: H22PRO-1124
+/*
+ *  @ProductName@
+ *  Copyright (C) @CopyrightYear@
+ *    National Institute of Advanced Industrial Science and Technology (AIST)
+ *    Registration Number: @AISTRegistrationNumber@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.ElementRef;
@@ -89,6 +90,7 @@ public class ExtendDefinitionType
     //  ElementRef
     //*********************************************************************
 
+    @Override
     public String ovalGetRefId()
     {
         return getDefinitionRef();
@@ -96,6 +98,7 @@ public class ExtendDefinitionType
 
 
 
+    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.DEFINITION;
