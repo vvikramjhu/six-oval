@@ -188,11 +188,6 @@ public class NetworkingOvaldiProxy
                    if (res.operation == NetworkOperation.INPUT) {
                        //If input, download the resource and save it to a local file.
                        _httpGet( url, file, res.option.contentType );
-//                       try {
-//                           Thread.sleep( 500 );
-//                       } catch (InterruptedException ex) {
-//                           //ignorable
-//                       }
                    }
 
                    //Replace the ovaldi command option for local execution.
@@ -301,13 +296,25 @@ public class NetworkingOvaldiProxy
     private File _getTmpDir()
     {
         String  dirpath = System.getProperty( "java.io.tmpdir" );
-        File  dir = new File( dirpath );
-        if (dir.exists()  &&  dir.canWrite()  &&  dir.canRead()) {
-            //OK!!!
+        File  dir = new File( dirpath, "six-oval" );
+        if (dir.exists()) {
+            if (dir.canWrite()  &&  dir.canRead()) {
+                //OK!!!
+            } else {
+                throw new IllegalStateException(
+                                "tmp directory not found or not ready: path=" + dirpath );
+            }
         } else {
-            throw new IllegalStateException(
-                            "tmp directory not found or not ready: path=" + dirpath );
+            dir.mkdirs();
         }
+
+
+//        if (dir.exists()  &&  dir.canWrite()  &&  dir.canRead()) {
+//            //OK!!!
+//        } else {
+//            throw new IllegalStateException(
+//                            "tmp directory not found or not ready: path=" + dirpath );
+//        }
 
         return dir;
     }

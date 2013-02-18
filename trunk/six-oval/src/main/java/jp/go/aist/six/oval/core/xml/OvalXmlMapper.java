@@ -1,8 +1,8 @@
-/**
- * SIX OVAL - http://code.google.com/p/six-oval/
- * Copyright (C) 2010
- *   National Institute of Advanced Industrial Science and Technology (AIST)
- *   Registration Number: H22PRO-1124
+/*
+ *  @product.title@
+ *  Copyright (C) @product.copyright-year@
+ *    @product.vendor@
+ *    Registration Number: @product.registration-number@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.go.aist.six.oval.core.xml;
 
 import jp.go.aist.six.util.castor.CastorXmlMapper;
@@ -26,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalXmlImpl.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id: OvalXmlMapper.java 3006 2013-02-12 09:25:26Z nakamura5akihito@gmail.com $
  */
 public class OvalXmlMapper
     extends CastorXmlMapper

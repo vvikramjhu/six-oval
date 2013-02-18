@@ -236,6 +236,9 @@
 
     <class name ="jp.go.aist.six.oval.model.definitions.CriteriaElement"
         verify-constructable="false">
+        <field name="applicabilityCheck" type="boolean">
+            <bind-xml name="applicability_check" node="attribute"/>
+        </field>
         <field name="negate" type="boolean">
             <bind-xml name="negate" node="attribute"/>
         </field>

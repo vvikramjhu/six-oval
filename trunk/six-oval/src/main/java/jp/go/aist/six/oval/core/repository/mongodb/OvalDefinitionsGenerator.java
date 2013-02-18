@@ -1,8 +1,8 @@
-/**
- * SIX OVAL - http://code.google.com/p/six-oval/
- * Copyright (C) 2010
- *   National Institute of Advanced Industrial Science and Technology (AIST)
- *   Registration Number: H22PRO-1124
+/*
+ *  @product.title@
+ *  Copyright (C) @product.copyright-year@
+ *    @product.vendor@
+ *    Registration Number: @product.registration-number@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.go.aist.six.oval.core.repository.mongodb;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +36,7 @@ import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.IsoDate;
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,6 +55,49 @@ public class OvalDefinitionsGenerator
      */
     private static final Logger  _LOG_ =
         LoggerFactory.getLogger( OvalDefinitionsGenerator.class );
+
+
+
+    public static void main(
+                    final String[] args
+                    )
+    throws Exception
+    {
+        if (args.length == 0) {
+            System.out.println( "Usage: quert [file_to_save]" );
+            System.exit( 1 );
+        }
+
+        QueryParams  params = parseQuery( args[0] );
+
+        final OvalDefinitionsGenerator  generator = new OvalDefinitionsGenerator();
+        String  doc_id = generator.generateByQuery( params );
+        System.out.println( "OvalDefinitions document generated: ID=" + doc_id );
+
+        if (args.length > 1) {
+            String  filepath = args[1];
+            OvalDefinitions  doc = _getDatastore().findById( OvalDefinitions.class, doc_id );
+
+            System.out.println( "saving OvalDefinitions document...: file=" + filepath );
+            XmlMapper  xml_mapper = OvalContext.getServerInstance().getXmlMapper();
+            xml_mapper.marshal( doc, new FileWriter( new File( filepath ) ) );
+        }
+    }
+
+
+
+    public static QueryParams parseQuery( final String s )
+    {
+        String[]  key_values = s.split( "&" );
+        QueryParams  params = new QueryParams();
+        for (String  key_value : key_values) {
+            String[]  elements = key_value.split( "=" );
+            params.set( elements[0], elements[1] );
+        }
+
+        return params;
+    }
+
 
 
 
