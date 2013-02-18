@@ -1850,7 +1850,7 @@
         </field>
         <field name="filename" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="filename" node="element"/>
         </field>
         <field name="filter" 
