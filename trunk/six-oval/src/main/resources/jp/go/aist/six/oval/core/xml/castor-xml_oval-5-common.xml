@@ -65,14 +65,17 @@ Constructor arguments only valid for attribute mapped fields!!!
         extends="jp.go.aist.six.oval.model.common.AbstractBehaviors"
         verify-constructable="false">
         <field name="recurseFileSystem"
-            type="jp.go.aist.six.oval.model.common.RecurseFileSystemEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.RecurseFileSystemEnumerationHandler">
             <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
 
     <class name="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
-        <field name="recurse" type="string">
+        <field name="recurse" 
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.RecurseEnumerationHandler">
             <bind-xml name="recurse" node="attribute"/>
         </field>
     </class>

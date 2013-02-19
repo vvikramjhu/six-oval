@@ -35,38 +35,12 @@ public class FileBehaviors
     extends AbstractRecurseFileBehaviors
 {
 
-//    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
-
-
-//    private RecurseEnumeration  recurse;
-//    //{optional, default="symlinks and directories"}
-
-
-
-
     /**
      * Constructor.
      */
     public FileBehaviors()
     {
     }
-
-
-
-//    /**
-//     */
-//    public void setRecurse(
-//                    final RecurseEnumeration recurse
-//                    )
-//    {
-//        this.recurse = recurse;
-//    }
-//
-//
-//    public RecurseEnumeration getRecurse()
-//    {
-//        return this.recurse;
-//    }
 
 
 
@@ -93,16 +67,6 @@ public class FileBehaviors
 
         return super.equals( obj );
     }
-
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return super.toString()
-//                        + ", recurse=" + getRecurse()
-//                        ;
-//    }
 
 }
 //FileBehaviors

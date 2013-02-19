@@ -42,17 +42,12 @@
 <!-- file -->
     <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
-    </class>
-    <!-- backup
-    <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
-
-        <field name="recurse"
-            type="jp.go.aist.six.oval.model.common.RecurseEnumeration">
-            <bind-xml name="recurse" node="attribute"/>
+        <field name="windowsView"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.WindowsViewEnumerationHandler">
+            <bind-xml name="windows_view" node="attribute"/>
         </field>
     </class>
-    -->
 
 <!-- hash type -->
     <class name="jp.go.aist.six.oval.model.independent.EntityObjectHashTypeType"

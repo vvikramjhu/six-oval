@@ -37,7 +37,7 @@ public class AbstractRecurseFileBehaviors
     public static final RecurseEnumeration  DEFAULT_RECURSE =
         RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
 
-    private String  recurse;
+    private RecurseEnumeration  recurse;
     //{optional, default='symlinks and directories'}
 
 
@@ -54,30 +54,25 @@ public class AbstractRecurseFileBehaviors
     /**
      */
     public void setRecurse(
-                    final String recurse
+                    final RecurseEnumeration recurse
                     )
     {
-        if (recurse != null) {
-            RecurseEnumeration.fromValue( recurse );
-            // valid value!!!
-        }
-
         this.recurse = recurse;
     }
 
 
-    public String getRecurse()
+    public RecurseEnumeration getRecurse()
     {
         return recurse;
     }
 
 
-    public static String recurse(
-                    final AbstractRecurseFileBehaviors behaviors
+    public static RecurseEnumeration recurse(
+                    final AbstractRecurseFileBehaviors obj
                     )
     {
-        String  recurse = behaviors.getRecurse();
-        return (recurse == null ? DEFAULT_RECURSE.value() : recurse );
+        RecurseEnumeration  recurse = obj.getRecurse();
+        return (recurse == null ? DEFAULT_RECURSE : recurse );
     }
 
 

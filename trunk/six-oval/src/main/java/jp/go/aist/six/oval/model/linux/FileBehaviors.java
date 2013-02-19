@@ -37,17 +37,6 @@ public class FileBehaviors
     extends AbstractRecurseFileBehaviors
 {
 
-//    /**
-//     * The default recurseDirection: "symlinks and directories".
-//     */
-//    public static final RecurseEnumeration  DEFAULT_RECURSE =
-//        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
-//
-//    private String  recurse;
-//    //{optional, default='symlinks and directories'}
-
-
-
     /**
      * Constructor.
      */
@@ -63,13 +52,13 @@ public class FileBehaviors
 
     @Override
     public void setRecurse(
-                    final String recurse
+                    final RecurseEnumeration recurse
                     )
     {
         if (recurse != null) {
-            if (RecurseEnumeration.DIRECTORIES.value().equals( recurse )
-                            ||  RecurseEnumeration.SYMLINKS.value().equals( recurse )
-                            ||  RecurseEnumeration.SYMLINKS_AND_DIRECTORIES.value().equals( recurse )
+            if (recurse == RecurseEnumeration.DIRECTORIES
+                            ||  recurse == RecurseEnumeration.SYMLINKS
+                            ||  recurse == RecurseEnumeration.SYMLINKS_AND_DIRECTORIES
                             ) {
                 // valid value!!!
             }
@@ -77,21 +66,6 @@ public class FileBehaviors
 
         super.setRecurse( recurse );
     }
-
-
-//    public String getRecurse()
-//    {
-//        return this.recurse;
-//    }
-//
-//
-//    public static String recurse(
-//                    final FileBehaviors behaviors
-//                    )
-//    {
-//        String  recurse = behaviors.getRecurse();
-//        return (recurse == null ? DEFAULT_RECURSE.value() : recurse );
-//    }
 
 
 
@@ -122,16 +96,6 @@ public class FileBehaviors
 
         return super.equals( obj );
     }
-
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return super.toString()
-//                        + ", recurse=" + getRecurse()
-//                        ;
-//    }
 
 }
 //FileBehaviors

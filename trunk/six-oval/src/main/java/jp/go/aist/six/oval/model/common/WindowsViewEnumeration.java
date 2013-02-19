@@ -36,8 +36,7 @@ public enum WindowsViewEnumeration
 {
 
     WINDOWS_32_BIT    ( "32_bit" ),
-    WINDOWS_64_BIT    ( "64_bit" ),
-    EMPTY             ( "" )
+    WINDOWS_64_BIT    ( "64_bit" )
     ;
 
 
@@ -94,4 +93,4 @@ public enum WindowsViewEnumeration
     }
 
 }
-// WindowsViewTypeEnumeration
+// WindowsViewEnumeration
