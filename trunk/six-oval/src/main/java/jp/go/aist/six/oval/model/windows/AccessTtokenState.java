@@ -19,99 +19,102 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.sc.ItemType;
-import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The access token item holds information about the individual privileges
- * and rights associated with a specific access token.
+ * The accesstoken state defines the different information
+ * that can be used to evaluate the specified access tokens.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccesstokenItem
-    extends ItemType
+public class AccessTtokenState
+    extends StateType
 {
 
     //{0..1}
-    private EntityItemStringType    security_principle;
-
-    private EntityItemBoolType     seassignprimarytokenprivilege;
-    private EntityItemBoolType     sechangenotifyprivilege;
-    private EntityItemBoolType     secreateglobalprivilege;
-    private EntityItemBoolType     secreatepagefileprivilege;
-    private EntityItemBoolType     secreatepermanentprivilege;
-    private EntityItemBoolType     secreatesymboliclinkprivilege;
-    private EntityItemBoolType     secreatetokenprivilege;
-    private EntityItemBoolType     sedebugprivilege;
-    private EntityItemBoolType     seenabledelegationprivilege;
-    private EntityItemBoolType     seimpersonateprivilege;
-    private EntityItemBoolType     seincreasebasepriorityprivilege;
-    private EntityItemBoolType     seincreasequotaprivilege;
-    private EntityItemBoolType     seincreaseworkingsetprivilege;
-    private EntityItemBoolType     seloaddriverprivilege;
-    private EntityItemBoolType     selockmemoryprivilege;
-    private EntityItemBoolType     semachineaccountprivilege;
-    private EntityItemBoolType     semanagevolumeprivilege;
-    private EntityItemBoolType     seprofilesingleprocessprivilege;
-    private EntityItemBoolType     serelabelprivilege;
-    private EntityItemBoolType     seremoteshutdownprivilege;
-    private EntityItemBoolType     serestoreprivilege;
-    private EntityItemBoolType     sesecurityprivilege;
-    private EntityItemBoolType     seshutdownprivilege;
-    private EntityItemBoolType     sesyncagentprivilege;
-    private EntityItemBoolType     sesystemenvironmentprivilege;
-    private EntityItemBoolType     sesystemprofileprivilege;
-    private EntityItemBoolType    sesystemtimeprivilege;
-    private EntityItemBoolType    setakeownershipprivilege;
-    private EntityItemBoolType    setcbprivilege;
-    private EntityItemBoolType    setimezoneprivilege;
-    private EntityItemBoolType    seundockprivilege;
-    private EntityItemBoolType    seunsolicitedinputprivilege;
-    private EntityItemBoolType    sebatchlogonright;
-    private EntityItemBoolType    seinteractivelogonright;
-    private EntityItemBoolType    senetworklogonright;
-    private EntityItemBoolType    seremoteinteractivelogonright;
-    private EntityItemBoolType    seservicelogonright;
-    private EntityItemBoolType    sedenybatchLogonright;
-    private EntityItemBoolType    sedenyinteractivelogonright;
-    private EntityItemBoolType    sedenynetworklogonright;
-    private EntityItemBoolType    sedenyremoteInteractivelogonright;
-    private EntityItemBoolType    sedenyservicelogonright;
-    private EntityItemBoolType    setrustedcredmanaccessnameright;
+    private EntityStateStringType   security_principle;
+    private EntityStateBoolType     seassignprimarytokenprivilege;
+    private EntityStateBoolType     sechangenotifyprivilege;
+    private EntityStateBoolType     secreateglobalprivilege;
+    private EntityStateBoolType     secreatepagefileprivilege;
+    private EntityStateBoolType     secreatepermanentprivilege;
+    private EntityStateBoolType     secreatesymboliclinkprivilege;
+    private EntityStateBoolType     secreatetokenprivilege;
+    private EntityStateBoolType     sedebugprivilege;
+    private EntityStateBoolType     seenabledelegationprivilege;
+    private EntityStateBoolType     seimpersonateprivilege;
+    private EntityStateBoolType     seincreasebasepriorityprivilege;
+    private EntityStateBoolType     seincreasequotaprivilege;
+    private EntityStateBoolType     seincreaseworkingsetprivilege;
+    private EntityStateBoolType     seloaddriverprivilege;
+    private EntityStateBoolType     selockmemoryprivilege;
+    private EntityStateBoolType     semachineaccountprivilege;
+    private EntityStateBoolType     semanagevolumeprivilege;
+    private EntityStateBoolType     seprofilesingleprocessprivilege;
+    private EntityStateBoolType     serelabelprivilege;
+    private EntityStateBoolType     seremoteshutdownprivilege;
+    private EntityStateBoolType     serestoreprivilege;
+    private EntityStateBoolType     sesecurityprivilege;
+    private EntityStateBoolType     seshutdownprivilege;
+    private EntityStateBoolType     sesyncagentprivilege;
+    private EntityStateBoolType     sesystemenvironmentprivilege;
+    private EntityStateBoolType     sesystemprofileprivilege;
+    private EntityStateBoolType    sesystemtimeprivilege;
+    private EntityStateBoolType    setakeownershipprivilege;
+    private EntityStateBoolType    setcbprivilege;
+    private EntityStateBoolType    setimezoneprivilege;
+    private EntityStateBoolType    seundockprivilege;
+    private EntityStateBoolType    seunsolicitedinputprivilege;
+    private EntityStateBoolType    sebatchlogonright;
+    private EntityStateBoolType    seinteractivelogonright;
+    private EntityStateBoolType    senetworklogonright;
+    private EntityStateBoolType    seremoteinteractivelogonright;
+    private EntityStateBoolType    seservicelogonright;
+    private EntityStateBoolType    sedenybatchLogonright;
+    private EntityStateBoolType    sedenyinteractivelogonright;
+    private EntityStateBoolType    sedenynetworklogonright;
+    private EntityStateBoolType    sedenyremoteInteractivelogonright;
+    private EntityStateBoolType    sedenyservicelogonright;
+    private EntityStateBoolType    setrustedcredmanaccessnameright;
 
 
 
     /**
      * Constructor.
      */
-    public AccesstokenItem()
+    public AccessTtokenState()
     {
-        this( 0 );
+        this( null, 0 );
     }
 
 
-    public AccesstokenItem(
-                    final int id
+    public AccessTtokenState(
+                    final String id,
+                    final int version
                     )
     {
-        this( id, null );
+        this( id, version, null );
     }
 
 
-    public AccesstokenItem(
-                    final int id,
-                    final StatusEnumeration status
+    public AccessTtokenState(
+                    final String id,
+                    final int version,
+                    final String comment
                     )
     {
-        super( id, status );
+        super( id, version, comment );
 
 //        _oval_platform_type = OvalPlatformType.windows;
 //        _oval_component_type = OvalComponentType.accesstoken;
@@ -124,14 +127,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecurityPrinciple(
-                    final EntityItemStringType security_principle
+                    final EntityStateStringType security_principle
                     )
     {
         this.security_principle = security_principle;
     }
 
 
-    public EntityItemStringType getSecurityPrinciple()
+    public EntityStateStringType getSecurityPrinciple()
     {
         return security_principle;
     }
@@ -141,14 +144,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeassignprimarytokenprivilege(
-                    final EntityItemBoolType seassignprimarytokenprivilege
+                    final EntityStateBoolType seassignprimarytokenprivilege
                     )
     {
         this.seassignprimarytokenprivilege = seassignprimarytokenprivilege;
     }
 
 
-    public EntityItemBoolType getSeassignprimarytokenprivilege()
+    public EntityStateBoolType getSeassignprimarytokenprivilege()
     {
         return seassignprimarytokenprivilege;
     }
@@ -158,14 +161,14 @@ public class AccesstokenItem
     /**
      */
     public void setSechangenotifyprivilege(
-                    final EntityItemBoolType sechangenotifyprivilege
+                    final EntityStateBoolType sechangenotifyprivilege
                     )
     {
         this.sechangenotifyprivilege = sechangenotifyprivilege;
     }
 
 
-    public EntityItemBoolType getSechangenotifyprivilege()
+    public EntityStateBoolType getSechangenotifyprivilege()
     {
         return sechangenotifyprivilege;
     }
@@ -175,14 +178,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecreateglobalprivilege(
-                    final EntityItemBoolType secreateglobalprivilege
+                    final EntityStateBoolType secreateglobalprivilege
                     )
     {
         this.secreateglobalprivilege = secreateglobalprivilege;
     }
 
 
-    public EntityItemBoolType getSecreateglobalprivilege()
+    public EntityStateBoolType getSecreateglobalprivilege()
     {
         return secreateglobalprivilege;
     }
@@ -192,14 +195,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecreatepagefileprivilege(
-                    final EntityItemBoolType secreatepagefileprivilege
+                    final EntityStateBoolType secreatepagefileprivilege
                     )
     {
         this.secreatepagefileprivilege = secreatepagefileprivilege;
     }
 
 
-    public EntityItemBoolType getSecreatepagefileprivilege()
+    public EntityStateBoolType getSecreatepagefileprivilege()
     {
         return secreatepagefileprivilege;
     }
@@ -209,14 +212,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecreatepermanentprivilege(
-                    final EntityItemBoolType secreatepermanentprivilege
+                    final EntityStateBoolType secreatepermanentprivilege
                     )
     {
         this.secreatepermanentprivilege = secreatepermanentprivilege;
     }
 
 
-    public EntityItemBoolType getSecreatepermanentprivilege()
+    public EntityStateBoolType getSecreatepermanentprivilege()
     {
         return secreatepermanentprivilege;
     }
@@ -226,14 +229,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecreatesymboliclinkprivilege(
-                    final EntityItemBoolType secreatesymboliclinkprivilege
+                    final EntityStateBoolType secreatesymboliclinkprivilege
                     )
     {
         this.secreatesymboliclinkprivilege = secreatesymboliclinkprivilege;
     }
 
 
-    public EntityItemBoolType getSecreatesymboliclinkprivilege()
+    public EntityStateBoolType getSecreatesymboliclinkprivilege()
     {
         return secreatesymboliclinkprivilege;
     }
@@ -243,14 +246,14 @@ public class AccesstokenItem
     /**
      */
     public void setSecreatetokenprivilege(
-                    final EntityItemBoolType secreatetokenprivilege
+                    final EntityStateBoolType secreatetokenprivilege
                     )
     {
         this.secreatetokenprivilege = secreatetokenprivilege;
     }
 
 
-    public EntityItemBoolType getSecreatetokenprivilege()
+    public EntityStateBoolType getSecreatetokenprivilege()
     {
         return secreatetokenprivilege;
     }
@@ -260,14 +263,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedebugprivilege(
-                    final EntityItemBoolType sedebugprivilege
+                    final EntityStateBoolType sedebugprivilege
                     )
     {
         this.sedebugprivilege = sedebugprivilege;
     }
 
 
-    public EntityItemBoolType getSedebugprivilege()
+    public EntityStateBoolType getSedebugprivilege()
     {
         return sedebugprivilege;
     }
@@ -277,14 +280,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeenabledelegationprivilege(
-                    final EntityItemBoolType seenabledelegationprivilege
+                    final EntityStateBoolType seenabledelegationprivilege
                     )
     {
         this.seenabledelegationprivilege = seenabledelegationprivilege;
     }
 
 
-    public EntityItemBoolType getSeenabledelegationprivilege()
+    public EntityStateBoolType getSeenabledelegationprivilege()
     {
         return seenabledelegationprivilege;
     }
@@ -294,14 +297,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeimpersonateprivilege(
-                    final EntityItemBoolType seimpersonateprivilege
+                    final EntityStateBoolType seimpersonateprivilege
                     )
     {
         this.seimpersonateprivilege = seimpersonateprivilege;
     }
 
 
-    public EntityItemBoolType getSeimpersonateprivilege()
+    public EntityStateBoolType getSeimpersonateprivilege()
     {
         return seimpersonateprivilege;
     }
@@ -311,14 +314,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeincreasebasepriorityprivilege(
-                    final EntityItemBoolType seincreasebasepriorityprivilege
+                    final EntityStateBoolType seincreasebasepriorityprivilege
                     )
     {
         this.seincreasebasepriorityprivilege = seincreasebasepriorityprivilege;
     }
 
 
-    public EntityItemBoolType getSeincreasebasepriorityprivilege()
+    public EntityStateBoolType getSeincreasebasepriorityprivilege()
     {
         return seincreasebasepriorityprivilege;
     }
@@ -328,14 +331,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeincreasequotaprivilege(
-                    final EntityItemBoolType seincreasequotaprivilege
+                    final EntityStateBoolType seincreasequotaprivilege
                     )
     {
         this.seincreasequotaprivilege = seincreasequotaprivilege;
     }
 
 
-    public EntityItemBoolType getSeincreasequotaprivilege()
+    public EntityStateBoolType getSeincreasequotaprivilege()
     {
         return seincreasequotaprivilege;
     }
@@ -345,14 +348,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeincreaseworkingsetprivilege(
-                    final EntityItemBoolType seincreaseworkingsetprivilege
+                    final EntityStateBoolType seincreaseworkingsetprivilege
                     )
     {
         this.seincreaseworkingsetprivilege = seincreaseworkingsetprivilege;
     }
 
 
-    public EntityItemBoolType getSeincreaseworkingsetprivilege()    {
+    public EntityStateBoolType getSeincreaseworkingsetprivilege()    {
         return seincreaseworkingsetprivilege;
     }
 
@@ -361,14 +364,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeloaddriverprivilege(
-                    final EntityItemBoolType seloaddriverprivilege
+                    final EntityStateBoolType seloaddriverprivilege
                     )
     {
         this.seloaddriverprivilege = seloaddriverprivilege;
     }
 
 
-    public EntityItemBoolType getSeloaddriverprivilege()    {
+    public EntityStateBoolType getSeloaddriverprivilege()    {
         return seloaddriverprivilege;
     }
 
@@ -377,14 +380,14 @@ public class AccesstokenItem
     /**
      */
     public void setSelockmemoryprivilege(
-                    final EntityItemBoolType selockmemoryprivilege
+                    final EntityStateBoolType selockmemoryprivilege
                     )
     {
         this.selockmemoryprivilege = selockmemoryprivilege;
     }
 
 
-    public EntityItemBoolType getSelockmemoryprivilege()    {
+    public EntityStateBoolType getSelockmemoryprivilege()    {
         return selockmemoryprivilege;
     }
 
@@ -393,14 +396,14 @@ public class AccesstokenItem
     /**
      */
     public void setSemachineaccountprivilege(
-                    final EntityItemBoolType semachineaccountprivilege
+                    final EntityStateBoolType semachineaccountprivilege
                     )
     {
         this.semachineaccountprivilege = semachineaccountprivilege;
     }
 
 
-    public EntityItemBoolType getSemachineaccountprivilege()    {
+    public EntityStateBoolType getSemachineaccountprivilege()    {
         return semachineaccountprivilege;
     }
 
@@ -409,14 +412,14 @@ public class AccesstokenItem
     /**
      */
     public void setSemanagevolumeprivilege(
-                    final EntityItemBoolType semanagevolumeprivilege
+                    final EntityStateBoolType semanagevolumeprivilege
                     )
     {
         this.semanagevolumeprivilege = semanagevolumeprivilege;
     }
 
 
-    public EntityItemBoolType getSemanagevolumeprivilege()    {
+    public EntityStateBoolType getSemanagevolumeprivilege()    {
         return semanagevolumeprivilege;
     }
 
@@ -425,14 +428,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeprofilesingleprocessprivilege(
-                    final EntityItemBoolType seprofilesingleprocessprivilege
+                    final EntityStateBoolType seprofilesingleprocessprivilege
                     )
     {
         this.seprofilesingleprocessprivilege = seprofilesingleprocessprivilege;
     }
 
 
-    public EntityItemBoolType getSeprofilesingleprocessprivilege()    {
+    public EntityStateBoolType getSeprofilesingleprocessprivilege()    {
         return seprofilesingleprocessprivilege;
     }
 
@@ -441,14 +444,14 @@ public class AccesstokenItem
     /**
      */
     public void setSerelabelprivilege(
-                    final EntityItemBoolType serelabelprivilege
+                    final EntityStateBoolType serelabelprivilege
                     )
     {
         this.serelabelprivilege = serelabelprivilege;
     }
 
 
-    public EntityItemBoolType getSerelabelprivilege()    {
+    public EntityStateBoolType getSerelabelprivilege()    {
         return serelabelprivilege;
     }
 
@@ -457,14 +460,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeremoteshutdownprivilege(
-                    final EntityItemBoolType seremoteshutdownprivilege
+                    final EntityStateBoolType seremoteshutdownprivilege
                     )
     {
         this.seremoteshutdownprivilege = seremoteshutdownprivilege;
     }
 
 
-    public EntityItemBoolType getSeremoteshutdownprivilege()    {
+    public EntityStateBoolType getSeremoteshutdownprivilege()    {
         return seremoteshutdownprivilege;
     }
 
@@ -473,14 +476,14 @@ public class AccesstokenItem
     /**
      */
     public void setSerestoreprivilege(
-                    final EntityItemBoolType serestoreprivilege
+                    final EntityStateBoolType serestoreprivilege
                     )
     {
         this.serestoreprivilege = serestoreprivilege;
     }
 
 
-    public EntityItemBoolType getSerestoreprivilege()    {
+    public EntityStateBoolType getSerestoreprivilege()    {
         return serestoreprivilege;
     }
 
@@ -489,14 +492,14 @@ public class AccesstokenItem
     /**
      */
     public void setSesecurityprivilege(
-                    final EntityItemBoolType sesecurityprivilege
+                    final EntityStateBoolType sesecurityprivilege
                     )
     {
         this.sesecurityprivilege = sesecurityprivilege;
     }
 
 
-    public EntityItemBoolType getSesecurityprivilege()    {
+    public EntityStateBoolType getSesecurityprivilege()    {
         return sesecurityprivilege;
     }
 
@@ -505,14 +508,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeshutdownprivilege(
-                    final EntityItemBoolType seshutdownprivilege
+                    final EntityStateBoolType seshutdownprivilege
                     )
     {
         this.seshutdownprivilege = seshutdownprivilege;
     }
 
 
-    public EntityItemBoolType getSeshutdownprivilege()    {
+    public EntityStateBoolType getSeshutdownprivilege()    {
         return seshutdownprivilege;
     }
 
@@ -521,14 +524,14 @@ public class AccesstokenItem
     /**
      */
     public void setSesyncagentprivilege(
-                    final EntityItemBoolType sesyncagentprivilege
+                    final EntityStateBoolType sesyncagentprivilege
                     )
     {
         this.sesyncagentprivilege = sesyncagentprivilege;
     }
 
 
-    public EntityItemBoolType getSesyncagentprivilege()    {
+    public EntityStateBoolType getSesyncagentprivilege()    {
         return sesyncagentprivilege;
     }
 
@@ -537,14 +540,14 @@ public class AccesstokenItem
     /**
      */
     public void setSesystemenvironmentprivilege(
-                    final EntityItemBoolType sesystemenvironmentprivilege
+                    final EntityStateBoolType sesystemenvironmentprivilege
                     )
     {
         this.sesystemenvironmentprivilege = sesystemenvironmentprivilege;
     }
 
 
-    public EntityItemBoolType getSesystemenvironmentprivilege()    {
+    public EntityStateBoolType getSesystemenvironmentprivilege()    {
         return sesystemenvironmentprivilege;
     }
 
@@ -553,14 +556,14 @@ public class AccesstokenItem
     /**
      */
     public void setSesystemprofileprivilege(
-                    final EntityItemBoolType sesystemprofileprivilege
+                    final EntityStateBoolType sesystemprofileprivilege
                     )
     {
         this.sesystemprofileprivilege = sesystemprofileprivilege;
     }
 
 
-    public EntityItemBoolType getSesystemprofileprivilege()    {
+    public EntityStateBoolType getSesystemprofileprivilege()    {
         return sesystemprofileprivilege;
     }
 
@@ -569,14 +572,14 @@ public class AccesstokenItem
     /**
      */
     public void setSesystemtimeprivilege(
-                    final EntityItemBoolType sesystemtimeprivilege
+                    final EntityStateBoolType sesystemtimeprivilege
                     )
     {
         this.sesystemtimeprivilege = sesystemtimeprivilege;
     }
 
 
-    public EntityItemBoolType getSesystemtimeprivilege()    {
+    public EntityStateBoolType getSesystemtimeprivilege()    {
         return sesystemtimeprivilege;
     }
 
@@ -585,14 +588,14 @@ public class AccesstokenItem
     /**
      */
     public void setSetakeownershipprivilege(
-                    final EntityItemBoolType setakeownershipprivilege
+                    final EntityStateBoolType setakeownershipprivilege
                     )
     {
         this.setakeownershipprivilege = setakeownershipprivilege;
     }
 
 
-    public EntityItemBoolType getSetakeownershipprivilege()    {
+    public EntityStateBoolType getSetakeownershipprivilege()    {
         return setakeownershipprivilege;
     }
 
@@ -601,14 +604,14 @@ public class AccesstokenItem
     /**
      */
     public void setSetcbprivilege(
-                    final EntityItemBoolType setcbprivilege
+                    final EntityStateBoolType setcbprivilege
                     )
     {
         this.setcbprivilege = setcbprivilege;
     }
 
 
-    public EntityItemBoolType getSetcbprivilege()    {
+    public EntityStateBoolType getSetcbprivilege()    {
         return setcbprivilege;
     }
 
@@ -617,14 +620,14 @@ public class AccesstokenItem
     /**
      */
     public void setSetimezoneprivilege(
-                    final EntityItemBoolType setimezoneprivilege
+                    final EntityStateBoolType setimezoneprivilege
                     )
     {
         this.setimezoneprivilege = setimezoneprivilege;
     }
 
 
-    public EntityItemBoolType getSetimezoneprivilege()    {
+    public EntityStateBoolType getSetimezoneprivilege()    {
         return setimezoneprivilege;
     }
 
@@ -633,14 +636,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeundockprivilege(
-                    final EntityItemBoolType seundockprivilege
+                    final EntityStateBoolType seundockprivilege
                     )
     {
         this.seundockprivilege = seundockprivilege;
     }
 
 
-    public EntityItemBoolType getSeundockprivilege()    {
+    public EntityStateBoolType getSeundockprivilege()    {
         return seundockprivilege;
     }
 
@@ -649,14 +652,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeunsolicitedinputprivilege(
-                    final EntityItemBoolType seunsolicitedinputprivilege
+                    final EntityStateBoolType seunsolicitedinputprivilege
                     )
     {
         this.seunsolicitedinputprivilege = seunsolicitedinputprivilege;
     }
 
 
-    public EntityItemBoolType getSeunsolicitedinputprivilege()    {
+    public EntityStateBoolType getSeunsolicitedinputprivilege()    {
         return seunsolicitedinputprivilege;
     }
 
@@ -665,14 +668,14 @@ public class AccesstokenItem
     /**
      */
     public void setSebatchlogonright(
-                    final EntityItemBoolType sebatchlogonright
+                    final EntityStateBoolType sebatchlogonright
                     )
     {
         this.sebatchlogonright = sebatchlogonright;
     }
 
 
-    public EntityItemBoolType getSebatchlogonright()    {
+    public EntityStateBoolType getSebatchlogonright()    {
         return sebatchlogonright;
     }
 
@@ -681,14 +684,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeinteractivelogonright(
-                    final EntityItemBoolType seinteractivelogonright
+                    final EntityStateBoolType seinteractivelogonright
                     )
     {
         this.seinteractivelogonright = seinteractivelogonright;
     }
 
 
-    public EntityItemBoolType getSeinteractivelogonright()    {
+    public EntityStateBoolType getSeinteractivelogonright()    {
         return seinteractivelogonright;
     }
 
@@ -697,14 +700,14 @@ public class AccesstokenItem
     /**
      */
     public void setSenetworklogonright(
-                    final EntityItemBoolType senetworklogonright
+                    final EntityStateBoolType senetworklogonright
                     )
     {
         this.senetworklogonright = senetworklogonright;
     }
 
 
-    public EntityItemBoolType getSenetworklogonright()    {
+    public EntityStateBoolType getSenetworklogonright()    {
         return senetworklogonright;
     }
 
@@ -713,14 +716,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeremoteinteractivelogonright(
-                    final EntityItemBoolType seremoteinteractivelogonright
+                    final EntityStateBoolType seremoteinteractivelogonright
                     )
     {
         this.seremoteinteractivelogonright = seremoteinteractivelogonright;
     }
 
 
-    public EntityItemBoolType getSeremoteinteractivelogonright()    {
+    public EntityStateBoolType getSeremoteinteractivelogonright()    {
         return seremoteinteractivelogonright;
     }
 
@@ -729,14 +732,14 @@ public class AccesstokenItem
     /**
      */
     public void setSeservicelogonright(
-                    final EntityItemBoolType seservicelogonright
+                    final EntityStateBoolType seservicelogonright
                     )
     {
         this.seservicelogonright = seservicelogonright;
     }
 
 
-    public EntityItemBoolType getSeservicelogonright()    {
+    public EntityStateBoolType getSeservicelogonright()    {
         return seservicelogonright;
     }
 
@@ -745,14 +748,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedenybatchLogonright(
-                    final EntityItemBoolType sedenybatchLogonright
+                    final EntityStateBoolType sedenybatchLogonright
                     )
     {
         this.sedenybatchLogonright = sedenybatchLogonright;
     }
 
 
-    public EntityItemBoolType getSedenybatchLogonright()    {
+    public EntityStateBoolType getSedenybatchLogonright()    {
         return sedenybatchLogonright;
     }
 
@@ -761,14 +764,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedenyinteractivelogonright(
-                    final EntityItemBoolType sedenyinteractivelogonright
+                    final EntityStateBoolType sedenyinteractivelogonright
                     )
     {
         this.sedenyinteractivelogonright = sedenyinteractivelogonright;
     }
 
 
-    public EntityItemBoolType getSedenyinteractivelogonright()    {
+    public EntityStateBoolType getSedenyinteractivelogonright()    {
         return sedenyinteractivelogonright;
     }
 
@@ -777,14 +780,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedenynetworklogonright(
-                    final EntityItemBoolType sedenynetworklogonright
+                    final EntityStateBoolType sedenynetworklogonright
                     )
     {
         this.sedenynetworklogonright = sedenynetworklogonright;
     }
 
 
-    public EntityItemBoolType getSedenynetworklogonright()    {
+    public EntityStateBoolType getSedenynetworklogonright()    {
         return sedenynetworklogonright;
     }
 
@@ -793,14 +796,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedenyremoteInteractivelogonright(
-                    final EntityItemBoolType sedenyremoteInteractivelogonright
+                    final EntityStateBoolType sedenyremoteInteractivelogonright
                     )
     {
         this.sedenyremoteInteractivelogonright = sedenyremoteInteractivelogonright;
     }
 
 
-    public EntityItemBoolType getSedenyremoteInteractivelogonright()    {
+    public EntityStateBoolType getSedenyremoteInteractivelogonright()    {
         return sedenyremoteInteractivelogonright;
     }
 
@@ -809,14 +812,14 @@ public class AccesstokenItem
     /**
      */
     public void setSedenyservicelogonright(
-                    final EntityItemBoolType sedenyservicelogonright
+                    final EntityStateBoolType sedenyservicelogonright
                     )
     {
         this.sedenyservicelogonright = sedenyservicelogonright;
     }
 
 
-    public EntityItemBoolType getSedenyservicelogonright()    {
+    public EntityStateBoolType getSedenyservicelogonright()    {
         return sedenyservicelogonright;
     }
 
@@ -825,15 +828,74 @@ public class AccesstokenItem
     /**
      */
     public void setSetrustedcredmanaccessnameright(
-                    final EntityItemBoolType setrustedcredmanaccessnameright
+                    final EntityStateBoolType setrustedcredmanaccessnameright
                     )
     {
         this.setrustedcredmanaccessnameright = setrustedcredmanaccessnameright;
     }
 
 
-    public EntityItemBoolType getSetrustedcredmanaccessnameright()    {
+    public EntityStateBoolType getSetrustedcredmanaccessnameright()    {
         return setrustedcredmanaccessnameright;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+
+        ref_list.add(  getSecurityPrinciple() );
+        ref_list.add( getSeassignprimarytokenprivilege() );
+        ref_list.add(  getSechangenotifyprivilege() );
+        ref_list.add(  getSecreateglobalprivilege() );
+        ref_list.add( getSecreatepagefileprivilege() );
+        ref_list.add( getSecreatepermanentprivilege() );
+        ref_list.add( getSecreatesymboliclinkprivilege() );
+        ref_list.add( getSecreatetokenprivilege() );
+        ref_list.add( getSedebugprivilege() );
+        ref_list.add( getSeenabledelegationprivilege() );
+        ref_list.add( getSeimpersonateprivilege() );
+        ref_list.add( getSeincreasebasepriorityprivilege() );
+        ref_list.add( getSeincreasequotaprivilege() );
+        ref_list.add( getSeincreaseworkingsetprivilege() );
+        ref_list.add( getSeloaddriverprivilege() );
+        ref_list.add( getSelockmemoryprivilege() );
+        ref_list.add( getSemachineaccountprivilege() );
+        ref_list.add( getSemanagevolumeprivilege() );
+        ref_list.add( getSeprofilesingleprocessprivilege() );
+        ref_list.add( getSerelabelprivilege() );
+        ref_list.add( getSeremoteshutdownprivilege() );
+        ref_list.add( getSerestoreprivilege() );
+        ref_list.add( getSesecurityprivilege() );
+        ref_list.add( getSeshutdownprivilege() );
+        ref_list.add( getSesyncagentprivilege() );
+        ref_list.add( getSesystemenvironmentprivilege() );
+        ref_list.add( getSesystemprofileprivilege() );
+        ref_list.add( getSesystemtimeprivilege() );
+        ref_list.add( getSetakeownershipprivilege() );
+        ref_list.add( getSetcbprivilege() );
+        ref_list.add( getSetimezoneprivilege() );
+        ref_list.add( getSeundockprivilege() );
+        ref_list.add( getSeunsolicitedinputprivilege() );
+        ref_list.add( getSebatchlogonright() );
+        ref_list.add( getSeinteractivelogonright() );
+        ref_list.add( getSenetworklogonright() );
+        ref_list.add( getSeremoteinteractivelogonright() );
+        ref_list.add( getSeservicelogonright() );
+        ref_list.add( getSedenybatchLogonright() );
+        ref_list.add( getSedenyinteractivelogonright() );
+        ref_list.add( getSedenynetworklogonright() );
+        ref_list.add( getSedenyremoteInteractivelogonright() );
+        ref_list.add( getSedenyservicelogonright() );
+        ref_list.add( getSetrustedcredmanaccessnameright() );
+
+        return ref_list;
     }
 
 
@@ -843,9 +905,31 @@ public class AccesstokenItem
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof AccessTtokenState)) {
+            return false;
+        }
+
+        return super.equals( obj );
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "accesstoken_item[" + super.toString()
+        return "file_state[" + super.toString()
              + ", security_principle="  + getSecurityPrinciple()
              + ", seassignprimarytokenprivilege" + getSeassignprimarytokenprivilege()
              + ", sechangenotifyprivilege" + getSechangenotifyprivilege()
@@ -894,4 +978,4 @@ public class AccesstokenItem
     }
 
 }
-//AccesstokenItem
+//AccesstokenState
