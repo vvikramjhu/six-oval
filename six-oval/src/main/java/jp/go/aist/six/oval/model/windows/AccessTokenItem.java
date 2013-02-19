@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccessTtokenItem
+public class AccessTokenItem
     extends ItemType
 {
 
@@ -92,13 +92,13 @@ public class AccessTtokenItem
     /**
      * Constructor.
      */
-    public AccessTtokenItem()
+    public AccessTokenItem()
     {
         this( 0 );
     }
 
 
-    public AccessTtokenItem(
+    public AccessTokenItem(
                     final int id
                     )
     {
@@ -106,7 +106,7 @@ public class AccessTtokenItem
     }
 
 
-    public AccessTtokenItem(
+    public AccessTokenItem(
                     final int id,
                     final StatusEnumeration status
                     )

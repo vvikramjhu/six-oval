@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccessTtokenObject
+public class AccessTokenObject
     extends SystemObjectType
 {
 
@@ -58,7 +58,7 @@ public class AccessTtokenObject
     //{1..1}
 
 
-    private AccessTtokenBehaviors  behaviors;
+    private AccessTokenBehaviors  behaviors;
     //{0..1}
 
     private EntityObjectStringType  security_principle;
@@ -72,13 +72,13 @@ public class AccessTtokenObject
     /**
      * Constructor.
      */
-    public AccessTtokenObject()
+    public AccessTokenObject()
     {
         this( null, 0 );
     }
 
 
-    public AccessTtokenObject(
+    public AccessTokenObject(
                     final String id,
                     final int version
                     )
@@ -113,14 +113,14 @@ public class AccessTtokenObject
     /**
      */
     public void setBehaviors(
-                    final AccessTtokenBehaviors behaviors
+                    final AccessTokenBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public AccessTtokenBehaviors getBehaviors()
+    public AccessTokenBehaviors getBehaviors()
     {
         return behaviors;
     }
@@ -218,7 +218,7 @@ public class AccessTtokenObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof AccessTtokenObject)) {
+        if (!(obj instanceof AccessTokenObject)) {
             return false;
         }
 
