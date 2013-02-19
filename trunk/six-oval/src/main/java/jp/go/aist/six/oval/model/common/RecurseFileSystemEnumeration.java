@@ -80,7 +80,6 @@ public enum RecurseFileSystemEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

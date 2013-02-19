@@ -105,7 +105,6 @@ public enum CapabilityEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

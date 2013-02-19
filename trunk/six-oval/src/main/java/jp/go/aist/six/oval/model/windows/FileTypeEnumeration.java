@@ -78,7 +78,6 @@ public enum FileTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

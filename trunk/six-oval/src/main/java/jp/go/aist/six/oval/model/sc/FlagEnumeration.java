@@ -77,7 +77,6 @@ public enum FlagEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

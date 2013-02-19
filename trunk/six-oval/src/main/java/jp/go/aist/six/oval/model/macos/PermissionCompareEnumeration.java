@@ -75,7 +75,6 @@ public enum PermissionCompareEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

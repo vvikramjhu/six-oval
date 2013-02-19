@@ -131,7 +131,6 @@ public class QueryResultsElements<T>
     //  java.lang.Iterable
     //**************************************************************
 
-    @Override
     public Iterator<T> iterator()
     {
         return this._elements.iterator();

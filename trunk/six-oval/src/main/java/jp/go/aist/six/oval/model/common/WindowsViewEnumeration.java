@@ -76,7 +76,6 @@ public enum WindowsViewEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

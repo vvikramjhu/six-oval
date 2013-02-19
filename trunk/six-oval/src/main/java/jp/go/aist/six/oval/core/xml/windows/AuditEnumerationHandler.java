@@ -19,7 +19,7 @@
 
 package jp.go.aist.six.oval.core.xml.windows;
 
-import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.AuditEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
@@ -42,7 +42,7 @@ public class AuditEnumerationHandler
         if (value == null) {
             return null;
         }
-        FileTypeEnumeration  e = FileTypeEnumeration.class.cast( value );
+        AuditEnumeration  e = AuditEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -56,15 +56,15 @@ public class AuditEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FileTypeEnumeration.fromValue( value.toString() );
+        return AuditEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FileTypeEnumeration> getFieldType()
+    public Class<AuditEnumeration> getFieldType()
     {
-        return FileTypeEnumeration.class;
+        return AuditEnumeration.class;
     }
 
 

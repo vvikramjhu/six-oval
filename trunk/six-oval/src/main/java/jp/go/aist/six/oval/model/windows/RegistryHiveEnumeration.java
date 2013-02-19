@@ -77,7 +77,6 @@ public enum RegistryHiveEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

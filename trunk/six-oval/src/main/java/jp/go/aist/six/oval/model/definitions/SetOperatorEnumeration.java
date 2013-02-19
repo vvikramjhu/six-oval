@@ -74,7 +74,6 @@ public enum SetOperatorEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

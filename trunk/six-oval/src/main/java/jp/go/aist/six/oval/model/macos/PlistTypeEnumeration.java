@@ -79,7 +79,6 @@ public enum PlistTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

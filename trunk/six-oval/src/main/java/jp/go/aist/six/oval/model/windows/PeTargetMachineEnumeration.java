@@ -94,7 +94,6 @@ public enum PeTargetMachineEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -79,7 +79,6 @@ public enum DriveTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

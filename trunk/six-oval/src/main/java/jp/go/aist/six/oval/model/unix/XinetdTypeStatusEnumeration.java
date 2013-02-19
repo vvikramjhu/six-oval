@@ -78,7 +78,6 @@ public enum XinetdTypeStatusEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

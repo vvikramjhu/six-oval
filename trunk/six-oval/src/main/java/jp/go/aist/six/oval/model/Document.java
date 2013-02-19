@@ -110,7 +110,6 @@ public abstract class Document
 //    }
 
 
-    @Override
     public void setPersistentID(
                     final String pid
                     )
@@ -119,7 +118,6 @@ public abstract class Document
     }
 
 
-    @Override
     public String getPersistentID()
     {
         return _id;

@@ -76,7 +76,6 @@ public enum NamingContextEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -77,7 +77,6 @@ public enum MessageLevelEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -101,7 +101,6 @@ public enum AdstypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

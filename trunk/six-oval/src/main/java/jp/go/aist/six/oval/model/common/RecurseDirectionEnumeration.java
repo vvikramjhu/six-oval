@@ -77,7 +77,6 @@ public enum RecurseDirectionEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

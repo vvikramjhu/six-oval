@@ -59,7 +59,6 @@ public class Cpe
     //  Comparable
     //**************************************************************
 
-    @Override
     public int compareTo(
                     final Cpe o
                     )

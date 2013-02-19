@@ -100,7 +100,6 @@ public enum Family
 
 
 
-    @Override
     public String value()
     {
         return value;

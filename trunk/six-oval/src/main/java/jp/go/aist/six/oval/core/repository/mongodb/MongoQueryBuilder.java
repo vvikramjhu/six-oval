@@ -283,7 +283,6 @@ implements QueryBuilder
     //  QueryBuilder
     //**************************************************************
 
-    @Override
     public <T>
     Query<T> build(
                     final Query<T> query

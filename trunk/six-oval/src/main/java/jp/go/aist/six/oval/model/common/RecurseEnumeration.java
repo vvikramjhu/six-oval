@@ -78,7 +78,6 @@ public enum RecurseEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -75,7 +75,6 @@ public enum LdapBehaviorsEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -90,7 +90,6 @@ public enum SharedResourceTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -85,7 +85,6 @@ public enum ServiceCurrentStateEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

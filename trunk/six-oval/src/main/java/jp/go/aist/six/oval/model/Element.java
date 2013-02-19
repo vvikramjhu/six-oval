@@ -209,7 +209,6 @@ public abstract class Element
     //  java.lang.Comparable
     //*********************************************************************
 
-    @Override
     public int compareTo(
                     final Element o
                     )

@@ -83,7 +83,6 @@ public enum ServiceTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

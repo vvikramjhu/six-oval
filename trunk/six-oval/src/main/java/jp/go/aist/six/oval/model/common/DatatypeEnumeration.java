@@ -96,7 +96,6 @@ public enum DatatypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -78,7 +78,6 @@ public enum SmfProtocolEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

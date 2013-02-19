@@ -79,7 +79,6 @@ public enum ClassEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

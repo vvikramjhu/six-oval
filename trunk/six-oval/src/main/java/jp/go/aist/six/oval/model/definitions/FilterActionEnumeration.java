@@ -74,7 +74,6 @@ public enum FilterActionEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

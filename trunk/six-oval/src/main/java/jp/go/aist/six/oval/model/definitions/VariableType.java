@@ -82,7 +82,6 @@ public class VariableType
 
 
 
-        @Override
         public String value()
         {
             return value;

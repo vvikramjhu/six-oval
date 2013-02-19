@@ -76,7 +76,6 @@ public enum OperatorEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

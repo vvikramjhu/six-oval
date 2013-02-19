@@ -77,7 +77,6 @@ public enum WaitStatusEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

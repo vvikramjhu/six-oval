@@ -84,7 +84,6 @@ public enum OperationEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

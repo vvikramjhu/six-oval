@@ -112,15 +112,12 @@ public class CriterionType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getTestRef();
     }
 
 
-
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.TEST;

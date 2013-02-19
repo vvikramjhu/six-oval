@@ -86,7 +86,6 @@ public enum InterfaceEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

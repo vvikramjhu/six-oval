@@ -79,7 +79,6 @@ public enum ResultEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;
