@@ -42,7 +42,7 @@ public abstract class AbstractBehaviors
     public static final Integer  DEFAULT_MAX_DEPTH = -1;
 
     private Integer  max_depth;
-    //{optional, default='-1', minInclusive='-1'}
+    //{optional, default='-1', xsd:fractionDigits='0', xsd:minInclusive='-1'}
 
 
     /**
@@ -87,10 +87,12 @@ public abstract class AbstractBehaviors
     }
 
 
-    protected final int _maxDepth()
+    public static int maxDepth(
+                    final AbstractBehaviors obj
+                    )
     {
-        Integer  maxDepth = getMaxDepth();
-        return (maxDepth == null ? DEFAULT_MAX_DEPTH.intValue() : maxDepth.intValue());
+        Integer  max_depth = obj.getMaxDepth();
+        return (max_depth == null ? DEFAULT_MAX_DEPTH.intValue() : max_depth.intValue());
     }
 
 
@@ -111,10 +113,12 @@ public abstract class AbstractBehaviors
     }
 
 
-    protected final RecurseDirectionEnumeration _recurseDirection()
+    public static RecurseDirectionEnumeration recurseDirection(
+                    final AbstractBehaviors obj
+                    )
     {
-        RecurseDirectionEnumeration  recurseDirection = getRecurseDirection();
-        return (recurseDirection == null ? DEFAULT_RECURSE_DIRECTION : recurseDirection);
+        RecurseDirectionEnumeration  recurse_direction = obj.getRecurseDirection();
+        return (recurse_direction == null ? DEFAULT_RECURSE_DIRECTION : recurse_direction);
     }
 
 
@@ -129,9 +133,9 @@ public abstract class AbstractBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + _maxDepth();
+        result = prime * result + maxDepth( this );
 
-        result = prime * result + _recurseDirection().hashCode();
+        result = prime * result + recurseDirection( this ).hashCode();
 
         return result;
     }
@@ -152,8 +156,8 @@ public abstract class AbstractBehaviors
         }
 
         AbstractBehaviors  other = (AbstractBehaviors)obj;
-        if (this._maxDepth() == other._maxDepth()) {
-            if (this.getRecurseDirection() == other.getRecurseDirection()) {
+        if (maxDepth( this ) == maxDepth( other )) {
+            if (recurseDirection( this ) == recurseDirection( other )) {
                 return true;
             }
         }

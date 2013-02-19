@@ -44,17 +44,6 @@
     <class name="jp.go.aist.six.oval.model.unix.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
     </class>
-    <!-- backup
-    <class name="jp.go.aist.six.oval.model.unix.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
-
-        <field name="recurse"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.common.RecurseEnumerationHandler">
-            <bind-xml name="recurse" node="attribute"/>
-        </field>
-    </class>
-    -->
 
 <!-- gconf type-->
     <class name="jp.go.aist.six.oval.model.unix.EntityStateGconfTypeType"

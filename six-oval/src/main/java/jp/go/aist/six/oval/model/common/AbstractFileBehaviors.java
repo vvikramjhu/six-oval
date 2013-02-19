@@ -70,10 +70,12 @@ public abstract class AbstractFileBehaviors
     }
 
 
-    protected final RecurseFileSystemEnumeration _recurseFileSystem()
+    public static RecurseFileSystemEnumeration recurseFileSystem(
+                    final AbstractFileBehaviors obj
+                    )
     {
-        RecurseFileSystemEnumeration  recurseFileSystem = getRecurseFileSystem();
-        return (recurseFileSystem == null ? DEFAULT_RECURSE_FILE_SYSTEM : recurseFileSystem);
+        RecurseFileSystemEnumeration  recurse_file_system = obj.getRecurseFileSystem();
+        return (recurse_file_system == null ? DEFAULT_RECURSE_FILE_SYSTEM : recurse_file_system);
     }
 
 
@@ -88,7 +90,7 @@ public abstract class AbstractFileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _recurseFileSystem().hashCode();
+        result = prime * result + recurseFileSystem( this ).hashCode();
 
         return result;
     }
@@ -106,7 +108,7 @@ public abstract class AbstractFileBehaviors
 
         if (super.equals( obj )) {
             AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
-            if (this.getRecurseFileSystem() == other.getRecurseFileSystem()) {
+            if (recurseFileSystem( this ) == recurseFileSystem( other )) {
                 return true;
             }
         }

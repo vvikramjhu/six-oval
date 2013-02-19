@@ -39,12 +39,11 @@ public class RegistryBehaviors
     /**
      * The default windowsView: "64_bit".
      */
-    public static final WindowsViewEnumeration  DEFAULT_WINDOWS_VIEW=
-        WindowsViewEnumeration.WINDOWS_64_BIT;
+    public static final WindowsViewEnumeration  DEFAULT_WINDOWS_VIEW =
+                    WindowsViewEnumeration.WINDOWS_64_BIT;
 
     private WindowsViewEnumeration  windows_view;
     //{optional, default="64_bit"}
-
 
 
 
@@ -73,10 +72,12 @@ public class RegistryBehaviors
     }
 
 
-    protected final WindowsViewEnumeration _windowsView()
+    public static WindowsViewEnumeration windowsView(
+                    final RegistryBehaviors obj
+                    )
     {
-        WindowsViewEnumeration  windows_view = getWindowsView();
-        return (windows_view == null ? DEFAULT_WINDOWS_VIEW: windows_view);
+        WindowsViewEnumeration  windows_view = obj.getWindowsView();
+        return (windows_view == null ? DEFAULT_WINDOWS_VIEW : windows_view);
     }
 
 
@@ -88,7 +89,12 @@ public class RegistryBehaviors
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        result = prime * result + windowsView( this ).hashCode();
+
+        return result;
     }
 
 
@@ -102,8 +108,17 @@ public class RegistryBehaviors
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            RegistryBehaviors  other = (RegistryBehaviors)obj;
+            if (windowsView( this ) == windowsView( other )) {
+                return true;
+            }
+        }
+
+        return false;
     }
+
+
 
     @Override
     public String toString()

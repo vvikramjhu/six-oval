@@ -20,6 +20,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.common.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.common.WindowsViewEnumeration;
 
 
 
@@ -35,7 +36,11 @@ public class FileBehaviors
     extends AbstractFileBehaviors
 {
 
-//    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
+    public static final WindowsViewEnumeration  DEFAULT_WINDOWS_VIEW
+    = WindowsViewEnumeration.WINDOWS_64_BIT;
+
+    private WindowsViewEnumeration  windows_view;
+    //{optional, default="64_bit"}
 
 
 
@@ -48,6 +53,32 @@ public class FileBehaviors
 
 
 
+    /**
+     */
+    public void setWindowsView(
+                    final WindowsViewEnumeration windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public WindowsViewEnumeration getWindowsView()
+    {
+        return windows_view;
+    }
+
+
+    public static WindowsViewEnumeration windowsView(
+                    final FileBehaviors obj
+                    )
+    {
+        WindowsViewEnumeration  windows_view = obj.getWindowsView();
+        return (windows_view == null ? DEFAULT_WINDOWS_VIEW : windows_view);
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -55,7 +86,12 @@ public class FileBehaviors
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        result = prime * result + windowsView( this ).hashCode();
+
+        return result;
     }
 
 
@@ -69,7 +105,24 @@ public class FileBehaviors
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            FileBehaviors  other = (FileBehaviors)obj;
+            if (windowsView( this ) == windowsView( other )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", windows_view=" + getWindowsView()
+                        ;
     }
 
 }

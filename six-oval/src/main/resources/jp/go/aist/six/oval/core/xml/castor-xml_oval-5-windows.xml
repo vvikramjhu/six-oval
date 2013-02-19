@@ -112,6 +112,11 @@
 
     <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
+        <field name="windowsView"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.WindowsViewEnumerationHandler">
+            <bind-xml name="windows_view" node="attribute"/>
+        </field>
     </class>
 
     <class name="jp.go.aist.six.oval.model.windows.FileAuditPermissions53Behaviors"

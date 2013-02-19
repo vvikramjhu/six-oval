@@ -21,6 +21,7 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors;
 import jp.go.aist.six.oval.model.common.RecurseEnumeration;
+import jp.go.aist.six.oval.model.common.WindowsViewEnumeration;
 
 
 
@@ -37,14 +38,11 @@ public class FileBehaviors
     extends AbstractRecurseFileBehaviors
 {
 
-//    /**
-//     * The default recurseDirection: "symlinks and directories".
-//     */
-//    public static final RecurseEnumeration  DEFAULT_RECURSE =
-//        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
-//
-//    private RecurseEnumeration  recurse;
-//    //{optional, default='symlinks and directories'}
+    public static final WindowsViewEnumeration  DEFAULT_WINDOWS_VIEW
+    = WindowsViewEnumeration.WINDOWS_64_BIT;
+
+    private WindowsViewEnumeration  windows_view;
+    //{optional, default="64_bit"}
 
 
 
@@ -57,19 +55,45 @@ public class FileBehaviors
 
 
 
+    /**
+     */
+    public void setWindowsView(
+                    final WindowsViewEnumeration windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public WindowsViewEnumeration getWindowsView()
+    {
+        return windows_view;
+    }
+
+
+    public static WindowsViewEnumeration windowsView(
+                    final FileBehaviors obj
+                    )
+    {
+        WindowsViewEnumeration  windows_view = obj.getWindowsView();
+        return (windows_view == null ? DEFAULT_WINDOWS_VIEW : windows_view);
+    }
+
+
+
     //**************************************************************
     //  AbstractRecurseFileBehaviors
     //**************************************************************
 
     @Override
     public void setRecurse(
-                    final String recurse
+                    final RecurseEnumeration recurse
                     )
     {
         if (recurse != null) {
-            if (RecurseEnumeration.DIRECTORIES.value().equals( recurse )
-                            ||  RecurseEnumeration.SYMLINKS.value().equals( recurse )
-                            ||  RecurseEnumeration.SYMLINKS_AND_DIRECTORIES.value().equals( recurse )
+            if (recurse == RecurseEnumeration.DIRECTORIES
+                            ||  recurse == RecurseEnumeration.SYMLINKS
+                            ||  recurse == RecurseEnumeration.SYMLINKS_AND_DIRECTORIES
                             ) {
                 // valid value!!!
             }
@@ -87,7 +111,12 @@ public class FileBehaviors
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        result = prime * result + windowsView( this ).hashCode();
+
+        return result;
     }
 
 
@@ -97,15 +126,28 @@ public class FileBehaviors
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
         if (!(obj instanceof FileBehaviors)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            FileBehaviors  other = (FileBehaviors)obj;
+            if (windowsView( this ) == windowsView( other )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", windows_view=" + getWindowsView()
+                        ;
     }
 
 }
