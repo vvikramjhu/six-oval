@@ -78,7 +78,6 @@ public enum CheckEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

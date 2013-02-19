@@ -188,7 +188,6 @@ public enum ComponentType
 
 
 
-    @Override
     public String value()
     {
         return value;

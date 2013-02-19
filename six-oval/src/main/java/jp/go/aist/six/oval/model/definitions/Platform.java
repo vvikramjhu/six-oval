@@ -64,7 +64,6 @@ public class Platform
     //  Comparable
     //**************************************************************
 
-    @Override
     public int compareTo(
                     final Platform o
                     )

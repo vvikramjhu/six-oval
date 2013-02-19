@@ -161,7 +161,6 @@ public class OvalRepositorySummary
     public static class OvalResultsTimestampComparator
     implements Comparator<OvalResults>
     {
-        @Override
         public int compare( final OvalResults o1, final OvalResults o2 )
         {
             GeneratorType  generator1 = o1.getGenerator();

@@ -87,7 +87,6 @@ public enum LdaptypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

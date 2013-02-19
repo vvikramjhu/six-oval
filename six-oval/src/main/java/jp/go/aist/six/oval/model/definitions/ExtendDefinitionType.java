@@ -90,15 +90,12 @@ public class ExtendDefinitionType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getDefinitionRef();
     }
 
 
-
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.DEFINITION;

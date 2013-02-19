@@ -80,7 +80,6 @@ public enum RegistryTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

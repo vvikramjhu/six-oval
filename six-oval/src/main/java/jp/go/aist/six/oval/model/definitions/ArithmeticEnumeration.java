@@ -73,7 +73,6 @@ public enum ArithmeticEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

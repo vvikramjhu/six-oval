@@ -78,7 +78,6 @@ public enum ExistenceEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

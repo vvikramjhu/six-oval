@@ -508,7 +508,6 @@ public class DefinitionsElementAssoc
     //  Persistable
     //**************************************************************
 
-    @Override
     public void setPersistentID(
                     final String pid
                     )
@@ -517,7 +516,6 @@ public class DefinitionsElementAssoc
     }
 
 
-    @Override
     public String getPersistentID()
     {
         return getOvalID();

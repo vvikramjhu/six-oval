@@ -90,7 +90,6 @@ public class CriterionType
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getTestRef();
@@ -98,7 +97,6 @@ public class CriterionType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.TEST;

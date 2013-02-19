@@ -77,7 +77,6 @@ public enum AddrTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -76,7 +76,6 @@ public enum SeverityEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -77,7 +77,6 @@ public enum AuditEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

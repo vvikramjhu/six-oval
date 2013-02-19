@@ -76,7 +76,6 @@ public enum RpmVerifyResultEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

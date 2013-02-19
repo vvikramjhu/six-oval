@@ -85,7 +85,6 @@ public enum GconfTypeEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -65,7 +65,6 @@ public class Product
     //  Comparable
     //**************************************************************
 
-    @Override
     public int compareTo(
                     final Product o
                     )

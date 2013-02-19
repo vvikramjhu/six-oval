@@ -120,7 +120,6 @@ public class MongoOvalDatabase
     //  OvalDatastore
     //*********************************************************************
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     T findById(
                     final Class<T> type,
@@ -139,7 +138,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     List<T> find(
                     final Class<T> type
@@ -160,7 +158,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     List<T> find(
                     final Class<T> type,
@@ -190,7 +187,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     List<K> findId(
                     final Class<T> type
@@ -210,7 +206,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     List<K> findId(
                     final Class<T> type,
@@ -240,7 +235,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     long count(
                     final Class<T> type
@@ -260,7 +254,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     long count(
                     final Class<T> type,
@@ -302,7 +295,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     K save(
                     final Class<T> type,
@@ -323,7 +315,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     void deleteById(
                     final Class<T> type,
@@ -341,7 +332,6 @@ public class MongoOvalDatabase
 
 
 
-    @Override
     public <K, T extends Persistable<K> & OvalObject>
     void delete(
                     final Class<T> type
@@ -370,7 +360,6 @@ public class MongoOvalDatabase
     //  DAORegistry
     //**********************************************************************
 
-    @Override
     public <T, K> DAO<T, K> getDAO(
                     final Class<T> objectType
                     )

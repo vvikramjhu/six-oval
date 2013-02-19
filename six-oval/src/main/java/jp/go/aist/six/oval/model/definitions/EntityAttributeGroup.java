@@ -290,7 +290,6 @@ public abstract class EntityAttributeGroup
     //  ElementRef
     //*********************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getVarRef();
@@ -298,7 +297,6 @@ public abstract class EntityAttributeGroup
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.VARIABLE;

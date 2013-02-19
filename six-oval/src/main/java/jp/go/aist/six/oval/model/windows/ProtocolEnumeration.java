@@ -74,7 +74,6 @@ public enum ProtocolEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

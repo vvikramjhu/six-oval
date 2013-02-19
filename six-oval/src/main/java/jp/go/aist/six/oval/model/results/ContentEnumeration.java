@@ -75,7 +75,6 @@ public enum ContentEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

@@ -83,7 +83,6 @@ public class StateRefType
     //  ElementRef
     //**************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getStateRef();
@@ -91,7 +90,6 @@ public class StateRefType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.STATE;

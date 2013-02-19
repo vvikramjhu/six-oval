@@ -81,7 +81,6 @@ public enum FamilyEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

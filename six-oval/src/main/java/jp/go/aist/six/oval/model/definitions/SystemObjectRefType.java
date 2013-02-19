@@ -83,7 +83,6 @@ public class SystemObjectRefType
     //  ElementRef
     //**************************************************************
 
-    @Override
     public String ovalGetRefId()
     {
         return getObjectRef();
@@ -91,7 +90,6 @@ public class SystemObjectRefType
 
 
 
-    @Override
     public ElementType ovalGetRefType()
     {
         return ElementType.OBJECT;

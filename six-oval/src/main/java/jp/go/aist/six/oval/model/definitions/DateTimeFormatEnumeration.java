@@ -78,7 +78,6 @@ public enum DateTimeFormatEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

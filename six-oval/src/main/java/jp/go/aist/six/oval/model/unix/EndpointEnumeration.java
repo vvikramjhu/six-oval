@@ -77,7 +77,6 @@ public enum EndpointEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;

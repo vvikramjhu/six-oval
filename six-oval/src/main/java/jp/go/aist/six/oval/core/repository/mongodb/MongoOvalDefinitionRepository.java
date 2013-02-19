@@ -133,7 +133,6 @@ public class MongoOvalDefinitionRepository
     // Definition
     //=====================================================================
 
-    @Override
     public DefinitionType findDefinitionById(
                     final String oval_id
                     )
@@ -153,7 +152,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<DefinitionType> findDefinition()
     {
         List<DefinitionType>  p_list = null;
@@ -169,7 +167,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<DefinitionType> findDefinition(
                     final QueryParams params
                     )
@@ -186,7 +183,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<String> findDefinitionId()
     {
         List<String>  p_list = null;
@@ -201,7 +197,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<String> findDefinitionId(
                     final QueryParams params
                     )
@@ -218,7 +213,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public long countDefinition()
     {
         long  count = 0L;
@@ -233,7 +227,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public long countDefinition(
                     final QueryParams params
                     )
@@ -250,7 +243,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public String saveDefinition(
                     final DefinitionType def
                     )
@@ -271,7 +263,6 @@ public class MongoOvalDefinitionRepository
     // definitions element (Definition, Test, Object, State, Variable)
     //=====================================================================
 
-    @Override
     public DefinitionsElement findElementById(
                     final String oval_id
                     )
@@ -291,7 +282,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<DefinitionsElement> findElement(
                     final QueryParams params
                     )
@@ -351,7 +341,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<String> findElementId(
                     final QueryParams params
                     )
@@ -400,7 +389,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public long countElement(
                     final QueryParams params
                     )
@@ -450,7 +438,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public String saveElement(
                     final DefinitionsElement element
                     )
@@ -482,7 +469,6 @@ public class MongoOvalDefinitionRepository
     // OvalDefinitions
     //=====================================================================
 
-    @Override
     public OvalDefinitions findOvalDefinitionsById(
                     final String id
                     )
@@ -499,7 +485,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalDefinitionsId()
     {
         List<String>  p_list = null;
@@ -514,7 +499,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public QueryResults<String> findOvalDefinitionsId(
                     final QueryParams params
                     )
@@ -531,7 +515,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public long countOvalDefinitions()
     {
         long  count = 0L;
@@ -546,7 +529,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public long countOvalDefinitions(
                     final QueryParams params
                     )
@@ -563,7 +545,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    @Override
     public String saveOvalDefinitions(
                     final OvalDefinitions oval_defs
                     )

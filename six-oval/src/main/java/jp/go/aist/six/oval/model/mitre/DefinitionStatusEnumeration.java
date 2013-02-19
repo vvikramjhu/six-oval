@@ -72,7 +72,6 @@ public enum DefinitionStatusEnumeration
 
 
 
-    @Override
     public String value()
     {
         return value;
