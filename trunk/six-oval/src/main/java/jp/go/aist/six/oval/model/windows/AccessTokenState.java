@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccessTtokenState
+public class AccessTokenState
     extends StateType
 {
 
@@ -93,13 +93,13 @@ public class AccessTtokenState
     /**
      * Constructor.
      */
-    public AccessTtokenState()
+    public AccessTokenState()
     {
         this( null, 0 );
     }
 
 
-    public AccessTtokenState(
+    public AccessTokenState(
                     final String id,
                     final int version
                     )
@@ -108,7 +108,7 @@ public class AccessTtokenState
     }
 
 
-    public AccessTtokenState(
+    public AccessTokenState(
                     final String id,
                     final int version,
                     final String comment
@@ -917,7 +917,7 @@ public class AccessTtokenState
                     final Object obj
                     )
     {
-        if (!(obj instanceof AccessTtokenState)) {
+        if (!(obj instanceof AccessTokenState)) {
             return false;
         }
 

@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccessTtokenBehaviors
+public class AccessTokenBehaviors
     implements OvalObject
 {
 
@@ -42,17 +42,17 @@ public class AccessTtokenBehaviors
     //{optional, default='true'}
 
 
-    public static final Boolean  DEFAULT_RESOLVE_GROUP =Boolean.TRUE;
+    public static final Boolean  DEFAULT_RESOLVE_GROUP =Boolean.FALSE;
 
     private Boolean  resolve_group;
-    //{optional, default='true'}
+    //{optional, default='false'}
 
 
 
     /**
      * Constructor.
      */
-    public AccessTtokenBehaviors()
+    public AccessTokenBehaviors()
     {
     }
 
@@ -74,8 +74,8 @@ public class AccessTtokenBehaviors
     }
 
 
-    protected static final Boolean _includeGroup(
-                    final AccessTtokenBehaviors behaviors
+    public static Boolean includeGroup(
+                    final AccessTokenBehaviors behaviors
                     )
     {
         Boolean  include_group = behaviors.getIncludeGroup();
@@ -100,8 +100,8 @@ public class AccessTtokenBehaviors
     }
 
 
-    protected static final Boolean _resolveGroup(
-                    final AccessTtokenBehaviors behaviors
+    public static Boolean resolveGroup(
+                    final AccessTokenBehaviors behaviors
                     )
     {
         Boolean  scope = behaviors.getResolveGroup();
@@ -120,8 +120,8 @@ public class AccessTtokenBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _includeGroup( this ).hashCode();
-        result = prime * result + _resolveGroup( this ).hashCode();
+        result = prime * result + includeGroup( this ).hashCode();
+        result = prime * result + resolveGroup( this ).hashCode();
 
         return result;
     }
@@ -137,14 +137,14 @@ public class AccessTtokenBehaviors
             return true;
         }
 
-        if (!(obj instanceof AccessTtokenBehaviors)) {
+        if (!(obj instanceof AccessTokenBehaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            AccessTtokenBehaviors  other = (AccessTtokenBehaviors)obj;
-            if (_includeGroup( this ) == _includeGroup( other )) {
-                if (_resolveGroup( this ) == _resolveGroup( other )) {
+            AccessTokenBehaviors  other = (AccessTokenBehaviors)obj;
+            if (includeGroup( this ) == includeGroup( other )) {
+                if (resolveGroup( this ) == resolveGroup( other )) {
                     return true;
                 }
             }
