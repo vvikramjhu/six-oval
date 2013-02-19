@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccesstokenBehaviors
+public class AccessTtokenBehaviors
     implements OvalObject
 {
 
@@ -52,7 +52,7 @@ public class AccesstokenBehaviors
     /**
      * Constructor.
      */
-    public AccesstokenBehaviors()
+    public AccessTtokenBehaviors()
     {
     }
 
@@ -75,7 +75,7 @@ public class AccesstokenBehaviors
 
 
     protected static final Boolean _includeGroup(
-                    final AccesstokenBehaviors behaviors
+                    final AccessTtokenBehaviors behaviors
                     )
     {
         Boolean  include_group = behaviors.getIncludeGroup();
@@ -101,7 +101,7 @@ public class AccesstokenBehaviors
 
 
     protected static final Boolean _resolveGroup(
-                    final AccesstokenBehaviors behaviors
+                    final AccessTtokenBehaviors behaviors
                     )
     {
         Boolean  scope = behaviors.getResolveGroup();
@@ -137,12 +137,12 @@ public class AccesstokenBehaviors
             return true;
         }
 
-        if (!(obj instanceof AccesstokenBehaviors)) {
+        if (!(obj instanceof AccessTtokenBehaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            AccesstokenBehaviors  other = (AccesstokenBehaviors)obj;
+            AccessTtokenBehaviors  other = (AccessTtokenBehaviors)obj;
             if (_includeGroup( this ) == _includeGroup( other )) {
                 if (_resolveGroup( this ) == _resolveGroup( other )) {
                     return true;

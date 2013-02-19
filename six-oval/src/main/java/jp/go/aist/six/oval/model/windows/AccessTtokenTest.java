@@ -34,20 +34,20 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class AccesstokenTest
+public class AccessTtokenTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public AccesstokenTest()
+    public AccessTtokenTest()
     {
         this( null, 0 );
     }
 
 
-    public AccesstokenTest(
+    public AccessTtokenTest(
                     final String id,
                     final int version
                     )
@@ -56,7 +56,7 @@ public class AccesstokenTest
     }
 
 
-    public AccesstokenTest(
+    public AccessTtokenTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -103,7 +103,7 @@ public class AccesstokenTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof AccesstokenTest)) {
+        if (!(obj instanceof AccessTtokenTest)) {
             return false;
         }
 
