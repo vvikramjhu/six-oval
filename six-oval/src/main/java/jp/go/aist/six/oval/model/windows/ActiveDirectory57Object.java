@@ -52,10 +52,12 @@ public class ActiveDirectory57Object
     private EntityObjectNamingContextType  naming_context;
     //{1..1}
 
-    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
+    private EntityObjectStringType  relative_dn;
+//    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  attribute = new EntityObjectStringType();
+    private EntityObjectStringType  attribute;
+//    private EntityObjectStringType  attribute = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();

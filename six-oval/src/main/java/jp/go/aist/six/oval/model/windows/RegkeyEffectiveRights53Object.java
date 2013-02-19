@@ -64,7 +64,8 @@ public class RegkeyEffectiveRights53Object
     private EntityObjectRegistryHiveType  hive;
     //{1..1}
 
-    private EntityObjectStringType  key = new EntityObjectStringType();
+    private EntityObjectStringType  key;
+//    private EntityObjectStringType  key = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private EntityObjectStringType  trustee_sid;
