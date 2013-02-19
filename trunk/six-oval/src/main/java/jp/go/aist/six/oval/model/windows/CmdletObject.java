@@ -51,13 +51,16 @@ public class CmdletObject
     private Set  set;
 
 
-    private EntityObjectStringType  module_name = new EntityObjectStringType();
+    private EntityObjectStringType  module_name;
+//    private EntityObjectStringType  module_name = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectGUIDType  module_id = new EntityObjectGUIDType();
+    private EntityObjectGUIDType  module_id;
+//    private EntityObjectGUIDType  module_id = new EntityObjectGUIDType();
     //{1..1, nillable="true"}
 
-    private EntityObjectVersionType  module_version = new EntityObjectVersionType();
+    private EntityObjectVersionType  module_version;
+//    private EntityObjectVersionType  module_version = new EntityObjectVersionType();
     //{1..1, nillable="true"}
 
     private EntityObjectCmdletVerbType  verb;
@@ -66,10 +69,12 @@ public class CmdletObject
     private EntityObjectStringType  noun;
     //{1..1}
 
-    private EntityObjectRecordType  parameters = new EntityObjectRecordType();
+    private EntityObjectRecordType  parameters;
+//    private EntityObjectRecordType  parameters = new EntityObjectRecordType();
     //{1..1, nillable="true"}
 
-    private EntityObjectRecordType  select = new EntityObjectRecordType();
+    private EntityObjectRecordType  select;
+//    private EntityObjectRecordType  select = new EntityObjectRecordType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();

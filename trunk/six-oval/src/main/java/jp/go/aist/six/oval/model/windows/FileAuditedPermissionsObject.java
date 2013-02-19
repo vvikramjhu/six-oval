@@ -63,7 +63,8 @@ public class FileAuditedPermissionsObject
     private EntityObjectStringType  path;
     //{1..1}
 
-    private EntityObjectStringType  filename = new EntityObjectStringType();
+    private EntityObjectStringType  filename;
+//    private EntityObjectStringType  filename = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private EntityObjectStringType  trustee_name;
