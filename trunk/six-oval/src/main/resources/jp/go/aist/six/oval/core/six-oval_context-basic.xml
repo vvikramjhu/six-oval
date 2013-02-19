@@ -66,6 +66,7 @@
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-definitions.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-sc.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-results.xml</value>
+                 <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-variables.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-independent.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-linux.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-macos.xml</value>
