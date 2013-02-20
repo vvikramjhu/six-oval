@@ -80,9 +80,11 @@ public abstract class EntityAttributeGroup
     }
 
 
-    protected final DatatypeEnumeration _datatype()
+    public static DatatypeEnumeration datatype(
+                    final EntityAttributeGroup obj
+                    )
     {
-        DatatypeEnumeration  datatype = getDatatype();
+        DatatypeEnumeration  datatype = obj.getDatatype();
         return (datatype == null ? DEFAULT_DATATYPE : datatype);
     }
 
@@ -102,9 +104,11 @@ public abstract class EntityAttributeGroup
     }
 
 
-    protected final Boolean _mask()
+    public static Boolean mask(
+                    final EntityAttributeGroup obj
+                    )
     {
-        Boolean  mask = getMask();
+        Boolean  mask = obj.getMask();
         return (mask == null ? DEFAULT_MASK : mask);
     }
 
@@ -124,9 +128,11 @@ public abstract class EntityAttributeGroup
     }
 
 
-    protected final StatusEnumeration _status()
+    public static StatusEnumeration status(
+                    final EntityAttributeGroup obj
+                    )
     {
-        StatusEnumeration  status = getStatus();
+        StatusEnumeration  status = obj.getStatus();
         return (status == null ? DEFAULT_STATUS : status);
     }
 
@@ -142,13 +148,13 @@ public abstract class EntityAttributeGroup
         final int  prime = 37;
         int  result = 17;
 
-        DatatypeEnumeration  datatype = _datatype();
+        DatatypeEnumeration  datatype = datatype( this );
         result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
 
-        Boolean  mask = _mask();
+        Boolean  mask = mask( this );
         result = prime * result + (mask ? 0 : 1);
 
-        StatusEnumeration  status = _status();
+        StatusEnumeration  status = status( this );
         result = prime * result + ((status == null) ? 0 : status.hashCode());
 
         return result;
@@ -170,9 +176,9 @@ public abstract class EntityAttributeGroup
         }
 
         EntityAttributeGroup  other = (EntityAttributeGroup)obj;
-        if (this._status() == other._status()) {
-            if (this._datatype() == other._datatype()) {
-                if (this._mask() == other._mask()) {
+        if (status( this ) == status( other )) {
+            if (datatype( this ) == datatype( other )) {
+                if (mask( this ) == mask( other )) {
                     return true;
                 }
             }

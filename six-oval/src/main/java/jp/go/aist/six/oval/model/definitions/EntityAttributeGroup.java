@@ -149,7 +149,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static final DatatypeEnumeration datatype(
+    public static DatatypeEnumeration datatype(
                     final EntityAttributeGroup eag
                     )
     {
@@ -183,7 +183,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static final OperationEnumeration operation(
+    public static OperationEnumeration operation(
                     final EntityAttributeGroup eag
                     )
     {
@@ -217,7 +217,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static final Boolean mask(
+    public static Boolean mask(
                     final EntityAttributeGroup eag
                     )
     {

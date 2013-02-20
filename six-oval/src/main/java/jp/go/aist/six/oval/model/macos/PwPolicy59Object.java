@@ -52,13 +52,16 @@ public class PwPolicy59Object
     private EntityObjectStringType  target_user;
     //{1..1}
 
-    private EntityObjectStringType  username = new EntityObjectStringType();
+    private EntityObjectStringType  username;
+//    private EntityObjectStringType  username = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  userpass = new EntityObjectStringType();
+    private EntityObjectStringType  userpass;
+//    private EntityObjectStringType  userpass = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  directory_node = new EntityObjectStringType();
+    private EntityObjectStringType  directory_node;
+//    private EntityObjectStringType  directory_node = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();

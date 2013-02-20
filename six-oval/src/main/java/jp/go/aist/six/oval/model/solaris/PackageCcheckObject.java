@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackagecheckObject
+public class PackageCcheckObject
     extends SystemObjectType
 {
 
@@ -67,13 +67,13 @@ public class PackagecheckObject
     /**
      * Constructor.
      */
-    public PackagecheckObject()
+    public PackageCcheckObject()
     {
         this( null, 0 );
     }
 
 
-    public PackagecheckObject(
+    public PackageCcheckObject(
                     final String id,
                     final int version
                     )
@@ -264,7 +264,7 @@ public class PackagecheckObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckObject)) {
+        if (!(obj instanceof PackageCcheckObject)) {
             return false;
         }
 

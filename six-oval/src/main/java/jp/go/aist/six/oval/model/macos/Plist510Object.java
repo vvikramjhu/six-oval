@@ -51,7 +51,8 @@ public class Plist510Object
     //{1..1}
 
 
-    private EntityObjectStringType  key = new EntityObjectStringType();
+    private EntityObjectStringType  key;
+//    private EntityObjectStringType  key = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private EntityObjectStringType  app_id;

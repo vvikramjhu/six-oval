@@ -53,7 +53,8 @@ public class GconfObject
     private EntityObjectStringType  key;
     //{1..1}
 
-    private EntityObjectStringType  source = new EntityObjectStringType();
+    private EntityObjectStringType  source;
+//    private EntityObjectStringType  source = new EntityObjectStringType();
     //{1..1, nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();

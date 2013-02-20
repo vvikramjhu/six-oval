@@ -52,11 +52,13 @@ public class Ldap57Object
 
     private EntityObjectStringType  suffix;
 
-    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
-    //{nillable="true"}
+    private EntityObjectStringType  relative_dn;
+//  private EntityObjectStringType  relative_dn = new EntityObjectStringType();
+  //{nillable="true"}
 
-    private EntityObjectStringType  attribute = new EntityObjectStringType();
-    //{nillable="true"}
+  private EntityObjectStringType  attribute;
+//  private EntityObjectStringType  attribute = new EntityObjectStringType();
+  //{nillable="true"}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}

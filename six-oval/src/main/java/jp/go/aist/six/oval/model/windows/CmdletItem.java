@@ -44,17 +44,22 @@ public class CmdletItem
 {
 
     //{0..1, nillable="true"}
-    private EntityItemStringType      module_name = new EntityItemStringType();
-    private EntityItemGUIDType        module_id = new EntityItemGUIDType();
-    private EntityItemVersionType     module_version = new EntityItemVersionType();
+    private EntityItemStringType      module_name;
+//  private EntityItemStringType      module_name = new EntityItemStringType();
+    private EntityItemGUIDType        module_id;
+//  private EntityItemGUIDType        module_id = new EntityItemGUIDType();
+    private EntityItemVersionType     module_version;
+//    private EntityItemVersionType     module_version = new EntityItemVersionType();
 
     //{0..1}
     private EntityItemCmdletVerbType  verb;
     private EntityItemStringType      noun;
 
     //{0..1, nillable="true"}
-    private EntityItemRecordType      parameters = new EntityItemRecordType();
-    private EntityItemRecordType      select = new EntityItemRecordType();
+    private EntityItemRecordType      parameters;
+//    private EntityItemRecordType    parameters = new EntityItemRecordType();
+    private EntityItemRecordType      select;
+//    private EntityItemRecordType    select = new EntityItemRecordType();
 
     //{0..*}
     private final Collection<EntityItemRecordType>  value = new ArrayList<EntityItemRecordType>();

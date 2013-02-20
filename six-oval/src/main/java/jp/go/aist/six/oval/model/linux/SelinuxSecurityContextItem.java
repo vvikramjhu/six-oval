@@ -41,7 +41,10 @@ public class SelinuxSecurityContextItem
     //{0..1}
     private EntityItemStringType   filepath;
     private EntityItemStringType   path;
+
     private EntityItemStringType   filename;
+    //{nillable="true"}
+
     private EntityItemIntType      pid;
     private EntityItemStringType   user;
     private EntityItemStringType   role;

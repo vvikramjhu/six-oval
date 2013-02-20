@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackagecheckItem
+public class PackageCcheckItem
     extends ItemType
 {
 
@@ -62,13 +62,13 @@ public class PackagecheckItem
     /**
      * Constructor.
      */
-    public PackagecheckItem()
+    public PackageCcheckItem()
     {
         this( 0 );
     }
 
 
-    public PackagecheckItem(
+    public PackageCcheckItem(
                     final int id
                     )
     {
@@ -76,7 +76,7 @@ public class PackagecheckItem
     }
 
 
-    public PackagecheckItem(
+    public PackageCcheckItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -344,7 +344,7 @@ public class PackagecheckItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckItem)) {
+        if (!(obj instanceof PackageCcheckItem)) {
             return false;
         }
 

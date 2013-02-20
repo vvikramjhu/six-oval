@@ -50,7 +50,8 @@ public class EnvironmentVariable58Object
     //{1..1}
 
 
-    private EntityObjectIntType  pid = new EntityObjectIntType();
+    private EntityObjectIntType  pid;
+//    private EntityObjectIntType  pid = new EntityObjectIntType();
     //{1..1, nillable="true"}
 
     private EntityObjectStringType  name;

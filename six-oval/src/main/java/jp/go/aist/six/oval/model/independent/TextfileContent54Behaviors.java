@@ -87,10 +87,12 @@ public class TextfileContent54Behaviors
     }
 
 
-    protected final boolean _ignoreCase()
+    public static Boolean ignoreCase(
+                    final TextfileContent54Behaviors obj
+                    )
     {
-        Boolean  ignore_case = getIgnoreCase();
-        return (ignore_case == null ? DEFAULT_IGNORE_CASE.booleanValue() : ignore_case.booleanValue());
+        Boolean  ignore_case = obj.getIgnoreCase();
+        return (ignore_case == null ? DEFAULT_IGNORE_CASE : ignore_case);
     }
 
 
@@ -120,10 +122,12 @@ public class TextfileContent54Behaviors
     }
 
 
-    protected final boolean _multiline()
+    public static Boolean multiline(
+                    final TextfileContent54Behaviors obj
+                    )
     {
-        Boolean  multiline = getMultiline();
-        return (multiline == null ? DEFAULT_MULTILINE.booleanValue() : multiline.booleanValue());
+        Boolean  multiline = obj.getMultiline();
+        return (multiline == null ? DEFAULT_MULTILINE : multiline);
     }
 
 
@@ -153,10 +157,12 @@ public class TextfileContent54Behaviors
     }
 
 
-    protected final boolean _singleline()
+    public static Boolean singleline(
+                    final TextfileContent54Behaviors obj
+                    )
     {
-        Boolean  singleline = getSingleline();
-        return (singleline == null ? DEFAULT_SINGLELINE.booleanValue() : singleline.booleanValue());
+        Boolean  singleline = obj.getSingleline();
+        return (singleline == null ? DEFAULT_SINGLELINE : singleline);
     }
 
 
@@ -171,9 +177,9 @@ public class TextfileContent54Behaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (_ignoreCase() ? 0 : 1);
-        result = prime * result + (_multiline()  ? 0 : 1);
-        result = prime * result + (_singleline() ? 0 : 1);
+        result = prime * result + (ignoreCase( this ).hashCode());
+        result = prime * result + (multiline( this ).hashCode());
+        result = prime * result + (singleline( this ).hashCode());
 
         return result;
     }
@@ -195,9 +201,9 @@ public class TextfileContent54Behaviors
 
         if (super.equals( obj )) {
             TextfileContent54Behaviors  other = (TextfileContent54Behaviors)obj;
-            if (this._ignoreCase() == other._ignoreCase()) {
-                if (this._multiline() == other._multiline()) {
-                    if (this._singleline() == other._singleline()) {
+            if (ignoreCase( this ) == ignoreCase( other )) {
+                if (multiline( this ) == multiline( other )) {
+                    if (singleline( this ) == singleline( other )) {
                         return true;
                     }
                 }

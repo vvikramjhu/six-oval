@@ -676,7 +676,7 @@
         </field>
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="key" node="element"/>
         </field>
         <field name="appId" 
@@ -758,7 +758,7 @@
         </field>
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="key" node="element"/>
         </field>
         <field name="appId" 
@@ -876,17 +876,17 @@
         </field>
         <field name="username" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="username" node="element"/>
         </field>
         <field name="userpass" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="userpass" node="element"/>
         </field>
         <field name="directoryNode" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="directory_node" node="element"/>
         </field>
         <field name="filter" 

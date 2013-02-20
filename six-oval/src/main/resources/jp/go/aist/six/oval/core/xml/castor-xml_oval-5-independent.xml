@@ -220,7 +220,7 @@
         </field>
         <field name="pid" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="pid" node="element"/>
         </field>
         <field name="name" 
@@ -587,12 +587,12 @@
         </field>
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="relative_dn" node="element"/>
         </field>
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="attribute" node="element"/>
         </field>
     </class>
@@ -639,12 +639,12 @@
         </field>
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="relative_dn" node="element"/>
         </field>
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="attribute" node="element"/>
         </field>
         <field name="objectClass" 
@@ -699,12 +699,12 @@
         </field>
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="relative_dn" node="element"/>
         </field>
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="attribute" node="element"/>
         </field>
         <field name="filter" 
@@ -756,12 +756,12 @@
         </field>
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="relative_dn" node="element"/>
         </field>
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="attribute" node="element"/>
         </field>
         <field name="objectClass" 
