@@ -33,20 +33,20 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageCcheckTest
+public class PackageCheckTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public PackageCcheckTest()
+    public PackageCheckTest()
     {
         this( null, 0 );
     }
 
 
-    public PackageCcheckTest(
+    public PackageCheckTest(
                     final String id,
                     final int version
                     )
@@ -55,7 +55,7 @@ public class PackageCcheckTest
     }
 
 
-    public PackageCcheckTest(
+    public PackageCheckTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -100,7 +100,7 @@ public class PackageCcheckTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageCcheckTest)) {
+        if (!(obj instanceof PackageCheckTest)) {
             return false;
         }
 

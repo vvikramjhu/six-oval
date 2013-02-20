@@ -282,7 +282,7 @@
     <!-- ******************************************************* -->
     <!-- packagecheck                                            -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.solaris.PackagecheckTest"
+    <class name="jp.go.aist.six.oval.model.solaris.PackageCheckTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="packagecheck_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
@@ -298,7 +298,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.solaris.PackagecheckObject"
+    <class name="jp.go.aist.six.oval.model.solaris.PackageCheckObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="packagecheck_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
@@ -342,7 +342,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.solaris.PackagecheckState"
+    <class name="jp.go.aist.six.oval.model.solaris.PackageCheckState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="packagecheck_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris"
@@ -405,7 +405,7 @@
         </field>
     </class>
 
-    <class name ="jp.go.aist.six.oval.model.solaris.PackagecheckItem"
+    <class name ="jp.go.aist.six.oval.model.solaris.PackageCheckItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="packagecheck_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#solaris"

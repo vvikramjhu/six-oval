@@ -19,69 +19,73 @@
 
 package jp.go.aist.six.oval.model.solaris;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.sc.ItemType;
-import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The packagecheck_item holds verification information about an individual file
- * that is part of a installed package.
+ * The package_state element defines the different verification information
+ * associated with packages installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackageCcheckItem
-    extends ItemType
+public class PackageCheckState
+    extends StateType
 {
 
     //{0..1}
-    private EntityItemStringType               pkginst;
-    private EntityItemStringType               filepath;
-    private EntityItemBoolType                 checksum_differs;
-    private EntityItemBoolType                 size_differs;
-    private EntityItemBoolType                 mtime_differs;
+    private EntityStateStringType               pkginst;
+    private EntityStateStringType               filepath;
+    private EntityStateBoolType                 checksum_differs;
+    private EntityStateBoolType                 size_differs;
+    private EntityStateBoolType                 mtime_differs;
 
-    private EntityItemPermissionCompareType    uread;
-    private EntityItemPermissionCompareType    uwrite;
-    private EntityItemPermissionCompareType    uexec;
-    private EntityItemPermissionCompareType    gread;
-    private EntityItemPermissionCompareType    gwrite;
-    private EntityItemPermissionCompareType    gexec;
-    private EntityItemPermissionCompareType    oread;
-    private EntityItemPermissionCompareType    owrite;
-    private EntityItemPermissionCompareType    oexec;
+    private EntityStatePermissionCompareType    uread;
+    private EntityStatePermissionCompareType    uwrite;
+    private EntityStatePermissionCompareType    uexec;
+    private EntityStatePermissionCompareType    gread;
+    private EntityStatePermissionCompareType    gwrite;
+    private EntityStatePermissionCompareType    gexec;
+    private EntityStatePermissionCompareType    oread;
+    private EntityStatePermissionCompareType    owrite;
+    private EntityStatePermissionCompareType    oexec;
 
 
 
     /**
      * Constructor.
      */
-    public PackageCcheckItem()
+    public PackageCheckState()
     {
-        this( 0 );
+        this( null, 0 );
     }
 
 
-    public PackageCcheckItem(
-                    final int id
+    public PackageCheckState(
+                    final String id,
+                    final int version
                     )
     {
-        this( id, null );
+        this( id, version, null );
     }
 
 
-    public PackageCcheckItem(
-                    final int id,
-                    final StatusEnumeration status
+    public PackageCheckState(
+                    final String id,
+                    final int version,
+                    final String comment
                     )
     {
-        super( id, status );
+        super( id, version, comment );
 
         _oval_family = Family.SOLARIS;
         _oval_component = ComponentType.PACKAGECHECK;
@@ -92,14 +96,14 @@ public class PackageCcheckItem
     /**
      */
     public void setPkginst(
-                    final EntityItemStringType pkginst
+                    final EntityStateStringType pkginst
                     )
     {
         this.pkginst = pkginst;
     }
 
 
-    public EntityItemStringType getPkginst()
+    public EntityStateStringType getPkginst()
     {
         return pkginst;
     }
@@ -109,14 +113,14 @@ public class PackageCcheckItem
     /**
      */
     public void setFilepath(
-                    final EntityItemStringType filepath
+                    final EntityStateStringType filepath
                     )
     {
         this.filepath = filepath;
     }
 
 
-    public EntityItemStringType getFilepath()
+    public EntityStateStringType getFilepath()
     {
         return filepath;
     }
@@ -126,14 +130,14 @@ public class PackageCcheckItem
     /**
      */
     public void setChecksumDiffers(
-                    final EntityItemBoolType checksum_differs
+                    final EntityStateBoolType checksum_differs
                     )
     {
         this.checksum_differs = checksum_differs;
     }
 
 
-    public EntityItemBoolType getChecksumDiffers()
+    public EntityStateBoolType getChecksumDiffers()
     {
         return checksum_differs;
     }
@@ -143,14 +147,14 @@ public class PackageCcheckItem
     /**
      */
     public void setSizeDiffers(
-                    final EntityItemBoolType size_differs
+                    final EntityStateBoolType size_differs
                     )
     {
         this.size_differs = size_differs;
     }
 
 
-    public EntityItemBoolType getSizeDiffers()
+    public EntityStateBoolType getSizeDiffers()
     {
         return size_differs;
     }
@@ -160,14 +164,14 @@ public class PackageCcheckItem
     /**
      */
     public void setMtimeDiffers(
-                    final EntityItemBoolType mtime_differs
+                    final EntityStateBoolType mtime_differs
                     )
     {
         this.mtime_differs = mtime_differs;
     }
 
 
-    public EntityItemBoolType getMtimeDiffers()
+    public EntityStateBoolType getMtimeDiffers()
     {
         return mtime_differs;
     }
@@ -177,14 +181,14 @@ public class PackageCcheckItem
     /**
      */
     public void setUread(
-                    final EntityItemPermissionCompareType uread
+                    final EntityStatePermissionCompareType uread
                     )
     {
         this.uread = uread;
     }
 
 
-    public EntityItemPermissionCompareType getUread()
+    public EntityStatePermissionCompareType getUread()
     {
         return uread;
     }
@@ -194,14 +198,14 @@ public class PackageCcheckItem
     /**
      */
     public void setUwrite(
-                    final EntityItemPermissionCompareType uwrite
+                    final EntityStatePermissionCompareType uwrite
                     )
     {
         this.uwrite = uwrite;
     }
 
 
-    public EntityItemPermissionCompareType getUwrite()
+    public EntityStatePermissionCompareType getUwrite()
     {
         return uwrite;
     }
@@ -211,14 +215,14 @@ public class PackageCcheckItem
     /**
      */
     public void setUexec(
-                    final EntityItemPermissionCompareType uexec
+                    final EntityStatePermissionCompareType uexec
                     )
     {
         this.uexec = uexec;
     }
 
 
-    public EntityItemPermissionCompareType getUexec()
+    public EntityStatePermissionCompareType getUexec()
     {
         return uexec;
     }
@@ -228,14 +232,14 @@ public class PackageCcheckItem
     /**
      */
     public void setGread(
-                    final EntityItemPermissionCompareType gread
+                    final EntityStatePermissionCompareType gread
                     )
     {
         this.gread = gread;
     }
 
 
-    public EntityItemPermissionCompareType getGread()
+    public EntityStatePermissionCompareType getGread()
     {
         return gread;
     }
@@ -245,14 +249,14 @@ public class PackageCcheckItem
     /**
      */
     public void setGwrite(
-                    final EntityItemPermissionCompareType gwrite
+                    final EntityStatePermissionCompareType gwrite
                     )
     {
         this.gwrite = gwrite;
     }
 
 
-    public EntityItemPermissionCompareType getGwrite()
+    public EntityStatePermissionCompareType getGwrite()
     {
         return gwrite;
     }
@@ -262,14 +266,14 @@ public class PackageCcheckItem
     /**
      */
     public void setGexec(
-                    final EntityItemPermissionCompareType gexec
+                    final EntityStatePermissionCompareType gexec
                     )
     {
         this.gexec = gexec;
     }
 
 
-    public EntityItemPermissionCompareType getGexec()
+    public EntityStatePermissionCompareType getGexec()
     {
         return gexec;
     }
@@ -279,14 +283,14 @@ public class PackageCcheckItem
     /**
      */
     public void setOread(
-                    final EntityItemPermissionCompareType oread
+                    final EntityStatePermissionCompareType oread
                     )
     {
         this.oread = oread;
     }
 
 
-    public EntityItemPermissionCompareType getOread()
+    public EntityStatePermissionCompareType getOread()
     {
         return oread;
     }
@@ -296,14 +300,14 @@ public class PackageCcheckItem
     /**
      */
     public void setOwrite(
-                    final EntityItemPermissionCompareType owrite
+                    final EntityStatePermissionCompareType owrite
                     )
     {
         this.owrite = owrite;
     }
 
 
-    public EntityItemPermissionCompareType getOwrite()
+    public EntityStatePermissionCompareType getOwrite()
     {
         return owrite;
     }
@@ -313,16 +317,44 @@ public class PackageCcheckItem
     /**
      */
     public void setOexec(
-                    final EntityItemPermissionCompareType oexec
+                    final EntityStatePermissionCompareType oexec
                     )
     {
         this.oexec = oexec;
     }
 
 
-    public EntityItemPermissionCompareType getOexec()
+    public EntityStatePermissionCompareType getOexec()
     {
         return oexec;
+    }
+
+
+
+    //*********************************************************************
+    //  DefinitionsElement
+    //*********************************************************************
+
+    @Override
+    public Collection<ElementRef> ovalGetElementRef()
+    {
+        Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getPkginst() );
+        ref_list.add( getFilepath() );
+        ref_list.add( getChecksumDiffers() );
+        ref_list.add( getSizeDiffers() );
+        ref_list.add( getMtimeDiffers() );
+        ref_list.add( getUread() );
+        ref_list.add( getUwrite() );
+        ref_list.add( getUexec() );
+        ref_list.add( getGread() );
+        ref_list.add( getGwrite() );
+        ref_list.add( getGexec() );
+        ref_list.add( getOread() );
+        ref_list.add( getOwrite() );
+        ref_list.add( getOexec() );
+
+        return ref_list;
     }
 
 
@@ -344,7 +376,7 @@ public class PackageCcheckItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackageCcheckItem)) {
+        if (!(obj instanceof PackageCheckState)) {
             return false;
         }
 
@@ -356,7 +388,7 @@ public class PackageCcheckItem
     @Override
     public String toString()
     {
-        return "packagecheck_item[" + super.toString()
+        return "packagecheck_state[" + super.toString()
                         + ", pkginst="          + getPkginst()
                         + ", filepath="         + getFilepath()
                         + ", checksum_differs=" + getChecksumDiffers()
