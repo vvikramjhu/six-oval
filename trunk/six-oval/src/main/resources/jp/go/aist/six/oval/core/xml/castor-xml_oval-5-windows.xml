@@ -25,7 +25,7 @@
     <!-- ******************************************************* -->
 
 <!-- access token -->
-    <class name="jp.go.aist.six.oval.model.windows.AccesstokenBehaviors"
+    <class name="jp.go.aist.six.oval.model.windows.AccessTokenBehaviors"
         extends="jp.go.aist.six.oval.model.OvalObject">
         <field name="includeGroup" type="boolean">
             <bind-xml name="include_group" node="attribute"/>
@@ -371,7 +371,7 @@
     <!-- ******************************************************* -->
     <!-- accesstoken                                             -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.windows.AccesstokenTest"
+    <class name="jp.go.aist.six.oval.model.windows.AccessTokenTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="accesstoken_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -388,7 +388,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.windows.AccesstokenObject"
+    <class name="jp.go.aist.six.oval.model.windows.AccessTokenObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="accesstoken_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -399,7 +399,7 @@
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
         <field name="behaviors" 
-            type="jp.go.aist.six.oval.model.windows.AccesstokenBehaviors">
+            type="jp.go.aist.six.oval.model.windows.AccessTokenBehaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
         <field name="securityPrinciple" 
@@ -413,7 +413,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.windows.AccesstokenState"
+    <class name="jp.go.aist.six.oval.model.windows.AccessTokenState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="accesstoken_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -592,7 +592,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.windows.AccesstokenItem"
+    <class name="jp.go.aist.six.oval.model.windows.AccessTokenItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="accesstoken_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
