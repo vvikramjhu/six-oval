@@ -91,6 +91,8 @@ public class OvalXmlMapperTest
 
 
     /**
+     * Xml marshal/unmarshal tests using the OVAL test content.
+     *
      * @see http://oval.mitre.org/repository/about/testcontent.html
      */
     @RunWith( Theories.class )
