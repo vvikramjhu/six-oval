@@ -807,12 +807,12 @@
         </field>
         <field name="relativeDn" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="relative_dn" node="element"/>
         </field>
         <field name="attribute" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="attribute" node="element"/>
         </field>
     </class>

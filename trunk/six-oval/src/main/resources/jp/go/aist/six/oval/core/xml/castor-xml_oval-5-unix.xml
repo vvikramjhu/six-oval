@@ -227,7 +227,7 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
         <field name="filename" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="filename" node="element"/>
         </field>
         <field name="filter" 
@@ -486,7 +486,7 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
         <field name="filename" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="filename" node="element"/>
         </field>
         <field name="attributeName" 
@@ -591,7 +591,7 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
         <field name="source" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
-            nillable="true" required="true">
+            nillable="true"> <!-- required="true" -->
             <bind-xml name="source" node="element"/>
         </field>
         <field name="filter" 

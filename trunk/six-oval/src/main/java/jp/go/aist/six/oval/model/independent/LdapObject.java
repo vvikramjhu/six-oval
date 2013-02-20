@@ -50,10 +50,12 @@ public class LdapObject
 
     private EntityObjectStringType  suffix;
 
-    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
+    private EntityObjectStringType  relative_dn;
+//    private EntityObjectStringType  relative_dn = new EntityObjectStringType();
     //{nillable="true"}
 
-    private EntityObjectStringType  attribute = new EntityObjectStringType();
+    private EntityObjectStringType  attribute;
+//    private EntityObjectStringType  attribute = new EntityObjectStringType();
     //{nillable="true"}
 
 

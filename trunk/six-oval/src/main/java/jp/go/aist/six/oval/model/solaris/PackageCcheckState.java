@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PackagecheckState
+public class PackageCcheckState
     extends StateType
 {
 
@@ -64,13 +64,13 @@ public class PackagecheckState
     /**
      * Constructor.
      */
-    public PackagecheckState()
+    public PackageCcheckState()
     {
         this( null, 0 );
     }
 
 
-    public PackagecheckState(
+    public PackageCcheckState(
                     final String id,
                     final int version
                     )
@@ -79,7 +79,7 @@ public class PackagecheckState
     }
 
 
-    public PackagecheckState(
+    public PackageCcheckState(
                     final String id,
                     final int version,
                     final String comment
@@ -376,7 +376,7 @@ public class PackagecheckState
                     final Object obj
                     )
     {
-        if (!(obj instanceof PackagecheckState)) {
+        if (!(obj instanceof PackageCcheckState)) {
             return false;
         }
 
