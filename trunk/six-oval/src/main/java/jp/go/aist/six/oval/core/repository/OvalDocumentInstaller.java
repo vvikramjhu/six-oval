@@ -7,10 +7,10 @@ import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.xml.XmlMapper;
 
 
@@ -36,7 +36,7 @@ public class OvalDocumentInstaller
 
     private final PrintStream  _msg_stream = System.out;
 
-    private final MongoOvalRepository  _oval_repository;
+    private final OvalRepository  _oval_repository;
     private final XmlMapper  _xml_mapper;
 
 
@@ -47,7 +47,7 @@ public class OvalDocumentInstaller
     throws Exception
     {
         OvalContext  context = OvalContext.getServerInstance();
-        _oval_repository = context.getBean( MongoOvalRepository.class );
+        _oval_repository = context.getBean( "oval-repository", OvalRepository.class );
         _xml_mapper = context.getXmlMapper();
     }
 
@@ -154,21 +154,6 @@ public class OvalDocumentInstaller
         _msg_stream.println( message );
         _msg_stream.flush();
     }
-
-
-
-    /**
-     */
-    private void _printMessage(
-                    final String[] lines
-                    )
-    {
-        for (String  line : lines) {
-            _printMessage( line);
-        }
-    }
-
-
 
 }
 //

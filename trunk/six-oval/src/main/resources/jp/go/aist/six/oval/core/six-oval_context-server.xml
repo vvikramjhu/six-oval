@@ -143,7 +143,8 @@
     </bean>
 
 
-    <bean id="mongo-oval-repository" 
+    <!-- id="mongo-oval-repository" --> 
+    <bean id="oval-repository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository">
         <property name="database" ref="oval-database"/>
     </bean>
