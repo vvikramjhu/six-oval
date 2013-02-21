@@ -486,6 +486,9 @@ Project SIX: OVAL - Maven Project Object Model (POM)
                     <includes>
                         <include>src/main/java/**/*.java</include>
                     </includes>
+                    <excludes>
+                        <exclude>src/main/java/**/package-info.java</exclude>
+                    </excludes>
                     <properties>
                         <name>${project.name}</name>
                         <url>${project.url}</url>
