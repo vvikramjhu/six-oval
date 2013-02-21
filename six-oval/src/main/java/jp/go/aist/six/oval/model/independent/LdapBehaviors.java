@@ -68,11 +68,11 @@ public class LdapBehaviors
     }
 
 
-    protected static final LdapBehaviorsEnumeration _scope(
-                    final LdapBehaviors behaviors
+    public static final LdapBehaviorsEnumeration scope(
+                    final LdapBehaviors obj
                     )
     {
-        LdapBehaviorsEnumeration  scope = behaviors.getScope();
+        LdapBehaviorsEnumeration  scope = obj.getScope();
         return (scope == null ? DEFAULT_SCOPE : scope);
     }
 
@@ -88,7 +88,7 @@ public class LdapBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _scope( this ).hashCode();
+        result = prime * result + scope( this ).hashCode();
 
         return result;
     }
@@ -110,7 +110,7 @@ public class LdapBehaviors
 
         if (super.equals( obj )) {
             LdapBehaviors  other = (LdapBehaviors)obj;
-            if (_scope( this ) == _scope( other )) {
+            if (scope( this ) == scope( other )) {
                 return true;
             }
         }

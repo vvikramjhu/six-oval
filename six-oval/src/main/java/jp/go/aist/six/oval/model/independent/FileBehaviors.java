@@ -71,7 +71,7 @@ public class FileBehaviors
     }
 
 
-    public static WindowsViewEnumeration windowsView(
+    public static final WindowsViewEnumeration windowsView(
                     final FileBehaviors obj
                     )
     {
