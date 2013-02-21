@@ -73,15 +73,17 @@ public class PackageCheckBehaviors
     }
 
 
-    public Boolean isFileattributesOnly()
+    public Boolean getFileattributesOnly()
     {
         return fileattributes_only;
     }
 
 
-    public boolean canonicalIsFileattributesOnly()
+    public static final Boolean fileattributesOnly(
+                    final PackageCheckBehaviors obj
+                    )
     {
-        Boolean  fileattributes_only = isFileattributesOnly();
+        Boolean  fileattributes_only = obj.getFileattributesOnly();
         return (fileattributes_only == null ? DEFAULT_FILEATTRIBUTES_ONLY : fileattributes_only);
     }
 
@@ -97,15 +99,17 @@ public class PackageCheckBehaviors
     }
 
 
-    public Boolean isFilecontentsOnly()
+    public Boolean getFilecontentsOnly()
     {
         return filecontents_only;
     }
 
 
-    public boolean canonicalIsFilecontentsOnly()
+    public static final Boolean filecontentsOnly(
+                    final PackageCheckBehaviors obj
+                    )
     {
-        Boolean  filecontents_only = isFilecontentsOnly();
+        Boolean  filecontents_only = obj.getFilecontentsOnly();
         return (filecontents_only == null ? DEFAULT_FILECONTENTS_ONLY : filecontents_only);
     }
 
@@ -121,15 +125,17 @@ public class PackageCheckBehaviors
     }
 
 
-    public Boolean isNoVolatileeditable()
+    public Boolean getNoVolatileeditable()
     {
         return no_volatileeditable;
     }
 
 
-    public boolean canonicalIsNoVolatileeditable()
+    public static final Boolean noVolatileeditable(
+                    final PackageCheckBehaviors obj
+                    )
     {
-        Boolean  no_volatileeditable = isNoVolatileeditable();
+        Boolean  no_volatileeditable = obj.getNoVolatileeditable();
         return (no_volatileeditable == null ? DEFAULT_NO_VOLATILEEDITABLE : no_volatileeditable);
     }
 
@@ -145,9 +151,9 @@ public class PackageCheckBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsFileattributesOnly() ? 0 : 1);
-        result = prime * result + (canonicalIsFilecontentsOnly() ? 0 : 1);
-        result = prime * result + (canonicalIsNoVolatileeditable() ? 0 : 1);
+        result = prime * result + fileattributesOnly( this ).hashCode();
+        result = prime * result + filecontentsOnly( this ).hashCode();
+        result = prime * result + noVolatileeditable( this ).hashCode();
 
         return result;
     }
@@ -168,9 +174,9 @@ public class PackageCheckBehaviors
         }
 
         PackageCheckBehaviors  other = (PackageCheckBehaviors)obj;
-        if (this.canonicalIsFileattributesOnly() == other.canonicalIsFileattributesOnly()) {
-            if (this.canonicalIsFilecontentsOnly() == other.canonicalIsFilecontentsOnly()) {
-                if (this.canonicalIsNoVolatileeditable() == other.canonicalIsNoVolatileeditable()) {
+        if (fileattributesOnly( this ) == fileattributesOnly( other )) {
+            if (filecontentsOnly( this ) == filecontentsOnly( other )) {
+                if (noVolatileeditable( this ) == noVolatileeditable( other )) {
                     return true;
                 }
             }
@@ -184,9 +190,9 @@ public class PackageCheckBehaviors
     @Override
     public String toString()
     {
-        return "[fileattributes_only=" + isFileattributesOnly()
-                        + ", filecontents_only=" + isFilecontentsOnly()
-                        + ", no_volatileeditable=" + isNoVolatileeditable()
+        return "[fileattributes_only=" + getFileattributesOnly()
+                        + ", filecontents_only=" + getFilecontentsOnly()
+                        + ", no_volatileeditable=" + getNoVolatileeditable()
                         + "]";
     }
 

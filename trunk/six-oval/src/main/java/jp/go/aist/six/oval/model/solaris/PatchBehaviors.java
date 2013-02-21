@@ -61,15 +61,17 @@ public class PatchBehaviors
     }
 
 
-    public Boolean isSupersedence()
+    public Boolean getSupersedence()
     {
         return supersedence;
     }
 
 
-    public boolean canonicalIsSupersedence()
+    public static final Boolean supersedence(
+                    final PatchBehaviors obj
+                    )
     {
-        Boolean  supersedence = isSupersedence();
+        Boolean  supersedence = obj.getSupersedence();
         return (supersedence == null ? DEFAULT_SUPERSEDENCE : supersedence);
     }
 
@@ -85,7 +87,7 @@ public class PatchBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsSupersedence() ? 0 : 1);
+        result = prime * result + supersedence( this ).hashCode();
 
         return result;
     }
@@ -106,7 +108,7 @@ public class PatchBehaviors
         }
 
         PatchBehaviors  other = (PatchBehaviors)obj;
-        if (this.canonicalIsSupersedence() == other.canonicalIsSupersedence()) {
+        if (supersedence( this ) == supersedence( other )) {
             return true;
         }
 
@@ -118,7 +120,7 @@ public class PatchBehaviors
     @Override
     public String toString()
     {
-        return "[supersedence=" + isSupersedence()
+        return "[supersedence=" + getSupersedence()
                         + "]";
     }
 
