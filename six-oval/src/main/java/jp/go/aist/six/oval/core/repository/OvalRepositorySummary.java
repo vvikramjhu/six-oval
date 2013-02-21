@@ -16,7 +16,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.InterfaceType;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
-import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.util.query.QueryResults;
 
 
 
