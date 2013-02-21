@@ -135,6 +135,15 @@ public class CriteriaType
     }
 
 
+    public static OperatorEnumeration operator(
+                    final CriteriaType obj
+                    )
+    {
+        OperatorEnumeration  operator = obj.getOperator();
+        return (operator == null ? DEFAULT_OPERATOR : operator);
+    }
+
+
 
     /**
      */

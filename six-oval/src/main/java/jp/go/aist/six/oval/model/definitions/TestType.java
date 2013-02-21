@@ -189,12 +189,21 @@ public class TestType
     }
 
 
-    public TestType checkExistence(
-                    final ExistenceEnumeration check_existence
+//    public TestType checkExistence(
+//                    final ExistenceEnumeration check_existence
+//                    )
+//    {
+//        setCheckExistence( check_existence );
+//        return this;
+//    }
+
+
+    public static ExistenceEnumeration checkExistence(
+                    final TestType obj
                     )
     {
-        setCheckExistence( check_existence );
-        return this;
+        ExistenceEnumeration  check_existence = obj.getCheckExistence();
+        return (check_existence == null ? DEFAULT_CHECK_EXISTENCE : check_existence);
     }
 
 
@@ -241,12 +250,21 @@ public class TestType
     }
 
 
-    public TestType stateOperator(
-                    final OperatorEnumeration state_operator
+//    public TestType stateOperator(
+//                    final OperatorEnumeration state_operator
+//                    )
+//    {
+//        setStateOperator( state_operator );
+//        return this;
+//    }
+
+
+    public static OperatorEnumeration stateOperator(
+                    final TestType obj
                     )
     {
-        setStateOperator( state_operator );
-        return this;
+        OperatorEnumeration  state_operator = obj.getStateOperator();
+        return (state_operator == null ? DEFAULT_STATE_OPERATOR : state_operator);
     }
 
 

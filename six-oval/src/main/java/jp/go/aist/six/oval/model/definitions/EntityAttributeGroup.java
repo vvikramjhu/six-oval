@@ -150,19 +150,15 @@ public abstract class EntityAttributeGroup
 
 
     public static DatatypeEnumeration datatype(
-                    final EntityAttributeGroup eag
+                    final EntityAttributeGroup obj
                     )
     {
-        if (eag == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityAttributeGroup" );
         }
 
-        DatatypeEnumeration  datatype = eag.getDatatype();
-        if (datatype == null) {
-            datatype = DEFAULT_DATATYPE;
-        }
-
-        return datatype;
+        DatatypeEnumeration  datatype = obj.getDatatype();
+        return (datatype == null ? DEFAULT_DATATYPE : datatype);
     }
 
 
@@ -184,19 +180,15 @@ public abstract class EntityAttributeGroup
 
 
     public static OperationEnumeration operation(
-                    final EntityAttributeGroup eag
+                    final EntityAttributeGroup obj
                     )
     {
-        if (eag == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityAttributeGroup" );
         }
 
-        OperationEnumeration  operation = eag.getOperation();
-        if (operation == null) {
-            operation = DEFAULT_OPERATION;
-        }
-
-        return operation;
+        OperationEnumeration  operation = obj.getOperation();
+        return (operation == null ? DEFAULT_OPERATION : operation);
     }
 
 
@@ -218,19 +210,15 @@ public abstract class EntityAttributeGroup
 
 
     public static Boolean mask(
-                    final EntityAttributeGroup eag
+                    final EntityAttributeGroup obj
                     )
     {
-        if (eag == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityAttributeGroup" );
         }
 
-        Boolean  mask = eag.getMask();
-        if (mask == null) {
-            mask = DEFAULT_MASK;
-        }
-
-        return mask;
+        Boolean  mask = obj.getMask();
+        return (mask == null ? DEFAULT_MASK : mask);
     }
 
 

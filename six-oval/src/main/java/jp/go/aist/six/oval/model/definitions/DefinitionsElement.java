@@ -108,6 +108,15 @@ public abstract class DefinitionsElement
     }
 
 
+    public static Boolean deprecated(
+                    final DefinitionsElement e
+                    )
+    {
+        Boolean  deprecated = e.getDeprecated();
+        return (deprecated == null ? DEFAULT_DEPRECATED : deprecated);
+    }
+
+
 
     //*********************************************************************
     //  Element

@@ -121,16 +121,16 @@ public class StateType
     }
 
 
-    public StateType operator(
-                    final OperatorEnumeration operator
-                    )
-    {
-        setOperator( operator );
-        return this;
-    }
+//    public StateType operator(
+//                    final OperatorEnumeration operator
+//                    )
+//    {
+//        setOperator( operator );
+//        return this;
+//    }
 
 
-    public static final OperatorEnumeration operator(
+    public static OperatorEnumeration operator(
                     final StateType state
                     )
     {
@@ -139,11 +139,7 @@ public class StateType
         }
 
         OperatorEnumeration  operator = state.getOperator();
-        if (operator == null) {
-            operator = DEFAULT_OPERATOR;
-        }
-
-        return operator;
+        return (operator == null ? DEFAULT_OPERATOR : operator);
     }
 
 

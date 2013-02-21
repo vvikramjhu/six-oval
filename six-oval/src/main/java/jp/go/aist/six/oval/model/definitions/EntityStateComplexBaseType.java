@@ -94,20 +94,16 @@ public abstract class EntityStateComplexBaseType
     }
 
 
-    public static final CheckEnumeration entityCheck(
-                    final EntityStateComplexBaseType escbt
+    public static CheckEnumeration entityCheck(
+                    final EntityStateComplexBaseType obj
                     )
     {
-        if (escbt == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityStateComplexBaseType" );
         }
 
-        CheckEnumeration  entity_check = escbt.getEntityCheck();
-        if (entity_check == null) {
-            entity_check = DEFAULT_ENTITY_CHECK;
-        }
-
-        return entity_check;
+        CheckEnumeration  entity_check = obj.getEntityCheck();
+        return (entity_check == null ? DEFAULT_ENTITY_CHECK : entity_check);
     }
 
 

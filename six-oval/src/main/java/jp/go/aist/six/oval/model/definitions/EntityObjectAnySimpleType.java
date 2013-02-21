@@ -19,7 +19,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
@@ -35,7 +34,8 @@ public class EntityObjectAnySimpleType
     extends EntitySimpleBaseType
 {
 
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
+    // defined in a super class
+//    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
 
 
 

@@ -113,9 +113,11 @@ public class Filter
     }
 
 
-    protected FilterActionEnumeration _action()
+    public static FilterActionEnumeration action(
+                    final Filter obj
+                    )
     {
-        FilterActionEnumeration  action = getAction();
+        FilterActionEnumeration  action = obj.getAction();
         return (action == null ? DEFAULT_ACTION : action);
     }
 
@@ -154,8 +156,7 @@ public class Filter
         String  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
-        FilterActionEnumeration  action = _action();
-        result = prime * result + ((action == null) ? 0 : action.hashCode());
+        result = prime * result + action( this ).hashCode();
 
         return result;
     }
@@ -180,7 +181,7 @@ public class Filter
         String   thisContent =  this.getContent();
         if (thisContent == otherContent
                         ||  (thisContent != null  &&  thisContent.equals( otherContent ))) {
-            if (this._action() == other._action()) {
+            if (action( this ) == action( this )) {
                 return true;
             }
         }
