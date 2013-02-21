@@ -1,8 +1,8 @@
-/*
- *  @product.title@
- *  Copyright (C) @product.copyright-year@
- *    @product.vendor@
- *    Registration Number: @product.registration-number@
+/**
+ * SIX OVAL - http://code.google.com/p/six-oval/
+ * Copyright (C) 2010
+ *   National Institute of Advanced Industrial Science and Technology (AIST)
+ *   Registration Number: H22PRO-1124
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jp.go.aist.six.oval.core.repository.web;
 
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
+import jp.go.aist.six.util.query.CommonQueryParams;
 import jp.go.aist.six.util.query.QueryResults;
 import jp.go.aist.six.util.query.View;
 import org.springframework.http.ResponseEntity;

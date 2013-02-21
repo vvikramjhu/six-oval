@@ -1,8 +1,8 @@
-/*
- *  @product.title@
- *  Copyright (C) @product.copyright-year@
- *    @product.vendor@
- *    Registration Number: @product.registration-number@
+/**
+ * SIX OVAL - http://code.google.com/p/six-oval/
+ * Copyright (C) 2010
+ *   National Institute of Advanced Industrial Science and Technology (AIST)
+ *   Registration Number: H22PRO-1124
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
@@ -24,10 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.query.CommonQueryParams;
 import jp.go.aist.six.util.query.QueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
