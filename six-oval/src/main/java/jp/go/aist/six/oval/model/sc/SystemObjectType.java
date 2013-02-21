@@ -290,7 +290,7 @@ public class SystemObjectType
     }
 
 
-    public static Integer variableInstance(
+    public static final Integer variableInstance(
                     final SystemObjectType obj
                     )
     {
