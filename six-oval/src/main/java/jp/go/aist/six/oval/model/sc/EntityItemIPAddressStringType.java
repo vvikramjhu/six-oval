@@ -35,15 +35,8 @@ public class EntityItemIPAddressStringType
     extends EntityItemSimpleBaseType
 {
 
+//    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
     //{optional, default="string"}
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
-        DatatypeEnumeration.STRING;
-
-//  private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
-//  DatatypeEnumeration.IPV4_ADDRESS,
-//  DatatypeEnumeration.IPV6_ADDRESS,
-//  DEFAULT_DATATYPE
-//};
 
 
 
@@ -116,14 +109,6 @@ public class EntityItemIPAddressStringType
 
         return super.equals( obj );
     }
-
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
 
 }
 //EntityItemIPAddressStringType

@@ -46,8 +46,7 @@ public class ItemType
 //    implements Dependent<OvalSystemCharacteristics>
 {
 
-    private final Collection<MessageType>  message =
-        new ArrayList<MessageType>();
+    private final Collection<MessageType>  message = new ArrayList<MessageType>();
     //{0..50}
 
     private Integer  id;
@@ -57,16 +56,13 @@ public class ItemType
     /**
      * The default status: "exists".
      */
-    public static final StatusEnumeration  DEFAULT_STATUS =
-        StatusEnumeration.EXISTS;
+    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
 
     private StatusEnumeration  status;
     //{optional, default="exists"}
 
 
     // SIX extension
-//    protected OvalPlatformType   _oval_platform_type;
-//    protected OvalComponentType  _oval_component_type;
     protected Family       _oval_family;
     protected ComponentType    _oval_component;
 
@@ -172,6 +168,15 @@ public class ItemType
     public StatusEnumeration getStatus()
     {
         return status;
+    }
+
+
+    public static StatusEnumeration status(
+                    final ItemType obj
+                    )
+    {
+        StatusEnumeration  status = obj.getStatus();
+        return (status == null ? DEFAULT_STATUS : status);
     }
 
 

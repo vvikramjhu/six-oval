@@ -35,8 +35,7 @@ public abstract class EntityAttributeGroup
     implements OvalObject
 {
 
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
-        DatatypeEnumeration.STRING;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
 
     private DatatypeEnumeration  datatype;
     //{optional, default="string"}
@@ -47,8 +46,8 @@ public abstract class EntityAttributeGroup
     private Boolean  mask;
     //{optional, default="false"}
 
-    public static final StatusEnumeration  DEFAULT_STATUS =
-        StatusEnumeration.EXISTS;
+
+    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
 
     private StatusEnumeration  status;
     //{optional, default="exists"}
@@ -148,14 +147,9 @@ public abstract class EntityAttributeGroup
         final int  prime = 37;
         int  result = 17;
 
-        DatatypeEnumeration  datatype = datatype( this );
-        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
-
-        Boolean  mask = mask( this );
-        result = prime * result + (mask ? 0 : 1);
-
-        StatusEnumeration  status = status( this );
-        result = prime * result + ((status == null) ? 0 : status.hashCode());
+        result = prime * result + datatype( this ).hashCode();
+        result = prime * result + mask( this ).hashCode();
+        result = prime * result + status( this ).hashCode();
 
         return result;
     }
