@@ -79,7 +79,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static DatatypeEnumeration datatype(
+    public static final DatatypeEnumeration datatype(
                     final EntityAttributeGroup obj
                     )
     {
@@ -103,7 +103,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static Boolean mask(
+    public static final Boolean mask(
                     final EntityAttributeGroup obj
                     )
     {
@@ -127,7 +127,7 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static StatusEnumeration status(
+    public static final StatusEnumeration status(
                     final EntityAttributeGroup obj
                     )
     {

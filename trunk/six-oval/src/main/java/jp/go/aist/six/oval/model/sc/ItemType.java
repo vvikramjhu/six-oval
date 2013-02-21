@@ -171,7 +171,7 @@ public class ItemType
     }
 
 
-    public static StatusEnumeration status(
+    public static final StatusEnumeration status(
                     final ItemType obj
                     )
     {
