@@ -67,27 +67,14 @@ public class WuaUpdateSearcherBehaviors
     }
 
 
-    protected final boolean _includeSupersededUpdates()
-    {
-        Boolean  include_group = getIncludeSupersededUpdates();
-        return (include_group == null
-        		        ? DEFAULT_INCLUDE_SUPERSEDED_UPDATES.booleanValue()
-        				: include_group.booleanValue());
-    }
-
-
-    public static boolean includeSupersededUpdates(
-                    final WuaUpdateSearcherBehaviors behaviors
+    public static Boolean includeSupersededUpdates(
+                    final WuaUpdateSearcherBehaviors obj
                     )
     {
-        if (behaviors == null) {
-            return DEFAULT_INCLUDE_SUPERSEDED_UPDATES.booleanValue();
-        }
-
-        Boolean  include_group = behaviors.getIncludeSupersededUpdates();
-        return (include_group == null
-                        ? DEFAULT_INCLUDE_SUPERSEDED_UPDATES.booleanValue()
-                        : include_group.booleanValue());
+        Boolean  include_superseded_updates = obj.getIncludeSupersededUpdates();
+        return (include_superseded_updates == null
+                        ? DEFAULT_INCLUDE_SUPERSEDED_UPDATES
+                        : include_superseded_updates);
     }
 
 

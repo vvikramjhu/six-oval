@@ -60,15 +60,17 @@ public class SharedResourceEffectiveRightsBehaviors
     }
 
 
-    public Boolean isIncludeGroup()
+    public Boolean getIncludeGroup()
     {
         return include_group;
     }
 
 
-    public boolean canonicalIsIncludeGroup()
+    public static final Boolean includeGroup(
+                    final SharedResourceEffectiveRightsBehaviors obj
+                    )
     {
-        final Boolean  include_group = isIncludeGroup();
+        Boolean  include_group = obj.getIncludeGroup();
         return (include_group == null ? DEFAULT_INCLUDE_GROUP : include_group);
     }
 
@@ -84,7 +86,7 @@ public class SharedResourceEffectiveRightsBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsIncludeGroup() ? 0 : 1);
+        result = prime * result + includeGroup( this ).hashCode();
 
         return result;
     }
@@ -105,7 +107,7 @@ public class SharedResourceEffectiveRightsBehaviors
         }
 
         SharedResourceEffectiveRightsBehaviors  other = (SharedResourceEffectiveRightsBehaviors)obj;
-        if (this.canonicalIsIncludeGroup() == other.canonicalIsIncludeGroup()) {
+        if (includeGroup( this ) == includeGroup( other )) {
             return true;
         }
 
@@ -117,7 +119,7 @@ public class SharedResourceEffectiveRightsBehaviors
     @Override
     public String toString()
     {
-        return "[include_group=" + isIncludeGroup()
+        return "[include_group=" + getIncludeGroup()
                         + "]";
     }
 

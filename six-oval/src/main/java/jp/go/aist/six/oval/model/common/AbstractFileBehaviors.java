@@ -70,7 +70,7 @@ public abstract class AbstractFileBehaviors
     }
 
 
-    public static RecurseFileSystemEnumeration recurseFileSystem(
+    public static final RecurseFileSystemEnumeration recurseFileSystem(
                     final AbstractFileBehaviors obj
                     )
     {
