@@ -89,6 +89,15 @@ public abstract class CriteriaResultElement
     }
 
 
+    public static final Boolean negate(
+                    final CriteriaResultElement obj
+                    )
+    {
+        Boolean  negate = obj.isNegate();
+        return (negate == null ? DEFAULT_NEGATE : negate);
+    }
+
+
 
     /**
      */

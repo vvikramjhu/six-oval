@@ -133,6 +133,15 @@ public abstract class ResultsElement
     }
 
 
+    public static final Integer variableInstance(
+                    final ResultsElement obj
+                    )
+    {
+        Integer  variable_instance = obj.getVariableInstance();
+        return (variable_instance == null ? DEFAULT_VARIABLE_INSTANCE : variable_instance);
+    }
+
+
 
     /**
      */
@@ -161,8 +170,7 @@ public abstract class ResultsElement
         final int  prime = 37;
         int  hash = super.hashCode();
 
-        Integer  variableInstance = getVariableInstance();
-        hash = prime * hash + ((variableInstance == null) ? 0 : variableInstance.hashCode());
+        hash = prime * hash + variableInstance( this ).hashCode();
 
         ResultEnumeration  result = getResult();
         hash = prime * hash + ((result == null) ? 0 : result.hashCode());
@@ -184,10 +192,7 @@ public abstract class ResultsElement
         if (super.equals( obj )) {
             ResultsElement  other = (ResultsElement)obj;
             if (getResult() == other.getResult()) {
-                final Integer   this_varins = getVariableInstance();
-                final Integer  other_varins = other.getVariableInstance();
-                if (this_varins == other_varins
-                                ||  (this_varins != null  &&  this_varins.equals( other_varins ))) {
+                if (variableInstance( this ).equals( variableInstance( other ) )) {
                     return true;
                 }
             }

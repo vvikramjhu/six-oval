@@ -138,6 +138,15 @@ public abstract class CriteriaResultLeafElement
     }
 
 
+    public static final Integer variableInstance(
+                    final CriteriaResultLeafElement obj
+                    )
+    {
+        Integer  variable_instance = obj.getVariableInstance();
+        return (variable_instance == null ? DEFAULT_VARIABLE_INSTANCE : variable_instance);
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object
