@@ -96,15 +96,18 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoLinkto()
+    public Boolean getNoLinkto()
     {
         return nolinkto;
     }
 
 
-    public boolean canonicalIsNoLinkto()
+    public static final Boolean noLinkto(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nolinkto = isNoLinkto();
+        Boolean  nolinkto = obj.getNoLinkto();
+
         return (nolinkto == null ? DEFAULT_NOLINKTO : nolinkto);
     }
 
@@ -120,15 +123,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoMd5()
+    public Boolean getNoMd5()
     {
         return nomd5;
     }
 
 
-    public boolean canonicalIsNoMd5()
+    public static final Boolean noMd5(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nomd5 = isNoMd5();
+        Boolean  nomd5 = obj.getNoMd5();
         return (nomd5 == null ? DEFAULT_NOMD5 : nomd5);
     }
 
@@ -144,15 +149,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoSize()
+    public Boolean getNoSize()
     {
         return nosize;
     }
 
 
-    public boolean canonicalIsNoSize()
+    public static final Boolean noSize(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nosize = isNoSize();
+        Boolean  nosize = obj.getNoSize();
         return (nosize == null ? DEFAULT_NOSIZE : nosize);
     }
 
@@ -168,15 +175,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoUser()
+    public Boolean getNoUser()
     {
         return nouser;
     }
 
 
-    public boolean canonicalIsNoUser()
+    public static final Boolean noUser(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nouser = isNoUser();
+        Boolean  nouser = obj.getNoUser();
         return (nouser == null ? DEFAULT_NOUSER : nouser);
     }
 
@@ -192,15 +201,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoGroup()
+    public Boolean getNoGroup()
     {
         return nogroup;
     }
 
 
-    public boolean canonicalIsNoGroup()
+    public static final Boolean noGroup(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nogroup = isNoGroup();
+        Boolean  nogroup = obj.getNoGroup();
         return (nogroup == null ? DEFAULT_NOGROUP : nogroup);
     }
 
@@ -216,15 +227,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoMtime()
+    public Boolean getNoMtime()
     {
         return nomtime;
     }
 
 
-    public boolean canonicalIsNoMtime()
+    public static final Boolean noMtime(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nomtime = isNoSize();
+        Boolean  nomtime = obj.getNoMtime();
         return (nomtime == null ? DEFAULT_NOMTIME : nomtime);
     }
 
@@ -240,15 +253,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoMode()
+    public Boolean getNoMode()
     {
         return nomode;
     }
 
 
-    public boolean canonicalIsNoMode()
+    public static final Boolean noMode(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nomode = isNoMode();
+        Boolean  nomode = obj.getNoMode();
         return (nomode == null ? DEFAULT_NOMODE : nomode);
     }
 
@@ -264,15 +279,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoRdev()
+    public Boolean getNoRdev()
     {
         return nordev;
     }
 
 
-    public boolean canonicalIsNoRdev()
+    public static final Boolean noRdev(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  nordev = isNoRdev();
+        Boolean  nordev = obj.getNoRdev();
         return (nordev == null ? DEFAULT_NORDEV : nordev);
     }
 
@@ -288,15 +305,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoConfigFiles()
+    public Boolean getNoConfigFiles()
     {
         return noconfigfiles;
     }
 
 
-    public boolean canonicalIsNoConfigFiles()
+    public static final Boolean noConfigFiles(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  noconfigfiles = isNoConfigFiles();
+        Boolean  noconfigfiles = obj.getNoConfigFiles();
         return (noconfigfiles == null ? DEFAULT_NOCONFIGFILES : noconfigfiles);
     }
 
@@ -312,15 +331,17 @@ public class RpmVerifyFileBehaviors
     }
 
 
-    public Boolean isNoGhostFiles()
+    public Boolean getNoGhostFiles()
     {
         return noghostfiles;
     }
 
 
-    public boolean canonicalIsNoGhostFiles()
+    public static final Boolean noGhostFiles(
+                    final RpmVerifyFileBehaviors obj
+                    )
     {
-        final Boolean  noghostfiles = isNoGhostFiles();
+        Boolean  noghostfiles = obj.getNoGhostFiles();
         return (noghostfiles == null ? DEFAULT_NOGHOSTFILES : noghostfiles);
     }
 
@@ -336,16 +357,16 @@ public class RpmVerifyFileBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsNoLinkto() ? 0 : 1);
-        result = prime * result + (canonicalIsNoMd5() ? 0 : 1);
-        result = prime * result + (canonicalIsNoSize() ? 0 : 1);
-        result = prime * result + (canonicalIsNoUser() ? 0 : 1);
-        result = prime * result + (canonicalIsNoGroup() ? 0 : 1);
-        result = prime * result + (canonicalIsNoMtime() ? 0 : 1);
-        result = prime * result + (canonicalIsNoMode() ? 0 : 1);
-        result = prime * result + (canonicalIsNoRdev() ? 0 : 1);
-        result = prime * result + (canonicalIsNoConfigFiles() ? 0 : 1);
-        result = prime * result + (canonicalIsNoGhostFiles() ? 0 : 1);
+        result = prime * result + noLinkto( this ).hashCode();
+        result = prime * result + noMd5( this ).hashCode();
+        result = prime * result + noSize( this ).hashCode();
+        result = prime * result + noUser( this ).hashCode();
+        result = prime * result + noGroup( this ).hashCode();
+        result = prime * result + noMtime( this ).hashCode();
+        result = prime * result + noMode( this ).hashCode();
+        result = prime * result + noRdev( this ).hashCode();
+        result = prime * result + noConfigFiles( this ).hashCode();
+        result = prime * result + noGhostFiles( this ).hashCode();
 
         return result;
     }
@@ -366,16 +387,16 @@ public class RpmVerifyFileBehaviors
         }
 
         RpmVerifyFileBehaviors  other = (RpmVerifyFileBehaviors)obj;
-        if (this.canonicalIsNoLinkto() == other.canonicalIsNoLinkto()
-                        &&  (this.canonicalIsNoMd5() == other.canonicalIsNoMd5())
-                        &&  (this.canonicalIsNoSize() == other.canonicalIsNoSize())
-                        &&  (this.canonicalIsNoUser() == other.canonicalIsNoUser())
-                        &&  (this.canonicalIsNoGroup() == other.canonicalIsNoGroup())
-                        &&  (this.canonicalIsNoMtime() == other.canonicalIsNoMtime())
-                        &&  (this.canonicalIsNoMode() == other.canonicalIsNoMode())
-                        &&  (this.canonicalIsNoRdev() == other.canonicalIsNoRdev())
-                        &&  (this.canonicalIsNoConfigFiles() == other.canonicalIsNoConfigFiles())
-                        &&  (this.canonicalIsNoGhostFiles() == other.canonicalIsNoGhostFiles())
+        if (noLinkto( this ) == noLinkto( other )
+                        &&  (noMd5( this ) == noMd5( other ))
+                        &&  (noSize( this ) == noSize( other ))
+                        &&  (noUser( this ) == noUser( other ))
+                        &&  (noGroup( this ) == noGroup( other ))
+                        &&  (noMtime( this ) == noMtime( other ))
+                        &&  (noMode( this ) == noMode( other ))
+                        &&  (noRdev( this ) == noRdev( other ))
+                        &&  (noConfigFiles( this ) == noConfigFiles( other ))
+                        &&  (noGhostFiles( this ) == noGhostFiles( other ))
                         ) {
             return true;
         }
@@ -388,16 +409,16 @@ public class RpmVerifyFileBehaviors
     @Override
     public String toString()
     {
-        return "[nolinkto=" + isNoLinkto()
-                        + ", nomd5="            + isNoMd5()
-                        + ", nosize="           + isNoSize()
-                        + ", nouser="           + isNoUser()
-                        + ", nogroup="          + isNoGroup()
-                        + ", nomtime="          + isNoMtime()
-                        + ", nomode="           + isNoMode()
-                        + ", nordev="           + isNoRdev()
-                        + ", noconfigfiles="    + isNoConfigFiles()
-                        + ", noghostfiles="     + isNoGhostFiles()
+        return "[nolinkto=" + getNoLinkto()
+                        + ", nomd5="            + getNoMd5()
+                        + ", nosize="           + getNoSize()
+                        + ", nouser="           + getNoUser()
+                        + ", nogroup="          + getNoGroup()
+                        + ", nomtime="          + getNoMtime()
+                        + ", nomode="           + getNoMode()
+                        + ", nordev="           + getNoRdev()
+                        + ", noconfigfiles="    + getNoConfigFiles()
+                        + ", noghostfiles="     + getNoGhostFiles()
                         + "]";
     }
 

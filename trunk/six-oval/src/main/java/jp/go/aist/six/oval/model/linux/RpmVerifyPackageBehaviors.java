@@ -72,15 +72,17 @@ public class RpmVerifyPackageBehaviors
     }
 
 
-    public Boolean isNoDeps()
+    public Boolean getNoDeps()
     {
         return nodeps;
     }
 
 
-    public boolean canonicalIsNoDeps()
+    public static final Boolean noDeps(
+                    final RpmVerifyPackageBehaviors obj
+                    )
     {
-        final Boolean  nodeps = isNoDeps();
+        final Boolean  nodeps = obj.getNoDeps();
         return (nodeps == null ? DEFAULT_NODEPS : nodeps);
     }
 
@@ -96,15 +98,17 @@ public class RpmVerifyPackageBehaviors
     }
 
 
-    public Boolean isNoDigest()
+    public Boolean getNoDigest()
     {
         return nodigest;
     }
 
 
-    public boolean canonicalIsNoDigest()
+    public static final Boolean noDigest(
+                    final RpmVerifyPackageBehaviors obj
+                    )
     {
-        final Boolean  nodigest = isNoDigest();
+        final Boolean  nodigest = obj.getNoDigest();
         return (nodigest == null ? DEFAULT_NODIGEST : nodigest);
     }
 
@@ -120,15 +124,17 @@ public class RpmVerifyPackageBehaviors
     }
 
 
-    public Boolean isNoScripts()
+    public Boolean getNoScripts()
     {
         return noscripts;
     }
 
 
-    public boolean canonicalIsNoScripts()
+    public static final boolean noScripts(
+                    final RpmVerifyPackageBehaviors obj
+                    )
     {
-        final Boolean  noscripts = isNoScripts();
+        final Boolean  noscripts = obj.getNoScripts();
         return (noscripts == null ? DEFAULT_NOSCRIPTS : noscripts);
     }
 
@@ -144,15 +150,17 @@ public class RpmVerifyPackageBehaviors
     }
 
 
-    public Boolean isNoSignature()
+    public Boolean getNoSignature()
     {
         return nosignature;
     }
 
 
-    public boolean canonicalIsNoSignature()
+    public static final Boolean noSignature(
+                    final RpmVerifyPackageBehaviors obj
+                    )
     {
-        final Boolean  nosignature = isNoSignature();
+        final Boolean  nosignature = obj.getNoSignature();
         return (nosignature == null ? DEFAULT_NOSIGNATURE : nosignature);
     }
 
@@ -168,10 +176,10 @@ public class RpmVerifyPackageBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (canonicalIsNoDeps() ? 0 : 1);
-        result = prime * result + (canonicalIsNoDigest() ? 0 : 1);
-        result = prime * result + (canonicalIsNoScripts() ? 0 : 1);
-        result = prime * result + (canonicalIsNoSignature() ? 0 : 1);
+        result = prime * result + noDeps( this ).hashCode();
+        result = prime * result + noDigest( this ).hashCode();
+        result = prime * result + noScripts( this ).hashCode();
+        result = prime * result + noSignature( this ).hashCode();
 
         return result;
     }
@@ -192,10 +200,10 @@ public class RpmVerifyPackageBehaviors
         }
 
         RpmVerifyPackageBehaviors  other = (RpmVerifyPackageBehaviors)obj;
-        if (this.canonicalIsNoDeps() == other.canonicalIsNoDeps()
-                        &&  (this.canonicalIsNoDigest() == other.canonicalIsNoDigest())
-                        &&  (this.canonicalIsNoScripts() == other.canonicalIsNoScripts())
-                        &&  (this.canonicalIsNoSignature() == other.canonicalIsNoSignature())
+        if (noDeps( this ) == noDeps( other )
+                        &&  (noDigest( this ) == noDigest( other ))
+                        &&  (noScripts( this ) == noScripts( other ))
+                        &&  (noSignature( this ) == noSignature( other ))
                         ) {
             return true;
         }
@@ -208,10 +216,10 @@ public class RpmVerifyPackageBehaviors
     @Override
     public String toString()
     {
-        return "[nodeps=" + isNoDeps()
-                        + ", nodigest="     + isNoDigest()
-                        + ", noscript="     + isNoScripts()
-                        + ", nosignature="  + isNoSignature()
+        return "[nodeps=" + getNoDeps()
+                        + ", nodigest="     + getNoDigest()
+                        + ", noscript="     + getNoScripts()
+                        + ", nosignature="  + getNoSignature()
                         + "]";
     }
 

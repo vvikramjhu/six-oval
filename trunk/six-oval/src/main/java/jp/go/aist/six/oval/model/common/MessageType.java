@@ -91,6 +91,15 @@ public class MessageType
     }
 
 
+    public static final MessageLevelEnumeration level(
+                    final MessageType obj
+                    )
+    {
+        MessageLevelEnumeration  level = obj.getLevel();
+        return (level == null ? DEFAULT_LEVEL : level);
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object

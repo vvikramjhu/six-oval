@@ -37,8 +37,8 @@ public class RpmInfoBehaviors
 
     public static final Boolean  DEFAULT_FILEPATHS = Boolean.FALSE;
 
-    //{optional, default='false'}
     private Boolean  filepaths;
+    //{optional, default='false'}
 
 
 
@@ -67,13 +67,12 @@ public class RpmInfoBehaviors
     }
 
 
-    public static boolean filepaths(
-                    final RpmInfoBehaviors behaviors
+    public static final Boolean filepaths(
+                    final RpmInfoBehaviors obj
                     )
     {
-        Boolean  filepaths = behaviors.getFilepaths();
-
-        return (filepaths == null ? DEFAULT_FILEPATHS.booleanValue() : filepaths.booleanValue());
+        Boolean  filepaths = obj.getFilepaths();
+        return (filepaths == null ? DEFAULT_FILEPATHS : filepaths);
     }
 
 
@@ -88,7 +87,7 @@ public class RpmInfoBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (filepaths( this ) ? 0 : 1);
+        result = prime * result + filepaths( this ).hashCode();
 
         return result;
     }
