@@ -130,7 +130,7 @@ public class RpmVerifyPackageBehaviors
     }
 
 
-    public static final boolean noScripts(
+    public static final Boolean noScripts(
                     final RpmVerifyPackageBehaviors obj
                     )
     {
