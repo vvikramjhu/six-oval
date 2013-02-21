@@ -100,13 +100,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nodeps(
+    public static final Boolean nodeps(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nodeps = behaviors.getNodeps();
 
-        return (nodeps == null ? DEFAULT_NODEPS.booleanValue() : nodeps.booleanValue());
+        return (nodeps == null ? DEFAULT_NODEPS : nodeps);
     }
 
 
@@ -127,13 +127,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nodigest(
+    public static final Boolean nodigest(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nodigest = behaviors.getNodigest();
 
-        return (nodigest == null ? DEFAULT_NODIGEST.booleanValue() : nodigest.booleanValue());
+        return (nodigest == null ? DEFAULT_NODIGEST : nodigest);
     }
 
 
@@ -154,13 +154,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nofiles(
+    public static final Boolean nofiles(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nofiles = behaviors.getNofiles();
 
-        return (nofiles == null ? DEFAULT_NOFILES.booleanValue() : nofiles.booleanValue());
+        return (nofiles == null ? DEFAULT_NOFILES : nofiles);
     }
 
 
@@ -181,13 +181,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean noscripts(
+    public static final Boolean noscripts(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  noscripts = behaviors.getNoscripts();
 
-        return (noscripts == null ? DEFAULT_NOSCRIPTS.booleanValue() : noscripts.booleanValue());
+        return (noscripts == null ? DEFAULT_NOSCRIPTS : noscripts);
     }
 
 
@@ -208,13 +208,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nosignature(
+    public static final Boolean nosignature(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nosignature = behaviors.getNosignature();
 
-        return (nosignature == null ? DEFAULT_NOSIGNATURE.booleanValue() : nosignature.booleanValue());
+        return (nosignature == null ? DEFAULT_NOSIGNATURE : nosignature);
     }
 
 
@@ -235,13 +235,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nolinkto(
+    public static final Boolean nolinkto(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nolinkto = behaviors.getNolinkto();
 
-        return (nolinkto == null ? DEFAULT_NOLINKTO.booleanValue() : nolinkto.booleanValue());
+        return (nolinkto == null ? DEFAULT_NOLINKTO : nolinkto);
     }
 
 
@@ -262,13 +262,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nomd5(
+    public static final Boolean nomd5(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nomd5 = behaviors.getNomd5();
 
-        return (nomd5 == null ? DEFAULT_NOMD5.booleanValue() : nomd5.booleanValue());
+        return (nomd5 == null ? DEFAULT_NOMD5 : nomd5);
     }
 
 
@@ -289,13 +289,13 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nosize(
+    public static final Boolean nosize(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nosize = behaviors.getNosize();
 
-        return (nosize == null ? DEFAULT_NOSIZE.booleanValue() : nosize.booleanValue());
+        return (nosize == null ? DEFAULT_NOSIZE : nosize);
     }
 
 
@@ -316,13 +316,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nouser(
+    public static final Boolean nouser(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nouser = behaviors.getNouser();
-
-        return (nouser == null ? DEFAULT_NOUSER.booleanValue() : nouser.booleanValue());
+        return (nouser == null ? DEFAULT_NOUSER : nouser);
     }
 
 
@@ -343,13 +342,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nogroup(
+    public static final Boolean nogroup(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nogroup = behaviors.getNogroup();
-
-        return (nogroup == null ? DEFAULT_NOGROUP.booleanValue() : nogroup.booleanValue());
+        return (nogroup == null ? DEFAULT_NOGROUP : nogroup);
     }
 
 
@@ -370,13 +368,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nomtime(
+    public static final Boolean nomtime(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nomtime = behaviors.getNomtime();
-
-        return (nomtime == null ? DEFAULT_NOMTIME.booleanValue() : nomtime.booleanValue());
+        return (nomtime == null ? DEFAULT_NOMTIME : nomtime);
     }
 
 
@@ -397,13 +394,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nomode(
+    public static final Boolean nomode(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nomode = behaviors.getNomtime();
-
-        return (nomode == null ? DEFAULT_NOMODE.booleanValue() : nomode.booleanValue());
+        return (nomode == null ? DEFAULT_NOMODE : nomode);
     }
 
 
@@ -424,13 +420,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean nordev(
+    public static final Boolean nordev(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  nordev = behaviors.getNordev();
-
-        return (nordev == null ? DEFAULT_NORDEV.booleanValue() : nordev.booleanValue());
+        return (nordev == null ? DEFAULT_NORDEV : nordev);
     }
 
 
@@ -451,13 +446,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean noconfigfiles(
+    public static final Boolean noconfigfiles(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  noconfigfiles = behaviors.getNordev();
-
-        return (noconfigfiles == null ? DEFAULT_NOCONFIGFILES.booleanValue() : noconfigfiles.booleanValue());
+        return (noconfigfiles == null ? DEFAULT_NOCONFIGFILES : noconfigfiles);
     }
 
 
@@ -478,13 +472,12 @@ public class RpmVerifyBehaviors
     }
 
 
-    public static boolean noghostfiles(
+    public static final Boolean noghostfiles(
                     final RpmVerifyBehaviors behaviors
                     )
     {
         Boolean  noghostfiles = behaviors.getNordev();
-
-        return (noghostfiles == null ? DEFAULT_NOGHOSTFILES.booleanValue() : noghostfiles.booleanValue());
+        return (noghostfiles == null ? DEFAULT_NOGHOSTFILES : noghostfiles);
     }
 
 
@@ -499,21 +492,21 @@ public class RpmVerifyBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (nodeps( this ) ? 0 : 1);
-        result = prime * result + (nodigest( this )  ? 0 : 1);
-        result = prime * result + (nofiles( this )  ? 0 : 1);
-        result = prime * result + (noscripts( this )  ? 0 : 1);
-        result = prime * result + (nosignature( this )  ? 0 : 1);
-        result = prime * result + (nolinkto( this )  ? 0 : 1);
-        result = prime * result + (nomd5( this )  ? 0 : 1);
-        result = prime * result + (nosize( this )  ? 0 : 1);
-        result = prime * result + (nouser( this )  ? 0 : 1);
-        result = prime * result + (nogroup( this )  ? 0 : 1);
-        result = prime * result + (nomtime( this )  ? 0 : 1);
-        result = prime * result + (nomode( this )  ? 0 : 1);
-        result = prime * result + (nordev( this )  ? 0 : 1);
-        result = prime * result + (noconfigfiles( this )  ? 0 : 1);
-        result = prime * result + (noghostfiles( this )  ? 0 : 1);
+        result = prime * result + nodeps( this ).hashCode();
+        result = prime * result + nodigest( this ).hashCode();
+        result = prime * result + nofiles( this ).hashCode();
+        result = prime * result + noscripts( this ).hashCode();
+        result = prime * result + nosignature( this ).hashCode();
+        result = prime * result + nolinkto( this ).hashCode();
+        result = prime * result + nomd5( this ).hashCode();
+        result = prime * result + nosize( this ).hashCode();
+        result = prime * result + nouser( this ).hashCode();
+        result = prime * result + nogroup( this ).hashCode();
+        result = prime * result + nomtime( this ).hashCode();
+        result = prime * result + nomode( this ).hashCode();
+        result = prime * result + nordev( this ).hashCode();
+        result = prime * result + noconfigfiles( this ).hashCode();
+        result = prime * result + noghostfiles( this ).hashCode();
 
         return result;
     }
