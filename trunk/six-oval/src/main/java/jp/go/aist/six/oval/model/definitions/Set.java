@@ -39,7 +39,7 @@ import jp.go.aist.six.oval.model.OvalObject;
 public class Set
     implements OvalObject
 {
-    /*
+    /* TODO: XSD model
      * <choice>
      *   <sequence>
      *     <element ref="set" 1..2 />
@@ -241,9 +241,11 @@ public class Set
     }
 
 
-    protected SetOperatorEnumeration _setOperator()
+    public static SetOperatorEnumeration setOperator(
+                    final Set obj
+                    )
     {
-        SetOperatorEnumeration  set_operator = getSetOperator();
+        SetOperatorEnumeration  set_operator = obj.getSetOperator();
         return (set_operator == null ? DEFAULT_SET_OPERATOR : set_operator);
     }
 
@@ -259,8 +261,7 @@ public class Set
         final int  prime = 37;
         int  result = 17;
 
-        SetOperatorEnumeration  set_operator = _setOperator();
-        result = prime * result + ((set_operator == null) ? 0 : set_operator.hashCode());
+        result = prime * result + setOperator( this ).hashCode();
 
         return result;
     }
@@ -281,7 +282,7 @@ public class Set
         }
 
         Set  other = (Set)obj;
-        if (this._setOperator() == other._setOperator()) {
+        if (setOperator( this ) == setOperator( other )) {
             return true;
         }
 

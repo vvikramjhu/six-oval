@@ -138,20 +138,16 @@ public class EntityStateFieldType
     }
 
 
-    public static final CheckEnumeration entityCheck(
-                    final EntityStateFieldType esft
+    public static CheckEnumeration entityCheck(
+                    final EntityStateFieldType obj
                     )
     {
-        if (esft == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityStateFieldType" );
         }
 
-        CheckEnumeration  entity_check = esft.getEntityCheck();
-        if (entity_check == null) {
-            entity_check = DEFAULT_ENTITY_CHECK;
-        }
-
-        return entity_check;
+        CheckEnumeration  entity_check = obj.getEntityCheck();
+        return (entity_check == null ? DEFAULT_ENTITY_CHECK : entity_check);
     }
 
 
@@ -186,6 +182,8 @@ public class EntityStateFieldType
         String  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
+        result = prime * result + entityCheck( this ).hashCode();
+
         String  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
@@ -214,12 +212,14 @@ public class EntityStateFieldType
             if (this_name == other_name
                             ||  (this_name != null
                                         &&  this_name.equals( other_name ))) {
-                final String  other_content = other.getContent();
-                final String   this_content =  this.getContent();
-                if (this_content == other_content
-                                ||  (this_content != null
-                                                &&  this_content.equals( other_content ))) {
-                    return true;
+                if (entityCheck( this ) == entityCheck( other )) {
+                    final String  other_content = other.getContent();
+                    final String   this_content =  this.getContent();
+                    if (this_content == other_content
+                                    ||  (this_content != null
+                                    &&  this_content.equals( other_content ))) {
+                        return true;
+                    }
                 }
             }
         }
@@ -234,6 +234,7 @@ public class EntityStateFieldType
     {
         return "" + getContent()
                         + ", name=" + getName()
+                        + ", entity_check=" + getEntityCheck()
                         + ", " + super.toString()
                         ;
     }

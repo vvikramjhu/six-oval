@@ -37,8 +37,8 @@ public class EntityStateIOSVersionType
     extends EntityStateSimpleBaseType
 {
 
+//    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
     //{optional, default="string"}
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
 
 
 

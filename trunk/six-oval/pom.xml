@@ -10,7 +10,6 @@ Project SIX: OVAL - Maven Project Object Model (POM)
 @version    $Id$
 -->
 
-
     <groupId>jp.go.aist.six.oval</groupId>
     <artifactId>six-oval</artifactId>
     <version>1.3.0-SNAPSHOT</version>

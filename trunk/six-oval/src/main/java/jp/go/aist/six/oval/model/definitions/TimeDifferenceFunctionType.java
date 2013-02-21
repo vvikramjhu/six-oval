@@ -42,9 +42,11 @@ public class TimeDifferenceFunctionType
     //{1..2}
 
 
+    public static final DateTimeFormatEnumeration  DEFAULT_FORMAT_1 = DateTimeFormatEnumeration.YEAR_MONTH_DAY;
     private DateTimeFormatEnumeration  format_1;
     //{optional, default="year_month_day"}
 
+    public static final DateTimeFormatEnumeration  DEFAULT_FORMAT_2 = DateTimeFormatEnumeration.YEAR_MONTH_DAY;
     private DateTimeFormatEnumeration  format_2;
     //{optional, default="year_month_day"}
 
@@ -118,6 +120,15 @@ public class TimeDifferenceFunctionType
     }
 
 
+    public static DateTimeFormatEnumeration format1(
+                    final TimeDifferenceFunctionType obj
+                    )
+    {
+        DateTimeFormatEnumeration  format1 = obj.getFormat1();
+        return (format1 == null ? DEFAULT_FORMAT_1 : format1);
+    }
+
+
 
     /**
      */
@@ -132,6 +143,15 @@ public class TimeDifferenceFunctionType
     public DateTimeFormatEnumeration getFormat2()
     {
         return format_2;
+    }
+
+
+    public static DateTimeFormatEnumeration format2(
+                    final TimeDifferenceFunctionType obj
+                    )
+    {
+        DateTimeFormatEnumeration  format2 = obj.getFormat2();
+        return (format2 == null ? DEFAULT_FORMAT_2 : format2);
     }
 
 

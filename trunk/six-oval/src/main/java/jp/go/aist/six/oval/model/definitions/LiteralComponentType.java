@@ -1,5 +1,5 @@
 /*
- *  @product.title@
+*  @product.title@
  *  Copyright (C) @product.copyright-year@
  *    @product.vendor@
  *    Registration Number: @product.registration-number@
@@ -93,6 +93,15 @@ public class LiteralComponentType
     public DatatypeEnumeration getDatatype()
     {
         return datatype;
+    }
+
+
+    public static DatatypeEnumeration datatype(
+                    final LiteralComponentType obj
+                    )
+    {
+        DatatypeEnumeration  datatype = obj.getDatatype();
+        return (datatype == null ? DEFAULT_DATATYPE : datatype);
     }
 
 

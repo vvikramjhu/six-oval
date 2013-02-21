@@ -104,20 +104,16 @@ public abstract class EntityStateSimpleBaseType
     }
 
 
-    public static final CheckEnumeration entityCheck(
-                    final EntityStateSimpleBaseType essbt
+    public static CheckEnumeration entityCheck(
+                    final EntityStateSimpleBaseType obj
                     )
     {
-        if (essbt == null) {
+        if (obj == null) {
             throw new IllegalArgumentException( "null EntityStateSimpleBaseType" );
         }
 
-        CheckEnumeration  entity_check = essbt.getEntityCheck();
-        if (entity_check == null) {
-            entity_check = DEFAULT_ENTITY_CHECK;
-        }
-
-        return entity_check;
+        CheckEnumeration  entity_check = obj.getEntityCheck();
+        return (entity_check == null ? DEFAULT_ENTITY_CHECK : entity_check);
     }
 
 
