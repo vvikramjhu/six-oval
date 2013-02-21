@@ -78,16 +78,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public TextfileContent54Behaviors ignoreCase(
-                    final Boolean ignoreCase
-                    )
-    {
-        setIgnoreCase( ignoreCase );
-        return this;
-    }
+//    public TextfileContent54Behaviors ignoreCase(
+//                    final Boolean ignoreCase
+//                    )
+//    {
+//        setIgnoreCase( ignoreCase );
+//        return this;
+//    }
 
 
-    public static Boolean ignoreCase(
+    public static final Boolean ignoreCase(
                     final TextfileContent54Behaviors obj
                     )
     {
@@ -113,16 +113,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public TextfileContent54Behaviors multiline(
-                    final Boolean multiline
-                    )
-    {
-        setMultiline( multiline );
-        return this;
-    }
+//    public TextfileContent54Behaviors multiline(
+//                    final Boolean multiline
+//                    )
+//    {
+//        setMultiline( multiline );
+//        return this;
+//    }
 
 
-    public static Boolean multiline(
+    public static final Boolean multiline(
                     final TextfileContent54Behaviors obj
                     )
     {
@@ -148,16 +148,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public TextfileContent54Behaviors singleline(
-                    final Boolean singleline
-                    )
-    {
-        setSingleline( singleline );
-        return this;
-    }
+//    public TextfileContent54Behaviors singleline(
+//                    final Boolean singleline
+//                    )
+//    {
+//        setSingleline( singleline );
+//        return this;
+//    }
 
 
-    public static Boolean singleline(
+    public static final Boolean singleline(
                     final TextfileContent54Behaviors obj
                     )
     {
