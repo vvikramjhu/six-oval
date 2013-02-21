@@ -36,13 +36,13 @@ public class AccessTokenBehaviors
     implements OvalObject
 {
 
-    public static final Boolean  DEFAULT_INCLUDE_GROUP =Boolean.TRUE;
+    public static final Boolean  DEFAULT_INCLUDE_GROUP = Boolean.TRUE;
 
     private Boolean  include_group;
     //{optional, default='true'}
 
 
-    public static final Boolean  DEFAULT_RESOLVE_GROUP =Boolean.FALSE;
+    public static final Boolean  DEFAULT_RESOLVE_GROUP = Boolean.FALSE;
 
     private Boolean  resolve_group;
     //{optional, default='false'}
@@ -74,11 +74,11 @@ public class AccessTokenBehaviors
     }
 
 
-    public static Boolean includeGroup(
-                    final AccessTokenBehaviors behaviors
+    public static final Boolean includeGroup(
+                    final AccessTokenBehaviors obj
                     )
     {
-        Boolean  include_group = behaviors.getIncludeGroup();
+        Boolean  include_group = obj.getIncludeGroup();
         return (include_group == null ? DEFAULT_INCLUDE_GROUP : include_group);
     }
 
@@ -100,11 +100,11 @@ public class AccessTokenBehaviors
     }
 
 
-    public static Boolean resolveGroup(
-                    final AccessTokenBehaviors behaviors
+    public static final Boolean resolveGroup(
+                    final AccessTokenBehaviors obj
                     )
     {
-        Boolean  scope = behaviors.getResolveGroup();
+        Boolean  scope = obj.getResolveGroup();
         return (scope == null ? DEFAULT_RESOLVE_GROUP : scope);
     }
 

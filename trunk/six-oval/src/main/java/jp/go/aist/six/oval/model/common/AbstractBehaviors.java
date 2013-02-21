@@ -87,12 +87,12 @@ public abstract class AbstractBehaviors
     }
 
 
-    public static int maxDepth(
+    public static final Integer maxDepth(
                     final AbstractBehaviors obj
                     )
     {
         Integer  max_depth = obj.getMaxDepth();
-        return (max_depth == null ? DEFAULT_MAX_DEPTH.intValue() : max_depth.intValue());
+        return (max_depth == null ? DEFAULT_MAX_DEPTH : max_depth);
     }
 
 
@@ -113,7 +113,7 @@ public abstract class AbstractBehaviors
     }
 
 
-    public static RecurseDirectionEnumeration recurseDirection(
+    public static final RecurseDirectionEnumeration recurseDirection(
                     final AbstractBehaviors obj
                     )
     {
@@ -133,8 +133,7 @@ public abstract class AbstractBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + maxDepth( this );
-
+        result = prime * result + maxDepth( this ).hashCode();
         result = prime * result + recurseDirection( this ).hashCode();
 
         return result;

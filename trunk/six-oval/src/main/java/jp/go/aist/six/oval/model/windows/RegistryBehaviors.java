@@ -72,7 +72,7 @@ public class RegistryBehaviors
     }
 
 
-    public static WindowsViewEnumeration windowsView(
+    public static final WindowsViewEnumeration windowsView(
                     final RegistryBehaviors obj
                     )
     {

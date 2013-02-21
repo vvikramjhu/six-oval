@@ -75,12 +75,12 @@ public class FileAuditPermissionsBehaviors
     }
 
 
-    protected final boolean _includeGroup()
+    public static final Boolean includeGroup(
+                    final FileAuditPermissionsBehaviors obj
+                    )
     {
-        Boolean  include_group = getIncludeGroup();
-        return (include_group == null
-        		? DEFAULT_INCLUDE_GROUP.booleanValue()
-        				: include_group.booleanValue());
+        Boolean  include_group = obj.getIncludeGroup();
+        return (include_group == null ? DEFAULT_INCLUDE_GROUP : include_group);
     }
 
 
@@ -101,10 +101,12 @@ public class FileAuditPermissionsBehaviors
     }
 
 
-    protected final boolean _resolveGroup()
+    public static final Boolean resolveGroup(
+                    final FileAuditPermissionsBehaviors obj
+                    )
     {
-        Boolean  resolve_group = getResolveGroup();
-        return (resolve_group == null ? DEFAULT_RESOLVE_GROUP.booleanValue() : resolve_group.booleanValue());
+        Boolean  resolve_group = obj.getResolveGroup();
+        return (resolve_group == null ? DEFAULT_RESOLVE_GROUP : resolve_group);
     }
 
 
@@ -119,8 +121,8 @@ public class FileAuditPermissionsBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (_includeGroup() ? 0 : 1);
-        result = prime * result + (_resolveGroup()  ? 0 : 1);
+        result = prime * result + includeGroup( this ).hashCode();
+        result = prime * result + resolveGroup( this ).hashCode();
 
         return result;
     }
@@ -142,8 +144,8 @@ public class FileAuditPermissionsBehaviors
 
         if (super.equals( obj )) {
             FileAuditPermissionsBehaviors  other = (FileAuditPermissionsBehaviors)obj;
-            if (this._includeGroup() == other._includeGroup()) {
-                if (this._resolveGroup() == other._resolveGroup()) {
+            if (includeGroup( this ) == includeGroup( other )) {
+                if (resolveGroup( this ) == resolveGroup( other )) {
                 	return true;
                 }
             }
