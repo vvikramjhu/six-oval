@@ -33,8 +33,7 @@ public class DefaultDirectivesType
     extends DirectivesType
 {
 
-    public static final Boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS =
-        Boolean.TRUE;
+    public static final Boolean  DEFAULT_INCLUDE_SOURCE_DEFINITIONS = Boolean.TRUE;
 
     private Boolean  include_source_definitions;
     //{optional, default='true'}
@@ -92,8 +91,11 @@ public class DefaultDirectivesType
     }
 
 
-    protected Boolean _includeSourceDefinitions()
+    public static final Boolean includeSourceDefinitions(
+                    final DefaultDirectivesType obj
+                    )
     {
+        Boolean  include_source_definitions = obj.isIncludeSourceDefinitions();
         return (include_source_definitions == null
                         ? DEFAULT_INCLUDE_SOURCE_DEFINITIONS
                         : include_source_definitions);
@@ -111,7 +113,7 @@ public class DefaultDirectivesType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + (_includeSourceDefinitions() ? 0 : 1);
+        result = prime * result + includeSourceDefinitions( this ).hashCode();
 
         return result;
     }
@@ -130,7 +132,7 @@ public class DefaultDirectivesType
 
         if (super.equals( obj )) {
             DefaultDirectivesType  other = (DefaultDirectivesType)obj;
-            if (isIncludeSourceDefinitions() == other.isIncludeSourceDefinitions()) {
+            if (includeSourceDefinitions( this ) == includeSourceDefinitions( other )) {
                 return true;
             }
         }

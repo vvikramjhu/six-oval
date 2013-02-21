@@ -41,8 +41,7 @@ public class DirectiveType
     //{required}
 
 
-    public static final ContentEnumeration  DEFAULT_CONTENT =
-        ContentEnumeration.FULL;
+    public static final ContentEnumeration  DEFAULT_CONTENT = ContentEnumeration.FULL;
 
     private ContentEnumeration  content;
     //{optional, default="full"}
@@ -99,6 +98,15 @@ public class DirectiveType
     }
 
 
+    public static final ContentEnumeration content(
+                    final DirectiveType obj
+                    )
+    {
+        ContentEnumeration  content = obj.getContent();
+        return (content == null ? DEFAULT_CONTENT : content);
+    }
+
+
 
     // **************************************************************
     // java.lang.Object
@@ -112,8 +120,7 @@ public class DirectiveType
 
         result = prime * result + (isReported() ? 0 : 1);
 
-        ContentEnumeration  content = getContent();
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
+        result = prime * result + content( this ).hashCode();
 
         return result;
     }
@@ -134,7 +141,7 @@ public class DirectiveType
         }
 
         DirectiveType  other = (DirectiveType)obj;
-        if (this.getContent() == other.getContent()) {
+        if (content( this ) == content( other )) {
             if (this.isReported() == other.isReported()) {
                 return true;
             }

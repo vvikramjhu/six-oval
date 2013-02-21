@@ -46,19 +46,18 @@ public class TestType
     //{oval:TestIDPattern, required}
 
 
-
     private final Collection<TestedItemType>  tested_item =
-        new ArrayList<TestedItemType>();
+                    new ArrayList<TestedItemType>();
     //{0..*}
 
 
     private final Collection<TestedVariableType>  tested_variable=
-        new ArrayList<TestedVariableType>();
+                    new ArrayList<TestedVariableType>();
     //{0..*}
 
 
     public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE =
-        ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
+                    ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
 
     private ExistenceEnumeration  check_existence;
     //{optional, default="at_least_one_exists"}
@@ -69,7 +68,7 @@ public class TestType
 
 
     public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR =
-        OperatorEnumeration.AND;
+                    OperatorEnumeration.AND;
 
     private OperatorEnumeration  state_operator;
     //{optional, default="AND"}
@@ -215,12 +214,21 @@ public class TestType
     }
 
 
-    public TestType checkExistence(
-                    final ExistenceEnumeration check_existence
+//    public TestType checkExistence(
+//                    final ExistenceEnumeration check_existence
+//                    )
+//    {
+//        setCheckExistence( check_existence );
+//        return this;
+//    }
+
+
+    public static final ExistenceEnumeration checkExistence(
+                    final TestType obj
                     )
     {
-        setCheckExistence( check_existence );
-        return this;
+        ExistenceEnumeration  check_existence = obj.getCheckExistence();
+        return (check_existence == null ? DEFAULT_CHECK_EXISTENCE : check_existence);
     }
 
 
@@ -241,13 +249,13 @@ public class TestType
     }
 
 
-    public TestType check(
-                    final CheckEnumeration check
-                    )
-    {
-        setCheck( check );
-        return this;
-    }
+//    public TestType check(
+//                    final CheckEnumeration check
+//                    )
+//    {
+//        setCheck( check );
+//        return this;
+//    }
 
 
 
@@ -261,18 +269,27 @@ public class TestType
     }
 
 
-    public TestType stateOperator(
-                    final OperatorEnumeration state_operator
-                    )
-    {
-        setStateOperator( state_operator );
-        return this;
-    }
+//    public TestType stateOperator(
+//                    final OperatorEnumeration state_operator
+//                    )
+//    {
+//        setStateOperator( state_operator );
+//        return this;
+//    }
 
 
     public OperatorEnumeration getStateOperator()
     {
         return state_operator;
+    }
+
+
+    public static final OperatorEnumeration stateOperator(
+                    final TestType obj
+                    )
+    {
+        OperatorEnumeration  state_operator = obj.getStateOperator();
+        return (state_operator == null ? DEFAULT_STATE_OPERATOR : state_operator);
     }
 
 
