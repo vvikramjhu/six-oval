@@ -44,7 +44,7 @@ import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
-import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.util.query.QueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Criteria;

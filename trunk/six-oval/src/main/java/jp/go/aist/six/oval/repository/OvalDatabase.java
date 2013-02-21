@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.repository;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.query.QueryParams;
 
 
 

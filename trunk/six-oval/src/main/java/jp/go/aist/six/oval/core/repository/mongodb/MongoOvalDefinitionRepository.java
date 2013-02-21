@@ -34,8 +34,8 @@ import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.util.query.QueryParams;
+import jp.go.aist.six.util.query.QueryResults;
 
 
 

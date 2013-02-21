@@ -19,6 +19,9 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.util.query.QueryParams;
+import jp.go.aist.six.util.query.View;
+
 
 
 /**
