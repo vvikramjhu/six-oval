@@ -290,6 +290,15 @@ public class SystemObjectType
     }
 
 
+    public static Integer variableInstance(
+                    final SystemObjectType obj
+                    )
+    {
+        Integer  variable_instance = obj.getVariableInstance();
+        return (variable_instance == null ? DEFAULT_VARIABLE_INSTANCE : variable_instance);
+    }
+
+
 
     /**
      */
