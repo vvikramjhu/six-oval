@@ -16,10 +16,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.model.definitions.StateType;
-import com.google.code.morphia.Datastore;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import com.google.code.morphia.query.Query;
+
+
 
 
 
@@ -27,20 +29,23 @@ import com.google.code.morphia.Datastore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StateDAO
-    extends DefinitionsElementDAO<StateType>
-//    extends OvalEntityDAO<StateType>
+public interface QueryBuilder
 {
 
+    // predefined filter
     /**
+     * @throws OvalRepositoryException
      */
-    public StateDAO(
-                    final Datastore ds
-                    )
-    {
-        super( StateType.class, ds );
-    }
+    public <T> Query<T> build( Query<T> query );
+
+
+//    // paging
+//    public Query<T> build(
+//                    Query<T> query,
+//                    List<? extends Order> orders,
+//                    Limit limit
+//                    );
 
 }
-// StateDAO
+//
 

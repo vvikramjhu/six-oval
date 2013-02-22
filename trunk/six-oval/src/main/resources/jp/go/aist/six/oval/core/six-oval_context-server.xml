@@ -63,19 +63,19 @@
 
 
 
-<!--
+<!-- OLD
     <bean id="mongo-oval-definition-repository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
+        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDefinitionRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
     <bean id="oval-repository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository">
+        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
     <bean id="oval-definitions-generator" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsGenerator">
     </bean>
 -->
 

@@ -16,9 +16,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import com.google.code.morphia.Datastore;
 
 
@@ -27,26 +27,20 @@ import com.google.code.morphia.Datastore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsElementDAO<T extends DefinitionsElement>
-    extends BaseDAO<T, String>
+public class SystemObjectDAO
+    extends DefinitionsElementDAO<SystemObjectType>
+//    extends OvalEntityDAO<SystemObjectType>
 {
 
     /**
      */
-    public DefinitionsElementDAO(
-                    final Class<T> type,
+    public SystemObjectDAO(
                     final Datastore ds
                     )
     {
-        super( type, ds );
+        super( SystemObjectType.class, ds );
     }
 
-
-
-    //**************************************************************
-    //  DAO
-    //**************************************************************
-
 }
-//
+// SystemObjectDAO
 
