@@ -43,7 +43,7 @@
 
 
     <bean id="morphia" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MorphiaFactory" 
+        class="jp.go.aist.six.oval.core.repository.morphia.MorphiaFactory" 
         factory-method="create"> 
         <constructor-arg>
             <set>
@@ -52,7 +52,7 @@
         </constructor-arg>
         <constructor-arg>
             <set>
-                <value>#{ T(jp.go.aist.six.oval.core.repository.mongodb.OvalConverter) }</value>
+                <value>#{ T(jp.go.aist.six.oval.core.repository.morphia.OvalConverter) }</value>
             </set>
         </constructor-arg>
     </bean>
@@ -69,48 +69,48 @@
 
 
     <bean id="ovalDefinitionsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="definitionDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.DefinitionDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.DefinitionDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="testDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.TestDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.TestDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="systemObjectDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.SystemObjectDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.SystemObjectDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="stateDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.StateDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.StateDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="variableDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.VariableDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.VariableDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
 
     <bean id="ovalSystemCharacteristicsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalSystemCharacteristicsDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalSystemCharacteristicsDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="ovalResultsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalResultsDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalResultsDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
     <bean id="definitionsElementAssocDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.DefinitionsElementAssocDAO">
+        class="jp.go.aist.six.oval.core.repository.morphia.DefinitionsElementAssocDAO">
         <constructor-arg ref="morphia-datastore"/> 
     </bean> 
 
@@ -119,7 +119,7 @@
     <!-- ******************************************************* -->
 
     <bean id="oval-database" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatabase"> 
+        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDatabase"> 
         <property name="DAO">
             <set>
                 <ref bean="ovalDefinitionsDAO"/>
@@ -138,20 +138,20 @@
 
 
     <bean id="mongo-oval-definition-repository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
+        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDefinitionRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
 
     <!-- id="mongo-oval-repository" --> 
     <bean id="oval-repository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository">
+        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository">
         <property name="database" ref="oval-database"/>
     </bean>
 
 
     <bean id="oval-definitions-generator" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsGenerator">
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsGenerator">
 <!--
         <property name="datastore" ref="oval-database"/>
 -->

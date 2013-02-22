@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
 import jp.go.aist.six.oval.core.model.OvalEnumerationHelper;
 import jp.go.aist.six.oval.model.ComponentType;

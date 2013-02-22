@@ -16,11 +16,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
+import jp.go.aist.six.oval.model.definitions.StateType;
 import com.google.code.morphia.Datastore;
-import com.google.code.morphia.dao.BasicDAO;
 
 
 
@@ -28,19 +27,20 @@ import com.google.code.morphia.dao.BasicDAO;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsElementAssocDAO
-    extends BasicDAO<DefinitionsElementAssoc, String>
+public class StateDAO
+    extends DefinitionsElementDAO<StateType>
+//    extends OvalEntityDAO<StateType>
 {
 
     /**
      */
-    public DefinitionsElementAssocDAO(
+    public StateDAO(
                     final Datastore ds
                     )
     {
-        super( DefinitionsElementAssoc.class, ds );
+        super( StateType.class, ds );
     }
 
 }
-//
+// StateDAO
 

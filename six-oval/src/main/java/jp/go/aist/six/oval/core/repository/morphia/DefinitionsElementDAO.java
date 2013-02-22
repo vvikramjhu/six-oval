@@ -16,13 +16,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import com.google.code.morphia.Datastore;
-import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
 
 
 
@@ -30,17 +27,18 @@ import com.google.code.morphia.dao.DAO;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class TestDAO
-    extends DefinitionsElementDAO<TestType>
+public class DefinitionsElementDAO<T extends DefinitionsElement>
+    extends BaseDAO<T, String>
 {
 
     /**
      */
-    public TestDAO(
+    public DefinitionsElementDAO(
+                    final Class<T> type,
                     final Datastore ds
                     )
     {
-        super( TestType.class, ds );
+        super( type, ds );
     }
 
 
@@ -48,18 +46,6 @@ public class TestDAO
     //**************************************************************
     //  DAO
     //**************************************************************
-
-    @Override
-    public Key<TestType> save(
-                    final TestType tst
-                    )
-    {
-        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
-        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( tst );
-        assoc_dao.save( assoc );
-
-        return super.save( tst );
-    }
 
 }
 //

@@ -16,36 +16,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import com.google.code.morphia.query.Query;
-
+import com.google.code.morphia.dao.DAO;
 
 
 
-
-/**
- * @author  Akihito Nakamura, AIST
- * @version $Id$
- */
-public interface QueryBuilder
+public interface DAORegistry
 {
 
-    // predefined filter
     /**
-     * @throws OvalRepositoryException
      */
-    public <T> Query<T> build( Query<T> query );
-
-
-//    // paging
-//    public Query<T> build(
-//                    Query<T> query,
-//                    List<? extends Order> orders,
-//                    Limit limit
-//                    );
+    public <T, K> DAO<T, K> getDAO( Class<T> entityClass );
 
 }
-//
-
+// DAORegistry

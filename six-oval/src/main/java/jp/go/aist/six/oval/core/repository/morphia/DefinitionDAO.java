@@ -16,12 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import java.util.UUID;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
+import com.google.code.morphia.dao.DAO;
 
 
 
@@ -29,17 +30,18 @@ import com.google.code.morphia.Key;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSystemCharacteristicsDAO
-    extends BaseDAO<OvalSystemCharacteristics, String>
+public class DefinitionDAO
+    extends DefinitionsElementDAO<DefinitionType>
+//extends BasicDAO<DefinitionType, String>
 {
 
     /**
      */
-    public OvalSystemCharacteristicsDAO(
+    public DefinitionDAO(
                     final Datastore ds
                     )
     {
-        super( OvalSystemCharacteristics.class, ds );
+        super( DefinitionType.class, ds );
     }
 
 
@@ -49,19 +51,17 @@ public class OvalSystemCharacteristicsDAO
     //**************************************************************
 
     @Override
-    public Key<OvalSystemCharacteristics> save(
-                    final OvalSystemCharacteristics oval_sc
+    public Key<DefinitionType> save(
+                    final DefinitionType def
                     )
     {
-        String  pid = oval_sc.getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            oval_sc.setPersistentID( pid );
-        }
+        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
+        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( def );
+        assoc_dao.save( assoc );
 
-        return super.save( oval_sc );
+        return super.save( def );
     }
 
 }
-// OvalSystemCharacteristicsDAO
+//DefinitionDAO
 

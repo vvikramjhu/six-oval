@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
+import jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;

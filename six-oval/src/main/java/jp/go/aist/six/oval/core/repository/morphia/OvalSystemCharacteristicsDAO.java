@@ -16,10 +16,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.repository.morphia;
 
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import java.util.UUID;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import com.google.code.morphia.Datastore;
+import com.google.code.morphia.Key;
 
 
 
@@ -27,20 +29,39 @@ import com.google.code.morphia.Datastore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class SystemObjectDAO
-    extends DefinitionsElementDAO<SystemObjectType>
-//    extends OvalEntityDAO<SystemObjectType>
+public class OvalSystemCharacteristicsDAO
+    extends BaseDAO<OvalSystemCharacteristics, String>
 {
 
     /**
      */
-    public SystemObjectDAO(
+    public OvalSystemCharacteristicsDAO(
                     final Datastore ds
                     )
     {
-        super( SystemObjectType.class, ds );
+        super( OvalSystemCharacteristics.class, ds );
+    }
+
+
+
+    //**************************************************************
+    //  DAO
+    //**************************************************************
+
+    @Override
+    public Key<OvalSystemCharacteristics> save(
+                    final OvalSystemCharacteristics oval_sc
+                    )
+    {
+        String  pid = oval_sc.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            oval_sc.setPersistentID( pid );
+        }
+
+        return super.save( oval_sc );
     }
 
 }
-// SystemObjectDAO
+// OvalSystemCharacteristicsDAO
 

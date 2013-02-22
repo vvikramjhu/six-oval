@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.core;
 
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
+import jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository;
 import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepository;
