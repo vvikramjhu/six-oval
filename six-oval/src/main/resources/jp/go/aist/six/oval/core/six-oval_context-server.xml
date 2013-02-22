@@ -49,14 +49,23 @@
         write-concern="SAFE"
         />
 
-    <mongo:mapping-converter id="mappingConverter">
-        <mongo:custom-converters base-package="jp.go.aist.six.oval.core.repository.mongodb.converters" />
+    <!-- TODO: Converters are NOT used!!! -->
+    <mongo:mapping-converter id="mappingConverter"
+        base-package="jp.go.aist.six.oval.model">
+        <mongo:custom-converters>
+            <mongo:converter>
+                <bean class="jp.go.aist.six.oval.core.repository.mongodb.converters.FamilyEnumerationStringConverter"/>
+            </mongo:converter>
+            <mongo:converter>
+                <bean class="jp.go.aist.six.oval.core.repository.mongodb.converters.StringFamilyEnumerationConverter"/>
+            </mongo:converter>
+        </mongo:custom-converters>
     </mongo:mapping-converter>
 
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
-        <constructor-arg name="mongoConverter" ref="mappingConverter"/>
+        <constructor-arg ref="mongoDbFactory"/>
+        <constructor-arg ref="mappingConverter"/>
 
         <!--
         Throw an exception if the com.mongodb.WriteResult returned from any MongoDB operation 
