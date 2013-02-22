@@ -20,6 +20,8 @@ package jp.go.aist.six.oval.core.repository.mongodb.converters;
 
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.ReadingConverter;
+import org.springframework.stereotype.Component;
 
 
 
@@ -27,6 +29,8 @@ import org.springframework.core.convert.converter.Converter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
+@Component
+@ReadingConverter
 public class StringFamilyEnumerationConverter
     implements Converter<String,FamilyEnumeration>
 {

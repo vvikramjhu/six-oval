@@ -20,6 +20,8 @@ package jp.go.aist.six.oval.core.repository.mongodb.converters;
 
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.WritingConverter;
+import org.springframework.stereotype.Component;
 
 
 
@@ -27,19 +29,21 @@ import org.springframework.core.convert.converter.Converter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StringFamilyEnumerationConverter
-    implements Converter<String,FamilyEnumeration>
+@Component
+@WritingConverter
+public class FamilyEnumerationStringConverter
+    implements Converter<FamilyEnumeration,String>
 {
 
     //*********************************************************************
     //  Converter
     //*********************************************************************
 
-    public FamilyEnumeration convert(
-                    final String source
+    public String convert(
+                    final FamilyEnumeration source
                     )
     {
-        return FamilyEnumeration.fromValue( source );
+        return source.value();
     }
 
 }

@@ -38,11 +38,6 @@
     <!-- *  Repository                                                * -->
     <!-- ************************************************************** -->
 
-    <mongo:mapping-converter id="mongoConverter">
-        <mongo:custom-converters base-package="jp.go.aist.six.oval.core.repository.mongodb.converters" />
-    </mongo:mapping-converter>
-
-
     <!-- mongo:mongo host="${six.oval.database.host}" port="${six.oval.database.port}"/ -->
 
     <mongo:db-factory id="mongoDbFactory" 
@@ -54,8 +49,14 @@
         write-concern="SAFE"
         />
 
+    <mongo:mapping-converter id="mappingConverter">
+        <mongo:custom-converters base-package="jp.go.aist.six.oval.core.repository.mongodb.converters" />
+    </mongo:mapping-converter>
+
+
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+        <constructor-arg name="mongoConverter" ref="mappingConverter"/>
 
         <!--
         Throw an exception if the com.mongodb.WriteResult returned from any MongoDB operation 
