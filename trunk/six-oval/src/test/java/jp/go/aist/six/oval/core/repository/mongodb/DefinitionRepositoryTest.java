@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration( locations="classpath:jp/go/aist/six/oval/core/six-oval_context-server.xml" )
+@ContextConfiguration( locations="classpath:jp/go/aist/six/oval/core/six-oval_context-server_spring-data.xml" )
 public class DefinitionRepositoryTest
 {
 
