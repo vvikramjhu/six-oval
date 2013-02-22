@@ -19,7 +19,7 @@
 package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
-import com.google.code.morphia.annotations.Property;
+import com.github.jmkgreen.morphia.annotations.Property;
 
 
 

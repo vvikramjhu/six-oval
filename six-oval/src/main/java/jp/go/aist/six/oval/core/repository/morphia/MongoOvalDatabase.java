@@ -30,9 +30,9 @@ import jp.go.aist.six.util.query.CommonQueryParams;
 import jp.go.aist.six.util.query.QueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
-import com.google.code.morphia.query.Query;
+import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.DAO;
+import com.github.jmkgreen.morphia.query.Query;
 
 
 

@@ -20,9 +20,9 @@ package jp.go.aist.six.oval.core.repository.morphia;
 
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
-import com.google.code.morphia.Datastore;
-import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
+import com.github.jmkgreen.morphia.Datastore;
+import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.DAO;
 
 
 

@@ -38,18 +38,29 @@
     <!-- *  Repository                                                * -->
     <!-- ************************************************************** -->
 
-    <!-- mongo:mongo host="${six.oval.database.host}" port="${six.oval.database.port}"/ -->
-
-    <mongo:db-factory id="mongoDbFactory" 
-        host    ="${six.oval.repository.database.host}" 
-        port    ="${six.oval.repository.database.port}"
-        dbname  ="${six.oval.repository.database.name}"
-        username="${six.oval.repository.database.username}"
-        password="${six.oval.repository.database.password}"
-        write-concern="SAFE"
-        />
-
     <!-- TODO: Converters are NOT used!!! -->
+
+    <mongo:mapping-converter id="mappingConverter"
+        base-package="jp.go.aist.six.oval.model">
+        <mongo:custom-converters base-package="jp.go.aist.six.oval.core.repository.mongodb.converters"/>
+    </mongo:mapping-converter>
+
+    <!--
+    <bean id="FamilyEnumerationStringConverter"
+        class="jp.go.aist.six.oval.core.repository.mongodb.converters.FamilyEnumerationStringConverter"/>
+    <bean id="StringFamilyEnumerationConverter" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.converters.StringFamilyEnumerationConverter"/>
+
+    <mongo:mapping-converter id="mappingConverter">
+        <mongo:custom-converters>
+            <mongo:converter ref="FamilyEnumerationStringConverter"/>
+            <mongo:converter ref="StringFamilyEnumerationConverter"/>
+        </mongo:custom-converters>
+    </mongo:mapping-converter>
+    -->
+
+    <!-- @see http://forum.springsource.org/showthread.php?110218-Spring-not-using-my-custom-converter/page2 -->
+    <!--
     <mongo:mapping-converter id="mappingConverter"
         base-package="jp.go.aist.six.oval.model">
         <mongo:custom-converters>
@@ -61,11 +72,24 @@
             </mongo:converter>
         </mongo:custom-converters>
     </mongo:mapping-converter>
+    -->
+
+
+    <!-- mongo:mongo host="${six.oval.database.host}" port="${six.oval.database.port}"/ -->
+
+    <mongo:db-factory id="mongoDbFactory" 
+        host    ="${six.oval.repository.database.host}" 
+        port    ="${six.oval.repository.database.port}"
+        dbname  ="${six.oval.repository.database.name}"
+        username="${six.oval.repository.database.username}"
+        password="${six.oval.repository.database.password}"
+        write-concern="SAFE"
+        />
 
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongoDbFactory"/>
-        <constructor-arg ref="mappingConverter"/>
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+        <constructor-arg name="mongoConverter" ref="mappingConverter"/>
 
         <!--
         Throw an exception if the com.mongodb.WriteResult returned from any MongoDB operation 

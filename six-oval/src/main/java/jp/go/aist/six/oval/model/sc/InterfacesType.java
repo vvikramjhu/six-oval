@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.Container;
-import com.google.code.morphia.annotations.Embedded;
+import com.github.jmkgreen.morphia.annotations.Embedded;
 
 
 

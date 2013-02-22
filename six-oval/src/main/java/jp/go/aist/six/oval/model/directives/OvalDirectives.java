@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.results.ClassDirectivesType;
 import jp.go.aist.six.oval.model.results.DefaultDirectivesType;
-import com.google.code.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Entity;
 
 
 

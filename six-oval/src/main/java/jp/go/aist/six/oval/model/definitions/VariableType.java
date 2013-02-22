@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
-import com.google.code.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Entity;
 
 
 

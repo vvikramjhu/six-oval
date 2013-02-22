@@ -19,9 +19,9 @@
 package jp.go.aist.six.oval.core.repository.morphia;
 
 import java.util.Set;
-import com.google.code.morphia.Morphia;
-import com.google.code.morphia.converters.DefaultConverters;
-import com.google.code.morphia.converters.TypeConverter;
+import com.github.jmkgreen.morphia.Morphia;
+import com.github.jmkgreen.morphia.converters.DefaultConverters;
+import com.github.jmkgreen.morphia.converters.TypeConverter;
 
 
 

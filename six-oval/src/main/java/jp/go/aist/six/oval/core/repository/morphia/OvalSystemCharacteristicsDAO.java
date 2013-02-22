@@ -20,8 +20,8 @@ package jp.go.aist.six.oval.core.repository.morphia;
 
 import java.util.UUID;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import com.google.code.morphia.Datastore;
-import com.google.code.morphia.Key;
+import com.github.jmkgreen.morphia.Datastore;
+import com.github.jmkgreen.morphia.Key;
 
 
 

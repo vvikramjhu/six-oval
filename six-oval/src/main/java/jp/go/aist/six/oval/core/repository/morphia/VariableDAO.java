@@ -19,7 +19,7 @@
 package jp.go.aist.six.oval.core.repository.morphia;
 
 import jp.go.aist.six.oval.model.definitions.VariableType;
-import com.google.code.morphia.Datastore;
+import com.github.jmkgreen.morphia.Datastore;
 
 
 

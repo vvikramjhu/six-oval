@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.model;
 
-import com.google.code.morphia.annotations.Transient;
+import com.github.jmkgreen.morphia.annotations.Transient;
 
 
 

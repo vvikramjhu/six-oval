@@ -19,7 +19,7 @@
 package jp.go.aist.six.oval.model;
 
 import jp.go.aist.six.util.persist.Persistable;
-import com.google.code.morphia.annotations.Id;
+import com.github.jmkgreen.morphia.annotations.Id;
 
 
 
