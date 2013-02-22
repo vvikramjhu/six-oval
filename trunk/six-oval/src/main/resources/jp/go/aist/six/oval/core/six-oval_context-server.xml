@@ -38,14 +38,19 @@
     <!-- *  Repository                                                * -->
     <!-- ************************************************************** -->
 
+    <mongo:mapping-converter id="mongoConverter">
+        <mongo:custom-converters base-package="jp.go.aist.six.oval.core.repository.mongodb.converters" />
+    </mongo:mapping-converter>
+
+
     <!-- mongo:mongo host="${six.oval.database.host}" port="${six.oval.database.port}"/ -->
 
     <mongo:db-factory id="mongoDbFactory" 
-        host    ="${six.oval.database.host}" 
-        port    ="${six.oval.database.port}"
-        dbname  ="${six.oval.database.name}"
-        username="${six.oval.database.username}"
-        password="${six.oval.database.password}"
+        host    ="${six.oval.repository.database.host}" 
+        port    ="${six.oval.repository.database.port}"
+        dbname  ="${six.oval.repository.database.name}"
+        username="${six.oval.repository.database.username}"
+        password="${six.oval.repository.database.password}"
         write-concern="SAFE"
         />
 
