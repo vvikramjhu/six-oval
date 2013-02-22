@@ -27,8 +27,8 @@ import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.util.persist.Persistable;
-import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Id;
+import com.github.jmkgreen.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Id;
 
 
 

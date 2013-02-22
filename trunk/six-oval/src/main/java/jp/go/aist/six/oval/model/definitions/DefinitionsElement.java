@@ -23,8 +23,8 @@ import jp.go.aist.six.oval.model.DocumentGenerator;
 import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.util.persist.Persistable;
-import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.PrePersist;
+import com.github.jmkgreen.morphia.annotations.Id;
+import com.github.jmkgreen.morphia.annotations.PrePersist;
 
 
 

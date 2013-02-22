@@ -18,10 +18,10 @@
  */
 package jp.go.aist.six.oval.core.repository.morphia;
 
-import com.google.code.morphia.Datastore;
-import com.google.code.morphia.Morphia;
-import com.google.code.morphia.dao.BasicDAO;
-import com.google.code.morphia.dao.DAO;
+import com.github.jmkgreen.morphia.Datastore;
+import com.github.jmkgreen.morphia.Morphia;
+import com.github.jmkgreen.morphia.dao.BasicDAO;
+import com.github.jmkgreen.morphia.dao.DAO;
 import com.mongodb.Mongo;
 
 

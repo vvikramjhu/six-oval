@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.Collections;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
-import com.google.code.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Entity;
 
 
 

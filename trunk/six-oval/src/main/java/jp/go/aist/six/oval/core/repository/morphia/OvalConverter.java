@@ -82,10 +82,10 @@ import jp.go.aist.six.oval.model.windows.ServiceTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.SharedResourceTypeEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.code.morphia.converters.SimpleValueConverter;
-import com.google.code.morphia.converters.TypeConverter;
-import com.google.code.morphia.mapping.MappedField;
-import com.google.code.morphia.mapping.MappingException;
+import com.github.jmkgreen.morphia.converters.SimpleValueConverter;
+import com.github.jmkgreen.morphia.converters.TypeConverter;
+import com.github.jmkgreen.morphia.mapping.MappedField;
+import com.github.jmkgreen.morphia.mapping.MappingException;
 
 
 

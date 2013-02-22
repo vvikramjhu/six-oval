@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.persist.Persistable;
-import com.google.code.morphia.Key;
+import com.github.jmkgreen.morphia.Key;
 
 
 

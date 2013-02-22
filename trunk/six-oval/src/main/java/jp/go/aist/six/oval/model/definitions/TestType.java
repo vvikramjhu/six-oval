@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
-import com.google.code.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Entity;
 
 
 

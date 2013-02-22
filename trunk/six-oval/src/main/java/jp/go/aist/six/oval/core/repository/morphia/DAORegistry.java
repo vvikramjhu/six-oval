@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.core.repository.morphia;
 
-import com.google.code.morphia.dao.DAO;
+import com.github.jmkgreen.morphia.dao.DAO;
 
 
 

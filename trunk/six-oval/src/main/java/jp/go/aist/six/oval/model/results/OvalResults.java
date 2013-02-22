@@ -24,8 +24,8 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Reference;
+import com.github.jmkgreen.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Reference;
 
 
 
