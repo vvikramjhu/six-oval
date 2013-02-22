@@ -14,7 +14,7 @@
 
 <mapping>
 
-    <class name="jp.go.aist.six.oval.repository.QueryResults">
+    <class name="jp.go.aist.six.util.query.QueryResults">
         <map-to xml="query_results"
             ns-uri="http://aist.go.jp/six/oval/"/>
         <field name="timestamp" type="date">
@@ -33,13 +33,13 @@
                 xmlns="http://a9.com/-/spec/opensearch/1.1/"/>
         </field>
         <field name="resultsElements" 
-            type="jp.go.aist.six.oval.repository.QueryResultsElements"
+            type="jp.go.aist.six.util.query.QueryResultsElements"
             container="false">
             <bind-xml name="result_elements" node="element"/>
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.repository.QueryResultsElements">
+    <class name="jp.go.aist.six.util.query.QueryResultsElements">
         <map-to xml="result_elements"
             />
         <field name="elements" 
