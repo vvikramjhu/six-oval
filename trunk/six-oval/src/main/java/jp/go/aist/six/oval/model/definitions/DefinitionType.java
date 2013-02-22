@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
-import org.springframework.data.mongodb.core.mapping.Document;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
@@ -38,7 +37,7 @@ import com.google.code.morphia.annotations.Property;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 @Entity( "oval.def.definition" )                //Morphhia
-@Document( collection="oval.def.definition" )     //Spring
+//@Document( collection="oval.def.definition.spring" )     //Spring
 public class DefinitionType
     extends DefinitionsElement
 {

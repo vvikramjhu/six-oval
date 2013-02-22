@@ -1,5 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,7 +13,25 @@ public class DefinitionRepositoryTest
 {
 
     @Autowired
+    private XmlMapper  _xml_mapper;
+
+    @Autowired
     private DefinitionRepository  _repository;
+
+
+//    @Test
+//    public void testFindOneID()
+//                    throws FileNotFoundException
+//    {
+//        String  filepath = "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml";
+//        OvalDefinitions  oval_definitions =
+//                        _xml_mapper.unmarshal( new FileInputStream( new File( filepath ) ), OvalDefinitions.class );
+//
+//        for (DefinitionType  def : oval_definitions.getDefinitions().getDefinition()) {
+//            System.out.println( "saving OVAL Definition: " + def.getOvalId() );
+//            _repository.save( def );
+//        }
+//    }
 
 
 //    @Test
