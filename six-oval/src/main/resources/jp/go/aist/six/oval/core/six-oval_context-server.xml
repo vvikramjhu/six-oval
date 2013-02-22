@@ -59,7 +59,7 @@
         <property name="writeResultChecking" value="EXCEPTION"/>
     </bean>
 
-    <mongo:repositories base-package="jp.go.aist.six.oval.repository" />
+    <mongo:repositories base-package="jp.go.aist.six.oval.core.repository.mongodb" />
 
 
 
