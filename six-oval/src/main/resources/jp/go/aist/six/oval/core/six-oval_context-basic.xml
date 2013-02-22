@@ -31,8 +31,14 @@
     <context:property-placeholder 
         location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties,classpath:six-oval.properties"
         ignore-resource-not-found="true"
+        system-properties-mode="OVERRIDE"
         />
-
+        <!-- NOTE: 
+        location: Properties defined in later files will override properties defined earlier files, 
+            in case of overlapping keys.
+        system-properties-mode: "override" will check for a system property first, 
+            before trying the specified properties. 
+        -->
 
 
     <!-- ************************************************************** -->
@@ -50,7 +56,6 @@
         ignore-resource-not-found="true"
         />
 -->
-
 
 
     <!-- ************************************************************** -->
