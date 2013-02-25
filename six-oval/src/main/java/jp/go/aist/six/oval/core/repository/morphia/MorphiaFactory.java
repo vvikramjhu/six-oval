@@ -25,6 +25,10 @@ import com.github.jmkgreen.morphia.converters.TypeConverter;
 
 
 
+/**
+ * @author  Akihito Nakamura, AIST
+ * @version $Id$
+ */
 public class MorphiaFactory
 {
 
