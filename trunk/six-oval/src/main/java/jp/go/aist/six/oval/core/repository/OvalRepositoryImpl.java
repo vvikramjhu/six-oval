@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
