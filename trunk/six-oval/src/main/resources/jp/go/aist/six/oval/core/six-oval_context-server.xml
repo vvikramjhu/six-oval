@@ -136,11 +136,12 @@
         </property>
     </bean>
 
-
+<!--
     <bean id="mongo-oval-definition-repository" 
         class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDefinitionRepository">
         <property name="database" ref="oval-database"/>
     </bean>
+-->
 
 
     <!-- id="mongo-oval-repository" --> 

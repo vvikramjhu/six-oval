@@ -63,7 +63,7 @@ public class OvalDefinitionsGenerator
     throws Exception
     {
         if (args.length == 0) {
-            System.out.println( "Usage: quert [file_to_save]" );
+            System.out.println( "Usage: query [file_to_save]" );
             System.exit( 1 );
         }
 
