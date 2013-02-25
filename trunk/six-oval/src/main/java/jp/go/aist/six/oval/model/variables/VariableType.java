@@ -40,8 +40,8 @@ public class VariableType
     implements OvalObject
 {
 
-    private String  id;
-    //{required}
+    private String  oval_id;
+    //{required, oval:VariableIDPattern}
 
 
     private DatatypeEnumeration  datatype;
@@ -72,7 +72,7 @@ public class VariableType
                     final Collection<String> value_list
                     )
     {
-        setId( id );
+        setOvalId( id );
         setDatatype( datatype );
         setComment( comment );
         setValue( value_list );
@@ -86,7 +86,7 @@ public class VariableType
                     final String[] value_list
                     )
     {
-        setId( id );
+        setOvalId( id );
         setDatatype( datatype );
         setComment( comment );
         setValue( value_list );
@@ -96,17 +96,17 @@ public class VariableType
 
     /**
      */
-    public void setId(
+    public void setOvalId(
                     final String id
                     )
     {
-        this.id = id;
+        this.oval_id = id;
     }
 
 
-    public String getId()
+    public String getOvalId()
     {
-        return id;
+        return oval_id;
     }
 
 
@@ -188,7 +188,7 @@ public class VariableType
     @Override
     public String toString()
     {
-        return "[id=" + getId()
+        return "[id=" + getOvalId()
                         + ", datatype=" + getDatatype()
                         + ", comment=" + getComment()
                         + ", valeu=" + getValue()

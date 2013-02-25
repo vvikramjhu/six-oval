@@ -31,7 +31,7 @@ import com.github.jmkgreen.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.v.oval_variables" )
+@Entity( "oval.var.oval_variables" )
 public class OvalVariables
     extends AbstractDocument
 {

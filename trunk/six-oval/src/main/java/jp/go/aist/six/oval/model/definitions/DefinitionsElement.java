@@ -142,7 +142,7 @@ public abstract class DefinitionsElement
     //  SIX
     //*********************************************************************
 
-    public void ovalGetGenerator(
+    public void ovalSetGenerator(
                     final DocumentGenerator generator
                     )
     {
