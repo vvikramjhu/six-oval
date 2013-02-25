@@ -43,7 +43,6 @@ import jp.go.aist.six.oval.model.independent.EngineEnumeration;
 import jp.go.aist.six.oval.model.independent.HashTypeEnumeration;
 import jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration;
 import jp.go.aist.six.oval.model.independent.LdaptypeEnumeration;
-import jp.go.aist.six.oval.model.independent.TextfileContent;
 import jp.go.aist.six.oval.model.linux.RpmVerifyResultEnumeration;
 import jp.go.aist.six.oval.model.macos.PlistTypeEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
@@ -90,6 +89,8 @@ import com.github.jmkgreen.morphia.mapping.MappingException;
 
 
 /**
+ * Morphia type converter for the OVAL model objects.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
@@ -110,6 +111,8 @@ public class OvalConverter
         ComponentType.class,
         ElementType.class,
         Family.class,
+//      Platform.class,
+//      Product.class
 
         // common //
         CheckEnumeration.class,
@@ -136,7 +139,6 @@ public class OvalConverter
         HashTypeEnumeration.class,
         LdapBehaviorsEnumeration.class,
         LdaptypeEnumeration.class,
-        TextfileContent.class,
 
         // linux //
         ProtocolEnumeration.class,
@@ -194,10 +196,7 @@ public class OvalConverter
         ServiceStartTypeEnumeration.class,
         ServiceTypeEnumeration.class,
         SharedResourceTypeEnumeration.class
-
-//        Platform.class,
-//        Product.class
-        };
+    };
 
 
 

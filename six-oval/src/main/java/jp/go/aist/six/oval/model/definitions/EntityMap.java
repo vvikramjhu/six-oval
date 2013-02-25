@@ -24,6 +24,8 @@ import java.util.Iterator;
 
 
 /**
+ * Experimental:
+ * Is there any smart way to manage entities of OVAL Objects and States?
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

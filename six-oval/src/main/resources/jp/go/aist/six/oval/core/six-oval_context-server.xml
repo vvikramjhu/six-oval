@@ -46,12 +46,12 @@
         class="jp.go.aist.six.oval.core.repository.morphia.MorphiaFactory" 
         factory-method="create"> 
         <constructor-arg>
-            <set>
+            <set><!-- classes to map -->
                 <!-- value>#{ T(jp.go.aist.six.oval.model.definitions.DefinitionType) }</value -->
             </set>
         </constructor-arg>
         <constructor-arg>
-            <set>
+            <set><!-- converters -->
                 <value>#{ T(jp.go.aist.six.oval.core.repository.morphia.OvalConverter) }</value>
             </set>
         </constructor-arg>
