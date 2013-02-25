@@ -84,7 +84,7 @@
     <bean id="stateDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.StateDAO">
         <constructor-arg ref="morphiaDatastore"/> 
     </bean>
-    <bean id="variableDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.VariableDAO">
+    <bean id="defVariableDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.VariableDAO">
         <constructor-arg ref="morphiaDatastore"/> 
     </bean>
 
@@ -106,6 +106,9 @@
     <bean id="ovalVariablesDAO" class="jp.go.aist.six.oval.core.repository.morphia.variables.OvalVariablesDAO">
         <constructor-arg ref="morphiaDatastore"/> 
     </bean>
+    <bean id="varVariableDAO" class="jp.go.aist.six.oval.core.repository.morphia.variables.VariableDAO">
+        <constructor-arg ref="morphiaDatastore"/> 
+    </bean>
 
 
 
@@ -120,11 +123,13 @@
                 <ref bean="testDAO"/>
                 <ref bean="systemObjectDAO"/>
                 <ref bean="stateDAO"/>
-                <ref bean="variableDAO"/>
+                <ref bean="defVariableDAO"/>
+                <ref bean="definitionsElementAssocDAO"/>
+
                 <ref bean="ovalSystemCharacteristicsDAO"/>
                 <ref bean="ovalResultsDAO"/>
-
-                <ref bean="definitionsElementAssocDAO"/>
+                <ref bean="ovalVariablesDAO"/>
+                <ref bean="varVariableDAO"/>
             </set>
         </property>
     </bean>

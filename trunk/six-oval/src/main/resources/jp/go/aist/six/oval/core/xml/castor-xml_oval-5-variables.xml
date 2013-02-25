@@ -48,7 +48,7 @@
     <class name="jp.go.aist.six.oval.model.variables.VariableType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-variables-5"/>
-        <field name="id" type="string">
+        <field name="ovalId" type="string">
             <bind-xml name="id" node="attribute"/>
         </field>
         <field name="datatype" 
