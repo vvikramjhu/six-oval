@@ -16,9 +16,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia.definitions;
+package jp.go.aist.six.oval.core.repository.morphia.variables;
 
-import jp.go.aist.six.oval.model.definitions.VariableType;
+import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
+import jp.go.aist.six.oval.model.variables.VariableType;
 import com.github.jmkgreen.morphia.Datastore;
 
 
@@ -28,8 +29,7 @@ import com.github.jmkgreen.morphia.Datastore;
  * @version $Id$
  */
 public class VariableDAO
-    extends DefinitionsElementDAO<VariableType>
-//    extends OvalEntityDAO<VariableType>
+    extends BaseDAO<VariableType, String>
 {
 
     /**
@@ -42,5 +42,5 @@ public class VariableDAO
     }
 
 }
-// VariableDAO
+//VariableDAO
 
