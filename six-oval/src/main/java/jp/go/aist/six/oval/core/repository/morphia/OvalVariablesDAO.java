@@ -19,9 +19,12 @@
 package jp.go.aist.six.oval.core.repository.morphia;
 
 import java.util.UUID;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.variables.OvalVariables;
+import jp.go.aist.six.oval.model.variables.VariableType;
+import jp.go.aist.six.oval.model.variables.VariablesType;
 import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.DAO;
 
 
 
@@ -29,17 +32,17 @@ import com.github.jmkgreen.morphia.Key;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSystemCharacteristicsDAO
-    extends BaseDAO<OvalSystemCharacteristics, String>
+public class OvalVariablesDAO
+    extends BaseDAO<OvalVariables, String>
 {
 
     /**
      */
-    public OvalSystemCharacteristicsDAO(
+    public OvalVariablesDAO(
                     final Datastore ds
                     )
     {
-        super( OvalSystemCharacteristics.class, ds );
+        super( OvalVariables.class, ds );
     }
 
 
@@ -49,19 +52,28 @@ public class OvalSystemCharacteristicsDAO
     //**************************************************************
 
     @Override
-    public Key<OvalSystemCharacteristics> save(
-                    final OvalSystemCharacteristics oval_sc
+    public Key<OvalVariables> save(
+                    final OvalVariables oval_variables
                     )
     {
-        String  pid = oval_sc.getPersistentID();
+        String  pid = oval_variables.getPersistentID();
         if (pid == null) {
             pid = UUID.randomUUID().toString();
-            oval_sc.setPersistentID( pid );
+            oval_variables.setPersistentID( pid );
         }
 
-        return super.save( oval_sc );
+        VariablesType  variables = oval_variables.getVariables();
+        if (variables != null) {
+            DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
+            for (VariableType  variable : variables.getVariable()) {
+//                variable.ovalSetGenerator( oval_variables.getGenerator() );
+                dao.save( variable );
+            }
+        }
+
+        return super.save( oval_variables );
     }
 
 }
-// OvalSystemCharacteristicsDAO
+//OvalVariablesDAO
 

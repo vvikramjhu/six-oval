@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import jp.go.aist.six.oval.model.Container;
+import com.github.jmkgreen.morphia.annotations.Reference;
 
 
 
@@ -40,6 +41,7 @@ public class VariablesType
     extends Container<VariableType> //{1..*}
 {
 
+    @Reference
     private final Collection<VariableType>  variable = new HashSet<VariableType>();
 
 
@@ -53,7 +55,7 @@ public class VariablesType
 
 
     public VariablesType(
-                    final Collection<VariableType> variable_list
+                    final Collection<? extends VariableType> variable_list
                     )
     {
         _copy( variable, variable_list );
@@ -76,7 +78,6 @@ public class VariablesType
                     )
     {
         reset( variable_list );
-//        _setElement( variable_list );
     }
 
 
