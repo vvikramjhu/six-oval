@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository;
+import jp.go.aist.six.oval.core.repository.morphia.OvalRepositoryImpl;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -57,7 +57,7 @@ public class OvalRepositorySummary
 
 
 
-    private final MongoOvalRepository  _oval_repository;
+    private final OvalRepositoryImpl  _oval_repository;
 
 
 
@@ -66,7 +66,7 @@ public class OvalRepositorySummary
     public OvalRepositorySummary()
     throws Exception
     {
-        _oval_repository = OvalContext.getServerInstance().getBean( MongoOvalRepository.class );
+        _oval_repository = OvalContext.getServerInstance().getBean( OvalRepositoryImpl.class );
     }
 
 
