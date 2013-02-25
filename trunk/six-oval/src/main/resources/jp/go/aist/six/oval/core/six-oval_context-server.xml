@@ -149,7 +149,7 @@
 
 
     <bean id="ovalDefinitionsGenerator" 
-        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsGenerator">
+        class="jp.go.aist.six.oval.core.repository.OvalDefinitionsGenerator">
 <!--
         <property name="datastore" ref="ovalDatabase"/>
 -->

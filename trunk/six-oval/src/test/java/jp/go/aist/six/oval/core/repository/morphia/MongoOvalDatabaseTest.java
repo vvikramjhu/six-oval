@@ -1,10 +1,9 @@
-package jp.go.aist.six.oval.core.repository;
+package jp.go.aist.six.oval.core.repository.morphia;
 
 import java.io.File;
 import java.io.FileInputStream;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
-import jp.go.aist.six.oval.core.repository.morphia.MongoOvalDatabase;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.variables.OvalVariables;
 import jp.go.aist.six.oval.repository.OvalDatabase;
@@ -19,7 +18,7 @@ import org.junit.runner.RunWith;
 
 
 /**
- * Tests: OvalXmlMapper.
+ * Tests: MongoOvalDatabase.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

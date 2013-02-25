@@ -24,6 +24,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import jp.go.aist.six.util.persist.Persistable;
+import com.github.jmkgreen.morphia.annotations.Entity;
+import com.github.jmkgreen.morphia.annotations.Id;
+import com.github.jmkgreen.morphia.annotations.PrePersist;
 
 
 
@@ -36,8 +40,9 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.var.variable" )
 public class VariableType
-    implements OvalObject
+    implements OvalObject, Persistable<String>
 {
 
     private String  oval_id;
@@ -54,6 +59,11 @@ public class VariableType
 
     private final Collection<String>  value = new ArrayList<String>();
     //{1..*}
+
+
+    // MongoDB
+    @Id
+    private String  _id;
 
 
 
@@ -100,7 +110,7 @@ public class VariableType
                     final String id
                     )
     {
-        this.oval_id = id;
+        oval_id = id;
     }
 
 
@@ -177,6 +187,42 @@ public class VariableType
     public Iterator<String> iterateValue()
     {
         return value.iterator();
+    }
+
+
+
+    //**************************************************************
+    //  MongoDB/Morphia Lifecycle
+    //**************************************************************
+
+    @PrePersist
+    private void _assignPersistentID()
+    {
+        String  pid = getPersistentID();
+        if (pid == null) {
+            pid = getOvalId();
+//            pid = globalRefOf( this );
+            setPersistentID( pid );
+        }
+    }
+
+
+
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
+    public void setPersistentID(
+                    final String pid
+                    )
+    {
+        _id = pid;
+    }
+
+
+    public String getPersistentID()
+    {
+        return _id;
     }
 
 
