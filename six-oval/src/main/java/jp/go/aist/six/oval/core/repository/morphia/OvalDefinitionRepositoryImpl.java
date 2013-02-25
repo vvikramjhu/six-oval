@@ -45,7 +45,7 @@ import jp.go.aist.six.util.query.QueryResults;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDefinitionRepository
+public class OvalDefinitionRepositoryImpl
     implements OvalDefinitionRepository
 {
 
@@ -64,7 +64,7 @@ public class MongoOvalDefinitionRepository
     /**
      * Constructor.
      */
-    public MongoOvalDefinitionRepository()
+    public OvalDefinitionRepositoryImpl()
     {
     }
 

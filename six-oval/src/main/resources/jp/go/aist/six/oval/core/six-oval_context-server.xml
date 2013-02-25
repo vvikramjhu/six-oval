@@ -118,7 +118,7 @@
 
     <!-- ******************************************************* -->
 
-    <bean id="oval-database" 
+    <bean id="ovalDatabase" 
         class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDatabase"> 
         <property name="DAO">
             <set>
@@ -138,23 +138,23 @@
 
 <!--
     <bean id="mongo-oval-definition-repository" 
-        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDefinitionRepository">
-        <property name="database" ref="oval-database"/>
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionRepositoryImpl">
+        <property name="database" ref="ovalDatabase"/>
     </bean>
 -->
 
 
     <!-- id="mongo-oval-repository" --> 
     <bean id="oval-repository" 
-        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository">
-        <property name="database" ref="oval-database"/>
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalRepositoryImpl">
+        <property name="database" ref="ovalDatabase"/>
     </bean>
 
 
     <bean id="oval-definitions-generator" 
         class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsGenerator">
 <!--
-        <property name="datastore" ref="oval-database"/>
+        <property name="datastore" ref="ovalDatabase"/>
 -->
     </bean>
 

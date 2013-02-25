@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.core;
 
-import jp.go.aist.six.oval.core.repository.morphia.MongoOvalRepository;
+import jp.go.aist.six.oval.core.repository.morphia.OvalRepositoryImpl;
 import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepository;
@@ -225,7 +225,7 @@ public abstract class OvalContext
         {
             OvalRepository  repository = null;
             try {
-                repository = getBean( MongoOvalRepository.class );
+                repository = getBean( OvalRepositoryImpl.class );
                 //throws ConfigurationException/runtime
             } catch (Exception ex) {
                 throw new OvalConfigurationException( ex );
