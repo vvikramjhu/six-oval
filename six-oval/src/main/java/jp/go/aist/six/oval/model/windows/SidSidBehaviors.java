@@ -18,7 +18,6 @@
  */
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -31,19 +30,20 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SidSidBehaviors
-    implements OvalObject
+extends AbstractAuthBehaviors
+//implements OvalObject
 {
 
-    public static final Boolean  DEFAULT_INCLUDE_GROUP = Boolean.TRUE;
-
-    private Boolean  include_group;
-    //{optional, default='true'}
-
-
-    public static final Boolean  DEFAULT_RESOLVE_GROUP = Boolean.FALSE;
-
-    private Boolean  resolve_group;
-    //{optional, default='false'}
+//    public static final Boolean  DEFAULT_INCLUDE_GROUP = Boolean.TRUE;
+//
+//    private Boolean  include_group;
+//    //{optional, default='true'}
+//
+//
+//    public static final Boolean  DEFAULT_RESOLVE_GROUP = Boolean.FALSE;
+//
+//    private Boolean  resolve_group;
+//    //{optional, default='false'}
 
 
 
@@ -56,55 +56,55 @@ public class SidSidBehaviors
 
 
 
-    /**
-     */
-    public void setIncludeGroup(
-                    final Boolean include_group
-                    )
-    {
-        this.include_group = include_group;
-    }
-
-
-    public Boolean getIncludeGroup()
-    {
-        return include_group;
-    }
-
-
-    public static final Boolean includeGroup(
-                    final SidSidBehaviors obj
-                    )
-    {
-        Boolean  include_group = obj.getIncludeGroup();
-        return (include_group == null ? DEFAULT_INCLUDE_GROUP : include_group);
-    }
-
-
-
-    /**
-     */
-    public void setResolveGroup(
-                    final Boolean resolve_group
-                    )
-    {
-        this.resolve_group = resolve_group;
-    }
-
-
-    public Boolean getResolveGroup()
-    {
-        return resolve_group;
-    }
-
-
-    public static final Boolean resolveGroup(
-                    final SidSidBehaviors obj
-                    )
-    {
-        Boolean  resolve_group = obj.getResolveGroup();
-        return (resolve_group == null ? DEFAULT_RESOLVE_GROUP : resolve_group);
-    }
+//    /**
+//     */
+//    public void setIncludeGroup(
+//                    final Boolean include_group
+//                    )
+//    {
+//        this.include_group = include_group;
+//    }
+//
+//
+//    public Boolean getIncludeGroup()
+//    {
+//        return include_group;
+//    }
+//
+//
+//    public static final Boolean includeGroup(
+//                    final SidSidBehaviors obj
+//                    )
+//    {
+//        Boolean  include_group = obj.getIncludeGroup();
+//        return (include_group == null ? DEFAULT_INCLUDE_GROUP : include_group);
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setResolveGroup(
+//                    final Boolean resolve_group
+//                    )
+//    {
+//        this.resolve_group = resolve_group;
+//    }
+//
+//
+//    public Boolean getResolveGroup()
+//    {
+//        return resolve_group;
+//    }
+//
+//
+//    public static final Boolean resolveGroup(
+//                    final SidSidBehaviors obj
+//                    )
+//    {
+//        Boolean  resolve_group = obj.getResolveGroup();
+//        return (resolve_group == null ? DEFAULT_RESOLVE_GROUP : resolve_group);
+//    }
 
 
 
@@ -115,13 +115,15 @@ public class SidSidBehaviors
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = 17;
+        return super.hashCode();
 
-        result = prime * result + includeGroup( this ).hashCode();
-        result = prime * result + resolveGroup( this ).hashCode();
-
-        return result;
+//        final int  prime = 37;
+//        int  result = 17;
+//
+//        result = prime * result + includeGroup( this ).hashCode();
+//        result = prime * result + resolveGroup( this ).hashCode();
+//
+//        return result;
     }
 
 
@@ -139,28 +141,30 @@ public class SidSidBehaviors
             return false;
         }
 
-        if (super.equals( obj )) {
-            SidSidBehaviors  other = (SidSidBehaviors)obj;
-            if (includeGroup( this ) == includeGroup( other )) {
-                if (resolveGroup( this ) == resolveGroup( other )) {
-                	return true;
-                }
-            }
-        }
+//        if (super.equals( obj )) {
+//            SidSidBehaviors  other = (SidSidBehaviors)obj;
+//            if (includeGroup( this ) == includeGroup( other )) {
+//                if (resolveGroup( this ) == resolveGroup( other )) {
+//                	return true;
+//                }
+//            }
+//        }
+//
+//        return false;
 
-        return false;
+        return super.equals( obj );
     }
 
 
 
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", include_group=" + getIncludeGroup()
-                        + ", resolve_group=" + getResolveGroup()
-                        ;
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return super.toString()
+//                        + ", include_group=" + getIncludeGroup()
+//                        + ", resolve_group=" + getResolveGroup()
+//                        ;
+//    }
 
 }
 //SidSidBehaviors
