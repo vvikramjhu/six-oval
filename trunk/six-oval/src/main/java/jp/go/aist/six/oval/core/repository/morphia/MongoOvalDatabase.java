@@ -18,6 +18,7 @@
  */
 package jp.go.aist.six.oval.core.repository.morphia;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -115,8 +116,68 @@ public class MongoOvalDatabase
 
 
 
+
     //*********************************************************************
-    //  OvalDatastore
+    //  query helper methods
+    //*********************************************************************
+
+    private <K, T extends Persistable<K> & OvalObject>
+    Query<T> _buildQuery(
+                    final DAO<T, K>  dao,
+                    final Class<T> type,
+                    final QueryParams params
+                    )
+    {
+        Query<T>  query = dao.createQuery();
+        QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
+        query = builder.build( query );
+
+        return query;
+    }
+
+
+
+    /**
+     * Converts Morphia Key<T> to K, i.e. "_id".
+     *
+     * @throws  OvalRepositoryException
+     */
+    private static final <K, T extends Persistable<K>>
+    K _key2Id(
+                    final Key<T> key
+                    )
+    {
+        @SuppressWarnings( "unchecked" )
+        K  id = (K)key.getId();
+        return id;
+    }
+
+
+
+    /**
+     * Converts Morphia Key<T> list to K, i.e. "_id", list.
+     *
+     * @throws  OvalRepositoryException
+     */
+    private static final <K, T extends Persistable<K>>
+    List<K> _keys2Ids(
+                    final Collection<Key<T>> keys
+                    )
+    {
+        List<K>  ids = new ArrayList<K>();
+        if (keys != null ) {
+            for (Key<T>  key : keys) {
+                ids.add( _key2Id( key ) );
+            }
+        }
+
+        return ids;
+    }
+
+
+
+    //*********************************************************************
+    //  implements OvalDatastore
     //*********************************************************************
 
     public <K, T extends Persistable<K> & OvalObject>
@@ -166,14 +227,12 @@ public class MongoOvalDatabase
         _LOG_.info( "find: type=" + type + ", params=" + params );
         long ts_start = System.currentTimeMillis();
 
-        DAO<T, K> dao = getDAO( type );
-        List<T> list = null;
+        DAO<T, K>  dao = getDAO( type );
+        List<T>  list = null;
         if (params == null) {
             list = dao.find().asList();
         } else {
-            Query<T> query = dao.createQuery();
-            QueryBuilder builder = MongoQueryBuilder.createInstance( type, params );
-            query = builder.build( query );
+            Query<T>  query = _buildQuery( dao, type, params );
             _LOG_.debug( "query=" + query );
             list = dao.find( query ).asList();
         }
@@ -191,16 +250,17 @@ public class MongoOvalDatabase
                     final Class<T> type
                     )
     {
-        _LOG_.info( "findId: type=" + type );
-        long ts_start = System.currentTimeMillis();
+        return findId( type, null );
 
-        DAO<T, K> dao = getDAO( type );
-        List<Key<T>> list = dao.find().asKeyList();
-
-        _LOG_.info( "findId: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
-        _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
-        return MorphiaHelper.keys2Ids( list );
+//        _LOG_.info( "findId: type=" + type );
+//        long  ts_start = System.currentTimeMillis();
+//
+//        DAO<T, K>  dao = getDAO( type );
+//        List<Key<T>>  list = dao.find().asKeyList();
+//
+//        _LOG_.info( "findId: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
+//        _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
+//        return _keys2Ids( list );
     }
 
 
@@ -212,16 +272,14 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.debug( "findId: type=" + type + ", params=" + params );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
-        DAO<T, K> dao = getDAO( type );
-        List<Key<T>> list = null;
+        DAO<T, K>  dao = getDAO( type );
+        List<Key<T>>  list = null;
         if (params == null) {
             list = dao.find().asKeyList();
         } else {
-            Query<T> query = dao.createQuery();
-            QueryBuilder builder = MongoQueryBuilder.createInstance( type, params );
-            query = builder.build( query );
+            Query<T>  query = _buildQuery( dao, type, params );
             _LOG_.debug( "query=" + query );
             list = dao.find( query ).asKeyList();
         }
@@ -229,7 +287,7 @@ public class MongoOvalDatabase
         _LOG_.info( "findId: elapsed time (ms)="
                         + (System.currentTimeMillis() - ts_start) );
         _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
-        return MorphiaHelper.keys2Ids( list );
+        return _keys2Ids( list );
     }
 
 
@@ -239,16 +297,18 @@ public class MongoOvalDatabase
                     final Class<T> type
                     )
     {
-        _LOG_.info( "count: type=" + type );
-        long ts_start = System.currentTimeMillis();
+        return count( type, null );
 
-        DAO<T, K> dao = getDAO( type );
-        long count = dao.count();
-
-        _LOG_.info( "count: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
-        _LOG_.debug( "count: count=" + count );
-        return count;
+//        _LOG_.info( "count: type=" + type );
+//        long  ts_start = System.currentTimeMillis();
+//
+//        DAO<T, K>  dao = getDAO( type );
+//        long  count = dao.count();
+//
+//        _LOG_.info( "count: elapsed time (ms)="
+//                        + (System.currentTimeMillis() - ts_start) );
+//        _LOG_.debug( "count: count=" + count );
+//        return count;
     }
 
 
@@ -262,13 +322,13 @@ public class MongoOvalDatabase
         _LOG_.info( "count: type=" + type + ", params=" + params );
         long ts_start = System.currentTimeMillis();
 
-        DAO<T, K> dao = getDAO( type );
-        long count = 0L;
+        DAO<T, K>  dao = getDAO( type );
+        long  count = 0L;
         if (params == null) {
             count = dao.count();
         } else {
             // NOTE: count() query ignores the "count" parameter.
-            QueryParams adjusted_params = params;
+            QueryParams  adjusted_params = params;
             if (params.containsKey( CommonQueryParams.Key.COUNT )) {
                 try {
                     adjusted_params = QueryParams.class.cast( params.clone() );
@@ -279,9 +339,7 @@ public class MongoOvalDatabase
                 adjusted_params.remove( CommonQueryParams.Key.COUNT );
             }
 
-            Query<T> query = dao.createQuery();
-            QueryBuilder builder = MongoQueryBuilder.createInstance( type, adjusted_params );
-            query = builder.build( query );
+            Query<T>  query = _buildQuery( dao, type, adjusted_params );
             _LOG_.debug( "query=" + query );
             count = dao.count( query );
         }
@@ -301,10 +359,10 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.info( "save: type=" + type );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
-        Key<T> key = getDAO( type ).save( object );
-        K id = MorphiaHelper.key2Id( key );
+        Key<T>  key = getDAO( type ).save( object );
+        K  id = _key2Id( key );
 
         _LOG_.info( "save: elapsed time (ms)="
                         + (System.currentTimeMillis() - ts_start) );
@@ -321,7 +379,7 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.info( "deleteById: type=" + type + ", ID=" + id );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
         getDAO( type ).deleteById( id );
 
@@ -343,10 +401,12 @@ public class MongoOvalDatabase
          * TODO: performance Is it possible to delete all the objects by query?
          * dao.deleteByQuery( Query q )
          */
-        List<K> id_list = findId( type );
-        DAO<T, K> dao = getDAO( type );
-        for (K id : id_list) {
-            dao.deleteById( id );
+        List<K>  id_list = findId( type );
+        if (id_list != null  &&  id_list.size() > 0) {
+            DAO<T, K>  dao = getDAO( type );
+            for (K  id : id_list) {
+                dao.deleteById( id );
+            }
         }
 
         _LOG_.info( "delete: elapsed time (ms)="
@@ -368,10 +428,9 @@ public class MongoOvalDatabase
         }
 
         @SuppressWarnings( "unchecked" )
-        DAO<T, K> dao = (DAO<T, K>)_daoMap.get( objectType );
+        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( objectType );
         if (dao == null) {
-            throw new IllegalArgumentException( "unknown entity class: "
-                            + objectType );
+            throw new IllegalArgumentException( "unknown entity class: " + objectType );
         }
 
         return dao;
