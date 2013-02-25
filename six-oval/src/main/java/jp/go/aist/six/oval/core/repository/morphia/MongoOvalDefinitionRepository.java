@@ -30,6 +30,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
+import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.query.CommonQueryParams;
@@ -56,7 +57,7 @@ public class MongoOvalDefinitionRepository
 
 
 
-    private MongoOvalDatabase  _database;
+    private OvalDatabase  _database;
 
 
 
@@ -73,18 +74,17 @@ public class MongoOvalDefinitionRepository
      *
      */
     public void setDatabase(
-                    final MongoOvalDatabase datastore
+                    final OvalDatabase datastore
                     )
     {
         _database = datastore;
     }
 
 
-    public MongoOvalDatabase getDatabase()
+    protected OvalDatabase _getDatabase()
     {
         return _database;
     }
-
 
 
 
@@ -140,7 +140,7 @@ public class MongoOvalDefinitionRepository
 
         DefinitionType  p_object = null;
         try {
-            p_object = _database.findById( DefinitionType.class, oval_id );
+            p_object = _getDatabase().findById( DefinitionType.class, oval_id );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -155,7 +155,7 @@ public class MongoOvalDefinitionRepository
     {
         List<DefinitionType>  p_list = null;
         try {
-            p_list = _database.find( DefinitionType.class );
+            p_list = _getDatabase().find( DefinitionType.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -172,7 +172,7 @@ public class MongoOvalDefinitionRepository
     {
         List<DefinitionType>  p_list = null;
         try {
-            p_list = _database.find( DefinitionType.class, params );
+            p_list = _getDatabase().find( DefinitionType.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -186,7 +186,7 @@ public class MongoOvalDefinitionRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = _database.findId( DefinitionType.class );
+            p_list = _getDatabase().findId( DefinitionType.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -202,7 +202,7 @@ public class MongoOvalDefinitionRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = _database.findId( DefinitionType.class, params );
+            p_list = _getDatabase().findId( DefinitionType.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -216,7 +216,7 @@ public class MongoOvalDefinitionRepository
     {
         long  count = 0L;
         try {
-            count = _database.count( DefinitionType.class );
+            count = _getDatabase().count( DefinitionType.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -232,7 +232,7 @@ public class MongoOvalDefinitionRepository
     {
         long  count = 0L;
         try {
-            count = _database.count( DefinitionType.class, params );
+            count = _getDatabase().count( DefinitionType.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -248,7 +248,7 @@ public class MongoOvalDefinitionRepository
     {
         String  p_id = null;
         try {
-            p_id = _database.save( DefinitionType.class, def );
+            p_id = _getDatabase().save( DefinitionType.class, def );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -269,7 +269,7 @@ public class MongoOvalDefinitionRepository
         Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( oval_id );
         DefinitionsElement p_object = null;
         try {
-            p_object = _database.findById( objectType, oval_id );
+            p_object = _getDatabase().findById( objectType, oval_id );
         } catch (OvalRepositoryException ex) {
             throw ex;
         } catch (Exception ex) {
@@ -298,21 +298,21 @@ public class MongoOvalDefinitionRepository
             List<? extends DefinitionsElement>  p_sub_list = null;
             if (type == null) {
                 p_list = new ArrayList<DefinitionsElement>();
-                p_sub_list = _database.find( DefinitionType.class,   adjustedParams );
+                p_sub_list = _getDatabase().find( DefinitionType.class,   adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.find( TestType.class,         adjustedParams );
+                p_sub_list = _getDatabase().find( TestType.class,         adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.find( SystemObjectType.class, adjustedParams );
+                p_sub_list = _getDatabase().find( SystemObjectType.class, adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.find( StateType.class,        adjustedParams );
+                p_sub_list = _getDatabase().find( StateType.class,        adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.find( VariableType.class,     adjustedParams );
+                p_sub_list = _getDatabase().find( VariableType.class,     adjustedParams );
                 p_list.addAll( p_sub_list );
             } else {
                 adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
                 Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
                 try {
-                    p_sub_list = _database.find( java_type, adjustedParams );
+                    p_sub_list = _getDatabase().find( java_type, adjustedParams );
                     p_list = new ArrayList<DefinitionsElement>( p_sub_list );
                 } catch (Exception ex) {
                     throw new OvalRepositoryException( ex );
@@ -357,21 +357,21 @@ public class MongoOvalDefinitionRepository
             if (element_type == null) {
                 p_list = new ArrayList<String>();
                 List<String>  p_sub_list = null;
-                p_sub_list = _database.findId( DefinitionType.class,   adjusted_params );
+                p_sub_list = _getDatabase().findId( DefinitionType.class,   adjusted_params );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.findId( TestType.class,         adjusted_params );
+                p_sub_list = _getDatabase().findId( TestType.class,         adjusted_params );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.findId( SystemObjectType.class, adjusted_params );
+                p_sub_list = _getDatabase().findId( SystemObjectType.class, adjusted_params );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.findId( StateType.class,        adjusted_params );
+                p_sub_list = _getDatabase().findId( StateType.class,        adjusted_params );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _database.findId( VariableType.class,     adjusted_params );
+                p_sub_list = _getDatabase().findId( VariableType.class,     adjusted_params );
                 p_list.addAll( p_sub_list );
             } else {
                 adjusted_params.remove( DefinitionsElementQueryParams.Key.TYPE );
                 Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( element_type ) );
                 try {
-                    p_list = _database.findId( java_type, adjusted_params );
+                    p_list = _getDatabase().findId( java_type, adjusted_params );
                 } catch (Exception ex) {
                     throw new OvalRepositoryException( ex );
                 }
@@ -404,15 +404,15 @@ public class MongoOvalDefinitionRepository
 
             if (type == null) {
                 long  p_sub_count = 0L;
-                p_sub_count = _database.count( DefinitionType.class,   adjustedParams );
+                p_sub_count = _getDatabase().count( DefinitionType.class,   adjustedParams );
                 p_count += p_sub_count;
-                p_sub_count = _database.count( TestType.class,         adjustedParams );
+                p_sub_count = _getDatabase().count( TestType.class,         adjustedParams );
                 p_count += p_sub_count;
-                p_sub_count = _database.count( SystemObjectType.class, adjustedParams );
+                p_sub_count = _getDatabase().count( SystemObjectType.class, adjustedParams );
                 p_count += p_sub_count;
-                p_sub_count = _database.count( StateType.class,        adjustedParams );
+                p_sub_count = _getDatabase().count( StateType.class,        adjustedParams );
                 p_count += p_sub_count;
-                p_sub_count = _database.count( VariableType.class,     adjustedParams );
+                p_sub_count = _getDatabase().count( VariableType.class,     adjustedParams );
                 p_count += p_sub_count;
             } else {
                 adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
@@ -420,7 +420,7 @@ public class MongoOvalDefinitionRepository
 //                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
 //                Class<? extends DefinitionsElement>  objectType = _toObjectType( DefinitionsElement.Type.fromValue( type ) );
                 try {
-                    p_count = _database.count( objectType, adjustedParams );
+                    p_count = _getDatabase().count( objectType, adjustedParams );
                 } catch (Exception ex) {
                     throw new OvalRepositoryException( ex );
                 }
@@ -445,15 +445,15 @@ public class MongoOvalDefinitionRepository
         String  id = null;
         try {
             if (ElementType.DEFINITION == type) {
-                id = _database.save(   DefinitionType.class,   DefinitionType.class.cast( element ) );
+                id = _getDatabase().save(   DefinitionType.class,   DefinitionType.class.cast( element ) );
             } else if (ElementType.TEST == type) {
-                id = _database.save(         TestType.class,         TestType.class.cast( element ) );
+                id = _getDatabase().save(         TestType.class,         TestType.class.cast( element ) );
             } else if (ElementType.OBJECT == type) {
-                id = _database.save( SystemObjectType.class, SystemObjectType.class.cast( element ) );
+                id = _getDatabase().save( SystemObjectType.class, SystemObjectType.class.cast( element ) );
             } else if (ElementType.STATE == type) {
-                id = _database.save(        StateType.class,        StateType.class.cast( element ) );
+                id = _getDatabase().save(        StateType.class,        StateType.class.cast( element ) );
             } else if (ElementType.VARIABLE == type) {
-                id = _database.save(     VariableType.class,     VariableType.class.cast( element ) );
+                id = _getDatabase().save(     VariableType.class,     VariableType.class.cast( element ) );
             }
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -474,7 +474,7 @@ public class MongoOvalDefinitionRepository
     {
         OvalDefinitions  p_object = null;
         try {
-            p_object = _database.findById( OvalDefinitions.class, id );
+            p_object = _getDatabase().findById( OvalDefinitions.class, id );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -488,7 +488,7 @@ public class MongoOvalDefinitionRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = _database.findId( OvalDefinitions.class );
+            p_list = _getDatabase().findId( OvalDefinitions.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -504,7 +504,7 @@ public class MongoOvalDefinitionRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = _database.findId( OvalDefinitions.class, params );
+            p_list = _getDatabase().findId( OvalDefinitions.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -518,7 +518,7 @@ public class MongoOvalDefinitionRepository
     {
         long  count = 0L;
         try {
-            count = _database.count( OvalDefinitions.class );
+            count = _getDatabase().count( OvalDefinitions.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -534,7 +534,7 @@ public class MongoOvalDefinitionRepository
     {
         long  count = 0L;
         try {
-            count = _database.count( DefinitionType.class, params );
+            count = _getDatabase().count( DefinitionType.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -550,7 +550,7 @@ public class MongoOvalDefinitionRepository
     {
         String  id = null;
         try {
-            id = _database.save( OvalDefinitions.class, oval_defs );
+            id = _getDatabase().save( OvalDefinitions.class, oval_defs );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
