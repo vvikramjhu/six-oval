@@ -135,6 +135,9 @@ public class OvalXmlMapperTest
                         )
         throws Exception
         {
+            File  tmp_dir = new File( _tmp_dir, dir_path );
+            tmp_dir.mkdirs();
+
             File  dir = new File( TOP_DIR, dir_path );
             File[]  in_xml_files = TestUtil.listXmlFiles( dir );
             for (File  in_xml_file : in_xml_files) {
@@ -143,7 +146,7 @@ public class OvalXmlMapperTest
                 Object  obj = _xml_mapper.unmarshal( new FileInputStream( in_xml_file ) );
 
                 /* (2) marshal */
-                File  out_xml_file = new File( _tmp_dir, "unmarshalled_" + in_xml_file.getName() );
+                File  out_xml_file = new File( tmp_dir, "unmarshalled_" + in_xml_file.getName() );
                 _xml_mapper.marshal( obj, new FileWriter( out_xml_file ) );
 
                 /* (3) unmarshal */
