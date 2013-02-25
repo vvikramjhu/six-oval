@@ -63,30 +63,28 @@ implements QueryBuilder
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MorphiaQueryBuilder.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( MorphiaQueryBuilder.class );
 
 
 
     /**
      * A factory method.
      */
-    public static QueryBuilder createInstance(
-                    final Class<?> type,
-                    final QueryParams params
+    public static QueryBuilder getInstance(
+                    final Class<?> type
                     )
     {
         if (DefinitionType.class.isAssignableFrom( type )) {
-            return (new DefinitionBuilder( params ));
+            return DefinitionBuilder.INSTANCE;
         } else if (DefinitionsElement.class.isAssignableFrom( type )) {
-            return (new DefinitionsElementBuilder( params ));
+            return DefinitionsElementBuilder.INSTANCE;
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
-            return (new OvalSystemCharacteristicsBuilder( params ));
+            return OvalSystemCharacteristicsBuilder.INSTANCE;
         } else if (OvalResults.class.isAssignableFrom( type )) {
-            return (new OvalResultsBuilder( params ));
+            return OvalResultsBuilder.INSTANCE;
         }
 
-        return (new CommonBuilder( params ));
+        return CommonBuilder.INSTANCE;
     }
 
 
@@ -96,63 +94,19 @@ implements QueryBuilder
     private static final String  _INTERNAL_WILD_CARD_ = ".*";
 
 
-    private QueryParams  _params;
-
-
 
     /**
      * Constructor.
      */
     protected MorphiaQueryBuilder()
     {
-
-    }
-
-
-    public MorphiaQueryBuilder(
-                    final QueryParams params
-                    )
-    {
-        setParams( params );
     }
 
 
 
-    /**
-     */
-    public void setParams(
-                    final QueryParams params
-                    )
-    {
-        _params = params;
-    }
-
-
-
-    /**
-     */
-    public <T>
-    void buildQuery(
-                    final Query<T> query,
-                    final QueryParams params
-                    )
-    {
-//        query.disableValidation();
-
-        for (String  key : params.keys()) {
-            Handler  handler = _getHandler( key );
-            String  field = _getField( key );
-            String  value = params.get( key );
-
-            if (CommonQueryParams.Key.ORDER.equalsIgnoreCase( key )) {
-                value = _convertOrderingFields( value );
-            }
-
-            handler.build( query, field, value );
-        }
-    }
-
-
+    ///////////////////////////////////////////////////////////////////////
+    //  template methods
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      * Subclasses may override this to define own key-handler mapping.
@@ -284,45 +238,41 @@ implements QueryBuilder
 
     public <T>
     Query<T> build(
-                    final Query<T> query
+                    final Query<T> query,
+                    final QueryParams params
                     )
     {
-        buildQuery( query, _params );
+//        query.disableValidation();
+
+        for (String  key : params.keys()) {
+            Handler  handler = _getHandler( key );
+            String  field = _getField( key );
+            String  value = params.get( key );
+
+            if (CommonQueryParams.Key.ORDER.equalsIgnoreCase( key )) {
+                value = _convertOrderingFields( value );
+            }
+
+            handler.build( query, field, value );
+        }
 
         return query;
     }
 
 
 
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-//    @Override
-//    public String toString()
-//    {
-//        return _fields.toString();
-//    }
-
-
 
     //**************************************************************
-    //  nested classes
+    //  Handler variations
     //**************************************************************
 
     /**
-     * A query param handler.
-     * It holds key-value pair in an URI query param and
-     * the correspondent field name in the MongoDB document object.
-     * This handler generates "=" filter in the query.
+     * A query parameter handler.
+     * It appends an expression that represents the given key-value pair.
+     * e.g. given the URI http://.../xxx?key1=value1&key2=value2&...
      */
-    protected static abstract class Handler
+    protected static interface Handler
     {
-
-        public Handler()
-        {
-        }
-
 
         /**
          */
@@ -334,7 +284,7 @@ implements QueryBuilder
 
 
     protected static class IgnoringHandler
-    extends Handler
+    implements Handler
     {
         public static final IgnoringHandler  INSTANCE = new IgnoringHandler();
 
@@ -343,7 +293,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -358,7 +307,7 @@ implements QueryBuilder
 
 
     protected static class FilterHandler
-    extends Handler
+    implements Handler
     {
         public static final FilterHandler  INSTANCE = new FilterHandler();
 
@@ -373,7 +322,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -398,10 +346,10 @@ implements QueryBuilder
             query.filter( field + " " + op, v );
         }
     }
-    // Filter
+    // FilterHandler
 
     protected static class FilterHandler2
-    extends Handler
+    implements Handler
     {
         public static final FilterHandler2  INSTANCE = new FilterHandler2();
 
@@ -423,7 +371,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -446,7 +393,7 @@ implements QueryBuilder
 
 
     protected static class IntegerHandler
-    extends Handler
+    implements Handler
     {
         public static final IntegerHandler  INSTANCE = new IntegerHandler();
 
@@ -456,7 +403,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -481,8 +427,11 @@ implements QueryBuilder
 
 
 
+    /**
+     * { field: { $in: [<value1>, <value2>, ... <valueN> ] } }
+     */
     protected static class HasAnyOfHandler
-    extends Handler
+    implements Handler
     {
         public static final HasAnyOfHandler  INSTANCE = new HasAnyOfHandler();
 
@@ -492,7 +441,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -511,7 +459,7 @@ implements QueryBuilder
             }
         }
     }
-    //HasAnyOf
+    //HasAnyOfHandler
 
 
 
@@ -519,7 +467,7 @@ implements QueryBuilder
      * A query param handler for result ordering.
      */
     protected static class OrderHandler
-    extends Handler
+    implements Handler
     {
 
         public static final OrderHandler  INSTANCE = new OrderHandler();
@@ -530,7 +478,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -554,7 +501,7 @@ implements QueryBuilder
      * e.g. {name:/Joe/} in MongoDB, name like ''%Joe%' in SQL
      */
     protected static class PatternHandler
-    extends Handler
+    implements Handler
     {
         public static final PatternHandler INSTANCE = new PatternHandler();
 
@@ -564,7 +511,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -601,7 +547,7 @@ implements QueryBuilder
     // f2=.*X|Y|Z.* OR
     // ...
     protected static class SearchTermsHandler
-    extends Handler
+    implements Handler
     {
         public static final SearchTermsHandler  INSTANCE = new SearchTermsHandler();
 
@@ -611,7 +557,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -665,7 +610,7 @@ implements QueryBuilder
     // f2=.*X.* OR f2=.*Y.* OR f2=.*Z.*" OR
     // ...
     protected static class SearchTermsHandler2
-    extends Handler
+    implements Handler
     {
         public static final SearchTermsHandler2  INSTANCE = new SearchTermsHandler2();
 
@@ -675,7 +620,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -747,7 +691,7 @@ implements QueryBuilder
      * f=x*,y,z*
      */
     protected static class PatternListHandler
-    extends Handler
+    implements Handler
     {
         public static final PatternListHandler INSTANCE = new PatternListHandler();
 
@@ -757,7 +701,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -795,12 +738,12 @@ implements QueryBuilder
             }
         }
     }
-    //PatternList
+    //PatternListHandler
 
 
 
     protected static class OvalEnumerationListHandler
-    extends Handler
+    implements Handler
     {
 
         private final Class<? extends OvalEnumeration>  _type;
@@ -814,7 +757,6 @@ implements QueryBuilder
         }
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -837,12 +779,12 @@ implements QueryBuilder
             }
         }
     }
-    //OvalEnumerationList
+    //OvalEnumerationListHandler
 
 
 
     protected static class DatetimeHandler
-    extends Handler
+    implements Handler
     {
 
         public DatetimeHandler()
@@ -854,7 +796,6 @@ implements QueryBuilder
             new SimpleDateFormat( "yyyy-MM-dd" );
 
 
-        @Override
         public void build(
                         final Query<?> query,
                         final String field,
@@ -879,24 +820,27 @@ implements QueryBuilder
 
 
 
-    ////////////////////////////////////////////////////////////////
-    //  builders
-    ////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    //  QueryBuilder variations
+    ///////////////////////////////////////////////////////////////////////
 
+    /**
+     */
     public static class CommonBuilder
     extends MorphiaQueryBuilder
     {
+        public static final CommonBuilder  INSTANCE = new CommonBuilder();
+
 
         // Query key --> database field
         private static final Map<String, String>  _FIELDS_ = Collections.emptyMap();
-        // CommonQueryParams contains key NOT mapped to the fields.
+        // CommonQueryParams contains keys which are NOT mapped to the fields.
 
 
-        protected static Map<String, Handler> _createHandlers()
+        protected static Map<String, Handler> _createHandlerMapping()
         {
             Handler  offset_handler = new Handler()
             {
-                @Override
                 public void build(
                                 final Query<?> query,
                                 final String field,
@@ -915,7 +859,6 @@ implements QueryBuilder
 
             Handler  limit_handler = new Handler()
             {
-                @Override
                 public void build(
                                 final Query<?> query,
                                 final String field,
@@ -931,28 +874,22 @@ implements QueryBuilder
                 }
             };
 
+            Map<String, Handler>  handler_mapping = new HashMap<String, Handler>();
+            handler_mapping.put( CommonQueryParams.Key.START_INDEX, offset_handler );
+            handler_mapping.put( CommonQueryParams.Key.COUNT,       limit_handler );
+            handler_mapping.put( CommonQueryParams.Key.ORDER,       OrderHandler.INSTANCE );
 
-            Map<String, Handler>  mapping = new HashMap<String, Handler>();
-            mapping.put( CommonQueryParams.Key.START_INDEX, offset_handler );
-            mapping.put( CommonQueryParams.Key.COUNT,       limit_handler );
-            mapping.put( CommonQueryParams.Key.ORDER,       OrderHandler.INSTANCE );
-
-            return mapping;
+            return handler_mapping;
         }
 
 
         // Query key --> Handler
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlerMapping();
 
 
-
-        public CommonBuilder(
-                        final QueryParams params
-                        )
+        public CommonBuilder()
         {
-            super( params );
         }
-
 
 
         @Override
@@ -969,51 +906,42 @@ implements QueryBuilder
         }
 
     }
-    //Common
+    //CommonBuilder
 
 
 
     /**
      * oval-def:{definition,test,object,state,variable}
-     *
-     * @author	Akihito Nakamura, AIST
-     * @version $Id$
      */
     public static class DefinitionsElementBuilder
     extends CommonBuilder
     {
+        public static final DefinitionsElementBuilder  INSTANCE = new DefinitionsElementBuilder();
+
 
         protected static Map<String, String> _createFieldMapping()
         {
-            Map<String, String>  mapping = new HashMap<String, String>();
+            Map<String, String>  field_mapping = new HashMap<String, String>();
+            field_mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
+            field_mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
+            field_mapping.put( DefinitionsElementQueryParams.Key.TYPE,        null );
+            //NOTE: TYPE parameter is handled by the Repository implementation class.
+            field_mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
+            field_mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   "_oval_component" );
+            field_mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      "_oval_generator.schema_version" );
 
-            //NOTE:
-            // DefinitionsElementQueryParams.Key.TYPE param is handled by the MongoOvalDefinitionRepository.
-            mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
-            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
-            mapping.put( DefinitionsElementQueryParams.Key.TYPE,        null );
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
-            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   "_oval_component" );
-            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      "_oval_generator.schema_version" );
+            //override:
+            field_mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "comment" );
 
-            //common
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "comment" );
-
-            return mapping;
+            return field_mapping;
         }
-
 
         private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
 
 
-
-        protected static Map<String, Handler> _createHandlers()
+        protected static Map<String, Handler> _createHandlerMapping()
         {
-            Map<String, Handler>  mapping = CommonBuilder._createHandlers();
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler2.INSTANCE );
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler.INSTANCE ); //slower
-
-            //definitions element
+            Map<String, Handler>  mapping = CommonBuilder._createHandlerMapping();
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.TYPE,        IgnoringHandler.INSTANCE );
@@ -1021,21 +949,21 @@ implements QueryBuilder
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( Family.class ) );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   new OvalEnumerationListHandler( ComponentType.class ) );
 
+            //override:
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler2.INSTANCE );
+            //NOTE: slower implementation
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler.INSTANCE );
+
             return mapping;
         }
 
-
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlerMapping();
 
 
-        public DefinitionsElementBuilder(
-                        final QueryParams params
-                        )
+
+        public DefinitionsElementBuilder()
         {
-            super( params );
         }
-
 
 
         @Override
@@ -1052,7 +980,7 @@ implements QueryBuilder
         }
 
     }
-    //DefinitionsElement
+    //DefinitionsElementBuilder
 
 
 
@@ -1062,11 +990,12 @@ implements QueryBuilder
     public static class DefinitionBuilder
     extends DefinitionsElementBuilder
     {
+        public static final DefinitionBuilder  INSTANCE = new DefinitionBuilder();
+
 
         protected static Map<String, String> _createFieldMapping()
         {
             Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
-
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
             mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );   //override
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" );
@@ -1075,24 +1004,18 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
             mapping.put( DefinitionQueryParams.Key.CVE,                 "metadata.reference.ref_id" );
 
-            // override common
+            // override
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title,metadata.description" );
 
             return mapping;
         }
 
-
         private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
 
 
-
-        protected static Map<String, Handler> _createHandlers()
+        protected static Map<String, Handler> _createHandlerMapping()
         {
-            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
-            //common
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
-
-            //definition
+            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlerMapping();
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    new OvalEnumerationListHandler( ClassEnumeration.class ) );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            PatternListHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             PatternListHandler.INSTANCE );
@@ -1100,24 +1023,20 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.REF_ID,              PatternListHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.CVE,                 PatternListHandler.INSTANCE );
 
-            //overrides:
+            //override
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( FamilyEnumeration.class ) );
+//          mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
 
             return mapping;
         }
 
-
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlerMapping();
 
 
-        public DefinitionBuilder(
-                        final QueryParams params
-                        )
+
+        public DefinitionBuilder()
         {
-            super( params );
         }
-
 
 
         @Override
@@ -1144,11 +1063,12 @@ implements QueryBuilder
     public static class OvalSystemCharacteristicsBuilder
     extends CommonBuilder
     {
+        public static final OvalSystemCharacteristicsBuilder  INSTANCE = new OvalSystemCharacteristicsBuilder();
+
 
         protected static Map<String, String> _createFieldMapping()
         {
             Map<String, String>  mapping = new HashMap<String, String>();
-
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         "system_info.primary_host_name" );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           "system_info.os_name" );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   "system_info.os_version" );
@@ -1158,17 +1078,12 @@ implements QueryBuilder
             return mapping;
         }
 
-
         private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
 
 
-
-        protected static Map<String, Handler> _createHandlers()
+        protected static Map<String, Handler> _createHandlerMapping()
         {
-            Map<String, Handler>  mapping = CommonBuilder._createHandlers();
-            //common
-//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler2.INSTANCE );
-            //sc
+            Map<String, Handler>  mapping = CommonBuilder._createHandlerMapping();
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
@@ -1176,23 +1091,19 @@ implements QueryBuilder
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          PatternListHandler.INSTANCE );
 
+            //override
+//          mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermsHandler2.INSTANCE );
+
             return mapping;
         }
 
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlerMapping();
 
 
 
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
-
-
-        public OvalSystemCharacteristicsBuilder(
-                        final QueryParams params
-                        )
+        public OvalSystemCharacteristicsBuilder()
         {
-            super( params );
         }
-
 
 
         @Override
@@ -1209,15 +1120,18 @@ implements QueryBuilder
         }
 
     }
-    // OvalSystemCharacteristics
+    //OvalSystemCharacteristicsBuilder
 
 
 
     /**
+     * oval-res:oval_results
      */
     public static class OvalResultsBuilder
     extends CommonBuilder
     {
+        public static final OvalResultsBuilder  INSTANCE = new OvalResultsBuilder();
+
 
         protected static Map<String, String> _createFieldMapping()
         {
@@ -1234,16 +1148,13 @@ implements QueryBuilder
             return mapping;
         }
 
-
         private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
 
 
-
-        protected static Map<String, Handler> _createHandlers()
+        protected static Map<String, Handler> _createHandlerMapping()
         {
             Handler  definition_true_handler = new Handler()
             {
-                @Override
                 public void build(
                                 final Query<?> query,
                                 final String field,
@@ -1278,25 +1189,20 @@ implements QueryBuilder
             };
 
 
-            Map<String, Handler>  mapping = OvalSystemCharacteristicsBuilder._createHandlers();
+            Map<String, Handler>  mapping = OvalSystemCharacteristicsBuilder._createHandlerMapping();
             mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    definition_true_handler );
             mapping.put( OvalResultsQueryParams.Key.DEFINITION,         HasAnyOfHandler.INSTANCE );
 
             return mapping;
         }
 
-
-        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
-
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlerMapping();
 
 
-        public OvalResultsBuilder(
-                        final QueryParams params
-                        )
+
+        public OvalResultsBuilder()
         {
-            super( params );
         }
-
 
 
         @Override
@@ -1313,8 +1219,8 @@ implements QueryBuilder
         }
 
     }
-    //OvalReuslts
+    //OvalResultsBuilder
 
 }
-// MongoQueryBuilder
+//MorphiaQueryBuilder
 

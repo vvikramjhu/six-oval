@@ -19,6 +19,7 @@
 package jp.go.aist.six.oval.core.repository.morphia;
 
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.util.query.QueryParams;
 import com.github.jmkgreen.morphia.query.Query;
 
 
@@ -36,7 +37,7 @@ public interface QueryBuilder
     /**
      * @throws OvalRepositoryException
      */
-    public <T> Query<T> build( Query<T> query );
+    public <T> Query<T> build( Query<T> query, QueryParams params );
 
 
 //    // paging
