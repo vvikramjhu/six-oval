@@ -56,7 +56,7 @@ import com.github.jmkgreen.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class MongoQueryBuilder
+public abstract class MorphiaQueryBuilder
 implements QueryBuilder
 {
 
@@ -64,7 +64,7 @@ implements QueryBuilder
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoQueryBuilder.class );
+        LoggerFactory.getLogger( MorphiaQueryBuilder.class );
 
 
 
@@ -103,13 +103,13 @@ implements QueryBuilder
     /**
      * Constructor.
      */
-    protected MongoQueryBuilder()
+    protected MorphiaQueryBuilder()
     {
 
     }
 
 
-    public MongoQueryBuilder(
+    public MorphiaQueryBuilder(
                     final QueryParams params
                     )
     {
@@ -884,7 +884,7 @@ implements QueryBuilder
     ////////////////////////////////////////////////////////////////
 
     public static class CommonBuilder
-    extends MongoQueryBuilder
+    extends MorphiaQueryBuilder
     {
 
         // Query key --> database field
