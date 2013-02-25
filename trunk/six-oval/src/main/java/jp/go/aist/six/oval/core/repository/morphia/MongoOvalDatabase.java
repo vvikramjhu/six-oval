@@ -74,10 +74,14 @@ public class MongoOvalDatabase
      * DAO list injection point.
      */
     public void setDAO(
-                    final Collection<? extends DAO<?, ?>> daoList
+                    final Collection<? extends DAO<?, ?>> dao_list
                                     )
     {
-        for (DAO<?, ?> dao : daoList) {
+        if (dao_list == null) {
+            return;
+        }
+
+        for (DAO<?, ?> dao : dao_list) {
             if (dao == null) {
                 continue;
             }
@@ -129,7 +133,7 @@ public class MongoOvalDatabase
                     )
     {
         Query<T>  query = dao.createQuery();
-        QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
+        QueryBuilder  builder = MorphiaQueryBuilder.createInstance( type, params );
         query = builder.build( query );
 
         return query;
@@ -416,21 +420,21 @@ public class MongoOvalDatabase
 
 
     //**********************************************************************
-    //  DAORegistry
+    //  implements DAORegistry
     //**********************************************************************
 
     public <T, K> DAO<T, K> getDAO(
-                    final Class<T> objectType
+                    final Class<T> entityClass
                     )
     {
-        if (objectType == null) {
-            throw new IllegalArgumentException( "object type NOT specified (null)" );
+        if (entityClass == null) {
+            throw new IllegalArgumentException( "entityClass NOT specified (null)" );
         }
 
         @SuppressWarnings( "unchecked" )
-        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( objectType );
+        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
         if (dao == null) {
-            throw new IllegalArgumentException( "unknown entity class: " + objectType );
+            throw new IllegalArgumentException( "unknown entity class: " + entityClass );
         }
 
         return dao;
