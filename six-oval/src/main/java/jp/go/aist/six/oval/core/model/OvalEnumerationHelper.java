@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * This is a helper functions for the OvalEnumeration.
+ * Helper functions for the OvalEnumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -58,14 +58,16 @@ public final class OvalEnumerationHelper
      *  the OvalEnumeration instance of the given type and value.
      * @throws  OvalException
      */
-    public static <T extends OvalEnumeration>
-    T fromValue(
+    public static <T extends OvalEnumeration> T fromValue(
                     final Class<T> type,
                     final String value
                     )
     {
-        Object  obj = null;
+        if (type == null) {
+            throw new IllegalArgumentException( "empty type" );
+        }
 
+        Object  obj = null;
         Method  method = _FROM_VALUE_METHODS_.get( type );
         try {
             if (method == null) {
@@ -95,22 +97,15 @@ public final class OvalEnumerationHelper
      * @throws  OvalException
      */
     public static String value(
-                    final Object obj
+                    final OvalEnumeration obj
                     )
     {
         if (obj == null) {
-            return null;
+            throw new IllegalArgumentException( "empty object" );
         }
 
-        Class<?>  type = obj.getClass();
-        _LOG_.trace( String.valueOf( type ) );
-        if (OvalEnumeration.class.isInstance( obj )) {
-            OvalEnumeration  e = OvalEnumeration.class.cast( obj );
-            return e.value();
-        }
-
-        throw new OvalException( "Invalid type: " + type );
-//        throw new IllegalArgumentException( "Invalid type: " + type );
+        _LOG_.trace( String.valueOf( obj.getClass() ) );
+        return obj.value();
     }
 
 }
