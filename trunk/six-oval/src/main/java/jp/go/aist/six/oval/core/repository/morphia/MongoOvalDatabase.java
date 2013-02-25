@@ -134,9 +134,9 @@ public class MongoOvalDatabase
     {
         Query<T>  query = null;
         try {
-            dao.createQuery();
-            QueryBuilder  builder = MorphiaQueryBuilder.createInstance( type, params );
-            query = builder.build( query );
+            query = dao.createQuery();
+            QueryBuilder  builder = MorphiaQueryBuilder.getInstance( type );
+            query = builder.build( query, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
