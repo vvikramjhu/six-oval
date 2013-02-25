@@ -68,51 +68,44 @@
     </bean>
 
 
-    <bean id="ovalDefinitionsDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.OvalDefinitionsDAO">
+<!-- *** oval-def *** -->
+    <bean id="ovalDefinitionsDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.OvalDefinitionsDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
-
-    <bean id="definitionDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.DefinitionDAO">
+    </bean>
+    <bean id="definitionDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.DefinitionDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
-
-    <bean id="testDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.TestDAO">
+    </bean>
+    <bean id="testDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.TestDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
-
-    <bean id="systemObjectDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.SystemObjectDAO">
+    </bean>
+    <bean id="systemObjectDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.SystemObjectDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
-
-    <bean id="stateDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.StateDAO">
+    </bean>
+    <bean id="stateDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.StateDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
-
-    <bean id="variableDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.VariableDAO">
+    </bean>
+    <bean id="variableDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.VariableDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
+    </bean>
 
-
-    <bean id="ovalSystemCharacteristicsDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.OvalSystemCharacteristicsDAO">
+    <bean id="definitionsElementAssocDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.DefinitionsElementAssocDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
+    </bean>
 
-    <bean id="ovalResultsDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.OvalResultsDAO">
+<!-- *** oval-sc *** -->
+    <bean id="ovalSystemCharacteristicsDAO" class="jp.go.aist.six.oval.core.repository.morphia.sc.OvalSystemCharacteristicsDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
+    </bean>
 
-    <bean id="definitionsElementAssocDAO" 
-        class="jp.go.aist.six.oval.core.repository.morphia.DefinitionsElementAssocDAO">
+<!-- *** oval-res *** -->
+    <bean id="ovalResultsDAO" class="jp.go.aist.six.oval.core.repository.morphia.results.OvalResultsDAO">
         <constructor-arg ref="morphiaDatastore"/> 
-    </bean> 
+    </bean>
+
+<!-- *** oval-var *** -->
+    <bean id="ovalVariablesDAO" class="jp.go.aist.six.oval.core.repository.morphia.variables.OvalVariablesDAO">
+        <constructor-arg ref="morphiaDatastore"/> 
+    </bean>
 
 
 

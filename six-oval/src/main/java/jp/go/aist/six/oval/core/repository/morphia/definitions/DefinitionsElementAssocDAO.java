@@ -16,12 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
-import java.util.UUID;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import com.github.jmkgreen.morphia.Datastore;
-import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.BasicDAO;
 
 
 
@@ -29,39 +28,19 @@ import com.github.jmkgreen.morphia.Key;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSystemCharacteristicsDAO
-    extends BaseDAO<OvalSystemCharacteristics, String>
+public class DefinitionsElementAssocDAO
+    extends BasicDAO<DefinitionsElementAssoc, String>
 {
 
     /**
      */
-    public OvalSystemCharacteristicsDAO(
+    public DefinitionsElementAssocDAO(
                     final Datastore ds
                     )
     {
-        super( OvalSystemCharacteristics.class, ds );
-    }
-
-
-
-    //**************************************************************
-    //  DAO
-    //**************************************************************
-
-    @Override
-    public Key<OvalSystemCharacteristics> save(
-                    final OvalSystemCharacteristics oval_sc
-                    )
-    {
-        String  pid = oval_sc.getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            oval_sc.setPersistentID( pid );
-        }
-
-        return super.save( oval_sc );
+        super( DefinitionsElementAssoc.class, ds );
     }
 
 }
-// OvalSystemCharacteristicsDAO
+//
 

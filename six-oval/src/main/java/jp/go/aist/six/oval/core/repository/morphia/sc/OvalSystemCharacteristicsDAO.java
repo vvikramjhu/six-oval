@@ -16,13 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.sc;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
+import java.util.UUID;
+import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Key;
-import com.github.jmkgreen.morphia.dao.DAO;
 
 
 
@@ -30,18 +30,17 @@ import com.github.jmkgreen.morphia.dao.DAO;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionDAO
-    extends DefinitionsElementDAO<DefinitionType>
-//extends BasicDAO<DefinitionType, String>
+public class OvalSystemCharacteristicsDAO
+    extends BaseDAO<OvalSystemCharacteristics, String>
 {
 
     /**
      */
-    public DefinitionDAO(
+    public OvalSystemCharacteristicsDAO(
                     final Datastore ds
                     )
     {
-        super( DefinitionType.class, ds );
+        super( OvalSystemCharacteristics.class, ds );
     }
 
 
@@ -51,17 +50,19 @@ public class DefinitionDAO
     //**************************************************************
 
     @Override
-    public Key<DefinitionType> save(
-                    final DefinitionType def
+    public Key<OvalSystemCharacteristics> save(
+                    final OvalSystemCharacteristics oval_sc
                     )
     {
-        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
-        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( def );
-        assoc_dao.save( assoc );
+        String  pid = oval_sc.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            oval_sc.setPersistentID( pid );
+        }
 
-        return super.save( def );
+        return super.save( oval_sc );
     }
 
 }
-//DefinitionDAO
+// OvalSystemCharacteristicsDAO
 

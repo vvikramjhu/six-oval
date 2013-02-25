@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import com.github.jmkgreen.morphia.Datastore;
