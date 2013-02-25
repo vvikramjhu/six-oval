@@ -16,9 +16,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.variables;
 
 import java.util.UUID;
+import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.variables.OvalVariables;
 import jp.go.aist.six.oval.model.variables.VariableType;
 import jp.go.aist.six.oval.model.variables.VariablesType;

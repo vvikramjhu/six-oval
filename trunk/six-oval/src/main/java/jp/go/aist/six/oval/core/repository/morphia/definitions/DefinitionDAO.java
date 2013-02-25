@@ -16,10 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import com.github.jmkgreen.morphia.Datastore;
+import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.DAO;
 
 
 
@@ -27,18 +30,18 @@ import com.github.jmkgreen.morphia.Datastore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsElementDAO<T extends DefinitionsElement>
-    extends BaseDAO<T, String>
+public class DefinitionDAO
+    extends DefinitionsElementDAO<DefinitionType>
+//extends BasicDAO<DefinitionType, String>
 {
 
     /**
      */
-    public DefinitionsElementDAO(
-                    final Class<T> type,
+    public DefinitionDAO(
                     final Datastore ds
                     )
     {
-        super( type, ds );
+        super( DefinitionType.class, ds );
     }
 
 
@@ -47,6 +50,18 @@ public class DefinitionsElementDAO<T extends DefinitionsElement>
     //  DAO
     //**************************************************************
 
+    @Override
+    public Key<DefinitionType> save(
+                    final DefinitionType def
+                    )
+    {
+        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
+        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( def );
+        assoc_dao.save( assoc );
+
+        return super.save( def );
+    }
+
 }
-//
+//DefinitionDAO
 

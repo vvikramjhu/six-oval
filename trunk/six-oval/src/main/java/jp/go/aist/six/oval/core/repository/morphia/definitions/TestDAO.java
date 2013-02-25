@@ -16,10 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.morphia;
+package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
-import jp.go.aist.six.oval.model.definitions.VariableType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
+import jp.go.aist.six.oval.model.definitions.TestType;
 import com.github.jmkgreen.morphia.Datastore;
+import com.github.jmkgreen.morphia.Key;
+import com.github.jmkgreen.morphia.dao.DAO;
 
 
 
@@ -27,20 +30,37 @@ import com.github.jmkgreen.morphia.Datastore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class VariableDAO
-    extends DefinitionsElementDAO<VariableType>
-//    extends OvalEntityDAO<VariableType>
+public class TestDAO
+    extends DefinitionsElementDAO<TestType>
 {
 
     /**
      */
-    public VariableDAO(
+    public TestDAO(
                     final Datastore ds
                     )
     {
-        super( VariableType.class, ds );
+        super( TestType.class, ds );
+    }
+
+
+
+    //**************************************************************
+    //  DAO
+    //**************************************************************
+
+    @Override
+    public Key<TestType> save(
+                    final TestType tst
+                    )
+    {
+        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
+        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( tst );
+        assoc_dao.save( assoc );
+
+        return super.save( tst );
     }
 
 }
-// VariableDAO
+//
 
