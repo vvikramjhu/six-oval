@@ -71,7 +71,6 @@ import jp.go.aist.six.oval.model.windows.InterfaceTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
 import jp.go.aist.six.oval.model.windows.PeSubsystemEnumeration;
 import jp.go.aist.six.oval.model.windows.PeTargetMachineEnumeration;
-import jp.go.aist.six.oval.model.windows.ProtocolEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.ServiceControlsAcceptedEnumeration;
@@ -141,7 +140,7 @@ public class OvalConverter
         LdaptypeEnumeration.class,
 
         // linux //
-        ProtocolEnumeration.class,
+        jp.go.aist.six.oval.model.linux.ProtocolEnumeration.class,
         RpmVerifyResultEnumeration.class,
 
         // macos //
@@ -188,7 +187,7 @@ public class OvalConverter
         NamingContextEnumeration.class,
         PeSubsystemEnumeration.class,
         PeTargetMachineEnumeration.class,
-        ProtocolEnumeration.class,
+        jp.go.aist.six.oval.model.windows.ProtocolEnumeration.class,
         RegistryHiveEnumeration.class,
         RegistryTypeEnumeration.class,
         ServiceControlsAcceptedEnumeration.class,
