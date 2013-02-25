@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.definitions.EntityMap;
 
 
 /**
+ * Experimental:
+ * Is there any smart way to manage entities of OVAL Objects and States?
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
