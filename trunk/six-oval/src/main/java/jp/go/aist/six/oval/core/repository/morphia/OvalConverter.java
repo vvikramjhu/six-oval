@@ -226,7 +226,7 @@ public class OvalConverter
         }
 
         if (object instanceof OvalEnumeration) {
-            return OvalEnumerationHelper.value( object );
+            return OvalEnumeration.class.cast( object ).value();
 //        } else if (object instanceof NameEntity) {
 //            return NameEntity.class.cast( object ).getName();
         }
