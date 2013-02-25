@@ -132,9 +132,14 @@ public class MongoOvalDatabase
                     final QueryParams params
                     )
     {
-        Query<T>  query = dao.createQuery();
-        QueryBuilder  builder = MorphiaQueryBuilder.createInstance( type, params );
-        query = builder.build( query );
+        Query<T>  query = null;
+        try {
+            dao.createQuery();
+            QueryBuilder  builder = MorphiaQueryBuilder.createInstance( type, params );
+            query = builder.build( query );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
 
         return query;
     }
@@ -151,8 +156,15 @@ public class MongoOvalDatabase
                     final Key<T> key
                     )
     {
-        @SuppressWarnings( "unchecked" )
-        K  id = (K)key.getId();
+        K  id = null;
+        try {
+            @SuppressWarnings( "unchecked" )
+            K  obj = (K)key.getId();
+            id = obj;
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
         return id;
     }
 
@@ -193,7 +205,12 @@ public class MongoOvalDatabase
        _LOG_.info( "findById: type=" + type + ", ID=" + id );
        long  ts_start = System.currentTimeMillis();
 
-       T  p_object = getDAO( type ).get( id );
+       T  p_object = null;
+       try {
+           p_object = getDAO( type ).get( id );
+       } catch (Exception ex) {
+           throw new OvalRepositoryException( ex );
+       }
 
        _LOG_.info( "findById: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
        _LOG_.debug( (p_object == null ? "findById: object NOT found" : "findById: object found") );
@@ -229,20 +246,23 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.info( "find: type=" + type + ", params=" + params );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
-        DAO<T, K>  dao = getDAO( type );
         List<T>  list = null;
-        if (params == null) {
-            list = dao.find().asList();
-        } else {
-            Query<T>  query = _buildQuery( dao, type, params );
-            _LOG_.debug( "query=" + query );
-            list = dao.find( query ).asList();
+        try {
+            DAO<T, K>  dao = getDAO( type );
+            if (params == null) {
+                list = dao.find().asList();
+            } else {
+                Query<T>  query = _buildQuery( dao, type, params );
+                _LOG_.debug( "query=" + query );
+                list = dao.find( query ).asList();
+            }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "find: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "find: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
         _LOG_.debug( "find: #objects=: " + (list == null ? 0 : list.size()) );
         return list;
     }
@@ -278,18 +298,21 @@ public class MongoOvalDatabase
         _LOG_.debug( "findId: type=" + type + ", params=" + params );
         long  ts_start = System.currentTimeMillis();
 
-        DAO<T, K>  dao = getDAO( type );
         List<Key<T>>  list = null;
-        if (params == null) {
-            list = dao.find().asKeyList();
-        } else {
-            Query<T>  query = _buildQuery( dao, type, params );
-            _LOG_.debug( "query=" + query );
-            list = dao.find( query ).asKeyList();
+        try {
+            DAO<T, K>  dao = getDAO( type );
+            if (params == null) {
+                list = dao.find().asKeyList();
+            } else {
+                Query<T>  query = _buildQuery( dao, type, params );
+                _LOG_.debug( "query=" + query );
+                list = dao.find( query ).asKeyList();
+            }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "findId: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "findId: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
         _LOG_.debug( "findId: #IDs=: " + (list == null ? 0 : list.size()) );
         return _keys2Ids( list );
     }
@@ -324,32 +347,35 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.info( "count: type=" + type + ", params=" + params );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
-        DAO<T, K>  dao = getDAO( type );
         long  count = 0L;
-        if (params == null) {
-            count = dao.count();
-        } else {
-            // NOTE: count() query ignores the "count" parameter.
-            QueryParams  adjusted_params = params;
-            if (params.containsKey( CommonQueryParams.Key.COUNT )) {
-                try {
-                    adjusted_params = QueryParams.class.cast( params.clone() );
-                } catch (CloneNotSupportedException ex) {
-                    throw new OvalRepositoryException( ex );
+        try {
+            DAO<T, K>  dao = getDAO( type );
+            if (params == null) {
+                count = dao.count();
+            } else {
+                // NOTE: count() query ignores the "count" parameter.
+                QueryParams  adjusted_params = params;
+                if (params.containsKey( CommonQueryParams.Key.COUNT )) {
+                    try {
+                        adjusted_params = QueryParams.class.cast( params.clone() );
+                    } catch (CloneNotSupportedException ex) {
+                        throw new OvalRepositoryException( ex );
+                    }
+
+                    adjusted_params.remove( CommonQueryParams.Key.COUNT );
                 }
 
-                adjusted_params.remove( CommonQueryParams.Key.COUNT );
+                Query<T>  query = _buildQuery( dao, type, adjusted_params );
+                _LOG_.debug( "query=" + query );
+                count = dao.count( query );
             }
-
-            Query<T>  query = _buildQuery( dao, type, adjusted_params );
-            _LOG_.debug( "query=" + query );
-            count = dao.count( query );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "count: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "count: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
         _LOG_.debug( "count: count=" + count );
         return count;
     }
@@ -365,11 +391,16 @@ public class MongoOvalDatabase
         _LOG_.info( "save: type=" + type );
         long  ts_start = System.currentTimeMillis();
 
-        Key<T>  key = getDAO( type ).save( object );
+        Key<T>  key = null;
+        try {
+            key = getDAO( type ).save( object );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
         K  id = _key2Id( key );
 
-        _LOG_.info( "save: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "save: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
         _LOG_.info( "save: ID=" + id );
         return id;
    }
@@ -385,10 +416,13 @@ public class MongoOvalDatabase
         _LOG_.info( "deleteById: type=" + type + ", ID=" + id );
         long  ts_start = System.currentTimeMillis();
 
-        getDAO( type ).deleteById( id );
+        try {
+            getDAO( type ).deleteById( id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
 
-        _LOG_.info( "deleteById: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "deleteById: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
     }
 
 
@@ -399,22 +433,25 @@ public class MongoOvalDatabase
                     )
     {
         _LOG_.debug( "delete: type=" + type );
-        long ts_start = System.currentTimeMillis();
+        long  ts_start = System.currentTimeMillis();
 
         /*
          * TODO: performance Is it possible to delete all the objects by query?
          * dao.deleteByQuery( Query q )
          */
-        List<K>  id_list = findId( type );
-        if (id_list != null  &&  id_list.size() > 0) {
-            DAO<T, K>  dao = getDAO( type );
-            for (K  id : id_list) {
-                dao.deleteById( id );
+        try {
+            List<K>  id_list = findId( type );
+            if (id_list != null  &&  id_list.size() > 0) {
+                DAO<T, K>  dao = getDAO( type );
+                for (K  id : id_list) {
+                    dao.deleteById( id );
+                }
             }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "delete: elapsed time (ms)="
-                        + (System.currentTimeMillis() - ts_start) );
+        _LOG_.info( "delete: elapsed time (ms)=" + (System.currentTimeMillis() - ts_start) );
     }
 
 
@@ -428,13 +465,20 @@ public class MongoOvalDatabase
                     )
     {
         if (entityClass == null) {
-            throw new IllegalArgumentException( "entityClass NOT specified (null)" );
+            throw new OvalRepositoryException( "entity type NOT specified (null)" );
         }
 
-        @SuppressWarnings( "unchecked" )
-        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
+        DAO<T, K>  dao = null;
+        try {
+            @SuppressWarnings( "unchecked" )
+            DAO<T, K>  dao_tmp = (DAO<T, K>)_daoMap.get( entityClass );
+            dao = dao_tmp;
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
         if (dao == null) {
-            throw new IllegalArgumentException( "unknown entity class: " + entityClass );
+            throw new OvalRepositoryException( "unknown entity type: " + entityClass );
         }
 
         return dao;

@@ -66,7 +66,7 @@ public class MongoOvalRepository
     {
         OvalResults  p_object = null;
         try {
-            p_object = getDatabase().findById( OvalResults.class, id );
+            p_object = _getDatabase().findById( OvalResults.class, id );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -80,7 +80,7 @@ public class MongoOvalRepository
     {
         List<OvalResults>  p_list = null;
         try {
-            p_list = getDatabase().find( OvalResults.class );
+            p_list = _getDatabase().find( OvalResults.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -96,7 +96,7 @@ public class MongoOvalRepository
     {
         List<OvalResults>  p_list = null;
         try {
-            p_list = getDatabase().find( OvalResults.class, params );
+            p_list = _getDatabase().find( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -110,7 +110,7 @@ public class MongoOvalRepository
     {
         List<String>  list = null;
         try {
-            list = getDatabase().findId( OvalResults.class );
+            list = _getDatabase().findId( OvalResults.class );
 //            keys = dao.findIds(); // this code does NOT work. why???
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -127,7 +127,7 @@ public class MongoOvalRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = getDatabase().findId( OvalResults.class, params );
+            p_list = _getDatabase().findId( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -141,7 +141,7 @@ public class MongoOvalRepository
     {
         long  count = 0L;
         try {
-            count = getDatabase().count( OvalResults.class );
+            count = _getDatabase().count( OvalResults.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -157,7 +157,7 @@ public class MongoOvalRepository
     {
         long  count = 0L;
         try {
-            count = getDatabase().count( OvalResults.class, params );
+            count = _getDatabase().count( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -173,7 +173,7 @@ public class MongoOvalRepository
     {
         String  id = null;
         try {
-            id = getDatabase().save( OvalResults.class, oval_results );
+            id = _getDatabase().save( OvalResults.class, oval_results );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -193,7 +193,7 @@ public class MongoOvalRepository
     {
         OvalSystemCharacteristics  p_object = null;
         try {
-            p_object = getDatabase().findById( OvalSystemCharacteristics.class, id );
+            p_object = _getDatabase().findById( OvalSystemCharacteristics.class, id );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -207,7 +207,7 @@ public class MongoOvalRepository
     {
         List<OvalSystemCharacteristics>  p_list = null;
         try {
-            p_list = getDatabase().find( OvalSystemCharacteristics.class );
+            p_list = _getDatabase().find( OvalSystemCharacteristics.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -223,7 +223,7 @@ public class MongoOvalRepository
     {
         List<OvalSystemCharacteristics>  p_list = null;
         try {
-            p_list = getDatabase().find( OvalSystemCharacteristics.class, params );
+            p_list = _getDatabase().find( OvalSystemCharacteristics.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -237,7 +237,7 @@ public class MongoOvalRepository
     {
         List<String>  list = null;
         try {
-            list = getDatabase().findId( OvalSystemCharacteristics.class );
+            list = _getDatabase().findId( OvalSystemCharacteristics.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -253,7 +253,7 @@ public class MongoOvalRepository
     {
         List<String>  p_list = null;
         try {
-            p_list = getDatabase().findId( OvalSystemCharacteristics.class, params );
+            p_list = _getDatabase().findId( OvalSystemCharacteristics.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -267,7 +267,7 @@ public class MongoOvalRepository
     {
         long  count = 0L;
         try {
-            count = getDatabase().count( OvalSystemCharacteristics.class );
+            count = _getDatabase().count( OvalSystemCharacteristics.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -283,7 +283,7 @@ public class MongoOvalRepository
     {
         long  count = 0L;
         try {
-            count = getDatabase().count( OvalSystemCharacteristics.class, params );
+            count = _getDatabase().count( OvalSystemCharacteristics.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -299,7 +299,7 @@ public class MongoOvalRepository
     {
         String  id = null;
         try {
-            id = getDatabase().save( OvalSystemCharacteristics.class, oval_sc );
+            id = _getDatabase().save( OvalSystemCharacteristics.class, oval_sc );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
