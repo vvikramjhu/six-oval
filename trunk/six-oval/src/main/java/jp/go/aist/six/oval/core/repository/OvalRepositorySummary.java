@@ -33,6 +33,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.InterfaceType;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.query.QueryResults;
 
 
@@ -56,7 +57,7 @@ public class OvalRepositorySummary
 
 
 
-    private final OvalRepositoryImpl  _oval_repository;
+    private final OvalRepository  _oval_repository;
 
 
 
@@ -65,7 +66,8 @@ public class OvalRepositorySummary
     public OvalRepositorySummary()
     throws Exception
     {
-        _oval_repository = OvalContext.getServerInstance().getBean( OvalRepositoryImpl.class );
+        _oval_repository = OvalContext.getServerInstance().getRepository();
+//        _oval_repository = OvalContext.getServerInstance().getBean( OvalRepositoryImpl.class );
     }
 
 

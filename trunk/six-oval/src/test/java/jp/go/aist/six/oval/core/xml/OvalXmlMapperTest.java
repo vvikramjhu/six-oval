@@ -104,6 +104,8 @@ public class OvalXmlMapperTest
 
         @DataPoints
         public static String[]  SUB_DIRS = new String[] {
+            "definitions",
+            "independent",
             "linux",
             "macos",
             "solaris",
