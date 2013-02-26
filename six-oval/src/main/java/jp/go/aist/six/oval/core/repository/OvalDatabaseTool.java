@@ -48,14 +48,14 @@ import org.slf4j.LoggerFactory;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDatabaseTool
+public class OvalDatabaseTool
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDatabaseTool.class );
+        LoggerFactory.getLogger( OvalDatabaseTool.class );
 
 
 
@@ -103,7 +103,7 @@ public class MongoOvalDatabaseTool
     /**
      * Constructor.
      */
-    public MongoOvalDatabaseTool()
+    public OvalDatabaseTool()
     {
     }
 
