@@ -21,8 +21,8 @@ package jp.go.aist.six.oval.repository;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.util.query.QueryParams;
-import jp.go.aist.six.util.query.QueryResults;
+import jp.go.aist.six.util.repository.QueryParams;
+import jp.go.aist.six.util.repository.QueryResults;
 
 
 

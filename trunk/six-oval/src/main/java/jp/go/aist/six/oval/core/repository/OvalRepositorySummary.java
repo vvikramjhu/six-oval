@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.InterfaceType;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
 import jp.go.aist.six.oval.repository.OvalRepository;
-import jp.go.aist.six.util.query.QueryResults;
+import jp.go.aist.six.util.repository.QueryResults;
 
 
 

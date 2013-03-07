@@ -23,8 +23,8 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.util.query.QueryParams;
-import jp.go.aist.six.util.query.QueryResults;
+import jp.go.aist.six.util.repository.QueryParams;
+import jp.go.aist.six.util.repository.QueryResults;
 
 
 
