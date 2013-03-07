@@ -55,7 +55,7 @@ Project SIX: OVAL - Maven Project Object Model (POM)
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
         <maven-site-plugin.version>3.2</maven-site-plugin.version>
 
-        <six-util.version>3.4.0-SNAPSHOT</six-util.version>
+        <six-util.version>3.4.0</six-util.version>
         <!-- six-util.version>3.3.0</six-util.version -->
 
         <ch.qos.logback.version>1.0.9</ch.qos.logback.version>
@@ -80,10 +80,12 @@ Project SIX: OVAL - Maven Project Object Model (POM)
             <url>http://six-util.googlecode.com/svn/maven</url>
         </repository>
 
+<!-- deprecated: Morphia was moved to GitHub
         <repository>
             <id>morphia.googlecode</id>
             <url>http://morphia.googlecode.com/svn/mavenrepo/</url>
         </repository>
+-->
 
         <repository>
             <id>codehaus</id>

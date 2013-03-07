@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.repository;
 
-import jp.go.aist.six.util.query.CommonQueryParams;
+import jp.go.aist.six.util.repository.CommonQueryParams;
 
 
 

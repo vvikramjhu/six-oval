@@ -19,7 +19,7 @@
 package jp.go.aist.six.oval.core.repository.morphia;
 
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.util.query.QueryParams;
+import jp.go.aist.six.util.repository.QueryParams;
 import com.github.jmkgreen.morphia.query.Query;
 
 

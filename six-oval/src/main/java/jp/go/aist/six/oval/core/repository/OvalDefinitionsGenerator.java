@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.IsoDate;
-import jp.go.aist.six.util.query.QueryParams;
+import jp.go.aist.six.util.repository.QueryParams;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
