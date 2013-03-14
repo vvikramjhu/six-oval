@@ -18,7 +18,7 @@
  */
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.util.castor.CastorXmlMapper;
+import jp.go.aist.six.util.core.xml.castor.CastorXmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

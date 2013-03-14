@@ -79,7 +79,11 @@
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-solaris.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-unix.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-windows.xml</value>
+                 
+                 <value>classpath:jp/go/aist/six/util/core/xml/castor/castor-xml_six-util_repository.xml</value>
+<!-- deprecated:
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-six-core.xml</value>
+-->
             </list>
         </property>
         <property name="ignoreExtraAttributes" value="false"/>
