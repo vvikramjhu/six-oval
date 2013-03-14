@@ -41,7 +41,7 @@ public enum Family
 //      esx,
     ESX(            ComponentType.ESX         ),
 //      freebsd,
-//      hpux,
+    HPUX(           ComponentType.HPUX        ),
 //      ios,
     INDEPENDENT(    ComponentType.INDEPENDENT ),
     LINUX(          ComponentType.LINUX       ),
