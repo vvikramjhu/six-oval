@@ -84,6 +84,7 @@ public enum ComponentType
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
     PATCH,                          // solaris
+    PATCH53,                        // hpux
     PATCH54,                        // solaris
     PATCH56,                        // esx
     PEHEADER,                       // windows
@@ -224,6 +225,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  HPUX = new ComponentType[] {
+        ComponentType.PATCH53,
         ComponentType.SWLIST
     };
 
