@@ -65,7 +65,7 @@ public class OvalDocumentInstaller
     throws Exception
     {
         OvalContext  context = OvalContext.getServerInstance();
-        _oval_repository = context.getBean( "oval-repository", OvalRepository.class );
+        _oval_repository = context.getBean( OvalRepositoryImpl.class );
         _xml_mapper = context.getXmlMapper();
     }
 

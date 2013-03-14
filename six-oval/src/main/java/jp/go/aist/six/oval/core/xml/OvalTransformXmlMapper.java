@@ -29,7 +29,7 @@ import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import jp.go.aist.six.util.castor.CastorXmlMapper;
+import jp.go.aist.six.util.core.xml.castor.CastorXmlMapper;
 import jp.go.aist.six.util.xml.XmlTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

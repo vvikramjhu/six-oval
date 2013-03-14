@@ -22,7 +22,7 @@ import jp.go.aist.six.oval.core.repository.OvalRepositoryImpl;
 import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepository;
-import jp.go.aist.six.util.spring.Context;
+import jp.go.aist.six.util.core.config.spring.SpringContext;
 import jp.go.aist.six.util.xml.XmlMapper;
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.util.xml.XmlMapper;
  * @version $Id$
  */
 public abstract class OvalContext
-    extends Context
+    extends SpringContext
 {
 
 //    /**

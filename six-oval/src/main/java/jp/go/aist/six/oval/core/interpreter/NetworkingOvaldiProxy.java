@@ -31,7 +31,7 @@ import java.util.List;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
-import jp.go.aist.six.util.net.Http;
+import jp.go.aist.six.util.core.web.spring.Http;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

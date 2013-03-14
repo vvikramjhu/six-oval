@@ -55,7 +55,7 @@ Project SIX: OVAL - Maven Project Object Model (POM)
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
         <maven-site-plugin.version>3.2</maven-site-plugin.version>
 
-        <six-util.version>3.4.0</six-util.version>
+        <six-util.version>3.5.0</six-util.version>
         <!-- six-util.version>3.3.0</six-util.version -->
 
         <ch.qos.logback.version>1.0.9</ch.qos.logback.version>
