@@ -56,6 +56,7 @@ public enum ComponentType
     FILEHASH,                       // independent @deprecated
     FILEHASH58,                     // independent
     FILEEXTENDEDATTRIBUTE,          // unix
+    FILESET,                        // aix
     FIX,                            // fix
 
     GCONF,                          // unix
@@ -78,12 +79,14 @@ public enum ComponentType
     NDD,							// solaris
     NVRAM,                          // macos
 
+    OSLEVEL,                        // aix
+
     PACKAGE,                        // solaris
     PACKAGECHECK,                   // solaris
     PARTITION,                      // linux
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
-    PATCH,                          // solaris
+    PATCH,                          // hpux, solaris
     PATCH53,                        // hpux
     PATCH54,                        // solaris
     PATCH56,                        // esx
@@ -216,7 +219,9 @@ public enum ComponentType
     ////////////////////////////////////////////////////////////////
 
     public static final ComponentType[]  AIX = new ComponentType[] {
-        ComponentType.FIX
+        ComponentType.FILESET,
+        ComponentType.FIX,
+        ComponentType.OSLEVEL
     };
 
 

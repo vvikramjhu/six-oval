@@ -87,9 +87,13 @@
     </class>
 
 
+<!-- NOTE: Element name conflicts.
+hpux-def and solaris-def namespaces have the same "patch_xxx" elements.
+Castor fails their mappings whether the ns-uri attribute is specified or not.
+-->
     <class name="jp.go.aist.six.oval.model.hpux.PatchTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="patch_test"
+        <map-to xml="hpux_patch_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
             ns-prefix=""/>
         <field name="object" 
@@ -105,7 +109,7 @@
 
     <class name="jp.go.aist.six.oval.model.hpux.PatchObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="patch_object"
+        <map-to xml="hpux_patch_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
             ns-prefix=""/>
         <field name="patchName" 
@@ -116,7 +120,7 @@
 
     <class name="jp.go.aist.six.oval.model.hpux.PatchState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="patch_state"
+        <map-to xml="hpux_patch_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
             ns-prefix=""/>
         <field name="patchName" 

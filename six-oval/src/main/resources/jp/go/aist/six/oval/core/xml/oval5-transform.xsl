@@ -494,7 +494,7 @@ TEMPLATE:  Copy idiom.
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-hpux">
             <xsl:choose>
-<!-- inetlisteningservers -->
+<!-- patch -->
                 <xsl:when test="$lvar_element = 'patch_test'">
                     <hpux_patch_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
                         <xsl:copy-of select="@*"/>
