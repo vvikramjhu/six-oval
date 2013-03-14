@@ -16,54 +16,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.aix;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 /**
- * An operating system family.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum Family
+public enum FixInstallationStatusEnumeration
     implements OvalEnumeration
 {
 
-    AIX(            ComponentType.AIX         ),
-//      apache,
-//      catos,
-//      esx,
-    ESX(            ComponentType.ESX         ),
-//      freebsd,
-//      hpux,
-//      ios,
-    INDEPENDENT(    ComponentType.INDEPENDENT ),
-    LINUX(          ComponentType.LINUX       ),
-    MACOS(          ComponentType.MACOS       ),
-//        pixos,
-//        sharepoint,
-    SOLARIS(        ComponentType.SOLARIS     ),
-    UNIX(           ComponentType.UNIX        ),
-    WINDOWS(        ComponentType.WINDOWS     );
+    ALL_INSTALLED       ( "ALL_INSTALLED" ),
+    SOME_INSTALLED      ( "SOME_INSTALLED" ),
+    NONE_INSTALLED      ( "NONE_INSTALLED" ),
+    NONE                ( "" );
 
 
-
-    ////////////////////////////////////////////////////////////////
 
     /**
      * A factory method.
      */
-    public static Family fromValue(
+    public static FixInstallationStatusEnumeration fromValue(
                     final String value
                     )
     {
-        for (Family  e : Family.values()) {
+        for (FixInstallationStatusEnumeration  e : FixInstallationStatusEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -75,32 +58,34 @@ public enum Family
 
 
     private String  value = null;
-    private final Collection<ComponentType>  _components;
+
 
 
     /**
      * Constructor.
      */
-    Family(
-                    final ComponentType[] components
+    FixInstallationStatusEnumeration(
+                    final String value
                     )
     {
-        value = name().toLowerCase();
-        _components = Collections.unmodifiableCollection( Arrays.asList( components ) );
-    }
-
-
-
-    /**
-     */
-    public Collection<ComponentType> getComponents()
-    {
-        return _components;
+        this.value = value;
     }
 
 
 
     public String value()
+    {
+        return value;
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
     {
         return value;
     }
