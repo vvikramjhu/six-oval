@@ -31,20 +31,20 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Patch56Test
+public class PatchTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public Patch56Test()
+    public PatchTest()
     {
         this( null, 0 );
     }
 
 
-    public Patch56Test(
+    public PatchTest(
                     final String id,
                     final int version
                     )
@@ -53,7 +53,7 @@ public class Patch56Test
     }
 
 
-    public Patch56Test(
+    public PatchTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -63,7 +63,7 @@ public class Patch56Test
         super( id, version, comment, check );
 
         _oval_family = Family.ESX;
-        _oval_component = ComponentType.PATCH56;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -85,7 +85,7 @@ public class Patch56Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch56Test)) {
+        if (!(obj instanceof PatchTest)) {
             return false;
         }
 
@@ -97,7 +97,7 @@ public class Patch56Test
     @Override
     public String toString()
     {
-        return "patch56_test[" + super.toString() + "]";
+        return "patch_test[" + super.toString() + "]";
     }
 
 }

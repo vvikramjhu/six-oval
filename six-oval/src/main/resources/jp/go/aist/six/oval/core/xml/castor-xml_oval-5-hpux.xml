@@ -196,7 +196,7 @@ Castor fails their mappings whether the ns-uri attribute is specified or not.
         </field>
         <field name="version" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
-            <bind-xml name="version_status" node="element"/>
+            <bind-xml name="version" node="element"/>
         </field>
         <field name="title" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
