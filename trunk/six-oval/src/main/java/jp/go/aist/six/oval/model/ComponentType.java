@@ -56,6 +56,7 @@ public enum ComponentType
     FILEHASH,                       // independent @deprecated
     FILEHASH58,                     // independent
     FILEEXTENDEDATTRIBUTE,          // unix
+    FIX,                            // fix
 
     GCONF,                          // unix
     GROUP,                          // windows
@@ -210,6 +211,11 @@ public enum ComponentType
     ////////////////////////////////////////////////////////////////
     // grouped by the OS family, i.e. OVAL namespace
     ////////////////////////////////////////////////////////////////
+
+    public static final ComponentType[]  AIX = new ComponentType[] {
+        ComponentType.FIX
+    };
+
 
     public static final ComponentType[]  ESX = new ComponentType[] {
         ComponentType.PATCH56

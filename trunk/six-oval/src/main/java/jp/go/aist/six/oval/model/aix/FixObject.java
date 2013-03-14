@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.model.esx;
+package jp.go.aist.six.oval.model.aix;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,7 +37,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Patch56Object
+public class FixObject
     extends SystemObjectType
 {
 
@@ -47,10 +47,7 @@ public class Patch56Object
     private Set  set;
     //{1..1}
 
-    private Patch56Behaviors  behaviors;
-    //{0..1}
-
-    private EntityObjectStringType  patch_name;
+    private EntityObjectStringType  apar_number;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -61,21 +58,21 @@ public class Patch56Object
     /**
      * Constructor.
      */
-    public Patch56Object()
+    public FixObject()
     {
         this( null, 0 );
     }
 
 
-    public Patch56Object(
+    public FixObject(
                     final String id,
                     final int version
                     )
     {
         super( id, version );
 
-        _oval_family = Family.ESX;
-        _oval_component = ComponentType.PATCH56;
+        _oval_family = Family.AIX;
+        _oval_component = ComponentType.FIX;
     }
 
 
@@ -99,34 +96,17 @@ public class Patch56Object
 
     /**
      */
-    public void setBehaviors(
-                    final Patch56Behaviors behaviors
+    public void setAparNumber(
+                    final EntityObjectStringType apar_number
                     )
     {
-        this.behaviors = behaviors;
+        this.apar_number = apar_number;
     }
 
 
-    public Patch56Behaviors getBehaviors()
+    public EntityObjectStringType getAparNumber()
     {
-        return behaviors;
-    }
-
-
-
-    /**
-     */
-    public void setPatchName(
-                    final EntityObjectStringType patch_name
-                    )
-    {
-        this.patch_name = patch_name;
-    }
-
-
-    public EntityObjectStringType getPatchName()
-    {
-        return patch_name;
+        return apar_number;
     }
 
 
@@ -179,7 +159,7 @@ public class Patch56Object
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPatchName() );
+        ref_list.add( getAparNumber() );
         ref_list.addAll( getFilter() );
 
         return ref_list;
@@ -203,7 +183,7 @@ public class Patch56Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch56Object)) {
+        if (!(obj instanceof FixObject)) {
             return false;
         }
 
@@ -215,10 +195,9 @@ public class Patch56Object
     @Override
     public String toString()
     {
-        return "patch56_object[" + super.toString()
+        return "fix_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
-                        + ", base="         + getPatchName()
+                        + ", apar_number="  + getAparNumber()
                         + ", filter="       + getFilter()
                         + "]";
     }
