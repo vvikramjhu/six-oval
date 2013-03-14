@@ -92,6 +92,51 @@
 
 <!-- TODO: patch56_item -->
 
+    <class name="jp.go.aist.six.oval.model.esx.PatchTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="esx_patch_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.PatchObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="esx_patch_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.esx.PatchBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        <field name="patchNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="patch_number" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.PatchState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="esx_patch_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="patchNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="patch_number" node="element"/>
+        </field>
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="status" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->

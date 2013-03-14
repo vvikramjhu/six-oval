@@ -18,10 +18,7 @@
  */
 package jp.go.aist.six.oval.model.esx;
 
-import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -31,39 +28,48 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Patch56Test
-    extends TestType
+public class PatchBehaviors
+    implements OvalObject
 {
+
+    public static final Boolean  DEFAULT_SUPERSEDENCE = Boolean.FALSE;
+
+    private Boolean  supersedence;
+    //{optional, default='false'}
+
+
 
     /**
      * Constructor.
      */
-    public Patch56Test()
+    public PatchBehaviors()
     {
-        this( null, 0 );
     }
 
 
-    public Patch56Test(
-                    final String id,
-                    final int version
+
+    /**
+     */
+    public void setSupersedence(
+                    final Boolean supersedence
                     )
     {
-        this( id, version, null, null );
+        this.supersedence = supersedence;
     }
 
 
-    public Patch56Test(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check
+    public Boolean getSupersedence()
+    {
+        return supersedence;
+    }
+
+
+    public static final Boolean supersedence(
+                    final PatchBehaviors obj
                     )
     {
-        super( id, version, comment, check );
-
-        _oval_family = Family.ESX;
-        _oval_component = ComponentType.PATCH56;
+        Boolean  supersedence = obj.getSupersedence();
+        return (supersedence == null ? DEFAULT_SUPERSEDENCE : supersedence);
     }
 
 
@@ -75,7 +81,12 @@ public class Patch56Test
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = 17;
+
+        result = prime * result + supersedence( this ).hashCode();
+
+        return result;
     }
 
 
@@ -85,11 +96,22 @@ public class Patch56Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch56Test)) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof PatchBehaviors)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            PatchBehaviors  other = (PatchBehaviors)obj;
+            if (supersedence( this ) == supersedence( other )) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
@@ -97,7 +119,9 @@ public class Patch56Test
     @Override
     public String toString()
     {
-        return "patch56_test[" + super.toString() + "]";
+        return super.toString()
+                        + ", supersedence=" + getSupersedence()
+                        ;
     }
 
 }

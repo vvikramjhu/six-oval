@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -36,16 +35,12 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Patch56State
+public class PatchState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType           patch_name;
-    private EntityStateIntType              knowledge_base_id;
-    private EntityStateIntType              bundle_id;
-    private EntityStateClassificationType   classification;
-    private EntityStateSupportLevelType     support_level;
+    private EntityStateStringType           patch_number;
     private EntityStateBoolType             status;
 
 
@@ -53,13 +48,13 @@ public class Patch56State
     /**
      * Constructor.
      */
-    public Patch56State()
+    public PatchState()
     {
         this( null, 0 );
     }
 
 
-    public Patch56State(
+    public PatchState(
                     final String id,
                     final int version
                     )
@@ -68,7 +63,7 @@ public class Patch56State
     }
 
 
-    public Patch56State(
+    public PatchState(
                     final String id,
                     final int version,
                     final String comment
@@ -77,7 +72,7 @@ public class Patch56State
         super( id, version, comment );
 
         _oval_family = Family.ESX;
-        _oval_component = ComponentType.PATCH56;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -85,85 +80,17 @@ public class Patch56State
 
     /**
      */
-    public void setPatchName(
-                    final EntityStateStringType patch_name
+    public void setPatchNumber(
+                    final EntityStateStringType patch_number
                     )
     {
-        this.patch_name = patch_name;
+        this.patch_number = patch_number;
     }
 
 
-    public EntityStateStringType getPatchName()
+    public EntityStateStringType getPatchNumber()
     {
-        return patch_name;
-    }
-
-
-
-    /**
-     */
-    public void setKnowledgeBaseId(
-                    final EntityStateIntType knowledge_base_id
-                    )
-    {
-        this.knowledge_base_id = knowledge_base_id;
-    }
-
-
-    public EntityStateIntType getKnowledgeBaseId()
-    {
-        return knowledge_base_id;
-    }
-
-
-
-    /**
-     */
-    public void setBundleId(
-                    final EntityStateIntType bundle_id
-                    )
-    {
-        this.bundle_id = bundle_id;
-    }
-
-
-    public EntityStateIntType getBundleId()
-    {
-        return bundle_id;
-    }
-
-
-
-    /**
-     */
-    public void setClassification(
-                    final EntityStateClassificationType classification
-                    )
-    {
-        this.classification = classification;
-    }
-
-
-    public EntityStateClassificationType getClassification()
-    {
-        return classification;
-    }
-
-
-
-    /**
-     */
-    public void setSupportLevel(
-                    final EntityStateSupportLevelType support_level
-                    )
-    {
-        this.support_level = support_level;
-    }
-
-
-    public EntityStateSupportLevelType getSupportLevel()
-    {
-        return support_level;
+        return patch_number;
     }
 
 
@@ -193,11 +120,7 @@ public class Patch56State
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPatchName() );
-        ref_list.add( getKnowledgeBaseId() );
-        ref_list.add( getBundleId() );
-        ref_list.add( getClassification() );
-        ref_list.add( getSupportLevel() );
+        ref_list.add( getPatchNumber() );
         ref_list.add( getStatus() );
 
         return ref_list;
@@ -222,7 +145,7 @@ public class Patch56State
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch56State)) {
+        if (!(obj instanceof PatchState)) {
             return false;
         }
 
@@ -234,12 +157,8 @@ public class Patch56State
     @Override
     public String toString()
     {
-        return "patch56_state[" + super.toString()
-                        + ", patch_name="           + getPatchName()
-                        + ", knowledge_base_id="    + getKnowledgeBaseId()
-                        + ", bundle_id="            + getBundleId()
-                        + ", classification="       + getClassification()
-                        + ", support_level="        + getSupportLevel()
+        return "patch_state[" + super.toString()
+                        + ", patch_number="         + getPatchNumber()
                         + ", status="               + getStatus()
              + "]";
     }

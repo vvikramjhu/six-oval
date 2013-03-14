@@ -20,12 +20,10 @@ package jp.go.aist.six.oval.model.esx;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
@@ -37,7 +35,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Patch56Object
+public class PatchObject
     extends SystemObjectType
 {
 
@@ -47,27 +45,24 @@ public class Patch56Object
     private Set  set;
     //{1..1}
 
-    private Patch56Behaviors  behaviors;
+    private PatchBehaviors  behaviors;
     //{0..1}
 
-    private EntityObjectStringType  patch_name;
+    private EntityObjectStringType  patch_number;
     //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public Patch56Object()
+    public PatchObject()
     {
         this( null, 0 );
     }
 
 
-    public Patch56Object(
+    public PatchObject(
                     final String id,
                     final int version
                     )
@@ -75,7 +70,7 @@ public class Patch56Object
         super( id, version );
 
         _oval_family = Family.ESX;
-        _oval_component = ComponentType.PATCH56;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -100,14 +95,14 @@ public class Patch56Object
     /**
      */
     public void setBehaviors(
-                    final Patch56Behaviors behaviors
+                    final PatchBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public Patch56Behaviors getBehaviors()
+    public PatchBehaviors getBehaviors()
     {
         return behaviors;
     }
@@ -116,57 +111,17 @@ public class Patch56Object
 
     /**
      */
-    public void setPatchName(
-                    final EntityObjectStringType patch_name
+    public void setPatchNumber(
+                    final EntityObjectStringType patch_number
                     )
     {
-        this.patch_name = patch_name;
+        this.patch_number = patch_number;
     }
 
 
-    public EntityObjectStringType getPatchName()
+    public EntityObjectStringType getPatchNumber()
     {
-        return patch_name;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (filter != filters) {
-            filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
+        return patch_number;
     }
 
 
@@ -179,8 +134,7 @@ public class Patch56Object
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getPatchName() );
-        ref_list.addAll( getFilter() );
+        ref_list.add( getPatchNumber() );
 
         return ref_list;
     }
@@ -203,7 +157,7 @@ public class Patch56Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch56Object)) {
+        if (!(obj instanceof PatchObject)) {
             return false;
         }
 
@@ -215,11 +169,10 @@ public class Patch56Object
     @Override
     public String toString()
     {
-        return "patch56_object[" + super.toString()
+        return "patch_object[" + super.toString()
                         + ", set="          + getSet()
                         + ", behaviors="    + getBehaviors()
-                        + ", patch_name="   + getPatchName()
-                        + ", filter="       + getFilter()
+                        + ", patch_number=" + getPatchNumber()
                         + "]";
     }
 

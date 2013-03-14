@@ -86,7 +86,7 @@ public enum ComponentType
     PARTITION,                      // linux
     PASSWORD,                       // unix
     PASSWORDPOLICY,                 // windows
-    PATCH,                          // hpux, solaris
+    PATCH,                          // esx, hpux, solaris
     PATCH53,                        // hpux
     PATCH54,                        // solaris
     PATCH56,                        // esx
@@ -226,6 +226,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  ESX = new ComponentType[] {
+        ComponentType.PATCH,
         ComponentType.PATCH56,
         ComponentType.VERSION
     };
