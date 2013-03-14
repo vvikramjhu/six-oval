@@ -84,6 +84,7 @@ public enum ComponentType
     PASSWORDPOLICY,                 // windows
     PATCH,                          // solaris
     PATCH54,                        // solaris
+    PATCH56,                        // esx
     PEHEADER,                       // windows
     PLIST,                          // macos
     PLIST510,                       // macos
@@ -209,6 +210,11 @@ public enum ComponentType
     ////////////////////////////////////////////////////////////////
     // grouped by the OS family, i.e. OVAL namespace
     ////////////////////////////////////////////////////////////////
+
+    public static final ComponentType[]  ESX = new ComponentType[] {
+        ComponentType.PATCH56
+    };
+
 
     public static final ComponentType[]  INDEPENDENT = new ComponentType[] {
         ComponentType.ENVIRONMENTVARIABLE,
