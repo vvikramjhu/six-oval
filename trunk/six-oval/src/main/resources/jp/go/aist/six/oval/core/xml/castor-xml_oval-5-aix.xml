@@ -21,6 +21,68 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ******************************************************* -->
+    <!-- fileset                                                 -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.aix.FilesetTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="fileset_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.FilesetObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="fileset_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="flstinst" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="flstinst" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.FilesetState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="fileset_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="flstinst" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="flstinst" node="element"/>
+        </field>
+        <field name="level" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateVersionType">
+            <bind-xml name="level" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.aix.EntityStateFilesetStateType">
+            <bind-xml name="state" node="element"/>
+        </field>
+        <field name="description" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="description" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: fileset_item -->
+
+
+
+    <!-- ******************************************************* -->
     <!-- fix                                                     -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.aix.FixTest"
@@ -78,8 +140,48 @@
         </field>
     </class>
 
-<!-- TODO: patch56_item -->
+<!-- TODO: fix_item -->
 
+
+
+    <!-- ******************************************************* -->
+    <!-- oslevel                                                 -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.aix.OsLevelTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="oslevel_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.OsLevelObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="oslevel_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.OsLevelState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="oslevel_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="maintenanceLevel" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateVersionType">
+            <bind-xml name="maintenance_level" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: oslevel_item -->
 
 
     <!-- ******************************************************* -->
@@ -87,6 +189,10 @@
     <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.EntityStateFilesetStateType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
 
