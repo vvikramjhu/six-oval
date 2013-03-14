@@ -20,14 +20,11 @@ package jp.go.aist.six.oval.model.hpux;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
-import jp.go.aist.six.oval.model.definitions.Set;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
@@ -36,86 +33,68 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.3:
+ *             Replaced by the patch53 state and
+ *             will be removed in a future version of the language.
  */
-public class Patch53Object
-    extends SystemObjectType
+@Deprecated
+public class PatchState
+    extends StateType
 {
 
-    //TODO: XSD model.
-    // choice( set | sequence () )
-
-    private Set  set;
-    //{1..1}
-
-    private Patch53Behaviors  behaviors;
     //{0..1}
-
-    private EntityObjectStringType  swtype;
-    //{1..1}
-
-    private EntityObjectStringType  area_patched;
-    //{1..1}
-
-    private EntityObjectStringType  patch_base;
-    //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
+    private EntityStateStringType       patch_name;
+    private EntityStateStringType       swtype;
+    private EntityStateStringType       area_patched;
+    private EntityStateStringType       patch_base;
 
 
 
     /**
      * Constructor.
      */
-    public Patch53Object()
+    public PatchState()
     {
         this( null, 0 );
     }
 
 
-    public Patch53Object(
+    public PatchState(
                     final String id,
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
+    }
+
+
+    public PatchState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
 
         _oval_family = Family.HPUX;
-        _oval_component = ComponentType.PATCH53;
+        _oval_component = ComponentType.PATCH;
     }
 
 
 
     /**
      */
-    public void setSet(
-                    final Set set
+    public void setPatchName(
+                    final EntityStateStringType patch_name
                     )
     {
-        this.set = set;
+        this.patch_name = patch_name;
     }
 
 
-    public Set getSet()
+    public EntityStateStringType getPatchName()
     {
-        return set;
-    }
-
-
-
-    /**
-     */
-    public void setBehaviors(
-                    final Patch53Behaviors behaviors
-                    )
-    {
-        this.behaviors = behaviors;
-    }
-
-
-    public Patch53Behaviors getBehaviors()
-    {
-        return behaviors;
+        return patch_name;
     }
 
 
@@ -123,14 +102,14 @@ public class Patch53Object
     /**
      */
     public void setSwtype(
-                    final EntityObjectStringType swtype
+                    final EntityStateStringType swtype
                     )
     {
         this.swtype = swtype;
     }
 
 
-    public EntityObjectStringType getSwtype()
+    public EntityStateStringType getSwtype()
     {
         return swtype;
     }
@@ -139,17 +118,17 @@ public class Patch53Object
 
     /**
      */
-    public void setAreaPatched(
-                    final EntityObjectStringType area_patched
-                    )
+    public EntityStateStringType getAreaPatched()
     {
-        this.area_patched = area_patched;
+        return area_patched;
     }
 
 
-    public EntityObjectStringType getAreaPatched()
+    public void setAreaPatched(
+                    final EntityStateStringType area_patched
+                    )
     {
-        return area_patched;
+        this.area_patched = area_patched;
     }
 
 
@@ -157,56 +136,16 @@ public class Patch53Object
     /**
      */
     public void setPatchBase(
-                    final EntityObjectStringType base
+                    final EntityStateStringType patch_base
                     )
     {
-        patch_base = base;
+        this.patch_base = patch_base;
     }
 
 
-    public EntityObjectStringType getPatchBase()
+    public EntityStateStringType getPatchBase()
     {
         return patch_base;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (filter != filters) {
-            filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
     }
 
 
@@ -219,10 +158,10 @@ public class Patch53Object
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
+        ref_list.add( getPatchName() );
         ref_list.add( getSwtype() );
         ref_list.add( getAreaPatched() );
         ref_list.add( getPatchBase() );
-        ref_list.addAll( getFilter() );
 
         return ref_list;
     }
@@ -240,12 +179,13 @@ public class Patch53Object
     }
 
 
+
     @Override
     public boolean equals(
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch53Object)) {
+        if (!(obj instanceof PatchState)) {
             return false;
         }
 
@@ -257,14 +197,12 @@ public class Patch53Object
     @Override
     public String toString()
     {
-        return "patch53_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
+        return "patch_state[" + super.toString()
+                        + ", patch_name="   + getPatchName()
                         + ", swtype="       + getSwtype()
                         + ", area_patched=" + getAreaPatched()
                         + ", patch_base="   + getPatchBase()
-                        + ", filter="       + getFilter()
-                        + "]";
+             + "]";
     }
 
 }
