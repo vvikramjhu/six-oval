@@ -75,6 +75,7 @@
 
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-aix.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-esx.xml</value>
+                 <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-hpux.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-independent.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-linux.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-macos.xml</value>

@@ -123,6 +123,7 @@ public enum ComponentType
     SMF,                            // solaris
     SQL,                            // independent @deprecated
     SQL57,                          // independent
+    SWLIST,                         // hpux
     SYSCTL,                         // unix
 
     TEXTFILECONTENT,                // independent @deprecated
@@ -219,6 +220,11 @@ public enum ComponentType
 
     public static final ComponentType[]  ESX = new ComponentType[] {
         ComponentType.PATCH56
+    };
+
+
+    public static final ComponentType[]  HPUX = new ComponentType[] {
+        ComponentType.SWLIST
     };
 
 
