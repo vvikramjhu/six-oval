@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                         "http://castor.org/mapping.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Castor XML Mapping Specification                      // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- @author    Akihito Nakamura, AIST -->
+<!-- @version   $Id$ -->
+
+<mapping>
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  #esx                                               % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- ******************************************************* -->
+    <!-- patch, patch56                                          -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.esx.Patch56Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="patch56_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.Patch56Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="patch56_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.esx.Patch56Behaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        <field name="patchName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="patch_name" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.Patch56State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="patch56_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="patchName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="patch_name" node="element"/>
+        </field>
+        <field name="knowledgeBaseId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="knowledge_base_id" node="element"/>
+        </field>
+        <field name="bundleId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="bundle_id" node="element"/>
+        </field>
+        <field name="classification" 
+            type="jp.go.aist.six.oval.model.esx.EntityStateClassificationType">
+            <bind-xml name="classification" node="element"/>
+        </field>
+        <field name="supportLevel" 
+            type="jp.go.aist.six.oval.model.esx.EntityStateSupportLevelType">
+            <bind-xml name="support_level" node="element"/>
+        </field>
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="status" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: patch56_item -->
+
+
+
+    <!-- ******************************************************* -->
+    <!-- entity attribute types                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.esx.EntityStateClassificationType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.EntityStateSupportLevelType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+</mapping>
+
