@@ -32,6 +32,7 @@ public class OvalXmlMapperTest
 
         @DataPoints
         public static String[]  FILE_PATHES = new String[] {
+          "src/test/resources/data/netsap2013/20130313_mitre_vuln_unix.xml"
 
 //        "src/test/resources/data/oval5/mitre/20130213_microsoft.windows.7.xml"
 //        "src/test/resources/data/oval5/mitre/oval-5.10_12191-5_i_Microsoft-Publisher-2010.xml"
@@ -39,8 +40,9 @@ public class OvalXmlMapperTest
         /* Apple Mac OS */
 //        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
 
+//current test!!!
+//        "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"
 
-        "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"
 //
 //        /* RedHat */
 //        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",

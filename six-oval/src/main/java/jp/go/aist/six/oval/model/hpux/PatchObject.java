@@ -20,12 +20,10 @@ package jp.go.aist.six.oval.model.hpux;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
@@ -36,8 +34,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.3:
+ *             Replaced by the patch53 object and
+ *             will be removed in a future version of the language.
  */
-public class Patch53Object
+@Deprecated
+public class PatchObject
     extends SystemObjectType
 {
 
@@ -47,33 +49,21 @@ public class Patch53Object
     private Set  set;
     //{1..1}
 
-    private Patch53Behaviors  behaviors;
-    //{0..1}
-
-    private EntityObjectStringType  swtype;
+    private EntityObjectStringType  patch_name;
     //{1..1}
-
-    private EntityObjectStringType  area_patched;
-    //{1..1}
-
-    private EntityObjectStringType  patch_base;
-    //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public Patch53Object()
+    public PatchObject()
     {
         this( null, 0 );
     }
 
 
-    public Patch53Object(
+    public PatchObject(
                     final String id,
                     final int version
                     )
@@ -81,7 +71,7 @@ public class Patch53Object
         super( id, version );
 
         _oval_family = Family.HPUX;
-        _oval_component = ComponentType.PATCH53;
+        _oval_component = ComponentType.PATCH;
     }
 
 
@@ -105,109 +95,19 @@ public class Patch53Object
 
     /**
      */
-    public void setBehaviors(
-                    final Patch53Behaviors behaviors
+    public void setPatchName(
+                    final EntityObjectStringType patch_name
                     )
     {
-        this.behaviors = behaviors;
+        this.patch_name = patch_name;
     }
 
 
-    public Patch53Behaviors getBehaviors()
+    public EntityObjectStringType getPatchName()
     {
-        return behaviors;
+        return patch_name;
     }
 
-
-
-    /**
-     */
-    public void setSwtype(
-                    final EntityObjectStringType swtype
-                    )
-    {
-        this.swtype = swtype;
-    }
-
-
-    public EntityObjectStringType getSwtype()
-    {
-        return swtype;
-    }
-
-
-
-    /**
-     */
-    public void setAreaPatched(
-                    final EntityObjectStringType area_patched
-                    )
-    {
-        this.area_patched = area_patched;
-    }
-
-
-    public EntityObjectStringType getAreaPatched()
-    {
-        return area_patched;
-    }
-
-
-
-    /**
-     */
-    public void setPatchBase(
-                    final EntityObjectStringType base
-                    )
-    {
-        patch_base = base;
-    }
-
-
-    public EntityObjectStringType getPatchBase()
-    {
-        return patch_base;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (filter != filters) {
-            filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
-    }
 
 
 
@@ -219,10 +119,7 @@ public class Patch53Object
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getSwtype() );
-        ref_list.add( getAreaPatched() );
-        ref_list.add( getPatchBase() );
-        ref_list.addAll( getFilter() );
+        ref_list.add( getPatchName() );
 
         return ref_list;
     }
@@ -245,7 +142,7 @@ public class Patch53Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof Patch53Object)) {
+        if (!(obj instanceof PatchObject)) {
             return false;
         }
 
@@ -257,13 +154,9 @@ public class Patch53Object
     @Override
     public String toString()
     {
-        return "patch53_object[" + super.toString()
+        return "patch_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
-                        + ", swtype="       + getSwtype()
-                        + ", area_patched=" + getAreaPatched()
-                        + ", patch_base="   + getPatchBase()
-                        + ", filter="       + getFilter()
+                        + ", patch_name="   + getPatchName()
                         + "]";
     }
 

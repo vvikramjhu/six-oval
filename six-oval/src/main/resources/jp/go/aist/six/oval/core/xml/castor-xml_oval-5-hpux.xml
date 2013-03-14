@@ -21,7 +21,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ******************************************************* -->
-    <!-- patch53                                                 -->
+    <!-- patch, patch53                                          -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.hpux.Patch53Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
@@ -72,6 +72,57 @@
         <map-to xml="patch53_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
             ns-prefix=""/>
+        <field name="swtype" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="swtype" node="element"/>
+        </field>
+        <field name="areaPatched" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="area_patched" node="element"/>
+        </field>
+        <field name="patchBase" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="patch_base" node="element"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.hpux.PatchTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="patch_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.hpux.PatchObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="patch_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
+            ns-prefix=""/>
+        <field name="patchName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="patch_name" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.hpux.PatchState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="patch_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux"
+            ns-prefix=""/>
+        <field name="patchName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="patch_name" node="element"/>
+        </field>
         <field name="swtype" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="swtype" node="element"/>

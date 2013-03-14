@@ -35,6 +35,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <!-- namespaces -->
+<xsl:variable name="var_ns-def-5-hpux"
+    select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux'"/>
+<xsl:variable name="var_ns-sc-5-hpux"
+    select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux'"/>
+
 <xsl:variable name="var_ns-def-5-macos"
     select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#macos'"/>
 <xsl:variable name="var_ns-sc-5-macos"
@@ -63,9 +68,69 @@
     file:                   unix, windows
     inetlisteningservers:   linux, macos
     interface:              unix, windows
+    patch:                  hpux, solaris
     process:                unix, windows
     process58:              unix, windows
 -->
+
+
+<!-- *********************************************************** -->
+<!-- patch                                                       -->
+<!-- *********************************************************** -->
+
+<!-- patch (pre-unmarshalling)
+-->
+<xsl:template match="*[local-name() = 'patch_test'  or  local-name() = 'patch_object'  or  local-name() = 'patch_state'  or  local-name() = 'patch_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+<!--
+    <xsl:message>
+        <xsl:value-of select="$lvar_element"/>
+        <xsl:value-of select="$lvar_ns"/>
+    </xsl:message>
+-->
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
+            <xsl:call-template name="func_output-oval-5-hpux-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+
+</xsl:template>
+
+
+<!-- patch (post-marshalling) -->
+<xsl:template match="*[local-name() = 'hpux_patch_test'  or  local-name() = 'hpux_patch_object'  or  local-name() = 'hpux_patch_state'  or  local-name() = 'hpux_patch_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
+            <xsl:call-template name="func_output-oval-5-hpux-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
 
 
 <!-- *********************************************************** -->
@@ -418,6 +483,80 @@ TEMPLATE:  Copy idiom.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- NAMED TEMPLATE                                              -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- *********************************************************** -->
+<!-- #hpux                                                       -->
+<!-- *********************************************************** -->
+<xsl:template name="func_output-oval-5-hpux-component">
+    <xsl:param name="lvar_element"/>
+    <xsl:param name="lvar_ns"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux">
+            <xsl:choose>
+<!-- inetlisteningservers -->
+                <xsl:when test="$lvar_element = 'patch_test'">
+                    <hpux_patch_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </hpux_patch_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'patch_object'">
+                    <hpux_patch_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </hpux_patch_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'patch_state'">
+                    <hpux_patch_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </hpux_patch_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'hpux_patch_test'">
+                    <patch_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </patch_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'hpux_patch_object'">
+                    <patch_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </patch_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'hpux_patch_state'">
+                    <patch_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </patch_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+
+        <xsl:when test="$lvar_ns = $var_ns-sc-5-hpux">
+            <xsl:choose>
+<!-- inetlisteningservers -->
+                <xsl:when test="$lvar_element = 'patch_item'">
+                    <hpux_patch_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </hpux_patch_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'hpux_patch_item'">
+                    <patch_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </patch_item>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
+
+</xsl:template>
+
 
 <!-- *********************************************************** -->
 <!-- #macos                                                      -->

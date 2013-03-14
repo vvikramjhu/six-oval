@@ -227,6 +227,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  HPUX = new ComponentType[] {
+        ComponentType.PATCH,
         ComponentType.PATCH53,
         ComponentType.SWLIST
     };
