@@ -138,6 +138,7 @@ public enum ComponentType
     USER_SID55,                     // windows
 
     VARIABLE,                       // independent
+    VERSION,                        // esx
     VOLUME,                         // windows
 
     WMI,                            // windows
@@ -220,7 +221,8 @@ public enum ComponentType
 
 
     public static final ComponentType[]  ESX = new ComponentType[] {
-        ComponentType.PATCH56
+        ComponentType.PATCH56,
+        ComponentType.VERSION
     };
 
 

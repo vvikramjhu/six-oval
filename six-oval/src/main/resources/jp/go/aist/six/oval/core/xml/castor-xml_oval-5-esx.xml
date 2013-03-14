@@ -95,6 +95,50 @@
 
 
     <!-- ******************************************************* -->
+    <!-- version                                                 -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.esx.VersionTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="version_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.VersionObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="version_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.esx.VersionState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="version_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#esx"
+            ns-prefix=""/>
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateVersionType">
+            <bind-xml name="release" node="element"/>
+        </field>
+        <field name="build" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="build" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: version_item -->
+
+
+    <!-- ******************************************************* -->
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
 
