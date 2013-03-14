@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                         "http://castor.org/mapping.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Castor XML Mapping Specification                      // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- @author    Akihito Nakamura, AIST -->
+<!-- @version   $Id$ -->
+
+<mapping>
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  #aix                                               % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- ******************************************************* -->
+    <!-- fix                                                     -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.aix.FixTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="fix_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.FixObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="fix_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="aparNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="apar_number" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.FixState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="fix_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="aparNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="apar_number" node="element"/>
+        </field>
+        <field name="abstract" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="abstract" node="element"/>
+        </field>
+        <field name="symptom" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="symptom" node="element"/>
+        </field>
+        <field name="installationStatus" 
+            type="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType">
+            <bind-xml name="installation_status" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: patch56_item -->
+
+
+
+    <!-- ******************************************************* -->
+    <!-- entity attribute types                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+</mapping>
+
