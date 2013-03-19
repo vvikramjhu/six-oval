@@ -20,11 +20,15 @@ package jp.go.aist.six.oval.core;
 
 import java.io.PrintStream;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.definitions.AffectedType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.ReferenceType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepository;
@@ -61,6 +65,258 @@ public class OvalDataEval
     throws Exception
     {
         _oval_repository = OvalContext.getServerInstance().getRepository();
+    }
+
+
+    //Product names in Mitre OVAL definitions
+//    private static final String[]  _MAJOR_PRODUCTS_ = new String[] {
+//        "Adobe Reader",
+//        "Adobe Acrobat",
+//        "Adobe Acrobat Reader",
+//        "Adobe Flash Player"
+//    };
+
+
+    /**
+     *  OVAL product coverage, name unification required!!!
+     */
+    private static final Map<String,String> _createProductNameMapping()
+    {
+        Map<String,String>  map = new HashMap<String,String>();
+
+        String  ie = "microsoft ie";
+        map.put( "microsoft internet explorer",                     ie );
+        map.put( "microsoft internet explorer 10",                  ie );
+        map.put( "microsoft internet explorer 5.01",                ie );
+        map.put( "microsoft internet explorer 6",                   ie );
+        map.put( "microsoft internet explorer 7",                   ie );
+        map.put( "microsoft internet explorer 8",                   ie );
+        map.put( "microsoft internet explorer 9",                   ie );
+        map.put( "internet explorer is installed on the system.",   ie );
+
+        String  java = "sun-oracle jdk-jre";
+        map.put( "java development kit",        java );
+        map.put( "java runtime environment",    java );
+        map.put( "oracle java se",              java );
+        map.put( "java development kit",        java );
+        map.put( "java runtime environment",    java );
+
+        String  office = "microsoft office";
+        map.put( "microsoft office 2000",           office );
+        map.put( "microsoft office 2000 sp3",       office );
+        map.put( "microsoft office 2002",           office );
+        map.put( "microsoft office 2003",           office );
+        map.put( "microsoft office 2007",           office );
+        map.put( "microsoft office 2008",           office );
+        map.put( "microsoft office 2008 for mac",   office );
+        map.put( "microsoft office 2010",           office );
+        map.put( "microsoft office 2011 for mac",   office );
+
+
+        String  adobe_reader = "adobe reader";
+        map.put( "adobe acrobat reader",    adobe_reader );
+
+        String  flash = "adobe flash player";
+        map.put( "flash player",            flash );
+
+        return map;
+    }
+
+
+    private static final Map<String,String>  _PRODUCT_NAME_MAP_ = _createProductNameMapping();
+
+
+
+    /**
+     */
+    @Test
+    public void reportMitreProductCoverage()
+    throws Exception
+    {
+        PrintStream  outfile = new PrintStream(
+                        "oval_product-coverage_mitre_" + System.currentTimeMillis() + ".txt" );
+
+        System.out.println( "[[[Mitre OVAL Product Coverage]]]" );
+
+        Map<String,Collection<String>>  map = new TreeMap<String,Collection<String>>();
+
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        for (int  year = 1999; year <= 2013; year++) {
+            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
+            params.setId( "oval:org.mitre.oval:def:*" );
+            String  cve_pattern = "CVE-" + year + "-*";
+            params.setRefId( cve_pattern );
+
+            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+            List<DefinitionType>  def_list = query_results.getElements();
+
+            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
+            _buildProductMapping( yearly_map, def_list );
+            _printProductMapping( outfile,
+                            "\n[[[Mitre OVAL Product Coverage (" + year + ") ]]]",
+                            yearly_map
+                            );
+
+            _buildProductMapping( map, def_list );
+        }
+
+        _printProductMapping( outfile,
+                        "\n[[[Mitre OVAL Product Coverage (all) ]]]",
+                        map
+                        );
+    }
+
+
+    /**
+     * Mapping from product name to OVAL Def IDs.
+     *
+     * mozilla Firefox --- oval:...:7222, ...
+     * adobe reader    --- oval:...:xxxx, ...
+     */
+    private void _buildProductMapping(
+                    final Map<String,Collection<String>> map,
+                    final Collection<DefinitionType> def_list
+                    )
+    {
+        for (DefinitionType  def : def_list) {
+            Collection<AffectedType>  affected = def.getMetadata().getAffected();
+            if (affected != null) {
+                for (AffectedType  a : affected) {
+                    for (Product  product : a.getProduct()) {
+                        String  product_name = product.getName();
+
+                        product_name = _correctProductName( product_name );
+
+                        Collection<String>  map_def_list = map.get( product_name );
+                        if (map_def_list == null) {
+                            map_def_list = new TreeSet<String>();
+                            map.put( product_name, map_def_list );
+                        }
+                        map_def_list.add( def.getOvalId() );
+                    }
+                }
+            }
+        }
+    }
+
+
+    private static final String _correctProductName(
+                    final String name
+                    )
+    {
+        String  product_name = name.toLowerCase();
+        //NOTE: there may be upper case name, lower case name, and mixture name
+        // e.g. "Adobe AIR" and "Adobe Air"
+
+        String  correct_name = _PRODUCT_NAME_MAP_.get( product_name );
+
+        return (correct_name == null ? product_name : correct_name);
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
+     */
+    @Test
+    public void reportMitreFamilyProductCoverage()
+    throws Exception
+    {
+        PrintStream  outfile = new PrintStream(
+                        "oval_family-product-coverage_mitre_" + System.currentTimeMillis() + ".txt" );
+
+        System.out.println( "[[[Mitre OVAL Family-Product Coverage]]]" );
+
+        Map<String,Collection<String>>  map = new TreeMap<String,Collection<String>>();
+
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        for (int  year = 1999; year <= 2013; year++) {
+            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
+            params.setId( "oval:org.mitre.oval:def:*" );
+            String  cve_pattern = "CVE-" + year + "-*";
+            params.setRefId( cve_pattern );
+
+            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+            List<DefinitionType>  def_list = query_results.getElements();
+
+            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
+            _buildFamilyProductMapping( yearly_map, def_list );
+            _printProductMapping( outfile,
+                            "\n[[[Mitre OVAL Family-Product Coverage (" + year + ") ]]]",
+                            yearly_map
+                            );
+
+            _buildFamilyProductMapping( map, def_list );
+        }
+
+        _printProductMapping( outfile,
+                        "\n[[[Mitre OVAL Family-Product Coverage (all) ]]]",
+                        map
+                        );
+    }
+
+
+    /**
+     * Mapping from family/product name to OVAL Def IDs.
+     *
+     * windows,Mozilla Firefox --- oval:...:7222, ...
+     * windows,Adobe Reader    --- oval:...:xxxx, ...
+     */
+    private void _buildFamilyProductMapping(
+                    final Map<String,Collection<String>> map,
+                    final Collection<DefinitionType> def_list
+                    )
+    {
+        for (DefinitionType  def : def_list) {
+            Collection<AffectedType>  affected = def.getMetadata().getAffected();
+            if (affected != null) {
+                for (AffectedType  a : affected) {
+                    for (Product  product : a.getProduct()) {
+                        String  product_name = a.getFamily() + "," + product.getName();
+                        //NOTE: there are products supported for multiple platforms, e.g. firefox
+                        // "windows,Mozilla Firefox", "linux:Mozilla Firefox"
+
+                        product_name = product_name.toLowerCase();
+                        //NOTE: there may be upper case name, lower case name, and mixture name
+                        // e.g. "Adobe AIR" and "Adobe Air"
+
+                        Collection<String>  map_def_list = map.get( product_name );
+                        if (map_def_list == null) {
+                            map_def_list = new TreeSet<String>();
+                            map.put( product_name, map_def_list );
+                        }
+                        map_def_list.add( def.getOvalId() );
+                    }
+                }
+            }
+        }
+    }
+
+
+    private void _printProductMapping(
+                    final PrintStream output,
+                    final String header,
+                    final Map<String,Collection<String>> map
+                    )
+    {
+        _println( output, header );
+
+        for (String  product_name : map.keySet()) {
+            Collection<String>  def_id_list = map.get( product_name );
+
+            StringBuilder  line = new StringBuilder();
+            line.append( product_name );
+            line.append( "," ).append( (def_id_list == null ? 0 : def_id_list.size()) );
+            line.append( "," ).append( def_id_list );
+
+            _println( output, line.toString() );
+        }
     }
 
 
