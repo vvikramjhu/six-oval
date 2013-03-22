@@ -25,11 +25,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import jp.go.aist.six.oval.model.AffectedCpeList;
+import jp.go.aist.six.oval.model.Cpe;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.ReferenceType;
+import jp.go.aist.six.oval.model.redhat.Advisory;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.repository.QueryResults;
@@ -124,6 +128,93 @@ public class OvalDataEval
 
 
     private static final Map<String,String>  _PRODUCT_NAME_MAP_ = _createProductNameMapping();
+
+
+
+    /**
+     * Don' use this!!!
+     *
+     * NOTE:
+     * This test does NOT report intended results.
+     * All the CPE names in the advisory metadata are Red Hat platform names,
+     * NOT the names of the applications really vulnerable.
+     */
+    @Test
+    public void reportRedHatProductCoverage()
+    throws Exception
+    {
+        PrintStream  outfile = new PrintStream(
+                        "oval_product-coverage_redhat_" + System.currentTimeMillis() + ".txt" );
+
+        Map<String,Collection<String>>  map = new TreeMap<String,Collection<String>>();
+
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        for (int  year = 1999; year <= 2013; year++) {
+            params.setDefinitionClass( ClassEnumeration.PATCH );
+            params.setId( "oval:com.redhat.rhsa:def:*" );
+            String  cve_pattern = "CVE-" + year + "-*";
+            params.setRefId( cve_pattern );
+
+            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+            List<DefinitionType>  def_list = query_results.getElements();
+
+            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
+            _buildProductMapping( yearly_map, def_list );
+            _printProductMapping( outfile,
+                            "\n[[[ Red Hat OVAL Product Coverage (" + year + ") ]]]",
+                            yearly_map
+                            );
+
+            _buildRedHatProductMapping( map, def_list );
+        }
+
+        _printProductMapping( outfile,
+                        "\n[[[ Red Hat OVAL Product Coverage (all) ]]]",
+                        map
+                        );
+    }
+
+
+    /**
+     * Mapping from product name to OVAL Def IDs.
+     *
+     * mozilla Firefox --- oval:...:7222, ...
+     * adobe reader    --- oval:...:xxxx, ...
+     */
+    private void _buildRedHatProductMapping(
+                    final Map<String,Collection<String>> map,
+                    final Collection<DefinitionType> def_list
+                    )
+    {
+        for (DefinitionType  def : def_list) {
+            Collection<OvalObject>  metadata = def.getMetadata().getAdditionalMetadata();
+            if (metadata != null) {
+                for (OvalObject  a : metadata) {
+                    if (a instanceof Advisory) {
+                        Advisory  advisory = (Advisory)a;
+                        AffectedCpeList  cpe_list = advisory.getAffectedCpeList();
+                        if (cpe_list == null) {
+                            continue;
+                        }
+
+                        for (Cpe  cpe : cpe_list.getCpe()) {
+                            CpeName  cpe_name = new CpeName( cpe.getName() );
+                            String  product_name = cpe_name.getVendor() + ":" + cpe_name.getName();
+
+//                            product_name = _correctProductName( product_name );
+
+                            Collection<String>  map_def_list = map.get( product_name );
+                            if (map_def_list == null) {
+                                map_def_list = new TreeSet<String>();
+                                map.put( product_name, map_def_list );
+                            }
+                            map_def_list.add( def.getOvalId() );
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
 
