@@ -37,6 +37,7 @@ public class DefinitionsElementQueryParams
     {
         public static final String  ID              = "id";
         public static final String  VERSION         = "version";
+        public static final String  DEPRECATED      = "deprecated";
 
         public static final String  TYPE            = "type";
         //DefinitionsElement.Type {definition, test, object, state, variable}
@@ -110,6 +111,23 @@ public class DefinitionsElementQueryParams
     public String getVersion()
     {
         return get( Key.VERSION );
+    }
+
+
+
+    /**
+     */
+    public void setDeprecated(
+                    final String deprecated
+    )
+    {
+        set( Key.DEPRECATED, deprecated );
+    }
+
+
+    public String getDeprecated()
+    {
+        return get( Key.DEPRECATED );
     }
 
 

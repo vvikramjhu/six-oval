@@ -180,6 +180,12 @@ public class OvalDefinitionsDAO
         if (definitions != null) {
             DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
             for (DefinitionType  definition : definitions.getDefinition()) {
+
+                //TODO: for NETSAP2013, deprecated definitions are ignored
+                if (definition.getDeprecated() == Boolean.TRUE) {
+                    continue;
+                }
+
                 definition.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( definition );
             }
