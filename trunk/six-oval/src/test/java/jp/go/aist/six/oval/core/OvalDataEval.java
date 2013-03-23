@@ -130,6 +130,254 @@ public class OvalDataEval
     private static final Map<String,String>  _PRODUCT_NAME_MAP_ = _createProductNameMapping();
 
 
+    /**
+     */
+    private static final String _correctProductName(
+                    final String name
+                    )
+    {
+        String  product_name = name.toLowerCase();
+        //NOTE: there may be upper case name, lower case name, and mixture name
+        // e.g. "Adobe AIR" and "Adobe Air"
+
+        String  correct_name = _PRODUCT_NAME_MAP_.get( product_name );
+
+        return (correct_name == null ? product_name : correct_name);
+    }
+
+
+
+
+    private void _printProductMapping(
+                    final PrintStream output,
+                    final String header,
+                    final Map<String,Collection<String>> map
+                    )
+    {
+        _println( output, header );
+
+        for (String  product_name : map.keySet()) {
+            Collection<String>  def_id_list = map.get( product_name );
+
+            StringBuilder  line = new StringBuilder();
+            line.append( product_name );
+            line.append( "," ).append( (def_id_list == null ? 0 : def_id_list.size()) );
+            line.append( "," ).append( def_id_list );
+
+            _println( output, line.toString() );
+        }
+    }
+
+
+
+
+    //
+    //
+    //
+
+
+
+    /**
+     * product1, count1, [cve-list1]
+     * product2, count2, [cve-list2]
+     * ...
+     */
+    @Test
+    public void reportOvalStatByProductCveMitre()
+    throws Exception
+    {
+        int  year_begin = 1999;
+//        int  year_begin = 2010;
+        int  year_end   = 2012;
+
+        String  time_span = String.valueOf( year_begin ) + "-" + year_end;
+        PrintStream  output_file = new PrintStream(
+                        "oval-stat_by-product_cve_mitre_" + time_span + "_" + System.currentTimeMillis() + ".txt" );
+
+        Map<String,Collection<String>>  total_map = new TreeMap<String,Collection<String>>();
+
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        for (int  year = year_begin; year <= year_end; year++) {
+            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
+            params.setId( "oval:org.mitre.oval:def:*" );
+            String  cve_pattern = "CVE-" + year + "-*";
+            params.setRefId( cve_pattern );
+
+            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+            List<DefinitionType>  def_list = query_results.getElements();
+
+            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
+            _buildProductCveMapping( yearly_map, def_list, year );
+            _printProductMapping( output_file,
+                            "\n[[[ OVAL Stat by Product (CVE, " + year + ") ]]]",
+                            yearly_map
+                            );
+
+            _buildProductCveMapping( total_map, def_list, 0 );
+        }
+
+        _printProductMapping( output_file,
+                        "\n[[[ OVAL Stat by Product (CVE, " + time_span + ") ]]]",
+                        total_map
+                        );
+
+    }
+
+
+
+    /**
+     * Mapping from product name to OVAL Def IDs.
+     *
+     * mozilla Firefox --- CVE-2010-0176, ...
+     * adobe reader    --- CVE-2012-xxxx, ...
+     */
+    private void _buildProductCveMapping(
+                    final Map<String,Collection<String>> map,
+                    final Collection<DefinitionType> def_list,
+                    final int year
+                    )
+    {
+        String  cve_prefix = "CVE-";
+        if (year != 0) {
+            cve_prefix = cve_prefix + String.valueOf( year );
+        }
+
+        for (DefinitionType  def : def_list) {
+            if (def.getDeprecated() == Boolean.TRUE) {
+                continue;
+            }
+
+            Collection<AffectedType>  affected = def.getMetadata().getAffected();
+            if (affected != null) {
+                for (AffectedType  a : affected) {
+                    for (Product  product : a.getProduct()) {
+                        String  product_name = product.getName();
+
+                        product_name = _correctProductName( product_name );
+
+                        Collection<String>  map_def_list = map.get( product_name );
+                        if (map_def_list == null) {
+                            map_def_list = new TreeSet<String>();
+                            map.put( product_name, map_def_list );
+                        }
+
+                        Collection<ReferenceType>  ref_list = def.getMetadata().getReference();
+                        if (ref_list != null) {
+                            for (ReferenceType  ref : ref_list) {
+                                if ("CVE".equals( ref.getSource() )) {
+                                    String  cve_id = ref.getRefId();
+                                    if (cve_id.startsWith( cve_prefix )) {
+                                        map_def_list.add( cve_id );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    /**
+     * This can't be used for counting coverage of CVEs by OVALs.
+     * Because multiple definitions may exist for one single CVE.
+     * For example, oval:org.mitre.oval:def:1557 and oval:org.mitre.oval:def:1987
+     * both checks for CVE-2005-2628.
+     *
+     * product1, count1, [oval-def-list1]
+     * product2, count2, [oval-def-list2]
+     * ...
+     */
+    @Test
+    public void reportOvalStatByProductMitre()
+    throws Exception
+    {
+        int  year_begin = 1999;
+//        int  year_begin = 2010;
+        int  year_end   = 2012;
+
+        String  time_span = String.valueOf( year_begin ) + "-" + year_end;
+        PrintStream  output_file = new PrintStream(
+                        "oval-stat_by-product_mitre_" + time_span + "_" + System.currentTimeMillis() + ".txt" );
+
+        Map<String,Collection<String>>  total_map = new TreeMap<String,Collection<String>>();
+
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        for (int  year = year_begin; year <= year_end; year++) {
+            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
+            params.setId( "oval:org.mitre.oval:def:*" );
+//            params.setDeprecated( "!true" );
+            String  cve_pattern = "CVE-" + year + "-*";
+            params.setRefId( cve_pattern );
+
+            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+            List<DefinitionType>  def_list = query_results.getElements();
+
+            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
+            _buildProductMapping( yearly_map, def_list );
+            _printProductMapping( output_file,
+                            "\n[[[Mitre OVAL Product Coverage (" + year + ") ]]]",
+                            yearly_map
+                            );
+
+            _buildProductMapping( total_map, def_list );
+        }
+
+        _printProductMapping( output_file,
+                        "\n[[[ OVAL Stat by Product (" + time_span + ") ]]]",
+                        total_map
+                        );
+
+    }
+
+
+    /**
+     * Mapping from product name to OVAL Def IDs.
+     *
+     * mozilla Firefox --- oval:...:7222, ...
+     * adobe reader    --- oval:...:xxxx, ...
+     */
+    private void _buildProductMapping(
+                    final Map<String,Collection<String>> map,
+                    final Collection<DefinitionType> def_list
+                    )
+    {
+        for (DefinitionType  def : def_list) {
+            if (def.getDeprecated() == Boolean.TRUE) {
+                continue;
+            }
+
+            Collection<AffectedType>  affected = def.getMetadata().getAffected();
+            if (affected != null) {
+                for (AffectedType  a : affected) {
+                    for (Product  product : a.getProduct()) {
+                        String  product_name = product.getName();
+
+                        product_name = _correctProductName( product_name );
+
+                        Collection<String>  map_def_list = map.get( product_name );
+                        if (map_def_list == null) {
+                            map_def_list = new TreeSet<String>();
+                            map.put( product_name, map_def_list );
+                        }
+                        map_def_list.add( def.getOvalId() );
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //  Red Hat
+    ///////////////////////////////////////////////////////////////////////
+
 
     /**
      * Don' use this!!!
@@ -218,98 +466,6 @@ public class OvalDataEval
 
 
 
-    /**
-     */
-    @Test
-    public void reportMitreProductCoverage()
-    throws Exception
-    {
-        PrintStream  outfile = new PrintStream(
-                        "oval_product-coverage_mitre_" + System.currentTimeMillis() + ".txt" );
-
-        System.out.println( "[[[Mitre OVAL Product Coverage]]]" );
-
-        Map<String,Collection<String>>  map = new TreeMap<String,Collection<String>>();
-
-        DefinitionQueryParams  params = new DefinitionQueryParams();
-        for (int  year = 1999; year <= 2013; year++) {
-            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
-            params.setId( "oval:org.mitre.oval:def:*" );
-            String  cve_pattern = "CVE-" + year + "-*";
-            params.setRefId( cve_pattern );
-
-            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
-            List<DefinitionType>  def_list = query_results.getElements();
-
-            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
-            _buildProductMapping( yearly_map, def_list );
-            _printProductMapping( outfile,
-                            "\n[[[Mitre OVAL Product Coverage (" + year + ") ]]]",
-                            yearly_map
-                            );
-
-            _buildProductMapping( map, def_list );
-        }
-
-        _printProductMapping( outfile,
-                        "\n[[[Mitre OVAL Product Coverage (all) ]]]",
-                        map
-                        );
-    }
-
-
-    /**
-     * Mapping from product name to OVAL Def IDs.
-     *
-     * mozilla Firefox --- oval:...:7222, ...
-     * adobe reader    --- oval:...:xxxx, ...
-     */
-    private void _buildProductMapping(
-                    final Map<String,Collection<String>> map,
-                    final Collection<DefinitionType> def_list
-                    )
-    {
-        for (DefinitionType  def : def_list) {
-            Collection<AffectedType>  affected = def.getMetadata().getAffected();
-            if (affected != null) {
-                for (AffectedType  a : affected) {
-                    for (Product  product : a.getProduct()) {
-                        String  product_name = product.getName();
-
-                        product_name = _correctProductName( product_name );
-
-                        Collection<String>  map_def_list = map.get( product_name );
-                        if (map_def_list == null) {
-                            map_def_list = new TreeSet<String>();
-                            map.put( product_name, map_def_list );
-                        }
-                        map_def_list.add( def.getOvalId() );
-                    }
-                }
-            }
-        }
-    }
-
-
-    private static final String _correctProductName(
-                    final String name
-                    )
-    {
-        String  product_name = name.toLowerCase();
-        //NOTE: there may be upper case name, lower case name, and mixture name
-        // e.g. "Adobe AIR" and "Adobe Air"
-
-        String  correct_name = _PRODUCT_NAME_MAP_.get( product_name );
-
-        return (correct_name == null ? product_name : correct_name);
-    }
-
-
-
-
-
-
-
 
 
 
@@ -388,28 +544,6 @@ public class OvalDataEval
             }
         }
     }
-
-
-    private void _printProductMapping(
-                    final PrintStream output,
-                    final String header,
-                    final Map<String,Collection<String>> map
-                    )
-    {
-        _println( output, header );
-
-        for (String  product_name : map.keySet()) {
-            Collection<String>  def_id_list = map.get( product_name );
-
-            StringBuilder  line = new StringBuilder();
-            line.append( product_name );
-            line.append( "," ).append( (def_id_list == null ? 0 : def_id_list.size()) );
-            line.append( "," ).append( def_id_list );
-
-            _println( output, line.toString() );
-        }
-    }
-
 
 
     /**

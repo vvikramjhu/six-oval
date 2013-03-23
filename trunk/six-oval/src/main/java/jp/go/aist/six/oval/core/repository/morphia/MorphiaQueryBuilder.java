@@ -427,6 +427,41 @@ implements QueryBuilder
 
 
 
+    protected static class BooleanHandler
+    implements Handler
+    {
+        public static final BooleanHandler  INSTANCE = new BooleanHandler();
+
+
+        public BooleanHandler()
+        {
+        }
+
+
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (_isEmpty( value )) {
+                return;
+            }
+
+            char  operator = value.charAt( 0 );
+            if (operator == '!') {
+                Boolean  bool_value = Boolean.valueOf( value.substring( 1 ) );
+                query.filter( field + " !=", bool_value );
+            } else {
+                Boolean  bool_value = Boolean.valueOf( value );
+                query.filter( field, bool_value );
+            }
+        }
+    }
+    //Boolean
+
+
+
     /**
      * { field: { $in: [<value1>, <value2>, ... <valueN> ] } }
      */
@@ -924,6 +959,7 @@ implements QueryBuilder
             Map<String, String>  field_mapping = new HashMap<String, String>();
             field_mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
             field_mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
+            field_mapping.put( DefinitionsElementQueryParams.Key.DEPRECATED,  "deprecated" );
             field_mapping.put( DefinitionsElementQueryParams.Key.TYPE,        null );
             //NOTE: TYPE parameter is handled by the Repository implementation class.
             field_mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
@@ -944,6 +980,10 @@ implements QueryBuilder
             Map<String, Handler>  mapping = CommonBuilder._createHandlerMapping();
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
+
+            // TODO:
+            mapping.put( DefinitionsElementQueryParams.Key.DEPRECATED,  BooleanHandler.INSTANCE );
+
             mapping.put( DefinitionsElementQueryParams.Key.TYPE,        IgnoringHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler2.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      new OvalEnumerationListHandler( Family.class ) );
