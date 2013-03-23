@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import jp.go.aist.six.oval.model.AffectedCpeList;
@@ -72,14 +73,219 @@ public class OvalDataEval
     }
 
 
-    //Product names in Mitre OVAL definitions
-//    private static final String[]  _MAJOR_PRODUCTS_ = new String[] {
-//        "Adobe Reader",
-//        "Adobe Acrobat",
-//        "Adobe Acrobat Reader",
-//        "Adobe Flash Player"
-//    };
+    ///////////////////////////////////////////////////////////////////////
+    //  repository support methods
+    ///////////////////////////////////////////////////////////////////////
 
+
+    /**
+     * Mitre OVAL Def, vulnerability class
+     */
+    private List<DefinitionType> _findVulnDefByYearMitre(
+                    final int year
+                    )
+    throws Exception
+    {
+        return _findVulnDef( ClassEnumeration.VULNERABILITY,
+                        "oval:org.mitre.oval:def:*",
+                        "CVE-" + year + "-*"
+                        );
+    }
+
+
+    /**
+     * Red Hat OVAL Def, patch class
+     */
+    private List<DefinitionType> _findVulnDefByYearRedHat(
+                    final int year
+                    )
+    throws Exception
+    {
+        return _findVulnDef( ClassEnumeration.PATCH,
+                        "oval:com.redhat.rhsa:def:*",
+                        "CVE-" + year + "-*"
+                        );
+    }
+
+
+
+    private List<DefinitionType> _findVulnDef(
+                    final ClassEnumeration  def_class,
+                    final String oval_id_pattern,
+                    final String cve_pattern
+                    )
+    throws Exception
+    {
+        DefinitionQueryParams  params = new DefinitionQueryParams();
+        params.setDefinitionClass( def_class );
+        params.setId( oval_id_pattern );
+        params.setDeprecated( "!true" );    //deprecated
+        params.setRefId( cve_pattern );
+
+        QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
+        List<DefinitionType>  def_list = query_results.getElements();
+
+        return def_list;
+    }
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // year-OVAL
+    ///////////////////////////////////////////////////////////////////////
+
+    /**
+     * OVAL Stat (yearly)
+     * -- number of definitions whose class is vuln(Mitre) or patch(RedHat) --
+     *
+     * 1999, count1, [OVAL def list1]
+     * 2000, count2, [OVAL def list2]
+     * ...
+     */
+    @Test
+    public void reportOvalStatByYear()
+    throws Exception
+    {
+        int  year_begin = 1999;
+        int  year_end   = 2012;
+
+        String  time_span = String.valueOf( year_begin ) + "-" + year_end;
+        PrintStream  output_file = new PrintStream(
+                        "oval-stat_by-year_" + time_span + "_" + System.currentTimeMillis() + ".txt" );
+        _println( output_file, "Year,OVALs (Mitre),OVALs(Red Hat)" );
+
+        List<DefinitionType>  def_list = null;
+        for (int  year = year_begin; year <= year_end; year++) {
+            StringBuffer  line = new StringBuffer();
+            line.append( year );
+
+            def_list = _findVulnDefByYearMitre( year );
+            line.append( "," ).append( def_list.size() );
+
+            def_list = _findVulnDefByYearRedHat( year );
+            line.append( "," ).append( def_list.size() );
+
+            _println( output_file, line.toString() );
+        }
+
+    }
+
+
+    /**
+     * OVAL Stat (yearly CVEs), Mitre
+     *
+     * 1999, count1, [cve-list1]
+     * 2000, count2, [cve-list2]
+     * ...
+     */
+    @Test
+    public void reportOvalStatByYearCveMitre()
+    throws Exception
+    {
+        int  year_begin = 1999;
+//        int  year_begin = 2010;
+        int  year_end   = 2012;
+
+        String  time_span = String.valueOf( year_begin ) + "-" + year_end;
+        PrintStream  output_file = new PrintStream(
+                        "oval-stat_by-year-cve_mitre_" + time_span + "_" + System.currentTimeMillis() + ".txt" );
+
+        for (int  year = year_begin; year <= year_end; year++) {
+            List<DefinitionType>  def_list = _findVulnDefByYearMitre( year );
+            SortedSet<String>  year_cve_list = _buildYearCveList( def_list, year );
+
+            StringBuffer  line = new StringBuffer();
+            line.append( year );
+            line.append( "," ).append( year_cve_list.size() );
+            line.append( "," ).append( year_cve_list );
+
+            _println( output_file, line.toString() );
+        }
+
+    }
+
+
+
+    /**
+     * Picks up the specified year CVE IDs from the given definitions.
+     */
+    private SortedSet<String> _buildYearCveList(
+                    final Collection<DefinitionType> def_list,
+                    final int year
+                    )
+    {
+        SortedSet<String>  cve_set = new TreeSet<String>();
+
+        String  cve_prefix = "CVE-";
+        if (year != 0) {
+            cve_prefix = cve_prefix + String.valueOf( year );
+        }
+
+        for (DefinitionType  def : def_list) {
+            if (def.getDeprecated() == Boolean.TRUE) {
+                continue;
+            }
+
+            Collection<ReferenceType>  ref_list = def.getMetadata().getReference();
+            if (ref_list != null) {
+                for (ReferenceType  ref : ref_list) {
+                    if ("CVE".equals( ref.getSource() )) {
+                        String  cve_id = ref.getRefId();
+                        if (cve_id.startsWith( cve_prefix )) {
+                            cve_set.add( cve_id );
+                        }
+                    }
+                }
+            }
+        }
+
+        return cve_set;
+    }
+
+
+
+
+    /**
+     * OVAL Stat (yearly CVEs), Red Hat
+     *
+     * 1999, count1, [cve-list1]
+     * 2000, count2, [cve-list2]
+     * ...
+     */
+    @Test
+    public void reportOvalStatByYearCveRedHat()
+    throws Exception
+    {
+        int  year_begin = 1999;
+//        int  year_begin = 2010;
+        int  year_end   = 2012;
+
+        String  time_span = String.valueOf( year_begin ) + "-" + year_end;
+        PrintStream  output_file = new PrintStream(
+                        "oval-stat_by-year-cve_redhat_" + time_span + "_" + System.currentTimeMillis() + ".txt" );
+
+        for (int  year = year_begin; year <= year_end; year++) {
+            List<DefinitionType>  def_list = _findVulnDefByYearRedHat( year );
+            SortedSet<String>  year_cve_list = _buildYearCveList( def_list, year );
+
+            StringBuffer  line = new StringBuffer();
+            line.append( year );
+            line.append( "," ).append( year_cve_list.size() );
+            line.append( "," ).append( year_cve_list );
+
+            _println( output_file, line.toString() );
+        }
+
+    }
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // OVAL-CVE
+    ///////////////////////////////////////////////////////////////////////
 
     /**
      *  OVAL product coverage, name unification required!!!
@@ -106,6 +312,9 @@ public class OvalDataEval
         map.put( "java runtime environment",    java );
 
         String  office = "microsoft office";
+        map.put( "microsoft office xp",             office );
+        map.put( "microsoft office xp sp2",         office );
+        map.put( "microsoft office xp sp3",         office );
         map.put( "microsoft office 2000",           office );
         map.put( "microsoft office 2000 sp3",       office );
         map.put( "microsoft office 2002",           office );
@@ -116,6 +325,13 @@ public class OvalDataEval
         map.put( "microsoft office 2010",           office );
         map.put( "microsoft office 2011 for mac",   office );
 
+        String  excel = "microsoft excel";
+        map.put( "microsoft excel 97",             excel );
+        map.put( "microsoft excel 2000",           excel );
+        map.put( "microsoft excel 2002",           excel );
+        map.put( "microsoft excel 2003",           excel );
+        map.put( "microsoft excel 2007",           excel );
+        map.put( "microsoft excel 2010",           excel );
 
         String  adobe_reader = "adobe reader";
         map.put( "adobe acrobat reader",    adobe_reader );
@@ -125,7 +341,6 @@ public class OvalDataEval
 
         return map;
     }
-
 
     private static final Map<String,String>  _PRODUCT_NAME_MAP_ = _createProductNameMapping();
 
@@ -147,36 +362,6 @@ public class OvalDataEval
 
 
 
-
-    private void _printProductMapping(
-                    final PrintStream output,
-                    final String header,
-                    final Map<String,Collection<String>> map
-                    )
-    {
-        _println( output, header );
-
-        for (String  product_name : map.keySet()) {
-            Collection<String>  def_id_list = map.get( product_name );
-
-            StringBuilder  line = new StringBuilder();
-            line.append( product_name );
-            line.append( "," ).append( (def_id_list == null ? 0 : def_id_list.size()) );
-            line.append( "," ).append( def_id_list );
-
-            _println( output, line.toString() );
-        }
-    }
-
-
-
-
-    //
-    //
-    //
-
-
-
     /**
      * product1, count1, [cve-list1]
      * product2, count2, [cve-list2]
@@ -186,8 +371,8 @@ public class OvalDataEval
     public void reportOvalStatByProductCveMitre()
     throws Exception
     {
-        int  year_begin = 1999;
-//        int  year_begin = 2010;
+//        int  year_begin = 1999;
+        int  year_begin = 2010;
         int  year_end   = 2012;
 
         String  time_span = String.valueOf( year_begin ) + "-" + year_end;
@@ -196,21 +381,14 @@ public class OvalDataEval
 
         Map<String,Collection<String>>  total_map = new TreeMap<String,Collection<String>>();
 
-        DefinitionQueryParams  params = new DefinitionQueryParams();
         for (int  year = year_begin; year <= year_end; year++) {
-            params.setDefinitionClass( ClassEnumeration.VULNERABILITY );
-            params.setId( "oval:org.mitre.oval:def:*" );
-            String  cve_pattern = "CVE-" + year + "-*";
-            params.setRefId( cve_pattern );
+            List<DefinitionType>  def_list = _findVulnDefByYearMitre( year );
 
-            QueryResults<DefinitionType>  query_results = _oval_repository.findDefinition( params );
-            List<DefinitionType>  def_list = query_results.getElements();
-
-            Map<String,Collection<String>>  yearly_map = new TreeMap<String,Collection<String>>();
-            _buildProductCveMapping( yearly_map, def_list, year );
+            Map<String,Collection<String>>  year_map = new TreeMap<String,Collection<String>>();
+            _buildProductCveMapping( year_map, def_list, year );
             _printProductMapping( output_file,
                             "\n[[[ OVAL Stat by Product (CVE, " + year + ") ]]]",
-                            yearly_map
+                            year_map
                             );
 
             _buildProductCveMapping( total_map, def_list, 0 );
@@ -226,7 +404,7 @@ public class OvalDataEval
 
 
     /**
-     * Mapping from product name to OVAL Def IDs.
+     * product --- CVE IDs.
      *
      * mozilla Firefox --- CVE-2010-0176, ...
      * adobe reader    --- CVE-2012-xxxx, ...
@@ -280,8 +458,53 @@ public class OvalDataEval
 
 
 
+    /**
+     * product --- [string list].
+     *
+     * mozilla Firefox --- a, b, ...
+     * adobe reader    --- a, b, ...
+     */
+    private void _printProductMapping(
+                    final PrintStream output,
+                    final String header,
+                    final Map<String,Collection<String>> map
+                    )
+    {
+        _println( output, header );
+
+        for (String  product_name : map.keySet()) {
+            Collection<String>  list = map.get( product_name );
+
+            StringBuilder  line = new StringBuilder();
+            line.append( product_name );
+            line.append( "," ).append( (list == null ? 0 : list.size()) );
+            line.append( "," ).append( list );
+
+            _println( output, line.toString() );
+        }
+    }
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // ここから下は作り直し!!!
+    ///////////////////////////////////////////////////////////////////////
+
+
+
+
+    //
+    //
+    //
+
+
+
 
     /**
+     * Number of OVAL Definitions whose class is vulnerability.
+     *
      * This can't be used for counting coverage of CVEs by OVALs.
      * Because multiple definitions may exist for one single CVE.
      * For example, oval:org.mitre.oval:def:1557 and oval:org.mitre.oval:def:1987
