@@ -29,7 +29,7 @@ in the
 
 See
 [DomainModel_1_0 Domain Model document].
-Also, for the families and components supported,
+Also, for the OVAL families and components supported,
 refer to the [ReleaseNotes release note].
 
 
