@@ -42,8 +42,12 @@
     <class name="jp.go.aist.six.util.repository.QueryResultsElements">
         <map-to xml="result_elements"
             />
+<!--
+            type="java.io.Serializable" OK
+            type="java.lang.Object"     NG
+-->
         <field name="elements" 
-            type="java.lang.Object"
+            type="java.io.Serializable"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>

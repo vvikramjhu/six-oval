@@ -1,6 +1,6 @@
 ======================================================================
 == NOTICE file corresponding to section 4 of the Apache License,    ==
-== Version 2.0, for the SIX UTIL distribution.                      ==
+== Version 2.0, for the SIX OVAL distribution.                      ==
 ======================================================================
 
 SIX OVAL
@@ -18,7 +18,7 @@ must include the following acknowledgement:
 Alternately, this acknowledgement may appear in the software itself,
 if and wherever such third-party acknowledgements normally appear.
 
-The names "AIST" and "SIX UTIL" must not be used to endorse or promote 
+The names "AIST" and "SIX OVAL" must not be used to endorse or promote 
 products derived from this software without prior written permission. 
 For written permission, please contact nakamura-akihito@aist.go.jp.
 
