@@ -19,10 +19,10 @@
 package jp.go.aist.six.oval.core.repository.morphia.variables;
 
 import java.util.UUID;
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.variables.OvalVariables;
 import jp.go.aist.six.oval.model.variables.VariableType;
 import jp.go.aist.six.oval.model.variables.VariablesType;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Key;
 import com.github.jmkgreen.morphia.dao.DAO;
@@ -48,9 +48,9 @@ public class OvalVariablesDAO
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  DAO
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public Key<OvalVariables> save(
@@ -76,5 +76,5 @@ public class OvalVariablesDAO
     }
 
 }
-//OvalVariablesDAO
+//
 

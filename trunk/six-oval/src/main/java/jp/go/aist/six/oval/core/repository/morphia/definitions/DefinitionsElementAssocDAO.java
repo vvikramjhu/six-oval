@@ -19,8 +19,8 @@
 package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
 import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
-import com.github.jmkgreen.morphia.dao.BasicDAO;
 
 
 
@@ -29,7 +29,7 @@ import com.github.jmkgreen.morphia.dao.BasicDAO;
  * @version $Id$
  */
 public class DefinitionsElementAssocDAO
-    extends BasicDAO<DefinitionsElementAssoc, String>
+    extends BaseDAO<DefinitionsElementAssoc, String>
 {
 
     /**

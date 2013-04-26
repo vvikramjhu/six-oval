@@ -29,7 +29,6 @@ import com.github.jmkgreen.morphia.Datastore;
  */
 public class StateDAO
     extends DefinitionsElementDAO<StateType>
-//    extends OvalEntityDAO<StateType>
 {
 
     /**
@@ -42,5 +41,5 @@ public class StateDAO
     }
 
 }
-// StateDAO
+//
 

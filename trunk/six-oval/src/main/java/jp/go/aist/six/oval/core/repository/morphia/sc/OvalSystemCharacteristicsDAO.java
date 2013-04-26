@@ -19,8 +19,8 @@
 package jp.go.aist.six.oval.core.repository.morphia.sc;
 
 import java.util.UUID;
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Key;
 
@@ -45,9 +45,9 @@ public class OvalSystemCharacteristicsDAO
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  DAO
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public Key<OvalSystemCharacteristics> save(
@@ -64,5 +64,5 @@ public class OvalSystemCharacteristicsDAO
     }
 
 }
-// OvalSystemCharacteristicsDAO
+//
 

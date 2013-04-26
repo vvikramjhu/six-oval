@@ -19,7 +19,6 @@
 package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
 import java.util.UUID;
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -32,6 +31,7 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.TestsType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.definitions.VariablesType;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.github.jmkgreen.morphia.Datastore;
@@ -52,8 +52,7 @@ public class OvalDefinitionsDAO
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalDefinitionsDAO.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalDefinitionsDAO.class );
 
 
 
@@ -118,9 +117,9 @@ public class OvalDefinitionsDAO
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  DAO
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public Key<OvalDefinitions> save(

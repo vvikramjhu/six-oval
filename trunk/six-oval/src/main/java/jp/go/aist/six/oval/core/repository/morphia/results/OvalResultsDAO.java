@@ -20,12 +20,12 @@ package jp.go.aist.six.oval.core.repository.morphia.results;
 
 import java.util.Collection;
 import java.util.UUID;
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultsType;
 import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Key;
 import com.github.jmkgreen.morphia.dao.DAO;
@@ -51,9 +51,9 @@ public class OvalResultsDAO
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  DAO
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public Key<OvalResults> save(
@@ -91,5 +91,5 @@ public class OvalResultsDAO
     }
 
 }
-// OvalResultsDAO
+//
 
