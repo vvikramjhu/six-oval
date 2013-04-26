@@ -60,7 +60,6 @@ public class OvalTransformXmlMapper
      */
     public OvalTransformXmlMapper()
     {
-//        XMLContext.setProperty( "", "" );
         _LOG_.trace( "instantiated" );
     }
 
@@ -90,9 +89,9 @@ public class OvalTransformXmlMapper
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  XmlMapper
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public void marshal(
