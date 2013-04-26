@@ -27,6 +27,7 @@ Project SIX: OVAL - Maven Assembly Description
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>*.jar</include>
+                <include>site/**/*.*</include>
             </includes>
         </fileSet>
     </fileSets>
