@@ -18,19 +18,15 @@
  */
 package jp.go.aist.six.oval.core.repository.web;
 
-import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
-import jp.go.aist.six.util.repository.CommonQueryParams;
 import jp.go.aist.six.util.repository.QueryResults;
 import jp.go.aist.six.util.repository.View;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,48 +82,57 @@ public class OvalRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( OvalSystemCharacteristics.class, id );
+        return _getOvalRepository().findOvalSystemCharacteristicsById( id );
+//        return _findResourceById( OvalSystemCharacteristics.class, id );
     }
 
 
 
     // GET: query
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_scs?host=server.foo.org"
-    /**
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_scs"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics(
+    public @ResponseBody QueryResults<?> findOvalSystemCharacteristics(
                     final OvalSystemCharacteristicsQueryParams params
                     )
     {
-        return _findResource( OvalSystemCharacteristics.class, params );
+        View  view = _removeView( params );
+
+        QueryResults<?>  results = null;
+        if (view == View.id) {
+            results = _getOvalRepository().findOvalSystemCharacteristicsId( params );
+        } else if (view == View.count) {
+            long  count = _getOvalRepository().countOvalSystemCharacteristics( params );
+            results = new QueryResults<Void>();
+            results.setTotalResults( count );
+        } else {
+            results = _getOvalRepository().findOvalSystemCharacteristics( params );
+        }
+
+        return results;
+//        return _findResource( OvalSystemCharacteristics.class, params );
     }
 
 
 
-    // POST: create
-    //
-    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_scs
-    /**
-     * @throws  OvalException
-     */
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/repository/oval_scs"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> createOvalSystemCharacteristics(
-                    @RequestBody final OvalSystemCharacteristics oval_scs,
-                    final HttpServletRequest request
-                    )
-    {
-        return _saveResource( request, OvalSystemCharacteristics.class, oval_scs );
-    }
+//    // POST: create
+//    //
+//    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_scs
+//    @RequestMapping(
+//                    method=RequestMethod.POST
+//                    ,value="/repository/oval_scs"
+//                    ,headers="Content-Type=application/xml"
+//    )
+//    public ResponseEntity<Void> createOvalSystemCharacteristics(
+//                    @RequestBody final OvalSystemCharacteristics oval_scs,
+//                    final HttpServletRequest request
+//                    )
+//    {
+//        return _saveResource( request, OvalSystemCharacteristics.class, oval_scs );
+//    }
 
 
 
@@ -149,7 +154,8 @@ public class OvalRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( OvalResults.class, id );
+        return _getOvalRepository().findOvalResultsById( id );
+//        return _findResourceById( OvalResults.class, id );
     }
 
 
@@ -168,49 +174,42 @@ public class OvalRepositoryController
                     final OvalResultsQueryParams params
                     )
     {
-        QueryResults<?>  results = null;
+        View  view = _removeView( params );
 
-        String  view_value = (params == null ? null : params.get( CommonQueryParams.Key.VIEW ));
-        View  view = (view_value == null ? View.complete : View.valueOf( view_value ));
-        params.remove( CommonQueryParams.Key.VIEW );
+        QueryResults<?>  results = null;
         if (view == View.id) {
-            results = _findDocumentResourceId( OvalResults.class, params );
+            results = _getOvalRepository().findOvalResultsId( params );
         } else if (view == View.count) {
-            results = _findResourceCount( OvalResults.class, params );
+            long  count = _getOvalRepository().countOvalResults( params );
+            results = new QueryResults<Void>();
+            results.setTotalResults( count );
         } else {
-            results = _findResource( OvalResults.class, params );
+            results = _getOvalRepository().findOvalResults( params );
         }
 
         return results;
     }
-//BACKUP
-//    public @ResponseBody QueryResults<OvalResults> findOvalResults(
-//                    final OvalResultsQueryParams params
+
+
+
+//    // POST: create
+//    //
+//    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_results
+//    /**
+//     * @throws  OvalException
+//     */
+//    @RequestMapping(
+//                    method=RequestMethod.POST
+//                    ,value="/repository/oval_results"
+//                    ,headers="Content-Type=application/xml"
+//    )
+//    public ResponseEntity<Void> createOvalResults(
+//                    @RequestBody final OvalResults oval_results,
+//                    final HttpServletRequest request
 //                    )
 //    {
-//        return _findResource( OvalResults.class, params );
+//        return _saveResource( request, OvalResults.class, oval_results );
 //    }
-
-
-
-    // POST: create
-    //
-    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @results.xml http://localhost:8080/six-oval/repository/oval_results
-    /**
-     * @throws  OvalException
-     */
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/repository/oval_results"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> createOvalResults(
-                    @RequestBody final OvalResults oval_results,
-                    final HttpServletRequest request
-                    )
-    {
-        return _saveResource( request, OvalResults.class, oval_results );
-    }
 
 }
 //

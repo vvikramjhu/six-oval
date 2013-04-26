@@ -43,7 +43,7 @@
 
 
     <bean id="morphia" 
-        class="jp.go.aist.six.oval.core.repository.morphia.MorphiaFactory" 
+        class="jp.go.aist.six.util.core.repository.morphia.MorphiaFactory" 
         factory-method="create"> 
         <constructor-arg>
             <set><!-- classes to map -->
@@ -114,8 +114,8 @@
 
     <!-- ******************************************************* -->
 
-    <bean id="ovalDatabase" 
-        class="jp.go.aist.six.oval.core.repository.morphia.MongoOvalDatabase"> 
+    <bean id="ovalDatastore" 
+        class="jp.go.aist.six.oval.core.repository.morphia.OvalDatastore"> 
         <property name="DAO">
             <set>
                 <ref bean="ovalDefinitionsDAO"/>
@@ -134,17 +134,10 @@
         </property>
     </bean>
 
-<!--
-    <bean id="ovalDefinitionRepository" 
-        class="jp.go.aist.six.oval.core.repository.OvalDefinitionRepositoryImpl">
-        <property name="database" ref="ovalDatabase"/>
-    </bean>
--->
-
 
     <bean id="ovalRepository" 
         class="jp.go.aist.six.oval.core.repository.OvalRepositoryImpl">
-        <property name="database" ref="ovalDatabase"/>
+        <property name="datastore" ref="ovalDatastore"/>
     </bean>
 
 

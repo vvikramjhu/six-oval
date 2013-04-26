@@ -19,16 +19,9 @@
 package jp.go.aist.six.oval.core.repository.web;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.OvalDefinitionsGenerator;
-import jp.go.aist.six.oval.core.repository.morphia.MongoOvalDatabase;
-import jp.go.aist.six.oval.model.Document;
-import jp.go.aist.six.oval.model.DocumentId;
-import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.common.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -37,20 +30,19 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.repository.CommonQueryParams;
+import jp.go.aist.six.util.repository.ObjectNotFoundException;
 import jp.go.aist.six.util.repository.QueryParams;
 import jp.go.aist.six.util.repository.QueryResults;
 import jp.go.aist.six.util.repository.View;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -88,7 +80,8 @@ public class OvalDefinitionRepositoryController
     // "/" slash = %2f
 
 
-    private MongoOvalDatabase  _database;
+    @Autowired
+    private OvalRepository  _def_repository;
 
     private OvalDefinitionsGenerator  _generator;
 
@@ -106,17 +99,17 @@ public class OvalDefinitionRepositoryController
 
     /**
      */
-    public void setDatabase(
-                    final MongoOvalDatabase database
+    public void setOvalRepository(
+                    final OvalRepository database
                     )
     {
-        _database = database;
+        _def_repository = database;
     }
 
 
-    protected MongoOvalDatabase _getDatabase()
+    protected OvalRepository _getOvalRepository()
     {
-        return _database;
+        return _def_repository;
     }
 
 
@@ -135,6 +128,27 @@ public class OvalDefinitionRepositoryController
     {
         return _generator;
     }
+
+
+
+
+    /**
+     */
+    protected View _removeView(
+                    final QueryParams params
+                    )
+    {
+        String  view_key = CommonQueryParams.Key.VIEW;
+
+        String  view_value = (params == null ? null : params.get( view_key ));
+        View  view = (view_value == null ? View.complete : View.valueOf( view_value ));
+        _LOG_.debug( "query params view=" + view.name() );
+        params.remove( view_key );
+
+        return view;
+    }
+
+
 
 
 
@@ -160,209 +174,209 @@ public class OvalDefinitionRepositoryController
 
 
 
-    /**
-     * Find one resource by ID.
-     *
-     * @throws  OvalException
-     */
-    protected <K, T extends OvalObject & Persistable<K>>
-    T _findResourceById(
-                    final Class<T> type,
-                    final K id
-                    )
-    {
-        _LOG_.debug( "GET: type=" + type + ", id=" + id );
-        T  resource = _getDatabase().findById( type, id );
-
-        return resource;
-    }
-
-
-
-    /**
-     * FIND
-     *
-     * @throws  OvalException
-     */
-    protected <K, T extends OvalObject & Persistable<K>>
-    QueryResults<T> _findResource(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
-
-        QueryParams  p = ((params == null  ||  params.size() == 0) ? null : params);
-        List<T>  list = _getDatabase().find( type, p );
-
-        return _buildQueryResults( params, list );
-    }
-
-
-
-    /**
-     * ID
-     */
-    protected <K, T extends OvalObject & Persistable<K>>
-    QueryResults<K> _findResourceId(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
-
-        List<K>  list = _getDatabase().findId( type, params );
-
-        return _buildQueryResults( params, list );
-    }
-
-
-    protected <T extends DefinitionsElement>
-    QueryResults<OvalId> _findResourceOvalId(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
-
-        List<String>  list = _getDatabase().findId( type, params );
-        List<OvalId>  id_list = new ArrayList<OvalId>();
-        for (String  id : list) {
-            id_list.add( new OvalId( id ) );
-        }
-
-        return _buildQueryResults( params, id_list );
-    }
-
-
-    protected <T extends Document>
-    QueryResults<DocumentId> _findDocumentResourceId(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
-
-        List<String>  list = _getDatabase().findId( type, params );
-        List<DocumentId>  id_list = new ArrayList<DocumentId>();
-        for (String  id : list) {
-            id_list.add( new DocumentId( id ) );
-        }
-
-        return _buildQueryResults( params, id_list );
-    }
-
-
-
-
-
-
-   /**
-    * COUNT
-    */
-    protected <K, T extends OvalObject & Persistable<K>>
-    QueryResults<Void> _findResourceCount(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "GET (count): type=" + type + ", params=" + params );
-
-        long  count = _getDatabase().count( type, params );
-        QueryResults<Void>  results = new QueryResults<Void>();
-        results.setTotalResults( count );
-
-        return results;
-
-//        return _buildQueryResults( null, Collections.singletonList( count ) );
-    }
-
-
-
-    /**
-     * Creates a resource.
-     *
-     * @throws  OvalException
-     */
-    protected <K, T extends OvalObject & Persistable<K>>
-    ResponseEntity<Void> _saveResource(
-                    final HttpServletRequest request,
-                    final Class<T> type,
-                    final T object
-                    )
-    {
-        _LOG_.debug( "POST: type=" + type + ", object=" + object );
-
-        K  id = _database.save( type, object );
-
-        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
-//        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
-
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( locationUri );
-
-        _LOG_.debug( "HTTP response headers=" + headers );
-
-        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
-    }
-
-
-
-    /**
-     */
-    protected static <T> QueryResults<T> _buildQueryResults(
-                    final QueryParams params,
-                    final List<T> elements
-                    )
-    {
-        QueryResults<T>  r = _buildQueryResults( elements );
-
-        if (params != null) {
-            String  key = CommonQueryParams.Key.COUNT;
-            if (params.containsKey( key )) {
-                int  count = params.getAsInt( key );
-                r.setItemsPerPage( (long)count );
-            }
-
-            key = CommonQueryParams.Key.START_INDEX;
-            if (params.containsKey( key )) {
-                int  index = params.getAsInt( key );
-                r.setItemsPerPage( (long)index );
-            }
-        }
-
-        return r;
-    }
-
-
-    protected static <T> QueryResults<T> _buildQueryResults(
-                    final List<T> elements
-                    )
-    {
-        return new QueryResults<T>( elements );
-
-//        QueryResults<T>  r = new QueryResults<T>( elements );
+//    /**
+//     * Find one resource by ID.
+//     *
+//     * @throws  OvalException
+//     */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    T _findResourceById(
+//                    final Class<T> type,
+//                    final K id
+//                    )
+//    {
+//        _LOG_.debug( "GET: type=" + type + ", id=" + id );
+//        T  resource = _getOvalDefinitionRepository().findById( type, id );
+//
+//        return resource;
+//    }
+//
+//
+//
+//    /**
+//     * FIND
+//     *
+//     * @throws  OvalException
+//     */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    QueryResults<T> _findResource(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    {
+//        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
+//
+//        QueryParams  p = ((params == null  ||  params.size() == 0) ? null : params);
+//        List<T>  list = _getOvalDefinitionRepository().find( type, p );
+//
+//        return _buildQueryResults( params, list );
+//    }
+//
+//
+//
+//    /**
+//     * ID
+//     */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    QueryResults<K> _findResourceId(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    {
+//        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
+//
+//        List<K>  list = _getOvalDefinitionRepository().findId( type, params );
+//
+//        return _buildQueryResults( params, list );
+//    }
+//
+//
+//    protected <T extends DefinitionsElement>
+//    QueryResults<OvalId> _findResourceOvalId(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    {
+//        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
+//
+//        List<String>  list = _getOvalDefinitionRepository().findId( type, params );
+//        List<OvalId>  id_list = new ArrayList<OvalId>();
+//        for (String  id : list) {
+//            id_list.add( new OvalId( id ) );
+//        }
+//
+//        return _buildQueryResults( params, id_list );
+//    }
+//
+//
+//    protected <T extends Document>
+//    QueryResults<DocumentId> _findDocumentResourceId(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    {
+//        _LOG_.debug( "GET (find id): type=" + type + ", params=" + params );
+//
+//        List<String>  list = _getOvalDefinitionRepository().findId( type, params );
+//        List<DocumentId>  id_list = new ArrayList<DocumentId>();
+//        for (String  id : list) {
+//            id_list.add( new DocumentId( id ) );
+//        }
+//
+//        return _buildQueryResults( params, id_list );
+//    }
+//
+//
+//
+//
+//
+//
+//   /**
+//    * COUNT
+//    */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    QueryResults<Void> _findResourceCount(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    {
+//        _LOG_.debug( "GET (count): type=" + type + ", params=" + params );
+//
+//        long  count = _getOvalDefinitionRepository().count( type, params );
+//        QueryResults<Void>  results = new QueryResults<Void>();
+//        results.setTotalResults( count );
+//
+//        return results;
+//
+////        return _buildQueryResults( null, Collections.singletonList( count ) );
+//    }
+//
+//
+//
+//    /**
+//     * Creates a resource.
+//     *
+//     * @throws  OvalException
+//     */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    ResponseEntity<Void> _saveResource(
+//                    final HttpServletRequest request,
+//                    final Class<T> type,
+//                    final T object
+//                    )
+//    {
+//        _LOG_.debug( "POST: type=" + type + ", object=" + object );
+//
+//        K  id = _def_repository.save( type, object );
+//
+//        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
+////        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
+//
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setLocation( locationUri );
+//
+//        _LOG_.debug( "HTTP response headers=" + headers );
+//
+//        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    protected static <T> QueryResults<T> _buildQueryResults(
+//                    final QueryParams params,
+//                    final List<T> elements
+//                    )
+//    {
+//        QueryResults<T>  r = _buildQueryResults( elements );
+//
+//        if (params != null) {
+//            String  key = CommonQueryParams.Key.COUNT;
+//            if (params.containsKey( key )) {
+//                int  count = params.getAsInt( key );
+//                r.setItemsPerPage( (long)count );
+//            }
+//
+//            key = CommonQueryParams.Key.START_INDEX;
+//            if (params.containsKey( key )) {
+//                int  index = params.getAsInt( key );
+//                r.setItemsPerPage( (long)index );
+//            }
+//        }
+//
 //        return r;
-    }
-
-
-
-    /**
-     * Retrieves the resources.
-     *
-     * @throws  OvalException
-     */
-    protected <K, T extends OvalObject & Persistable<K>>
-    QueryResults<K> _getResourceId(
-                    final Class<T> type
-                    )
-    {
-        _LOG_.debug( "GET (find id): type=" + type );
-
-        List<K>  list = _getDatabase().findId( type );
-
-        return _buildQueryResults( list );
-    }
+//    }
+//
+//
+//    protected static <T> QueryResults<T> _buildQueryResults(
+//                    final List<T> elements
+//                    )
+//    {
+//        return new QueryResults<T>( elements );
+//
+////        QueryResults<T>  r = new QueryResults<T>( elements );
+////        return r;
+//    }
+//
+//
+//
+//    /**
+//     * Retrieves the resources.
+//     *
+//     * @throws  OvalException
+//     */
+//    protected <K, T extends OvalObject & Persistable<K>>
+//    QueryResults<K> _getResourceId(
+//                    final Class<T> type
+//                    )
+//    {
+//        _LOG_.debug( "GET (find id): type=" + type );
+//
+//        List<K>  list = _getOvalDefinitionRepository().findId( type );
+//
+//        return _buildQueryResults( list );
+//    }
 
 
     //////////////////////////////////////////////////////////////////////
@@ -424,10 +438,6 @@ public class OvalDefinitionRepositoryController
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval%2etest:def:165"
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/definitions/oval:org%2emitre%2eoval:def:7222"
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/definitions/{id:.*}"
@@ -437,7 +447,8 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( DefinitionType.class, id );
+        return _getOvalRepository().findDefinitionById( id );
+//        return _findResourceById( DefinitionType.class, id );
     }
 
 
@@ -474,60 +485,25 @@ public class OvalDefinitionRepositoryController
                     final DefinitionQueryParams params
                     )
     {
-        QueryResults<?>  results = null;
+        View  view = _removeView( params );
 
-        String  view_value = (params == null ? null : params.get( CommonQueryParams.Key.VIEW ));
-        View  view = (view_value == null ? View.complete : View.valueOf( view_value ));
-        params.remove( CommonQueryParams.Key.VIEW );
+        QueryResults<?>  results = null;
         if (view == View.id) {
-            results = _findResourceOvalId( DefinitionType.class, params );
-//            results = _findResourceId( DefinitionType.class, params );
+            results = _getOvalRepository().findDefinitionId( params );
         } else if (view == View.count) {
-            results = _findResourceCount( DefinitionType.class, params );
+            long  count = _getOvalRepository().countDefinition( params );
+            results = new QueryResults<Void>();
+            results.setTotalResults( count );
         } else {
-            results = _findResource( DefinitionType.class, params );
+            results = _getOvalRepository().findDefinition( params );
         }
 
         return results;
     }
-// BACKUP
-//    public @ResponseBody QueryResults<DefinitionType> findDefinition(
-//                    final DefinitionQueryParams params
-//                    )
-//    {
-//        return _findResource( DefinitionType.class, params );
-//    }
 
-
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/repository/definitions/id"
-//                    ,headers="Accept=application/xml"
-//                    )
-//    public @ResponseBody QueryResults<String> findDefinitionId(
-//                    final DefinitionQueryParams params
-//                    )
-//    {
-//        return _findResourceId( DefinitionType.class, params );
-//    }
-//
-//
-//
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/repository/definitions/count"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody QueryResults<Long> countDefinition(
-//                    final DefinitionQueryParams params
-//                    )
-//    {
-//        return _findResourceCount( DefinitionType.class, params );
-//    }
 
 
     // POST (create)
-
 
 
 
@@ -536,10 +512,6 @@ public class OvalDefinitionRepositoryController
     //********************************************************************
 
     // GET: fetch one by ID
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/tests/{id:.*}"
@@ -549,16 +521,17 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( TestType.class, id );
+        DefinitionsElement  e = _getOvalRepository().findElementById( id );
+        if (TestType.class.isInstance( e )) {
+            return TestType.class.cast( e );
+        }
+        throw new ObjectNotFoundException( id );
+//        return _findResourceById( TestType.class, id );
     }
 
 
 
     // GET: fetch one by ID
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/objects/{id:.*}"
@@ -568,16 +541,17 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( SystemObjectType.class, id );
+        DefinitionsElement  e = _getOvalRepository().findElementById( id );
+        if (SystemObjectType.class.isInstance( e )) {
+            return SystemObjectType.class.cast( e );
+        }
+        throw new ObjectNotFoundException( id );
+//        return _findResourceById( SystemObjectType.class, id );
     }
 
 
 
     // GET: fetch one by ID
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/states/{id:.*}"
@@ -587,16 +561,17 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( StateType.class, id );
+        DefinitionsElement  e = _getOvalRepository().findElementById( id );
+        if (StateType.class.isInstance( e )) {
+            return StateType.class.cast( e );
+        }
+        throw new ObjectNotFoundException( id );
+//        return _findResourceById( StateType.class, id );
     }
 
 
 
     // GET: fetch one by ID
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/variables/{id:.*}"
@@ -606,7 +581,12 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( VariableType.class, id );
+        DefinitionsElement  e = _getOvalRepository().findElementById( id );
+        if (VariableType.class.isInstance( e )) {
+            return VariableType.class.cast( e );
+        }
+        throw new ObjectNotFoundException( id );
+//        return _findResourceById( VariableType.class, id );
     }
 
 
@@ -617,10 +597,6 @@ public class OvalDefinitionRepositoryController
 
     // GET: fetch one by ID
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/fa54fd0a-2b71-4d6a-a17c-d1f123a74c2b"
-    /**
-     *
-     * @throws  OvalException
-     */
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/repository/oval_definitions/{id:.*}"
@@ -630,7 +606,8 @@ public class OvalDefinitionRepositoryController
                     @PathVariable final String id
                     )
     {
-        return _findResourceById( OvalDefinitions.class, id );
+        return _getOvalRepository().findOvalDefinitionsById( id );
+//        return _findResourceById( OvalDefinitions.class, id );
     }
 
 
@@ -668,54 +645,47 @@ public class OvalDefinitionRepositoryController
 
 
 
-    // POST (create):
-    //
-    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
-    /**
-     *
-     * @throws  OvalException
-     */
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/repository/oval_definitions"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> createOvalDefinitions(
-                    @RequestBody final OvalDefinitions oval_definitions,
-                    final HttpServletRequest request
-                    )
-    {
-        return _saveResource( request, OvalDefinitions.class, oval_definitions );
-    }
+//    // POST (create):
+//    //
+//    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/six-oval/repository/oval_definitions
+//    @RequestMapping(
+//                    method=RequestMethod.POST
+//                    ,value="/repository/oval_definitions"
+//                    ,headers="Content-Type=application/xml"
+//    )
+//    public ResponseEntity<Void> createOvalDefinitions(
+//                    @RequestBody final OvalDefinitions oval_definitions,
+//                    final HttpServletRequest request
+//                    )
+//    {
+////        return _getOvalDefinitionRepository().saveOvalDefinitions( oval_definitions );
+//        return _saveResource( request, OvalDefinitions.class, oval_definitions );
+//    }
 
 
 
-    // POST: generate
-    //
-    // test: curl -v -X POST -HContent-Type:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/generate?searchTerm=win-def:file"
-    /**
-     *
-     * @throws  OvalException
-     */
-    @RequestMapping(
-                    method=RequestMethod.POST
-                    ,value="/repository/oval_definitions/generate"
-                    ,headers="Content-Type=application/xml"
-    )
-    public ResponseEntity<Void> generateOvalDefinitions(
-                    final DefinitionQueryParams params,
-                    final HttpServletRequest request
-                    )
-    {
-        String  id = _getGenerator().generateByQuery( params );
-        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
-
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( locationUri );
-        _LOG_.debug( "HTTP response headers=" + headers );
-
-        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
-    }
+//    // POST: generate
+//    //
+//    // test: curl -v -X POST -HContent-Type:application/xml "http://localhost:8080/six-oval/repository/oval_definitions/generate?searchTerm=win-def:file"
+//    @RequestMapping(
+//                    method=RequestMethod.POST
+//                    ,value="/repository/oval_definitions/generate"
+//                    ,headers="Content-Type=application/xml"
+//    )
+//    public ResponseEntity<Void> generateOvalDefinitions(
+//                    final DefinitionQueryParams params,
+//                    final HttpServletRequest request
+//                    )
+//    {
+//        String  id = _getGenerator().generateByQuery( params );
+//        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
+//
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setLocation( locationUri );
+//        _LOG_.debug( "HTTP response headers=" + headers );
+//
+//        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+//    }
 
 }
 //
