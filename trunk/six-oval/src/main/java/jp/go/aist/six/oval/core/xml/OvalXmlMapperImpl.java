@@ -18,9 +18,8 @@
  */
 package jp.go.aist.six.oval.core.xml;
 
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 import jp.go.aist.six.util.core.xml.castor.CastorXmlMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 
@@ -28,23 +27,16 @@ import org.slf4j.LoggerFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalXmlMapper.java 3006 2013-02-12 09:25:26Z nakamura5akihito@gmail.com $
  */
-public class OvalXmlMapper
+public class OvalXmlMapperImpl
     extends CastorXmlMapper
+    implements OvalXmlMapper
 {
-
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalXmlMapper.class );
-
-
 
     /**
      * Constructor.
      */
-    public OvalXmlMapper()
+    public OvalXmlMapperImpl()
     {
-        _LOG_.trace( "instantiated" );
     }
 
 }
