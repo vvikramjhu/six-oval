@@ -32,7 +32,6 @@ import com.github.jmkgreen.morphia.dao.DAO;
  */
 public class DefinitionDAO
     extends DefinitionsElementDAO<DefinitionType>
-//extends BasicDAO<DefinitionType, String>
 {
 
     /**
@@ -46,9 +45,9 @@ public class DefinitionDAO
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  DAO
-    //**************************************************************
+    //*********************************************************************
 
     @Override
     public Key<DefinitionType> save(
@@ -63,5 +62,5 @@ public class DefinitionDAO
     }
 
 }
-//DefinitionDAO
+//
 

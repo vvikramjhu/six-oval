@@ -18,8 +18,8 @@
  */
 package jp.go.aist.six.oval.core.repository.morphia.variables;
 
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.variables.VariableType;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
 
 
@@ -42,5 +42,5 @@ public class VariableDAO
     }
 
 }
-//VariableDAO
+//
 

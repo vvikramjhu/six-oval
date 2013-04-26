@@ -29,7 +29,6 @@ import com.github.jmkgreen.morphia.Datastore;
  */
 public class SystemObjectDAO
     extends DefinitionsElementDAO<SystemObjectType>
-//    extends OvalEntityDAO<SystemObjectType>
 {
 
     /**
@@ -42,5 +41,5 @@ public class SystemObjectDAO
     }
 
 }
-// SystemObjectDAO
+//
 

@@ -18,8 +18,8 @@
  */
 package jp.go.aist.six.oval.core.repository.morphia.definitions;
 
-import jp.go.aist.six.oval.core.repository.morphia.BaseDAO;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.util.core.repository.morphia.BaseDAO;
 import com.github.jmkgreen.morphia.Datastore;
 
 
@@ -41,12 +41,6 @@ public class DefinitionsElementDAO<T extends DefinitionsElement>
     {
         super( type, ds );
     }
-
-
-
-    //**************************************************************
-    //  DAO
-    //**************************************************************
 
 }
 //

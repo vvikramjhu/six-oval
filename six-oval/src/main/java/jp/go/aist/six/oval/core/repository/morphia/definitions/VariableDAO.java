@@ -29,7 +29,6 @@ import com.github.jmkgreen.morphia.Datastore;
  */
 public class VariableDAO
     extends DefinitionsElementDAO<VariableType>
-//    extends OvalEntityDAO<VariableType>
 {
 
     /**
@@ -42,5 +41,5 @@ public class VariableDAO
     }
 
 }
-// VariableDAO
+//
 
