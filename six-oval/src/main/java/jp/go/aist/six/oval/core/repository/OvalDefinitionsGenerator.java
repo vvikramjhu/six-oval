@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -78,7 +78,7 @@ public class OvalDefinitionsGenerator
             OvalDefinitions  doc = _getDatastore().findById( OvalDefinitions.class, doc_id );
 
             System.out.println( "saving OvalDefinitions document...: file=" + filepath );
-            XmlMapper  xml_mapper = OvalContext.getServerInstance().getXmlMapper();
+            XmlMapper  xml_mapper = SixOvalContext.getServerInstance().getXmlMapper();
             xml_mapper.marshal( doc, new FileWriter( new File( filepath ) ) );
         }
     }
@@ -133,7 +133,7 @@ public class OvalDefinitionsGenerator
     private static OvalDatabase _getDatastore()
     {
         if (_DATASTORE_ == null) {
-            _DATASTORE_ = OvalContext.getServerInstance().getDatabase();
+            _DATASTORE_ = SixOvalContext.getServerInstance().getDatabase();
         }
 
         return _DATASTORE_;

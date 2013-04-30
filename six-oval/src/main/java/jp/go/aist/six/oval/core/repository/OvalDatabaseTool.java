@@ -25,7 +25,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -140,7 +140,7 @@ public class OvalDatabaseTool
     private static OvalDatabase _getDatabase()
     {
         if (_DATABASE_ == null) {
-            _DATABASE_ = OvalContext.getServerInstance().getDatabase();
+            _DATABASE_ = SixOvalContext.getServerInstance().getDatabase();
         }
 
         return _DATABASE_;
@@ -150,7 +150,7 @@ public class OvalDatabaseTool
     private static XmlMapper _getXmlMapper()
     {
         if (_XML_MAPPER_ == null) {
-            _XML_MAPPER_ = OvalContext.getServerInstance().getXmlMapper();
+            _XML_MAPPER_ = SixOvalContext.getServerInstance().getXmlMapper();
         }
 
         return _XML_MAPPER_;

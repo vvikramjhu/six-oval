@@ -2,7 +2,7 @@ package jp.go.aist.six.oval.core.interpreter;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.interpreter.Options;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
@@ -83,7 +83,7 @@ public class NetworkingOvaldiProxyTest
                         final Options options
                         )
         {
-            OvalContext  context = OvalContext.getInstance();
+            SixOvalContext  context = SixOvalContext.getInstance();
 
             NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
             ovaldi.setExecutablePath( context.getProperty( OvaldiConfig.EXECUTABLE ) );

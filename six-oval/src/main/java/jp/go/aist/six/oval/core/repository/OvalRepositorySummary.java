@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -66,7 +66,7 @@ public class OvalRepositorySummary
     public OvalRepositorySummary()
     throws Exception
     {
-        _oval_repository = OvalContext.getServerInstance().getRepository();
+        _oval_repository = SixOvalContext.getServerInstance().getRepository();
 //        _oval_repository = OvalContext.getServerInstance().getBean( OvalRepositoryImpl.class );
     }
 

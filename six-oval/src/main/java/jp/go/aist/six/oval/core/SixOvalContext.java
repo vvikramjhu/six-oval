@@ -28,12 +28,12 @@ import jp.go.aist.six.util.xml.XmlMapper;
 
 
 /**
- * Application Context using Spring Framework.
+ * Application Context using the Spring Framework.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalContext
+public abstract class SixOvalContext
     extends SpringContext
 {
 
@@ -55,7 +55,7 @@ public abstract class OvalContext
      * @return
      *  the default context.
      */
-    public static synchronized OvalContext getInstance()
+    public static synchronized SixOvalContext getInstance()
     {
         if (_BASIC_ == null) {
             _BASIC_ = new OvalBasicContext();
@@ -93,12 +93,12 @@ public abstract class OvalContext
     /**
      * Constructor.
      */
-    protected OvalContext()
+    protected SixOvalContext()
     {
     }
 
 
-    protected OvalContext(
+    protected SixOvalContext(
                     final String config_location
                     )
     {
@@ -153,7 +153,7 @@ public abstract class OvalContext
     /**
      */
     public static class OvalBasicContext
-    extends OvalContext
+    extends SixOvalContext
     {
         public static final String  CONTEXT_PATH
         = "jp/go/aist/six/oval/core/six-oval_context-basic.xml";
@@ -186,7 +186,7 @@ public abstract class OvalContext
     /**
      */
     public static class OvalServerContext
-    extends OvalContext
+    extends SixOvalContext
     {
         public static final String  CONTEXT_PATH
         = "jp/go/aist/six/oval/core/six-oval_context-server.xml";

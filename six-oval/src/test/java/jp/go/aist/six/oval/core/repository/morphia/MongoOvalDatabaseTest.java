@@ -2,7 +2,7 @@ package jp.go.aist.six.oval.core.repository.morphia;
 
 import java.io.File;
 import java.io.FileInputStream;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.variables.OvalVariables;
@@ -58,7 +58,7 @@ public class MongoOvalDatabaseTest
         public void setUp()
         throws Exception
         {
-            OvalContext  context = OvalContext.getServerInstance();
+            SixOvalContext  context = SixOvalContext.getServerInstance();
             _xml_mapper = context.getXmlMapper();
             _database = context.getBean( MongoOvalDatabase.class );
         }
