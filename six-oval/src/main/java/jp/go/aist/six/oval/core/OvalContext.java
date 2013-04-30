@@ -19,7 +19,7 @@
 package jp.go.aist.six.oval.core;
 
 import jp.go.aist.six.oval.core.repository.OvalRepositoryImpl;
-import jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient;
+import jp.go.aist.six.oval.core.web.HttpOvalRepositoryClient;
 import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.core.config.spring.SpringContext;

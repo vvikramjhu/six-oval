@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.core.repository.web;
+package jp.go.aist.six.oval.core.web;
 
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.results.OvalResults;
