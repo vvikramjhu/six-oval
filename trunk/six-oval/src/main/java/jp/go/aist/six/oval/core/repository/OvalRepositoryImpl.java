@@ -22,7 +22,6 @@ import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepository;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.repository.QueryParams;
 import jp.go.aist.six.util.repository.QueryResults;
 
@@ -56,21 +55,15 @@ public class OvalRepositoryImpl
 
 
 
-    //**************************************************************
+    //*********************************************************************
     //  OvalResultsRepository
-    //**************************************************************
+    //*********************************************************************
 
     public OvalResults findOvalResultsById(
                     final String id
                     )
     {
-        OvalResults  p_object = null;
-        try {
-            p_object = _getDatabase().findById( OvalResults.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        OvalResults  p_object = _getDatastore().findById( OvalResults.class, id );
         return p_object;
     }
 
@@ -78,13 +71,7 @@ public class OvalRepositoryImpl
 
     public QueryResults<OvalResults> findOvalResults()
     {
-        List<OvalResults>  p_list = null;
-        try {
-            p_list = _getDatabase().find( OvalResults.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<OvalResults>  p_list = _getDatastore().find( OvalResults.class );
         return new QueryResults<OvalResults>( p_list );
     }
 
@@ -94,13 +81,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<OvalResults>  p_list = null;
-        try {
-            p_list = _getDatabase().find( OvalResults.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<OvalResults>  p_list = _getDatastore().find( OvalResults.class, params );
         return new QueryResults<OvalResults>( p_list );
     }
 
@@ -108,14 +89,7 @@ public class OvalRepositoryImpl
 
     public QueryResults<String> findOvalResultsId()
     {
-        List<String>  list = null;
-        try {
-            list = _getDatabase().findId( OvalResults.class );
-//            keys = dao.findIds(); // this code does NOT work. why???
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  list = _getDatastore().findId( OvalResults.class );
         return new QueryResults<String>( list );
     }
 
@@ -125,13 +99,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( OvalResults.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( OvalResults.class, params );
         return new QueryResults<String>( p_list );
     }
 
@@ -139,13 +107,7 @@ public class OvalRepositoryImpl
 
     public long countOvalResults()
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( OvalResults.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( OvalResults.class );
         return count;
     }
 
@@ -155,13 +117,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( OvalResults.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( OvalResults.class, params );
         return count;
     }
 
@@ -171,13 +127,7 @@ public class OvalRepositoryImpl
                     final OvalResults oval_results
                     )
     {
-        String  id = null;
-        try {
-            id = _getDatabase().save( OvalResults.class, oval_results );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        String  id = _getDatastore().save( OvalResults.class, oval_results );
         return id;
     }
 
@@ -191,13 +141,7 @@ public class OvalRepositoryImpl
                     final String id
                     )
     {
-        OvalSystemCharacteristics  p_object = null;
-        try {
-            p_object = _getDatabase().findById( OvalSystemCharacteristics.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        OvalSystemCharacteristics  p_object = _getDatastore().findById( OvalSystemCharacteristics.class, id );
         return p_object;
     }
 
@@ -205,13 +149,7 @@ public class OvalRepositoryImpl
 
     public QueryResults<OvalSystemCharacteristics> findOvalSystemCharacteristics()
     {
-        List<OvalSystemCharacteristics>  p_list = null;
-        try {
-            p_list = _getDatabase().find( OvalSystemCharacteristics.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<OvalSystemCharacteristics>  p_list = _getDatastore().find( OvalSystemCharacteristics.class );
         return new QueryResults<OvalSystemCharacteristics>( p_list );
     }
 
@@ -221,13 +159,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<OvalSystemCharacteristics>  p_list = null;
-        try {
-            p_list = _getDatabase().find( OvalSystemCharacteristics.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<OvalSystemCharacteristics>  p_list = _getDatastore().find( OvalSystemCharacteristics.class, params );
         return new QueryResults<OvalSystemCharacteristics>( p_list );
     }
 
@@ -235,13 +167,7 @@ public class OvalRepositoryImpl
 
     public QueryResults<String> findOvalSystemCharacteristicsId()
     {
-        List<String>  list = null;
-        try {
-            list = _getDatabase().findId( OvalSystemCharacteristics.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  list = _getDatastore().findId( OvalSystemCharacteristics.class );
         return new QueryResults<String>( list );
     }
 
@@ -251,13 +177,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( OvalSystemCharacteristics.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( OvalSystemCharacteristics.class, params );
         return new QueryResults<String>( p_list );
     }
 
@@ -265,13 +185,7 @@ public class OvalRepositoryImpl
 
     public long countOvalSystemCharacteristics()
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( OvalSystemCharacteristics.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( OvalSystemCharacteristics.class );
         return count;
     }
 
@@ -281,13 +195,7 @@ public class OvalRepositoryImpl
                     final QueryParams params
                     )
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( OvalSystemCharacteristics.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( OvalSystemCharacteristics.class, params );
         return count;
     }
 
@@ -297,13 +205,7 @@ public class OvalRepositoryImpl
                     final OvalSystemCharacteristics oval_sc
                     )
     {
-        String  id = null;
-        try {
-            id = _getDatabase().save( OvalSystemCharacteristics.class, oval_sc );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        String  id = _getDatastore().save( OvalSystemCharacteristics.class, oval_sc );
         return id;
     }
 

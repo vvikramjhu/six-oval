@@ -30,12 +30,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
-import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.repository.CommonQueryParams;
+import jp.go.aist.six.util.repository.Datastore;
 import jp.go.aist.six.util.repository.QueryParams;
 import jp.go.aist.six.util.repository.QueryResults;
+import jp.go.aist.six.util.repository.RepositoryException;
 
 
 
@@ -57,7 +57,7 @@ public class OvalDefinitionRepositoryImpl
 
 
 
-    private OvalDatabase  _database;
+    private Datastore  _datastore;
 
 
 
@@ -73,17 +73,17 @@ public class OvalDefinitionRepositoryImpl
     /**
      *
      */
-    public void setDatabase(
-                    final OvalDatabase datastore
+    public void setDatastore(
+                    final Datastore datastore
                     )
     {
-        _database = datastore;
+        _datastore = datastore;
     }
 
 
-    protected OvalDatabase _getDatabase()
+    protected Datastore _getDatastore()
     {
-        return _database;
+        return _datastore;
     }
 
 
@@ -136,32 +136,29 @@ public class OvalDefinitionRepositoryImpl
                     final String oval_id
                     )
     {
-//        long  ts_start = System.currentTimeMillis();
-
-        DefinitionType  p_object = null;
-        try {
-            p_object = _getDatabase().findById( DefinitionType.class, oval_id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        DefinitionType  p_object = _getDatastore().findById( DefinitionType.class, oval_id );
         return p_object;
     }
+//    {
+////      long  ts_start = System.currentTimeMillis();
+//
+//      DefinitionType  p_object = null;
+//      try {
+//          p_object = _getDatabase().findById( DefinitionType.class, oval_id );
+//      } catch (Exception ex) {
+//          throw new OvalRepositoryException( ex );
+//      }
+//
+////      _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//      return p_object;
+//  }
 
 
 
     public QueryResults<DefinitionType> findDefinition()
     {
-        List<DefinitionType>  p_list = null;
-        try {
-            p_list = _getDatabase().find( DefinitionType.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<DefinitionType>  p_list = _getDatastore().find( DefinitionType.class );
         return new QueryResults<DefinitionType>( p_list );
-//        return p_list;
     }
 
 
@@ -170,13 +167,7 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<DefinitionType>  p_list = null;
-        try {
-            p_list = _getDatabase().find( DefinitionType.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<DefinitionType>  p_list = _getDatastore().find( DefinitionType.class, params );
         return new QueryResults<DefinitionType>( p_list );
     }
 
@@ -184,13 +175,7 @@ public class OvalDefinitionRepositoryImpl
 
     public QueryResults<String> findDefinitionId()
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( DefinitionType.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( DefinitionType.class );
         return new QueryResults<String>( p_list );
     }
 
@@ -200,13 +185,7 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( DefinitionType.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( DefinitionType.class, params );
         return new QueryResults<String>( p_list );
     }
 
@@ -214,13 +193,7 @@ public class OvalDefinitionRepositoryImpl
 
     public long countDefinition()
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( DefinitionType.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( DefinitionType.class );
         return count;
     }
 
@@ -230,13 +203,7 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( DefinitionType.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( DefinitionType.class, params );
         return count;
     }
 
@@ -246,13 +213,7 @@ public class OvalDefinitionRepositoryImpl
                     final DefinitionType def
                     )
     {
-        String  p_id = null;
-        try {
-            p_id = _getDatabase().save( DefinitionType.class, def );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        String  p_id = _getDatastore().save( DefinitionType.class, def );
         return p_id;
     }
 
@@ -267,15 +228,7 @@ public class OvalDefinitionRepositoryImpl
                     )
     {
         Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( oval_id );
-        DefinitionsElement p_object = null;
-        try {
-            p_object = _getDatabase().findById( objectType, oval_id );
-        } catch (OvalRepositoryException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        DefinitionsElement p_object = _getDatastore().findById( objectType, oval_id );
         return p_object;
     }
 
@@ -285,43 +238,37 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<DefinitionsElement>  p_list = null;
-        try {
-            QueryParams  adjustedParams = null;
-            if (params == null) {
-                adjustedParams = new QueryParams();
-            } else {
+        QueryParams  adjustedParams = null;
+        if (params == null) {
+            adjustedParams = new QueryParams();
+        } else {
+            try {
                 adjustedParams = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                throw new RepositoryException( ex );
             }
-            String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
+        }
+        String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
 
-            List<? extends DefinitionsElement>  p_sub_list = null;
-            if (type == null) {
-                p_list = new ArrayList<DefinitionsElement>();
-                p_sub_list = _getDatabase().find( DefinitionType.class,   adjustedParams );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().find( TestType.class,         adjustedParams );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().find( SystemObjectType.class, adjustedParams );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().find( StateType.class,        adjustedParams );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().find( VariableType.class,     adjustedParams );
-                p_list.addAll( p_sub_list );
-            } else {
-                adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
-                try {
-                    p_sub_list = _getDatabase().find( java_type, adjustedParams );
-                    p_list = new ArrayList<DefinitionsElement>( p_sub_list );
-                } catch (Exception ex) {
-                    throw new OvalRepositoryException( ex );
-                }
-            }
-        } catch (OvalRepositoryException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
+        List<DefinitionsElement>  p_list = null;
+        List<? extends DefinitionsElement>  p_sub_list = null;
+        if (type == null) {
+            p_list = new ArrayList<DefinitionsElement>();
+            p_sub_list = _getDatastore().find( DefinitionType.class,   adjustedParams );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().find( TestType.class,         adjustedParams );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().find( SystemObjectType.class, adjustedParams );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().find( StateType.class,        adjustedParams );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().find( VariableType.class,     adjustedParams );
+            p_list.addAll( p_sub_list );
+        } else {
+            adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
+            Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
+            p_sub_list = _getDatastore().find( java_type, adjustedParams );
+            p_list = new ArrayList<DefinitionsElement>( p_sub_list );
         }
 
         return new QueryResults<DefinitionsElement>( p_list );
@@ -344,42 +291,36 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<String>  p_list = null;
-        try {
-            QueryParams  adjusted_params = null;
-            if (params == null) {
-                adjusted_params = new QueryParams();
-            } else {
+        QueryParams  adjusted_params = null;
+        if (params == null) {
+            adjusted_params = new QueryParams();
+        } else {
+            try {
                 adjusted_params = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                throw new RepositoryException( ex );
             }
-            String  element_type = adjusted_params.get( DefinitionsElementQueryParams.Key.TYPE );
+        }
+        String  element_type = adjusted_params.get( DefinitionsElementQueryParams.Key.TYPE );
 
-            if (element_type == null) {
-                p_list = new ArrayList<String>();
-                List<String>  p_sub_list = null;
-                p_sub_list = _getDatabase().findId( DefinitionType.class,   adjusted_params );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().findId( TestType.class,         adjusted_params );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().findId( SystemObjectType.class, adjusted_params );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().findId( StateType.class,        adjusted_params );
-                p_list.addAll( p_sub_list );
-                p_sub_list = _getDatabase().findId( VariableType.class,     adjusted_params );
-                p_list.addAll( p_sub_list );
-            } else {
-                adjusted_params.remove( DefinitionsElementQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( element_type ) );
-                try {
-                    p_list = _getDatabase().findId( java_type, adjusted_params );
-                } catch (Exception ex) {
-                    throw new OvalRepositoryException( ex );
-                }
-            }
-        } catch (OvalRepositoryException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
+        List<String>  p_list = null;
+        if (element_type == null) {
+            p_list = new ArrayList<String>();
+            List<String>  p_sub_list = null;
+            p_sub_list = _getDatastore().findId( DefinitionType.class,   adjusted_params );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().findId( TestType.class,         adjusted_params );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().findId( SystemObjectType.class, adjusted_params );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().findId( StateType.class,        adjusted_params );
+            p_list.addAll( p_sub_list );
+            p_sub_list = _getDatastore().findId( VariableType.class,     adjusted_params );
+            p_list.addAll( p_sub_list );
+        } else {
+            adjusted_params.remove( DefinitionsElementQueryParams.Key.TYPE );
+            Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( ElementType.fromValue( element_type ) );
+            p_list = _getDatastore().findId( java_type, adjusted_params );
         }
 
         return new QueryResults<String>( p_list );
@@ -393,45 +334,36 @@ public class OvalDefinitionRepositoryImpl
                     )
     {
         long  p_count = 0L;
-        try {
-            QueryParams  adjustedParams = null;
-            if (params == null) {
-                adjustedParams = new QueryParams();
-            } else {
+        QueryParams  adjustedParams = null;
+        if (params == null) {
+            adjustedParams = new QueryParams();
+        } else {
+            try {
                 adjustedParams = QueryParams.class.cast( params.clone() );
+            } catch (CloneNotSupportedException ex) {
+                throw new RepositoryException( ex );
             }
-            String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
+        }
+        String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
 
-            if (type == null) {
-                long  p_sub_count = 0L;
-                p_sub_count = _getDatabase().count( DefinitionType.class,   adjustedParams );
-                p_count += p_sub_count;
-                p_sub_count = _getDatabase().count( TestType.class,         adjustedParams );
-                p_count += p_sub_count;
-                p_sub_count = _getDatabase().count( SystemObjectType.class, adjustedParams );
-                p_count += p_sub_count;
-                p_sub_count = _getDatabase().count( StateType.class,        adjustedParams );
-                p_count += p_sub_count;
-                p_sub_count = _getDatabase().count( VariableType.class,     adjustedParams );
-                p_count += p_sub_count;
-            } else {
-                adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
-//                Class<? extends DefinitionsElement>  objectType = EntityUtil.objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
-//                Class<? extends DefinitionsElement>  objectType = _toObjectType( DefinitionsElement.Type.fromValue( type ) );
-                try {
-                    p_count = _getDatabase().count( objectType, adjustedParams );
-                } catch (Exception ex) {
-                    throw new OvalRepositoryException( ex );
-                }
-            }
-        } catch (OvalRepositoryException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
+        if (type == null) {
+            long  p_sub_count = 0L;
+            p_sub_count = _getDatastore().count( DefinitionType.class,   adjustedParams );
+            p_count += p_sub_count;
+            p_sub_count = _getDatastore().count( TestType.class,         adjustedParams );
+            p_count += p_sub_count;
+            p_sub_count = _getDatastore().count( SystemObjectType.class, adjustedParams );
+            p_count += p_sub_count;
+            p_sub_count = _getDatastore().count( StateType.class,        adjustedParams );
+            p_count += p_sub_count;
+            p_sub_count = _getDatastore().count( VariableType.class,     adjustedParams );
+            p_count += p_sub_count;
+        } else {
+            adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
+            Class<? extends DefinitionsElement>  objectType = EntityUtil.javaTypeOf( ElementType.fromValue( type ) );
+            p_count = _getDatastore().count( objectType, adjustedParams );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_count;
     }
 
@@ -443,20 +375,16 @@ public class OvalDefinitionRepositoryImpl
     {
         ElementType  type = element.ovalGetType();
         String  id = null;
-        try {
-            if (ElementType.DEFINITION == type) {
-                id = _getDatabase().save(   DefinitionType.class,   DefinitionType.class.cast( element ) );
-            } else if (ElementType.TEST == type) {
-                id = _getDatabase().save(         TestType.class,         TestType.class.cast( element ) );
-            } else if (ElementType.OBJECT == type) {
-                id = _getDatabase().save( SystemObjectType.class, SystemObjectType.class.cast( element ) );
-            } else if (ElementType.STATE == type) {
-                id = _getDatabase().save(        StateType.class,        StateType.class.cast( element ) );
-            } else if (ElementType.VARIABLE == type) {
-                id = _getDatabase().save(     VariableType.class,     VariableType.class.cast( element ) );
-            }
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
+        if (ElementType.DEFINITION == type) {
+            id = _getDatastore().save(   DefinitionType.class,   DefinitionType.class.cast( element ) );
+        } else if (ElementType.TEST == type) {
+            id = _getDatastore().save(         TestType.class,         TestType.class.cast( element ) );
+        } else if (ElementType.OBJECT == type) {
+            id = _getDatastore().save( SystemObjectType.class, SystemObjectType.class.cast( element ) );
+        } else if (ElementType.STATE == type) {
+            id = _getDatastore().save(        StateType.class,        StateType.class.cast( element ) );
+        } else if (ElementType.VARIABLE == type) {
+            id = _getDatastore().save(     VariableType.class,     VariableType.class.cast( element ) );
         }
 
         return id;
@@ -472,13 +400,7 @@ public class OvalDefinitionRepositoryImpl
                     final String id
                     )
     {
-        OvalDefinitions  p_object = null;
-        try {
-            p_object = _getDatabase().findById( OvalDefinitions.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        OvalDefinitions  p_object = _getDatastore().findById( OvalDefinitions.class, id );
         return p_object;
     }
 
@@ -486,13 +408,7 @@ public class OvalDefinitionRepositoryImpl
 
     public QueryResults<String> findOvalDefinitionsId()
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( OvalDefinitions.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( OvalDefinitions.class );
         return new QueryResults<String>( p_list );
     }
 
@@ -502,13 +418,7 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        List<String>  p_list = null;
-        try {
-            p_list = _getDatabase().findId( OvalDefinitions.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        List<String>  p_list = _getDatastore().findId( OvalDefinitions.class, params );
         return new QueryResults<String>( p_list );
     }
 
@@ -516,13 +426,7 @@ public class OvalDefinitionRepositoryImpl
 
     public long countOvalDefinitions()
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( OvalDefinitions.class );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( OvalDefinitions.class );
         return count;
     }
 
@@ -532,13 +436,7 @@ public class OvalDefinitionRepositoryImpl
                     final QueryParams params
                     )
     {
-        long  count = 0L;
-        try {
-            count = _getDatabase().count( DefinitionType.class, params );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        long  count = _getDatastore().count( DefinitionType.class, params );
         return count;
     }
 
@@ -548,13 +446,7 @@ public class OvalDefinitionRepositoryImpl
                     final OvalDefinitions oval_defs
                     )
     {
-        String  id = null;
-        try {
-            id = _getDatabase().save( OvalDefinitions.class, oval_defs );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
+        String  id = _getDatastore().save( OvalDefinitions.class, oval_defs );
         return id;
     }
 

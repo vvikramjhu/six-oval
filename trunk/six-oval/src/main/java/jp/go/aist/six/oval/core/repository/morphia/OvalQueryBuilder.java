@@ -65,6 +65,15 @@ public class OvalQueryBuilder
 
 
 
+    /**
+     * Constructor.
+     */
+    protected OvalQueryBuilder()
+    {
+    }
+
+
+
     //*********************************************************************
     //  implements QueryBuilderFactory
     //*********************************************************************
@@ -88,16 +97,6 @@ public class OvalQueryBuilder
 
 
 
-    /**
-     * Constructor.
-     */
-    protected OvalQueryBuilder()
-    {
-    }
-
-
-
-
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -106,40 +105,31 @@ public class OvalQueryBuilder
     ///////////////////////////////////////////////////////////////////////
 
 
-    /**
-     * A factory method.
-     */
-    public static QueryBuilder getInstance(
-                    final Class<?> type
-                    )
-    {
-        if (DefinitionType.class.isAssignableFrom( type )) {
-            return DefinitionBuilder.INSTANCE;
-        } else if (DefinitionsElement.class.isAssignableFrom( type )) {
-            return DefinitionsElementBuilder.INSTANCE;
-        } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
-            return OvalSystemCharacteristicsBuilder.INSTANCE;
-        } else if (OvalResults.class.isAssignableFrom( type )) {
-            return OvalResultsBuilder.INSTANCE;
-        }
-
-        return CommonBuilder.INSTANCE;
-    }
-
+//    /**
+//     * A factory method.
+//     */
+//    public static QueryBuilder getInstance(
+//                    final Class<?> type
+//                    )
+//    {
+//        if (DefinitionType.class.isAssignableFrom( type )) {
+//            return DefinitionBuilder.INSTANCE;
+//        } else if (DefinitionsElement.class.isAssignableFrom( type )) {
+//            return DefinitionsElementBuilder.INSTANCE;
+//        } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
+//            return OvalSystemCharacteristicsBuilder.INSTANCE;
+//        } else if (OvalResults.class.isAssignableFrom( type )) {
+//            return OvalResultsBuilder.INSTANCE;
+//        }
+//
+//        return CommonBuilder.INSTANCE;
+//    }
 
 
 
     ///////////////////////////////////////////////////////////////////////
-    //  template methods
-    ///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-    //**************************************************************
     //  Handler variations
-    //**************************************************************
+    ///////////////////////////////////////////////////////////////////////
 
     protected static class BooleanHandler
     implements Handler
@@ -297,7 +287,7 @@ public class OvalQueryBuilder
         }
 
     }
-    //DefinitionsElementBuilder
+    //DefinitionsElement
 
 
 
@@ -372,7 +362,7 @@ public class OvalQueryBuilder
         }
 
     }
-    //DefinitionBuilder
+    //Definition
 
 
 
@@ -441,7 +431,7 @@ public class OvalQueryBuilder
         }
 
     }
-    //OvalSystemCharacteristicsBuilder
+    //OvalSystemCharacteristics
 
 
 
@@ -540,7 +530,7 @@ public class OvalQueryBuilder
         }
 
     }
-    //OvalResultsBuilder
+    //OvalResults
 
 }
 //
