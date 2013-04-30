@@ -66,7 +66,7 @@ public class OvalRepositorySummary
     public OvalRepositorySummary()
     throws Exception
     {
-        _oval_repository = SixOvalContext.getServerInstance().getRepository();
+        _oval_repository = SixOvalContext.repository().getRepository();
 //        _oval_repository = OvalContext.getServerInstance().getBean( OvalRepositoryImpl.class );
     }
 

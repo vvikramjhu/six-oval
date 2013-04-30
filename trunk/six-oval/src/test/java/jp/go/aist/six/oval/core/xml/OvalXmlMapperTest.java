@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
-import jp.go.aist.six.util.xml.XmlMapper;
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 import org.junit.Before;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
@@ -54,7 +54,7 @@ public class OvalXmlMapperTest
         };
 
 
-        private XmlMapper  _xml_mapper = null;
+        private OvalXmlMapper  _xml_mapper = null;
         private File  _tmp_dir = null;
 
 
@@ -65,7 +65,7 @@ public class OvalXmlMapperTest
         public void setUp()
                         throws Exception
         {
-            _xml_mapper = SixOvalContext.getInstance().getXmlMapper();
+            _xml_mapper = SixOvalContext.basic().getXmlMapper();
 
             String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
             _tmp_dir = new File( tmp_dirpath, "six-oval" );
@@ -119,7 +119,7 @@ public class OvalXmlMapperTest
         };
 
 
-        private XmlMapper  _xml_mapper = null;
+        private OvalXmlMapper  _xml_mapper = null;
         private File  _tmp_dir = null;
 
 
@@ -128,7 +128,7 @@ public class OvalXmlMapperTest
         public void setUp()
                         throws Exception
         {
-            _xml_mapper = SixOvalContext.getInstance().getXmlMapper();
+            _xml_mapper = SixOvalContext.basic().getXmlMapper();
 
             String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
             _tmp_dir = new File( tmp_dirpath, "six-oval/test-content" );

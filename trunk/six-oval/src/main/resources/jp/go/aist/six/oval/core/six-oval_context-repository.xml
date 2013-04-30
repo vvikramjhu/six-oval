@@ -3,7 +3,7 @@
 <!-- ////////////////////////////////////////////////////////////////// -->
 <!-- // Project SIX: OVAL                                            // -->
 <!-- //                                                              // -->
-<!-- // Spring Application Context: local                            // -->
+<!-- // Spring Application Context - repository                      // -->
 <!-- ////////////////////////////////////////////////////////////////// -->
 
 <!--
@@ -22,10 +22,14 @@
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/util 
-      http://www.springframework.org/schema/util/spring-util-3.0.xsd
+      http://www.springframework.org/schema/util/spring-util.xsd
       http://www.springframework.org/schema/mvc
-      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
+    <!-- ************************************************************** -->
+    <!-- *  external contexts                                         * -->
+    <!-- ************************************************************** -->
 
     <import resource="six-oval_context-basic.xml"/>
 
@@ -58,7 +62,7 @@
     </bean>
 
 
-    <bean id="morphiaDatastore" 
+    <bean id="morphia-datastore" 
         factory-bean="morphia" 
         factory-method="createDatastore"> 
         <constructor-arg ref="mongo"/> 
@@ -70,51 +74,49 @@
 
 <!-- *** oval-def *** -->
     <bean id="ovalDefinitionsDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.OvalDefinitionsDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="definitionDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.DefinitionDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="testDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.TestDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="systemObjectDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.SystemObjectDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="stateDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.StateDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="defVariableDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.VariableDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
 
     <bean id="definitionsElementAssocDAO" class="jp.go.aist.six.oval.core.repository.morphia.definitions.DefinitionsElementAssocDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
 
 <!-- *** oval-sc *** -->
     <bean id="ovalSystemCharacteristicsDAO" class="jp.go.aist.six.oval.core.repository.morphia.sc.OvalSystemCharacteristicsDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
 
 <!-- *** oval-res *** -->
     <bean id="ovalResultsDAO" class="jp.go.aist.six.oval.core.repository.morphia.results.OvalResultsDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
 
 <!-- *** oval-var *** -->
     <bean id="ovalVariablesDAO" class="jp.go.aist.six.oval.core.repository.morphia.variables.OvalVariablesDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
     <bean id="varVariableDAO" class="jp.go.aist.six.oval.core.repository.morphia.variables.VariableDAO">
-        <constructor-arg ref="morphiaDatastore"/> 
+        <constructor-arg ref="morphia-datastore"/> 
     </bean>
 
 
 
-    <!-- ******************************************************* -->
-
-    <bean id="ovalDatastore" 
+    <bean id="oval-datastore" 
         class="jp.go.aist.six.oval.core.repository.morphia.OvalDatastore"> 
         <property name="DAO">
             <set>
@@ -135,9 +137,9 @@
     </bean>
 
 
-    <bean id="ovalRepository" 
+    <bean id="oval-repository" 
         class="jp.go.aist.six.oval.core.repository.OvalRepositoryImpl">
-        <property name="datastore" ref="ovalDatastore"/>
+        <property name="datastore" ref="oval-datastore"/>
     </bean>
 
 

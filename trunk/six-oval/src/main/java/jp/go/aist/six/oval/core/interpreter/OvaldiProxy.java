@@ -446,7 +446,7 @@ public class OvaldiProxy
 
     public int execute()
     {
-        SixOvalContext  context = SixOvalContext.getInstance();
+        SixOvalContext  context = SixOvalContext.basic();
 
         final ProcessBuilder  builder = _createProcessBuilder( context );
         Process  process = null;

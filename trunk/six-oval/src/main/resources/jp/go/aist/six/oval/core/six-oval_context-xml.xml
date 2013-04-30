@@ -3,7 +3,7 @@
 <!-- /////////////////////////////////////////////////////////// -->
 <!-- // Project SIX: OVAL                                     // -->
 <!-- //                                                       // -->
-<!-- // Spring Application Context                            // -->
+<!-- // Spring Application Context - xml                      // -->
 <!-- /////////////////////////////////////////////////////////// -->
 
 <!--
@@ -22,40 +22,9 @@
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/util 
-      http://www.springframework.org/schema/util/spring-util-3.0.xsd
+      http://www.springframework.org/schema/util/spring-util.xsd
       http://www.springframework.org/schema/mvc
-      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
-
-    <!-- external configurations -->
-    <context:property-placeholder 
-        location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties,classpath:six-oval.properties"
-        ignore-resource-not-found="true"
-        system-properties-mode="OVERRIDE"
-        />
-        <!-- NOTE: 
-        location: Properties defined in later files will override properties defined earlier files, 
-            in case of overlapping keys.
-        system-properties-mode: "override" will check for a system property first, 
-            before trying the specified properties. 
-        -->
-
-
-    <!-- ************************************************************** -->
-    <!-- *  Properties                                                * -->
-    <!-- ************************************************************** -->
-
-    <util:properties id="six-oval-default-properties" 
-        location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
-
-    <util:properties id="six-oval-properties" 
-        location="classpath:six-oval.properties"/>
-
-<!-- DO NOT USE THIS!
-    <context:property-override location="classpath:six-oval.properties"
-        ignore-resource-not-found="true"
-        />
--->
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
     <!-- ************************************************************** -->
@@ -99,6 +68,31 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
         <property name="schemaLocation"
                 value="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"/>
 -->
+<!-- @since Spring 3.1, schemaLocation property supported. -->
+        <property name="schemaLocation"
+            value="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd  
+http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd 
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd 
+http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-variables-5 oval-variables-schema.xsd 
+http://oval.mitre.org/XMLSchema/oval-definitions-5#aix aix-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#esx esx-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#hpux hpux-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#macos macos-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#solaris solaris-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd 
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix aix-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#esx esx-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux hpux-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent independent-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux linux-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos macos-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#solaris solaris-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix unix-system-characteristics-schema.xsd
+http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"/>
 
         <property name="namespaceMappings">
             <map>
@@ -106,6 +100,7 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
                 <entry key="oval"       value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
                 <entry key="oval-def"   value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
                 <entry key="oval-sc"    value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+                <entry key="oval-res"   value="http://oval.mitre.org/XMLSchema/oval-results-5"/>
                 <entry key="opensearch" value="http://a9.com/-/spec/opensearch/1.1/"/>
 
 <!--
@@ -116,7 +111,6 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
             </map>
         </property>
     </bean> 
-
 
     <bean id="oval-xml-transformer" 
        class="jp.go.aist.six.util.xml.XmlTransformer"> 
@@ -131,77 +125,11 @@ Spring 3.0 does NOT support such a property of CastorMarshaller!!!
 -->
     </bean>
 
-
     <bean id="oval-xml-mapper" 
        class="jp.go.aist.six.oval.core.xml.OvalTransformXmlMapper">
         <property name="marshaller"   ref="oval-marshaller"/>
         <property name="unmarshaller" ref="oval-marshaller"/>
         <property name="transformer"  ref="oval-xml-transformer"/>
     </bean>
-
-<!--
-    <bean id="ovalXmlMapper" class="jp.go.aist.six.oval.core.xml.OvalXmlMapper">
-        <property name="marshaller"   ref="ovalMarshaller"/>
-        <property name="unmarshaller" ref="ovalMarshaller"/>
-    </bean>
--->
-
-
-
-
-    <!-- ************************************************************** -->
-    <!-- *  Web                                                       * -->
-    <!-- ************************************************************** -->
-
-    <bean id="marshalling-converter" 
-        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
-        <constructor-arg ref="oval-marshaller" /> 
-        <property name="supportedMediaTypes" value="application/xml"/> 
-    </bean> 
-
-<!--
-    <bean id="atom-converter" 
-        class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter"> 
-        <property name="supportedMediaTypes" value="application/atom+xml"/> 
-    </bean> 
--->
-
-    <!-- the default set of converters registered automatically, 
-    e.g. 
-    <bean id="stringConverter" 
-        class="org.springframework.http.converter.StringHttpMessageConverter"> 
-        <property name="supportedMediaTypes" value="text/plain"/> 
-    </bean> 
-    --> 
-
-
-<!--
-    <bean id="rest-template" scope="prototype" 
-        class="org.springframework.web.client.RestTemplate">
-        <property name="messageConverters"> 
-            <list> 
-                <ref bean="marshalling-converter" /> 
-            </list> 
-        </property>
-    </bean>
--->
-                <!-- ref bean="atom-converter" / --> 
-
-
-
-    <!-- ************************************************************** -->
-    <!-- *  Repository                                                * -->
-    <!-- ************************************************************** -->
-
-    <bean id="http-oval-repository-client" 
-        class="jp.go.aist.six.oval.core.repository.web.HttpOvalRepositoryClient"> 
-        <property name="repositoryBaseUrl" value="${six.oval.repository.web.base-url}"/> 
-        <property name="messageConverters"> 
-            <list> 
-                <ref bean="marshalling-converter" /> 
-                <!-- ref bean="atom-converter" / --> 
-            </list> 
-        </property>
-    </bean> 
 
 </beans>

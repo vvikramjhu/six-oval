@@ -72,7 +72,7 @@ public class OvaldiProxyTest
                         final Options options
                         )
         {
-            SixOvalContext  context = SixOvalContext.getInstance();
+            SixOvalContext  context = SixOvalContext.basic();
 
             OvaldiProxy  ovaldi = new OvaldiProxy( options );
             ovaldi.setExecutablePath( context.getProperty( OvaldiConfig.EXECUTABLE ) );

@@ -26,12 +26,12 @@ import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
+import jp.go.aist.six.oval.core.repository.morphia.OvalDatastore;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.repository.QueryParams;
@@ -78,7 +78,7 @@ public class OvalDefinitionsGenerator
             OvalDefinitions  doc = _getDatastore().findById( OvalDefinitions.class, doc_id );
 
             System.out.println( "saving OvalDefinitions document...: file=" + filepath );
-            XmlMapper  xml_mapper = SixOvalContext.getServerInstance().getXmlMapper();
+            XmlMapper  xml_mapper = SixOvalContext.repository().getXmlMapper();
             xml_mapper.marshal( doc, new FileWriter( new File( filepath ) ) );
         }
     }
@@ -115,7 +115,7 @@ public class OvalDefinitionsGenerator
 
 
 
-    private static OvalDatabase  _DATASTORE_;
+    private static OvalDatastore  _DATASTORE_;
 
 
 
@@ -130,10 +130,10 @@ public class OvalDefinitionsGenerator
 
     /**
      */
-    private static OvalDatabase _getDatastore()
+    private static OvalDatastore _getDatastore()
     {
         if (_DATASTORE_ == null) {
-            _DATASTORE_ = SixOvalContext.getServerInstance().getDatabase();
+            _DATASTORE_ = SixOvalContext.repository().getBean( OvalDatastore.class );
         }
 
         return _DATASTORE_;
