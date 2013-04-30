@@ -144,7 +144,7 @@
     <bean id="ovalDefinitionsGenerator" 
         class="jp.go.aist.six.oval.core.repository.OvalDefinitionsGenerator">
 <!--
-        <property name="datastore" ref="ovalDatabase"/>
+        <property name="datastore" ref="ovalDatastore"/>
 -->
     </bean>
 
