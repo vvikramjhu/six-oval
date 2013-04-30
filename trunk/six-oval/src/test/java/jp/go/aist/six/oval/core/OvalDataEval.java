@@ -69,7 +69,7 @@ public class OvalDataEval
     public void setUp()
     throws Exception
     {
-        _oval_repository = OvalContext.getServerInstance().getRepository();
+        _oval_repository = SixOvalContext.getServerInstance().getRepository();
     }
 
 

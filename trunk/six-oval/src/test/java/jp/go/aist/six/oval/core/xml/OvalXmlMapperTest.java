@@ -3,7 +3,7 @@ package jp.go.aist.six.oval.core.xml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.junit.Before;
@@ -65,7 +65,7 @@ public class OvalXmlMapperTest
         public void setUp()
                         throws Exception
         {
-            _xml_mapper = OvalContext.getInstance().getXmlMapper();
+            _xml_mapper = SixOvalContext.getInstance().getXmlMapper();
 
             String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
             _tmp_dir = new File( tmp_dirpath, "six-oval" );
@@ -128,7 +128,7 @@ public class OvalXmlMapperTest
         public void setUp()
                         throws Exception
         {
-            _xml_mapper = OvalContext.getInstance().getXmlMapper();
+            _xml_mapper = SixOvalContext.getInstance().getXmlMapper();
 
             String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
             _tmp_dir = new File( tmp_dirpath, "six-oval/test-content" );

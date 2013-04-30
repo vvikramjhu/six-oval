@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -64,7 +64,7 @@ public class OvalDocumentInstaller
     public OvalDocumentInstaller()
     throws Exception
     {
-        OvalContext  context = OvalContext.getServerInstance();
+        SixOvalContext  context = SixOvalContext.getServerInstance();
         _oval_repository = context.getBean( OvalRepositoryImpl.class );
         _xml_mapper = context.getXmlMapper();
     }

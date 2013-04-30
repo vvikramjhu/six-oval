@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreter;
@@ -204,7 +204,7 @@ public class OvaldiProxy
      * so that both can be read using the Process.getInputStream() method.
      */
     private ProcessBuilder _createProcessBuilder(
-                    final OvalContext context
+                    final SixOvalContext context
                     )
     {
         final List<String>  command = _createCommand1( context );
@@ -221,7 +221,7 @@ public class OvaldiProxy
 
     private void _configureWorkingDir(
                     final ProcessBuilder builder,
-                    final OvalContext context
+                    final SixOvalContext context
                     )
     {
         String  workdir = getWorkingDir();
@@ -261,7 +261,7 @@ public class OvaldiProxy
      * @throws  OvalInterpreterException
      */
     private List<String> _createCommand1(
-                    final OvalContext context
+                    final SixOvalContext context
                     )
     {
         final List<String>  command = new ArrayList<String>();
@@ -446,7 +446,7 @@ public class OvaldiProxy
 
     public int execute()
     {
-        OvalContext  context = OvalContext.getInstance();
+        SixOvalContext  context = SixOvalContext.getInstance();
 
         final ProcessBuilder  builder = _createProcessBuilder( context );
         Process  process = null;
