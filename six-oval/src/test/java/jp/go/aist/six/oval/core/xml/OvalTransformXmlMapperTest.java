@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  * @version $Id$
  */
 @RunWith( Enclosed.class )
-public class OvalXmlMapperTest
+public class OvalTransformXmlMapperTest
 {
 
     @RunWith( Theories.class )
@@ -96,7 +96,7 @@ public class OvalXmlMapperTest
 
 
     /**
-     * Xml marshal/unmarshal tests using the OVAL test content.
+     * XML test: OVAL test content.
      *
      * @see http://oval.mitre.org/repository/about/testcontent.html
      */
@@ -114,6 +114,7 @@ public class OvalXmlMapperTest
             "linux",
             "macos",
             "solaris",
+            "unix",
             "windows",
             "support/var"
         };
@@ -130,8 +131,8 @@ public class OvalXmlMapperTest
         {
             _xml_mapper = SixOvalContext.basic().getXmlMapper();
 
-            String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
-            _tmp_dir = new File( tmp_dirpath, "six-oval/test-content" );
+            String  tmp_dir_path = System.getProperty( "java.io.tmpdir" );
+            _tmp_dir = new File( tmp_dir_path, "six-oval/ovaltc-5.10.1.3" );
             _tmp_dir.mkdirs();
         }
 
@@ -142,22 +143,22 @@ public class OvalXmlMapperTest
                         )
         throws Exception
         {
-            File  tmp_dir = new File( _tmp_dir, dir_path );
-            tmp_dir.mkdirs();
+            File  output_dir = new File( _tmp_dir, dir_path );
+            output_dir.mkdirs();
 
-            File  dir = new File( TOP_DIR, dir_path );
-            File[]  in_xml_files = TestUtil.listXmlFiles( dir );
-            for (File  in_xml_file : in_xml_files) {
-                System.out.println( "OVAL Document: " + in_xml_file );
+            File  input_dir = new File( TOP_DIR, dir_path );
+            File[]  input_xml_files = TestUtil.listXmlFiles( input_dir );
+            for (File  input_xml_file : input_xml_files) {
+                System.out.println( "OVAL Document: " + input_xml_file );
                 /* (1) unmarshal */
-                Object  obj = _xml_mapper.unmarshal( new FileInputStream( in_xml_file ) );
+                Object  obj = _xml_mapper.unmarshal( new FileInputStream( input_xml_file ) );
 
                 /* (2) marshal */
-                File  out_xml_file = new File( tmp_dir, "unmarshalled_" + in_xml_file.getName() );
-                _xml_mapper.marshal( obj, new FileWriter( out_xml_file ) );
+                File  output_xml_file = new File( output_dir, "unmarshalled_" + input_xml_file.getName() );
+                _xml_mapper.marshal( obj, new FileWriter( output_xml_file ) );
 
                 /* (3) unmarshal */
-                obj = _xml_mapper.unmarshal( new FileInputStream( out_xml_file ) );
+                obj = _xml_mapper.unmarshal( new FileInputStream( output_xml_file ) );
             }
         }
 
@@ -166,4 +167,4 @@ public class OvalXmlMapperTest
 
 
 }
-//OvalXmlMapperTest
+//

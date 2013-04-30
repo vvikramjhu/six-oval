@@ -52,7 +52,7 @@
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-unix.xml</value>
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-windows.xml</value>
                  
-                 <value>classpath:jp/go/aist/six/util/core/xml/castor/castor-xml_six-util_repository.xml</value>
+                 <value>classpath:jp/go/aist/six/util/core/xml/castor/castor-xml_six-util.xml</value>
 <!-- deprecated:
                  <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-six-core.xml</value>
 -->
