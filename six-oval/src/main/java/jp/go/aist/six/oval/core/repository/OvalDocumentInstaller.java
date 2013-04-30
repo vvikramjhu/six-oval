@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepository;
-import jp.go.aist.six.util.xml.XmlMapper;
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 
 
 
@@ -55,7 +55,7 @@ public class OvalDocumentInstaller
     private final PrintStream  _msg_stream = System.out;
 
     private final OvalRepository  _oval_repository;
-    private final XmlMapper  _xml_mapper;
+    private final OvalXmlMapper  _xml_mapper;
 
 
 
@@ -64,8 +64,8 @@ public class OvalDocumentInstaller
     public OvalDocumentInstaller()
     throws Exception
     {
-        SixOvalContext  context = SixOvalContext.getServerInstance();
-        _oval_repository = context.getBean( OvalRepositoryImpl.class );
+        SixOvalContext  context = SixOvalContext.repository();
+        _oval_repository = context.getRepository();
         _xml_mapper = context.getXmlMapper();
     }
 

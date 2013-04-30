@@ -6,8 +6,7 @@ import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.variables.OvalVariables;
-import jp.go.aist.six.oval.repository.OvalDatabase;
-import jp.go.aist.six.util.xml.XmlMapper;
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 import org.junit.Before;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
@@ -49,8 +48,8 @@ public class MongoOvalDatabaseTest
         };
 
 
-        private OvalDatabase  _database = null;
-        private XmlMapper  _xml_mapper = null;
+        private OvalDatastore  _database = null;
+        private OvalXmlMapper  _xml_mapper = null;
 
 
 
@@ -58,9 +57,9 @@ public class MongoOvalDatabaseTest
         public void setUp()
         throws Exception
         {
-            SixOvalContext  context = SixOvalContext.getServerInstance();
+            SixOvalContext  context = SixOvalContext.repository();
             _xml_mapper = context.getXmlMapper();
-            _database = context.getBean( MongoOvalDatabase.class );
+            _database = context.getBean( OvalDatastore.class );
         }
 
 

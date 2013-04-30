@@ -83,7 +83,7 @@ public class NetworkingOvaldiProxyTest
                         final Options options
                         )
         {
-            SixOvalContext  context = SixOvalContext.getInstance();
+            SixOvalContext  context = SixOvalContext.basic();
 
             NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy( options );
             ovaldi.setExecutablePath( context.getProperty( OvaldiConfig.EXECUTABLE ) );

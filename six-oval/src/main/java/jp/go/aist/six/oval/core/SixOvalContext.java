@@ -18,12 +18,11 @@
  */
 package jp.go.aist.six.oval.core;
 
-import jp.go.aist.six.oval.core.repository.OvalRepositoryImpl;
-import jp.go.aist.six.oval.core.web.HttpOvalRepositoryClient;
-import jp.go.aist.six.oval.repository.OvalDatabase;
 import jp.go.aist.six.oval.repository.OvalRepository;
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 import jp.go.aist.six.util.core.config.spring.SpringContext;
-import jp.go.aist.six.util.xml.XmlMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -37,56 +36,82 @@ public abstract class SixOvalContext
     extends SpringContext
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalContext.class );
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( SixOvalContext.class );
 
 
 
-    private static OvalBasicContext  _BASIC_;
-    private static OvalServerContext  _SERVER_;
-
+    private static BasicContext            _BASIC_CONTEXT_;
+    private static RepositoryContext  _REPOSITORY_CONTEXT_;
+    private static WebServerContext   _WEB_SERVER_CONTEXT_;
+    private static WebClientContext   _WEB_CLIENT_CONTEXT_;
 
 
     /**
-     * Returns the default context for client applications.
+     * Returns the basic context.
      *
      * @return
-     *  the default context.
+     *  the basic context.
      */
-    public static synchronized SixOvalContext getInstance()
+    public static synchronized BasicContext basic()
     {
-        if (_BASIC_ == null) {
-            _BASIC_ = new OvalBasicContext();
+        if (_BASIC_CONTEXT_ == null) {
+            _BASIC_CONTEXT_ = new BasicContext();
         }
 
-        return _BASIC_;
+        return _BASIC_CONTEXT_;
     }
 
 
     /**
-     * Returns the server context which is configured for server applications.
-     * This context contains OVAL database, repository, and XML mapper.
+     * Returns the repository context.
      *
      * @return
-     *  the server context.
+     *  the repository context.
      */
-    public static synchronized OvalServerContext getServerInstance()
+    public static synchronized RepositoryContext repository()
     {
-        if (_SERVER_ == null) {
-            _SERVER_ = new OvalServerContext();
+        if (_REPOSITORY_CONTEXT_ == null) {
+            _REPOSITORY_CONTEXT_ = new RepositoryContext();
         }
 
-        return _SERVER_;
+        return _REPOSITORY_CONTEXT_;
+    }
+
+
+    /**
+     * Returns the web server context.
+     *
+     * @return
+     *  the web server context.
+     */
+    public static synchronized WebServerContext webServer()
+    {
+        if (_WEB_SERVER_CONTEXT_ == null) {
+            _WEB_SERVER_CONTEXT_ = new WebServerContext();
+        }
+
+        return _WEB_SERVER_CONTEXT_;
     }
 
 
 
-//    private static final String[]  _PROPERTY_BEANS_ = new String[] {
-//        "six-oval-default-properties",
-//        "six-oval-properties"
-//    };
+    /**
+     * Returns the web client context.
+     *
+     * @return
+     *  the web client context.
+     */
+    public static synchronized WebClientContext webClient()
+    {
+        if (_WEB_CLIENT_CONTEXT_ == null) {
+            _WEB_CLIENT_CONTEXT_ = new WebClientContext();
+        }
+
+        return _WEB_CLIENT_CONTEXT_;
+    }
 
 
 
@@ -120,16 +145,9 @@ public abstract class SixOvalContext
      * @throws  OvalConfigurationException
      *  when it is NOT possible to create an instance.
      */
-    public XmlMapper getXmlMapper()
+    public OvalXmlMapper getXmlMapper()
     {
-        XmlMapper  mapper = null;
-        try {
-            mapper = getBean( "oval-xml-mapper", XmlMapper.class );
-                     //throws ConfigurationException/runtime
-        } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-        }
-
+        OvalXmlMapper  mapper = getBean( "oval-xml-mapper", OvalXmlMapper.class );
         return mapper;
     }
 
@@ -151,30 +169,61 @@ public abstract class SixOvalContext
     ///////////////////////////////////////////////////////////////////////
 
     /**
+     * A basic context which supports XML handling only.
      */
-    public static class OvalBasicContext
+    public static class BasicContext
     extends SixOvalContext
     {
-        public static final String  CONTEXT_PATH
-        = "jp/go/aist/six/oval/core/six-oval_context-basic.xml";
+        public static final String  CONTEXT_PATH =
+                        "jp/go/aist/six/oval/core/six-oval_context-basic.xml";
 
 
-        public OvalBasicContext()
+        public BasicContext()
         {
             super( CONTEXT_PATH );
         }
 
 
+
         @Override
         public OvalRepository getRepository()
         {
-            OvalRepository  repository = null;
-            try {
-                repository = getBean( HttpOvalRepositoryClient.class );
-                //throws ConfigurationException/runtime
-            } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-            }
+            throw new UnsupportedOperationException();
+        }
+    }
+    //
+
+
+
+    /**
+     */
+    public static class RepositoryContext
+    extends SixOvalContext
+    {
+        public static final String  CONTEXT_PATH =
+                        "jp/go/aist/six/oval/core/six-oval_context-repository.xml";
+
+
+        public RepositoryContext()
+        {
+            super( CONTEXT_PATH );
+        }
+
+
+        public RepositoryContext(
+                        final String context_path
+                        )
+        {
+            super( context_path );
+        }
+
+
+
+        @Override
+        public OvalRepository getRepository()
+        {
+            OvalRepository  repository = getBean( "oval-repository", OvalRepository.class );
+            _LOG_.debug( "bean: " + repository.getClass() );
 
             return repository;
         }
@@ -185,55 +234,45 @@ public abstract class SixOvalContext
 
     /**
      */
-    public static class OvalServerContext
+    public static class WebServerContext
+    extends RepositoryContext
+    {
+        public static final String  CONTEXT_PATH =
+                        "jp/go/aist/six/oval/core/six-oval_context-web-server.xml";
+
+
+        public WebServerContext()
+        {
+            super( CONTEXT_PATH );
+        }
+
+    }
+    //
+
+
+
+    /**
+     */
+    public static class WebClientContext
     extends SixOvalContext
     {
-        public static final String  CONTEXT_PATH
-        = "jp/go/aist/six/oval/core/six-oval_context-server.xml";
+        public static final String  CONTEXT_PATH =
+                        "jp/go/aist/six/oval/core/six-oval_context-web-client.xml";
 
 
-        public OvalServerContext()
+        public WebClientContext()
         {
             super( CONTEXT_PATH );
         }
 
 
-
-        /**
-         * Returns an OvalDatastore instance.
-         *
-         * @throws  OvalConfigurationException
-         *  when it is NOT possible to create OvalDatastore instance.
-         */
-        public OvalDatabase getDatabase()
-        {
-            OvalDatabase  database = null;
-            try {
-                database = getBean( OvalDatabase.class );
-                //throws ConfigurationException/runtime
-            } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-            }
-
-            return database;
-        }
-
-
-
         @Override
         public OvalRepository getRepository()
         {
-            OvalRepository  repository = null;
-            try {
-                repository = getBean( OvalRepositoryImpl.class );
-                //throws ConfigurationException/runtime
-            } catch (Exception ex) {
-                throw new OvalConfigurationException( ex );
-            }
+            OvalRepository  repository = getBean( "http-oval-repository-client", OvalRepository.class );
 
             return repository;
         }
-
     }
     //
 

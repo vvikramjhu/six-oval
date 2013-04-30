@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.Arrays;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.SixOvalContext;
+import jp.go.aist.six.oval.core.repository.morphia.OvalDatastore;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -35,9 +36,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.OvalDatabase;
+import jp.go.aist.six.oval.xml.OvalXmlMapper;
 import jp.go.aist.six.util.xml.XmlException;
-import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,9 +86,9 @@ public class OvalDatabaseTool
 
 //    private static final MongoDatastoreTool  _INSTANCE_ = new MongoDatastoreTool();
 
-    private static OvalDatabase  _DATABASE_;
+    private static OvalDatastore  _DATABASE_;
 
-    private static XmlMapper  _XML_MAPPER_ = null;
+    private static OvalXmlMapper  _XML_MAPPER_ = null;
 
 
 //    private OvalContext  _context;
@@ -137,20 +137,20 @@ public class OvalDatabaseTool
 
     /**
      */
-    private static OvalDatabase _getDatabase()
+    private static OvalDatastore _getDatastore()
     {
         if (_DATABASE_ == null) {
-            _DATABASE_ = SixOvalContext.getServerInstance().getDatabase();
+            _DATABASE_ = SixOvalContext.repository().getBean( OvalDatastore.class );
         }
 
         return _DATABASE_;
     }
 
 
-    private static XmlMapper _getXmlMapper()
+    private static OvalXmlMapper _getXmlMapper()
     {
         if (_XML_MAPPER_ == null) {
-            _XML_MAPPER_ = SixOvalContext.getServerInstance().getXmlMapper();
+            _XML_MAPPER_ = SixOvalContext.repository().getXmlMapper();
         }
 
         return _XML_MAPPER_;
@@ -218,7 +218,7 @@ public class OvalDatabaseTool
                                 //throws IOException
             }
             OvalDefinitions  object = _unmarshalObject( type, in_stream );
-            pid = _getDatabase().save( type, object );
+            pid = _getDatastore().save( type, object );
         } catch (IOException ex) {
             throw new OvalException( ex );
         } catch (SecurityException ex) {
@@ -242,7 +242,7 @@ public class OvalDatabaseTool
      */
     public static void deleteAllData()
     {
-        OvalDatabase  ds = _getDatabase();
+        OvalDatastore  ds = _getDatastore();
 
         _LOG_.debug( "delete DefinitonsElementAssoc..." );
         ds.delete( DefinitionsElementAssoc.class );
