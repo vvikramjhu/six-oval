@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.TestUtil;
 import jp.go.aist.six.oval.xml.OvalXmlMapper;
-import org.junit.Before;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -25,69 +24,137 @@ import org.junit.runner.RunWith;
 public class OvalTransformXmlMapperTest
 {
 
+    private OvalXmlMapper  _xmlMapper = null;
+    private File  _outputDir = null;
+
+
+
+    protected OvalTransformXmlMapperTest()
+    {
+        _xmlMapper = SixOvalContext.basic().getXmlMapper();
+
+        String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
+        _outputDir = new File( tmp_dirpath, "six-oval" );
+        _outputDir.mkdirs();
+    }
+
+
+
+    protected OvalXmlMapper _getXmlMapper()
+    {
+        return _xmlMapper;
+    }
+
+
+
+    protected File _getOutputDir()
+    {
+        return _outputDir;
+    }
+
+
+
+    protected void _testUnmarshalAllXmlsInDir(
+                    final String input_rootdir_path,
+                    final String input_subdir_path
+                    )
+    throws Exception
+    {
+        File  output_dir = new File( _getOutputDir(), input_subdir_path );
+        output_dir.mkdirs();
+
+        File  input_dir = new File( input_rootdir_path, input_subdir_path );
+        File[]  input_xml_files = TestUtil.listXmlFiles( input_dir );
+        for (File  input_xml_file : input_xml_files) {
+            System.out.println( "OVAL Document: filepath=" + input_xml_file );
+            /* (1) unmarshal */
+            Object  obj = _getXmlMapper().unmarshal( new FileInputStream( input_xml_file ) );
+
+            /* (2) marshal */
+            File  output_xml_file = new File( output_dir, "unmarshalled_" + input_xml_file.getName() );
+            _getXmlMapper().marshal( obj, new FileWriter( output_xml_file ) );
+
+            /* (3) unmarshal */
+            obj = _getXmlMapper().unmarshal( new FileInputStream( output_xml_file ) );
+        }
+    }
+
+
+
+    /**
+     * XML test: Mitre OVAL Repository content and ovaldi output results.
+     *
+     * @see http://oval.mitre.org/repository/
+     */
     @RunWith( Theories.class )
     public static class MitreOvalRepositoryContent
+    extends OvalTransformXmlMapperTest
     {
 
+        public static final String  INPUT_ROOTDIR_PATH = "src/test/resources/data/oval5/mitre";
 
         @DataPoints
-        public static String[]  FILE_PATHES = new String[] {
-            // netsap2013
-//            "src/test/resources/data/netsap2013/20130313_com.redhat.rhsa-all.xml"
-//          "src/test/resources/data/netsap2013/20130313_mitre_vuln_windows.xml"
-//            "src/test/resources/data/netsap2013/20130313_mitre_vuln_unix.xml"
-
-//        "src/test/resources/data/oval5/mitre/20130213_microsoft.windows.7.xml"
-//        "src/test/resources/data/oval5/mitre/oval-5.10_12191-5_i_Microsoft-Publisher-2010.xml"
-
-        /* Apple Mac OS */
-//        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
-
-//current test!!!
-            "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"
-
-//
-//        /* RedHat */
-//        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",
-//        "src/test/resources/data/oval5/redhat/rhsa-2013_sc.xml",
-//        "src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"
+        public static String[]  INPUT_SUBDIR_PATHS = new String[] {
+            "windows"
         };
 
 
-        private OvalXmlMapper  _xml_mapper = null;
-        private File  _tmp_dir = null;
+//        @DataPoints
+//        public static String[]  FILE_PATHES = new String[] {
+//            // netsap2013
+////            "src/test/resources/data/netsap2013/20130313_com.redhat.rhsa-all.xml"
+////          "src/test/resources/data/netsap2013/20130313_mitre_vuln_windows.xml"
+////            "src/test/resources/data/netsap2013/20130313_mitre_vuln_unix.xml"
+//
+////        "src/test/resources/data/oval5/mitre/20130213_microsoft.windows.7.xml"
+////        "src/test/resources/data/oval5/mitre/oval-5.10_12191-5_i_Microsoft-Publisher-2010.xml"
+//
+//        /* Apple Mac OS */
+////        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
+//
+////current test!!!
+//            "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"
+//
+////
+////        /* RedHat */
+////        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",
+////        "src/test/resources/data/oval5/redhat/rhsa-2013_sc.xml",
+////        "src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"
+//        };
 
 
-
-        /**
-         */
-        @Before
-        public void setUp()
-                        throws Exception
+        public MitreOvalRepositoryContent()
         {
-            _xml_mapper = SixOvalContext.basic().getXmlMapper();
-
-            String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
-            _tmp_dir = new File( tmp_dirpath, "six-oval" );
-            _tmp_dir.mkdirs();
         }
+
+
+
+//        private OvalXmlMapper  _xml_mapper = null;
+//        private File  _tmp_dir = null;
+//
+//
+//        /**
+//         */
+//        @Before
+//        public void setUp()
+//                        throws Exception
+//        {
+//            _xml_mapper = SixOvalContext.basic().getXmlMapper();
+//
+//            String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
+//            _tmp_dir = new File( tmp_dirpath, "six-oval" );
+//            _tmp_dir.mkdirs();
+//        }
 
 
 
         @Theory
         public void testUnmarshal(
-                        final String filepath
+                        final String input_subdir_path
                         )
         throws Exception
         {
-            File  in_file = new File( filepath );
-//           long  time = System.currentTimeMillis();
-            Object  obj = _xml_mapper.unmarshal( new FileInputStream( in_file ) );
-
-            File  out_file = new File( _tmp_dir, "unmarshalled_" + in_file.getName() );
-            _xml_mapper.marshal( obj, new FileWriter( out_file ) );
-
-            obj = _xml_mapper.unmarshal( new FileInputStream( out_file ) );
+            _testUnmarshalAllXmlsInDir( INPUT_ROOTDIR_PATH, input_subdir_path );
         }
 
     }
@@ -102,13 +169,14 @@ public class OvalTransformXmlMapperTest
      */
     @RunWith( Theories.class )
     public static class OvalTestContent
+    extends OvalTransformXmlMapperTest
     {
 
-        public static final String  TOP_DIR = "src/test/resources/data/oval5/ovaltc-5.10.1.3";
+        public static final String  INPUT_ROOTDIR_PATH = "src/test/resources/data/oval5/ovaltc-5.10.1.3";
 
 
         @DataPoints
-        public static String[]  SUB_DIRS = new String[] {
+        public static String[]  INPUT_SUBDIR_PATHS = new String[] {
             "definitions",
             "independent",
             "linux",
@@ -120,51 +188,58 @@ public class OvalTransformXmlMapperTest
         };
 
 
-        private OvalXmlMapper  _xml_mapper = null;
-        private File  _tmp_dir = null;
 
-
-
-        @Before
-        public void setUp()
-                        throws Exception
+        public OvalTestContent()
         {
-            _xml_mapper = SixOvalContext.basic().getXmlMapper();
-
-            String  tmp_dir_path = System.getProperty( "java.io.tmpdir" );
-            _tmp_dir = new File( tmp_dir_path, "six-oval/ovaltc-5.10.1.3" );
-            _tmp_dir.mkdirs();
         }
+
+
+
+//        private OvalXmlMapper  _xml_mapper = null;
+//        private File  _tmp_dir = null;
+//
+//
+//        @Before
+//        public void setUp()
+//                        throws Exception
+//        {
+//            _xml_mapper = SixOvalContext.basic().getXmlMapper();
+//
+//            String  tmp_dir_path = System.getProperty( "java.io.tmpdir" );
+//            _tmp_dir = new File( tmp_dir_path, "six-oval/ovaltc-5.10.1.3" );
+//            _tmp_dir.mkdirs();
+//        }
 
 
         @Theory
         public void testUnmarshal(
-                        final String dir_path
+                        final String input_subdir_path
                         )
         throws Exception
         {
-            File  output_dir = new File( _tmp_dir, dir_path );
-            output_dir.mkdirs();
+            _testUnmarshalAllXmlsInDir( INPUT_ROOTDIR_PATH, input_subdir_path );
 
-            File  input_dir = new File( TOP_DIR, dir_path );
-            File[]  input_xml_files = TestUtil.listXmlFiles( input_dir );
-            for (File  input_xml_file : input_xml_files) {
-                System.out.println( "OVAL Document: " + input_xml_file );
-                /* (1) unmarshal */
-                Object  obj = _xml_mapper.unmarshal( new FileInputStream( input_xml_file ) );
-
-                /* (2) marshal */
-                File  output_xml_file = new File( output_dir, "unmarshalled_" + input_xml_file.getName() );
-                _xml_mapper.marshal( obj, new FileWriter( output_xml_file ) );
-
-                /* (3) unmarshal */
-                obj = _xml_mapper.unmarshal( new FileInputStream( output_xml_file ) );
-            }
+//            File  output_dir = new File( _tmp_dir, dir_path );
+//            output_dir.mkdirs();
+//
+//            File  input_dir = new File( TOP_DIR, dir_path );
+//            File[]  input_xml_files = TestUtil.listXmlFiles( input_dir );
+//            for (File  input_xml_file : input_xml_files) {
+//                System.out.println( "OVAL Document: " + input_xml_file );
+//                /* (1) unmarshal */
+//                Object  obj = _xml_mapper.unmarshal( new FileInputStream( input_xml_file ) );
+//
+//                /* (2) marshal */
+//                File  output_xml_file = new File( output_dir, "unmarshalled_" + input_xml_file.getName() );
+//                _xml_mapper.marshal( obj, new FileWriter( output_xml_file ) );
+//
+//                /* (3) unmarshal */
+//                obj = _xml_mapper.unmarshal( new FileInputStream( output_xml_file ) );
+//            }
         }
 
     }
     //OvalTestContent
-
 
 }
 //
