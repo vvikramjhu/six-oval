@@ -93,58 +93,19 @@ public class OvalTransformXmlMapperTest
 
         public static final String  INPUT_ROOTDIR_PATH = "src/test/resources/data/oval5/mitre";
 
+
         @DataPoints
         public static String[]  INPUT_SUBDIR_PATHS = new String[] {
+            "macos",
+            "linux",
             "windows"
         };
 
-
-//        @DataPoints
-//        public static String[]  FILE_PATHES = new String[] {
-//            // netsap2013
-////            "src/test/resources/data/netsap2013/20130313_com.redhat.rhsa-all.xml"
-////          "src/test/resources/data/netsap2013/20130313_mitre_vuln_windows.xml"
-////            "src/test/resources/data/netsap2013/20130313_mitre_vuln_unix.xml"
-//
-////        "src/test/resources/data/oval5/mitre/20130213_microsoft.windows.7.xml"
-////        "src/test/resources/data/oval5/mitre/oval-5.10_12191-5_i_Microsoft-Publisher-2010.xml"
-//
-//        /* Apple Mac OS */
-////        "src/test/resources/data/oval5/mitre/oval-5.10_v_apple.mac.os.x_20130217.xml"
-//
-////current test!!!
-//            "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml"
-//
-////
-////        /* RedHat */
-////        "src/test/resources/data/oval5/redhat/rhsa-2013.xml",
-////        "src/test/resources/data/oval5/redhat/rhsa-2013_sc.xml",
-////        "src/test/resources/data/oval5/redhat/rhsa-2013_results.xml"
-//        };
 
 
         public MitreOvalRepositoryContent()
         {
         }
-
-
-
-//        private OvalXmlMapper  _xml_mapper = null;
-//        private File  _tmp_dir = null;
-//
-//
-//        /**
-//         */
-//        @Before
-//        public void setUp()
-//                        throws Exception
-//        {
-//            _xml_mapper = SixOvalContext.basic().getXmlMapper();
-//
-//            String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
-//            _tmp_dir = new File( tmp_dirpath, "six-oval" );
-//            _tmp_dir.mkdirs();
-//        }
 
 
 
@@ -195,22 +156,6 @@ public class OvalTransformXmlMapperTest
 
 
 
-//        private OvalXmlMapper  _xml_mapper = null;
-//        private File  _tmp_dir = null;
-//
-//
-//        @Before
-//        public void setUp()
-//                        throws Exception
-//        {
-//            _xml_mapper = SixOvalContext.basic().getXmlMapper();
-//
-//            String  tmp_dir_path = System.getProperty( "java.io.tmpdir" );
-//            _tmp_dir = new File( tmp_dir_path, "six-oval/ovaltc-5.10.1.3" );
-//            _tmp_dir.mkdirs();
-//        }
-
-
         @Theory
         public void testUnmarshal(
                         final String input_subdir_path
@@ -218,24 +163,6 @@ public class OvalTransformXmlMapperTest
         throws Exception
         {
             _testUnmarshalAllXmlsInDir( INPUT_ROOTDIR_PATH, input_subdir_path );
-
-//            File  output_dir = new File( _tmp_dir, dir_path );
-//            output_dir.mkdirs();
-//
-//            File  input_dir = new File( TOP_DIR, dir_path );
-//            File[]  input_xml_files = TestUtil.listXmlFiles( input_dir );
-//            for (File  input_xml_file : input_xml_files) {
-//                System.out.println( "OVAL Document: " + input_xml_file );
-//                /* (1) unmarshal */
-//                Object  obj = _xml_mapper.unmarshal( new FileInputStream( input_xml_file ) );
-//
-//                /* (2) marshal */
-//                File  output_xml_file = new File( output_dir, "unmarshalled_" + input_xml_file.getName() );
-//                _xml_mapper.marshal( obj, new FileWriter( output_xml_file ) );
-//
-//                /* (3) unmarshal */
-//                obj = _xml_mapper.unmarshal( new FileInputStream( output_xml_file ) );
-//            }
         }
 
     }
