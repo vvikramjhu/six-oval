@@ -83,7 +83,28 @@
         </field>
     </class>
 
-<!-- TODO: fileset_item -->
+    <class name ="jp.go.aist.six.oval.model.aix.FilesetItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="fileset_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix"
+            ns-prefix=""/>
+        <field name="flstinst" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="flstinst" node="element"/>
+        </field>
+        <field name="level" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemVersionType">
+            <bind-xml name="level" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.aix.EntityItemFilesetStateType">
+            <bind-xml name="state" node="element"/>
+        </field>
+        <field name="description" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="description" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
@@ -149,8 +170,28 @@
         </field>
     </class>
 
-<!-- TODO: fix_item -->
-
+    <class name ="jp.go.aist.six.oval.model.aix.FixItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="fix_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix"
+            ns-prefix=""/>
+        <field name="aparNumber" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="apar_number" node="element"/>
+        </field>
+        <field name="abstract" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="abstract" node="element"/>
+        </field>
+        <field name="symptom" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="symptom" node="element"/>
+        </field>
+        <field name="installationStatus" 
+            type="jp.go.aist.six.oval.model.aix.EntityItemFixInstallationStatusType">
+            <bind-xml name="installation_status" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
@@ -216,8 +257,28 @@
         </field>
     </class>
 
-<!-- TODO: interim_fix_item -->
-
+    <class name ="jp.go.aist.six.oval.model.aix.InterimFixItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="interim_fix_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix"
+            ns-prefix=""/>
+        <field name="vuid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="vuid" node="element"/>
+        </field>
+        <field name="label" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="label" node="element"/>
+        </field>
+        <field name="abstract" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="abstract" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.aix.EntityItemInterimFixStateType">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
@@ -275,7 +336,20 @@
         </field>
     </class>
 
-<!-- TODO: no_item -->
+    <class name ="jp.go.aist.six.oval.model.aix.NoItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="no_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix"
+            ns-prefix=""/>
+        <field name="tunable" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="tunable" node="element"/>
+        </field>
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
@@ -315,7 +389,16 @@
         </field>
     </class>
 
-<!-- TODO: oslevel_item -->
+    <class name ="jp.go.aist.six.oval.model.aix.OsLevelItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="oslevel_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#aix"
+            ns-prefix=""/>
+        <field name="maintenanceLevel" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemVersionType">
+            <bind-xml name="maintenance_level" node="element"/>
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
@@ -325,13 +408,22 @@
     <class name="jp.go.aist.six.oval.model.aix.EntityStateFilesetStateType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
+    <class name="jp.go.aist.six.oval.model.aix.EntityItemFilesetStateType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
+    <class name="jp.go.aist.six.oval.model.aix.EntityItemFixInstallationStatusType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.aix.EntityStateInterimFixStateType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+    <class name="jp.go.aist.six.oval.model.aix.EntityItemInterimFixStateType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 </mapping>
