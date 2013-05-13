@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The oslevel test reveals information about the release and maintenance level
+ * of AIX operating system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

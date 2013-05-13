@@ -23,6 +23,9 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
+ * The EntityStateFilesetStateType defines the different values
+ * that are valid for the state entity of a fileset state.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The fix test is used to check information associated with
+ * different fixes installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

@@ -32,6 +32,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The fileset_object is used by a fileset_test to define the fileset to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

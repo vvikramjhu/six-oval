@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
+ * This enumeration defines the different values that are valid
+ * for the installation_status entity of a fix_state state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

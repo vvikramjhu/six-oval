@@ -30,6 +30,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The fileset_state defines the different information
+ * associated with filesets installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -40,9 +42,9 @@ public class FilesetState
 {
 
     //{0..1}
-    private EntityStateStringType                   flstinst;
-    private EntityStateVersionType                  level;
-    private EntityStateFilesetStateType                   state;
+    private EntityStateStringType           flstinst;
+    private EntityStateVersionType          level;
+    private EntityStateFilesetStateType     state;
     private EntityStateStringType           description;
 
 

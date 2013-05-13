@@ -32,6 +32,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The fix_object is used by a fix test to define the specific fix to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

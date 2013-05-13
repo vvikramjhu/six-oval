@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The fileset_test is used to check information associated
+ * with different filesets installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
