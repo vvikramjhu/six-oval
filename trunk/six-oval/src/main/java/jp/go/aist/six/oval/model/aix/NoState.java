@@ -107,7 +107,7 @@ public class NoState
     }
 
 
-    public EntityStateAnySimpleType getvalue()
+    public EntityStateAnySimpleType getValue()
     {
         return value;
     }
@@ -123,7 +123,7 @@ public class NoState
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getTunable() );
-        ref_list.add( getvalue() );
+        ref_list.add( getValue() );
 
         return ref_list;
     }
@@ -161,7 +161,7 @@ public class NoState
     {
         return "no_state[" + super.toString()
                         + ", tunable="      + getTunable()
-                        + ", value="        + getvalue()
+                        + ", value="        + getValue()
              + "]";
     }
 

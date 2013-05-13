@@ -44,6 +44,11 @@
         <map-to xml="fileset_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
             ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
         <field name="flstinst" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="flstinst" node="element"/>
@@ -81,7 +86,6 @@
 <!-- TODO: fileset_item -->
 
 
-
     <!-- ******************************************************* -->
     <!-- fix                                                     -->
     <!-- ******************************************************* -->
@@ -106,6 +110,11 @@
         <map-to xml="fix_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
             ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
         <field name="aparNumber" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="apar_number" node="element"/>
@@ -142,6 +151,131 @@
 
 <!-- TODO: fix_item -->
 
+
+
+    <!-- ******************************************************* -->
+    <!-- interim_fix                                             -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.aix.InterimFixTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="interim_fix_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.InterimFixObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="interim_fix_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="vuid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="vuid" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.InterimFixState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="interim_fix_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="vuid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="vuid" node="element"/>
+        </field>
+        <field name="level" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="level" node="element"/>
+        </field>
+        <field name="abstract" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="abstract" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.aix.EntityStateInterimFixStateType">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: interim_fix_item -->
+
+
+
+    <!-- ******************************************************* -->
+    <!-- no                                                      -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.aix.NoTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="no_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.NoObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="no_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="tunable" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="tunable" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.NoState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="no_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#aix"
+            ns-prefix=""/>
+        <field name="tunable" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="tunable" node="element"/>
+        </field>
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO: no_item -->
 
 
     <!-- ******************************************************* -->
@@ -188,14 +322,17 @@
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
     <class name="jp.go.aist.six.oval.model.aix.EntityStateFilesetStateType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
 
+    <class name="jp.go.aist.six.oval.model.aix.EntityStateFixInstallationStatusType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.aix.EntityStateInterimFixStateType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
 
 </mapping>
 
