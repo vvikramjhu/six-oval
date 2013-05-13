@@ -23,46 +23,40 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
-import com.github.jmkgreen.morphia.annotations.Property;
 
 
 
 /**
- * The interim_fix_state defines the different information associated
- * with a specific interim fix installed on the system.
+ * The no_state defines the different information associated with
+ * a specific call to /usr/sbin/no.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InterimFixState
+public class NoState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateStringType           vuid;
-    private EntityStateStringType           level;
-
-    //renamed from "abstract" to "description" because "abstract" is Java reserved word.
-    @Property( "abstract" )
-    private EntityStateStringType           description;
-
-    private EntityStateInterimFixStateType  state;
+    private EntityStateStringType           tunable;
+    private EntityStateAnySimpleType        value;
 
 
 
     /**
      * Constructor.
      */
-    public InterimFixState()
+    public NoState()
     {
         this( null, 0 );
     }
 
 
-    public InterimFixState(
+    public NoState(
                     final String id,
                     final int version
                     )
@@ -71,7 +65,7 @@ public class InterimFixState
     }
 
 
-    public InterimFixState(
+    public NoState(
                     final String id,
                     final int version,
                     final String comment
@@ -80,7 +74,7 @@ public class InterimFixState
         super( id, version, comment );
 
         _oval_family = Family.AIX;
-        _oval_component = ComponentType.INTERIM_FIX;
+        _oval_component = ComponentType.NO;
     }
 
 
@@ -88,68 +82,34 @@ public class InterimFixState
 
     /**
      */
-    public void setVuid(
-                    final EntityStateStringType vuid
+    public void setTunable(
+                    final EntityStateStringType tunable
                     )
     {
-        this.vuid = vuid;
+        this.tunable = tunable;
     }
 
 
-    public EntityStateStringType getVuid()
+    public EntityStateStringType getTunable()
     {
-        return vuid;
+        return tunable;
     }
 
 
 
     /**
      */
-    public void setLevel(
-                    final EntityStateStringType level
+    public void setValue(
+                    final EntityStateAnySimpleType value
                     )
     {
-        this.level = level;
+        this.value = value;
     }
 
 
-    public EntityStateStringType getLevel()
+    public EntityStateAnySimpleType getvalue()
     {
-        return level;
-    }
-
-
-
-    /**
-     */
-    public void setAbstract(
-                    final EntityStateStringType description
-                    )
-    {
-        this.description = description;
-    }
-
-
-    public EntityStateStringType getAbstract()
-    {
-        return description;
-    }
-
-
-
-    /**
-     */
-    public void setState(
-                    final EntityStateInterimFixStateType state
-                    )
-    {
-        this.state = state;
-    }
-
-
-    public EntityStateInterimFixStateType getState()
-    {
-        return state;
+        return value;
     }
 
 
@@ -162,10 +122,8 @@ public class InterimFixState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getVuid() );
-        ref_list.add( getLevel() );
-        ref_list.add( getAbstract() );
-        ref_list.add( getState() );
+        ref_list.add( getTunable() );
+        ref_list.add( getvalue() );
 
         return ref_list;
     }
@@ -189,7 +147,7 @@ public class InterimFixState
                     final Object obj
                     )
     {
-        if (!(obj instanceof InterimFixState)) {
+        if (!(obj instanceof NoState)) {
             return false;
         }
 
@@ -201,11 +159,9 @@ public class InterimFixState
     @Override
     public String toString()
     {
-        return "interim_fix_state[" + super.toString()
-                        + ", vuid="     + getVuid()
-                        + ", level="    + getLevel()
-                        + ", abstract=" + getAbstract()
-                        + ", state="    + getState()
+        return "no_state[" + super.toString()
+                        + ", tunable="      + getTunable()
+                        + ", value="        + getvalue()
              + "]";
     }
 

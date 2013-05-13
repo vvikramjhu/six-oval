@@ -78,6 +78,7 @@ public enum ComponentType
     METABASE,                       // windows
 
     NDD,							// solaris
+    NO,                             // aix
     NVRAM,                          // macos
 
     OSLEVEL,                        // aix
@@ -223,6 +224,7 @@ public enum ComponentType
         ComponentType.FILESET,
         ComponentType.FIX,
         ComponentType.INTERIM_FIX,
+        ComponentType.NO,
         ComponentType.OSLEVEL
     };
 
