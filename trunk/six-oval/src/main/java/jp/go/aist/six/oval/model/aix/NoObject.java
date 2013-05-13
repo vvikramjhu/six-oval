@@ -20,136 +20,134 @@ package jp.go.aist.six.oval.model.aix;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
-import jp.go.aist.six.oval.model.definitions.StateType;
-import com.github.jmkgreen.morphia.annotations.Property;
+import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The interim_fix_state defines the different information associated
- * with a specific interim fix installed on the system.
+ * The no_object is used by a no_test to define the specific parameter to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InterimFixState
-    extends StateType
+public class NoObject
+    extends SystemObjectType
 {
 
-    //{0..1}
-    private EntityStateStringType           vuid;
-    private EntityStateStringType           level;
+    //TODO: XSD model.
+    // choice( set | sequence () )
 
-    //renamed from "abstract" to "description" because "abstract" is Java reserved word.
-    @Property( "abstract" )
-    private EntityStateStringType           description;
+    private Set  set;
+    //{1..1}
 
-    private EntityStateInterimFixStateType  state;
+    private EntityObjectStringType  tunable;
+    //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public InterimFixState()
+    public NoObject()
     {
         this( null, 0 );
     }
 
 
-    public InterimFixState(
+    public NoObject(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null );
-    }
-
-
-    public InterimFixState(
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    {
-        super( id, version, comment );
+        super( id, version );
 
         _oval_family = Family.AIX;
-        _oval_component = ComponentType.INTERIM_FIX;
-    }
-
-
-
-
-    /**
-     */
-    public void setVuid(
-                    final EntityStateStringType vuid
-                    )
-    {
-        this.vuid = vuid;
-    }
-
-
-    public EntityStateStringType getVuid()
-    {
-        return vuid;
+        _oval_component = ComponentType.NO;
     }
 
 
 
     /**
      */
-    public void setLevel(
-                    final EntityStateStringType level
+    public void setSet(
+                    final Set set
                     )
     {
-        this.level = level;
+        this.set = set;
     }
 
 
-    public EntityStateStringType getLevel()
+    public Set getSet()
     {
-        return level;
+        return set;
     }
 
 
 
     /**
      */
-    public void setAbstract(
-                    final EntityStateStringType description
+    public void setTunable(
+                    final EntityObjectStringType tunable
                     )
     {
-        this.description = description;
+        this.tunable = tunable;
     }
 
 
-    public EntityStateStringType getAbstract()
+    public EntityObjectStringType getTunable()
     {
-        return description;
+        return tunable;
     }
 
 
 
     /**
      */
-    public void setState(
-                    final EntityStateInterimFixStateType state
+    public void setFilter(
+                    final Collection<? extends Filter> filters
                     )
     {
-        this.state = state;
+        if (filter != filters) {
+            filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                filter.addAll( filters );
+            }
+        }
     }
 
 
-    public EntityStateInterimFixStateType getState()
+    public boolean addFilter(
+                    final Filter filter
+                    )
     {
-        return state;
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
     }
 
 
@@ -162,10 +160,8 @@ public class InterimFixState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-        ref_list.add( getVuid() );
-        ref_list.add( getLevel() );
-        ref_list.add( getAbstract() );
-        ref_list.add( getState() );
+        ref_list.add( getTunable() );
+        ref_list.addAll( getFilter() );
 
         return ref_list;
     }
@@ -183,13 +179,12 @@ public class InterimFixState
     }
 
 
-
     @Override
     public boolean equals(
                     final Object obj
                     )
     {
-        if (!(obj instanceof InterimFixState)) {
+        if (!(obj instanceof NoObject)) {
             return false;
         }
 
@@ -201,12 +196,11 @@ public class InterimFixState
     @Override
     public String toString()
     {
-        return "interim_fix_state[" + super.toString()
-                        + ", vuid="     + getVuid()
-                        + ", level="    + getLevel()
-                        + ", abstract=" + getAbstract()
-                        + ", state="    + getState()
-             + "]";
+        return "no_object[" + super.toString()
+                        + ", set="      + getSet()
+                        + ", tunable="  + getTunable()
+                        + ", filter="   + getFilter()
+                        + "]";
     }
 
 }
