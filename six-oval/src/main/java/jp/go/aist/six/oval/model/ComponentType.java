@@ -68,6 +68,7 @@ public enum ComponentType
     INETLISTENINGSERVERS,           // linux, macos
     INETLISTENINGSERVERS510,        // macos
     INTERFACE,                      // unix, windows
+    INTERIM_FIX,                    // aix
     ISAINFO,						// solaris
 
     LDAP,                           // independent
@@ -221,6 +222,7 @@ public enum ComponentType
     public static final ComponentType[]  AIX = new ComponentType[] {
         ComponentType.FILESET,
         ComponentType.FIX,
+        ComponentType.INTERIM_FIX,
         ComponentType.OSLEVEL
     };
 
