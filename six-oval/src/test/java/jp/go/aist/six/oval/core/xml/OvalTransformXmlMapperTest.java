@@ -96,8 +96,9 @@ public class OvalTransformXmlMapperTest
 
         @DataPoints
         public static String[]  INPUT_SUBDIR_PATHS = new String[] {
-            "macos",
+            "aix",
             "linux",
+            "macos",
             "windows"
         };
 
