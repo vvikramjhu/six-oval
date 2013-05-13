@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
+ * This enumeration defines the different values
+ * that are valid for the state entity of a fileset state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

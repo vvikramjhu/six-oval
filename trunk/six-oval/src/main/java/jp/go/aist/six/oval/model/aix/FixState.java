@@ -30,6 +30,8 @@ import com.github.jmkgreen.morphia.annotations.Property;
 
 
 /**
+ * The fix_state defines the different information associated
+ * with a specific fix installed on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

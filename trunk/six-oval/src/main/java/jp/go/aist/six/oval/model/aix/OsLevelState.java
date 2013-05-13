@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The oslevel_state defines the information about maintenance level (system version).
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

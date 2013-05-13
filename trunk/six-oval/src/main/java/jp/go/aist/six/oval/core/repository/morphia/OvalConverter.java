@@ -23,6 +23,9 @@ import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementType;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalEnumeration;
+import jp.go.aist.six.oval.model.aix.FilesetStateEnumeration;
+import jp.go.aist.six.oval.model.aix.FixInstallationStatusEnumeration;
+import jp.go.aist.six.oval.model.aix.InterimFixStateEnumeration;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -112,6 +115,11 @@ public class OvalConverter
         Family.class,
 //      Platform.class,
 //      Product.class
+
+        // aix //
+        FilesetStateEnumeration.class,
+        FixInstallationStatusEnumeration.class,
+        InterimFixStateEnumeration.class,
 
         // common //
         CheckEnumeration.class,
