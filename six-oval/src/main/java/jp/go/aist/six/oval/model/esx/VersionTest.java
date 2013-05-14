@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The version test reveals information about the release and build version
+ * of the VMware ESX server.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

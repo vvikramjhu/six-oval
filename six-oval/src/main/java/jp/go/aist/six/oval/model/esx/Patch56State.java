@@ -31,6 +31,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The patch56_state defines the different information that can be used to evaluate
+ * the specified VMware ESX Serer patch.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

@@ -26,11 +26,17 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The patch test reveals the installation status of a specific patch
+ * in the VMware ESX server.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.6:
+ *             Replaced by the patch56 test and
+ *             will be removed in a future version of the language.
  */
+@Deprecated
 public class PatchTest
     extends TestType
 {

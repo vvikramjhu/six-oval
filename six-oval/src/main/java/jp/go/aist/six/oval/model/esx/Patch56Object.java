@@ -32,6 +32,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The patch56_object is used by a patch56_test to define those objects
+ * to be evaluated against a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

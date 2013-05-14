@@ -30,6 +30,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The version state defines the information about the release and build version.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

@@ -23,11 +23,17 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
+ * The PatchBehaviors defines a number of behaviors that allow a more detailed definition
+ * of the patch_object being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.6:
+ *             Replaced by the Patch56Behaviors and
+ *             will be removed in a future version of the language.
  */
+@Deprecated
 public class PatchBehaviors
     implements OvalObject
 {

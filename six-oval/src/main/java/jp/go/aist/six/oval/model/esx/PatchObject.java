@@ -30,11 +30,17 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The patch_object is used by a patch test to define those objects to be evaluated
+ * based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.6:
+ *             Replaced by the patch56 object and
+ *             will be removed in a future version of the language.
  */
+@Deprecated
 public class PatchObject
     extends SystemObjectType
 {
