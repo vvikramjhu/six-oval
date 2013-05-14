@@ -144,6 +144,7 @@ public enum ComponentType
 
     VARIABLE,                       // independent
     VERSION,                        // esx
+    VISDKMANAGEDOBJECT,             // esx
     VOLUME,                         // windows
 
     WMI,                            // windows
@@ -232,7 +233,8 @@ public enum ComponentType
     public static final ComponentType[]  ESX = new ComponentType[] {
         ComponentType.PATCH,
         ComponentType.PATCH56,
-        ComponentType.VERSION
+        ComponentType.VERSION,
+        ComponentType.VISDKMANAGEDOBJECT
     };
 
 
