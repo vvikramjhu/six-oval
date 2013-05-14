@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
+ * The patch56_test reveals the installation status of a specific patch or patches
+ * in VMware ESX Server.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

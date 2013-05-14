@@ -30,11 +30,16 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
+ * The patch_state defines the information about a specific patch.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.6:
+ *             Replaced by the patch56 state and
+ *             will be removed in a future version of the language.
  */
+@Deprecated
 public class PatchState
     extends StateType
 {

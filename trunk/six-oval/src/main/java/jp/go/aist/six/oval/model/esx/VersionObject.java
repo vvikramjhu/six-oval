@@ -28,6 +28,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
+ * The version object is used by a version test to define those objects to be evaluated
+ * based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

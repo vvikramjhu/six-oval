@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
+ * The Patch56Behaviors defines a number of behaviors that allow a more detailed definition
+ * of the patch56_object being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
