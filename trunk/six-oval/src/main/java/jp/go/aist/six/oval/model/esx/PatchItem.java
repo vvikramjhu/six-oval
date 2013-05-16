@@ -45,7 +45,11 @@ public class PatchItem
     private EntityItemIntType               bundle_id;
     private EntityItemClassificationType    classification;
     private EntityItemSupportLevelType      support_level;
+
     private EntityItemBoolType              status;
+    /* NOTE: The Java bean property name "status" conflicts with the one in the super class.
+     * So, we rename the property name to "installationSatus", as like one in the AIX schema.
+     */
 
 
 
