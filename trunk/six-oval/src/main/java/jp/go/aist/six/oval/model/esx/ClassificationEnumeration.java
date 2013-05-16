@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
+ * This enumeration defines a specific set of values that describe
+ * the classification of a given ESX Server patch.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

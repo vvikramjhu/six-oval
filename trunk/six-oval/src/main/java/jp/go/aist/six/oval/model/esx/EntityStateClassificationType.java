@@ -23,6 +23,9 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
+ * The EntityStateClassificationType restricts a string value to a specific set of values
+ * that describe the classification of a given ESX Server patch.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

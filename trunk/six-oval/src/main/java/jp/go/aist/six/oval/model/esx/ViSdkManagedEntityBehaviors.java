@@ -37,7 +37,7 @@ public class ViSdkManagedEntityBehaviors
     public static final ViSdkManagedEntityEnumeration  DEFAULT_MANAGED_ENTITY_TYPE
     = ViSdkManagedEntityEnumeration.VIRTUAL_MACHINE;
 
-    private ViSdkManagedEntityEnumeration  managed_entity_type;
+    private String  managed_entity_type;
     //{optional, default='VirtualMachine'}
 
 
@@ -54,25 +54,30 @@ public class ViSdkManagedEntityBehaviors
     /**
      */
     public void setManagedEntityType(
-                    final ViSdkManagedEntityEnumeration managed_entity_type
+                    final String managed_entity_type
                     )
     {
+        if (managed_entity_type != null) {
+            //validation
+            ViSdkManagedEntityEnumeration.fromValue( managed_entity_type );
+        }
+
         this.managed_entity_type = managed_entity_type;
     }
 
 
-    public ViSdkManagedEntityEnumeration getManagedEntityType()
+    public String getManagedEntityType()
     {
         return managed_entity_type;
     }
 
 
-    public static final ViSdkManagedEntityEnumeration managedEntityType(
+    public static final String managedEntityType(
                     final ViSdkManagedEntityBehaviors obj
                     )
     {
-        ViSdkManagedEntityEnumeration  managed_entity_type = obj.getManagedEntityType();
-        return (managed_entity_type == null ? DEFAULT_MANAGED_ENTITY_TYPE : managed_entity_type);
+        String  managed_entity_type = obj.getManagedEntityType();
+        return (managed_entity_type == null ? DEFAULT_MANAGED_ENTITY_TYPE.value() : managed_entity_type);
     }
 
 
@@ -109,7 +114,11 @@ public class ViSdkManagedEntityBehaviors
 
         if (super.equals( obj )) {
             ViSdkManagedEntityBehaviors  other = (ViSdkManagedEntityBehaviors)obj;
-            if (managedEntityType( this ) == managedEntityType( other )) {
+            String   this_managed_entity_type = managedEntityType( this );
+            String  other_managed_entity_type = managedEntityType( other );
+            if (this_managed_entity_type == other_managed_entity_type
+                            ||  (this_managed_entity_type != null
+                                 &&  this_managed_entity_type.equals( other_managed_entity_type ))) {
                 return true;
             }
         }
