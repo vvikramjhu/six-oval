@@ -48,8 +48,11 @@ public class Patch56State
     private EntityStateIntType              bundle_id;
     private EntityStateClassificationType   classification;
     private EntityStateSupportLevelType     support_level;
-    private EntityStateBoolType             status;
 
+    private EntityStateBoolType             status;
+    /* NOTE: The Java bean property name "status" conflicts with the one in the super class.
+     * So, we rename the property name to "installationSatus", as like one in the AIX schema.
+     */
 
 
     /**
@@ -172,7 +175,7 @@ public class Patch56State
 
     /**
      */
-    public void setStatus(
+    public void setInstallationStatus(
                     final EntityStateBoolType status
                     )
     {
@@ -180,7 +183,7 @@ public class Patch56State
     }
 
 
-    public EntityStateBoolType getStatus()
+    public EntityStateBoolType getInstallationStatus()
     {
         return status;
     }
@@ -200,7 +203,7 @@ public class Patch56State
         ref_list.add( getBundleId() );
         ref_list.add( getClassification() );
         ref_list.add( getSupportLevel() );
-        ref_list.add( getStatus() );
+        ref_list.add( getInstallationStatus() );
 
         return ref_list;
     }
@@ -242,7 +245,7 @@ public class Patch56State
                         + ", bundle_id="            + getBundleId()
                         + ", classification="       + getClassification()
                         + ", support_level="        + getSupportLevel()
-                        + ", status="               + getStatus()
+                        + ", status="               + getInstallationStatus()
              + "]";
     }
 

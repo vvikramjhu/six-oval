@@ -46,7 +46,11 @@ public class PatchState
 
     //{0..1}
     private EntityStateStringType           patch_number;
+
     private EntityStateBoolType             status;
+    /* NOTE: The Java bean property name "status" conflicts with the one in the super class.
+     * So, we rename the property name to "installationSatus", as like one in the AIX schema.
+     */
 
 
 
@@ -102,7 +106,7 @@ public class PatchState
 
     /**
      */
-    public void setStatus(
+    public void setInstallationStatus(
                     final EntityStateBoolType status
                     )
     {
@@ -110,7 +114,7 @@ public class PatchState
     }
 
 
-    public EntityStateBoolType getStatus()
+    public EntityStateBoolType getInstallationStatus()
     {
         return status;
     }
@@ -126,7 +130,7 @@ public class PatchState
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
         ref_list.add( getPatchNumber() );
-        ref_list.add( getStatus() );
+        ref_list.add( getInstallationStatus() );
 
         return ref_list;
     }
@@ -164,7 +168,7 @@ public class PatchState
     {
         return "patch_state[" + super.toString()
                         + ", patch_number="         + getPatchNumber()
-                        + ", status="               + getStatus()
+                        + ", status="               + getInstallationStatus()
              + "]";
     }
 
