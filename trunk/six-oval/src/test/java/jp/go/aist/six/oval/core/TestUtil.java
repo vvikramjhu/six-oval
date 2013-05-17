@@ -20,11 +20,7 @@ public class TestUtil
                     )
     throws Exception
     {
-        File  dir = new File( dir_path );
-
-        File[]  list = dir.listFiles( new XmlFilenameFilter() );
-
-        return list;
+        return listXmlFiles( new File( dir_path ) );
     }
 
 
