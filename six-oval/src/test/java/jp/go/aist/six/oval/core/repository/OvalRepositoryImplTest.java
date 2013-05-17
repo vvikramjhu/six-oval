@@ -34,13 +34,13 @@ public class OvalRepositoryImplTest
 
         @DataPoints
         public static String[]  INPUT_SUBDIR_PATHS = new String[] {
-            "independent"
-//            "independent",
-//            "linux",
-//            "macos",
-//            "solaris",
-//            "unix",
-//            "windows",
+            "definitions",
+            "independent",
+            "linux",
+            "macos",
+            "solaris",
+            "unix",
+            "windows"
         };
 
 
