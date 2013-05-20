@@ -59,7 +59,7 @@ public class NetworkingOvaldiProxyTest
             new Options()
             .set( OvaldiOption.NO_VERIFY )
 //          .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.4-x64\\xml" )
-            .set( OvaldiOption.OVAL_DEFINITIONS, "src/test/resources/data/oval5/mitre/oval-5.10-12541-3_i_Windows7.xml" )
+            .set( OvaldiOption.OVAL_DEFINITIONS, "src/test/resources/data/oval5/mitre/windows/oval-5.10-12541-3_i_Windows7.xml" )
             .set( OvaldiOption.OVAL_SC, "T:\\temp\\system-characteristics_option-networking.xml" )
             .set( OvaldiOption.OVAL_RESULTS, "T:\\temp\\results_option-networking.xml" )
             .set( OvaldiOption.OVAL_TRANSFORMED_RESULTS, "T:\\temp\\results_option-networking.html" )
