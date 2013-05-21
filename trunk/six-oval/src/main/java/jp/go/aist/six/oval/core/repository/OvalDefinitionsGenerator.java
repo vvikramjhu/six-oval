@@ -72,6 +72,7 @@ public class OvalDefinitionsGenerator
      */
     public OvalDefinitionsGenerator()
     {
+        this( SixOvalContext.repository() );
     }
 
 
@@ -166,7 +167,7 @@ public class OvalDefinitionsGenerator
                     final Collection<ElementRef> ref_list
                     )
     {
-        if (ref_list == null) {
+        if (ref_list == null  ||  ref_list.size() == 0) {
             return;
         }
 
@@ -188,8 +189,15 @@ public class OvalDefinitionsGenerator
                     final ElementRef ref
                     )
     {
+        if (ref == null) {
+            return null;
+        }
+
         String  oval_id = ref.ovalGetRefId();
         _LOG_.debug( "candidate OVAL ID: " + oval_id );
+        if (oval_id == null) {
+            return null;
+        }
 
         if (EntityUtil.containsElement( oval_defs, oval_id )) {
             _LOG_.debug( "element already contained: " + oval_id );
@@ -198,10 +206,11 @@ public class OvalDefinitionsGenerator
 
         DefinitionsElement  element = _getRepository().findElementById( oval_id );
         if (element == null) {
-            throw new ObjectNotFoundException( "no such OVAL element: " + oval_id );
+            throw new ObjectNotFoundException( "no such OVAL element in repository: " + oval_id );
         }
 
         EntityUtil.addElement( oval_defs, element );
+        _LOG_.debug( "element added: " + oval_id );
 
         return element;
     }
