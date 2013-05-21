@@ -43,6 +43,19 @@ public abstract class SixOvalContext
 
 
 
+    /**
+     * XML Configuration Properties.
+     */
+    public class Xml
+    {
+        public static final String  SCHEMA_LOCATION = "six.oval.xml.schemaLocation";
+        public static final String  SCHEMA_VERSION  = "six.oval.xml.schemaVersion";
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+
     private static BasicContext            _BASIC_CONTEXT_;
     private static RepositoryContext  _REPOSITORY_CONTEXT_;
     private static WebServerContext   _WEB_SERVER_CONTEXT_;

@@ -18,30 +18,32 @@
  */
 package jp.go.aist.six.oval.core.repository;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.SixOvalContext;
 import jp.go.aist.six.oval.core.model.EntityUtil;
-import jp.go.aist.six.oval.core.repository.morphia.OvalDatastore;
+import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.IsoDate;
+import jp.go.aist.six.util.config.ConfigurationException;
+import jp.go.aist.six.util.repository.ObjectNotFoundException;
 import jp.go.aist.six.util.repository.QueryParams;
-import jp.go.aist.six.util.xml.XmlMapper;
+import jp.go.aist.six.util.repository.QueryResults;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 
 /**
+ * OvalDefinitionsGenerator is an utility to generate OVAL Definitions document
+ * in the OVAL repository.
+ * There are two ways to specify which definitions must be included in documents;
+ * OVAL ID list and query.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -52,70 +54,16 @@ public class OvalDefinitionsGenerator
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalDefinitionsGenerator.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalDefinitionsGenerator.class );
 
 
 
-    public static void main(
-                    final String[] args
-                    )
-    throws Exception
-    {
-        if (args.length == 0) {
-            System.out.println( "Usage: query [file_to_save]" );
-            System.exit( 1 );
-        }
-
-        QueryParams  params = parseQuery( args[0] );
-
-        final OvalDefinitionsGenerator  generator = new OvalDefinitionsGenerator();
-        String  doc_id = generator.generateByQuery( params );
-        System.out.println( "OvalDefinitions document generated: ID=" + doc_id );
-
-        if (args.length > 1) {
-            String  filepath = args[1];
-            OvalDefinitions  doc = _getDatastore().findById( OvalDefinitions.class, doc_id );
-
-            System.out.println( "saving OvalDefinitions document...: file=" + filepath );
-            XmlMapper  xml_mapper = SixOvalContext.repository().getXmlMapper();
-            xml_mapper.marshal( doc, new FileWriter( new File( filepath ) ) );
-        }
-    }
+    private static final String  _PRODUCT_VERSION_ = "1.0.0";
+    private static final String  _PRODUCT_NAME_ = "cpe:/a:aist:six-oval:" + _PRODUCT_VERSION_;
 
 
-
-    public static QueryParams parseQuery( final String s )
-    {
-        String[]  key_values = s.split( "&" );
-        QueryParams  params = new QueryParams();
-        for (String  key_value : key_values) {
-            String[]  elements = key_value.split( "=" );
-            params.set( elements[0], elements[1] );
-        }
-
-        return params;
-    }
-
-
-
-
-    private static final String  _SCHEMA_VERSION_ = "5.10.1";
-    private static final String  _PRODUCT_NAME_ = "cpe:/a:aist:six-oval:0.7.0";
-    private static final String  _PRODUCT_VERSION_ = "0.7.0";
-
-    private static final String  _XML_SCHEMA_LOCATION_ =
-                    "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd"
-                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd"
-                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd"
-                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd"
-                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd"
-                                    + " http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd"
-                                    ;
-
-
-
-    private static OvalDatastore  _DATASTORE_;
+    private SixOvalContext  _context;
+    private OvalRepository  _repository;
 
 
 
@@ -127,16 +75,135 @@ public class OvalDefinitionsGenerator
     }
 
 
+    public OvalDefinitionsGenerator(
+                    final SixOvalContext context
+                    )
+    {
+        setContext( context );
+    }
+
+
 
     /**
      */
-    private static OvalDatastore _getDatastore()
+    public void setContext(
+                    final SixOvalContext context
+                    )
     {
-        if (_DATASTORE_ == null) {
-            _DATASTORE_ = SixOvalContext.repository().getBean( OvalDatastore.class );
+        _context = context;
+    }
+
+
+    protected SixOvalContext _getContext()
+    {
+        if (_context == null) {
+            throw new ConfigurationException();
         }
 
-        return _DATASTORE_;
+        return _context;
+    }
+
+
+
+    /**
+     */
+    public void setRepository(
+                    final OvalRepository repository
+                    )
+    {
+        _repository = repository;
+    }
+
+
+    protected OvalRepository _getRepository()
+    {
+        if (_repository == null) {
+            _repository = _getContext().getRepository();
+        }
+
+        return _repository;
+    }
+
+
+
+    /**
+     *
+     * @param   params
+     * @return
+     *  the OvalDefinitions object ID.
+     */
+    public String generateByQuery(
+                    final QueryParams params
+                    )
+    {
+        QueryResults<DefinitionType>  results = _getRepository().findDefinition( params );
+        Collection<DefinitionType>  def_list = results.getElements();
+
+        DefinitionsType  defs = new DefinitionsType( def_list );
+        OvalDefinitions  oval_defs = new OvalDefinitions();
+        oval_defs.setDefinitions( defs );
+
+        for (DefinitionType  def : def_list) {
+            Collection<ElementRef>  ref_list = def.ovalGetElementRef();
+            _addElements( oval_defs, ref_list );
+        }
+
+        String  schema_location = _getContext().getProperty( SixOvalContext.Xml.SCHEMA_LOCATION );
+        oval_defs.setSchemaLocation( schema_location );
+        oval_defs.setGenerator( _newGenerator() );
+        String  id = _getRepository().saveOvalDefinitions( oval_defs );
+
+        return id;
+    }
+
+
+
+    /**
+     * Recursively called.
+     */
+    private void _addElements(
+                    final OvalDefinitions oval_defs,
+                    final Collection<ElementRef> ref_list
+                    )
+    {
+        if (ref_list == null) {
+            return;
+        }
+
+        for (ElementRef  ref : ref_list) {
+            DefinitionsElement  element = _addElement( oval_defs, ref );
+            if (element != null) {
+                Collection<ElementRef>  next_ref_list = element.ovalGetElementRef();
+                _addElements( oval_defs, next_ref_list );
+            }
+        }
+    }
+
+
+
+    /**
+     */
+    private DefinitionsElement _addElement(
+                    final OvalDefinitions oval_defs,
+                    final ElementRef ref
+                    )
+    {
+        String  oval_id = ref.ovalGetRefId();
+        _LOG_.debug( "candidate OVAL ID: " + oval_id );
+
+        if (EntityUtil.containsElement( oval_defs, oval_id )) {
+            _LOG_.debug( "element already contained: " + oval_id );
+            return null;
+        }
+
+        DefinitionsElement  element = _getRepository().findElementById( oval_id );
+        if (element == null) {
+            throw new ObjectNotFoundException( "no such OVAL element: " + oval_id );
+        }
+
+        EntityUtil.addElement( oval_defs, element );
+
+        return element;
     }
 
 
@@ -153,8 +220,10 @@ public class OvalDefinitionsGenerator
                     final Date timestamp
                     )
     {
+        String  schema_version = _getContext().getProperty( SixOvalContext.Xml.SCHEMA_VERSION );
+
         GeneratorType  generator = new GeneratorType();
-        generator.setSchemaVersion(  _SCHEMA_VERSION_ );
+        generator.setSchemaVersion(  schema_version );
         generator.setTimestamp(      IsoDate.format( timestamp ) );
         generator.setProductName(    _PRODUCT_NAME_ );
         generator.setProductVersion( _PRODUCT_VERSION_ );
@@ -164,91 +233,56 @@ public class OvalDefinitionsGenerator
 
 
 
-    /**
-     * @throws  OvalException
-     */
-    public String generateByQuery(
-                    final QueryParams params
-                    )
-    {
-        _LOG_.debug( "params=" + params );
 
-        List<DefinitionType>  def_list = _getDatastore().find( DefinitionType.class, params );
-        if (def_list == null) {
-            throw new OvalException( "no Definition found" );
-        }
-
-        DefinitionsType  defs = new DefinitionsType( def_list );
-
-        OvalDefinitions  oval_defs = new OvalDefinitions();
-        oval_defs.setDefinitions( defs );
-        for (DefinitionType  def : def_list) {
-            Collection<String>  ref_ids = EntityUtil.getElementRefId( def );
-            _addElements( oval_defs, ref_ids );
-        }
-
-        oval_defs.setSchemaLocation( _XML_SCHEMA_LOCATION_ );
-        oval_defs.setGenerator( _newGenerator() );
-        String  id = _getDatastore().save( OvalDefinitions.class, oval_defs );
-        return id;
-    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 
 
 
-    /**
-     * @throws  OvalException
-     */
-    private void _addElements(
-                    final OvalDefinitions oval_defs,
-                    final Collection<String> oval_ids
-                    )
-    {
-        _LOG_.debug( "OVAL IDs: " + String.valueOf( oval_ids ) );
-//        Collection<DefinitionsElement>  added_elements = new HashSet<DefinitionsElement>();
-        for (String  oval_id : oval_ids) {
-            DefinitionsElement  element = _addElement( oval_defs, oval_id );
-            if (element != null) {
-//                added_elements.add( element );
-                Collection<String>  ref_ids = EntityUtil.getElementRefId( element );
-                _addElements( oval_defs, ref_ids );
-            }
-        }
-
-//        if (added_elements.size() > 0) {
-//            Collection<String>  added_ids = new HashSet<String>();
-//            for (DefinitionsElement  e : added_elements) {
-//                added_ids.add( e.getOvalID() );
-//            }
-//
-//            _addElements( oval_defs, added_ids );
+//    public static void main(
+//                    final String[] args
+//                    )
+//    throws Exception
+//    {
+//        if (args.length == 0) {
+//            System.out.println( "Usage: query [file_to_save]" );
+//            System.exit( 1 );
 //        }
-    }
-
-
-    /**
-     * @throws  OvalException
-     */
-    private DefinitionsElement _addElement(
-                    final OvalDefinitions oval_defs,
-                    final String oval_id
-                    )
-    {
-        _LOG_.debug( "OVAL ID: " + oval_id );
-        boolean  contained = EntityUtil.containsElement( oval_defs, oval_id );
-        if(contained) {
-            _LOG_.debug( "element already contained: " + oval_id );
-            return null;
-        }
-
-        Class<? extends DefinitionsElement>  java_type = EntityUtil.javaTypeOf( oval_id );
-//        Class<? extends DefinitionsElement>  java_type = EntityUtil.objectTypeOf( oval_id );
-        DefinitionsElement  element = _getDatastore().findById( java_type, oval_id );
-        if (element == null) {
-            throw new OvalRepositoryException( "no such definitions element: " + oval_id );
-        }
-        EntityUtil.addElement( oval_defs, element );
-        return element;
-    }
+//
+//        QueryParams  params = parseQuery( args[0] );
+//
+//        final OvalDefinitionsGenerator  generator = new OvalDefinitionsGenerator();
+//        String  doc_id = generator.generateByQuery_deprecated( params );
+//        System.out.println( "OvalDefinitions document generated: ID=" + doc_id );
+//
+//        if (args.length > 1) {
+//            String  filepath = args[1];
+//            OvalDefinitions  doc = _getDatastore().findById( OvalDefinitions.class, doc_id );
+//
+//            System.out.println( "saving OvalDefinitions document...: file=" + filepath );
+//            XmlMapper  xml_mapper = SixOvalContext.repository().getXmlMapper();
+//            xml_mapper.marshal( doc, new FileWriter( new File( filepath ) ) );
+//        }
+//    }
+//
+//
+//
+//    public static QueryParams parseQuery( final String s )
+//    {
+//        String[]  key_values = s.split( "&" );
+//        QueryParams  params = new QueryParams();
+//        for (String  key_value : key_values) {
+//            String[]  elements = key_value.split( "=" );
+//            params.set( elements[0], elements[1] );
+//        }
+//
+//        return params;
+//    }
 
 }
 //
