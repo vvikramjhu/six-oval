@@ -82,7 +82,7 @@ public class OvalRepositoryImpl
                     )
     {
         List<OvalResults>  p_list = _getDatastore().find( OvalResults.class, params );
-        return new QueryResults<OvalResults>( p_list );
+        return new QueryResults<OvalResults>( params, p_list );
     }
 
 
@@ -100,7 +100,7 @@ public class OvalRepositoryImpl
                     )
     {
         List<String>  p_list = _getDatastore().findId( OvalResults.class, params );
-        return new QueryResults<String>( p_list );
+        return new QueryResults<String>( params, p_list );
     }
 
 
@@ -160,7 +160,7 @@ public class OvalRepositoryImpl
                     )
     {
         List<OvalSystemCharacteristics>  p_list = _getDatastore().find( OvalSystemCharacteristics.class, params );
-        return new QueryResults<OvalSystemCharacteristics>( p_list );
+        return new QueryResults<OvalSystemCharacteristics>( params, p_list );
     }
 
 
@@ -178,7 +178,7 @@ public class OvalRepositoryImpl
                     )
     {
         List<String>  p_list = _getDatastore().findId( OvalSystemCharacteristics.class, params );
-        return new QueryResults<String>( p_list );
+        return new QueryResults<String>( params, p_list );
     }
 
 
