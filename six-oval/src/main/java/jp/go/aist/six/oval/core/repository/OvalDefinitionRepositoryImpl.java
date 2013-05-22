@@ -69,6 +69,14 @@ public class OvalDefinitionRepositoryImpl
     }
 
 
+    public OvalDefinitionRepositoryImpl(
+                    final Datastore datastore
+                    )
+    {
+        setDatastore( datastore );
+    }
+
+
 
     /**
      *
@@ -168,7 +176,7 @@ public class OvalDefinitionRepositoryImpl
                     )
     {
         List<DefinitionType>  p_list = _getDatastore().find( DefinitionType.class, params );
-        return new QueryResults<DefinitionType>( p_list );
+        return new QueryResults<DefinitionType>( params, p_list );
     }
 
 
@@ -186,7 +194,7 @@ public class OvalDefinitionRepositoryImpl
                     )
     {
         List<String>  p_list = _getDatastore().findId( DefinitionType.class, params );
-        return new QueryResults<String>( p_list );
+        return new QueryResults<String>( params, p_list );
     }
 
 
@@ -271,7 +279,7 @@ public class OvalDefinitionRepositoryImpl
             p_list = new ArrayList<DefinitionsElement>( p_sub_list );
         }
 
-        return new QueryResults<DefinitionsElement>( p_list );
+        return new QueryResults<DefinitionsElement>( params, p_list );
     }
 
 
@@ -323,7 +331,7 @@ public class OvalDefinitionRepositoryImpl
             p_list = _getDatastore().findId( java_type, adjusted_params );
         }
 
-        return new QueryResults<String>( p_list );
+        return new QueryResults<String>( params, p_list );
     }
 
 
@@ -419,7 +427,7 @@ public class OvalDefinitionRepositoryImpl
                     )
     {
         List<String>  p_list = _getDatastore().findId( OvalDefinitions.class, params );
-        return new QueryResults<String>( p_list );
+        return new QueryResults<String>( params, p_list );
     }
 
 
