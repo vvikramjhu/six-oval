@@ -12,8 +12,8 @@ Project SIX: OVAL - Maven Project Object Model (POM)
 
     <groupId>jp.go.aist.six.oval</groupId>
     <artifactId>six-oval</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
-    <!-- version>1.3.0</version  -->
+    <version>1.3.0</version>
+    <!-- version>1.3.0-SNAPSHOT</version -->
     <packaging>jar</packaging>
 
     <name>SIX OVAL</name>
