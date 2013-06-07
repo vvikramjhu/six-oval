@@ -129,6 +129,7 @@ public class OvalDefinitionsDAO
         Key<OvalDefinitions>  key = _findExistingKey( oval_definitions );
         if (key != null) {
             oval_definitions.setPersistentID( String.valueOf( key.getId() ) );
+            _LOG_.debug( "equivalent OvalDefinitions already exists: ID=" + oval_definitions.getPersistentID() );
             return key;
         }
 
@@ -143,6 +144,7 @@ public class OvalDefinitionsDAO
         if (variables != null) {
             DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
             for (VariableType  variable : variables.getVariable()) {
+                _LOG_.debug( "saving Variable: OVAL ID=" + variable.getOvalId() );
                 variable.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( variable );
             }
@@ -152,6 +154,7 @@ public class OvalDefinitionsDAO
         if (states != null) {
             DAO<StateType, String>  dao = _getForwardingDAO( StateType.class );
             for (StateType  state : states.getState()) {
+                _LOG_.debug( "saving State: OVAL ID=" + state.getOvalId() );
                 state.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( state );
             }
@@ -161,6 +164,7 @@ public class OvalDefinitionsDAO
         if (objects != null) {
             DAO<SystemObjectType, String>  dao = _getForwardingDAO( SystemObjectType.class );
             for (SystemObjectType  object : objects.getObject()) {
+                _LOG_.debug( "saving Object: OVAL ID=" + object.getOvalId() );
                 object.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( object );
             }
@@ -170,6 +174,7 @@ public class OvalDefinitionsDAO
         if (tests != null) {
             DAO<TestType, String>  dao = _getForwardingDAO( TestType.class );
             for (TestType  test : tests.getTest()) {
+                _LOG_.debug( "saving Test: OVAL ID=" + test.getOvalId() );
                 test.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( test );
             }
@@ -179,11 +184,18 @@ public class OvalDefinitionsDAO
         if (definitions != null) {
             DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
             for (DefinitionType  definition : definitions.getDefinition()) {
+                _LOG_.debug( "saving Definition: OVAL ID=" + definition.getOvalId() );
 
-                //TODO: for NETSAP2013, deprecated definitions are ignored
-                if (definition.getDeprecated() == Boolean.TRUE) {
-                    continue;
-                }
+                //TODO: for NETSAP2013, deprecated Definitions are ignored.
+                // If deprecated definitions are NOT saved, they must be removed
+                // from the Definitions list.
+                // Otherwise, saving oval_definitions cause ERROR because
+                // some Definitions have NULL @Id _id values.
+                // For example, the Mitre's Solaris vuln XML contains
+                // deprecated Definitions, e.g. oval:org.mitre.oval:def:1163.
+//                if (definition.getDeprecated() == Boolean.TRUE) {
+//                    continue;
+//                }
 
                 definition.ovalSetGenerator( oval_definitions.getGenerator() );
                 dao.save( definition );
@@ -193,6 +205,7 @@ public class OvalDefinitionsDAO
         //compute the digest!!!
         oval_definitions.getDefinitionsDigest();
 
+        _LOG_.debug( "saving OvalDefinitions: ID=" + oval_definitions.getPersistentID() );
         return super.save( oval_definitions );
     }
 
