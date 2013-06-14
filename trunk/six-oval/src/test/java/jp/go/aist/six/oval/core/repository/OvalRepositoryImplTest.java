@@ -29,7 +29,7 @@ public class OvalRepositoryImplTest
 {
 
     /**
-     * Test function.
+     * support function.
      */
     public static void saveOvalDefinitions(
                     final OvalRepository repository,
