@@ -24,10 +24,10 @@
             fork="true"
             maxmemory="512m"
             >
-            <arg value="src/test/resources/data/netsap2013/20130313_mitre_vuln_macos.xml"/>
-            <arg value="src/test/resources/data/netsap2013/20130313_mitre_vuln_unix.xml"/>
-            <arg value="src/test/resources/data/netsap2013/20130313_mitre_vuln_windows.xml"/>
-            <arg value="src/test/resources/data/netsap2013/20130313_com.redhat.rhsa-all.xml"/>
+            <arg value="src/test/resources/data/20130313/20130313_mitre_vuln_macos.xml"/>
+            <arg value="src/test/resources/data/20130313/20130313_mitre_vuln_unix.xml"/>
+            <arg value="src/test/resources/data/20130313/20130313_mitre_vuln_windows.xml"/>
+            <arg value="src/test/resources/data/20130313/20130313_com.redhat.rhsa-all.xml"/>
 
 <!--
             <arg value="src/test/resources/data/netsap2013/20130313_mitre_vuln_macos.xml"/>
