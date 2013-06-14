@@ -78,7 +78,7 @@ public class OvalAnalyzer
 
             String  time_span = String.valueOf( year_begin ) + "-" + year_end;
             File  file = _createOutputFile(
-                            "oval-stat_by-year_" + time_span
+                            "oval-entries_by-year_" + time_span
                             + "_" + System.currentTimeMillis() + ".txt" );
             PrintStream  output_file = new PrintStream( file );
 
