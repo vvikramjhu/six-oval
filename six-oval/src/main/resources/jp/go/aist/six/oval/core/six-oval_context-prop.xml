@@ -45,11 +45,17 @@
     <!-- *  Properties bean                                           * -->
     <!-- ************************************************************** -->
 
+<!-- NOW, we use these paths as constructor arguments of SpringContext superclass.
+    If the properties file does NOT exist, e.g. classpath:six-oval.properties,
+    the Spring container throws an exception to indicate failure in creating the properties bean.
+    
     <util:properties id="six-oval-default-properties" 
         location="classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties"/>
 
     <util:properties id="six-oval-properties" 
         location="classpath:six-oval.properties"/>
+-->
+
 
 <!-- DO NOT USE THIS!
     <context:property-override location="classpath:six-oval.properties"
