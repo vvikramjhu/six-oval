@@ -141,9 +141,14 @@ public abstract class SixOvalContext
                     )
     {
         super( config_location, new String[] {
-                        "six-oval-default-properties",
-                        "six-oval-properties"
+                        "classpath:jp/go/aist/six/oval/core/six-oval_defaults.properties",
+                        "classpath:six-oval.properties"
                     } );
+
+//        super( config_location, new String[] {
+//                        "six-oval-default-properties",
+//                        "six-oval-properties"
+//                    } );
 
         //The following code does not work.
         //The second parameter is passed to the super class as a null.
