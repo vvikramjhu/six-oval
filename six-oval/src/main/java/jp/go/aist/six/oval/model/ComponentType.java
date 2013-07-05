@@ -300,6 +300,10 @@ public enum ComponentType
     };
 
 
+    public static final ComponentType[]  PIXOS = new ComponentType[] {
+    };
+
+
     public static final ComponentType[]  SOLARIS = new ComponentType[] {
         ComponentType.ISAINFO,
         ComponentType.NDD,
