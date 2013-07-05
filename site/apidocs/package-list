@@ -31,9 +31,11 @@ jp.go.aist.six.oval.model.directives
 jp.go.aist.six.oval.model.esx
 jp.go.aist.six.oval.model.hpux
 jp.go.aist.six.oval.model.independent
+jp.go.aist.six.oval.model.ios
 jp.go.aist.six.oval.model.linux
 jp.go.aist.six.oval.model.macos
 jp.go.aist.six.oval.model.mitre
+jp.go.aist.six.oval.model.pixos
 jp.go.aist.six.oval.model.redhat
 jp.go.aist.six.oval.model.results
 jp.go.aist.six.oval.model.sc
