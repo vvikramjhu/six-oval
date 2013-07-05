@@ -28,7 +28,6 @@ Project SIX: OVAL - Maven Goals
 *package [-DskipTests]
 *war:war
     Builds a WAR file.
-*assembly:single [-DskipTests]
     
 *javadoc:javadoc
     Generates the test Javadoc files for the project.
@@ -39,3 +38,5 @@ Project SIX: OVAL - Maven Goals
 
 *deploy [-DskipTests]
     Copies the final package to the remote repository.
+
+*assembly:single [-DskipTests]
