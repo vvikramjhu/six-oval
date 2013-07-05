@@ -13,13 +13,14 @@
 
 == <font color="#0044CC">OVAL Support</font> ==
   * OVAL Schema Version: 5.10.1
-  * Cisco IOS family supported.
+  * Cisco IOS and PIXOS families supported.
 || *Family* || *Components* ||
 || aix || fileset, fix, interim_fix, no, oslevel ||
 || independent       || environmentvariable, environmentvariable58, family, filehash, filehash58, ldap, ldap57, sql, sql57, textfilecontent, textfilecontent54, unknown, variable, xmlfilecontent ||
-|| *_ios_* || *_..._* ||
+|| *_ios_* || *_global, interface, line, snmp, tclsh, version, version55_* ||
 || linux || dpkginfo, iflisteners, inetlisteningservers, partition, rpminfo, rpmverify, rpmverifyfile, rpmverifypackage, selinuxboolean, selinuxsecuritycontext, slackwarepkginfo ||
 || macos || accountinfo, diskutil, inetlisteningservers, inetlisteningserver510, nvram, plist, plist510, pwpolicy, pwpolicy59 ||
+|| *_pixos_* || *_line, version_* ||
 || solaris || isainfo, ndd, package, packagecheck, patch, patch54, smf ||
 || unix || dnscache, file, fileextendedattribute, gconf, inetd, interface, password, process, process58, routingtable, runlevel, sccs, shadow, sysctl, uname, xinetd ||
 || windows || accesstoken, activedirectory, activedirectory57, auditeventpolicy, auditeventpolicysubcategories, cmdlet, dnscache, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, peheader, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, service, serviceeffectiverights, sharedresource, sharedresourceauditedpermissions, sharedresourceeffectiverights, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
