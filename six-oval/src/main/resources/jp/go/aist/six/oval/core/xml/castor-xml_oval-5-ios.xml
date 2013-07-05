@@ -24,6 +24,69 @@
     <!-- entity & behavior                                       -->
     <!-- ******************************************************* -->
 
+    <!-- ******************************************************* -->
+    <!-- line                                                    -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.ios.LineTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="line_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.ios.LineObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="line_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+        <field name="showSubcommand" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="show_subcommand" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.ios.LineState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="line_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+        <field name="showSubcommand" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="show_subcommand" node="element"/>
+        </field>
+        <field name="configLine" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="config_line" node="element"/>
+        </field>
+    </class>
+
+<!-- TODO:
+    <class name ="jp.go.aist.six.oval.model.ios.LineItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="line_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios"
+            ns-prefix=""/>
+    </class>
+-->
 
 
     <!-- ******************************************************* -->
