@@ -68,7 +68,7 @@ public enum ComponentType
     INETD,                          // unix
     INETLISTENINGSERVERS,           // linux, macos
     INETLISTENINGSERVERS510,        // macos
-    INTERFACE,                      // unix, windows
+    INTERFACE,                      // ios, unix, windows
     INTERIM_FIX,                    // aix
     ISAINFO,						// solaris
 
@@ -268,6 +268,7 @@ public enum ComponentType
 
     public static final ComponentType[]  IOS = new ComponentType[] {
         ComponentType.GLOBAL,
+        ComponentType.INTERFACE,
         ComponentType.LINE,
         ComponentType.VERSION,
         ComponentType.VERSION55

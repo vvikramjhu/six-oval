@@ -102,6 +102,8 @@ public class OvalTransformXmlMapperTest
             "ios",
             "linux",
             "macos",
+            "pixos",
+            "solaris",
             "windows"
         };
 
