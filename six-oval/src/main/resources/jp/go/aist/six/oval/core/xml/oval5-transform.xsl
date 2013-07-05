@@ -83,7 +83,7 @@
     dnscache:               unix, windows 
     file:                   unix, windows
     inetlisteningservers:   linux, macos
-    interface:              unix, windows
+    interface:              ios, unix, windows
     line,                   ios, pixos
     patch:                  esx, hpux, solaris
     process:                unix, windows
@@ -263,6 +263,13 @@
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
 
     <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
+            <xsl:call-template name="func_output-oval-5-ios-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
             <xsl:call-template name="func_output-oval-5-unix-component">
                 <xsl:with-param name="lvar_element" select="$lvar_element"/>
@@ -280,7 +287,30 @@
 </xsl:template>
 
 
-<!-- interface (post-marshalling) -->
+<!-- ios interface (post-marshalling) -->
+<xsl:template match="*[local-name() = 'ios_interface_test'  or  local-name() = 'ios_interface_object'  or  local-name() = 'ios_interface_state'  or  local-name() = 'ios_interface_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+<!-- unix interface (post-marshalling) -->
 <xsl:template match="*[local-name() = 'unix_interface_test'  or  local-name() = 'unix_interface_object'  or  local-name() = 'unix_interface_state'  or  local-name() = 'unix_interface_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
@@ -786,6 +816,45 @@ TEMPLATE:  Copy idiom.
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-ios">
             <xsl:choose>
+<!-- interface -->
+                <xsl:when test="$lvar_element = 'interface_test'">
+                    <ios_interface_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_interface_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'interface_object'">
+                    <ios_interface_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_interface_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'interface_state'">
+                    <ios_interface_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_interface_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'ios_interface_test'">
+                    <interface_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'ios_interface_object'">
+                    <interface_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'ios_interface_state'">
+                    <interface_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_state>
+                </xsl:when>
+
 <!-- version -->
                 <xsl:when test="$lvar_element = 'version_test'">
                     <ios_version_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
@@ -829,6 +898,22 @@ TEMPLATE:  Copy idiom.
 
         <xsl:when test="$lvar_ns = $var_ns-sc-5-ios">
             <xsl:choose>
+<!-- interface -->
+                <xsl:when test="$lvar_element = 'interface_item'">
+                    <ios_interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_interface_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'ios_interface_item'">
+                    <interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_item>
+                </xsl:when>
+
+<!-- version -->
                 <xsl:when test="$lvar_element = 'version_item'">
                     <ios_version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
                         <xsl:copy-of select="@*"/>
