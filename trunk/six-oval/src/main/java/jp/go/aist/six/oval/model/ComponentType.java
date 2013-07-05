@@ -60,6 +60,7 @@ public enum ComponentType
     FIX,                            // fix
 
     GCONF,                          // unix
+    GLOBAL,                         // ios
     GROUP,                          // windows
     GROUP_SID,                      // windows
 
@@ -266,6 +267,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  IOS = new ComponentType[] {
+        ComponentType.GLOBAL,
         ComponentType.LINE,
         ComponentType.VERSION,
         ComponentType.VERSION55
