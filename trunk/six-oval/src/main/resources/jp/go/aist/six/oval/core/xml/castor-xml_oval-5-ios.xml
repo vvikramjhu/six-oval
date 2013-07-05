@@ -24,6 +24,12 @@
     <!-- entity & behavior                                       -->
     <!-- ******************************************************* -->
 
+<!-- version -->
+    <class name="jp.go.aist.six.oval.model.ios.EntityStateTrainIdentifierType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
     <!-- ******************************************************* -->
     <!-- line                                                    -->
     <!-- ******************************************************* -->
@@ -90,7 +96,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- version55                                               -->
+    <!-- version55, version                                      -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.ios.Version55Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
@@ -147,6 +153,53 @@
         <field name="mainlineRebuild" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="mainline_rebuild" node="element"/>
+        </field>
+        <field name="versionString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIOSVersionType">
+            <bind-xml name="version_string" node="element"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.ios.VersionTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="version_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.ios.VersionObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="version_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.ios.VersionState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="version_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios"
+            ns-prefix=""/>
+        <field name="majorRelease" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="major_release" node="element"/>
+        </field>
+        <field name="trainNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="train_number" node="element"/>
+        </field>
+        <field name="trainIdentifier" 
+            type="jp.go.aist.six.oval.model.ios.EntityStateTrainIdentifierType">
+            <bind-xml name="train_identifier" node="element"/>
         </field>
         <field name="versionString" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateIOSVersionType">
