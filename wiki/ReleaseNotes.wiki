@@ -24,16 +24,16 @@
 || unix || dnscache, file, fileextendedattribute, gconf, inetd, interface, password, process, process58, routingtable, runlevel, sccs, shadow, sysctl, uname, xinetd ||
 || windows || accesstoken, activedirectory, activedirectory57, auditeventpolicy, auditeventpolicysubcategories, cmdlet, dnscache, file, fileauditedpermissions,  fileauditedpermissions53, fileeffectiverights, fileeffectiverights53, group, group_sid, interface, lockoutpolicy, metabase, passwordpolicy, peheader, port, printereffectiverights, process, process58, registry, regkeyauditedpermissions, regkeyauditedpermissions53, regkeyeffectiverights, regkeyeffectiverights53, service, serviceeffectiverights, sharedresource, sharedresourceauditedpermissions, sharedresourceeffectiverights, sid, sid_sid, uac, user, user_sid, user_sid55, volume, wmi, wmi57, wuaupdatesearcher ||
 
-=== <font color="#0044CC">Fixed</font> ===
-==== <font color="#0044CC">core</font> ====
+== <font color="#0044CC">Fixed</font> ==
+=== <font color="#0044CC">core</font> ===
   * Issue #8: 
 
 
 
 ----------------
 = <font color="#0044CC">Version 1.3.1 (2013-06-18)</font> =
-=== <font color="#0044CC">Fixed</font> ===
-==== <font color="#0044CC">core</font> ====
+== <font color="#0044CC">Fixed</font> ==
+=== <font color="#0044CC">core</font> ===
   * Issue #7: !SixOvalContext fails in creating a properties bean if the properties file does not exist
 
 
