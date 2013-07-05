@@ -129,6 +129,7 @@ public enum ComponentType
     SID_SID,                        // windows
     SLACKWAREPKGINFO,               // linux
     SMF,                            // solaris
+    SNMP,                           // ios
     SQL,                            // independent @deprecated
     SQL57,                          // independent
     SWLIST,                         // hpux
@@ -270,6 +271,7 @@ public enum ComponentType
         ComponentType.GLOBAL,
         ComponentType.INTERFACE,
         ComponentType.LINE,
+        ComponentType.SNMP,
         ComponentType.VERSION,
         ComponentType.VERSION55
     };
