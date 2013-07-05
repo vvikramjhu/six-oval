@@ -144,6 +144,7 @@ public enum ComponentType
 
     VARIABLE,                       // independent
     VERSION,                        // esx
+    VERSION55,                      // ios
     VISDKMANAGEDOBJECT,             // esx
     VOLUME,                         // windows
 
@@ -260,6 +261,11 @@ public enum ComponentType
         ComponentType.UNKNOWN,
         ComponentType.VARIABLE,
         ComponentType.XMLFILECONTENT
+    };
+
+
+    public static final ComponentType[]  IOS = new ComponentType[] {
+        ComponentType.VERSION55
     };
 
 

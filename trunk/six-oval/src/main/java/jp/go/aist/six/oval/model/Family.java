@@ -35,22 +35,22 @@ public enum Family
     implements OvalEnumeration
 {
 
-    AIX(            ComponentType.AIX         ),
+    AIX(            ComponentType.AIX           ),
 //      apache,
 //      catos,
 //      esx,
-    ESX(            ComponentType.ESX         ),
+    ESX(            ComponentType.ESX           ),
 //      freebsd,
-    HPUX(           ComponentType.HPUX        ),
-//      ios,
-    INDEPENDENT(    ComponentType.INDEPENDENT ),
-    LINUX(          ComponentType.LINUX       ),
-    MACOS(          ComponentType.MACOS       ),
+    HPUX(           ComponentType.HPUX          ),
+    IOS(            ComponentType.IOS           ),
+    INDEPENDENT(    ComponentType.INDEPENDENT   ),
+    LINUX(          ComponentType.LINUX         ),
+    MACOS(          ComponentType.MACOS         ),
 //        pixos,
 //        sharepoint,
-    SOLARIS(        ComponentType.SOLARIS     ),
-    UNIX(           ComponentType.UNIX        ),
-    WINDOWS(        ComponentType.WINDOWS     );
+    SOLARIS(        ComponentType.SOLARIS       ),
+    UNIX(           ComponentType.UNIX          ),
+    WINDOWS(        ComponentType.WINDOWS       );
 
 
 
