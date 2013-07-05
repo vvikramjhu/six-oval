@@ -73,6 +73,7 @@ public enum ComponentType
 
     LDAP,                           // independent
     LDAP57,                         // independent
+    LINE,                           // ios
     LOCKOUTPOLICY,                  // windows
 
     METABASE,                       // windows
@@ -265,6 +266,7 @@ public enum ComponentType
 
 
     public static final ComponentType[]  IOS = new ComponentType[] {
+        ComponentType.LINE,
         ComponentType.VERSION55
     };
 
