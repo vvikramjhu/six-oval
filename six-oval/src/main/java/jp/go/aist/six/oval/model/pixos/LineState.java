@@ -16,52 +16,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.model.ios;
+package jp.go.aist.six.oval.model.pixos;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateIOSVersionType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The version state defines the version information held within a Cisco IOS Train.
+ * The line state defines the different information that can be used to evaluate
+ * the result of a specific SHOW sub-command.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.5:
- *             Replaced by the version55 state and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class VersionState
+public class LineState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateIntType              major_release;
-    private EntityStateIntType              train_number;
-    private EntityStateTrainIdentifierType  train_identifier;
-    private EntityStateIOSVersionType       version_string;
+    private EntityStateStringType           show_subcommand;
+    private EntityStateStringType           config_line;
 
 
 
     /**
      * Constructor.
      */
-    public VersionState()
+    public LineState()
     {
         this( null, 0 );
     }
 
 
-    public VersionState(
+    public LineState(
                     final String id,
                     final int version
                     )
@@ -70,7 +64,7 @@ public class VersionState
     }
 
 
-    public VersionState(
+    public LineState(
                     final String id,
                     final int version,
                     final String comment
@@ -78,76 +72,43 @@ public class VersionState
     {
         super( id, version, comment );
 
-        _oval_family = Family.IOS;
-        _oval_component = ComponentType.VERSION;
+        _oval_family = Family.PIXOS;
+        _oval_component = ComponentType.LINE;
+    }
+
+
+
+
+    /**
+     */
+    public void setShowSubcommand(
+                    final EntityStateStringType show_subcommand
+                    )
+    {
+        this.show_subcommand = show_subcommand;
+    }
+
+
+    public EntityStateStringType getShowSubcommand()
+    {
+        return show_subcommand;
     }
 
 
 
     /**
      */
-    public void setMajorRelease(
-                    final EntityStateIntType major_release
+    public void setConfigLine(
+                    final EntityStateStringType config_line
                     )
     {
-        this.major_release = major_release;
+        this.config_line = config_line;
     }
 
 
-    public EntityStateIntType getMajorRelease()
+    public EntityStateStringType getConfigLine()
     {
-        return major_release;
-    }
-
-
-
-    /**
-     */
-    public void setTrainNumber(
-                    final EntityStateIntType train_number
-                    )
-    {
-        this.train_number = train_number;
-    }
-
-
-    public EntityStateIntType getTrainNumber()
-    {
-        return train_number;
-    }
-
-
-
-    /**
-     */
-    public void setTrainIdentifier(
-                    final EntityStateTrainIdentifierType train_identifier
-                    )
-    {
-        this.train_identifier = train_identifier;
-    }
-
-
-    public EntityStateTrainIdentifierType getTrainIdentifier()
-    {
-        return train_identifier;
-    }
-
-
-
-    /**
-     */
-    public void setVersionString(
-                    final EntityStateIOSVersionType version_string
-                    )
-    {
-        this.version_string = version_string;
-    }
-
-
-    public EntityStateIOSVersionType getVersionString()
-    {
-        return version_string;
+        return config_line;
     }
 
 
@@ -160,11 +121,8 @@ public class VersionState
     public Collection<ElementRef> ovalGetElementRef()
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
-
-        ref_list.add( getMajorRelease() );
-        ref_list.add( getTrainNumber() );
-        ref_list.add( getTrainIdentifier() );
-        ref_list.add( getVersionString() );
+        ref_list.add( getShowSubcommand() );
+        ref_list.add( getConfigLine() );
 
         return ref_list;
     }
@@ -188,7 +146,7 @@ public class VersionState
                     final Object obj
                     )
     {
-        if (!(obj instanceof VersionState)) {
+        if (!(obj instanceof LineState)) {
             return false;
         }
 
@@ -200,12 +158,11 @@ public class VersionState
     @Override
     public String toString()
     {
-        return "version_state[" + super.toString()
-                        + ", major_release="    + getMajorRelease()
-                        + ", train_number="     + getTrainNumber()
-                        + ", train_identifier=" + getTrainIdentifier()
-                        + ", version_string="   + getVersionString()
+        return "line_state[" + super.toString()
+                        + ", show_subcommand="  + getShowSubcommand()
+                        + ", config_line="      + getConfigLine()
              + "]";
     }
+
 }
 //

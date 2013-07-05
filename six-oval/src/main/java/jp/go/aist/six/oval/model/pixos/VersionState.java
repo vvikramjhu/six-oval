@@ -16,39 +16,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.go.aist.six.oval.model.ios;
+package jp.go.aist.six.oval.model.pixos;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.ElementRef;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.definitions.EntityStateIOSVersionType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateVersionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The version state defines the version information held within a Cisco IOS Train.
+ * The version state defines the version information held within a Cisco PIX software release.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.5:
- *             Replaced by the version55 state and
- *             will be removed in a future version of the language.
  */
-@Deprecated
 public class VersionState
     extends StateType
 {
 
     //{0..1}
-    private EntityStateIntType              major_release;
-    private EntityStateIntType              train_number;
-    private EntityStateTrainIdentifierType  train_identifier;
-    private EntityStateIOSVersionType       version_string;
+    private EntityStateStringType           pix_release;
+    private EntityStateVersionType          pix_major_release;
+    private EntityStateVersionType          pix_minor_release;
+    private EntityStateIntType              pix_build;
 
 
 
@@ -78,7 +75,7 @@ public class VersionState
     {
         super( id, version, comment );
 
-        _oval_family = Family.IOS;
+        _oval_family = Family.PIXOS;
         _oval_component = ComponentType.VERSION;
     }
 
@@ -86,68 +83,68 @@ public class VersionState
 
     /**
      */
-    public void setMajorRelease(
-                    final EntityStateIntType major_release
+    public void setPixRelease(
+                    final EntityStateStringType pix_release
                     )
     {
-        this.major_release = major_release;
+        this.pix_release = pix_release;
     }
 
 
-    public EntityStateIntType getMajorRelease()
+    public EntityStateStringType getPixRelease()
     {
-        return major_release;
+        return pix_release;
     }
 
 
 
     /**
      */
-    public void setTrainNumber(
-                    final EntityStateIntType train_number
+    public void setPixMajorRelease(
+                    final EntityStateVersionType pix_major_release
                     )
     {
-        this.train_number = train_number;
+        this.pix_major_release = pix_major_release;
     }
 
 
-    public EntityStateIntType getTrainNumber()
+    public EntityStateVersionType getPixMajorRelease()
     {
-        return train_number;
+        return pix_major_release;
     }
 
 
 
     /**
      */
-    public void setTrainIdentifier(
-                    final EntityStateTrainIdentifierType train_identifier
+    public void setPixMinorRelease(
+                    final EntityStateVersionType pix_minor_release
                     )
     {
-        this.train_identifier = train_identifier;
+        this.pix_minor_release = pix_minor_release;
     }
 
 
-    public EntityStateTrainIdentifierType getTrainIdentifier()
+    public EntityStateVersionType getPixMinorRelease()
     {
-        return train_identifier;
+        return pix_minor_release;
     }
 
 
 
     /**
      */
-    public void setVersionString(
-                    final EntityStateIOSVersionType version_string
+    public void setPixBuild(
+                    final EntityStateIntType pix_build
                     )
     {
-        this.version_string = version_string;
+        this.pix_build = pix_build;
     }
 
 
-    public EntityStateIOSVersionType getVersionString()
+    public EntityStateIntType getPixBuild()
     {
-        return version_string;
+        return pix_build;
     }
 
 
@@ -161,10 +158,10 @@ public class VersionState
     {
         Collection<ElementRef>  ref_list = new ArrayList<ElementRef>();
 
-        ref_list.add( getMajorRelease() );
-        ref_list.add( getTrainNumber() );
-        ref_list.add( getTrainIdentifier() );
-        ref_list.add( getVersionString() );
+        ref_list.add( getPixRelease() );
+        ref_list.add( getPixMajorRelease() );
+        ref_list.add( getPixMinorRelease() );
+        ref_list.add( getPixBuild() );
 
         return ref_list;
     }
@@ -201,10 +198,10 @@ public class VersionState
     public String toString()
     {
         return "version_state[" + super.toString()
-                        + ", major_release="    + getMajorRelease()
-                        + ", train_number="     + getTrainNumber()
-                        + ", train_identifier=" + getTrainIdentifier()
-                        + ", version_string="   + getVersionString()
+                        + ", pix_release="          + getPixRelease()
+                        + ", pix_major_release="    + getPixMajorRelease()
+                        + ", pix_minor_release="    + getPixMinorRelease()
+                        + ", pix_build="            + getPixBuild()
              + "]";
     }
 }
