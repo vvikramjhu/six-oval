@@ -73,7 +73,7 @@ public enum ComponentType
 
     LDAP,                           // independent
     LDAP57,                         // independent
-    LINE,                           // ios
+    LINE,                           // ios, pixos
     LOCKOUTPOLICY,                  // windows
 
     METABASE,                       // windows
@@ -144,7 +144,7 @@ public enum ComponentType
     USER_SID55,                     // windows
 
     VARIABLE,                       // independent
-    VERSION,                        // esx, ios
+    VERSION,                        // esx, ios, pixos
     VERSION55,                      // ios
     VISDKMANAGEDOBJECT,             // esx
     VOLUME,                         // windows
@@ -301,6 +301,8 @@ public enum ComponentType
 
 
     public static final ComponentType[]  PIXOS = new ComponentType[] {
+        ComponentType.LINE,
+        ComponentType.VERSION
     };
 
 

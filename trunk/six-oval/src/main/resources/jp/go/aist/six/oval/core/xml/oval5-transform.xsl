@@ -56,6 +56,11 @@
 <xsl:variable name="var_ns-sc-5-macos"
     select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#macos'"/>
 
+<xsl:variable name="var_ns-def-5-pixos"
+    select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos'"/>
+<xsl:variable name="var_ns-sc-5-pixos"
+    select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#pixos'"/>
+
 <xsl:variable name="var_ns-def-5-unix"
     select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#unix'"/>
 <xsl:variable name="var_ns-sc-5-unix"
@@ -79,10 +84,11 @@
     file:                   unix, windows
     inetlisteningservers:   linux, macos
     interface:              unix, windows
+    line,                   ios, pixos
     patch:                  esx, hpux, solaris
     process:                unix, windows
     process58:              unix, windows
-    version,                esx, ios
+    version,                esx, ios, pixos
 -->
 
 
@@ -299,6 +305,56 @@
 
 
 <!-- *********************************************************** -->
+<!-- line: ios, pixos                                            -->
+<!-- *********************************************************** -->
+
+<!-- line (pre-unmarshalling) -->
+<xsl:template match="*[local-name() = 'line_test'  or  local-name() = 'line_object'  or  local-name() = 'line_state'  or  local-name() = 'line_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-pixos  or  $lvar_ns = $var_ns-sc-5-pixos">
+            <xsl:call-template name="func_output-oval-5-pixos-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- line (post-marshalling) -->
+<xsl:template match="*[local-name() = 'pixos_line_test'  or  local-name() = 'pixos_line_object'  or  local-name() = 'pixos_line_state'  or  local-name() = 'pixos_line_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-pixos  or  $lvar_ns = $var_ns-sc-5-pixos">
+            <xsl:call-template name="func_output-oval-5-pixos-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+
+<!-- *********************************************************** -->
 <!-- patch                                                       -->
 <!-- *********************************************************** -->
 
@@ -477,7 +533,7 @@
 
 
 <!-- *********************************************************** -->
-<!-- version: esx, ios                                           -->
+<!-- version: esx, ios, pixos                                    -->
 <!-- *********************************************************** -->
 
 <!-- version (pre-unmarshalling) -->
@@ -488,6 +544,13 @@
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
             <xsl:call-template name="func_output-oval-5-ios-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:when test="$lvar_ns = $var_ns-def-5-pixos  or  $lvar_ns = $var_ns-sc-5-pixos">
+            <xsl:call-template name="func_output-oval-5-pixos-component">
                 <xsl:with-param name="lvar_element" select="$lvar_element"/>
                 <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
             </xsl:call-template>
@@ -510,6 +573,28 @@
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
             <xsl:call-template name="func_output-oval-5-ios-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- version (post-marshalling) -->
+<xsl:template match="*[local-name() = 'pixos_version_test'  or  local-name() = 'pixos_version_object'  or  local-name() = 'pixos_version_state'  or  local-name() = 'pixos_version_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-pixos  or  $lvar_ns = $var_ns-sc-5-pixos">
+            <xsl:call-template name="func_output-oval-5-pixos-component">
                 <xsl:with-param name="lvar_element" select="$lvar_element"/>
                 <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
             </xsl:call-template>
@@ -708,7 +793,7 @@ TEMPLATE:  Copy idiom.
                         <xsl:copy-of select="node()"/>
                     </ios_version_test>
                 </xsl:when>
-                <xsl:when test="$lvar_element = 'ios_object'">
+                <xsl:when test="$lvar_element = 'version_object'">
                     <ios_version_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
@@ -752,10 +837,10 @@ TEMPLATE:  Copy idiom.
                 </xsl:when>
 
                 <xsl:when test="$lvar_element = 'ios_version_item'">
-                    <ios_version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
+                    <version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
-                    </ios_version_item>
+                    </version_item>
                 </xsl:when>
             </xsl:choose>
         </xsl:when>
@@ -834,6 +919,131 @@ TEMPLATE:  Copy idiom.
         </xsl:when>
     </xsl:choose>
 
+</xsl:template>
+
+
+<!-- *********************************************************** -->
+<!-- #pixos                                                        -->
+<!-- *********************************************************** -->
+<xsl:template name="func_output-oval-5-pixos-component">
+    <xsl:param name="lvar_element"/>
+    <xsl:param name="lvar_ns"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-pixos">
+            <xsl:choose>
+<!-- line -->
+                <xsl:when test="$lvar_element = 'line_test'">
+                    <pixos_line_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_line_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'line_object'">
+                    <pixos_line_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_line_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'line_state'">
+                    <pixos_line_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_line_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'pixos_line_test'">
+                    <line_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </line_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_line_object'">
+                    <line_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </line_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_line_state'">
+                    <line_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </line_state>
+                </xsl:when>
+
+<!-- version -->
+                <xsl:when test="$lvar_element = 'version_test'">
+                    <pixos_version_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_version_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'version_object'">
+                    <pixos_version_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_version_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'version_state'">
+                    <pixos_version_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_version_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'pixos_version_test'">
+                    <version_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_version_object'">
+                    <version_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_version_state'">
+                    <version_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+
+        <xsl:when test="$lvar_ns = $var_ns-sc-5-pixos">
+            <xsl:choose>
+<!-- line -->
+                <xsl:when test="$lvar_element = 'line_item'">
+                    <pixos_line_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_line_item>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_line_item'">
+                    <line_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </line_item>
+                </xsl:when>
+
+<!-- version -->
+                <xsl:when test="$lvar_element = 'version_item'">
+                    <pixos_version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </pixos_version_item>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'pixos_version_item'">
+                    <version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#pixos">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_item>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
 </xsl:template>
 
 
@@ -1050,14 +1260,13 @@ TEMPLATE:  Copy idiom.
 
         <xsl:when test="$lvar_ns = $var_ns-sc-5-unix">
             <xsl:choose>
-                <!-- dnscache -->
+<!-- dnscache -->
                 <xsl:when test="$lvar_element = 'dnscache_item'">
                     <unix_dnscache_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_dnscache_item>
                 </xsl:when>
-
                 <xsl:when test="$lvar_element = 'unix_dnscache_item'">
                     <dnscache_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -1065,15 +1274,13 @@ TEMPLATE:  Copy idiom.
                     </dnscache_item>
                 </xsl:when>
 
-
-                <!-- interface -->
+<!-- interface -->
                 <xsl:when test="$lvar_element = 'interface_item'">
                     <unix_interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_interface_item>
                 </xsl:when>
-
                 <xsl:when test="$lvar_element = 'unix_interface_item'">
                     <interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -1081,15 +1288,13 @@ TEMPLATE:  Copy idiom.
                     </interface_item>
                 </xsl:when>
 
-
-                <!-- file -->
+<!-- file -->
                 <xsl:when test="$lvar_element = 'file_item'">
                     <unix_file_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_file_item>
                 </xsl:when>
-
                 <xsl:when test="$lvar_element = 'unix_file_item'">
                     <file_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -1097,15 +1302,13 @@ TEMPLATE:  Copy idiom.
                     </file_item>
                 </xsl:when>
 
-
-                <!-- process -->
+<!-- process -->
                 <xsl:when test="$lvar_element = 'process_item'">
                     <unix_process_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_process_item>
                 </xsl:when>
-
                 <xsl:when test="$lvar_element = 'unix_process_item'">
                     <process_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -1113,15 +1316,13 @@ TEMPLATE:  Copy idiom.
                     </process_item>
                 </xsl:when>
 
-
-                <!-- process58 -->
+<!-- process58 -->
                 <xsl:when test="$lvar_element = 'process58_item'">
                     <unix_process58_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_process58_item>
                 </xsl:when>
-
                 <xsl:when test="$lvar_element = 'unix_process58_item'">
                     <process58_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>

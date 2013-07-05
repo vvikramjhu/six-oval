@@ -96,12 +96,13 @@ public class OvalTransformXmlMapperTest
 
         @DataPoints
         public static String[]  INPUT_SUBDIR_PATHS = new String[] {
-//            "aix",
-//            "esx",
-            "ios"
-//            "linux",
-//            "macos",
-//            "windows"
+//            "20130313"
+            "aix",
+            "esx",
+            "ios",
+            "linux",
+            "macos",
+            "windows"
         };
 
 
