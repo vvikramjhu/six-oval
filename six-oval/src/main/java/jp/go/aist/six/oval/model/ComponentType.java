@@ -144,7 +144,7 @@ public enum ComponentType
     USER_SID55,                     // windows
 
     VARIABLE,                       // independent
-    VERSION,                        // esx
+    VERSION,                        // esx, ios
     VERSION55,                      // ios
     VISDKMANAGEDOBJECT,             // esx
     VOLUME,                         // windows
@@ -267,6 +267,7 @@ public enum ComponentType
 
     public static final ComponentType[]  IOS = new ComponentType[] {
         ComponentType.LINE,
+        ComponentType.VERSION,
         ComponentType.VERSION55
     };
 
