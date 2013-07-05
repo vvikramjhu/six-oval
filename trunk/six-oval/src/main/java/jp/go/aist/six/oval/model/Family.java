@@ -46,7 +46,7 @@ public enum Family
     INDEPENDENT(    ComponentType.INDEPENDENT   ),
     LINUX(          ComponentType.LINUX         ),
     MACOS(          ComponentType.MACOS         ),
-//        pixos,
+    PIXOS(          ComponentType.PIXOS         ),
 //        sharepoint,
     SOLARIS(        ComponentType.SOLARIS       ),
     UNIX(           ComponentType.UNIX          ),
