@@ -46,6 +46,11 @@
 <xsl:variable name="var_ns-sc-5-hpux"
     select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux'"/>
 
+<xsl:variable name="var_ns-def-5-ios"
+    select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#ios'"/>
+<xsl:variable name="var_ns-sc-5-ios"
+    select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios'"/>
+
 <xsl:variable name="var_ns-def-5-macos"
     select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#macos'"/>
 <xsl:variable name="var_ns-sc-5-macos"
@@ -77,110 +82,18 @@
     patch:                  esx, hpux, solaris
     process:                unix, windows
     process58:              unix, windows
+    version,                esx, ios
 -->
-
-
-<!-- *********************************************************** -->
-<!-- patch                                                       -->
-<!-- *********************************************************** -->
-
-<!-- patch (pre-unmarshalling)
--->
-<xsl:template match="*[local-name() = 'patch_test'  or  local-name() = 'patch_object'  or  local-name() = 'patch_state'  or  local-name() = 'patch_item']">
-    <xsl:variable name="lvar_element" select="local-name(.)"/>
-    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
-<!--
-    <xsl:message>
-        <xsl:value-of select="$lvar_element"/>
-        <xsl:value-of select="$lvar_ns"/>
-    </xsl:message>
--->
-
-    <xsl:choose>
-        <xsl:when test="$lvar_ns = $var_ns-def-5-esx  or  $lvar_ns = $var_ns-sc-5-esx">
-            <xsl:call-template name="func_output-oval-5-esx-component">
-                <xsl:with-param name="lvar_element" select="$lvar_element"/>
-                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
-            </xsl:call-template>
-        </xsl:when>
-        
-        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
-            <xsl:call-template name="func_output-oval-5-hpux-component">
-                <xsl:with-param name="lvar_element" select="$lvar_element"/>
-                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
-            </xsl:call-template>
-        </xsl:when>
-        
-        <xsl:otherwise>
-            <!-- copy the element deeply, i.e. output the element as it is -->
-            <xsl:copy>
-                <xsl:apply-templates select="@* | node()"/>
-            </xsl:copy>
-        </xsl:otherwise>
-    </xsl:choose>
-
-</xsl:template>
-
-
-<!-- patch (post-marshalling) -->
-<xsl:template match="*[local-name() = 'esx_patch_test'  or  local-name() = 'esx_patch_object'  or  local-name() = 'esx_patch_state'  or  local-name() = 'esx_patch_item']">
-    <xsl:variable name="lvar_element" select="local-name(.)"/>
-    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
-
-    <xsl:choose>
-        <xsl:when test="$lvar_ns = $var_ns-def-5-esx  or  $lvar_ns = $var_ns-sc-5-esx">
-            <xsl:call-template name="func_output-oval-5-esx-component">
-                <xsl:with-param name="lvar_element" select="$lvar_element"/>
-                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
-            </xsl:call-template>
-        </xsl:when>
-
-        <xsl:otherwise>
-            <!-- copy the element deeply, i.e. output the element as it is -->
-            <xsl:copy>
-                <xsl:apply-templates select="@* | node()"/>
-            </xsl:copy>
-        </xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
-
-<xsl:template match="*[local-name() = 'hpux_patch_test'  or  local-name() = 'hpux_patch_object'  or  local-name() = 'hpux_patch_state'  or  local-name() = 'hpux_patch_item']">
-    <xsl:variable name="lvar_element" select="local-name(.)"/>
-    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
-
-    <xsl:choose>
-        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
-            <xsl:call-template name="func_output-oval-5-hpux-component">
-                <xsl:with-param name="lvar_element" select="$lvar_element"/>
-                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
-            </xsl:call-template>
-        </xsl:when>
-
-        <xsl:otherwise>
-            <!-- copy the element deeply, i.e. output the element as it is -->
-            <xsl:copy>
-                <xsl:apply-templates select="@* | node()"/>
-            </xsl:copy>
-        </xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
 
 
 <!-- *********************************************************** -->
 <!-- dnscache                                                    -->
 <!-- *********************************************************** -->
 
-<!-- dnscache (pre-unmarshalling)
--->
+<!-- dnscache (pre-unmarshalling) -->
 <xsl:template match="*[local-name() = 'dnscache_test'  or  local-name() = 'dnscache_object'  or  local-name() = 'dnscache_state'  or  local-name() = 'dnscache_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
-<!--
-    <xsl:message>
-        <xsl:value-of select="$lvar_element"/>
-        <xsl:value-of select="$lvar_ns"/>
-    </xsl:message>
--->
 
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
@@ -197,7 +110,6 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
@@ -257,7 +169,6 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
@@ -289,17 +200,10 @@
 <!-- inetlisteningservers                                        -->
 <!-- *********************************************************** -->
 
-<!-- inetlisteningservers (pre-unmarshalling)
--->
+<!-- inetlisteningservers (pre-unmarshalling) -->
 <xsl:template match="*[local-name() = 'inetlisteningservers_test'  or  local-name() = 'inetlisteningservers_object'  or  local-name() = 'inetlisteningservers_state'  or  local-name() = 'inetlisteningservers_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
-<!--
-    <xsl:message>
-        <xsl:value-of select="$lvar_element"/>
-        <xsl:value-of select="$lvar_ns"/>
-    </xsl:message>
--->
 
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-macos  or  $lvar_ns = $var_ns-sc-5-macos">
@@ -316,7 +220,6 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
@@ -396,6 +299,84 @@
 
 
 <!-- *********************************************************** -->
+<!-- patch                                                       -->
+<!-- *********************************************************** -->
+
+<!-- patch (pre-unmarshalling) -->
+<xsl:template match="*[local-name() = 'patch_test'  or  local-name() = 'patch_object'  or  local-name() = 'patch_state'  or  local-name() = 'patch_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-esx  or  $lvar_ns = $var_ns-sc-5-esx">
+            <xsl:call-template name="func_output-oval-5-esx-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
+            <xsl:call-template name="func_output-oval-5-hpux-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+<!-- patch (post-marshalling) -->
+<xsl:template match="*[local-name() = 'esx_patch_test'  or  local-name() = 'esx_patch_object'  or  local-name() = 'esx_patch_state'  or  local-name() = 'esx_patch_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-esx  or  $lvar_ns = $var_ns-sc-5-esx">
+            <xsl:call-template name="func_output-oval-5-esx-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<xsl:template match="*[local-name() = 'hpux_patch_test'  or  local-name() = 'hpux_patch_object'  or  local-name() = 'hpux_patch_state'  or  local-name() = 'hpux_patch_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-hpux  or  $lvar_ns = $var_ns-sc-5-hpux">
+            <xsl:call-template name="func_output-oval-5-hpux-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+<!-- *********************************************************** -->
 <!-- process                                                     -->
 <!-- *********************************************************** -->
 
@@ -445,7 +426,6 @@
 </xsl:template>
 
 
-
 <!-- *********************************************************** -->
 <!-- process58                                                   -->
 <!-- *********************************************************** -->
@@ -481,6 +461,55 @@
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
             <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+<!-- *********************************************************** -->
+<!-- version: esx, ios                                           -->
+<!-- *********************************************************** -->
+
+<!-- version (pre-unmarshalling) -->
+<xsl:template match="*[local-name() = 'version_test'  or  local-name() = 'version_object'  or  local-name() = 'version_state'  or  local-name() = 'version_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
+            <xsl:call-template name="func_output-oval-5-ios-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- version (post-marshalling) -->
+<xsl:template match="*[local-name() = 'ios_version_test'  or  local-name() = 'ios_version_object'  or  local-name() = 'ios_version_state'  or  local-name() = 'ios_version_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-ios  or  $lvar_ns = $var_ns-sc-5-ios">
+            <xsl:call-template name="func_output-oval-5-ios-component">
                 <xsl:with-param name="lvar_element" select="$lvar_element"/>
                 <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
             </xsl:call-template>
@@ -643,7 +672,6 @@ TEMPLATE:  Copy idiom.
 
         <xsl:when test="$lvar_ns = $var_ns-sc-5-hpux">
             <xsl:choose>
-<!-- inetlisteningservers -->
                 <xsl:when test="$lvar_element = 'patch_item'">
                     <hpux_patch_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#hpux">
                         <xsl:copy-of select="@*"/>
@@ -660,7 +688,78 @@ TEMPLATE:  Copy idiom.
             </xsl:choose>
         </xsl:when>
     </xsl:choose>
+</xsl:template>
 
+
+<!-- *********************************************************** -->
+<!-- #ios                                                        -->
+<!-- *********************************************************** -->
+<xsl:template name="func_output-oval-5-ios-component">
+    <xsl:param name="lvar_element"/>
+    <xsl:param name="lvar_ns"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-ios">
+            <xsl:choose>
+<!-- version -->
+                <xsl:when test="$lvar_element = 'version_test'">
+                    <ios_version_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_version_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'ios_object'">
+                    <ios_version_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_version_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'version_state'">
+                    <ios_version_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_version_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'ios_version_test'">
+                    <version_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'ios_version_object'">
+                    <version_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'ios_version_state'">
+                    <version_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </version_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+
+        <xsl:when test="$lvar_ns = $var_ns-sc-5-ios">
+            <xsl:choose>
+                <xsl:when test="$lvar_element = 'version_item'">
+                    <ios_version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_version_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'ios_version_item'">
+                    <ios_version_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#ios">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </ios_version_item>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
 </xsl:template>
 
 
