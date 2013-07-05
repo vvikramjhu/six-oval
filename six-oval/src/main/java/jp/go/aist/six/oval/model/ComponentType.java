@@ -135,6 +135,7 @@ public enum ComponentType
     SWLIST,                         // hpux
     SYSCTL,                         // unix
 
+    TCLSH,                          // ios
     TEXTFILECONTENT,                // independent @deprecated
     TEXTFILECONTENT54,              // independent
 
@@ -272,6 +273,7 @@ public enum ComponentType
         ComponentType.INTERFACE,
         ComponentType.LINE,
         ComponentType.SNMP,
+        ComponentType.TCLSH,
         ComponentType.VERSION,
         ComponentType.VERSION55
     };
